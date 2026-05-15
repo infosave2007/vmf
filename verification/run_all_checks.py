@@ -16,6 +16,7 @@ import os
 import time
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CODE_DIR = os.path.join(os.path.dirname(SCRIPT_DIR), ".code")
 
 CHECKS = [
     {
@@ -60,9 +61,10 @@ OPTIONAL_CHECKS = [
 ]
 
 
-def run_script(script_name: str, timeout: int = 120) -> tuple[bool, str]:
+def run_script(script_name: str, timeout: int = 120, search_dir: str = "") -> tuple[bool, str]:
     """Run a Python script and return (success, output)."""
-    script_path = os.path.join(SCRIPT_DIR, script_name)
+    base_dir = search_dir or SCRIPT_DIR
+    script_path = os.path.join(base_dir, script_name)
     if not os.path.exists(script_path):
         return False, f"Script not found: {script_path}"
 
@@ -72,7 +74,7 @@ def run_script(script_name: str, timeout: int = 120) -> tuple[bool, str]:
             capture_output=True,
             text=True,
             timeout=timeout,
-            cwd=SCRIPT_DIR,
+            cwd=base_dir,
         )
         output = result.stdout + result.stderr
         success = result.returncode == 0
@@ -122,7 +124,7 @@ def main() -> int:
         print(f"▷ {check['name']}")
         print(f"  Claim: {check['claim']}")
         t0 = time.time()
-        success, _ = run_script(check["script"], timeout=180)
+        success, _ = run_script(check["script"], timeout=180, search_dir=CODE_DIR)
         elapsed = time.time() - t0
         status = "✓ OK" if success else "○ SKIP"
         results.append((check, success))

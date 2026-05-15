@@ -20,9 +20,10 @@ and explores its consequences for dense nuclear matter equations of state.
 | Directory | Contents |
 |-----------|----------|
 | `article/` | Scientific article (Russian) with full derivations |
-| `code/` | All computational prototypes (Python, reproducible) |
-| `docs/` | Working documents, theoretical notes, letters |
-| `letters/` | Correspondence with experimentalists (Podkletnov, Modanese) |
+| `verification/` | Key verification scripts referenced in the article |
+| `.code/` | All computational prototypes (Python, hidden) |
+| `.docs/` | Working documents and theoretical notes (hidden) |
+| `.letters/` | Correspondence with experimentalists (hidden) |
 
 ### What Is Proven
 
@@ -46,16 +47,16 @@ and explores its consequences for dense nuclear matter equations of state.
 pip install numpy scipy
 
 # Run the main EOS verification
-python code/nvg_eos_beta_saturated_vector.py
+python verification/nvg_eos_beta_saturated_vector.py
 
 # Run with TOV scan
-python code/nvg_eos_beta_saturated_vector.py --with-tov
+python verification/nvg_eos_beta_saturated_vector.py --with-tov
 
 # Run the hadron mass fraction calculation
-python code/nvg_hadron_mass_fractions.py
+python verification/nvg_hadron_mass_fractions.py
 
 # Run all verification tests
-python code/run_all_checks.py
+python verification/run_all_checks.py
 ```
 
 ## Citation
