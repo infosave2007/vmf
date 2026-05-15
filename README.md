@@ -31,9 +31,7 @@ The vacuum anchor $M_{\Omega,0} = 859 \pm 8$ MeV is **fixed by lattice QCD** and
 NVG-Research/
 ├── article/
 │   ├── NVG_SCIENTIFIC_ARTICLE_RU.md   # Full article (Russian)
-│   ├── NVG_SCIENTIFIC_ARTICLE_EN.md   # Full article (English)
-│   ├── VMF_ARTICLE_ZENODO.tex         # LaTeX source for Zenodo
-│   └── VMF_ARTICLE_ZENODO.pdf         # Compiled PDF (8 pages)
+│   └── NVG_SCIENTIFIC_ARTICLE_EN.md   # Full article (English)
 ├── verification/
 │   ├── run_all_checks.py              # Run all verification scripts
 │   ├── nvg_hadron_mass_fractions.py   # Hadron mass decomposition (Table 1)

@@ -12,3 +12,8 @@ venv/
 *~
 .idea/
 .vscode/
+
+# Article: track only .md files
+article/*
+!article/NVG_SCIENTIFIC_ARTICLE_EN.md
+!article/NVG_SCIENTIFIC_ARTICLE_RU.md
