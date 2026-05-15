@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
-[![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/17921784)
+[![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20214457)
 
 ## Overview
 
@@ -88,7 +88,7 @@ python verification/nvg_fair_hades_link.py          # FAIR/HADES predictions
   title   = {Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State},
   year    = {2026},
   note    = {Preprint},
-  url     = {https://zenodo.org/records/17921784}
+  url     = {https://zenodo.org/records/20214457}
 }
 ```
 
