@@ -6,6 +6,8 @@ Independent Researcher
 
 urevich55@gmail.com
 
+**Репозиторий:** https://github.com/infosave2007/vmf
+
 ---
 
 ## Аннотация
