@@ -17,3 +17,8 @@ venv/
 article/*
 !article/NVG_SCIENTIFIC_ARTICLE_EN.md
 !article/NVG_SCIENTIFIC_ARTICLE_RU.md
+
+# Private directories
+.letters/
+.docs/
+.code/
