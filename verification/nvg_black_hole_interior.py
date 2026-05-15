@@ -176,7 +176,7 @@ def main() -> None:
     # 3. Maximum energy density (singularity resolution)
     eps_max = epsilon_max_estimate()
     print("3. SINGULARITY RESOLUTION")
-    print(f"   Maximum energy density (NVG prediction):")
+    print("   Maximum energy density (NVG prediction):")
     print(f"     ε_max = M_Ω⁴ / (ℏc)³ = {eps_max:.2e} MeV/fm³")
     print(f"     ε_max = {eps_max / 1000:.2e} GeV/fm³")
     print()
