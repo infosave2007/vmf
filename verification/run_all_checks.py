@@ -43,6 +43,12 @@ CHECKS = [
         "claim": "Scalar+isovector alone insufficient (expected: 0 pass)",
         "critical": False,
     },
+    {
+        "name": "Black Hole Interior: Mass Melting Profile",
+        "script": "nvg_black_hole_interior.py",
+        "claim": "M* → 0 at extreme density, P/ε → 1/3 (conformal), ε_max finite",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
