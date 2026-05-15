@@ -49,6 +49,12 @@ CHECKS = [
         "claim": "M* → 0 at extreme density, P/ε → 1/3 (conformal), ε_max finite",
         "critical": True,
     },
+    {
+        "name": "Condensate Modulation (Podkletnov/Modanese)",
+        "script": "nvg_condensate_modulation.py",
+        "claim": "2% weight loss matches η~0.02, spark discharge yields 1e6x force amplification",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
