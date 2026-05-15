@@ -88,6 +88,12 @@ OPTIONAL_CHECKS = [
         "claim": "Finite cycle in emergent time is mathematically possible",
         "critical": False,
     },
+    {
+        "name": "Macroscopic Weak-Field Limit (PPN Parameters)",
+        "script": "nvg_weak_field_ppn.py",
+        "claim": "NVG reduces exactly to GR in the macroscopic vacuum (gamma_PPN = 1)",
+        "critical": False,
+    },
 ]
 
 
