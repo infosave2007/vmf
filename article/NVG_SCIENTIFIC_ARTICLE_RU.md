@@ -1,4 +1,4 @@
-# Вакуумно-структурированная доля массы адронов, ограниченная решёточной КХД, и уравнение состояния плотной ядерной материи
+# Lattice-QCD-Constrained Vacuum Mass Fraction and Dense Matter Equation of State
 
 **О. Ю. Кирченко**
 
