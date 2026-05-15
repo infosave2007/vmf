@@ -58,13 +58,13 @@ $$\boxed{f_\Omega^{(H)}[\mathcal{F}] = 1 - \frac{1}{M_H} \sum_{q \in \mathcal{F}
 
 ### 2.2. Оценка для нуклона
 
-Используя решёточные данные [5, 6]:
+Используя решёточные данные [4, 5]:
 
 | Величина | Значение | Источник |
 |----------|----------|----------|
-| $\sigma_{\pi N}$ | $44 \pm 3$ МэВ | Gupta et al. (2021) [6] |
-| $\sigma_{sN}$ | $30 \pm 7$ МэВ | Agadjanov et al. (2023) [5] |
-| $\sigma_{\text{heavy}}$ | $\sim 6$ МэВ | PDG matching [7] |
+| $\sigma_{\pi N}$ | $44 \pm 3$ МэВ | Gupta et al. (2021) [5] |
+| $\sigma_{sN}$ | $30 \pm 7$ МэВ | Agadjanov et al. (2023) [4] |
+| $\sigma_{\text{heavy}}$ | $\sim 6$ МэВ | PDG matching [6] |
 | $\sum_q \sigma_{qN}$ | $80 \pm 15$ МэВ | Сумма |
 
 Получаем:
@@ -321,16 +321,11 @@ $$ds^2 = -\left(1 - \frac{2G M r^2}{r^3 + r_0^3}\right) dt^2 + \left(1 - \frac{2
 
 ### 8.1. Гравитация
 
-- LIGO-Virgo-KAGRA (O4a): 42 слияния ЧД, отклонений от ОТО не обнаружено [11].
-- Скорость тензорных мод: $|c_T/c - 1| \lesssim 10^{-15}$ (GW170817) [10].
-- Ограничение Кассини: $|\gamma_{\text{PPN}} - 1| < 2.3 \times 10^{-5}$ [9].
+- LIGO-Virgo-KAGRA (O4a): 42 слияния ЧД, отклонений от ОТО не обнаружено [9].
+- Скорость тензорных мод: $|c_T/c - 1| \lesssim 10^{-15}$ (GW170817) [8].
+- Ограничение Кассини: $|\gamma_{\text{PPN}} - 1| < 2.3 \times 10^{-5}$ [7].
 
-### 8.2. Космология
-
-- Planck 2018: $H_0 = 67.4 \pm 0.5$, $\Omega_m = 0.315 \pm 0.007$, $N_{\text{eff}} = 2.99 \pm 0.17$ [12].
-- Недавние анализы DESI (2025) интерпретируются как возможные указания на эволюционирующую тёмную энергию ($w \neq -1$) [13].
-
-### 8.3. Адронная физика
+### 8.2. Адронная физика
 
 | Канал | Что измеряет |
 |-------|-------------|
@@ -350,8 +345,7 @@ $$ds^2 = -\left(1 - \frac{2G M r^2}{r^3 + r_0^3}\right) dt^2 + \left(1 - \frac{2
 4. Причинность (скорость звука $c_s \le c$) в плотном ядре достигается за счёт введения насыщающегося векторного отталкивания, зависящего от плотности.
 5. Сингулярность чёрной дыры может быть разрешена через макроскопический квантовый предел ($P = -\varepsilon_{\max}$) при полном таянии $M_\Omega$.
 6. Проблема излишней жёсткости уравнения состояния смягчается введением фазового перехода первого рода, что может согласовать $M_{\max} \approx 2.3 M_\odot$ и радиус $R_{1.4} \approx 12$ км с наблюдениями.
-7. Динамика вакуумного КХД-конденсата может предлагать механизм, согласующийся с моделью эволюционирующей тёмной энергии (в свете предварительных данных DESI 2025).
-8. Существенно смягчается «гиперонная загадка» (Hyperon Puzzle): из-за таяния вакуума эффективная масса $\Lambda$-гиперонов падает, и они могут появляться в ядре звезды уже при плотности $\sim 1.7 n_0$. Это указывает на слоистую микроскопическую природу фазового перехода: нуклонная материя $\to$ гиперонное ядро $\to$ конформная кварк-глюонная плазма.
+7. Существенно смягчается «гиперонная загадка» (Hyperon Puzzle): из-за таяния вакуума эффективная масса $\Lambda$-гиперонов падает, и они могут появляться в ядре звезды уже при плотности $\sim 1.7 n_0$. Это указывает на слоистую микроскопическую природу фазового перехода: нуклонная материя $\to$ гиперонное ядро $\to$ конформная кварк-глюонная плазма.
 
 ### Фундаментальные границы применимости (Что теория не утверждает)
 
@@ -426,18 +420,10 @@ $$ds^2 = -\left(1 - \frac{2G M r^2}{r^3 + r_0^3}\right) dt^2 + \left(1 - \frac{2
 1. X. Ji, *Breakup of hadron masses and energy-momentum tensor of QCD*, Phys. Rev. Lett. 74, 1071 (1995).
 2. M. A. Shifman, A. I. Vainshtein, V. I. Zakharov, *QCD and resonance physics*, Nucl. Phys. B 147, 385 (1979).
 3. A. Chodos et al., *New extended model of hadrons*, Phys. Rev. D 9, 3471 (1974).
-4. S. Weinberg, *Cosmology*, Oxford University Press (2008).
-5. A. Agadjanov et al., *Nucleon Sigma Terms*, Phys. Rev. Lett. 131, 261902 (2023).
-6. R. Gupta et al., *Pion-nucleon sigma term from lattice QCD*, Phys. Rev. Lett. 127, 242002 (2021).
-7. S. Navas et al. (PDG), *Review of Particle Physics*, Phys. Rev. D 110, 030001 (2024).
-8. R. Brandenberger, P. Peter, *Bouncing Cosmologies: Progress and Problems*, Found. Phys. 47, 797 (2017).
-9. B. Bertotti, L. Iess, P. Tortora, Nature 425, 374 (2003).
-10. P. Creminelli, F. Vernizzi, Phys. Rev. Lett. 119, 251302 (2017).
-11. LIGO-Virgo-KAGRA Collaboration, *Testing GR with O4a data* (2024).
-12. Planck Collaboration, A&A 641, A6 (2020).
-13. DESI Collaboration, *More Than a Hint of Evolving Dark Energy* (2025).
-14. C. M. Will, *The Confrontation between GR and Experiment*, Living Rev. Rel. 17, 4 (2014).
-15. V. Mukhanov, *Physical Foundations of Cosmology*, Cambridge University Press (2005).
-16. T. Clifton et al., *Modified Gravity and Cosmology*, Phys. Rep. 513, 1 (2012).
-17. E. Podkletnov, R. Nieminen, *A possibility of gravitational force shielding by bulk YBa2Cu3O7-x superconductor*, Physica C 203, 441 (1992).
-18. E. Podkletnov, G. Modanese, *Impulse Gravity Generator Based on Charged YBa2Cu3O7-y Superconductor with Composite Crystal Structure*, arXiv:physics/0108005 (2001).
+4. A. Agadjanov et al., *Nucleon Sigma Terms*, Phys. Rev. Lett. 131, 261902 (2023).
+5. R. Gupta et al., *Pion-nucleon sigma term from lattice QCD*, Phys. Rev. Lett. 127, 242002 (2021).
+6. S. Navas et al. (PDG), *Review of Particle Physics*, Phys. Rev. D 110, 030001 (2024).
+7. B. Bertotti, L. Iess, P. Tortora, Nature 425, 374 (2003).
+8. P. Creminelli, F. Vernizzi, Phys. Rev. Lett. 119, 251302 (2017).
+9. LIGO-Virgo-KAGRA Collaboration, *Testing GR with O4a data* (2024).
+10. C. M. Will, *The Confrontation between GR and Experiment*, Living Rev. Rel. 17, 4 (2014).
