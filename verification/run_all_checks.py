@@ -61,6 +61,12 @@ CHECKS = [
         "claim": "Phase transition lowers M_max to ~2.3 M_sun (phenomenologically viable)",
         "critical": True,
     },
+    {
+        "name": "Hadron Universality & FAIR/HADES Observables",
+        "script": "nvg_fair_hades_link.py",
+        "claim": "f_Omega is universal for non-Goldstone light hadrons (~90%); rho drops by ~23% at 2n_0",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

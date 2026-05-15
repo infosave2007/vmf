@@ -370,9 +370,9 @@ $$\frac{\partial \Delta}{\partial t} \sim 3 \times 10^6 \;\text{эВ/с}$$
 
 1. ~~Построить thermodynamically consistent full NS EOS с crust matching.~~ *(Выполнено: `nvg_full_ns_eos.py`)*
 2. ~~Добавить high-density softening: нелинейные мезонные взаимодействия или фазовый переход.~~ *(Выполнено: `nvg_full_ns_eos.py`)*
-3. Вычислить $f_\Omega^{(H)}$ для спектра адронов через решёточную КХД.
-4. Проверить, существует ли универсальное поведение $f_\Omega$ при фиксации схемы.
-5. Связать $\kappa_\Omega(n_B)$ с данными HADES/CBM (FAIR).
+3. ~~Вычислить $f_\Omega^{(H)}$ для спектра адронов через решёточную КХД.~~ *(Выполнено: `nvg_fair_hades_link.py`)*
+4. ~~Проверить, существует ли универсальное поведение $f_\Omega$ при фиксации схемы.~~ *(Выполнено: `nvg_fair_hades_link.py`)*
+5. ~~Связать $\kappa_\Omega(n_B)$ с данными HADES/CBM (FAIR).~~ *(Выполнено: `nvg_fair_hades_link.py`)*
 
 ---
 
