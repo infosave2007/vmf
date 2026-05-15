@@ -48,7 +48,7 @@ Via the Feynman-Hellmann theorem, we define the standard sigma terms:
 
 $$\sigma_{qH} = m_q \frac{\partial M_H}{\partial m_q}$$
 
-The residual vacuum deviation mass of hadron $H$:
+The residual nonperturbative mass of hadron $H$:
 
 $$\boxed{M_\Omega^{(H)}[\mathcal{F}] \equiv M_H - \sum_{q \in \mathcal{F}} \sigma_{qH}}$$
 
@@ -227,7 +227,7 @@ The transition is accompanied by a jump in energy density (latent heat $\Delta\v
 
 ### 6.1. Concept
 
-A heavily debated hypothesis is the extrapolation of the mass melting mechanism $M_\Omega(n_B) \to 0$ to its logical limit inside the event horizon. Upon collapse to ultra-high densities, the vacuum structure changes radically, which may allow bypassing the classical Penrose-Hawking singularity theorems.
+One speculative hypothesis is the extrapolation of the mass melting mechanism $M_\Omega(n_B) \to 0$ to its logical limit inside the event horizon. Upon collapse to ultra-high densities, the vacuum structure changes radically, which may allow bypassing the classical Penrose-Hawking singularity theorems.
 
 ### 6.2. Exterior: Exact Match with GR
 
@@ -314,7 +314,7 @@ Questions of quantum information (the Page curve, entanglement entropy, Hawking 
 6. The problem of an overly stiff EOS is mitigated by introducing a first-order phase transition, potentially reconciling $M_{\max} \approx 2.3 M_\odot$ and the radius $R_{1.4} \approx 12$ km with observations.
 7. The "hyperon puzzle" is substantially softened: due to vacuum melting, the effective mass of $\Lambda$-hyperons drops, allowing them to appear in the stellar core already at a density of $\sim 1.7 n_0$. This suggests a layered microscopic nature of the phase transition: nucleon matter $\to$ hyperon core $\to$ conformal quark-gluon plasma.
 
-### Fundamental Limits of Applicability (What the Model Does Not Claim)
+### Fundamental Limits of Applicability
 
 *The following points are not errors, but define the strict physical boundaries of the Effective Field Theory beyond which the model does not operate:*
 
@@ -323,7 +323,7 @@ Questions of quantum information (the Page curve, entanglement entropy, Hawking 
 2. **$M_\Omega$ is not a unique, scheme-independent operator.**
    In quantum field theory, it is impossible to cleanly separate the nucleon mass into "current" and "vacuum" components without depending on a renormalization scale (computation scheme). This is a known feature of QCD (the trace anomaly). Within this EFT, we accept this as given: we fix a specific computation scheme (e.g., lattice QCD data at the 2 GeV scale) as a benchmark and construct phenomenology relative to it.
 3. **No strict Ultraviolet (UV) completion at Planck scales is provided.**
-   The VMF theory is intentionally constructed as an Effective Field Theory (EFT). The refusal to attempt another "Theory of Everything" (quantum gravity) at Planck scales ($10^{19}$ GeV) is not a weakness, but a key methodological advantage. What is actually achieved via the EFT approach:
+   The VMF model is intentionally constructed as an Effective Field Theory (EFT). The refusal to attempt another "Theory of Everything" (quantum gravity) at Planck scales ($10^{19}$ GeV) is not a weakness, but a key methodological advantage. What is actually achieved via the EFT approach:
    * **Mathematical Computability:** We bypassed the unsolvable problem of graviton quantization. Instead, macroscopic GR was directly linked to QCD (via vacuum condensates of the trace anomaly), allowing us to calculate realistic equations of state for stars.
    * **Strict Falsifiability:** Unlike String Theory (with its $10^{500}$ vacuum varieties), the VMF model is rigidly nailed to experimental lattice QCD data at the $\sim 1$ GeV scale. This allows for entirely concrete predictions (stellar mass $2.3 M_\odot$, a $24\%$ drop in the $\rho$-meson mass) that are testable at modern accelerators and detectors.
    The predictive power of the VMF model honestly ends where perturbative QCD begins to dominate (at energies of tens of GeV).
