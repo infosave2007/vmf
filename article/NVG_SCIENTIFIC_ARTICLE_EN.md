@@ -217,7 +217,7 @@ The primary (minimal) model yielded $M_{\max} \sim 4.3\text{--}4.7\,M_\odot$, wh
 **Physical Solution:**
 Since the fixed QCD input ($M_{\Omega,0} = 859$ MeV) does not allow for arbitrary parameter fitting (accelerating mass melting), the model itself pointed to the necessity of a structural medium change. The introduction of a **first-order phase transition** to a conformal quark-gluon plasma ($P = \varepsilon/3$) at density $n_B \approx 2.0\,n_0$ can reconcile the EOS with astrophysical constraints.
 
-The transition is accompanied by a jump in energy density (latent heat $\Delta\varepsilon \approx 350$ MeV/fm³). Solving the Tolman-Oppenheimer-Volkoff equations (`nvg_full_ns_eos.py`) demonstrated that such topology successfully reduces the maximum neutron star mass to a realistic $M_{\max} \approx 2.3\,M_\odot$, while maintaining conformity with radii $R_{1.4} \approx 12$ km.
+The transition is accompanied by a jump in energy density (latent heat $\Delta\varepsilon \approx 350$ MeV/fm³). Solving the Tolman-Oppenheimer-Volkoff equations (`nvg_full_ns_eos.py`) demonstrated that such EOS topology successfully reduces the maximum neutron star mass to a realistic $M_{\max} \approx 2.3\,M_\odot$, while maintaining conformity with radii $R_{1.4} \approx 12$ km.
 
 ---
 
@@ -319,7 +319,7 @@ Questions of quantum information (the Page curve, entanglement entropy, Hawking 
 *The following points are not errors, but define the strict physical boundaries of the Effective Field Theory beyond which the model does not operate:*
 
 1. **This is not a replacement for macroscopic GR.**
-   In the weak-field limit (e.g., in the Solar System), where the baryon matter density $n_B \to 0$, QCD condensate modulation is absent. In this limit, the action of the VMF model strictly mathematically reduces to the classical Einstein-Hilbert action. The post-Newtonian parameter $\gamma_{PPN}$ remains exactly 1 (shown numerically in `nvg_weak_field_ppn.py`), which perfectly aligns with all experiments (e.g., Cassini probe constraints $|\gamma - 1| < 2.3 \times 10^{-5}$). The VMF model is an extension of GR exclusively for dense media and the vacuum, not a refutation of it.
+   In the weak-field limit (e.g., in the Solar System), where the baryon matter density $n_B \to 0$, QCD condensate modulation is absent. In this limit, the action of the VMF model strictly mathematically reduces to the classical Einstein-Hilbert action. The post-Newtonian parameter $\gamma_{PPN}$ remains exactly 1 (shown numerically in `nvg_weak_field_ppn.py`), which perfectly aligns with all experiments (e.g., Cassini probe constraints $|\gamma - 1| < 2.3 \times 10^{-5}$). The VMF model is an extension of GR exclusively for dense media, not a refutation of it.
 2. **$M_\Omega$ is not a unique, scheme-independent operator.**
    In quantum field theory, it is impossible to cleanly separate the nucleon mass into "current" and "vacuum" components without depending on a renormalization scale (computation scheme). This is a known feature of QCD (the trace anomaly). Within this EFT, we accept this as given: we fix a specific computation scheme (e.g., lattice QCD data at the 2 GeV scale) as a benchmark and construct phenomenology relative to it.
 3. **No strict Ultraviolet (UV) completion at Planck scales is provided.**
