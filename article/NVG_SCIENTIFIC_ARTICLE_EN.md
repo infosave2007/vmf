@@ -1,6 +1,10 @@
 # Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State
 
-**O. Yu. Kirchenko**
+**Oleg Kirichenko**
+
+Independent Researcher
+
+urevich55@gmail.com
 
 ---
 
