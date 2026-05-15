@@ -67,6 +67,12 @@ CHECKS = [
         "claim": "f_Omega is universal for non-Goldstone light hadrons (~90%); rho drops by ~23% at 2n_0",
         "critical": True,
     },
+    {
+        "name": "Hyperon Puzzle & Phase Transition Nature",
+        "script": "nvg_hyperon_puzzle.py",
+        "claim": "Lambda hyperons appear at 1.7 n_0, before QGP transition at 2.0 n_0",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
