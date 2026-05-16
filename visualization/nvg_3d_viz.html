@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NVG Cyclic Cosmology & Regular Black Hole Core</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+        canvas {
+            display: block;
+        }
+        #ui-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(10, 15, 30, 0.85);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 150, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 380px;
+            pointer-events: none;
+        }
+        #discoveries-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(20, 10, 30, 0.85);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 100, 200, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 0, 150, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 320px;
+            pointer-events: none;
+        }
+        h1 {
+            font-size: 1.1rem;
+            margin: 0 0 10px 0;
+            color: #4db8ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 1rem;
+            margin: 0 0 10px 0;
+            color: #ff66aa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .stat {
+            font-size: 0.95rem;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 4px;
+        }
+        .value {
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .disc-item {
+            font-size: 0.85rem;
+            color: #ddd;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .disc-title {
+            color: #ff99cc;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+        #controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+        button {
+            background: rgba(0, 100, 200, 0.6);
+            color: white;
+            border: 1px solid #4db8ff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            background: rgba(0, 150, 255, 0.8);
+            box-shadow: 0 0 15px rgba(77, 184, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+<div id="ui-container">
+    <h1>Cyclic Universe Dynamics</h1>
+    <div class="stat">Cycle Number: <span id="val-cycle" class="value">1</span></div>
+    <div class="stat">Phase: <span id="val-phase" class="value" style="color: #4db8ff">Expansion</span></div>
+    <div class="stat">Universe Mass: <span id="val-mass" class="value">0.38 M_sun</span></div>
+    <div class="stat">Bounce Core Radius: <span id="val-core" class="value" style="color: #ffaa00">1.13 km</span></div>
+    <div class="stat">Max Expansion: <span id="val-radius" class="value">~ 1700 m</span></div>
+    <div class="stat">Turnaround Time: <span id="val-time" class="value">5.9 µs</span></div>
+</div>
+
+<div id="discoveries-container">
+    <h2>NVG Ironclad Discoveries</h2>
+    <div class="disc-item">
+        <span class="disc-title">1. VMF Anchor (859 MeV)</span>
+        91% of nucleon mass is nonperturbative QCD energy, driving the galaxy collapse limits.
+    </div>
+    <div class="disc-item">
+        <span class="disc-title">2. Regular Black Hole Cores</span>
+        Singularities are replaced by dense de Sitter vacuum cores. Visualized as the glowing center behind the dark event horizon.
+    </div>
+    <div class="disc-item">
+        <span class="disc-title">3. GW Echoes (0.0445s)</span>
+        Gravitational waves reflect off the regular core, producing delayed echoes for LIGO.
+    </div>
+    <div class="disc-item">
+        <span class="disc-title">4. Tolman Cycles</span>
+        Entropy from stars and galaxies causes the universe to grow larger each cycle (Snowball effect).
+    </div>
+</div>
+
+<div id="controls">
+    <button id="btn-toggle">Pause</button>
+    <button id="btn-skip">Force Bounce (Next Cycle)</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script>
+    // --- SCENE SETUP ---
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x000000, 0.0015);
+
+    const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 5000);
+    camera.position.set(0, 80, 150);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    // Add additive blending tone mapping for glowing effects
+    renderer.toneMapping = THREE.AdditiveBlending;
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 0.3;
+    controls.maxDistance = 600;
+
+    // --- LIGHTS ---
+    const ambientLight = new THREE.AmbientLight(0x111122);
+    scene.add(ambientLight);
+
+    const coreLight = new THREE.PointLight(0xffaa00, 3, 500);
+    scene.add(coreLight);
+
+    // --- BLACK HOLE (Center) ---
+    // The Event Horizon (Dark Sphere)
+    const eventHorizonGeo = new THREE.SphereGeometry(4, 64, 64);
+    const eventHorizonMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    const eventHorizon = new THREE.Mesh(eventHorizonGeo, eventHorizonMat);
+    scene.add(eventHorizon);
+
+    // The NVG Regular Core (Glowing inside, visible through tricks or when expanding)
+    const regularCoreGeo = new THREE.SphereGeometry(3.8, 64, 64);
+    const regularCoreMat = new THREE.MeshBasicMaterial({ 
+        color: 0xff3300, 
+        transparent: true, 
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending
+    });
+    const regularCore = new THREE.Mesh(regularCoreGeo, regularCoreMat);
+    scene.add(regularCore);
+    
+    // Accretion Disk / Photon Ring (Glowing ring around BH)
+    const ringGeo = new THREE.RingGeometry(4.5, 7, 64);
+    const ringMat = new THREE.MeshBasicMaterial({
+        color: 0xffaa00,
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+    });
+    const photonRing = new THREE.Mesh(ringGeo, ringMat);
+    photonRing.rotation.x = Math.PI / 2;
+    scene.add(photonRing);
+
+    // --- PRIMORDIAL BLACK HOLES (Dark Matter Seeds from Bounces) ---
+    const pbhCount = 100; // Capacity up to cycle 100
+    const pbhGeo = new THREE.SphereGeometry(0.4, 16, 16); // Visually halved size
+    const pbhMat = new THREE.MeshBasicMaterial({ color: 0x000000 }); // Pitch black event horizon
+    const pbhMesh = new THREE.InstancedMesh(pbhGeo, pbhMat, pbhCount);
+    
+    const pbhRingGeo = new THREE.RingGeometry(0.5, 0.75, 16); // Halved ring size
+    const pbhRingMat = new THREE.MeshBasicMaterial({ 
+        color: 0xff4400, 
+        side: THREE.DoubleSide, 
+        transparent: true, 
+        opacity: 0.6,
+        blending: THREE.AdditiveBlending
+    });
+    const pbhRings = new THREE.InstancedMesh(pbhRingGeo, pbhRingMat, pbhCount);
+    
+    scene.add(pbhMesh);
+    scene.add(pbhRings);
+
+    const dummy = new THREE.Object3D();
+    const ringDummy = new THREE.Object3D();
+    const pbhTargetPos = new Float32Array(pbhCount * 3);
+
+    for(let i=0; i<pbhCount; i++) {
+        let r = Math.random() * 100;
+        r = Math.pow(r/100, 0.8) * 100; // Spread out halo
+        let angle = Math.random() * Math.PI * 2;
+        let scatterY = (Math.random() - 0.5) * 30 * Math.exp(-r/50);
+        
+        pbhTargetPos[i*3] = r * Math.cos(angle);
+        pbhTargetPos[i*3+1] = scatterY;
+        pbhTargetPos[i*3+2] = r * Math.sin(angle);
+    }
+
+    // Wrap galaxy in a group to rotate everything together
+    const universeGroup = new THREE.Group();
+    scene.add(universeGroup);
+    
+    // Move the central BH into the group
+    universeGroup.add(eventHorizon);
+    universeGroup.add(regularCore);
+    universeGroup.add(photonRing);
+    universeGroup.add(pbhMesh);
+    universeGroup.add(pbhRings);
+
+    // --- GALAXY SPIRAL ARMS (Stars & Entropy) ---
+    const particleCount = 25000;
+    const particlesGeo = new THREE.BufferGeometry();
+    const posArray = new Float32Array(particleCount * 3);
+    const colorArray = new Float32Array(particleCount * 3);
+    const sizeArray = new Float32Array(particleCount);
+    // Store original positions for expansion/contraction lerping
+    const targetPosArray = new Float32Array(particleCount * 3); 
+    
+    const arms = 2; // Two major arms like the Milky Way
+    const galaxyRadius = 110;
+    const spin = 4.0; // Tighter winding
+
+    for(let i=0; i<particleCount; i++) {
+        let idx = i * 3;
+        
+        // Distribution of stars (more in center, thinning out)
+        let r = Math.random() * galaxyRadius;
+        r = Math.pow(r/galaxyRadius, 1.2) * galaxyRadius; // Density gradient
+        
+        // Primary vs Minor arms (80% in 2 major arms, 20% in minor arms or scattered)
+        let armIndex = i % 2;
+        let angle = armIndex * Math.PI;
+        
+        // Gravitational displacement (trailing/leading edge drifting)
+        // Some stars drag behind the arm, creating a smear effect
+        let drift = (Math.random() - 0.2) * 1.5; 
+        if (Math.random() > 0.8) angle += Math.PI / 2; // Minor arms
+        
+        // Add spiral twist with gravity drift
+        angle += (r * spin / galaxyRadius) + drift;
+        
+        // Add scatter (randomness) - wider scatter for realistic messiness
+        let scatterWidth = 10 + Math.random() * 25;
+        let scatterX = (Math.random() - 0.5) * scatterWidth * (r / galaxyRadius + 0.05);
+        let scatterZ = (Math.random() - 0.5) * scatterWidth * (r / galaxyRadius + 0.05);
+        
+        // Height variation (bulge in the center, flat disk at edges)
+        let heightScatter = (Math.random() - 0.5) * 12 * Math.exp(-r/20);
+        
+        let x = r * Math.cos(angle) + scatterX;
+        let y = heightScatter;
+        let z = r * Math.sin(angle) + scatterZ;
+        
+        // Dense, visible mini spiral arms (accretion swirls) around Primordial Black Holes!
+        if (Math.random() < 0.25) { // 25% of all stars form mini-galaxies around PBHs
+            // Bias towards newer PBHs (higher index). Power of 0.4 creates heavy bias towards index 99.
+            let pbhIdx = Math.floor(Math.pow(Math.random(), 0.4) * pbhCount);
+            let pX = pbhTargetPos[pbhIdx*3];
+            let pY = pbhTargetPos[pbhIdx*3+1];
+            let pZ = pbhTargetPos[pbhIdx*3+2];
+            
+            // Newer PBHs (born in later cycles) have STRONGER gravity.
+            // pbhIdx is exactly the cycle it was born in!
+            let gravityStrength = 1.0 + (pbhIdx / pbhCount) * 4.0; // 1.0 (cycle 1) to 5.0 (cycle 100)
+            
+            // Stronger gravity = tighter, smaller swirl radius
+            let swirlRadius = 4.0 / gravityStrength; 
+            
+            // Local coordinates around PBH
+            let clumpR = Math.pow(Math.random(), 1.2) * swirlRadius; 
+            
+            // 2 mini arms for the PBH
+            let miniArmIndex = Math.floor(Math.random() * 2);
+            let miniAngle = miniArmIndex * Math.PI;
+            
+            // Spiral winding formula for PBH
+            let miniSpin = 8.0 * gravityStrength; // Tighter winding for stronger gravity
+            miniAngle += (clumpR * miniSpin / swirlRadius);
+            
+            // Small scatter to make the arms look natural, less scatter for strong gravity
+            let miniScatter = (Math.random() - 0.5) * (1.5 / gravityStrength);
+            miniAngle += miniScatter;
+            
+            x = pX + clumpR * Math.cos(miniAngle);
+            z = pZ + clumpR * Math.sin(miniAngle);
+            y = pY + (Math.random()-0.5) * (1.0 / gravityStrength); // Flatter disk for stronger gravity
+        }
+        
+        // Save target positions (Max expansion)
+        targetPosArray[idx] = x;
+        targetPosArray[idx+1] = y;
+        targetPosArray[idx+2] = z;
+        
+        // Initialize at center (The Bounce state)
+        posArray[idx] = x * 0.01;
+        posArray[idx+1] = y * 0.01;
+        posArray[idx+2] = z * 0.01;
+
+        // Stellar Types (Colors and Sizes)
+        let rand = Math.random();
+        let rC, gC, bC, pSize;
+        if (rand < 0.1) {
+            // Blue Giants (Hot, massive, bright)
+            rC = 0.5; gC = 0.8; bC = 1.0;
+            pSize = 2.0;
+        } else if (rand < 0.4) {
+            // Yellow Stars (Like Sun)
+            rC = 1.0; gC = 0.9; bC = 0.6;
+            pSize = 1.0;
+        } else if (rand < 0.8) {
+            // Red Dwarfs (Cool, common)
+            rC = 1.0; gC = 0.4; bC = 0.2;
+            pSize = 0.6;
+        } else {
+            // Dust/Entropy (Dim, scattered)
+            rC = 0.4; gC = 0.3; bC = 0.4;
+            pSize = 0.3;
+        }
+        
+        // Make inner core stars yellower/redder
+        if (r < 15) {
+            rC = 1.0; gC = 0.6; bC = 0.2;
+            pSize *= 1.5;
+        }
+
+        colorArray[idx] = rC;
+        colorArray[idx+1] = gC;
+        colorArray[idx+2] = bC;
+        sizeArray[i] = pSize;
+    }
+
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+    particlesGeo.setAttribute('size', new THREE.BufferAttribute(sizeArray, 1));
+
+    // Custom shader material to allow per-particle sizes and beautiful glow
+    const shaderMat = new THREE.ShaderMaterial({
+        uniforms: {
+            time: { value: 0 },
+            globalOpacity: { value: 1.0 }
+        },
+        vertexShader: `
+            attribute float size;
+            attribute vec3 color;
+            varying vec3 vColor;
+            void main() {
+                vColor = color;
+                vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+                gl_PointSize = size * (300.0 / -mvPosition.z);
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        `,
+        fragmentShader: `
+            uniform float globalOpacity;
+            varying vec3 vColor;
+            void main() {
+                // Circular soft particle
+                float dist = length(gl_PointCoord - vec2(0.5));
+                if (dist > 0.5) discard;
+                float alpha = (0.5 - dist) * 2.0 * globalOpacity;
+                gl_FragColor = vec4(vColor, alpha);
+            }
+        `,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+    });
+
+    const galaxySystem = new THREE.Points(particlesGeo, shaderMat);
+    universeGroup.add(galaxySystem);
+
+    // --- PHYSICS MAPPING & UI ---
+    let isPlaying = true;
+    let cycle = 1;
+    let phase = 0; // 0 to Math.PI
+    
+    const initialMass = 0.38;
+    const initialTime = 5.9;
+    const initialSize = 1.13;
+
+    const updateUI = (expansionFactor) => {
+        document.getElementById('val-cycle').innerText = cycle;
+        
+        let mass = initialMass * Math.pow(2, cycle - 1);
+        let time = initialTime * Math.pow(2, cycle - 1);
+        let coreRadius = initialSize * Math.pow(2, (cycle - 1)/3); // r_0 core size at bounce
+        
+        // Turnaround max radius roughly equals c * T
+        // 5.9 us * c ≈ 1.7 km. Scale it roughly from time in us: 
+        let maxRadiusKm = time * 0.29979; // speed of light is ~0.3 km/us
+        
+        document.getElementById('val-mass').innerText = formatMass(mass);
+        document.getElementById('val-time').innerText = formatTime(time);
+        document.getElementById('val-core').innerText = formatRadius(coreRadius);
+        document.getElementById('val-radius').innerText = formatRadius(maxRadiusKm);
+        
+        let phaseText = "BOUNCE!";
+        let pColor = "#ff3333";
+        if (Math.sin(phase) > 0.05) {
+            if (Math.cos(phase) > 0) {
+                phaseText = "Expansion (Galaxy Formation)";
+                pColor = "#4db8ff";
+            } else {
+                phaseText = "Contraction (Big Crunch)";
+                pColor = "#ffaa00";
+            }
+        }
+        
+        let phaseEl = document.getElementById('val-phase');
+        phaseEl.innerText = phaseText;
+        phaseEl.style.color = pColor;
+    };
+
+    const formatMass = (val) => {
+        if (val < 1000) return val.toFixed(2) + " M_sun";
+        // Scientific notation for large masses
+        let exponent = Math.floor(Math.log10(val));
+        let mantissa = val / Math.pow(10, exponent);
+        return mantissa.toFixed(2) + " × 10^" + exponent + " M_sun";
+    }
+
+    const formatRadius = (km) => {
+        if (km > 9.461e12) return (km / 9.461e12).toFixed(2) + " Billion Light Years";
+        if (km > 9.461e9) return (km / 9.461e9).toFixed(2) + " Light Years";
+        if (km > 1e6) return (km / 1e6).toFixed(2) + " Million km";
+        if (km > 1000) return (km / 1000).toFixed(2) + " Thousand km";
+        return km.toFixed(2) + " km";
+    }
+
+    const formatTime = (us) => {
+        if (us > 3.15e13 * 1e6) return (us / (3.15e13 * 1e6)).toFixed(2) + " Billion Yrs";
+        if (us > 3.15e7 * 1e6) return (us / (3.15e7 * 1e6)).toFixed(2) + " Years";
+        if (us > 1e6 * 3600) return (us / (1e6 * 3600)).toFixed(2) + " Hours";
+        if (us > 1e6) return (us / 1e6).toFixed(2) + " Seconds";
+        return us.toFixed(1) + " µs";
+    }
+
+    // --- ANIMATION LOOP ---
+    const clock = new THREE.Clock();
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+
+        if (isPlaying) {
+            // Cycle speed adapts
+            let speed = 1.5 / Math.pow(1.05, cycle); 
+            if (speed < 0.15) speed = 0.15;
+            
+            phase += speed * clock.getDelta();
+            
+            if (phase >= Math.PI) {
+                phase = 0;
+                cycle++;
+                // Flash the regular core at the bounce
+                regularCore.scale.set(1.5, 1.5, 1.5);
+                coreLight.intensity = 10;
+                coreLight.color.setHex(0xff3333);
+            }
+
+            // Expansion Factor: 0 at Bounce, 1 at max expansion
+            let expansionFactor = Math.sin(phase);
+            // Non-linear expansion (fast boom, slow peak)
+            let visualExpansion = Math.pow(expansionFactor, 0.5); 
+            
+            // Evolution of the Universe across cycles (Tolman entropy effect on structure)
+            // Early cycles are just pure plasma/radiation, no stars form because lifetime is too short.
+            // Star formation begins around cycle 40, full galaxies by cycle 60+
+            let starFormationRatio = Math.max(0, Math.min(1, (cycle - 30) / 40.0)); 
+            
+            // Cycle growth modifier (grows over cycles)
+            let cycleGrowth = Math.min(1.0 + cycle * 0.1, 4.0);
+            
+            // PBHs (Primordial Black Holes) survive the bounce and accumulate!
+            // Exactly 1 PBH per cycle! (At cycle 78, there are 78 PBHs).
+            // They become visible when stars start forming.
+            let activePBHs = cycle; 
+            
+            for(let i=0; i<pbhCount; i++) {
+                let scale = 0.02 + (0.98 * visualExpansion * cycleGrowth);
+                let x = pbhTargetPos[i*3] * scale;
+                let y = pbhTargetPos[i*3+1] * scale;
+                let z = pbhTargetPos[i*3+2] * scale;
+                
+                // Only show PBHs up to the current cycle, and only if stars have formed
+                if (i < activePBHs && starFormationRatio > 0.01) {
+                    // Older PBHs (low i) evaporated or weakened. Size scales by age.
+                    let ageFactor = i / activePBHs; // 0 = oldest, 1 = newest
+                    let pbhSize = (0.2 + 0.8 * ageFactor) * starFormationRatio; 
+                    
+                    // Make the newest ones glow brighter by slightly overscaling their ring
+                    let ringSize = pbhSize * (1.0 + 0.5 * ageFactor);
+                    
+                    dummy.position.set(x, y, z);
+                    dummy.scale.set(pbhSize, pbhSize, pbhSize);
+                    dummy.updateMatrix();
+                    pbhMesh.setMatrixAt(i, dummy.matrix);
+                    
+                    ringDummy.position.set(x, y, z);
+                    ringDummy.lookAt(camera.position); 
+                    ringDummy.scale.set(ringSize, ringSize, ringSize);
+                    ringDummy.updateMatrix();
+                    pbhRings.setMatrixAt(i, ringDummy.matrix);
+                } else {
+                    dummy.scale.set(0,0,0);
+                    dummy.updateMatrix();
+                    pbhMesh.setMatrixAt(i, dummy.matrix);
+                    pbhRings.setMatrixAt(i, dummy.matrix);
+                }
+            }
+            pbhMesh.instanceMatrix.needsUpdate = true;
+            pbhRings.instanceMatrix.needsUpdate = true;
+            
+            // Update Particle Positions (The Galaxy breathes)
+            const positions = galaxySystem.geometry.attributes.position.array;
+            for(let i=0; i<particleCount * 3; i+=3) {
+                // Minimum size = 0.02 (the dense core state)
+                let scale = 0.02 + (0.98 * visualExpansion * cycleGrowth);
+                
+                // If stars haven't formed yet, particles just form a chaotic glowing spherical plasma
+                let chaoticX = (Math.random() - 0.5) * 10;
+                let chaoticY = (Math.random() - 0.5) * 10;
+                let chaoticZ = (Math.random() - 0.5) * 10;
+                
+                // Interpolate between chaotic plasma and structured spiral galaxy based on cycle
+                let targetX = targetPosArray[i] * starFormationRatio + chaoticX * (1 - starFormationRatio);
+                let targetY = targetPosArray[i+1] * starFormationRatio + chaoticY * (1 - starFormationRatio);
+                let targetZ = targetPosArray[i+2] * starFormationRatio + chaoticZ * (1 - starFormationRatio);
+                
+                positions[i] = targetX * scale;
+                positions[i+1] = targetY * scale;
+                positions[i+2] = targetZ * scale;
+            }
+            galaxySystem.geometry.attributes.position.needsUpdate = true;
+            
+            // Rotate the entire universe group (Galactic rotation)
+            universeGroup.rotation.y += 0.002;
+            
+            // Core and Event Horizon Animation
+            // During contraction, event horizon dominates. During bounce, regular core flares out.
+            eventHorizon.scale.set(
+                1.0 + 0.5 * visualExpansion, 
+                1.0 + 0.5 * visualExpansion, 
+                1.0 + 0.5 * visualExpansion
+            );
+            
+            // Recover regular core size slowly after bounce flash
+            regularCore.scale.lerp(new THREE.Vector3(1,1,1), 0.05);
+            coreLight.intensity = THREE.MathUtils.lerp(coreLight.intensity, 3 * visualExpansion + 1, 0.05);
+            coreLight.color.lerp(new THREE.Color(0xffaa00), 0.05);
+            
+            // Fade out particles slightly at the dense bounce to emphasize the core.
+            // Also dim the universe in early cycles to represent lack of stellar ignition
+            let stellarBrightness = 0.2 + 0.8 * starFormationRatio;
+            shaderMat.uniforms.globalOpacity.value = (0.2 + 0.8 * visualExpansion) * stellarBrightness;
+            
+            updateUI(visualExpansion);
+        }
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // --- EVENT LISTENERS ---
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    document.getElementById('btn-toggle').addEventListener('click', (e) => {
+        isPlaying = !isPlaying;
+        e.target.innerText = isPlaying ? "Pause" : "Play";
+    });
+
+    document.getElementById('btn-skip').addEventListener('click', () => {
+        cycle++;
+        phase = 0; 
+        regularCore.scale.set(2, 2, 2);
+        coreLight.intensity = 15;
+    });
+
+</script>
+</body>
+</html>

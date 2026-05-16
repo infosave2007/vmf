@@ -73,6 +73,24 @@ CHECKS = [
         "claim": "Lambda hyperons appear at 1.7 n_0, before QGP transition at 2.0 n_0",
         "critical": True,
     },
+    {
+        "name": "Gravitational Wave Echoes",
+        "script": "nvg_gw_echoes.py",
+        "claim": "Echo delay for GW150914 (65 M_sun) is precisely 0.0445s",
+        "critical": True,
+    },
+    {
+        "name": "Tolman Cycles & Entropy Growth",
+        "script": "nvg_cyclic_lifetimes.py",
+        "claim": "Genesis lifetime was ~5.9 us; current universe is the ~76th cycle",
+        "critical": True,
+    },
+    {
+        "name": "Laboratory Graphene Topological Limit",
+        "script": "nvg_graphene_modulation.py",
+        "claim": "Thermodynamic RF bulk pumping is < 10^-15 effective, requiring topological resonance",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

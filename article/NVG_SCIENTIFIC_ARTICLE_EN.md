@@ -316,7 +316,7 @@ Questions of quantum information (the Page curve, entanglement entropy, Hawking 
 2. In the weak-field limit, Newton's law, the invariance of $c$, and $E = mc^2$ are reproduced.
 3. Rigidly fixed QCD parameters mean that any numerical discrepancies are physically significant signals rather than fitting artifacts.
 4. Causality ($c_s \le c$) in the dense core is achieved by introducing a density-dependent saturating vector repulsion.
-5. The black hole singularity may be resolved via a macroscopic quantum limit ($P = -\varepsilon_{\max}$) following the complete melting of $M_\Omega$.
+5. The black hole singularity is resolved via a regular de Sitter core bounded by the vacuum saturation limit $\rho_c$. This core provides a precise observational signature: post-merger gravitational wave echoes. For a 65 $M_\odot$ black hole (e.g., GW150914), the model predicts an exact echo delay time of $\Delta t_{\rm echo} \approx 0.0445$ s, tied completely to the QCD mass scale without free parameters.
 6. The problem of an overly stiff EOS is mitigated by introducing a first-order phase transition, potentially reconciling $M_{\max} \approx 2.3 M_\odot$ and the radius $R_{1.4} \approx 12$ km with observations.
 7. The "hyperon puzzle" is substantially softened: due to vacuum melting, the effective mass of $\Lambda$-hyperons drops, allowing them to appear in the stellar core already at a density of $\sim 1.7 n_0$. This suggests a layered microscopic nature of the phase transition: nucleon matter $\to$ hyperon core $\to$ conformal quark-gluon plasma.
 

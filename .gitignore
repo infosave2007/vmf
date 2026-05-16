@@ -17,6 +17,8 @@ venv/
 article/*
 !article/NVG_SCIENTIFIC_ARTICLE_EN.md
 !article/NVG_SCIENTIFIC_ARTICLE_RU.md
+!article/NVG_CYCLIC_COSMOLOGY_PREPRINT_EN.md
+!article/NVG_GENESIS_MODEL_EN.md
 
 # Private directories
 .letters/
