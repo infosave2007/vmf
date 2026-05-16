@@ -16,10 +16,41 @@ The framework consists of three main pillars:
 The melting of the vacuum mass in dense environments dictates the Equation of State (EOS) for neutron stars. The model successfully resolves causality ($c_s \leq c$) and stiffness problems, yielding a maximum neutron star mass of $M_{\max} \approx 2.3\,M_\odot$. It also predicts a measurable ~24% mass drop for the $\rho$-meson at $2n_0$ (testable at FAIR/HADES).
 
 ### Pillar II: Cyclic Cosmology & Genesis (NVG)
-As the universe collapses, the macroscopic melting of the $\mathcal{W}$-field naturally halts the Big Crunch at a critical density $\rho_c = M_{\Omega,0}^4/(\hbar c)^3$. This induces a "bounce" governed by modified Friedmann dynamics. The model includes a Genesis phase where the first universe emerged from a finite Euclidean instanton, naturally explaining the anomalous suppression of CMB low multipoles ($\ell=2,3$) and adhering to Tolman's thermodynamic entropy growth across cycles.
+
+As the universe collapses, the macroscopic melting of the $\mathcal{W}$-field naturally halts the Big Crunch at a critical density $\rho_c = M_{\Omega,0}^4/(\hbar c)^3 \approx 7.09 \times 10^4$ MeV/fm³. This density is $\sim 10^{77}$ orders below the Planck scale, placing the bounce entirely within semi-classical physics.
+
+**Bounce dynamics** are derived (not postulated) from the FLRW minisuperspace reduction of the VMF action, yielding the modified Friedmann equation:
+
+$$H^2 = \frac{8\pi G}{3}\rho_{\rm tot}\left(1 - \frac{\rho_{\rm tot}}{\rho_c}\right) - \frac{kc^2}{a^2} + \frac{\Lambda_{\rm eff}c^2}{3}$$
+
+Key derived quantities (zero free parameters):
+
+| Quantity | Value | Derivation |
+|----------|-------|------------|
+| Bounce density $\rho_c$ | $7.09 \times 10^4$ MeV/fm³ | $M_{\Omega,0}^4/(\hbar c)^3$ |
+| $\rho_c / \rho_{\rm Planck}$ | $2.5 \times 10^{-77}$ | Semi-classical regime |
+| Bounce timescale $t_b$ | $3.76 \times 10^{-6}$ s | $(8\pi G\rho_c/3)^{-1/2}$ |
+| Bounce temperature $T_b$ | 432 MeV | Stefan-Boltzmann QGP ($g_*=47.5$) |
+| Holographic entropy (Universe) | $2.15 \times 10^{91}$ | $4\pi r_0^2 / 4\ell_{\rm Pl}^2$ |
+| CMB/BAO $\delta H/H$ | $\sim 10^{-38}$ | Exact ΛCDM compatibility |
+
+**Genesis Phase — The First Cycle:**
+The origin of the first universe is modeled as a Euclidean instanton tunneling event. Under standard Hartle-Hawking boundary conditions, the universe is born exactly at $\rho = \rho_c$ with $\dot{a}=0$. The finite instanton radius is:
+
+$$r_c = \frac{c}{\sqrt{8\pi G \rho_c / 3}} \approx 1.13 \text{ km}$$
+
+This gives an initial mass of only $M_1 \approx 0.38\,M_\odot$ and a first-cycle lifetime of **~5.9 microseconds**. Time itself is proposed to emerge as the Goldstone mode ($dt \propto d\theta$) of spontaneous $U(1)$ symmetry breaking in the vacuum phase sector.
+
+**Tolman's Entropy Snowball:**
+Each cycle generates irreversible entropy (radiation, black hole formation), which is preserved through the bounce, causing subsequent cycles to expand larger and live longer. Through this "snowball effect":
+- **Cycle 1:** $r_c \approx 1.13$ km, lifetime $\sim 5.9\,\mu$s
+- **Cycle ~76 (now):** $M \approx 10^{56}$ g, turnaround lifetime $\approx 24.7$ Byr
+
+**CMB Low-$\ell$ Prediction:**
+The finite instanton size $r_c$ stretched by $N_e \approx 53$ e-folds maps precisely to the present Hubble horizon, providing a deterministic physical cutoff that explains the anomalous suppression of CMB multipoles $\ell=2,3$ — not cosmic variance, but a falsifiable consequence of the Genesis scale.
 
 ### Pillar III: Astrophysical & Laboratory Signatures
-The framework replaces the black hole singularity with a regular de Sitter core. For a 65 $M_\odot$ black hole (GW150914), this yields a strict, parameter-free prediction for gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0445$ s. Furthermore, the theory provides a rigorous protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators.
+The framework replaces the black hole singularity with a regular de Sitter core (Hayward metric). The core scale for any mass $M$ is $r_0 = (3M / 4\pi\rho_c)^{1/3}$. For a 65 $M_\odot$ black hole (GW150914), this yields a strict, parameter-free prediction for gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0445$ s. Furthermore, the theory provides a rigorous protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
 
 ---
 
@@ -75,11 +106,14 @@ python verification/nvg_fair_hades_link.py         # Predicts the 24% rho-meson 
 
 Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchored to the QCD energy scale, making it strictly falsifiable across multiple disciplines:
 
-1. **Gravitational Wave Echoes:** Strict prediction of $\Delta t_{\rm echo} \approx 0.0445$ s for a 65 $M_\odot$ black hole merger.
-2. **Heavy-Ion Collisions:** A ~24% drop in the invariant mass of the $\rho$-meson at $2n_0$ (FAIR/HADES).
-3. **Cosmology:** The low-$\ell$ suppression in the CMB is a deterministic physical cutoff from the $1.13$ km Genesis instanton, not merely "cosmic variance".
+1. **Gravitational Wave Echoes:** Strict prediction of $\Delta t_{\rm echo} \approx 0.0445$ s for a 65 $M_\odot$ black hole merger (parameter-free, LIGO/Virgo testable).
+2. **Heavy-Ion Collisions (FAIR/HADES/NICA):** A ~24% drop in the invariant mass of the $\rho$-meson at $2n_0$. If no in-medium hadron mass shifts are observed at $n_B \sim 3$–$5\,n_0$, the VMF mass melting chain is falsified.
+3. **CMB Genesis Cutoff:** The low-$\ell$ suppression ($\ell=2,3$) is a deterministic physical cutoff from the $1.13$ km Genesis instanton stretched by $\sim 53$ e-folds, not merely "cosmic variance".
 4. **Neutron Stars:** A maximum mass of $\sim 2.3 M_\odot$ with an abrupt conformal phase transition at the core.
-5. **Laboratory Vacuum Coupling:** Thermodynamic bulk energy pumping cannot induce macroscopic mass melting; experiments must rely on resonant topological phase coupling.
+5. **Laboratory Vacuum Coupling:** Thermodynamic bulk energy pumping cannot induce macroscopic mass melting; experiments must rely on resonant topological phase coupling (verified in-silico to 15 orders of magnitude).
+6. **Lattice QCD Anchor:** Future lattice calculations shifting $M_{\Omega,0}$ outside $851$–$867$ MeV will explicitly shift all bounce parameters.
+7. **Black Hole Shadows (EHT):** The model strictly demands an exact Schwarzschild/Kerr exterior — deviations in EHT shadow observations would falsify it.
+8. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 76$, with a turnaround lifetime of $\approx 24.7$ Byr.
 
 ## Author
 
