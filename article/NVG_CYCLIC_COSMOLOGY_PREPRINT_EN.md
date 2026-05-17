@@ -210,7 +210,7 @@ Through the "snowball effect" of Tolman's entropy growth, hundreds of rapid earl
 
 ## References
 
-1. O. Kirichenko, *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*, NVG preprint (2025).
+1. O. Kirichenko, *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*, NVG preprint (2025). DOI: [10.5281/zenodo.20214457](https://zenodo.org/records/20214457)
 2. S. A. Hayward, *Formation and evaporation of nonsingular black holes*, Phys. Rev. Lett. 96, 031103 (2006).
 3. R. Brandenberger, P. Peter, *Bouncing Cosmologies: Progress and Problems*, Found. Phys. 47, 797 (2017).
 4. M. A. Markov, *Limiting density of matter as a universal law of nature*, JETP Lett. 36, 265 (1982).
