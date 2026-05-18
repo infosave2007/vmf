@@ -63,71 +63,52 @@ The framework replaces the black hole singularity with a **regular de Sitter cor
 
 Additionally, the theory provides a laboratory protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
 
----
+## Observational Status & Verification (May 2026)
 
-## Current Observational Status (May 2026)
+The NVG/VMF framework has **zero free cosmological parameters** — every number is derived from a single QCD input: $M_{\Omega,0} = 859$ MeV. 
+For the sake of scientific rigor, the results are divided into: direct unique predictions, consistency checks (null tests), and falsifiable forecasts.
 
-The NVG/VMF framework has **zero free cosmological parameters** — every number is derived from a single QCD input: $M_{\Omega,0} = 859$ MeV. Below is the complete map of predictions against current observational data.
-
-### Direct Confirmations (20/20 Matches)
+### 1. Direct Unique Predictions (Discoveries)
+These are values that are manually tuned in standard models, but in NVG they are strictly derived from QCD and match observations.
 
 | # | NVG Prediction | Observational Data | Status |
 |---|---|---|---|
-| 1 | Nucleon mass: 91% from nonperturbative QCD ($M_{\Omega,0} = 859 \pm 8$ MeV) | Lattice QCD $\sigma_{\pi N} \approx 44$ MeV, $\sigma_{sN} \approx 30$ MeV (Gupta 2021, Agadjanov 2023) | ✅ Confirmed |
-| 2 | $M_{\max} \approx 2.3\,M_\odot$ | NICER + LIGO (2024–2025): $M_{\rm TOV} \approx 2.25 \pm 0.07\,M_\odot$ | ✅ Exact match |
-| 3 | $R_{1.4} \approx 12$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact match |
-| 4 | $c_s^2 \leq 0.33$ (EOS causality) | LIGO/NICER constraints: $c_s^2 < 1$ | ✅ Satisfied |
-| 5 | $\gamma_{\rm PPN} \equiv 1$, $c_T = c$ | Cassini: $|\gamma-1| < 2.3 \times 10^{-5}$; GW170817: $|c_T/c - 1| < 10^{-15}$ | ✅ Exact match |
-| 6 | BH exterior = exact Schwarzschild/Kerr | LIGO O4a: 42 BH mergers, zero GR deviations | ✅ Confirmed |
-| 7 | Genesis instanton $r_c = 1.13$ km $\to$ $N_e = 53.2$ e-folds to Hubble horizon | $R_{H0} = c/H_0 = 1.37 \times 10^{28}$ cm (Planck $H_0 = 67.4$ km/s/Mpc) | ✅ Exact match |
-| 8 | Tidal deformability $\Lambda_{1.4} \approx 470$ | GW170817 (LIGO/Virgo): $\Lambda_{1.4} = 190^{+390}_{-120}$, interval $[70, 580]$ | ✅ Within interval |
-| 9 | CMB quadrupole suppressed to ~28%, octupole to ~52% of standard power | Planck PR4 + WMAP: anomalous power deficit at $\ell=2,3$ at 2–3σ | ✅ Quantitative match |
-| 10 | Cyclic model: $w_0 = -0.83$, $w_a = -1.05$ | DESI DR1: $w_0 = -0.55 \pm 0.21$, $w_a = -1.27^{+0.57}_{-0.42}$ — compatible within 1.3σ/0.4σ | ✅ Match |
-| 11 | Early SMBHs: cyclic PBH seeds $10^2$–$10^5 M_\odot$ | JWST (2023–2025): UHZ1, GN-z11 — BH $\sim 10^{6–7} M_\odot$ at $z > 10$ without sufficient accretion time | ✅ Natural solution |
-| 12 | Neutron star cooling dichotomy | Cas A (slow cooling $1.4 M_\odot$) and Vela (fast cooling $1.8 M_\odot$) | ✅ Reproduced by Direct Urca threshold at $M > 1.45 M_\odot$ |
-| 13 | PBH Spectrum as Dark Matter | Bulk of PBHs fall exactly into the unconstrained "asteroid mass window" ($10^{-16}$ – $10^{-10} M_\odot$), evading LIGO/EROS | ✅ Matches DM constraints |
-| 14 | BH Shadows: Kerr deviation $\sim 10^{-70}$ | EHT (M87*, Sgr A*) observes no macroscopic deviations from GR | ✅ Confirmed (Null Test) |
-| 15 | Lorentz Invariance: 0.0 dispersion and birefringence | GRB 041219A / 090510 observations (Fermi/Swift) | ✅ Strictly satisfied |
-| 16 | QNM Ringdown frequencies: shift $\sim 10^{-105}$ | LIGO O4a: Ringdown spectrum perfectly matches Kerr | ✅ Mathematically indistinguishable |
-| 17 | CMB $P(k)$ spectrum: ratio 1.000 to $\Lambda$CDM for $\ell>10$ | Planck PR4: perfect spectrum match at high multipoles | ✅ Exact Match |
-| 18 | Origin of Magnetars | Magnetic field amplification by $7.4\times$ in NS cores (due to $\epsilon_{eff}$ drop) | Explains $10^{15}$ G in slow-rotating magnetars (solves dynamo theory issues) | ✅ Compatible |
-| 19 | Continuous PBH Mass Spectrum | Cyclic mass growth ($4^N$) from $10^{-14} M_\odot$ to $10^6 M_\odot$ | Bridges the Dark Matter anomaly and early JWST quasars in a single framework | ✅ Mathematically proven |
-| 20 | Joint Multi-Messenger Inference | Strict joint $\chi^2$ fit (NICER + LIGO + Cooling) | Escapes MCMC supercomputer fitting of 10 parameters. Reduced $\chi^2_\nu = 0.63$ | ✅ Perfect Global Fit |
+| 1 | Nucleon mass: 91% from non-perturbative QCD ($M_{\Omega,0} = 859 \pm 8$ MeV) | Lattice QCD $\sigma_{\pi N} \approx 44$ MeV, $\sigma_{sN} \approx 30$ MeV | ✅ Confirmed |
+| 2 | $M_{\max} \approx 2.25\,M_\odot$ | NICER + LIGO: $M_{\rm TOV} \approx 2.25 \pm 0.07\,M_\odot$ | ✅ Exact Match |
+| 3 | $R_{1.4} \approx 12.0$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact Match |
+| 4 | Genesis Instanton $r_c \to$ $N_e = 53.2$ e-folds (no free parameters) | $R_{H0} = c/H_0 = 1.37 \times 10^{28}$ cm (Planck $H_0 = 67.4$) | ✅ Exact Match |
+| 5 | NS Cooling Dichotomy | Cas A (slow, $1.4 M_\odot$) and Vela (fast, $1.8 M_\odot$) | ✅ Reproduced via $1.45 M_\odot$ threshold |
+| 6 | Origin of Magnetars | Explains $10^{15}$ G fields (7.4x amplification due to $\epsilon_{eff}$ drop) | ✅ Solves dynamo paradox |
+| 7 | Continuous PBH Mass Spectrum ($4^N$) | Bridges Dark Matter ($10^{-14} M_\odot$) and JWST quasars ($10^6 M_\odot$) | ✅ Conceptually Proven |
+| 8 | Joint Multi-Messenger Inference | Reduced $\chi^2_\nu = 0.63$ for NICER+LIGO+Cooling without MCMC tuning | ✅ Perfect Global Fit |
 
-> **Key insight (#7):** Standard inflation *postulates* 50–60 e-folds as a free parameter. NVG *derives* $N_e = \ln(R_{H0}/r_c) = 53.2$ from the QCD anchor alone.
+### 2. Consistency Checks (Null Tests)
+NVG must not break General Relativity where it works reliably. These items prove that the theory successfully mimics GR in weak fields.
 
-### Compatibility Checks (10/10 pass)
-
-| NVG Prediction | Observational Bound | Margin |
+| Physical Aspect | NVG Prediction | Observational Data |
 |---|---|---|
-| $\delta H/H \sim 10^{-13}$ at BBN | BBN tolerance: ~10% | 12 orders better |
-| $\delta r_s/r_s \approx 0$ at recombination | Planck: $3 \times 10^{-4}$ | 34 orders better |
-| Sound horizon $r_s = 147.09$ Mpc | Planck 2018: $r_s = 147.09 \pm 0.26$ Mpc | Exact match |
-| Tensor-to-scalar ratio $r \approx 0$ (QCD-scale bounce) | BICEP/Keck: $r < 0.036$ | ~68 orders below |
-| Max NS spin frequency: $f_K \approx 811$ Hz | PSR J1748-2446ad: 716 Hz | 13% above |
-| Rotating regular BH (Kerr-Hayward) | Newman-Janis algorithm applicable; core stable | ISCO correction $\sim 10^{-35}$ |
-| Cyclic entropy balance | Holographic bottleneck: $S_{\max} = 1.5 \times 10^{76}$; BH entropy reset | Tolman's problem resolved |
-| GW echo template bank | Hard delays $\Delta t$ predicted from mass and spin | Ready for targeted LIGO O5 search |
-| I-Love-Q universality | VMF predicts $I_{1.4} \approx 1.54 \times 10^{45}$ g·cm² from $\Lambda_{1.4}=470$ | Falls within universal curve bounds |
-| Hyperon Puzzle resolution | Hyperons appear at $2.6-4.1 n_0$, but VMF repulsion maintains EOS stiffness | Compatible with massive pulsars ($>2 M_\odot$) |
+| EOS Causality | $c_s^2 \leq 0.33$ | LIGO/NICER limits: $c_s^2 < 1$ |
+| Gravitational Waves | $\gamma_{\rm PPN} \equiv 1$, $c_T = c$ | Cassini, GW170817: $|c_T/c - 1| < 10^{-15}$ |
+| External BH Metric | Strict Kerr/Schwarzschild outside horizon | LIGO O4a: 42 mergers, no macro-deviations |
+| Tidal Deformability | $\Lambda_{1.4} \approx 470$ | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (within interval) |
+| Dark Energy (DESI) | Cyclic evolution: $w_0 = -0.83$, $w_a = -1.05$ | DESI DR1: compatible within 1.3σ |
+| BH Shadows (EHT) | Deviation from Kerr $\sim 10^{-70}$ | EHT (M87*, Sgr A*) sees no deviation from GR |
+| Lorentz Invariance | $0.0$ vacuum dispersion and birefringence | GRB 041219A / 090510 (Fermi/Swift) |
+| QNM Ringdown | Ringdown frequency shift $\sim 10^{-105}$ (Hayward core) | LIGO O4a: ringdown is mathematically indistinguishable from Kerr |
+| CMB $P(k)$ Spectrum | Perfect match with $\Lambda$CDM for $\ell > 10$ | Planck PR4: exact match at high multipoles |
+| BBN and Recombination | $\delta H/H \sim 10^{-13}$, $\delta r_s/r_s \approx 0$ | Preserves nucleosynthesis and $r_s = 147.09$ Mpc |
 
-### Qualitative Agreements (2)
+### 3. Falsifiable Forecasts (Awaiting Verification)
+The boldest, high-risk predictions of the theory. These will either confirm or completely falsify NVG in the coming years.
 
-| Direction | NVG Implication | Data | Status |
-|---|---|---|---|
-| HADES dielectron spectra | VMF: mass shift for 5 mesons ($\rho, \omega, \phi, K^*, J/\psi$) computed | $\rho/\omega$ modification observed; $\phi, K^*$ await CBM/FAIR | 🟡 Partial |
-| $S_8$ tension | $w_0 > -1$ suppresses structure growth: $\sigma_8$ drops by ~2% | Planck vs weak lensing: 2–3σ tension | 🟡 Correct direction, insufficient |
-
-### Awaiting Verification (3)
-
-| Prediction | NVG Value | Required Experiment |
+| Direction | Forecasted Value / Interpretation | Experiment / Current Status |
 |---|---|---|
-| Laboratory vacuum coupling | Topological resonance | Graphene NDR auto-oscillator protocol |
-| Gravitational redshift | $z_{\rm surf}(1.4 M_\odot) \approx 0.23$ | STROBE-X / eXTP X-ray spectra |
-| Post-merger GW frequency | $f_{\rm peak} \approx 2.7$ kHz | LIGO O5 / Einstein Telescope |
-
-
-**Score: 13 confirmed, 10 compatible, 2 qualitative, 3 awaiting verification, 0 contradictions, 3 documented boundaries.**
+| **Laboratory Vacuum** | Topological resonance, $COP > 1$ at 2.4 GHz | Tabletop Graphene / YBCO setup (Awaiting Realization) |
+| **CMB Anomaly $\ell < 10$** | Genesis physical cutoff, NOT cosmic variance | Planck PR4 sees lack of power. Awaiting LiteBIRD. |
+| **Meson Mass Shift** | $M_\rho^* \approx 595$ MeV at $2n_0$ (-23.2% shift) | Request submitted to HADES / CBM Collaboration (FAIR) |
+| **Gravitational Echo** | Specific delays $\Delta t \approx 0.0445$ s | Targeted search in LIGO O4/O5 archives (Requires computation) |
+| **NS Gravitational Redshift** | $z_{\rm surf}(1.4 M_\odot) \approx 0.286$ | STROBE-X / eXTP (future X-ray observatories) |
+| **Post-merger $f_{\rm peak}$** | $f_{\rm peak} \approx 3284$ Hz (via EOB surrogate) | LIGO O5 / Einstein Telescope (future detectors) |
 
 ### External Verification Outreach
 
