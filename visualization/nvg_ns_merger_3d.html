@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVG BNS Merger — 3D GRMHD Surrogate Simulator</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{overflow:hidden;background:#000;font-family:'Inter',sans-serif;color:#e0e8f0}
+canvas{display:block}
+
+/* --- HUD Left Panel --- */
+#hud-left{position:absolute;top:20px;left:20px;width:340px;pointer-events:none}
+.panel{background:rgba(5,10,25,0.88);border:1px solid rgba(80,160,255,0.25);border-radius:14px;padding:16px 18px;margin-bottom:12px;backdrop-filter:blur(12px);box-shadow:0 0 30px rgba(0,100,255,0.1)}
+.panel-title{font-family:'Orbitron',sans-serif;font-size:.75rem;color:#4db8ff;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.panel-title::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#4db8ff;box-shadow:0 0 6px #4db8ff;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.85rem}
+.row .label{color:#8899aa}
+.row .val{font-family:'Orbitron',sans-serif;font-weight:700;font-size:.8rem;color:#ffd866;text-align:right;max-width:180px}
+.phase-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:1px}
+
+/* --- Controls --- */
+#controls{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10}
+.btn{background:rgba(20,40,80,0.7);color:#aaccff;border:1px solid rgba(80,160,255,0.3);padding:8px 18px;border-radius:8px;font-size:.8rem;cursor:pointer;font-family:'Orbitron',sans-serif;letter-spacing:1px;transition:all .25s;pointer-events:all}
+.btn:hover{background:rgba(40,80,160,0.8);color:#fff;box-shadow:0 0 20px rgba(77,184,255,0.4)}
+.btn.active{background:rgba(255,60,60,0.3);border-color:rgba(255,100,100,0.4)}
+
+/* --- Live Graph Overlay --- */
+#graph-container{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);width:600px;height:120px;background:rgba(10,15,30,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;pointer-events:none}
+#strain-line{position:absolute;top:50%;left:0;width:100%;height:1px;background:rgba(255,255,255,0.2)}
+.gw-wave{position:absolute;top:50%;left:50%;width:2px;height:2px;background:#4db8ff;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 5px #4db8ff}
+#graph-cursor{position:absolute;top:0;left:50%;width:2px;height:100%;background:rgba(255,50,50,0.8);z-index:5}
+.graph-label{position:absolute;font-family:'Orbitron',sans-serif;font-size:10px;color:#8899aa}
+
+/* --- Screen Flash --- */
+#flash{position:absolute;inset:0;background:radial-gradient(circle,rgba(150,200,255,0.8),transparent 70%);opacity:0;pointer-events:none;transition:opacity 0.1s}
+#melt-overlay{position:absolute;inset:0;background:radial-gradient(circle,rgba(255,50,0,0.3),transparent 80%);opacity:0;pointer-events:none;transition:opacity 0.3s}
+
+#center-label{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);font-family:'Orbitron',sans-serif;font-size:2rem;color:#fff;text-shadow:0 0 20px #ff3300;opacity:0;pointer-events:none;transition:opacity 0.5s}
+</style>
+</head>
+<body>
+<div id="flash"></div>
+<div id="melt-overlay"></div>
+<div id="center-label">PHASE TRANSITION: MASS MELTING</div>
+
+<div id="hud-left">
+  <div class="panel">
+    <div class="panel-title">Binary System State</div>
+    <div class="row"><span class="label">Time to Merger</span><span class="val" id="v-time">-50.0 ms</span></div>
+    <div class="row"><span class="label">GW Frequency</span><span class="val" id="v-freq">200 Hz</span></div>
+    <div class="row"><span class="label">Separation</span><span class="val" id="v-sep">120 km</span></div>
+    <div class="row"><span class="label">Orbital Velocity</span><span class="val" id="v-vel">0.12 c</span></div>
+  </div>
+  <div class="panel">
+    <div class="panel-title" style="color:#ffaa44">VMF Core Physics</div>
+    <div class="row"><span class="label">Central Density</span><span class="val" id="v-rho" style="color:#ffaa44">1.2 n₀</span></div>
+    <div class="row"><span class="label">Mass Melting (ΔM)</span><span class="val" id="v-melt" style="color:#ff6644">0.0 %</span></div>
+    <div class="row"><span class="label">Tidal Deformability</span><span class="val" style="color:#aa88ff">Λ = 470</span></div>
+  </div>
+</div>
+
+<div id="graph-container">
+  <div class="graph-label" style="top:5px;left:10px">GW Strain h(t)</div>
+  <div class="graph-label" style="bottom:5px;left:10px">-50ms</div>
+  <div class="graph-label" style="bottom:5px;left:50%">Merger (0ms)</div>
+  <div class="graph-label" style="bottom:5px;right:10px">+20ms</div>
+  <div id="strain-line"></div>
+  <div id="graph-cursor"></div>
+  <!-- Wave particles added via JS -->
+</div>
+
+<div id="controls">
+  <button class="btn" id="btn-slow">« Slower</button>
+  <button class="btn" id="btn-play">❚❚ Pause</button>
+  <button class="btn" id="btn-fast">Faster »</button>
+  <button class="btn" id="btn-reset" style="border-color:#ff5555;color:#ff9999">↻ Reset</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+// ═══════════════ SCENE SETUP ═══════════════
+const W=window.innerWidth, H=window.innerHeight;
+const scene=new THREE.Scene();
+scene.fog=new THREE.FogExp2(0x050510, 0.002);
+const camera=new THREE.PerspectiveCamera(45, W/H, 0.1, 2000);
+camera.position.set(0, 80, 150);
+const renderer=new THREE.WebGLRenderer({antialias:true, powerPreference:"high-performance"});
+renderer.setSize(W,H); renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+const ctrl=new THREE.OrbitControls(camera, renderer.domElement);
+ctrl.enableDamping=true; ctrl.dampingFactor=0.05;
+
+// Lights
+scene.add(new THREE.AmbientLight(0x111122));
+const pointLight1 = new THREE.PointLight(0x4db8ff, 2, 300);
+const pointLight2 = new THREE.PointLight(0x4db8ff, 2, 300);
+const mergerLight = new THREE.PointLight(0xff4400, 0, 500); // Only active at merger
+scene.add(pointLight1); scene.add(pointLight2); scene.add(mergerLight);
+
+// ═══════════════ STARS & GRID ═══════════════
+const gridHelper = new THREE.GridHelper(400, 40, 0x223344, 0x111122);
+gridHelper.position.y = -20;
+scene.add(gridHelper);
+
+const nsGeo = new THREE.SphereGeometry(6, 64, 64);
+const nsMat = new THREE.MeshStandardMaterial({
+    color: 0x88ccff, emissive: 0x114488, emissiveIntensity: 0.5,
+    roughness: 0.2, metalness: 0.8
+});
+const ns1 = new THREE.Mesh(nsGeo, nsMat);
+const ns2 = new THREE.Mesh(nsGeo, nsMat);
+scene.add(ns1); scene.add(ns2);
+
+// Post-merger Hypermassive NS
+const hmnsGeo = new THREE.TorusGeometry(8, 5, 64, 128); // Deformed ringing shape
+const hmnsMat = new THREE.MeshStandardMaterial({
+    color: 0xffaa00, emissive: 0xff3300, emissiveIntensity: 1.5,
+    roughness: 0.1, metalness: 0.9, transparent: true, opacity: 0
+});
+const hmns = new THREE.Mesh(hmnsGeo, hmnsMat);
+scene.add(hmns);
+
+// Jet particles
+const jetGeo = new THREE.CylinderGeometry(0.5, 4, 150, 16);
+const jetMat = new THREE.MeshBasicMaterial({
+    color: 0x4db8ff, transparent:true, opacity:0, blending:THREE.AdditiveBlending
+});
+const jetUp = new THREE.Mesh(jetGeo, jetMat); jetUp.position.y=75;
+const jetDn = new THREE.Mesh(jetGeo, jetMat); jetDn.rotation.x=Math.PI; jetDn.position.y=-75;
+const jetGroup = new THREE.Group();
+jetGroup.add(jetUp); jetGroup.add(jetDn);
+scene.add(jetGroup);
+
+// ═══════════════ SIMULATION STATE ═══════════════
+let t_ms = -50.0; // Starts at -50ms before merger
+let playing = true;
+let speedMult = 1.0;
+const T_MERGER = 0.0;
+const T_END = 20.0;
+
+// Graph data pre-calc
+const graphContainer = document.getElementById('graph-container');
+const pointsCount = 400;
+const waveElements = [];
+for(let i=0; i<pointsCount; i++){
+    let el = document.createElement('div');
+    el.className = 'gw-wave';
+    graphContainer.appendChild(el);
+    waveElements.push(el);
+}
+
+// ═══════════════ ANIMATION LOOP ═══════════════
+let angle = 0;
+function animate() {
+    requestAnimationFrame(animate);
+    ctrl.update();
+
+    if(playing) {
+        t_ms += 0.05 * speedMult;
+        if(t_ms > T_END) t_ms = T_END; // Hold at end
+    }
+
+    let freq, sep, vel, rho, melt, strainAmp;
+
+    // INSPIRAL PHASE
+    if (t_ms < T_MERGER) {
+        let tau = Math.max(0.1, -t_ms); // ms
+        freq = 150 * Math.pow(50/tau, 3/8); // Hz chirp
+        sep = Math.max(12, 120 * Math.pow(tau/50, 1/4)); // km
+        vel = 0.12 * Math.pow(50/tau, 1/8); // c
+        rho = 1.2 * Math.pow(50/tau, 0.05); // Density
+        melt = 0.0;
+        strainAmp = 40 * Math.pow(freq/150, 2/3); // pixel amplitude for graph
+
+        // 3D Positions
+        angle += (freq / 1000) * speedMult;
+        ns1.position.set(Math.cos(angle)*sep, 0, Math.sin(angle)*sep);
+        ns2.position.set(Math.cos(angle+Math.PI)*sep, 0, Math.sin(angle+Math.PI)*sep);
+        pointLight1.position.copy(ns1.position);
+        pointLight2.position.copy(ns2.position);
+
+        // Visibility
+        ns1.visible = true; ns2.visible = true;
+        hmns.material.opacity = 0;
+        mergerLight.intensity = 0;
+        jetMat.opacity = 0;
+        document.getElementById('flash').style.opacity = 0;
+        document.getElementById('melt-overlay').style.opacity = 0;
+        document.getElementById('center-label').style.opacity = 0;
+
+    } 
+    // POST-MERGER PHASE
+    else {
+        let tau_p = t_ms; // positive
+        freq = 2730; // Ringdown f_peak
+        sep = 0;
+        vel = 0.3; // Rapid spin
+        rho = 2.5; // Density 2.5 n_0
+        
+        // VMF MELTING
+        melt = 23.2 * (1 - Math.exp(-tau_p / 2.0)); // 23.2% drop, 2ms timescale
+        
+        // Strain Damping
+        strainAmp = 100 * Math.exp(-tau_p / 5.0);
+
+        // 3D Visuals
+        ns1.visible = false; ns2.visible = false;
+        
+        if (t_ms > 0 && t_ms < 0.2) {
+            document.getElementById('flash').style.opacity = 1;
+        } else {
+            document.getElementById('flash').style.opacity = 0;
+        }
+
+        if (melt > 5.0) {
+            document.getElementById('melt-overlay').style.opacity = 0.6;
+            document.getElementById('center-label').style.opacity = 1;
+        }
+
+        hmns.material.opacity = 1;
+        hmns.rotation.y += 0.2 * speedMult;
+        hmns.rotation.x = Math.sin(t_ms) * 0.1; // wobbling
+
+        mergerLight.position.set(0,0,0);
+        mergerLight.intensity = 5 * Math.exp(-tau_p/10);
+
+        jetMat.opacity = 0.8 * Math.exp(-tau_p/15);
+    }
+
+    // UPDATE HUD
+    document.getElementById('v-time').textContent = t_ms.toFixed(1) + " ms";
+    document.getElementById('v-freq').textContent = freq.toFixed(0) + " Hz";
+    document.getElementById('v-sep').textContent = sep.toFixed(1) + " km";
+    document.getElementById('v-vel').textContent = vel.toFixed(2) + " c";
+    document.getElementById('v-rho').textContent = rho.toFixed(1) + " n₀";
+    document.getElementById('v-melt').textContent = melt.toFixed(1) + " %";
+
+    // UPDATE GRAPH
+    let cursorX = ((t_ms + 50) / 70) * 600; // Map -50..20 to 0..600px
+    document.getElementById('graph-cursor').style.left = cursorX + 'px';
+
+    // We draw the "past" wave leading up to the cursor
+    for(let i=0; i<pointsCount; i++) {
+        let x_px = (i/pointsCount) * 600;
+        let mapped_t = (x_px / 600) * 70 - 50; // true time of this pixel
+
+        if (mapped_t > t_ms) {
+            waveElements[i].style.display = 'none'; // Future not drawn
+        } else {
+            waveElements[i].style.display = 'block';
+            waveElements[i].style.left = x_px + 'px';
+            
+            // Recompute amplitude for historical points
+            let h_amp, h_freq;
+            if (mapped_t < 0) {
+                let tau_h = Math.max(0.1, -mapped_t);
+                h_freq = 150 * Math.pow(50/tau_h, 3/8);
+                h_amp = 40 * Math.pow(h_freq/150, 2/3);
+            } else {
+                h_freq = 2730;
+                h_amp = 100 * Math.exp(-mapped_t / 5.0);
+            }
+            
+            let phase = 2 * Math.PI * (h_freq/1000) * mapped_t;
+            let y_offset = h_amp * Math.sin(phase);
+            
+            // Melt overlay turns wave red
+            if (mapped_t > 0) {
+                waveElements[i].style.background = '#ff4400';
+                waveElements[i].style.boxShadow = '0 0 5px #ff4400';
+            } else {
+                waveElements[i].style.background = '#4db8ff';
+                waveElements[i].style.boxShadow = '0 0 5px #4db8ff';
+            }
+
+            waveElements[i].style.top = (60 - y_offset) + 'px'; // 60 is center Y
+        }
+    }
+
+    renderer.render(scene, camera);
+}
+animate();
+
+// ═══════════════ EVENT LISTENERS ═══════════════
+window.addEventListener('resize',()=>{
+    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+document.getElementById('btn-play').addEventListener('click', e => {
+    playing = !playing;
+    e.target.textContent = playing ? '❚❚ Pause' : '▶ Play';
+    e.target.classList.toggle('active', !playing);
+});
+
+document.getElementById('btn-slow').addEventListener('click', () => {
+    speedMult = Math.max(0.1, speedMult - 0.2);
+});
+
+document.getElementById('btn-fast').addEventListener('click', () => {
+    speedMult = Math.min(3.0, speedMult + 0.2);
+});
+
+document.getElementById('btn-reset').addEventListener('click', () => {
+    t_ms = -50.0;
+    angle = 0;
+    speedMult = 1.0;
+    playing = true;
+    document.getElementById('btn-play').textContent = '❚❚ Pause';
+    document.getElementById('btn-play').classList.remove('active');
+});
+</script>
+</body>
+</html>

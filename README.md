@@ -161,10 +161,12 @@ NVG-Research/
 │   ├── nvg_advanced_observables_II.py      # CMB Spectrum, EHT shadows, PBH mass
 │   ├── nvg_advanced_observables_III.py     # Mesons, Lorentz, NS Cooling, QNM
 │   ├── nvg_em_maxwell_decoherence.py       # Maxwell equations (eps_eff) & Decoherence
+│   ├── nvg_grmhd_surrogate.py              # EOB surrogate BNS merger (GW Strain)
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
 ├── visualization/
-│   ├── nvg_3d_viz_v2.html                  # Interactive 3D Universe Simulator (EN)
+│   ├── nvg_3d_viz_v2.html                  # Interactive 3D Tolman Cycles Simulator
+│   ├── nvg_ns_merger_3d.html               # Interactive 3D BNS Merger & Mass Melting
 │   └── nvg_3d_viz_v2_ru.html              # Interactive 3D Universe Simulator (RU)
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Matrix of falsifiable predictions
@@ -209,6 +211,7 @@ python verification/nvg_advanced_observables_I.py  # HADES spectrum, z_surf, cyc
 python verification/nvg_advanced_observables_II.py # CMB P(k), EHT shadows, PBH mass
 python verification/nvg_advanced_observables_III.py# Mesons, Lorentz, NS Cooling
 python verification/nvg_em_maxwell_decoherence.py  # Maxwell (eps_eff), Transfer Function
+python verification/nvg_grmhd_surrogate.py         # EOB surrogate BNS merger (GW Strain)
 ```
 
 ## Key Testable Predictions (Falsifiability)

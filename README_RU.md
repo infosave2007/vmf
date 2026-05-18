@@ -161,10 +161,12 @@ NVG-Research/
 │   ├── nvg_advanced_observables_II.py      # Спектр CMB, тени ЧД (EHT), спектр ПЧД
 │   ├── nvg_advanced_observables_III.py     # Мезоны, Лоренц-инвар., остывание НЗ, QNM
 │   ├── nvg_em_maxwell_decoherence.py       # Уравнения Максвелла (eps_eff) и декогеренция
+│   ├── nvg_grmhd_surrogate.py              # Суррогатная EOB-модель слияния НЗ (GW Strain)
 │   ├── nvg_genesis_observable.py           # Инстантон Генезиса → хаббловский горизонт
 │   └── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
 ├── visualization/
-│   ├── nvg_3d_viz_v2.html                  # Интерактивный 3D-симулятор Вселенной (EN)
+│   ├── nvg_3d_viz_v2.html                  # 3D WebGL симулятор циклов Толмана
+│   ├── nvg_ns_merger_3d.html               # 3D симулятор слияния НЗ и массового плавления
 │   └── nvg_3d_viz_v2_ru.html              # Интерактивный 3D-симулятор Вселенной (RU)
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Матрица фальсифицируемых предсказаний
@@ -209,6 +211,7 @@ python verification/nvg_advanced_observables_I.py  # Спектр HADES, z_surf,
 python verification/nvg_advanced_observables_II.py # Спектр CMB, EHT, массы ПЧД
 python verification/nvg_advanced_observables_III.py# Мезоны, Лоренц, популяция НЗ
 python verification/nvg_em_maxwell_decoherence.py  # Уравнения Максвелла, декогеренция
+python verification/nvg_grmhd_surrogate.py         # EOB суррогат слияния НЗ (GW170817)
 ```
 
 ## Ключевые проверяемые предсказания (фальсифицируемость)
