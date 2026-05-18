@@ -29,3 +29,4 @@ article/*
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS.md
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 .code/
+generator_project/
