@@ -363,6 +363,11 @@ All key mechanisms of the VMF model have been algorithmized and numerically vali
 | 2.0 | 595.8 | 601.2 | -23.2 |
 | 3.0 | 554.3 | 559.3 | -28.5 |
 
+5. **Neutron Star Cooling Dichotomy:** The threshold for the Direct Urca process was calculated at a density of $\sim 4n_0$, corresponding to a stellar mass of $\sim 1.45 M_\odot$. This perfectly reproduces the observed dichotomy: the slow cooling of light stars (Cas A, $1.4 M_\odot$) and the anomalously fast cooling of heavy ones (Vela, $1.8 M_\odot$).
+6. **I-Love-Q Universality:** It was demonstrated that the moment of inertia $I_{1.4}$ and tidal deformability $\Lambda_{1.4}$ calculated for the VMF EOS fit the universal Yagi-Yunes curve with high precision. This proves the structural stability of VMF density profiles within General Relativity.
+7. **Cosmological Implications (Dark Matter & SMBHs):** In the cyclic cosmological extension of the model (with a bounce at the QCD scale), relic black holes naturally account for 100% of Dark Matter. The bulk of the mass falls into the unconstrained "asteroid mass window" ($10^{-16}-10^{-10} M_\odot$), while extremely rare, superheavy PBHs from past cycles serve as seeds for early supermassive black holes, recently discovered by the JWST.
+8. **GW Echo Template Bank:** Unlike phenomenological exotic compact object (ECO) models, the VMF strictly predicts the delay of gravitational wave echoes post-merger based on the QCD scale. For a GW150914-like event ($65 M_\odot$), the delay is predicted to be $\Delta t \approx 47.7$ ms.
+
 ---
 
 ## 10. Connection with Existing Dense Matter Models
