@@ -49,8 +49,19 @@ Each cycle generates irreversible entropy (radiation, black hole formation), whi
 **CMB Low-$\ell$ Prediction:**
 The finite instanton size $r_c$ stretched by $N_e \approx 53$ e-folds maps precisely to the present Hubble horizon, providing a deterministic physical cutoff that explains the anomalous suppression of CMB multipoles $\ell=2,3$ — not cosmic variance, but a falsifiable consequence of the Genesis scale.
 
-### Pillar III: Astrophysical & Laboratory Signatures
-The framework replaces the black hole singularity with a regular de Sitter core (Hayward metric). The core scale for any mass $M$ is $r_0 = (3M / 4\pi\rho_c)^{1/3}$. For a 65 $M_\odot$ black hole (GW150914), this yields a strict, parameter-free prediction for gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0445$ s. Furthermore, the theory provides a rigorous protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
+### Pillar III: Black Hole Singularity Resolution & Information Preservation
+The framework replaces the black hole singularity with a **regular de Sitter core** (Hayward metric), where the core scale $r_0 = (3M / 4\pi\rho_c)^{1/3}$ is fixed by the QCD anchor — not a free parameter. For a $10\,M_\odot$ black hole, this gives two horizons (inner Cauchy: 1.15 km, outer: 29.34 km) and a finite Kretschner scalar $K(0) = 4.95\,\text{km}^{-4}$.
+
+**Singularity resolution mechanism:** At density $\rho \to \rho_c$, the strong energy condition is violated ($\varepsilon + 3P < 0$), halting collapse and replacing the singularity with a de Sitter vacuum. This is the same mechanism that produces the cosmological bounce, applied at stellar scales.
+
+**Information preservation:** The absence of a singularity eliminates the "point of information destruction." NVG provides a concrete physical mechanism for unitarity:
+- Holographic compression: entropy is compressed by $\sim 10^{32}\times$ at the core but never destroyed.
+- Unitary transfer: $\mathcal{I}_{n+1} = \mathcal{U}_b\,\mathcal{I}_n$ — information is carried through the core via the $\mathcal{W}$-sector.
+- The regular causal structure (two horizons, no singularity) ensures no loss-of-information region exists.
+
+**Key advantage over competing models:** Unlike generic Bardeen/Hayward (free parameter $g$), fuzzballs ($10^{500}$ string vacua), or loop quantum gravity (Planck-scale, untestable), NVG derives $r_0$ from a **measured** QCD quantity ($M_{\Omega,0} = 859$ MeV), yielding a strict prediction: gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0445$ s for a 65 $M_\odot$ merger (LIGO-testable).
+
+Additionally, the theory provides a laboratory protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
 
 ---
 
