@@ -162,6 +162,7 @@ NVG-Research/
 │   ├── nvg_advanced_observables_III.py     # Мезоны, Лоренц-инвар., остывание НЗ, QNM
 │   ├── nvg_em_maxwell_decoherence.py       # Уравнения Максвелла (eps_eff) и декогеренция
 │   ├── nvg_grmhd_surrogate.py              # Суррогатная EOB-модель слияния НЗ (GW Strain)
+│   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
 │   ├── nvg_genesis_observable.py           # Инстантон Генезиса → хаббловский горизонт
 │   └── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
 ├── visualization/
@@ -212,6 +213,7 @@ python verification/nvg_advanced_observables_II.py # Спектр CMB, EHT, ма
 python verification/nvg_advanced_observables_III.py# Мезоны, Лоренц, популяция НЗ
 python verification/nvg_em_maxwell_decoherence.py  # Уравнения Максвелла, декогеренция
 python verification/nvg_grmhd_surrogate.py         # EOB суррогат слияния НЗ (GW170817)
+python verification/run_nvg_suite.py               # МАСТЕР-СКРИПТ (NVG_FINAL_REPORT.md)
 ```
 
 ## Ключевые проверяемые предсказания (фальсифицируемость)

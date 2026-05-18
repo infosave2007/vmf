@@ -162,6 +162,7 @@ NVG-Research/
 │   ├── nvg_advanced_observables_III.py     # Mesons, Lorentz, NS Cooling, QNM
 │   ├── nvg_em_maxwell_decoherence.py       # Maxwell equations (eps_eff) & Decoherence
 │   ├── nvg_grmhd_surrogate.py              # EOB surrogate BNS merger (GW Strain)
+│   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
 ├── visualization/
@@ -212,6 +213,7 @@ python verification/nvg_advanced_observables_II.py # CMB P(k), EHT shadows, PBH 
 python verification/nvg_advanced_observables_III.py# Mesons, Lorentz, NS Cooling
 python verification/nvg_em_maxwell_decoherence.py  # Maxwell (eps_eff), Transfer Function
 python verification/nvg_grmhd_surrogate.py         # EOB surrogate BNS merger (GW Strain)
+python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 
 ## Key Testable Predictions (Falsifiability)
