@@ -68,7 +68,7 @@ Additionally, the theory provides a laboratory protocol for testing macroscopic 
 The NVG/VMF framework has **zero free cosmological parameters** — every number is derived from a single QCD input: $M_{\Omega,0} = 859$ MeV. 
 For the sake of scientific rigor, the results are divided into: direct unique predictions, consistency checks (null tests), and falsifiable forecasts.
 
-### 1. Direct Unique Predictions (Discoveries)
+### 1. Direct Observational Predictions (Discoveries)
 These are values that are manually tuned in standard models, but in NVG they are strictly derived from QCD and match observations.
 
 | # | NVG Prediction | Observational Data | Status |
@@ -78,11 +78,17 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 3 | $R_{1.4} \approx 12.0$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact Match |
 | 4 | Genesis Instanton $r_c \to$ $N_e = 53.2$ e-folds (no free parameters) | $R_{H0} = c/H_0 = 1.37 \times 10^{28}$ cm (Planck $H_0 = 67.4$) | ✅ Exact Match |
 | 5 | NS Cooling Dichotomy | Cas A (slow, $1.4 M_\odot$) and Vela (fast, $1.8 M_\odot$) | ✅ Reproduced via $1.45 M_\odot$ threshold |
-| 6 | Origin of Magnetars | Explains $10^{15}$ G fields (7.4x amplification due to $\epsilon_{eff}$ drop) | ✅ Solves dynamo paradox |
-| 7 | Continuous PBH Mass Spectrum ($4^N$) | Bridges Dark Matter ($10^{-14} M_\odot$) and JWST quasars ($10^6 M_\odot$) | ✅ Conceptually Proven |
-| 8 | Joint Multi-Messenger Inference | Reduced $\chi^2_\nu = 0.63$ for NICER+LIGO+Cooling without MCMC tuning | ✅ Perfect Global Fit |
 
-### 2. Consistency Checks (Null Tests)
+### 2. Theoretical & Methodological Solutions
+These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.
+
+| Area | NVG Interpretation | Impact on Physics |
+|---|---|---|
+| Origin of Magnetars | Core magnetic field amplification by 7.4x (due to $\epsilon_{eff}$ drop). | Solves the paradox of strong fields in slowly rotating magnetars (dynamo model issue). |
+| PBH Mass Spectrum ($4^N$) | A single formula maps mass growth per cycle: from $10^{-14} M_\odot$ to $10^6 M_\odot$. | Naturally bridges the Dark Matter anomaly in the asteroid window with early JWST supermassive BHs. |
+| Joint Multi-Messenger Inference | Reduced $\chi^2_\nu = 0.63$ for joint approximation of NICER, LIGO, and cooling data. | Achieved strictly through the QCD anchor without MCMC supercomputer fitting of 10 free parameters. |
+
+### 3. Consistency Checks (Null Tests)
 NVG must not break General Relativity where it works reliably. These items prove that the theory successfully mimics GR in weak fields.
 
 | Physical Aspect | NVG Prediction | Observational Data |
@@ -98,7 +104,7 @@ NVG must not break General Relativity where it works reliably. These items prove
 | CMB $P(k)$ Spectrum | Perfect match with $\Lambda$CDM for $\ell > 10$ | Planck PR4: exact match at high multipoles |
 | BBN and Recombination | $\delta H/H \sim 10^{-13}$, $\delta r_s/r_s \approx 0$ | Preserves nucleosynthesis and $r_s = 147.09$ Mpc |
 
-### 3. Falsifiable Forecasts (Awaiting Verification)
+### 4. Falsifiable Forecasts (Awaiting Verification)
 The boldest, high-risk predictions of the theory. These will either confirm or completely falsify NVG in the coming years.
 
 | Direction | Forecasted Value / Interpretation | Experiment / Current Status |
@@ -107,8 +113,8 @@ The boldest, high-risk predictions of the theory. These will either confirm or c
 | **CMB Anomaly $\ell < 10$** | Genesis physical cutoff, NOT cosmic variance | Planck PR4 sees lack of power. Awaiting LiteBIRD. |
 | **Meson Mass Shift** | $M_\rho^* \approx 595$ MeV at $2n_0$ (-23.2% shift) | Request submitted to HADES / CBM Collaboration (FAIR) |
 | **Gravitational Echo** | Specific delays $\Delta t \approx 0.0445$ s | Targeted search in LIGO O4/O5 archives (Requires computation) |
-| **NS Gravitational Redshift** | $z_{\rm surf}(1.4 M_\odot) \approx 0.286$ | STROBE-X / eXTP (future X-ray observatories) |
-| **Post-merger $f_{\rm peak}$** | $f_{\rm peak} \approx 3284$ Hz (via EOB surrogate) | LIGO O5 / Einstein Telescope (future detectors) |
+| **NS Gravitational Redshift** | $z_{\rm surf}(1.4 M_\odot) \approx 0.235$ | STROBE-X / eXTP (future X-ray observatories) |
+| **Post-merger $f_{\rm peak}$** | $f_{\rm peak} \approx 2730$ Hz (via EOB surrogate) | LIGO O5 / Einstein Telescope (future detectors) |
 
 ### External Verification Outreach
 
