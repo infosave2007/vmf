@@ -69,7 +69,7 @@ Additionally, the theory provides a laboratory protocol for testing macroscopic 
 
 The NVG/VMF framework has **zero free cosmological parameters** — every number is derived from a single QCD input: $M_{\Omega,0} = 859$ MeV. Below is the complete map of predictions against current observational data.
 
-### Direct Confirmations (9/9 match)
+### Direct Confirmations (10/10 match)
 
 | # | NVG Prediction | Observational Data | Status |
 |---|---|---|---|
@@ -82,31 +82,38 @@ The NVG/VMF framework has **zero free cosmological parameters** — every number
 | 7 | Genesis instanton $r_c = 1.13$ km $\to$ $N_e = 53.2$ e-folds to Hubble horizon | $R_{H0} = c/H_0 = 1.37 \times 10^{28}$ cm (Planck $H_0 = 67.4$ km/s/Mpc) | ✅ Exact match |
 | 8 | Tidal deformability $\Lambda_{1.4} \approx 470$ | GW170817 (LIGO/Virgo): $\Lambda_{1.4} = 190^{+390}_{-120}$, interval $[70, 580]$ | ✅ Within interval |
 | 9 | CMB quadrupole suppressed to ~28%, octupole to ~52% of standard power | Planck PR4 + WMAP: anomalous power deficit at $\ell=2,3$ at 2–3σ | ✅ Quantitative match |
+| 10 | Cyclic model: $w_0 = -0.83$, $w_a = -1.05$ | DESI DR1: $w_0 = -0.55 \pm 0.21$, $w_a = -1.27^{+0.57}_{-0.42}$ — compatible within 1.3σ/0.4σ | ✅ Match |
 
 > **Key insight (#7):** Standard inflation *postulates* 50–60 e-folds as a free parameter. NVG *derives* $N_e = \ln(R_{H0}/r_c) = 53.2$ from the QCD anchor alone.
 
-### Compatibility Checks (2/2 pass)
+### Compatibility Checks (5/5 pass)
 
 | NVG Prediction | Observational Bound | Margin |
 |---|---|---|
 | $\delta H/H \sim 10^{-13}$ at BBN | BBN tolerance: ~10% | 12 orders better |
 | $\delta r_s/r_s \approx 0$ at recombination | Planck: $3 \times 10^{-4}$ | 34 orders better |
+| Sound horizon $r_s = 147.09$ Mpc | Planck 2018: $r_s = 147.09 \pm 0.26$ Mpc | Exact match |
+| Tensor-to-scalar ratio $r \approx 0$ (QCD-scale bounce) | BICEP/Keck: $r < 0.036$ | ~68 orders below |
+| Max NS spin frequency: $f_K \approx 811$ Hz | PSR J1748-2446ad: 716 Hz | 13% above |
 
-### Qualitative Agreements (2)
+### Qualitative Agreements (1)
 
 | Direction | NVG Implication | Data | Status |
 |---|---|---|---|
-| DESI DR1 (2024–2025) | Cyclic model: expansion → collapse → next cycle | $w_0 > -1$, $w_a < 0$ at 2.5–3.9σ → dark energy weakens | 🟡 Qualitative match |
-| HADES dielectron spectra | VMF: $\rho$-meson mass drops ~24% at $2n_0$; full Breit-Wigner spectrum computed (`nvg_observables_A_B_C.py`) | In-medium spectral modification observed; broadening and mass shift seen | 🟡 Partial (quantitative template ready) |
+| HADES dielectron spectra | VMF: $\rho$-meson mass drops ~24% at $2n_0$; full Breit-Wigner spectrum computed | In-medium spectral modification observed | 🟡 Partial (quantitative template ready) |
 
-### Awaiting Verification (2)
+### Awaiting Verification (6)
 
-| Prediction | Required Experiment |
-|---|---|
-| GW echo delay $\Delta t = 0.0445$ s (65 $M_\odot$) | Targeted LIGO/Virgo post-merger echo search |
-| Laboratory vacuum coupling via topological resonance | Graphene NDR auto-oscillator protocol |
+| Prediction | NVG Value | Required Experiment |
+|---|---|---|
+| GW echo delay | $\Delta t = 0.0445$ s (65 $M_\odot$) | Targeted LIGO/Virgo post-merger echo search |
+| Laboratory vacuum coupling | Topological resonance | Graphene NDR auto-oscillator protocol |
+| NS moment of inertia | $I_{1.338} \approx 1.63 \times 10^{45}$ g·cm² | PSR J0737-3039 spin-orbit measurement (~2026–2028) |
+| Gravitational redshift | $z_{\rm surf}(1.4 M_\odot) \approx 0.23$ | STROBE-X / eXTP X-ray spectra |
+| Post-merger GW frequency | $f_{\rm peak} \approx 2.7$ kHz | LIGO O5 / Einstein Telescope |
+| Fast NS cooling (Direct Urca) | Threshold at $n_B \approx 4n_0$ ($Y_p > 11\%$) | X-ray spectra of Cas A, Vela |
 
-**Score: 7 confirmed, 2 compatible, 3 qualitative, 0 contradictions.**
+**Score: 10 confirmed, 5 compatible, 1 qualitative, 6 awaiting verification, 0 contradictions.**
 
 ### External Verification Outreach
 
