@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVG Дуализм — Как волна становится частицей</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { overflow: hidden; background: #05050a; font-family: 'Inter', sans-serif; color: #e0e8f0; }
+canvas { display: block; }
+
+/* --- HUD Panels --- */
+#hud-left { position: absolute; top: 20px; left: 20px; width: 340px; pointer-events: none; z-index: 10; }
+.panel { background: rgba(10, 15, 30, 0.85); border: 1px solid rgba(80, 160, 255, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 15px; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(0, 100, 255, 0.1); }
+.panel-title { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; color: #4db8ff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.panel-title::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4db8ff; box-shadow: 0 0 8px #4db8ff; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.text-desc { font-size: 0.9rem; line-height: 1.5; color: #aaccff; margin-bottom: 10px; }
+
+.status-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+.status-row .label { color: #8899aa; }
+.status-row .val { font-family: 'Orbitron', sans-serif; font-weight: 700; color: #ffd866; text-shadow: 0 0 5px rgba(255,216,102,0.5); }
+
+/* --- Controls --- */
+#controls { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 10; background: rgba(5, 10, 20, 0.8); padding: 15px 25px; border-radius: 15px; border: 1px solid rgba(80,160,255,0.2); backdrop-filter: blur(10px); }
+.btn { background: rgba(20, 40, 80, 0.7); color: #fff; border: 1px solid rgba(80, 160, 255, 0.5); padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-family: 'Orbitron', sans-serif; letter-spacing: 1px; transition: all 0.3s; }
+.btn:hover { background: rgba(60, 120, 220, 0.8); box-shadow: 0 0 15px rgba(77, 184, 255, 0.6); transform: translateY(-2px); }
+.btn.action { background: rgba(255, 60, 60, 0.2); border-color: #ff4444; color: #ffaaaa; }
+.btn.action:hover { background: rgba(255, 60, 60, 0.6); color: #fff; box-shadow: 0 0 20px rgba(255, 60, 60, 0.6); }
+
+/* --- Big Screen Labels --- */
+#center-label { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: #fff; text-shadow: 0 0 20px #ff3300; opacity: 0; pointer-events: none; transition: opacity 0.3s; text-align: center; }
+.sub-label { font-family: 'Inter', sans-serif; font-size: 1.2rem; color: #ffccaa; text-shadow: none; margin-top: 10px; font-weight: 300; }
+
+#flash { position: absolute; inset: 0; background: radial-gradient(circle, rgba(255,200,100,0.4), transparent 70%); opacity: 0; pointer-events: none; transition: opacity 0.1s; }
+</style>
+</head>
+<body>
+
+<div id="flash"></div>
+<div id="center-label">
+    КОЛЛАПС ВОЛНЫ!
+    <div class="sub-label">Узелок поглотил всю энергию целиком</div>
+</div>
+
+<div id="hud-left">
+  <div class="panel">
+    <div class="panel-title">Механизм дуализма (NVG)</div>
+    <div class="text-desc" id="tutorial-text">
+        **Шаг 1:** Пока электрон летит сквозь пустой космос, он является широкой плавной **волной** на ткани вакуума (синяя рябь). Ему ничего не мешает быть размазанным.
+    </div>
+  </div>
+  
+  <div class="panel">
+    <div class="panel-title" style="color:#ffaa44">Физика NVG</div>
+    <div class="status-row"><span class="label">Состояние:</span><span class="val" id="state-val" style="color:#4db8ff">ВОЛНА</span></div>
+    <div class="status-row"><span class="label">Среда:</span><span class="val" id="env-val">Гладкий вакуум 𝓦₀</span></div>
+    <div class="status-row"><span class="label">Энергия:</span><span class="val" id="energy-val">Размазана</span></div>
+  </div>
+</div>
+
+<div id="controls">
+  <button class="btn" id="btn-fire">🚀 Запустить электрон</button>
+  <button class="btn action" id="btn-hit" disabled>👁️ Поставить Наблюдателя</button>
+  <button class="btn" id="btn-reset">↺ Сброс</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+// ═══════════════ SCENE SETUP ═══════════════
+const W = window.innerWidth, H = window.innerHeight;
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x05050a, 0.003);
+
+const camera = new THREE.PerspectiveCamera(45, W/H, 0.1, 1000);
+camera.position.set(-80, 50, 100);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+renderer.setSize(W, H);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+const ctrl = new THREE.OrbitControls(camera, renderer.domElement);
+ctrl.enableDamping = true; 
+ctrl.dampingFactor = 0.05;
+ctrl.target.set(20, 0, 0);
+
+// Lights
+scene.add(new THREE.AmbientLight(0x111122));
+const dirLight = new THREE.DirectionalLight(0x4db8ff, 0.5);
+dirLight.position.set(-50, 100, 50);
+scene.add(dirLight);
+
+const waveLight = new THREE.PointLight(0x0088ff, 1.5, 100);
+scene.add(waveLight);
+
+const particleLight = new THREE.PointLight(0xff5500, 0, 150);
+scene.add(particleLight);
+
+// ═══════════════ THE VACUUM OCEAN (Wave) ═══════════════
+// We use points to represent the fabric of the vacuum
+const gridW = 150, gridH = 80;
+const segmentsX = 100, segmentsZ = 50;
+const geoVacuum = new THREE.PlaneGeometry(gridW, gridH, segmentsX, segmentsZ);
+geoVacuum.rotateX(-Math.PI / 2);
+geoVacuum.translate(-25, 0, 0);
+
+// Store original positions for wave math
+const positions = geoVacuum.attributes.position.array;
+const originalY = new Float32Array(positions.length / 3);
+for(let i=0; i<positions.length/3; i++) {
+    originalY[i] = positions[i*3 + 1];
+}
+
+const matVacuum = new THREE.PointsMaterial({
+    color: 0x225588,
+    size: 0.4,
+    transparent: true,
+    opacity: 0.6,
+    blending: THREE.AdditiveBlending
+});
+const vacuumOcean = new THREE.Points(geoVacuum, matVacuum);
+scene.add(vacuumOcean);
+
+// ═══════════════ THE DETECTOR WALL (Topological Knots) ═══════════════
+// The wall is made of discrete spheres representing atoms/nucleons
+const wallGroup = new THREE.Group();
+const knotGeo = new THREE.SphereGeometry(1.5, 16, 16);
+const knotMatBase = new THREE.MeshStandardMaterial({
+    color: 0x334455, roughness: 0.8, metalness: 0.2, emissive: 0x000000
+});
+const knotMatGlow = new THREE.MeshStandardMaterial({
+    color: 0xffaa00, roughness: 0.2, metalness: 0.8, emissive: 0xff4400, emissiveIntensity: 2.0
+});
+
+const knots = [];
+const wallX = 40; // X position of the wall
+for(let y=-20; y<=20; y+=4) {
+    for(let z=-30; z<=30; z+=4) {
+        let knot = new THREE.Mesh(knotGeo, knotMatBase);
+        knot.position.set(wallX, y, z);
+        wallGroup.add(knot);
+        knots.push(knot);
+    }
+}
+wallGroup.visible = false; // Initially no observer
+scene.add(wallGroup);
+
+// Invisible plane to show the physical boundary of the detector
+const detectorPlane = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 50, 70),
+    new THREE.MeshBasicMaterial({color: 0xffffff, transparent: true, opacity: 0.05, blending: THREE.AdditiveBlending})
+);
+detectorPlane.position.set(wallX, 0, 0);
+scene.add(detectorPlane);
+
+// ═══════════════ STATE MACHINE ═══════════════
+let state = "IDLE"; // IDLE, FLYING, COLLAPSED
+let waveCenter = -70; // X position of the wave pulse
+let time = 0;
+let targetKnot = null;
+
+const uiText = document.getElementById("tutorial-text");
+const uiState = document.getElementById("state-val");
+const uiEnv = document.getElementById("env-val");
+const uiEnergy = document.getElementById("energy-val");
+
+function setPhase(phase) {
+    state = phase;
+    if (phase === "IDLE") {
+        waveCenter = -70;
+        waveLight.position.set(waveCenter, 10, 0);
+        waveLight.intensity = 0;
+        particleLight.intensity = 0;
+        wallGroup.visible = false; // No observer yet
+        knots.forEach(k => { k.material = knotMatBase; k.scale.set(1,1,1); });
+        
+        uiText.innerHTML = "<b>Шаг 1: Гладкий КХД-конденсат</b><br><br>Пространство заполнено вакуумным конденсатом \\(\\mathcal{W}\\). Без материи оно описывается однородным полем:<br>\\[\\mathcal{W}(x) = \\mathcal{W}_0\\]Нажмите «Запустить электрон».";
+        uiState.textContent = "ПОКОЙ"; uiState.style.color = "#8899aa";
+        uiEnv.textContent = "Гладкий вакуум 𝓦₀";
+        uiEnergy.textContent = "0";
+        
+        document.getElementById("btn-fire").disabled = false;
+        document.getElementById("btn-hit").disabled = true;
+        document.getElementById("center-label").style.opacity = 0;
+    } 
+    else if (phase === "FLYING") {
+        waveLight.intensity = 1.5;
+        particleLight.intensity = 0;
+        wallGroup.visible = false;
+        uiText.innerHTML = "<b>Шаг 2: Электрон как волна</b><br><br>Свободная частица — это просто волна в конденсате. Уравнение для свободного поля \\(A_\\mu\\):<br>\\[\\Box A_\\mu = 0\\]Энергия делокализована.";
+        uiState.textContent = "ВОЛНА"; uiState.style.color = "#4db8ff";
+        uiEnv.textContent = "Свободный полет (\\(\\mathcal{W}_0\\))";
+        uiEnergy.textContent = "Размазана по пространству";
+        
+        document.getElementById("btn-fire").disabled = true;
+        document.getElementById("btn-hit").disabled = false;
+    }
+    else if (phase === "OBSERVER_PLACED") {
+        wallGroup.visible = true; // Observer appears!
+        uiText.innerHTML = "<b>Шаг 3: Наблюдатель (Топологические дефекты)</b><br><br>Детектор состоит из нуклонов — квантованных топологических узлов в вакууме:<br>\\[\\mathcal{W}(x) = \\mathcal{W}_0 + \\delta\\mathcal{W}(x)\\]Они могут поглощать энергию только дискретно.";
+        uiState.textContent = "ИЗМЕРЕНИЕ..."; uiState.style.color = "#ffaa00";
+        uiEnv.textContent = "Появилась макроскопическая материя";
+        
+        document.getElementById("btn-hit").disabled = true;
+    }
+    else if (phase === "COLLAPSED") {
+        uiText.innerHTML = "<b>Шаг 4: Коллапс функции</b><br><br>Волна врезается в топологический узел. Возникает нелинейный ток \\(j_\\mu\\):<br>\\[\\Box A_\\mu = j_\\mu[\\mathcal{W}(x)]\\]Волна обязана отдать энергию целиком одному узлу. Произошла локализация.";
+        uiState.textContent = "ЧАСТИЦА"; uiState.style.color = "#ff4400";
+        uiEnv.textContent = "Ток \\(j_\\mu\\) поглотил волну";
+        uiEnergy.textContent = "Локализована в 1 точке";
+        
+        document.getElementById("btn-fire").disabled = true;
+        document.getElementById("btn-hit").disabled = true;
+        
+        // Pick a random knot near the center
+        let centerKnots = knots.filter(k => Math.abs(k.position.y) < 10 && Math.abs(k.position.z) < 15);
+        targetKnot = centerKnots[Math.floor(Math.random() * centerKnots.length)];
+        targetKnot.material = knotMatGlow;
+        
+        particleLight.position.copy(targetKnot.position);
+        particleLight.intensity = 3.0;
+        
+        // Screen flash
+        document.getElementById("flash").style.opacity = 1;
+        document.getElementById("center-label").style.opacity = 1;
+        setTimeout(() => document.getElementById("flash").style.opacity = 0, 150);
+    }
+    
+    // Tell MathJax to re-render the equations in the text
+    if (window.MathJax) {
+        MathJax.typesetPromise([uiText, uiEnv]).catch(function (err) {
+            console.log(err.message);
+        });
+    }
+}
+
+// ═══════════════ ANIMATION LOOP ═══════════════
+function animate() {
+    requestAnimationFrame(animate);
+    ctrl.update();
+    time += 0.05;
+
+    // Wave propagation logic
+    if (state === "FLYING" || state === "OBSERVER_PLACED") {
+        waveCenter += 0.4;
+        waveLight.position.set(waveCenter, 10, 0);
+        
+        // If the observer is placed, we check for collision with the wall
+        if (state === "OBSERVER_PLACED" && waveCenter > wallX - 5) {
+            setPhase("COLLAPSED");
+        }
+        // If no observer is placed, the wave flies forever (loop around for visual continuity)
+        if (state === "FLYING" && waveCenter > 150) {
+            waveCenter = -100; // Loop the wave
+        }
+    }
+
+    // Update vacuum mesh vertices
+    const pos = geoVacuum.attributes.position.array;
+    for(let i=0; i<pos.length/3; i++) {
+        let px = pos[i*3], pz = pos[i*3 + 2];
+        
+        // Base ambient ripple (zero-point fluctuations)
+        let y = Math.sin(px*0.1 + time)*0.5 + Math.cos(pz*0.1 + time*0.8)*0.5;
+        
+        // The propagating wave pulse
+        if (state === "FLYING" || state === "COLLAPSED") {
+            let distToCenter = Math.abs(px - waveCenter);
+            let width = 20; // Spread of the wave
+            
+            if (state === "FLYING" && distToCenter < width) {
+                // Bell curve envelope * oscillating wave
+                let envelope = Math.exp(-(distToCenter*distToCenter)/50);
+                // Make the wave spread out along Z to show it's a wide wave
+                let zEnvelope = Math.exp(-(pz*pz)/400); 
+                y += envelope * zEnvelope * 10 * Math.sin((px - waveCenter)*0.5 - time*3);
+            }
+        }
+        
+        pos[i*3 + 1] = y;
+    }
+    geoVacuum.attributes.position.needsUpdate = true;
+
+    // Animate the collapsed particle knot
+    if (state === "COLLAPSED" && targetKnot) {
+        let s = 1.0 + Math.sin(time*10)*0.2;
+        targetKnot.scale.set(s,s,s);
+        // Gradually shrink the waveLight if it was still active
+        waveLight.intensity = Math.max(0, waveLight.intensity - 0.1);
+    }
+
+    renderer.render(scene, camera);
+}
+
+setPhase("IDLE");
+animate();
+
+// ═══════════════ EVENT LISTENERS ═══════════════
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+document.getElementById("btn-fire").addEventListener("click", () => setPhase("FLYING"));
+document.getElementById("btn-hit").addEventListener("click", () => setPhase("OBSERVER_PLACED"));
+document.getElementById("btn-reset").addEventListener("click", () => setPhase("IDLE"));
+</script>
+</body>
+</html>
