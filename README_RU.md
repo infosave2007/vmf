@@ -144,7 +144,9 @@ NVG-Research/
 │   └── nvg_3d_viz_v2_ru.html              # Интерактивный 3D-симулятор Вселенной (RU)
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Матрица фальсифицируемых предсказаний
-│   └── NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md  # Лабораторный протокол (графен)
+│   ├── NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md  # Лабораторный протокол (графен)
+│   ├── NVG_ELECTROMAGNETIC_EXTENSIONS.md   # ЭМ-волны, дуализм, направления исследований (RU)
+│   └── NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md # English version
 ├── README.md                               # English version
 └── README_RU.md                            # Русская версия (этот файл)
 ```

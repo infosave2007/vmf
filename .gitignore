@@ -25,5 +25,7 @@ article/*
 
 # Private directories
 .letters/
-.docs/
+.docs/*
+!.docs/NVG_ELECTROMAGNETIC_EXTENSIONS.md
+!.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 .code/

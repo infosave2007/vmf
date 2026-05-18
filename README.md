@@ -144,8 +144,11 @@ NVG-Research/
 │   └── nvg_3d_viz_v2_ru.html              # Interactive 3D Universe Simulator (RU)
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Matrix of falsifiable predictions
-│   └── NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md  # Graphene Laboratory Protocol
-└── README.md
+│   ├── NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md  # Graphene Laboratory Protocol
+│   ├── NVG_ELECTROMAGNETIC_EXTENSIONS.md   # EM waves, wave-particle duality, research directions (RU)
+│   └── NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md # English version
+├── README.md
+└── README_RU.md
 ```
 
 ## Quick Start (Automated In-Silico Suite)
