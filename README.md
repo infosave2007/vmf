@@ -2,7 +2,13 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
-[![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20214457)
+**Preprints:**
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269567) *Analytic Derivation of the Dense Matter Equation of State and Maximum Neutron Star Mass via QCD Vacuum Condensate Phase Transitions*
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269725) *Geometric Truncation of Low-Multipole CMB Power and Null B-Mode Prediction from a QCD-Scale Euclidean Instanton Bounce*
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269816) *A Discrete Cyclic Mass Hierarchy 4^N for Primordial Black Holes: Bridging Asteroid-Mass Dark Matter to Early JWST Heavy Seeds*
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20270025) *Resolution of the Slow-Rotating Magnetar Paradox via QCD Vacuum Permeability Phase Transitions*
+- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20270202) *Eliminating the Observer Effect: Wave Function Collapse as Deterministic Topological Reconnection in a Condensate Vacuum*
 
 ## Overview
 
