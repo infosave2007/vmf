@@ -1,0 +1,71 @@
+NVG EM-response: standard-QCD upper bound on lambda
+==============================================================================
+
+Channels included (all from textbook / published constants):
+  (A) one-loop quark Z_QED(M_q(rho)) [NJL gap eq]
+  (B) charged-pion loop with in-medium m_pi (GOR + Brown-Rho)
+  (C) VMD photon-rho mixing at NS coherence scale
+  (D) QCD magnetic susceptibility of chiral condensate
+      (Belyaev-Kogan 1984; Bali et al lattice 2012)
+
+Constants:
+  Lambda_chi = 4 pi f_pi = 1158.6 MeV
+  m_pi(0) = 139.6 MeV   f_pi = 92.2 MeV
+  m_rho   = 775.4 MeV   g_rho = 5.0
+  chi_QCD (best, Bali 2012)        = -2.08 GeV^-2
+  chi_QCD (upper, Belyaev-Kogan)   = -3.15 GeV^-2
+  <q-bar q>_vacuum^(1/3)            = 244.0 MeV
+
+------------------------------------------------------------------------------
+Per-density comparison:  lambda_required (V2)  vs  lambda_std (QCD)
+------------------------------------------------------------------------------
+  n_B/n0  r=sigma/s0  l_req(G=2.2)  l_req(G=3.3)  l_std(best)  l_std(high)
+    1.00       0.801        2.2140        2.5343      0.00227      0.00228
+    1.50       0.491        1.0448        1.1959      0.00305      0.00307
+    2.00       0.312        0.8789        1.0061      0.00394      0.00396
+    2.50       0.195        0.8248        0.9442      0.00496      0.00498
+    3.00       0.145        0.8104        0.9277      0.00565      0.00567
+    4.00       0.101        0.8016        0.9176      0.00651      0.00653
+    5.00       0.081        0.7987        0.9142      0.00703      0.00705
+
+------------------------------------------------------------------------------
+Benchmark density (2 n_0, r = 0.312):
+  V2 requires      lambda in [0.879, 1.006]
+  Standard QCD     lambda = 0.00394 (best, Bali lattice)
+                   lambda = 0.00396 (upper, SVZ Belyaev-Kogan)
+  Shortfall factor = 223.1  to  222.1
+
+  NLO ansatz (|mu| = 0.5 |lambda|): lambda in [0.606, 0.693]
+  -> NLO correction reduces required lambda by ~31%
+
+------------------------------------------------------------------------------
+Honest conclusion
+------------------------------------------------------------------------------
+Standard-QCD aggregation gives lambda_std ~ 0.0039 (best estimate),
+lambda_std ~ 0.0040 (most generous SVZ).
+Required for the V2 magnetar benchmark: lambda ~ 0.879 - 1.006.
+Gap: roughly two orders of magnitude.
+
+Interpretation. The condensate-photon coupling needed for the
+V2 magnetar amplification is ~10^2 above the value that
+standard QCD operators (QED loop, chiral loop, VMD, magnetic
+susceptibility) deliver. Two scientifically honest options
+follow:
+
+(a) Lower the V2 claim. With lambda ~ 0.01 the structural
+    amplification factor is Gamma_struct ~ sqrt(1/(1 - 0.01))
+    ~ 1.005, i.e. ~ 0.5 percent. NVG then contributes a small
+    correction on top of the conventional dynamo/fossil-field
+    mechanism rather than the dominant amplification.
+
+(b) Keep the V2 claim, but recognise that it requires a new
+    operator beyond the Standard Model QCD-photon sector --
+    something like a hidden U(1) mixing with EM whose coupling
+    is set by the NVG order parameter rather than by chi_QCD.
+    This is allowed by the NVG framework's modified vacuum
+    sector but is, strictly speaking, BSM physics in the
+    gauge sector, not a derivation from standard QCD.
+
+Either choice is publishable. Conflating them is not.
+
+==============================================================================

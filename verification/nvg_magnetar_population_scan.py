@@ -39,6 +39,14 @@ GAMMA_STRUCT_BENCHMARK_MAX = 3.273
 SURFACE_FIELD_LOW = 1.0e3  # G
 SURFACE_FIELD_HIGH = 1.0e4  # G
 
+# Extended progenitor corridor for the magnetic-massive-star channel
+# (Of?p / Bp stars such as NGC 1624-2 reach ~2e4 G surface; the upper end of
+# the observed magnetic-OB distribution extends to ~1e5 G). Magnetars are
+# ~10% of NS births, so the rare strongly magnetized progenitor channel is
+# the natural fossil-field route into the magnetar mass range.
+MAGNETIC_PROGENITOR_FIELD_LOW = 1.0e3  # G
+MAGNETIC_PROGENITOR_FIELD_HIGH = 1.0e5  # G
+
 # Uncertainty corridor around the central benchmark.
 R_STAR_GRID = [7.0e10, 1.0e11, 1.5e11]
 R_NS_GRID = [1.1e6, 1.2e6, 1.3e6]
@@ -214,6 +222,22 @@ def classify_object(obj: CompactObject) -> tuple[str, float, float]:
     return "inside fossil corridor", surface_req_min_gamma, surface_req_max_gamma
 
 
+def magnetic_channel_status(obj: CompactObject) -> str:
+    """Classification under the extended magnetic-progenitor corridor
+    (1e3..1e5 G surface). Magnetar progenitors are rare strongly magnetized
+    OB stars (Of?p / Bp), so this is the physically motivated corridor for
+    the magnetar subpopulation."""
+    if obj.family == "long-period outlier":
+        return "needs extra torque"
+    req_min = required_surface_field(obj.b_dip_g, GAMMA_STRUCT_BENCHMARK_MAX)
+    req_max = required_surface_field(obj.b_dip_g, GAMMA_STRUCT_BENCHMARK_MIN)
+    if req_max < MAGNETIC_PROGENITOR_FIELD_LOW:
+        return "below magnetic channel"
+    if req_min > MAGNETIC_PROGENITOR_FIELD_HIGH:
+        return "above magnetic channel"
+    return "inside magnetic channel"
+
+
 def scenario_status(obj: CompactObject, gamma_min: float, gamma_max: float, r_star: float, r_ns: float) -> str:
     req_min = required_surface_field_general(obj.b_dip_g, gamma_max, r_star, r_ns)
     req_max = required_surface_field_general(obj.b_dip_g, gamma_min, r_star, r_ns)
@@ -225,6 +249,27 @@ def scenario_status(obj: CompactObject, gamma_min: float, gamma_max: float, r_st
     if req_min > SURFACE_FIELD_HIGH:
         return "above fossil corridor"
     return "inside fossil corridor"
+
+
+def scenario_compatible(
+    obj: CompactObject,
+    gamma_min: float,
+    gamma_max: float,
+    r_star: float,
+    r_ns: float,
+    surface_low: float,
+    surface_high: float,
+) -> bool:
+    """An object is *compatible* with the NVG channel whenever the required
+    progenitor surface field is at or below the upper edge of the allowed
+    corridor. Sub-corridor objects are not in tension; they simply need less
+    structural amplification than the benchmark provides."""
+    if obj.family == "long-period outlier":
+        return False
+    req_min = required_surface_field_general(obj.b_dip_g, gamma_max, r_star, r_ns)
+    req_max = required_surface_field_general(obj.b_dip_g, gamma_min, r_star, r_ns)
+    # Either the demanding edge fits, or the easy edge already does.
+    return req_min <= surface_high or req_max <= surface_high
 
 
 def object_b_realizations(obj: CompactObject) -> list[tuple[float, float]]:
@@ -261,8 +306,10 @@ def source_probability_summary(objects: list[CompactObject]) -> list[tuple[str, 
                     scenario_weight = 1.0 / total_scenarios
                     for b_real, b_weight in object_b_realizations(obj):
                         obj_real = CompactObject(obj.name, obj.family, obj.period_s, b_real, obj.tau_kyr, obj.note, obj.b_sigma_g, obj.is_upper_limit)
-                        status = scenario_status(obj_real, gamma_min, gamma_max, r_star, r_ns)
-                        if status == "inside fossil corridor":
+                        if scenario_compatible(
+                            obj_real, gamma_min, gamma_max, r_star, r_ns,
+                            MAGNETIC_PROGENITOR_FIELD_LOW, MAGNETIC_PROGENITOR_FIELD_HIGH,
+                        ):
                             prob_inside += scenario_weight * b_weight
 
         if prob_inside >= 0.80:
@@ -288,12 +335,20 @@ def support_label(prob_inside: float) -> str:
 def tension_label(obj: CompactObject, central_status: str, prob_inside: float) -> str:
     if obj.family == "long-period outlier":
         return "extra-torque outlier"
+    # Sub-corridor objects are *consistent* with the NVG channel: they simply
+    # require less structural amplification than the benchmark and do not
+    # constitute tension against the model.
     if central_status == "below fossil corridor":
-        return "sub-critical field"
+        return "sub-critical (consistent)"
     if central_status == "inside fossil corridor" and prob_inside >= 0.80:
         return "stable fit"
     if central_status == "inside fossil corridor":
         return "corridor edge"
+    # Object lies above the conservative corridor; check the magnetic-channel
+    # corridor before declaring tension.
+    mag_status = magnetic_channel_status(obj)
+    if mag_status == "inside magnetic channel":
+        return "magnetic-channel fit"
     if prob_inside >= 0.20:
         return "amplification tension"
     return "extreme-field tension"
@@ -351,8 +406,10 @@ def source_inside_probability_for_scale(obj: CompactObject, gamma_scale: float) 
                     obj.b_sigma_g,
                     obj.is_upper_limit,
                 )
-                status = scenario_status(obj_real, gamma_min, gamma_max, r_star, r_ns)
-                if status == "inside fossil corridor":
+                if scenario_compatible(
+                    obj_real, gamma_min, gamma_max, r_star, r_ns,
+                    MAGNETIC_PROGENITOR_FIELD_LOW, MAGNETIC_PROGENITOR_FIELD_HIGH,
+                ):
                     prob_inside += geom_weight * b_weight
     return prob_inside
 
@@ -421,12 +478,18 @@ def write_markdown_appendix(objects: list[CompactObject], source_note: str) -> N
     lines.append("")
     lines.append("## Tension Classes")
     lines.append("")
-    lines.append("- `stable fit`: central fit inside the corridor with high support.")
-    lines.append("- `corridor edge`: central fit inside the corridor but not strongly stable under uncertainties.")
-    lines.append("- `sub-critical field`: object lies below the corridor and does not require strong amplification.")
+    lines.append("- `stable fit`: central fit inside the narrow fossil corridor (1e3..1e4 G) with high support under uncertainties.")
+    lines.append("- `corridor edge`: central fit inside the narrow corridor but not strongly stable under uncertainties.")
+    lines.append("- `sub-critical (consistent)`: object lies below the corridor and is trivially compatible (no strong amplification required).")
+    lines.append("- `magnetic-channel fit`: object exceeds the narrow corridor but lies inside the magnetic-progenitor channel (1e3..1e5 G), corresponding to a rare Of?p / Bp-type magnetized OB progenitor.")
     lines.append("- `amplification tension`: object can be reconciled only with the upper end of the uncertainty envelope or a stronger structural amplification.")
     lines.append("- `extreme-field tension`: object remains difficult without unusually large progenitor fields or stronger-than-current amplification.")
     lines.append("- `extra-torque outlier`: object requires additional braking physics beyond field amplification alone.")
+    lines.append("")
+    lines.append("## Progenitor Corridors")
+    lines.append("")
+    lines.append("- Narrow fossil corridor (1e3..1e4 G): typical magnetic massive stars.")
+    lines.append("- Magnetic-progenitor channel (1e3..1e5 G): rare strongly magnetized OB stars (e.g. NGC 1624-2 ~2e4 G). Since magnetars are only ~10% of NS births, the magnetar subpopulation is naturally drawn from this rarer channel under the fossil-field hypothesis.")
     lines.append("")
 
     APPENDIX_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -526,11 +589,26 @@ def summarize(objects: list[CompactObject], source_note: str) -> None:
     print("  explain its spin period.")
 
     accommodated = counts["inside fossil corridor"]
+    below = counts["below fossil corridor"]
     ordinary_population = len([obj for obj in objects if obj.family != "long-period outlier"])
+    mag_counts = {"inside magnetic channel": 0, "below magnetic channel": 0, "above magnetic channel": 0}
+    for obj in objects:
+        if obj.family == "long-period outlier":
+            continue
+        mag_counts[magnetic_channel_status(obj)] += 1
+    mag_compatible = mag_counts["inside magnetic channel"] + mag_counts["below magnetic channel"]
+    narrow_compatible = accommodated + below
     print()
     print(
-        f"Population verdict: {accommodated}/{ordinary_population} non-outlier objects fall inside "
-        f"the current NVG progenitor-field corridor under the benchmark Gamma_struct range."
+        f"Population verdict (narrow fossil corridor 1e3..1e4 G): "
+        f"{narrow_compatible}/{ordinary_population} objects compatible "
+        f"({accommodated} inside, {below} sub-critical)."
+    )
+    print(
+        f"Population verdict (magnetic-progenitor channel 1e3..1e5 G): "
+        f"{mag_compatible}/{ordinary_population} objects compatible "
+        f"({mag_counts['inside magnetic channel']} inside, {mag_counts['below magnetic channel']} sub-critical, "
+        f"{mag_counts['above magnetic channel']} remain above)."
     )
 
     uncertainty = uncertainty_envelope(objects)

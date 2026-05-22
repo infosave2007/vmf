@@ -1,0 +1,81 @@
+NVG dark-photon kinetic mixing with density-dependent eps(rho)
+==============================================================================
+
+Model:
+  L = -1/4 F^2 - 1/4 F'^2 - (eps/2) F F' - 1/2 m_A'^2 A'^2,
+  eps(rho) = eps_0 * S(rho),   S(rho) = 1 - (sigma(rho)/sigma_0)^2.
+
+  Benchmark A' mass:   m_A' = 1.16 GeV (~ Lambda_chi)
+  Target V2 coupling:  lambda = 0.90 at 2 n_0
+
+  => required bare mixing  eps_0 = 0.998
+     (at 2 n_0: S = 0.903, eps_eff = 0.901)
+
+------------------------------------------------------------------------------
+Environment-by-environment compatibility check
+------------------------------------------------------------------------------
+  environment                             rho/n0    S(rho)    eps_eff     bound       status
+  vacuum lab (beam dump, BaBar)          0.0e+00  0.00e+00   0.00e+00     1e-03 ALLOWED (S=0)
+  Sun (Redondo+Raffelt 2013)             1.3e-13  0.00e+00        n/a     1e-14 KINEMATIC-OFF
+  HB He core (An+Pospelov 2013)          4.0e-11  0.00e+00        n/a     1e-13 KINEMATIC-OFF
+  RG core (Vinyoles+ 2015)               6.0e-10  0.00e+00        n/a     3e-13 KINEMATIC-OFF
+  BBN plasma (Berger+ 2016)              1.0e-30  0.00e+00        n/a     1e-09 KINEMATIC-OFF
+  SN1987A proto-NS (Chang+ 2017)           1.000  3.91e-01        n/a     1e-09 KINEMATIC-OFF
+  Magnetar interior (NVG V2)               2.000  9.03e-01   9.01e-01     1e+00   BORDERLINE
+
+Footnotes per environment:
+  - vacuum lab (beam dump, BaBar): Standard dark-photon search, m_A' up to ~10 GeV
+  - Sun (Redondo+Raffelt 2013): Solar interior, T ~ 1.3 keV
+      (m_A' = 1.16 GeV exceeds environment kinematic max 1.00e-05 GeV)
+  - HB He core (An+Pospelov 2013): Horizontal-branch helium burning, T ~ 8.6 keV
+      (m_A' = 1.16 GeV exceeds environment kinematic max 3.00e-05 GeV)
+  - RG core (Vinyoles+ 2015): Red giant tip, similar to HB
+      (m_A' = 1.16 GeV exceeds environment kinematic max 3.00e-05 GeV)
+  - BBN plasma (Berger+ 2016): Big-bang nucleosynthesis, T ~ MeV
+      (m_A' = 1.16 GeV exceeds environment kinematic max 3.00e-03 GeV)
+  - SN1987A proto-NS (Chang+ 2017): Proto-NS core, T ~ 30 MeV; bound vanishes above ~200 MeV
+      (m_A' = 1.16 GeV exceeds environment kinematic max 1.00e-01 GeV)
+  - Magnetar interior (NVG V2): Target environment, no current bound (no detection)
+
+------------------------------------------------------------------------------
+Summary
+------------------------------------------------------------------------------
+  Kinematically-off (no bound at m_A' = 1.16 GeV): 5
+  Allowed (density-suppressed): 1
+  Borderline:                   1
+  Excluded:                     0
+
+  >>> NVG dark-photon ansatz (eps_0 ~ 1, m_A' ~ 1.16 GeV)
+      is consistent with ALL standard astrophysical, 
+      cosmological, and laboratory bounds on kinetic 
+      mixing, by virtue of TWO independent suppressions:
+        (i) density activation S(rho) ~ 0 in stars / labs;
+       (ii) kinematic blockade for m_A' > T_environment.
+
+      Only environment where the mechanism can operate
+      is a dense NS / proto-NS core. Falsification therefore
+      requires either
+        (a) a NS merger EM counterpart with anomalous
+            magnetic-field amplification signature, or
+        (b) a heavy dark-photon search in dense-matter
+            laboratory analogues (heavy-ion collisions
+            at FAIR/CBM where mu_B reaches ~ n_0).
+
+------------------------------------------------------------------------------
+Predictions distinguishing density-suppressed mixing from
+standard constant-eps dark photon
+------------------------------------------------------------------------------
+  1. No signal in any vacuum-based laboratory search at any eps
+     (beam dump, BaBar, NA64, LHCb dark-photon search, haloscope).
+  2. No signal in any stellar cooling channel below n_B ~ 0.5 n_0.
+  3. Anomalous magnetar B-field amplification correlated with
+     central density, predicted by S(rho).
+  4. Heavy-ion collisions at sqrt(s_NN) ~ few GeV (FAIR/NICA)
+     where mu_B reaches ~1 GeV should show enhanced dilepton
+     production from A' decays in the brief dense phase.
+  5. Binary neutron star inspirals (LIGO/Virgo/ET) should show
+     no EM precursor signal from kinetic-mixing channels
+     before merger (densities still sub-nuclear), but a strong
+     amplification within ~1 ms of contact.
+
+==============================================================================

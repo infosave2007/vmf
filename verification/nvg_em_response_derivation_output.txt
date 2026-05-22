@@ -1,0 +1,85 @@
+NVG EM-response companion derivation
+==============================================================================
+
+Textbook two-flavour NJL parameters:
+  Lambda       = 631.3 MeV
+  G * Lambda^2 = 2.14
+  m_current    = 5.50 MeV
+
+Solved vacuum constituent mass: M_q(0,0) = 317.7 MeV
+Vacuum chiral condensate per flavour: |<q-bar q>|^(1/3) = 244.0 MeV
+
+------------------------------------------------------------------------------
+(A) Perturbative QED-in-medium contribution to Gamma_struct
+------------------------------------------------------------------------------
+  n_B = 1.00 n0   T =    0 MeV   mu_q =  350.3 MeV   M_q =  231.4 MeV   sigma/sigma_0 = 0.803   Gamma_QED = 1.0004
+  n_B = 1.00 n0   T =   10 MeV   mu_q =  349.8 MeV   M_q =  230.6 MeV   sigma/sigma_0 = 0.801   Gamma_QED = 1.0004
+  n_B = 1.00 n0   T =   30 MeV   mu_q =  344.7 MeV   M_q =  222.8 MeV   sigma/sigma_0 = 0.780   Gamma_QED = 1.0005
+  n_B = 1.00 n0   T =   50 MeV   mu_q =  332.2 MeV   M_q =  202.9 MeV   sigma/sigma_0 = 0.726   Gamma_QED = 1.0006
+  n_B = 1.50 n0   T =    0 MeV   mu_q =  327.2 MeV   M_q =  128.1 MeV   sigma/sigma_0 = 0.494   Gamma_QED = 1.0012
+  n_B = 1.50 n0   T =   10 MeV   mu_q =  326.8 MeV   M_q =  127.0 MeV   sigma/sigma_0 = 0.491   Gamma_QED = 1.0012
+  n_B = 1.50 n0   T =   30 MeV   mu_q =  323.6 MeV   M_q =  118.7 MeV   sigma/sigma_0 = 0.462   Gamma_QED = 1.0013
+  n_B = 1.50 n0   T =   50 MeV   mu_q =  320.1 MeV   M_q =  108.6 MeV   sigma/sigma_0 = 0.426   Gamma_QED = 1.0014
+  n_B = 2.00 n0   T =    0 MeV   mu_q =  340.6 MeV   M_q =   78.8 MeV   sigma/sigma_0 = 0.317   Gamma_QED = 1.0018
+  n_B = 2.00 n0   T =   10 MeV   mu_q =  340.3 MeV   M_q =   77.6 MeV   sigma/sigma_0 = 0.312   Gamma_QED = 1.0018
+  n_B = 2.00 n0   T =   30 MeV   mu_q =  338.9 MeV   M_q =   70.9 MeV   sigma/sigma_0 = 0.287   Gamma_QED = 1.0019
+  n_B = 2.00 n0   T =   50 MeV   mu_q =  336.9 MeV   M_q =   60.6 MeV   sigma/sigma_0 = 0.247   Gamma_QED = 1.0021
+  n_B = 2.50 n0   T =    0 MeV   mu_q =  360.2 MeV   M_q =   47.9 MeV   sigma/sigma_0 = 0.196   Gamma_QED = 1.0025
+  n_B = 2.50 n0   T =   10 MeV   mu_q =  360.1 MeV   M_q =   47.6 MeV   sigma/sigma_0 = 0.195   Gamma_QED = 1.0025
+  n_B = 2.50 n0   T =   30 MeV   mu_q =  359.8 MeV   M_q =   45.0 MeV   sigma/sigma_0 = 0.185   Gamma_QED = 1.0025
+  n_B = 2.50 n0   T =   50 MeV   mu_q =  359.3 MeV   M_q =   40.7 MeV   sigma/sigma_0 = 0.168   Gamma_QED = 1.0027
+  n_B = 3.00 n0   T =    0 MeV   mu_q =  381.0 MeV   M_q =   35.4 MeV   sigma/sigma_0 = 0.146   Gamma_QED = 1.0029
+  n_B = 3.00 n0   T =   10 MeV   mu_q =  380.9 MeV   M_q =   35.1 MeV   sigma/sigma_0 = 0.145   Gamma_QED = 1.0029
+  n_B = 3.00 n0   T =   30 MeV   mu_q =  380.8 MeV   M_q =   33.8 MeV   sigma/sigma_0 = 0.139   Gamma_QED = 1.0029
+  n_B = 3.00 n0   T =   50 MeV   mu_q =  380.6 MeV   M_q =   31.6 MeV   sigma/sigma_0 = 0.130   Gamma_QED = 1.0030
+  n_B = 4.00 n0   T =    0 MeV   mu_q =  418.2 MeV   M_q =   24.5 MeV   sigma/sigma_0 = 0.102   Gamma_QED = 1.0033
+  n_B = 4.00 n0   T =   10 MeV   mu_q =  418.2 MeV   M_q =   24.4 MeV   sigma/sigma_0 = 0.101   Gamma_QED = 1.0033
+  n_B = 4.00 n0   T =   30 MeV   mu_q =  418.2 MeV   M_q =   23.8 MeV   sigma/sigma_0 = 0.099   Gamma_QED = 1.0034
+  n_B = 4.00 n0   T =   50 MeV   mu_q =  418.1 MeV   M_q =   23.0 MeV   sigma/sigma_0 = 0.095   Gamma_QED = 1.0034
+  n_B = 5.00 n0   T =    0 MeV   mu_q =  450.2 MeV   M_q =   19.6 MeV   sigma/sigma_0 = 0.082   Gamma_QED = 1.0036
+  n_B = 5.00 n0   T =   10 MeV   mu_q =  450.2 MeV   M_q =   19.6 MeV   sigma/sigma_0 = 0.081   Gamma_QED = 1.0036
+  n_B = 5.00 n0   T =   30 MeV   mu_q =  450.1 MeV   M_q =   19.3 MeV   sigma/sigma_0 = 0.080   Gamma_QED = 1.0036
+  n_B = 5.00 n0   T =   50 MeV   mu_q =  450.1 MeV   M_q =   18.9 MeV   sigma/sigma_0 = 0.078   Gamma_QED = 1.0037
+
+Perturbative QED yields Gamma_struct in [1.0004, 1.0037].
+This is 1 + O(alpha * log) ~ 1 percent, far below the magnetar
+V2 benchmark band Gamma_struct ~ 2.2 - 3.3.
+Conclusion: one-loop QED alone cannot supply the amplification.
+
+------------------------------------------------------------------------------
+(B) Non-perturbative chiral-condensate coupling
+------------------------------------------------------------------------------
+Effective gauge kinetic term:
+    Z_chi(sigma) = 1 - lambda * (1 - (sigma(rho)/sigma(0))^2)
+    Gamma_struct  = 1 / sqrt( Z_chi(rho) ),   (Z_chi(0) = 1)
+
+Required lambda to place Gamma_struct inside [2.2, 3.3]:
+
+  n_B/n0  T [MeV]  sigma/sigma_0  lambda(G=2.2)  lambda(G=3.3)
+    1.00      0.0          0.803         2.2337         2.5568
+    1.00     10.0          0.801         2.2140         2.5343
+    1.50      0.0          0.494         1.0498         1.2017
+    1.50     10.0          0.491         1.0448         1.1959
+    2.00      0.0          0.317         0.8819         1.0094
+    2.00     10.0          0.312         0.8789         1.0061
+    2.50      0.0          0.196         0.8252         0.9446
+    2.50     10.0          0.195         0.8248         0.9442
+    3.00      0.0          0.146         0.8107         0.9279
+    3.00     10.0          0.145         0.8104         0.9277
+    4.00      0.0          0.102         0.8017         0.9177
+    4.00     10.0          0.101         0.8016         0.9176
+    5.00      0.0          0.082         0.7987         0.9143
+    5.00     10.0          0.081         0.7987         0.9142
+
+Headline (n_B = 2 n_0, T = 10 MeV, sigma/sigma_0 = 0.312):
+    lambda in [0.879, 1.006]  to reproduce Gamma_struct in [2.2, 3.3].
+
+Interpretation: the V2 benchmark amplification corresponds to a
+single phenomenological condensate-photon coupling lambda of order
+unity. This is the falsifiable microphysical input. It can be
+checked independently by lattice QCD calculations of the photon
+vacuum polarisation as a function of <q-bar q>, or by chiral-
+perturbation estimates of the condensate-dependent gauge kinetic
+term. If lattice gives lambda << 1, the NVG channel is falsified.
+
+==============================================================================
