@@ -141,6 +141,10 @@ NVG-Research/
 │   ├── NVG_CYCLIC_COSMOLOGY_PREPRINT_RU.md # Русская версия
 │   ├── NVG_GENESIS_MODEL_EN.md             # Столп II: Первый цикл
 │   ├── NVG_GENESIS_MODEL_RU.md             # Русская версия
+│   ├── NVG_MAGNETAR_PREPRINT_V2.md         # Переработанный magnetar preprint с новыми quantitative checks
+│   ├── NVG_MAGNETAR_PREPRINT_V2.tex        # LaTeX-версия для публикации
+│   ├── NVG_MAGNETAR_PREPRINT_V2.pdf        # PDF-версия для публикации
+│   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Appendix по популяции магнетаров по объектам
 │   └── *.pdf                               # PDF-рендеры всех статей
 ├── verification/
 │   ├── nvg_verification_suite.py           # Мастер-набор автоматической верификации
@@ -162,6 +166,9 @@ NVG-Research/
 │   ├── nvg_grmhd_surrogate.py              # Суррогатная EOB-модель слияния НЗ (GW Strain)
 │   ├── nvg_detector_forward_model.py       # Forward-модель детектора (HADES/CBM/NICA)
 │   ├── nvg_pulsar_population_test.py       # Сканирование популяции НЗ (ATNF Mock)
+│   ├── nvg_magnetar_closure.py             # Closure checks для переработанного magnetar-сценария
+│   ├── nvg_1e161348_fallback_torque.py     # Модель fallback-disk torque для 1E 161348-5055
+│   ├── nvg_magnetar_population_scan.py     # Скан популяции магнетаров, gamma-fit и экспорт appendix
 │   ├── nvg_pbh_continuity_test.py          # Непрерывный спектр масс ПЧД по циклам
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
@@ -200,6 +207,9 @@ python verification/nvg_graphene_modulation.py     # Пределы лабора
 python verification/nvg_hadron_mass_fractions.py   # 91% непертурбативная масса КХД
 python verification/nvg_full_ns_eos.py             # Решение EOS НЗ и уравнений TOV
 python verification/nvg_fair_hades_link.py         # Предсказание 24% падения массы ρ-мезона
+python verification/nvg_magnetar_closure.py        # Closure checks для revised magnetar scenario
+python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking для 1E 161348-5055
+python verification/nvg_magnetar_population_scan.py # Catalog scan и экспорт appendix по популяции магнетаров
 
 # Электромагнитные расширения и вакуумные свойства
 python verification/nvg_em_extensions_proofs.py     # Лоренц-инвариантность W, вакуумная поляризация

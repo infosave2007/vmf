@@ -139,6 +139,10 @@ NVG-Research/
 │   ├── NVG_CYCLIC_COSMOLOGY_PREPRINT_RU.md # Russian version
 │   ├── NVG_GENESIS_MODEL_EN.md             # Pillar II: The First Cycle
 │   ├── NVG_GENESIS_MODEL_RU.md             # Russian version
+│   ├── NVG_MAGNETAR_PREPRINT_V2.md         # Revised magnetar preprint with new quantitative closure tests
+│   ├── NVG_MAGNETAR_PREPRINT_V2.tex        # Publication LaTeX for the revised magnetar preprint
+│   ├── NVG_MAGNETAR_PREPRINT_V2.pdf        # Publication PDF for the revised magnetar preprint
+│   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Source-by-source magnetar population appendix
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/
 │   ├── nvg_verification_suite.py           # Master automated verification test suite
@@ -160,6 +164,9 @@ NVG-Research/
 │   ├── nvg_grmhd_surrogate.py              # EOB surrogate BNS merger (GW Strain)
 │   ├── nvg_detector_forward_model.py       # HADES/CBM/NICA Forward Model
 │   ├── nvg_pulsar_population_test.py       # ATNF Catalog Mock Scanner
+│   ├── nvg_magnetar_closure.py             # Magnetar closure checks and structural-amplification benchmarks
+│   ├── nvg_1e161348_fallback_torque.py     # Fallback-disk torque model for 1E 161348-5055
+│   ├── nvg_magnetar_population_scan.py     # Magnetar catalog scan, gamma-fit, and appendix export
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
@@ -198,6 +205,9 @@ python verification/nvg_graphene_modulation.py     # Laboratory vacuum modulatio
 python verification/nvg_hadron_mass_fractions.py   # Shows the 91% nonperturbative QCD mass
 python verification/nvg_full_ns_eos.py             # Solves the NS EOS and TOV equations
 python verification/nvg_fair_hades_link.py         # Predicts the 24% rho-meson mass drop
+python verification/nvg_magnetar_closure.py        # Closure checks for the revised magnetar scenario
+python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking for 1E 161348-5055
+python verification/nvg_magnetar_population_scan.py # Catalog scan and appendix export for the magnetar population
 
 # Electromagnetic extensions and vacuum properties
 python verification/nvg_em_extensions_proofs.py     # Lorentz invariance, vacuum polarization
