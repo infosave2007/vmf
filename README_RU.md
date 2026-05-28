@@ -142,9 +142,9 @@ NVG-Research/
 │   ├── NVG_CYCLIC_COSMOLOGY_PREPRINT_RU.md # Русская версия
 │   ├── NVG_GENESIS_MODEL_EN.md             # Столп II: Первый цикл
 │   ├── NVG_GENESIS_MODEL_RU.md             # Русская версия
-│   ├── NVG_MAGNETAR_PREPRINT_V2.md         # Переработанный magnetar preprint с новыми quantitative checks
-│   ├── NVG_MAGNETAR_PREPRINT_V2.tex        # LaTeX-версия для публикации
-│   ├── NVG_MAGNETAR_PREPRINT_V2.pdf        # PDF-версия для публикации
+│   ├── NVG_MAGNETAR_PREPRINT_V3.md         # Переработанный magnetar preprint с новыми quantitative checks
+│   ├── NVG_MAGNETAR_PREPRINT_V3.tex        # LaTeX-версия для публикации
+│   ├── NVG_MAGNETAR_PREPRINT_V3.pdf        # PDF-версия для публикации
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Appendix по популяции магнетаров по объектам
 │   └── *.pdf                               # PDF-рендеры всех статей
 ├── verification/

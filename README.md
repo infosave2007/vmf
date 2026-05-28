@@ -140,9 +140,9 @@ NVG-Research/
 │   ├── NVG_CYCLIC_COSMOLOGY_PREPRINT_RU.md # Russian version
 │   ├── NVG_GENESIS_MODEL_EN.md             # Pillar II: The First Cycle
 │   ├── NVG_GENESIS_MODEL_RU.md             # Russian version
-│   ├── NVG_MAGNETAR_PREPRINT_V2.md         # Revised magnetar preprint with new quantitative closure tests
-│   ├── NVG_MAGNETAR_PREPRINT_V2.tex        # Publication LaTeX for the revised magnetar preprint
-│   ├── NVG_MAGNETAR_PREPRINT_V2.pdf        # Publication PDF for the revised magnetar preprint
+│   ├── NVG_MAGNETAR_PREPRINT_V3.md         # Revised magnetar preprint with new quantitative closure tests
+│   ├── NVG_MAGNETAR_PREPRINT_V3.tex        # Publication LaTeX for the revised magnetar preprint
+│   ├── NVG_MAGNETAR_PREPRINT_V3.pdf        # Publication PDF for the revised magnetar preprint
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Source-by-source magnetar population appendix
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/

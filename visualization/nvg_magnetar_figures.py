@@ -1,4 +1,4 @@
-"""Generate publication figures for the magnetar V2 preprint.
+"""Generate publication figures for the magnetar V3 preprint.
 
 Reads the population scan module, runs the catalog pipeline, and emits three
 PDF/PNG figures into article/figures/:
@@ -17,7 +17,7 @@ Usage::
 
     python3 visualization/nvg_magnetar_figures.py
 
-The figures are referenced from article/NVG_MAGNETAR_PREPRINT_V2.md.
+The figures are referenced from article/NVG_MAGNETAR_PREPRINT_V3.md.
 """
 
 from __future__ import annotations
