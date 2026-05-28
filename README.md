@@ -93,6 +93,7 @@ These points are not direct independent observations, but conceptually solve lon
 | Origin of Magnetars | Core magnetic field amplification by 7.4x (due to $\epsilon_{eff}$ drop). | Solves the paradox of strong fields in slowly rotating magnetars (dynamo model issue). |
 | PBH Mass Spectrum ($4^N$) | A single formula maps mass growth per cycle: from $10^{-14} M_\odot$ to $10^6 M_\odot$. | Naturally bridges the Dark Matter anomaly in the asteroid window with early JWST supermassive BHs. |
 | Joint Multi-Messenger Inference | Reduced $\chi^2_\nu = 0.63$ for joint approximation of NICER, LIGO, and cooling data. | Achieved strictly through the QCD anchor without MCMC supercomputer fitting of 10 free parameters. |
+| Emergent Quantization & Duality | Wave-particle duality mapped via Madelung quantum potential $Q(x)$ from vacuum density $\mathcal{W}$ and Goldstone phase $\theta$. | Derives the Schrödinger equation from classical vacuum fluid dynamics, bypassing Derrick's theorem via dynamic wave resonances (PR Research 2026). |
 
 ### 3. Consistency Checks (Null Tests)
 NVG must not break General Relativity where it works reliably. These items prove that the theory successfully mimics GR in weak fields.
@@ -240,7 +241,7 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 2. **Heavy-Ion Collisions (FAIR/HADES/NICA):** A ~24% drop in the invariant mass of the $\rho$-meson at $2n_0$. If no in-medium hadron mass shifts are observed at $n_B \sim 3$–$5\,n_0$, the VMF mass melting chain is falsified.
 3. **CMB Genesis Cutoff:** The low-$\ell$ suppression ($\ell=2,3$) is a deterministic physical cutoff from the $1.13$ km Genesis instanton stretched by $\sim 53$ e-folds, not merely "cosmic variance".
 4. **Neutron Stars:** A maximum mass of $\sim 2.3 M_\odot$ with an abrupt conformal phase transition at the core.
-5. **Laboratory Vacuum Coupling & Decoherence:** Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene overcomes ohmic losses ($COP > 1$), opening a window for vacuum energy extraction.
+5. **Laboratory Vacuum Coupling & Decoherence:** Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, bypasses the bulk scaling barrier ($COP > 1$), opening a window for vacuum energy extraction.
 6. **Lattice QCD Anchor:** Future lattice calculations shifting $M_{\Omega,0}$ outside $851$–$867$ MeV will explicitly shift all bounce parameters.
 7. **EHT Null Test (Black Hole Shadows):** VMF predicts an absolute match with the Schwarzschild/Kerr exterior. The event horizon deviation is $\sim 10^{-35}$, and the photon ring ($r_{ph}$) deviation is $\sim 10^{-70}$. Any observed macroscopic deviation in EHT shadows would falsify the theory.
 8. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 76$, with a turnaround lifetime of $\approx 24.7$ Byr.
