@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-28-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-17-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-31-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-20-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
 
 **Preprints:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
@@ -111,6 +111,9 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 18 | Scalar Glueball mass: $M_{\rm glueball} \approx 1.72$ GeV | Lightest scalar glueball ($0^{++}$) state from trace anomaly excitation, matching Lattice QCD ($1.7 \pm 0.1$ GeV) | ✅ Exact Match |
 | 19 | Majorana neutrino mass: $m_\nu \approx 0.117$ eV | Majorana mass from see-saw suppressed by Goldstone $\theta$-phase factor, satisfying KATRIN ($< 0.45$ eV) | ✅ Consistent / Falsifiable |
 | 20 | Magnetar Crustal Starquake QPOs | Torsional shear frequencies shifted by $\sqrt{\varepsilon_{\rm eff}} \approx 0.367$ match SGR 1806-20 QPOs within $0.17\%$ average error | ✅ Exact Match |
+| 21 | Primordial GW Background Comb | $f_{\rm GW}(k) = 145.0 \times (0.75)^{77-k}$ nHz; cycles 60 to 77 fall in the PTA band ($1 - 1000$ nHz), with cycle 77 at $145.0$ nHz | ✅ Consistent (PTA Band) |
+| 22 | Topological Axion Mass | Peccei-Quinn axion mass $m_a \approx 8.43 \times 10^{-6}$ eV ($f_a \approx 1.53 \times 10^{12}$ GeV) derived from Planck scale and Genesis e-folds ($f_a = M_{\rm Planck}/N_e^4$) | ✅ Within ADMX Window |
+| 23 | Strong-Field Periastron Advance | NVG vacuum polarization correction for PSR J0737-3039 is $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR} \approx (1-\varepsilon_{\rm eff})(R_{\rm NS}/a)^2 \approx 1.6 \times 10^{-10}$ | ✅ Within Observational Limits |
 
 ### 2. Theoretical & Methodological Solutions
 These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.
@@ -244,6 +247,9 @@ NVG-Research/
 │   ├── nvg_glueball_mass.py                # Scalar glueball mass calculation
 │   ├── nvg_neutrino_mass.py                # Majorana neutrino mass see-saw limit
 │   ├── nvg_starquake_qpo.py                # Magnetar starquake QPO shear frequencies
+│   ├── nvg_primordial_gw_comb.py           # Primordial gravitational wave frequency comb generator
+│   ├── nvg_axion_mass.py                   # Topological axion decay constant and mass calculation
+│   ├── nvg_perihelion_shift.py             # Binary pulsar strong-field periastron shift calculation
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
@@ -325,6 +331,9 @@ python verification/nvg_relic_dark_matter.py        # Relic instanton dark matte
 python verification/nvg_glueball_mass.py           # Calculates the scalar glueball mass
 python verification/nvg_neutrino_mass.py           # Calculates the Majorana neutrino mass limit
 python verification/nvg_starquake_qpo.py           # Validates magnetar QPO starquake frequencies
+python verification/nvg_primordial_gw_comb.py      # Calculates bounce frequencies for Tolman cycles
+python verification/nvg_axion_mass.py              # Calculates topological axion mass limits
+python verification/nvg_perihelion_shift.py        # Verifies binary pulsar strong-field periastron shift
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 

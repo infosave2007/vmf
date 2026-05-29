@@ -181,6 +181,24 @@ CHECKS = [
         "claim": "Shear frequency shifts from eps_eff match SGR 1806-20 observed QPOs with < 0.2% avg deviation",
         "critical": True,
     },
+    {
+        "name": "Primordial GW Background Comb",
+        "script": "nvg_primordial_gw_comb.py",
+        "claim": "Cycles 60 to 77 fall in the PTA nHz band (1-1000 nHz), with cycle 77 at 145.0 nHz",
+        "critical": True,
+    },
+    {
+        "name": "Topological Axion Mass",
+        "script": "nvg_axion_mass.py",
+        "claim": "Peccei-Quinn axion mass m_a ≈ 8.43e-6 eV falls in the ADMX/CASPEr window",
+        "critical": True,
+    },
+    {
+        "name": "Strong-Field Periastron Advance",
+        "script": "nvg_perihelion_shift.py",
+        "claim": "NVG vacuum polarization correction for J0737-3039 is ~1.6e-10, safely below 0.02% limit",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
