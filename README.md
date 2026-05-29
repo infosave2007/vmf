@@ -203,7 +203,7 @@ NVG-Research/
 │   ├── nvg_weak_field_ppn.py               # PPN parameter verification (γ=1)
 │   ├── nvg_cosmology_tensions.py           # Hubble/S8 tensions, BBN constraints
 │   ├── nvg_cooling_dark_matter.py          # PBH Dark Matter, NS Cooling (Direct Urca)
-│   ├── nvg_bh_regularity_entropy.py        # BH core regularity, Tolman entropy balance
+│   ├── nvg_black_hole_entropy.py           # BH core regularity, Tolman entropy balance
 │   ├── nvg_cmb_smbh_cyclic.py              # CMB anomalies, cyclic parameters, early SMBHs
 │   ├── nvg_iloveq_gw_echoes.py             # I-Love-Q universality, GW Echo templates
 │   ├── nvg_bbn_reionization.py             # BBN and reionization checks
@@ -294,7 +294,7 @@ python verification/nvg_cosmology_tensions.py      # Hubble/S8 tensions, BBN con
 python verification/nvg_cooling_dark_matter.py     # PBH Dark Matter, NS Cooling dichotomy
 python verification/nvg_iloveq_gw_echoes.py        # I-Love-Q, exact GW echo templates
 python verification/nvg_cmb_smbh_cyclic.py         # CMB anomalies, Early SMBHs
-python verification/nvg_bh_regularity_entropy.py   # BH core, entropy reset
+python verification/nvg_black_hole_entropy.py      # BH core, entropy reset
 python verification/nvg_hyperon_puzzle_solution.py # Hyperon Puzzle resolution
 python verification/nvg_advanced_observables_I.py  # HADES spectrum, z_surf, cycles
 python verification/nvg_advanced_observables_II.py # CMB P(k), EHT shadows, PBH mass

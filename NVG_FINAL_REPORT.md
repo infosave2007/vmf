@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-29 15:40:09
+**Generated:** 2026-05-29 15:58:27
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -32,11 +32,11 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 ## 4. Automatic Evidence Ledger
 | Claim | Result | Script | Status |
 |---|---|---|---|
-| CMB Genesis Cutoff | N_e = 53.15 | `nvg_advanced_observables_II.py` | Confirmed (Planck PR4) |
-| NS Max Mass | M_max = 2.25 M_sun | `nvg_observables_O_S.py` | Confirmed (NICER) |
-| Tidal Deformability | Lambda_1.4 = 470 | `nvg_grmhd_surrogate.py` | Compatible (GW170817) |
-| Gravitational Redshift | z_surf = 0.235 | `run_nvg_suite.py` | Awaiting STROBE-X |
-| Meson Mass Melting | rho shift = -23.2% | `nvg_advanced_observables_III.py` | Awaiting CBM/FAIR |
+| CMB Genesis Cutoff | N_e = 53.15 | `nvg_genesis_observable.py` | Confirmed (Planck PR4) |
+| NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
+| Tidal Deformability | Lambda_1.4 = 470 | `nvg_tidal_deformability_gw170817.py` | Compatible (GW170817) |
+| Gravitational Redshift | z_surf = 0.235 | `nvg_advanced_observables_I.py` | Awaiting STROBE-X |
+| Meson Mass Melting | rho shift = -23.2% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
 | Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Confirmed (Planck PR4) |

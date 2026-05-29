@@ -205,7 +205,7 @@ NVG-Research/
 │   ├── nvg_weak_field_ppn.py               # Верификация PPN параметра (γ=1)
 │   ├── nvg_cosmology_tensions.py           # Hubble/S8 tensions, BBN constraints
 │   ├── nvg_cooling_dark_matter.py          # ПЧД Тёмная материя, остывание НЗ (Direct Urca)
-│   ├── nvg_bh_regularity_entropy.py        # Регулярность ядра ЧД, баланс энтропии
+│   ├── nvg_black_hole_entropy.py           # Регулярность ядра ЧД, баланс энтропии
 │   ├── nvg_cmb_smbh_cyclic.py              # Аномалии CMB, параметры цикла, ранние SMBH
 │   ├── nvg_iloveq_gw_echoes.py             # I-Love-Q универсальность, шаблоны эха ГВ
 │   ├── nvg_bbn_reionization.py             # BBN и реионизация
@@ -293,7 +293,7 @@ python verification/nvg_cosmology_tensions.py      # Hubble/S8 tensions, BBN
 python verification/nvg_cooling_dark_matter.py     # ПЧД Тёмная материя, остывание НЗ
 python verification/nvg_iloveq_gw_echoes.py        # I-Love-Q, шаблоны эха ГВ
 python verification/nvg_cmb_smbh_cyclic.py         # Аномалии CMB, ранние SMBH
-python verification/nvg_bh_regularity_entropy.py   # Ядро ЧД, энтропия
+python verification/nvg_black_hole_entropy.py      # Ядро ЧД, энтропия
 python verification/nvg_hyperon_puzzle_solution.py # Решение Hyperon Puzzle
 python verification/nvg_advanced_observables_I.py  # Спектр HADES, z_surf, циклы
 python verification/nvg_advanced_observables_II.py # Спектр CMB, EHT, массы ПЧД

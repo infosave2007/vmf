@@ -105,11 +105,11 @@ FORECAST = {
 # =====================================================================
 def generate_evidence_ledger(results_center):
     ledger = [
-        {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_advanced_observables_II.py", "status": "Confirmed (Planck PR4)"},
-        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_observables_O_S.py", "status": "Confirmed (NICER)"},
-        {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_grmhd_surrogate.py", "status": "Compatible (GW170817)"},
-        {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "run_nvg_suite.py", "status": "Awaiting STROBE-X"},
-        {"claim": "Meson Mass Melting", "value": f"rho shift = -{results_center['rho_shift']:.1f}%", "file": "nvg_advanced_observables_III.py", "status": "Awaiting CBM/FAIR"},
+        {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Confirmed (Planck PR4)"},
+        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_full_ns_eos.py", "status": "Confirmed (NICER)"},
+        {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability_gw170817.py", "status": "Compatible (GW170817)"},
+        {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "nvg_advanced_observables_I.py", "status": "Awaiting STROBE-X"},
+        {"claim": "Meson Mass Melting", "value": f"rho shift = -{results_center['rho_shift']:.1f}%", "file": "nvg_fair_hades_link.py", "status": "Awaiting CBM/FAIR"},
         {"claim": "Null Test: BH Shadow", "value": f"Deviation = {results_center['eht_dev']:.1e}", "file": "nvg_advanced_observables_II.py", "status": "Confirmed (EHT)"},
         {"claim": "Null Test: QNM Ringdown", "value": f"Deviation = {results_center['qnm_shift']:.1e}", "file": "nvg_advanced_observables_III.py", "status": "Confirmed (LIGO O4a)"},
         {"claim": "Relic Dark Matter", "value": f"Omega_DM = {results_center['omega_dm']:.3f}", "file": "nvg_relic_dark_matter.py", "status": "Confirmed (Planck PR4)"},
