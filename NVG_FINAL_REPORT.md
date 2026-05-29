@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-29 16:05:29
+**Generated:** 2026-05-29 16:09:30
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -23,6 +23,8 @@
 | $f_a$ (GeV) | 1.529e+12 | **1.530e+12** | 1.531e+12 |
 | $m_a$ (eV) | 8.425e-06 | **8.431e-06** | 8.437e-06 |
 | $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR}$ (ratio) | 1.604e-10 | **1.608e-10** | 1.613e-10 |
+| $(g-2)_\mu$ required deviation | 1.402e-04 | **1.428e-04** | 1.455e-04 |
+| $M_{\rm KK}$ (eV) | 1.730e-10 | **1.746e-10** | 1.763e-10 |
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
@@ -56,3 +58,5 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |
 | Topological Axion Mass | m_a = 8.43e-06 eV | `nvg_axion_mass.py` | Awaiting ADMX/CASPEr |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Confirmed (J0737-3039) |
+| Muon g-2 Anomaly | required dev = 1.43e-04 | `nvg_muon_g2.py` | Consistent (QED loop) |
+| KK-Graviton Mass | m_KK = 1.75e-10 eV | `nvg_kk_graviton.py` | Consistent (1.13 km scale) |

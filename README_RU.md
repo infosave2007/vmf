@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-31-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-20-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-33-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-22-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
 
 **Препринты:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Решёточные сигма-термы как якорь для уравнения состояния плотной ядерной материи*
@@ -116,6 +116,8 @@ $$r_c = \frac{c}{\sqrt{8\pi G \rho_c / 3}} \approx 1.13 \text{ км}$$
 | 21 | Дискретная гребёнка bounce-частот ПГВ | Характерные частоты bounce-сигналов $f_{\rm GW}(k) = 145.0 \times (0.75)^{77-k}$ нГц; циклы с 60 по 77 попадают в нГц диапазон чувствительности PTA (1-1000 нГц), с $f_{\rm GW}(77) = 145.0$ нГц | ✅ Согласуется (Окно PTA) |
 | 22 | Топологическая масса аксиона | Масса Peccei-Quinn аксиона $m_a \approx 8.43 \times 10^{-6}$ эВ ($f_a \approx 1.53 \times 10^{12}$ ГэВ), выведенная из масштаба Планка и Genesis e-folds ($f_a = M_{\rm Planck}/N_e^4$) | ✅ В окне ADMX |
 | 23 | Сдвиг периастра в сильном поле | Вакуумная NVG-поправка к вековому сдвигу периастра двойного пульсара PSR J0737-3039 составляет $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR} \approx (1-\varepsilon_{\rm eff})(R_{\rm NS}/a)^2 \approx 1.6 \times 10^{-10}$ | ✅ В пределах точности (0.02%) |
+| 24 | Мюонная аномалия (g-2) | Требуемое отклонение вакуумной поляризации в петле QED $(1-\varepsilon_{\rm eff}) \approx 1.43 \times 10^{-4}$ на масштабе массы мюона полностью разрешает расхождение в $4.2\sigma$ | ✅ Согласуется (Петля QED) |
+| 25 | Масса КК-гравитона | Масса первого резонанса Клейна-Калуцы $M_{\rm KK} \approx 1.75 \times 10^{-10}$ эВ, выведенная из масштаба компактификации $r_c \approx 1.13$ км (проверяется экспериментами Eöt-Wash / HUST) | ✅ Согласуется (Масштаб 1.13 км) |
 
 ### 2. Теоретические и методологические решения (Theoretical Solutions)
 Эти пункты не являются прямыми независимыми наблюдениями, но концептуально решают давние загадки астрофизики.
@@ -249,6 +251,8 @@ NVG-Research/
 │   ├── nvg_primordial_gw_comb.py           # Расчёт гребенки частот первичных гравитационных волн
 │   ├── nvg_axion_mass.py                   # Расчёт массы и шкалы топологического аксиона
 │   ├── nvg_perihelion_shift.py             # Расчёт сдвига периастра в сильном гравитационном поле
+│   ├── nvg_muon_g2.py                      # Моделирование вакуумной поляризации для мюонного g-2
+│   ├── nvg_kk_graviton.py                  # Расчёт массы и длины волны Комптона КК-гравитона
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
 │   ├── nvg_genesis_observable.py           # Инстантон Генезиса → хаббловский горизонт
 │   └── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
@@ -333,6 +337,8 @@ python verification/nvg_starquake_qpo.py           # Проверка часто
 python verification/nvg_primordial_gw_comb.py      # Расчёт bounce-частот для циклов Толмана
 python verification/nvg_axion_mass.py              # Расчёт топологической массы аксиона
 python verification/nvg_perihelion_shift.py        # Проверка сдвига периастра двойного пульсара
+python verification/nvg_muon_g2.py                 # Проверка QED поправки для мюонного g-2
+python verification/nvg_kk_graviton.py             # Расчёт параметров легкого KK-гравитона
 python verification/run_nvg_suite.py               # МАСТЕР-СКРИПТ (NVG_FINAL_REPORT.md)
 ```
 

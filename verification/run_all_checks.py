@@ -199,6 +199,18 @@ CHECKS = [
         "claim": "NVG vacuum polarization correction for J0737-3039 is ~1.6e-10, safely below 0.02% limit",
         "critical": True,
     },
+    {
+        "name": "Muon g-2 Anomaly",
+        "script": "nvg_muon_g2.py",
+        "claim": "Required vacuum polarization deviation (1 - eps_eff) is ~1.4e-4 to resolve g-2 anomaly",
+        "critical": True,
+    },
+    {
+        "name": "Kaluza-Klein Graviton Mass",
+        "script": "nvg_kk_graviton.py",
+        "claim": "First KK-graviton mass matches m_KK ≈ 1.7e-10 eV with Compton wavelength 1.13 km",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
