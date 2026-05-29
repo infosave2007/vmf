@@ -114,7 +114,7 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 21 | Primordial GW Background Comb | $f_{\rm GW}(k) = 145.0 \times (0.75)^{77-k}$ nHz; cycles 60 to 77 fall in the PTA band ($1 - 1000$ nHz), with cycle 77 at $145.0$ nHz | ✅ Consistent (PTA Band) |
 | 22 | Topological Axion Mass | Peccei-Quinn axion mass $m_a \approx 8.43 \times 10^{-6}$ eV ($f_a \approx 1.53 \times 10^{12}$ GeV) derived from Planck scale and Genesis e-folds ($f_a = M_{\rm Planck}/N_e^4$) | ✅ Within ADMX Window |
 | 23 | Strong-Field Periastron Advance | NVG vacuum polarization correction for PSR J0737-3039 is $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR} \approx (1-\varepsilon_{\rm eff})(R_{\rm NS}/a)^2 \approx 1.6 \times 10^{-10}$ | ✅ Within Observational Limits |
-| 24 | Muon g-2 Anomaly | Required QED loop vacuum polarization deviation $(1-\varepsilon_{\rm eff}) \approx 1.43 \times 10^{-4}$ at muon mass scale resolves the $4.2\sigma$ discrepancy | ✅ Consistent (QED Loop) |
+| 24 | Muon g-2 Anomaly | Required QED loop vacuum polarization deviation $(1-\varepsilon_{\rm eff}) \approx 1.43 \times 10^{-4}$ at muon mass scale resolves the $4.2\sigma$ discrepancy. NVG predicts a non-zero residual VMF condensate contribution even in vacuum via quantum fluctuations of the $\theta$-phase, shifting $\varepsilon$ at the $10^{-4}$ level. | ✅ Consistent (QED Loop) |
 | 25 | Kaluza-Klein Graviton Mass | First KK graviton mass $M_{\rm KK} \approx 1.75 \times 10^{-10}$ eV derived from compactification scale $r_c \approx 1.13$ km (tested by inverse-square law experiments) | ✅ Consistent (1.13 km scale) |
 
 ### 2. Theoretical & Methodological Solutions
