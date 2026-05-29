@@ -197,6 +197,8 @@ NVG-Research/
 │   ├── nvg_pbh_jwst_seeds.py               # Моделирование эволюции ранних зародышей СМЧД для JWST
 │   ├── nvg_pbh_continuity_test.py          # Непрерывный спектр масс ПЧД по циклам
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
+│   ├── nvg_observational_data_fit.py       # Количественное сопоставление с данными Planck, DESI, GW170817 и охлаждения НЗ
+│   ├── nvg_new_directions_verification.py  # Верификация зародышей JWST, зазора пульсаров и LIGO O4 эха
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
 │   ├── nvg_genesis_observable.py           # Инстантон Генезиса → хаббловский горизонт
 │   └── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
@@ -264,6 +266,8 @@ python verification/nvg_detector_forward_model.py  # Forward-модель HADES/
 python verification/nvg_pulsar_population_test.py  # Дихотомия остывания популяции НЗ
 python verification/nvg_pbh_continuity_test.py     # Непрерывный спектр масс ПЧД
 python verification/nvg_joint_ns_inference.py      # Joint NS Inference (Likelihood)
+python verification/nvg_observational_data_fit.py   # Сопоставление с Planck PR4, DESI DR2, GW170817 и охлаждением
+python verification/nvg_new_directions_verification.py # Верификация JWST семян, зазора пульсаров и LIGO O4 эха
 python verification/run_nvg_suite.py               # МАСТЕР-СКРИПТ (NVG_FINAL_REPORT.md)
 ```
 

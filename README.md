@@ -195,6 +195,8 @@ NVG-Research/
 │   ├── nvg_pbh_jwst_seeds.py               # JWST early supermassive black hole seeding puzzle simulation
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
+│   ├── nvg_observational_data_fit.py       # Quantitative fits to Planck, DESI, GW170817, and cooling data
+│   ├── nvg_new_directions_verification.py  # Seeding (JWST), pulsar cooling dichotomy, and GW echo filtering
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
@@ -262,6 +264,8 @@ python verification/nvg_detector_forward_model.py  # HADES/CBM Forward Model
 python verification/nvg_pulsar_population_test.py  # NS Population cooling dichotomy
 python verification/nvg_pbh_continuity_test.py     # PBH continuous mass spectrum
 python verification/nvg_joint_ns_inference.py      # Joint NS Inference (Likelihood)
+python verification/nvg_observational_data_fit.py   # Fits Planck PR4, DESI DR2, GW170817, and cooling
+python verification/nvg_new_directions_verification.py # Verifies JWST seeds, ATNF cooling, and LIGO O4 echoes
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 
