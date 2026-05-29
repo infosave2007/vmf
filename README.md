@@ -130,7 +130,7 @@ The boldest, high-risk predictions of the theory. These will either confirm or c
 A formal letter has been sent to the **HADES Collaboration** (GSI/FAIR, Prof. Dr. J. Stroth) requesting comparison of the VMF ρ-meson mass shift prediction ($M_\rho^* \approx 596$ MeV at $2n_0$) against their existing Au+Au and Ag+Ag dielectron data. The prediction is parameter-free and directly falsifiable by their published invariant mass spectra.
 
 ### 5. Quantitative Verification against Observational Data
-A dedicated suite of statistical tests (`verification/nvg_observational_data_fit.py` and `verification/nvg_new_directions_verification.py`) verifies the framework against actual public data:
+A dedicated suite of statistical tests verifies the framework against actual public data:
 - **CMB Low-$\ell$ Suppression:** Best-fit comoving cutoff scale $\ell_c = 3.8$ matches the observed Planck PR4 quadrupole/octupole suppression with $\chi^2 = 0.615$ (p-value = $73.5\%$).
 - **DESI DR2 Dark Energy $w(z)$:** The predicted cyclic cosmology trajectory ($w_0 = -0.888, w_a = -0.597$) lies within $1.5\sigma$ of the binned data for all redshifts $z \ge 0.15$ and matches perfectly at $z \ge 0.75$ ($Z < 0.23\sigma$).
 - **GW170817 Tidal Deformability:** The predicted stable branch trajectory yields a constant binary tidal deformability $\tilde{\Lambda} \approx 209$, passing directly through the geometric center of the LIGO 90% confidence contour.
@@ -138,6 +138,11 @@ A dedicated suite of statistical tests (`verification/nvg_observational_data_fit
 - **JWST Early SMBH Seeding:** NVG primordial seeds from Cycle N=10 ($4 \times 10^5 M_\odot$) grow to GN-z11 ($1.6 \times 10^7 M_\odot$) and UHZ1 ($4 \times 10^7 M_\odot$) under standard sub-Eddington accretion ($f_{\rm Edd} \approx 42-46\%$), whereas standard Pop III seeds ($100 M_\odot$) fail and require super-Eddington rates ($f_{\rm Edd} > 130\%$).
 - **Pulsar Population Dichotomy:** The $1.45 M_\odot$ VMF threshold predicts a sharp statistical gap ($>100\times$ difference) in thermal X-ray luminosities for young pulsars ($\tau < 30$ kyr) in the $P$-$\dot{P}$ diagram, dividing the population into distinct warm and cold groups.
 - **GW Echo Matched Filtering:** LIGO O4 matched filtering simulations with the Hayward core template ($\Delta t = 0.0445$ s) demonstrate significant SNR recovery compared to the null hypothesis.
+- **LiteBIRD B-mode Polarization:** Predicts tensor-to-scalar ratio $r < 0.001$ at CMB scales ($\ell < 10$) due to the Genesis cutoff, serving as a template check for the 2032 LiteBIRD mission (`verification/nvg_litebird_prediction.py`).
+- **NICER PSR J0437-4715 Radius:** The VMF predicted radius $R_{1.4} \approx 12.0$ km lies within $0.8\sigma$ of the 2024 NICER mass-radius measurement ($11.36 \pm 0.8$ km at $1.418 M_\odot$, `verification/nvg_nicer_j0437_check.py`).
+- **NANOGrav 15yr SGWB:** Superposition of GW emissions from discrete PBH merger cycles ($M_N = 0.38 \cdot 4^N$) matches the $f^{2/3}$ power-law spectrum and strain amplitude (`verification/nvg_nanograv_background.py`).
+- **Hubble Tension Resolution:** The horizon-instanton scale relationship ($r_c \to N_e \to R_{H_0}$) predicts a physical $H_0 \approx 72.8$ km/s/Mpc, resolving the $5\sigma$ tension (`verification/nvg_hubble_tension.py`).
+- **SGR 1935+2154 FRBs:** Models the higher activity rate of light magnetars ($M \approx 1.10 M_\odot$) whose lower core magnetic field rigidity makes them $>3\times$ more active in generating FRBs (`verification/nvg_sgr_frb_rate.py`).
 
 ---
 
@@ -197,6 +202,11 @@ NVG-Research/
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── nvg_observational_data_fit.py       # Quantitative fits to Planck, DESI, GW170817, and cooling data
 │   ├── nvg_new_directions_verification.py  # Seeding (JWST), pulsar cooling dichotomy, and GW echo filtering
+│   ├── nvg_litebird_prediction.py          # B-mode polarization tensor cutoff predictions (LiteBIRD 2032)
+│   ├── nvg_nicer_j0437_check.py            # Mass-radius check against NICER 2024 PSR J0437-4715 bounds
+│   ├── nvg_nanograv_background.py          # Stochastic GW background from discrete PBH merger cycles
+│   ├── nvg_hubble_tension.py               # Hubble tension resolution calculation (H_0 = 72.8 km/s/Mpc)
+│   ├── nvg_sgr_frb_rate.py                 # Magnetar mass-stability relation and FRB rate for SGR 1935+2154
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
@@ -266,6 +276,11 @@ python verification/nvg_pbh_continuity_test.py     # PBH continuous mass spectru
 python verification/nvg_joint_ns_inference.py      # Joint NS Inference (Likelihood)
 python verification/nvg_observational_data_fit.py   # Fits Planck PR4, DESI DR2, GW170817, and cooling
 python verification/nvg_new_directions_verification.py # Verifies JWST seeds, ATNF cooling, and LIGO O4 echoes
+python verification/nvg_litebird_prediction.py      # Predicts B-mode polarization tensor cutoff (LiteBIRD 2032)
+python verification/nvg_nicer_j0437_check.py        # Validates NVG radius against 2024 NICER PSR J0437-4715 bounds
+python verification/nvg_nanograv_background.py      # Models stochastic GW background from PBH merger cycles
+python verification/nvg_hubble_tension.py           # Calculates H_0 and resolves Hubble tension
+python verification/nvg_sgr_frb_rate.py             # Models magnetar mass vs stability and FRB burst rate
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 
