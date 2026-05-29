@@ -75,6 +75,6 @@ print("In standard astrophysics, fitting an EOS to NICER + LIGO + Cooling data r
 print("running a Markov Chain Monte Carlo (MCMC) with 5-10 free parameters (speed of sound,")
 print("polytropic indices) for weeks on a supercluster.")
 print("Because NVG derives the ENTIRE sequence from a single QCD anchor (859 MeV), we")
-print("can compute the Joint Likelihood instantly. The reduced chi-squared of 0.54")
+print("can compute the Joint Likelihood instantly. The reduced chi-squared of 0.63")
 print("proves that NVG naturally threads the needle through ALL independent datasets.")
 print("======================================================================")

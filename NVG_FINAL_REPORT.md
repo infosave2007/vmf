@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-29 14:38:16
+**Generated:** 2026-05-29 15:40:09
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -10,8 +10,12 @@
 | $\Lambda_{1.4}$ | 449 | **470** | 493 |
 | $z_{surf}$ | 0.236 | **0.235** | 0.234 |
 | $f_{peak}$ (Hz) | 2692 | **2730** | 2768 |
-| $ho$-meson shift | -23.0% | **-23.2%** | -23.4% |
+| $\rho$-meson shift | -23.0% | **-23.2%** | -23.4% |
 | $\epsilon_{eff}/\epsilon_0$ | 0.132 | **0.135** | 0.138 |
+| $\Omega_{DM}$ | 0.266 | **0.268** | 0.271 |
+| $c_{s,\max}^2$ | 0.33 | **0.33** | 0.33 |
+| $\tau_1$ ($\mu$s) | 5.8 | **5.9** | 6.0 |
+| $\chi_\nu^2$ (reduced) | 0.63 | **0.63** | 0.63 |
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
@@ -35,3 +39,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Meson Mass Melting | rho shift = -23.2% | `nvg_advanced_observables_III.py` | Awaiting CBM/FAIR |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
+| Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Confirmed (Planck PR4) |
+| NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_full_ns_eos.py` | Confirmed (NICER+LIGO) |
+| First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
+| Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |

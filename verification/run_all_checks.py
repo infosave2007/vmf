@@ -145,6 +145,24 @@ CHECKS = [
         "claim": "NVG primordial seeds (~4e5 M_sun) resolve the early SMBH seeding puzzle at z > 6, whereas Pop III seeds fail",
         "critical": True,
     },
+    {
+        "name": "Joint NS Likelihood Fit",
+        "script": "nvg_joint_ns_inference.py",
+        "claim": "Reduced chi_nu^2 = 0.63 for joint multi-messenger fit",
+        "critical": True,
+    },
+    {
+        "name": "NICER PSR J0437 Mass-Radius Check",
+        "script": "nvg_nicer_j0437_check.py",
+        "claim": "VMF predicted radius lies within 0.8 sigma of NICER 2024 bounds",
+        "critical": True,
+    },
+    {
+        "name": "Relic Dark Matter density",
+        "script": "nvg_relic_dark_matter.py",
+        "claim": "Instanton relic density matches Planck PR4 Omega_DM = 0.268",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
