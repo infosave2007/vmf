@@ -173,7 +173,8 @@ def main():
     pulsar = run_pulsar_verification()
     echo = run_echo_verification()
     
-    report_path = "generator_project/NVG_NEW_DIRECTIONS_RU.md"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    report_path = os.path.join(script_dir, "NVG_NEW_DIRECTIONS_RU.md")
     with open(report_path, "w") as f:
         f.write("# Новые направления верификации теории NVG/VMF\n\n")
         f.write("Этот отчет содержит количественную оценку трех новых направлений верификации модели Гравитации Нулевого Вектора (NVG) и Вакуумной Массовой Фракции (VMF), отсутствующих в стандартных preprints, но верифицируемых по открытым данным прямо сейчас.\n\n")
