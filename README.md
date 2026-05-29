@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-18-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-10-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-6-orange)
+
 **Preprints:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20269567-blue.svg)](https://doi.org/10.5281/zenodo.20269567) *Analytic Derivation of the Dense Matter Equation of State and Maximum Neutron Star Mass via QCD Vacuum Condensate Phase Transitions*
@@ -95,7 +97,7 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 4 | Genesis Instanton $r_c \to$ $N_e = 53.2$ e-folds (no free parameters) | $R_{H0} = c/H_0 = 1.37 \times 10^{28}$ cm (Planck $H_0 = 67.4$) | ✅ Exact Match |
 | 5 | NS Cooling Dichotomy | Cas A (slow, $1.4 M_\odot$) and Vela (fast, $1.8 M_\odot$) | ✅ Reproduced via $1.45 M_\odot$ threshold |
 | 6 | Tidal deformability: $\Lambda_{1.4} \approx 177$ (parameter-free from QCD anchor) | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (direct hit in posterior center) | ✅ Exact Match |
-| 7 | In-medium $\rho$-meson mass shift: $-23.2\%$ at $2n_0$ ($M_\rho^* \approx 596$ MeV) | HADES Au+Au dielectron spectra at $2n_0$ (confirms in-medium melting) | ✅ Confirmed |
+| 7 | In-medium $\rho$-meson mass shift: $-23.2\%$ at $2n_0$ ($M_\rho^* \approx 596$ MeV) | HADES Au+Au/Ag+Ag dielectron spectra (Awaiting official collaboration match) | ⏳ Pending HADES |
 | 8 | Cosmic bounce density: $\rho_c = 7.09 \times 10^4$ MeV/fm³ (strictly from $M_{\Omega,0}^4$) | Classical bounce at $\rho_c/\rho_{\rm Planck} = 2.5 \times 10^{-77}$ without quantum gravity | ✅ Consistent / Falsifiable |
 | 9 | Hubble constant: $H_0 = 72.8$ km/s/Mpc (derived from $r_c \to N_e \to R_{H0}$) | Local measurements (SH0ES: $73.04 \pm 1.04$ km/s/Mpc), resolving the $5\sigma$ tension | ✅ Resolves Tension |
 | 10 | Surface gravitational redshift: $z_{\rm surf} = 0.235$ for $1.4\,M_\odot$ NS | EXO 0748-676 spectroscopy ($z \approx 0.35$ with high uncertainty); testable by STROBE-X | ✅ Within Constraints |
@@ -316,21 +318,27 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 2. **Heavy-Ion Collisions (FAIR/HADES/NICA):** A ~24% drop in the invariant mass of the $\rho$-meson at $2n_0$. If no in-medium hadron mass shifts are observed at $n_B \sim 3$–$5\,n_0$, the VMF mass melting chain is falsified.
 3. **CMB Genesis Cutoff:** The low-$\ell$ suppression ($\ell=2,3$) is a deterministic physical cutoff from the $1.13$ km Genesis instanton stretched by $\sim 53$ e-folds, not merely "cosmic variance".
 4. **Neutron Stars:** A maximum mass of $\sim 2.3 M_\odot$ with an abrupt conformal phase transition at the core.
-5. **Laboratory Vacuum Coupling & Decoherence:** Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, bypasses the bulk scaling barrier ($COP > 1$), opening a window for vacuum energy extraction.
-6. **Lattice QCD Anchor:** Future lattice calculations shifting $M_{\Omega,0}$ outside $851$–$867$ MeV will explicitly shift all bounce parameters.
-7. **EHT Null Test (Black Hole Shadows):** VMF predicts an absolute match with the Schwarzschild/Kerr exterior. The event horizon deviation is $\sim 10^{-35}$, and the photon ring ($r_{ph}$) deviation is $\sim 10^{-70}$. Any observed macroscopic deviation in EHT shadows would falsify the theory.
-8. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 77$, with a turnaround lifetime of $\approx 37.0$ Byr.
-9. **Tidal Deformability (GW170817):** VMF EOS predicts $\Lambda_{1.4} \approx 177$, fitting within the LIGO/Virgo confidence interval $[70, 580]$.
-10. **Multi-Meson Spectroscopy:** In-medium at $2n_0$, masses shift in a strict hierarchy: $\rho, \omega$ (-23.2%), $K^*$ (-9.3%), $\phi$ (-3.5%), $J/\psi$ (-0.5%). (Template for HADES/CBM/NICA).
-11. **Quantitative CMB Suppression:** For $\ell > 10$ ($k > 10^{-3}$ Mpc$^{-1}$) the spectrum matches $\Lambda$CDM perfectly (ratio 1.000). However, at $k < 3 \times 10^{-4}$ it drops exponentially due to the finite size of the Genesis instanton.
-12. **Multi-Mass PBH Spectrum (Dark Matter):** PBHs from cycles 30-40 fall perfectly into the "asteroid mass window" ($10^{-12} - 10^{-8} M_\odot$), while the most recent cycles 70-75 generate extremely rare supermassive PBHs ($\sim 10^5 M_\odot$) that serve as JWST quasar seeds.
-13. **GW Echo Template:** Parameterized echo train with decaying amplitude ($R_{\rm core}^n$) and alternating phase — ready-to-use template for LIGO matched-filtering.
-14. **NS Cooling Population Dichotomy:** Strict threshold at $1.45 M_\odot$. Regardless of envelope composition, light NSs are bright ($10^{33}$ erg/s), while heavy ones (Direct Urca) drop to $10^{31}$ erg/s. An old, hot heavy star falsifies the EOS.
-15. **Gravitational Redshift and f_peak:** Strict curves for the NS population: $z_{surf} \approx 0.235$ for a $1.4 M_\odot$ star (target for STROBE-X/eXTP) and a post-merger peak frequency of $f_{peak} \approx 2.73$ kHz for LIGO O5.
-16. **Cycles and Genesis Robustness:** The entropy growth equation $S \propto 4^N$ yields exactly 77.2 cycles from the Genesis instanton ($10^{76} k_B$) to today ($10^{122} k_B$). The full lattice QCD uncertainty (851-867 MeV) shifts the cycle count by a mere $\pm 0.3$, and the Genesis duration $N_e$ only from 53.16 to 53.24 e-folds.
-17. **EM Sector ($\epsilon_{eff}$):** The effective vacuum dielectric constant in a NS core drops to $\epsilon_{eff} = 0.135 \epsilon_0$, preserving QED on Earth ($\epsilon_{eff} = \epsilon_0$).
-18. **W-Sector Lorentz Invariance:** Outside dense media, vacuum dispersion and birefringence are strictly $0.0$, satisfying the most stringent GRB astrophysical limits.
-19. **Kerr QNM (Ringdown):** The Hayward core modification at the Planck scale shifts Quasi-Normal Mode frequencies by $\sim 10^{-105}$, making the geometry mathematically indistinguishable for LIGO/LISA.
+5. **Lattice QCD Anchor:** Future lattice calculations shifting $M_{\Omega,0}$ outside $851$–$867$ MeV will explicitly shift all bounce parameters.
+6. **EHT Null Test (Black Hole Shadows):** VMF predicts an absolute match with the Schwarzschild/Kerr exterior. The event horizon deviation is $\sim 10^{-35}$, and the photon ring ($r_{ph}$) deviation is $\sim 10^{-70}$. Any observed macroscopic deviation in EHT shadows would falsify the theory.
+7. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 77$, with a turnaround lifetime of $\approx 37.0$ Byr.
+8. **Tidal Deformability (GW170817):** VMF EOS predicts $\Lambda_{1.4} \approx 177$, fitting within the LIGO/Virgo confidence interval $[70, 580]$.
+9. **Multi-Meson Spectroscopy:** In-medium at $2n_0$, masses shift in a strict hierarchy: $\rho, \omega$ (-23.2%), $K^*$ (-9.3%), $\phi$ (-3.5%), $J/\psi$ (-0.5%). (Template for HADES/CBM/NICA).
+10. **Quantitative CMB Suppression:** For $\ell > 10$ ($k > 10^{-3}$ Mpc$^{-1}$) the spectrum matches $\Lambda$CDM perfectly (ratio 1.000). However, at $k < 3 \times 10^{-4}$ it drops exponentially due to the finite size of the Genesis instanton.
+11. **Multi-Mass PBH Spectrum (Dark Matter):** PBHs from cycles 30-40 fall perfectly into the "asteroid mass window" ($10^{-12} - 10^{-8} M_\odot$), while the most recent cycles 70-75 generate extremely rare supermassive PBHs ($\sim 10^5 M_\odot$) that serve as JWST quasar seeds.
+12. **GW Echo Template:** Parameterized echo train with decaying amplitude ($R_{\rm core}^n$) and alternating phase — ready-to-use template for LIGO matched-filtering.
+13. **NS Cooling Population Dichotomy:** Strict threshold at $1.45 M_\odot$. Regardless of envelope composition, light NSs are bright ($10^{33}$ erg/s), while heavy ones (Direct Urca) drop to $10^{31}$ erg/s. An old, hot heavy star falsifies the EOS.
+14. **Gravitational Redshift and f_peak:** Strict curves for the NS population: $z_{surf} \approx 0.235$ for a $1.4 M_\odot$ star (target for STROBE-X/eXTP) and a post-merger peak frequency of $f_{peak} \approx 2.73$ kHz for LIGO O5.
+15. **Cycles and Genesis Robustness:** The entropy growth equation $S \propto 4^N$ yields exactly 77.2 cycles from the Genesis instanton ($10^{76} k_B$) to today ($10^{122} k_B$). The full lattice QCD uncertainty (851-867 MeV) shifts the cycle count by a mere $\pm 0.3$, and the Genesis duration $N_e$ only from 53.16 to 53.24 e-folds.
+16. **EM Sector ($\epsilon_{eff}$):** The effective vacuum dielectric constant in a NS core drops to $\epsilon_{eff} = 0.135 \epsilon_0$, preserving QED on Earth ($\epsilon_{eff} = \epsilon_0$).
+17. **W-Sector Lorentz Invariance:** Outside dense media, vacuum dispersion and birefringence are strictly $0.0$, satisfying the most stringent GRB astrophysical limits.
+18. **Kerr QNM (Ringdown):** The Hayward core modification at the Planck scale shifts Quasi-Normal Mode frequencies by $\sim 10^{-105}$, making the geometry mathematically indistinguishable for LIGO/LISA.
+
+---
+
+## Speculative Directions & Future Tech
+
+### Laboratory Vacuum Coupling & Decoherence
+Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, is hypothesized to bypass the bulk scaling barrier ($COP > 1$), opening a long-term pathway for vacuum energy coupling research.
 
 ---
 
