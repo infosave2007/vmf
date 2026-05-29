@@ -4,12 +4,12 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
 **Препринты:**
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20214457) *Решёточные сигма-термы как якорь для уравнения состояния плотной ядерной материи*
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269567) *Аналитический вывод уравнения состояния плотной материи и максимальной массы нейтронной звезды через фазовые переходы вакуумного конденсата КХД*
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269725) *Геометрическое усечение мощности низких мультиполей реликтового излучения и предсказание нулевой B-моды от евклидова инстантонного отскока на масштабе КХД*
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269816) *Дискретная циклическая иерархия масс 4^N для первичных чёрных дыр: связывая тёмную материю астероидной массы с ранними тяжелыми зародышами JWST*
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20270025) *Разрешение парадокса медленновращающихся магнетаров через фазовые переходы вакуумной проницаемости КХД*
-- [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20270202) *Устранение эффекта наблюдателя: коллапс волновой функции как детерминированное топологическое пересоединение в конденсатном вакууме*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20214457.svg)](https://doi.org/10.5281/zenodo.20214457) *Решёточные сигма-термы как якорь для уравнения состояния плотной ядерной материи*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269567.svg)](https://doi.org/10.5281/zenodo.20269567) *Аналитический вывод уравнения состояния плотной материи и максимальной массы нейтронной звезды через фазовые переходы вакуумного конденсата КХД*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269725.svg)](https://doi.org/10.5281/zenodo.20269725) *Геометрическое усечение мощности низких мультиполей реликтового излучения и предсказание нулевой B-моды от евклидова инстантонного отскока на масштабе КХД*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269816.svg)](https://doi.org/10.5281/zenodo.20269816) *Дискретная циклическая иерархия масс 4^N для первичных чёрных дыр: связывая тёмную материю астероидной массы с ранними тяжелыми зародышами JWST*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20270025.svg)](https://doi.org/10.5281/zenodo.20270025) *Разрешение парадокса медленновращающихся магнетаров через фазовые переходы вакуумной проницаемости КХД*
+- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20270202.svg)](https://doi.org/10.5281/zenodo.20270202) *Устранение эффекта наблюдателя: коллапс волновой функции как детерминированное топологическое пересоединение в конденсатном вакууме*
 
 ## Обзор
 
