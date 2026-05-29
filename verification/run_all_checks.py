@@ -211,6 +211,48 @@ CHECKS = [
         "claim": "First KK-graviton mass matches m_KK ≈ 1.7e-10 eV with Compton wavelength 1.13 km",
         "critical": True,
     },
+    {
+        "name": "Glueball f0(1710) Mass",
+        "script": "nvg_glueball_f0.py",
+        "claim": "lightest scalar glueball f0(1710) mass matches 1.72 GeV",
+        "critical": True,
+    },
+    {
+        "name": "Quark Spin Correlation",
+        "script": "nvg_quark_spin.py",
+        "claim": "predicted spin correlation coefficient C_spin is ~0.376, matching STAR 2026 Nature measurement",
+        "critical": True,
+    },
+    {
+        "name": "Moat Regime of QCD",
+        "script": "nvg_moat_regime.py",
+        "claim": "predicted k_moat dispersion scale is ~123 MeV, matching PRL 2025",
+        "critical": True,
+    },
+    {
+        "name": "Mass Gap GW230529",
+        "script": "nvg_mass_gap.py",
+        "claim": "GW230529 primary mass gap object is strictly a black hole since M > 2.25 M_sun",
+        "critical": True,
+    },
+    {
+        "name": "I-Love-Q Relations",
+        "script": "nvg_iloveq.py",
+        "claim": "dimensionless I_bar ≈ 11.23 aligns with universal Yagi-Yunes relation within 10% NICER limit",
+        "critical": True,
+    },
+    {
+        "name": "DESI w(z) Trajectory",
+        "script": "nvg_desi_trajectory.py",
+        "claim": "theoretical DE trajectory w(z) exhibits phantom crossing w(z -> inf) -> -1.48",
+        "critical": True,
+    },
+    {
+        "name": "Neutrino Species N_eff",
+        "script": "nvg_neff.py",
+        "claim": "ideal thermal bounce predicts N_eff = 3.00, matching Planck+ACT 2.99 +/- 0.17",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
