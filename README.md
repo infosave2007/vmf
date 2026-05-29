@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
+[![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
 **Preprints:**
 - [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
 - [![Zenodo](https://img.shields.io/badge/Zenodo-preprint-blue)](https://zenodo.org/records/20269567) *Analytic Derivation of the Dense Matter Equation of State and Maximum Neutron Star Mass via QCD Vacuum Condensate Phase Transitions*
@@ -207,6 +208,9 @@ NVG-Research/
 │   ├── nvg_nanograv_background.py          # Stochastic GW background from discrete PBH merger cycles
 │   ├── nvg_hubble_tension.py               # Hubble tension resolution calculation (H_0 = 72.8 km/s/Mpc)
 │   ├── nvg_sgr_frb_rate.py                 # Magnetar mass-stability relation and FRB rate for SGR 1935+2154
+│   ├── nvg_s8_tension_check.py             # Growth suppression and S8 tension relief check vs DESI DR2 + DES Y6
+│   ├── nvg_chime_frb_check.py              # CHIME Catalog 1 statistics check for repeating FRBs vs magnetar mass
+│   ├── nvg_ligo_o4_echo_candidates.py      # Predicted echo time delays for massive LIGO O4 remnants (M ~ 65 M_sun)
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
@@ -281,6 +285,9 @@ python verification/nvg_nicer_j0437_check.py        # Validates NVG radius again
 python verification/nvg_nanograv_background.py      # Models stochastic GW background from PBH merger cycles
 python verification/nvg_hubble_tension.py           # Calculates H_0 and resolves Hubble tension
 python verification/nvg_sgr_frb_rate.py             # Models magnetar mass vs stability and FRB burst rate
+python verification/nvg_s8_tension_check.py         # Growth suppression and S8 tension relief check
+python verification/nvg_chime_frb_check.py          # CHIME Catalog 1 repeater mass distribution check
+python verification/nvg_ligo_o4_echo_candidates.py  # Echo delay times for O4 candidates (M ~ 65 M_sun)
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 
