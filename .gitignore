@@ -30,3 +30,7 @@ article/*
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 .code/
 generator_project/
+
+# Generated verification reports
+verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md
+verification/NVG_NEW_DIRECTIONS_RU.md
