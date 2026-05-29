@@ -233,6 +233,7 @@ NVG-Research/
 │   ├── nvg_s8_tension_check.py             # Growth suppression and S8 tension relief check vs DESI DR2 + DES Y6
 │   ├── nvg_chime_frb_check.py              # CHIME Catalog 1 statistics check for repeating FRBs vs magnetar mass
 │   ├── nvg_ligo_o4_echo_candidates.py      # Predicted echo time delays for massive LIGO O4 remnants (M ~ 65 M_sun)
+│   ├── nvg_relic_dark_matter.py            # Relic instanton dark matter density and coupling inference
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
@@ -310,6 +311,7 @@ python verification/nvg_sgr_frb_rate.py             # Models magnetar mass vs st
 python verification/nvg_s8_tension_check.py         # Growth suppression and S8 tension relief check
 python verification/nvg_chime_frb_check.py          # CHIME Catalog 1 repeater mass distribution check
 python verification/nvg_ligo_o4_echo_candidates.py  # Echo delay times for O4 candidates (M ~ 65 M_sun)
+python verification/nvg_relic_dark_matter.py        # Relic instanton dark matter abundance and coupling check
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 
@@ -340,8 +342,14 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 
 ## Speculative Directions & Future Tech
 
-### Laboratory Vacuum Coupling & Decoherence
+### 1. Laboratory Vacuum Coupling & Decoherence
 Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, is hypothesized to bypass the bulk scaling barrier ($COP > 1$), opening a long-term pathway for vacuum energy coupling research.
+
+### 2. Macroscopic Quantum Entanglement via Vacuum Condensate (QCD to Quantum Optics)
+If the VMF vacuum condensate is globally coherent, two spatially separated NVG auto-oscillators should exhibit a non-local correlation mediated by the Goldstone phase $\theta$. This predicts a tiny, anomalous time-dependent contribution to Bell inequality violations. High-precision atomic clock arrays (e.g. at NIST, PTB) could test this macroscopic phase coherence, opening a novel bridge from QCD to quantum optics.
+
+### 3. Dark Matter as a Relic VMF Instanton Condensate
+During the post-bounce expansion at $T < T_b$, a small fraction of the vacuum condensate is topologically locked/frozen into stable subatomic configurations (relic instantons). Without any free parameters, the freeze-out at $T_c \approx 157.3$ MeV naturally reproduces the observed dark matter density $\Omega_{\rm DM} \approx 0.268$, requiring a VMF self-coupling $\lambda_v \approx 1.02$ and a scalar vacuum excitation mass $m_{\mathcal{W}} \approx 1228.6$ MeV (matching the physical $f_0(1370)/f_0(1500)$ scalar QCD meson). Verified in `verification/nvg_relic_dark_matter.py`.
 
 ---
 
