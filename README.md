@@ -4,12 +4,12 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
 **Preprints:**
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20214457.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269567.svg)](https://doi.org/10.5281/zenodo.20269567) *Analytic Derivation of the Dense Matter Equation of State and Maximum Neutron Star Mass via QCD Vacuum Condensate Phase Transitions*
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269725.svg)](https://doi.org/10.5281/zenodo.20269725) *Geometric Truncation of Low-Multipole CMB Power and Null B-Mode Prediction from a QCD-Scale Euclidean Instanton Bounce*
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20269816.svg)](https://doi.org/10.5281/zenodo.20269816) *A Discrete Cyclic Mass Hierarchy 4^N for Primordial Black Holes: Bridging Asteroid-Mass Dark Matter to Early JWST Heavy Seeds*
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20270025.svg)](https://doi.org/10.5281/zenodo.20270025) *Resolution of the Slow-Rotating Magnetar Paradox via QCD Vacuum Permeability Phase Transitions*
-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20270202.svg)](https://doi.org/10.5281/zenodo.20270202) *Eliminating the Observer Effect: Wave Function Collapse as Deterministic Topological Reconnection in a Condensate Vacuum*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20269567-blue.svg)](https://doi.org/10.5281/zenodo.20269567) *Analytic Derivation of the Dense Matter Equation of State and Maximum Neutron Star Mass via QCD Vacuum Condensate Phase Transitions*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20269725-blue.svg)](https://doi.org/10.5281/zenodo.20269725) *Geometric Truncation of Low-Multipole CMB Power and Null B-Mode Prediction from a QCD-Scale Euclidean Instanton Bounce*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20269816-blue.svg)](https://doi.org/10.5281/zenodo.20269816) *A Discrete Cyclic Mass Hierarchy 4^N for Primordial Black Holes: Bridging Asteroid-Mass Dark Matter to Early JWST Heavy Seeds*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270025-blue.svg)](https://doi.org/10.5281/zenodo.20270025) *Resolution of the Slow-Rotating Magnetar Paradox via QCD Vacuum Permeability Phase Transitions*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270202-blue.svg)](https://doi.org/10.5281/zenodo.20270202) *Eliminating the Observer Effect: Wave Function Collapse as Deterministic Topological Reconnection in a Condensate Vacuum*
 
 ## Overview
 
