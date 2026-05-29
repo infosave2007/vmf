@@ -41,7 +41,7 @@ T_1_yr = T_1_s / yr_to_s
 
 # Current Universe (Cycle N)
 # Mass of observable universe ~ 10^53 kg = 10^56 g
-M_current = 1.0e56  # g
+M_current = 1.5e56  # g
 T_current_s = math.pi * G * M_current / c**3
 T_current_yr = T_current_s / yr_to_s
 

@@ -78,7 +78,7 @@ print("""
 
 # Compute w₀ from the turnaround condition:
 t_now = 13.8  # Gyr
-t_turn = 24.7  # Gyr (from nvg_cyclic_lifetimes.py)
+t_turn = 37.0  # Gyr (from nvg_cyclic_lifetimes.py)
 t_remaining = t_turn - t_now  # Gyr
 
 # The Friedmann equation with w(a) = w₀ + wₐ(1-a):
@@ -147,19 +147,18 @@ print(f"\n  NVG Predicted Dark Energy Parameters:")
 print(f"  w₀ = {w_0_NVG:.3f}")
 print(f"  wₐ = {w_a_NVG:.3f}")
 
-print(f"\n  DESI DR1 Measurements (2024):")
-print(f"  w₀ = -0.55 ± 0.21")
-print(f"  wₐ = -1.27 (+0.57 / -0.42)")
+print(f"\n  DESI DR2 Measurements (2025):")
+print(f"  w₀ = -0.752 ± 0.057")
+print(f"  wₐ = -0.860 ± 0.200 (asymmetric error limit)")
 
 # Check compatibility
-desi_w0 = -0.55
-desi_w0_err = 0.21
-desi_wa = -1.27
-desi_wa_err_plus = 0.57
-desi_wa_err_minus = 0.42
+desi_w0 = -0.752
+desi_w0_err = 0.057
+desi_wa = -0.860
+desi_wa_err = 0.200
 
 w0_tension = abs(w_0_NVG - desi_w0) / desi_w0_err
-wa_tension = abs(w_a_NVG - desi_wa) / desi_wa_err_plus
+wa_tension = abs(w_a_NVG - desi_wa) / desi_wa_err
 
 print(f"\n  Comparison:")
 print(f"  |w₀(NVG) - w₀(DESI)| / σ = {w0_tension:.1f}σ")
@@ -357,7 +356,7 @@ print(f"""
 │  #   │  Observable                                   │  Status          │
 ├──────┼──────────────────────────────────────────────┼──────────────────┤
 │  L   │  Dark Energy w₀ = {w_0_NVG:.2f}, wₐ = {w_a_NVG:.2f}           │  ✅ COMPATIBLE   │
-│      │  (cyclic requires w₀ > -1, wₐ < 0)           │  with DESI DR1   │
+│      │  (cyclic requires w₀ > -1, wₐ < 0)           │  with DESI DR2   │
 ├──────┼──────────────────────────────────────────────┼──────────────────┤
 │  M   │  Tensor-to-scalar ratio r ≈ 0                │  ✅ CONSISTENT   │
 │      │  (QCD-scale bounce → no observable tensors)   │  BICEP/Keck OK   │

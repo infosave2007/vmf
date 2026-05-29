@@ -82,7 +82,7 @@ CHECKS = [
     {
         "name": "Tolman Cycles & Entropy Growth",
         "script": "nvg_cyclic_lifetimes.py",
-        "claim": "Genesis lifetime was ~5.9 us; current universe is the ~76th cycle",
+        "claim": "Genesis lifetime was ~5.9 us; current universe is the ~77th cycle",
         "critical": True,
     },
     {
@@ -128,9 +128,15 @@ CHECKS = [
         "critical": True,
     },
     {
-        "name": "DESI DR1 Dark Energy Parametric Alignment",
+        "name": "DESI DR2 Dark Energy Parametric Alignment",
         "script": "nvg_dark_energy_desi.py",
-        "claim": "VMF cyclic cosmology prediction (w0 = -0.83, wa = -1.05) aligns within 0.1-sigma of DESI DR1",
+        "claim": "VMF cyclic cosmology prediction (w0 = -0.89, wa = -0.60) aligns within 2.8-sigma of DESI DR2",
+        "critical": True,
+    },
+    {
+        "name": "Tidal Deformability GW170817 & Double Pulsar MoI",
+        "script": "nvg_tidal_deformability_gw170817.py",
+        "claim": "Verify R_1.4 ~ 11.1 km and Double Pulsar moment of inertia is compatible with obs (~1.12e45 g cm^2)",
         "critical": True,
     },
     {
@@ -226,7 +232,9 @@ def main() -> int:
         print(f"▷ {check['name']}")
         print(f"  Claim: {check['claim']}")
         t0 = time.time()
-        success, _ = run_script(check["script"], timeout=180, search_dir=CODE_DIR)
+        # Try CODE_DIR first, then SCRIPT_DIR
+        s_dir = CODE_DIR if os.path.exists(os.path.join(CODE_DIR, check["script"])) else SCRIPT_DIR
+        success, _ = run_script(check["script"], timeout=180, search_dir=s_dir)
         elapsed = time.time() - t0
         status = "✓ OK" if success else "○ SKIP"
         results.append((check, success))

@@ -105,8 +105,8 @@ NVG must not break General Relativity where it works reliably. These items prove
 | EOS Causality | $c_s^2 \leq 0.33$ | LIGO/NICER limits: $c_s^2 < 1$ |
 | Gravitational Waves | $\gamma_{\rm PPN} \equiv 1$, $c_T = c$ | Cassini, GW170817: $|c_T/c - 1| < 10^{-15}$ |
 | External BH Metric | Strict Kerr/Schwarzschild outside horizon | LIGO O4a: 42 mergers, no macro-deviations |
-| Tidal Deformability | $\Lambda_{1.4} \approx 470$ | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (within interval) |
-| Dark Energy (DESI) | Cyclic evolution: $w_0 = -0.83$, $w_a = -1.05$ | DESI DR1: perfect alignment at the center of the ellipse ($Z = 0.09\sigma$, compatibility $99.6\%$) |
+| Tidal Deformability | $\Lambda_{1.4} \approx 177$ | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (within interval) |
+| Dark Energy (DESI) | Cyclic evolution: $w_0 = -0.89$, $w_a = -0.60$ | DESI DR2: compatible within 2.8-sigma ($Z = 2.74\sigma$, compatibility $2.32\%$) |
 | BH Shadows (EHT) | Deviation from Kerr $\sim 10^{-70}$ | EHT (M87*, Sgr A*) sees no deviation from GR |
 | Lorentz Invariance | $0.0$ vacuum dispersion and birefringence | GRB 041219A / 090510 (Fermi/Swift) |
 | QNM Ringdown | Ringdown frequency shift $\sim 10^{-105}$ (Hayward core) | LIGO O4a: ringdown is mathematically indistinguishable from Kerr |
@@ -181,7 +181,7 @@ NVG-Research/
 │   ├── nvg_unified_field_equations.py      # Verification of the unified field equations and core limits
 │   ├── nvg_hades_dielectron_sim.py         # HADES/CBM in-medium rho-meson dielectron spectral simulation
 │   ├── nvg_gw_echo_waveforms.py            # Post-merger black hole GW echoes waveform template simulator
-│   ├── nvg_dark_energy_desi.py             # Cosmological dark energy w0-wa parameter alignment with DESI DR1
+│   ├── nvg_dark_energy_desi.py             # Cosmological dark energy w0-wa parameter alignment with DESI DR2
 │   ├── nvg_pbh_jwst_seeds.py               # JWST early supermassive black hole seeding puzzle simulation
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
@@ -229,7 +229,7 @@ python verification/nvg_new_predictions.py          # Quantitative predictions (
 python verification/nvg_unified_field_equations.py  # Verification of the unified field equations (bounce and magnetars)
 python verification/nvg_hades_dielectron_sim.py     # HADES/CBM in-medium rho dielectron spectral simulation
 python verification/nvg_gw_echo_waveforms.py        # Post-merger black hole GW echoes waveform template simulator
-python verification/nvg_dark_energy_desi.py         # Dark energy w0-wa parameter alignment with DESI DR1
+python verification/nvg_dark_energy_desi.py         # Dark energy w0-wa parameter alignment with DESI DR2
 python verification/nvg_pbh_jwst_seeds.py           # JWST early black hole seeding puzzle simulation
 
 # Electromagnetic extensions and vacuum properties
@@ -266,15 +266,15 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 5. **Laboratory Vacuum Coupling & Decoherence:** Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, bypasses the bulk scaling barrier ($COP > 1$), opening a window for vacuum energy extraction.
 6. **Lattice QCD Anchor:** Future lattice calculations shifting $M_{\Omega,0}$ outside $851$–$867$ MeV will explicitly shift all bounce parameters.
 7. **EHT Null Test (Black Hole Shadows):** VMF predicts an absolute match with the Schwarzschild/Kerr exterior. The event horizon deviation is $\sim 10^{-35}$, and the photon ring ($r_{ph}$) deviation is $\sim 10^{-70}$. Any observed macroscopic deviation in EHT shadows would falsify the theory.
-8. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 76$, with a turnaround lifetime of $\approx 24.7$ Byr.
-9. **Tidal Deformability (GW170817):** VMF EOS predicts $\Lambda_{1.4} \approx 470$, fitting within the LIGO/Virgo confidence interval $[70, 580]$.
+8. **Tolman Cycle Count:** The current universe is predicted to be cycle $\sim 77$, with a turnaround lifetime of $\approx 37.0$ Byr.
+9. **Tidal Deformability (GW170817):** VMF EOS predicts $\Lambda_{1.4} \approx 177$, fitting within the LIGO/Virgo confidence interval $[70, 580]$.
 10. **Multi-Meson Spectroscopy:** In-medium at $2n_0$, masses shift in a strict hierarchy: $\rho, \omega$ (-23.2%), $K^*$ (-9.3%), $\phi$ (-3.5%), $J/\psi$ (-0.5%). (Template for HADES/CBM/NICA).
 11. **Quantitative CMB Suppression:** For $\ell > 10$ ($k > 10^{-3}$ Mpc$^{-1}$) the spectrum matches $\Lambda$CDM perfectly (ratio 1.000). However, at $k < 3 \times 10^{-4}$ it drops exponentially due to the finite size of the Genesis instanton.
 12. **Multi-Mass PBH Spectrum (Dark Matter):** PBHs from cycles 30-40 fall perfectly into the "asteroid mass window" ($10^{-12} - 10^{-8} M_\odot$), while the most recent cycles 70-75 generate extremely rare supermassive PBHs ($\sim 10^5 M_\odot$) that serve as JWST quasar seeds.
 13. **GW Echo Template:** Parameterized echo train with decaying amplitude ($R_{\rm core}^n$) and alternating phase — ready-to-use template for LIGO matched-filtering.
 14. **NS Cooling Population Dichotomy:** Strict threshold at $1.45 M_\odot$. Regardless of envelope composition, light NSs are bright ($10^{33}$ erg/s), while heavy ones (Direct Urca) drop to $10^{31}$ erg/s. An old, hot heavy star falsifies the EOS.
 15. **Gravitational Redshift and f_peak:** Strict curves for the NS population: $z_{surf} \approx 0.235$ for a $1.4 M_\odot$ star (target for STROBE-X/eXTP) and a post-merger peak frequency of $f_{peak} \approx 2.73$ kHz for LIGO O5.
-16. **Cycles and Genesis Robustness:** The entropy growth equation $S \propto 4^N$ yields exactly 76.2 cycles from the Genesis instanton ($10^{76} k_B$) to today ($10^{122} k_B$). The full lattice QCD uncertainty (851-867 MeV) shifts the cycle count by a mere $\pm 0.3$, and the Genesis duration $N_e$ only from 53.16 to 53.24 e-folds.
+16. **Cycles and Genesis Robustness:** The entropy growth equation $S \propto 4^N$ yields exactly 77.2 cycles from the Genesis instanton ($10^{76} k_B$) to today ($10^{122} k_B$). The full lattice QCD uncertainty (851-867 MeV) shifts the cycle count by a mere $\pm 0.3$, and the Genesis duration $N_e$ only from 53.16 to 53.24 e-folds.
 17. **EM Sector ($\epsilon_{eff}$):** The effective vacuum dielectric constant in a NS core drops to $\epsilon_{eff} = 0.135 \epsilon_0$, preserving QED on Earth ($\epsilon_{eff} = \epsilon_0$).
 18. **W-Sector Lorentz Invariance:** Outside dense media, vacuum dispersion and birefringence are strictly $0.0$, satisfying the most stringent GRB astrophysical limits.
 19. **Kerr QNM (Ringdown):** The Hayward core modification at the Planck scale shifts Quasi-Normal Mode frequencies by $\sim 10^{-105}$, making the geometry mathematically indistinguishable for LIGO/LISA.
