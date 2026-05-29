@@ -109,6 +109,12 @@ CHECKS = [
         "claim": "Breit-Wigner peak significance > 2 sigma at FAIR, LMXB suppression < 1e-20",
         "critical": True,
     },
+    {
+        "name": "Unified Field Equations & Core Limits",
+        "script": "nvg_unified_field_equations.py",
+        "claim": "Verify cosmological bounce, magnetar chiral instability, and magnetic backpressure",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

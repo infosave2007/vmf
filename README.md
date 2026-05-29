@@ -147,6 +147,9 @@ NVG-Research/
 │   ├── NVG_MAGNETAR_PREPRINT_V4.tex        # LaTeX file for Version 4 preprint
 │   ├── NVG_MAGNETAR_PREPRINT_V4.pdf        # PDF for Version 4 preprint
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Source-by-source magnetar population appendix
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.md      # Mathematical derivation of the unified field action and equations
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.tex      # LaTeX file for the unified field equations
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.pdf      # PDF for the unified field equations
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/
 │   ├── nvg_verification_suite.py           # Master automated verification test suite
@@ -173,6 +176,7 @@ NVG-Research/
 │   ├── nvg_magnetar_population_scan.py     # Magnetar catalog scan, gamma-fit, and appendix export
 │   ├── nvg_magnetar_mass_correlation.py    # Reconstructed magnetar mass-field correlation statistical audit
 │   ├── nvg_new_predictions.py              # Quantitative multi-messenger predictions (FAIR, GW, LMXB)
+│   ├── nvg_unified_field_equations.py      # Verification of the unified field equations and core limits
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
@@ -216,6 +220,7 @@ python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking for 
 python verification/nvg_magnetar_population_scan.py # Catalog scan and appendix export for the magnetar population
 python verification/nvg_magnetar_mass_correlation.py # Statistical correlation audit of reconstructed masses
 python verification/nvg_new_predictions.py          # Quantitative predictions (FAIR, post-merger GW shift, LMXB)
+python verification/nvg_unified_field_equations.py  # Verification of the unified field equations (bounce and magnetars)
 
 # Electromagnetic extensions and vacuum properties
 python verification/nvg_em_extensions_proofs.py     # Lorentz invariance, vacuum polarization

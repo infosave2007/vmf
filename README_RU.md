@@ -149,6 +149,9 @@ NVG-Research/
 │   ├── NVG_MAGNETAR_PREPRINT_V4.tex        # LaTeX-версия препринта V4
 │   ├── NVG_MAGNETAR_PREPRINT_V4.pdf        # PDF-версия препринта V4
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Appendix по популяции магнетаров по объектам
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.md      # Математический вывод действия и уравнений единого поля
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.tex      # LaTeX-версия уравнений единого поля
+│   ├── NVG_UNIFIED_FIELD_EQUATIONS.pdf      # PDF-версия уравнений единого поля
 │   └── *.pdf                               # PDF-рендеры всех статей
 ├── verification/
 │   ├── nvg_verification_suite.py           # Мастер-набор автоматической верификации
@@ -175,6 +178,7 @@ NVG-Research/
 │   ├── nvg_magnetar_population_scan.py     # Скан популяции магнетаров, gamma-fit и экспорт appendix
 │   ├── nvg_magnetar_mass_correlation.py    # Статистический аудит корреляции масс и полей реконструированных магнетаров
 │   ├── nvg_new_predictions.py              # Количественные мультимультимессенджерные предсказания (FAIR, GW, LMXB)
+│   ├── nvg_unified_field_equations.py      # Верификация уравнений единого поля и предельных режимов
 │   ├── nvg_pbh_continuity_test.py          # Непрерывный спектр масс ПЧД по циклам
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
@@ -218,6 +222,7 @@ python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking дл
 python verification/nvg_magnetar_population_scan.py # Catalog scan и экспорт appendix по популяции магнетаров
 python verification/nvg_magnetar_mass_correlation.py # Статистический аудит корреляции восстановленных масс
 python verification/nvg_new_predictions.py          # Количественные предсказания (FAIR, сдвиг GW, LMXB)
+python verification/nvg_unified_field_equations.py  # Верификация уравнений единого поля (космологический отскок и магнетары)
 
 # Электромагнитные расширения и вакуумные свойства
 python verification/nvg_em_extensions_proofs.py     # Лоренц-инвариантность W, вакуумная поляризация
