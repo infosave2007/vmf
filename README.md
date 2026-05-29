@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-18-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-10-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-6-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-21-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-11-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
 
 **Preprints:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
@@ -101,6 +101,9 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 8 | Cosmic bounce density: $\rho_c = 7.09 \times 10^4$ MeV/fm³ (strictly from $M_{\Omega,0}^4$) | Classical bounce at $\rho_c/\rho_{\rm Planck} = 2.5 \times 10^{-77}$ without quantum gravity | ✅ Consistent / Falsifiable |
 | 9 | Hubble constant: $H_0 = 72.8$ km/s/Mpc (derived from $r_c \to N_e \to R_{H0}$) | Local measurements (SH0ES: $73.04 \pm 1.04$ km/s/Mpc), resolving the $5\sigma$ tension | ✅ Resolves Tension |
 | 10 | Surface gravitational redshift: $z_{\rm surf} = 0.235$ for $1.4\,M_\odot$ NS | EXO 0748-676 spectroscopy ($z \approx 0.35$ with high uncertainty); testable by STROBE-X | ✅ Within Constraints |
+| 11 | Multi-meson mass shift hierarchy: $\rho, \omega$ (-23.2%), $K^*$ (-9.3%), $\phi$ (-3.5%), $J/\psi$ (-0.5%) | HADES, CBM (FAIR), NICA, and LHC in-medium invariant mass spectra | ⏳ Pending verification |
+| 12 | Cosmic bounce temperature: $T_b = 432$ MeV (derived from Stefan-Boltzmann with $g_* = 47.5$) | Consistent with QGP deconfinement scale ($T_c \approx 155\text{-}175$ MeV) at bounce | ✅ Consistent / Falsifiable |
+| 13 | Effective vacuum dielectric constant: $\varepsilon_{\rm eff} = 0.135\,\varepsilon_0$ in NS cores | Explains slow-rotating magnetar field strengths by amplifying fields by $1/\sqrt{\varepsilon_{\rm eff}} \approx 2.7\times$ | ✅ Explains Magnetar Field |
 
 ### 2. Theoretical & Methodological Solutions
 These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.

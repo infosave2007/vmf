@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-18-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-10-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-6-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-21-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-11-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
 
 **Препринты:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Решёточные сигма-термы как якорь для уравнения состояния плотной ядерной материи*
@@ -103,6 +103,9 @@ $$r_c = \frac{c}{\sqrt{8\pi G \rho_c / 3}} \approx 1.13 \text{ км}$$
 | 8 | Плотность космологического отскока: $\rho_c = 7.09 \times 10^4$ МэВ/фм³ (строго из $M_{\Omega,0}^4$) | Классический отскок при $\rho_c/\rho_{\rm Planck} = 2.5 \times 10^{-77}$ без квантовой гравитации | ✅ Совместимо / Falsifiable |
 | 9 | Постоянная Хаббла: $H_0 = 72.8$ км/с/Мпк (выводится из $r_c \to N_e \to R_{H0}$) | Локальные измерения (SH0ES: $73.04 \pm 1.04$ км/с/Мпк), разрешение $5\sigma$ tension | ✅ Разрешает натяжение |
 | 10 | Гравитационное красное смещение поверхности: $z_{\rm surf} = 0.235$ для $1.4\,M_\odot$ НЗ | Спектроскопия EXO 0748-676 ($z \approx 0.35$ с большой погрешностью); проверяемо STROBE-X | ✅ В пределах ограничений |
+| 11 | Многомезонная иерархия сдвигов масс: $\rho, \omega$ (-23.2%), $K^*$ (-9.3%), $\phi$ (-3.5%), $J/\psi$ (-0.5%) | Спектры инвариантных масс в среде от HADES, CBM (FAIR), NICA и LHC | ⏳ Ожидает верификации |
+| 12 | Температура космологического отскока: $T_b = 432$ МэВ (выводится из Стефана-Больцмана с $g_* = 47.5$) | Согласуется с фазой деконфайнмента КХД ($T_c \approx 155\text{-}175$ МэВ) при отскоке | ✅ Совместимо / Falsifiable |
+| 13 | Эффективная диэлектрическая проницаемость вакуума: $\varepsilon_{\rm eff} = 0.135\,\varepsilon_0$ в ядрах НЗ | Объясняет напряженность полей медленно вращающихся магнетаров за счет усиления поля в $1/\sqrt{\varepsilon_{\rm eff}} \approx 2.7\times$ | ✅ Объясняет поле магнетаров |
 
 ### 2. Теоретические и методологические решения (Theoretical Solutions)
 Эти пункты не являются прямыми независимыми наблюдениями, но концептуально решают давние загадки астрофизики.
