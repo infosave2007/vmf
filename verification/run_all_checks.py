@@ -133,6 +133,12 @@ CHECKS = [
         "claim": "VMF cyclic cosmology prediction (w0 = -0.83, wa = -1.05) aligns within 0.1-sigma of DESI DR1",
         "critical": True,
     },
+    {
+        "name": "JWST Early Black Hole Seeding Puzzle",
+        "script": "nvg_pbh_jwst_seeds.py",
+        "claim": "NVG primordial seeds (~4e5 M_sun) resolve the early SMBH seeding puzzle at z > 6, whereas Pop III seeds fail",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
