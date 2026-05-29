@@ -179,6 +179,9 @@ NVG-Research/
 │   ├── nvg_magnetar_mass_correlation.py    # Статистический аудит корреляции масс и полей реконструированных магнетаров
 │   ├── nvg_new_predictions.py              # Количественные мультимультимессенджерные предсказания (FAIR, GW, LMXB)
 │   ├── nvg_unified_field_equations.py      # Верификация уравнений единого поля и предельных режимов
+│   ├── nvg_hades_dielectron_sim.py         # Симуляция диэлектронных спектров e+e- и сдвига rho-мезона в среде (HADES/CBM)
+│   ├── nvg_gw_echo_waveforms.py            # Синтезатор волновых форм (шаблонов) послеслияния ЧД с гравитационным эхо
+│   ├── nvg_dark_energy_desi.py             # Сопоставление эволюции w0-wa темной энергии модели с ограничениями DESI DR1
 │   ├── nvg_pbh_continuity_test.py          # Непрерывный спектр масс ПЧД по циклам
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
@@ -223,6 +226,9 @@ python verification/nvg_magnetar_population_scan.py # Catalog scan и экспо
 python verification/nvg_magnetar_mass_correlation.py # Статистический аудит корреляции восстановленных масс
 python verification/nvg_new_predictions.py          # Количественные предсказания (FAIR, сдвиг GW, LMXB)
 python verification/nvg_unified_field_equations.py  # Верификация уравнений единого поля (космологический отскок и магнетары)
+python verification/nvg_hades_dielectron_sim.py     # Симуляция спектра распада rho-мезона в среде для HADES/CBM
+python verification/nvg_gw_echo_waveforms.py        # Синтезатор волновых форм с гравитационным эхо для LIGO/ET
+python verification/nvg_dark_energy_desi.py         # Сопоставление эволюции w0-wa темной энергии с DESI DR1
 
 # Электромагнитные расширения и вакуумные свойства
 python verification/nvg_em_extensions_proofs.py     # Лоренц-инвариантность W, вакуумная поляризация

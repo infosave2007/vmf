@@ -115,6 +115,24 @@ CHECKS = [
         "claim": "Verify cosmological bounce, magnetar chiral instability, and magnetic backpressure",
         "critical": True,
     },
+    {
+        "name": "HADES Dielectron Spectral Simulation",
+        "script": "nvg_hades_dielectron_sim.py",
+        "claim": "VMF meson mass shift creates a prominent peak shift to ~702 MeV, distinct from broadening",
+        "critical": True,
+    },
+    {
+        "name": "GW Echo Waveform Templates",
+        "script": "nvg_gw_echo_waveforms.py",
+        "claim": "Hayward core scale r_0 gives periodic post-merger echoes with delay ~81 ms, decaying by T_horizon",
+        "critical": True,
+    },
+    {
+        "name": "DESI DR1 Dark Energy Parametric Alignment",
+        "script": "nvg_dark_energy_desi.py",
+        "claim": "VMF cyclic cosmology prediction (w0 = -0.83, wa = -1.05) aligns within 0.1-sigma of DESI DR1",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

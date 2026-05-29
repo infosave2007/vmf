@@ -177,6 +177,9 @@ NVG-Research/
 │   ├── nvg_magnetar_mass_correlation.py    # Reconstructed magnetar mass-field correlation statistical audit
 │   ├── nvg_new_predictions.py              # Quantitative multi-messenger predictions (FAIR, GW, LMXB)
 │   ├── nvg_unified_field_equations.py      # Verification of the unified field equations and core limits
+│   ├── nvg_hades_dielectron_sim.py         # HADES/CBM in-medium rho-meson dielectron spectral simulation
+│   ├── nvg_gw_echo_waveforms.py            # Post-merger black hole GW echoes waveform template simulator
+│   ├── nvg_dark_energy_desi.py             # Cosmological dark energy w0-wa parameter alignment with DESI DR1
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
@@ -221,6 +224,9 @@ python verification/nvg_magnetar_population_scan.py # Catalog scan and appendix 
 python verification/nvg_magnetar_mass_correlation.py # Statistical correlation audit of reconstructed masses
 python verification/nvg_new_predictions.py          # Quantitative predictions (FAIR, post-merger GW shift, LMXB)
 python verification/nvg_unified_field_equations.py  # Verification of the unified field equations (bounce and magnetars)
+python verification/nvg_hades_dielectron_sim.py     # HADES/CBM in-medium rho dielectron spectral simulation
+python verification/nvg_gw_echo_waveforms.py        # Post-merger black hole GW echoes waveform template simulator
+python verification/nvg_dark_energy_desi.py         # Dark energy w0-wa parameter alignment with DESI DR1
 
 # Electromagnetic extensions and vacuum properties
 python verification/nvg_em_extensions_proofs.py     # Lorentz invariance, vacuum polarization
