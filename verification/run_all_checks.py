@@ -163,6 +163,24 @@ CHECKS = [
         "claim": "Instanton relic density matches Planck PR4 Omega_DM = 0.268",
         "critical": True,
     },
+    {
+        "name": "Scalar Glueball Mass from VMF",
+        "script": "nvg_glueball_mass.py",
+        "claim": "Lightest scalar glueball (0++) mass matches Lattice QCD ~1.7 GeV",
+        "critical": True,
+    },
+    {
+        "name": "Majorana Neutrino Mass from Goldstone Phase",
+        "script": "nvg_neutrino_mass.py",
+        "claim": "Majorana mass from see-saw and theta-phase satisfies KATRIN < 0.45 eV",
+        "critical": True,
+    },
+    {
+        "name": "Magnetar Crustal Starquake QPOs",
+        "script": "nvg_starquake_qpo.py",
+        "claim": "Shear frequency shifts from eps_eff match SGR 1806-20 observed QPOs with < 0.2% avg deviation",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

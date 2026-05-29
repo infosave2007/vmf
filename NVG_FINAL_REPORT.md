@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-29 15:58:27
+**Generated:** 2026-05-29 16:01:10
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -16,6 +16,9 @@
 | $c_{s,\max}^2$ | 0.33 | **0.33** | 0.33 |
 | $\tau_1$ ($\mu$s) | 5.8 | **5.9** | 6.0 |
 | $\chi_\nu^2$ (reduced) | 0.63 | **0.63** | 0.63 |
+| $M_{\rm glueball}$ (MeV) | 1702.1 | **1718.0** | 1734.2 |
+| $m_\nu$ (eV) | 0.1161 | **0.1172** | 0.1183 |
+| QPO Deviation | 0.17% | **0.17%** | 0.17% |
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
@@ -43,3 +46,6 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_full_ns_eos.py` | Confirmed (NICER+LIGO) |
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
+| Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
+| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (KATRIN) |
+| Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | Confirmed (SGR 1806-20) |
