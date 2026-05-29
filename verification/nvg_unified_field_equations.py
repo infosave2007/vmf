@@ -80,14 +80,14 @@ def verify_magnetar_chiral_instability() -> tuple[float, float, float]:
     
     # Calculate required topological coupling constant gamma_topo:
     # ln(Gamma_struct) = Gamma_growth * t_trans = (sigma_topo^2 * t_trans) / (4 * sigma_core)
-    # sigma_topo = gamma_topo * (alpha_EM / pi) * dot_theta
-    alpha_pi = alpha_EM / math.pi
+    # sigma_topo = gamma_topo * (alpha_EM / (2 * pi)) * dot_theta
+    alpha_2pi = alpha_EM / (2.0 * math.pi)
     numerator = 4.0 * sigma_core * math.log(Gamma_struct_target)
-    denominator = (alpha_pi**2) * (dot_theta**2) * t_trans
+    denominator = (alpha_2pi**2) * (dot_theta**2) * t_trans
     gamma_topo = math.sqrt(numerator / denominator)
     
-    # Calculate the ratio to the standard EM-axion scale (alpha_EM / pi)
-    ratio_to_axion = gamma_topo / alpha_pi
+    # Calculate the ratio to the standard EM-axion scale (alpha_EM / (2 * pi))
+    ratio_to_axion = gamma_topo / alpha_2pi
     
     return dot_theta, gamma_topo, ratio_to_axion
 
@@ -139,7 +139,7 @@ def main():
     print("-" * 80)
     print(f"  Vacuum Phase Velocity (dot_theta)   : {dot_theta:.4e} rad/s")
     print(f"  Required Topological Coupling (gamma): {gamma_topo:.6f}")
-    print(f"  Ratio to EM-Axion Scale (alpha/pi)  : {ratio_axion*100:.2f}%  (sub-percent scale)")
+    print(f"  Ratio to EM-Axion Scale (alpha/2pi) : {ratio_axion*100:.2f}%  (few-percent scale)")
     print("  Status                              : ✅ INSTABILITY ACTIVE (GAMMA_STRUCT = 5.3)")
     print()
     
@@ -156,7 +156,7 @@ def main():
     # Assertions to secure correctness
     assert rho_c_MeV > 7.0e4 and rho_c_MeV < 7.2e4, "Bounce density calculation out of bounds!"
     assert ddot_a > 0, "Acceleration at bounce must be positive!"
-    assert ratio_axion > 0.01 and ratio_axion < 0.03, "Topological coupling scale mismatch!"
+    assert ratio_axion > 0.05 and ratio_axion < 0.08, "Topological coupling scale mismatch!"
     assert abs(delta_f2) > 0.1 and abs(delta_f2) < 5.0, "GW frequency shift calculation error!"
     
     print("All unified field equations calculations verified successfully.")
