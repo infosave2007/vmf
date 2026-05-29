@@ -91,6 +91,24 @@ CHECKS = [
         "claim": "Thermodynamic RF bulk pumping is < 10^-15 effective, requiring topological resonance",
         "critical": True,
     },
+    {
+        "name": "Dark Photon Observables & Constraints",
+        "script": "nvg_dark_photon_observables.py",
+        "claim": "BBN decay bounds eps_vac > 1.5e-11, and SN1987A requires mass melting <= 20%",
+        "critical": True,
+    },
+    {
+        "name": "Magnetar Mass-Field Correlation",
+        "script": "nvg_magnetar_mass_correlation.py",
+        "claim": "Fitted progenitor seed ~42 kG, reconstructed masses in 1.1-2.3 M_sun span, correlation R ~ 0.61",
+        "critical": True,
+    },
+    {
+        "name": "Quantitative Physical Predictions & Validation",
+        "script": "nvg_new_predictions.py",
+        "claim": "Breit-Wigner peak significance > 2 sigma at FAIR, LMXB suppression < 1e-20",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

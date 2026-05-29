@@ -92,7 +92,7 @@ $$r_c = \frac{c}{\sqrt{8\pi G \rho_c / 3}} \approx 1.13 \text{ км}$$
 
 | Направление | Интерпретация в рамках NVG | Значение для физики |
 |---|---|---|
-| Происхождение Магнетаров | Усиление магнитного поля в ядре в 7.4 раза (из-за падения диэлектрической проницаемости $\epsilon_{eff}$) | Решает парадокс сильных полей у медленновращающихся магнетаров (проблема динамо-модели). |
+| Происхождение Магнетаров | Восстановленная корреляция масса-поле ($R \approx 0.51$) при усилении поля в ядре до $\sim 7.4$ раз (топологическая вихревая связь / фазовая синхронизация Джозефсона) | Решает парадокс сильных полей у медленновращающихся магнетаров (проблема избытка вращательной энергии SNR $E_{\rm rot} \sim 10^{52}$ эрг). |
 | Спектр масс ПЧД ($4^N$) | Единая формула описывает рост массы ПЧД на каждом цикле: от $10^{-14} M_\odot$ до $10^6 M_\odot$. | Естественно сшивает загадку Тёмной Материи в астероидном окне и загадку ранних сверхмассивных ЧД из JWST. |
 | Joint Multi-Messenger Inference | Приведенный $\chi^2_\nu = 0.63$ для совместной аппроксимации данных NICER, LIGO и кривых остывания. | Достигается без использования суперкомпьютерного MCMC-подбора 10 параметров, только за счёт КХД-якоря. |
 | Эмерджентное квантование и дуализм | Корпускулярно-волновой дуализм, выраженный через квантовый потенциал Маделунга $Q(x)$ из плотности вакуума $\mathcal{W}$ и голдстоуновской фазы $\theta$. | Выводит уравнение Шрёдингера из уравнений классической гидродинамики вакуума, обходя теорему Деррика через динамический резонанс волн (PR Research 2026). |
@@ -145,6 +145,9 @@ NVG-Research/
 │   ├── NVG_MAGNETAR_PREPRINT_V3.md         # Переработанный magnetar preprint с новыми quantitative checks
 │   ├── NVG_MAGNETAR_PREPRINT_V3.tex        # LaTeX-версия для публикации
 │   ├── NVG_MAGNETAR_PREPRINT_V3.pdf        # PDF-версия для публикации
+│   ├── NVG_MAGNETAR_PREPRINT_V4.md         # Препринт версии 4 со статистическим аудитом корреляции масс и предсказаниями
+│   ├── NVG_MAGNETAR_PREPRINT_V4.tex        # LaTeX-версия препринта V4
+│   ├── NVG_MAGNETAR_PREPRINT_V4.pdf        # PDF-версия препринта V4
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Appendix по популяции магнетаров по объектам
 │   └── *.pdf                               # PDF-рендеры всех статей
 ├── verification/
@@ -170,6 +173,8 @@ NVG-Research/
 │   ├── nvg_magnetar_closure.py             # Closure checks для переработанного magnetar-сценария
 │   ├── nvg_1e161348_fallback_torque.py     # Модель fallback-disk torque для 1E 161348-5055
 │   ├── nvg_magnetar_population_scan.py     # Скан популяции магнетаров, gamma-fit и экспорт appendix
+│   ├── nvg_magnetar_mass_correlation.py    # Статистический аудит корреляции масс и полей реконструированных магнетаров
+│   ├── nvg_new_predictions.py              # Количественные мультимультимессенджерные предсказания (FAIR, GW, LMXB)
 │   ├── nvg_pbh_continuity_test.py          # Непрерывный спектр масс ПЧД по циклам
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
@@ -211,6 +216,8 @@ python verification/nvg_fair_hades_link.py         # Предсказание 24
 python verification/nvg_magnetar_closure.py        # Closure checks для revised magnetar scenario
 python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking для 1E 161348-5055
 python verification/nvg_magnetar_population_scan.py # Catalog scan и экспорт appendix по популяции магнетаров
+python verification/nvg_magnetar_mass_correlation.py # Статистический аудит корреляции восстановленных масс
+python verification/nvg_new_predictions.py          # Количественные предсказания (FAIR, сдвиг GW, LMXB)
 
 # Электромагнитные расширения и вакуумные свойства
 python verification/nvg_em_extensions_proofs.py     # Лоренц-инвариантность W, вакуумная поляризация

@@ -184,13 +184,19 @@ def parse_mcgill_magnetars(timeout_s: float = 20.0) -> list[CompactObject]:
 
 
 def build_sample() -> tuple[list[CompactObject], str]:
+    swift_j1555 = CompactObject("Swift J1555.2-5402", "magnetar", 3.86, 7.5e14, 1.7, "discovered 2021/2022", b_sigma_g=0.8e14)
     try:
         magnetars = parse_mcgill_magnetars()
         if len(magnetars) < 10:
             raise RuntimeError("parsed too few McGill rows")
-        return magnetars + CURATED_NON_MAGNETARS, f"McGill catalog parsed live ({len(magnetars)} magnetar rows)"
+        if not any(o.name == "Swift J1555.2-5402" for o in magnetars):
+            magnetars.append(swift_j1555)
+        return magnetars + CURATED_NON_MAGNETARS, f"McGill catalog parsed live ({len(magnetars)} magnetar rows, including Swift J1555)"
     except Exception as exc:
-        return FALLBACK_MAGNETARS + CURATED_NON_MAGNETARS, f"fallback curated magnetar sample used: {exc}"
+        fallback = list(FALLBACK_MAGNETARS)
+        if not any(o.name == "Swift J1555.2-5402" for o in fallback):
+            fallback.append(swift_j1555)
+        return fallback + CURATED_NON_MAGNETARS, f"fallback curated magnetar sample used: {exc} (including Swift J1555)"
 
 
 def required_surface_field(b_dip_g: float, gamma_struct: float) -> float:

@@ -90,7 +90,7 @@ These points are not direct independent observations, but conceptually solve lon
 
 | Area | NVG Interpretation | Impact on Physics |
 |---|---|---|
-| Origin of Magnetars | Core magnetic field amplification by 7.4x (due to $\epsilon_{eff}$ drop). | Solves the paradox of strong fields in slowly rotating magnetars (dynamo model issue). |
+| Origin of Magnetars | Reconstructed mass-field correlation ($R \approx 0.51$) via core field amplification up to $\sim 7.4\times$ (topological vortex-coupling / Josephson phase-locking). | Solves the paradox of strong fields in slowly rotating magnetars ($E_{\rm rot} \sim 10^{52}$ erg SNR energy tension). |
 | PBH Mass Spectrum ($4^N$) | A single formula maps mass growth per cycle: from $10^{-14} M_\odot$ to $10^6 M_\odot$. | Naturally bridges the Dark Matter anomaly in the asteroid window with early JWST supermassive BHs. |
 | Joint Multi-Messenger Inference | Reduced $\chi^2_\nu = 0.63$ for joint approximation of NICER, LIGO, and cooling data. | Achieved strictly through the QCD anchor without MCMC supercomputer fitting of 10 free parameters. |
 | Emergent Quantization & Duality | Wave-particle duality mapped via Madelung quantum potential $Q(x)$ from vacuum density $\mathcal{W}$ and Goldstone phase $\theta$. | Derives the Schrödinger equation from classical vacuum fluid dynamics, bypassing Derrick's theorem via dynamic wave resonances (PR Research 2026). |
@@ -143,6 +143,9 @@ NVG-Research/
 │   ├── NVG_MAGNETAR_PREPRINT_V3.md         # Revised magnetar preprint with new quantitative closure tests
 │   ├── NVG_MAGNETAR_PREPRINT_V3.tex        # Publication LaTeX for the revised magnetar preprint
 │   ├── NVG_MAGNETAR_PREPRINT_V3.pdf        # Publication PDF for the revised magnetar preprint
+│   ├── NVG_MAGNETAR_PREPRINT_V4.md         # Version 4 preprint with mass correlation audit & predictions
+│   ├── NVG_MAGNETAR_PREPRINT_V4.tex        # LaTeX file for Version 4 preprint
+│   ├── NVG_MAGNETAR_PREPRINT_V4.pdf        # PDF for Version 4 preprint
 │   ├── NVG_MAGNETAR_POPULATION_APPENDIX.md # Source-by-source magnetar population appendix
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/
@@ -168,6 +171,8 @@ NVG-Research/
 │   ├── nvg_magnetar_closure.py             # Magnetar closure checks and structural-amplification benchmarks
 │   ├── nvg_1e161348_fallback_torque.py     # Fallback-disk torque model for 1E 161348-5055
 │   ├── nvg_magnetar_population_scan.py     # Magnetar catalog scan, gamma-fit, and appendix export
+│   ├── nvg_magnetar_mass_correlation.py    # Reconstructed magnetar mass-field correlation statistical audit
+│   ├── nvg_new_predictions.py              # Quantitative multi-messenger predictions (FAIR, GW, LMXB)
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
 │   ├── nvg_joint_ns_inference.py           # Joint NS Inference (Multi-Messenger Likelihood)
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
@@ -209,6 +214,8 @@ python verification/nvg_fair_hades_link.py         # Predicts the 24% rho-meson 
 python verification/nvg_magnetar_closure.py        # Closure checks for the revised magnetar scenario
 python verification/nvg_1e161348_fallback_torque.py # Fallback-disk braking for 1E 161348-5055
 python verification/nvg_magnetar_population_scan.py # Catalog scan and appendix export for the magnetar population
+python verification/nvg_magnetar_mass_correlation.py # Statistical correlation audit of reconstructed masses
+python verification/nvg_new_predictions.py          # Quantitative predictions (FAIR, post-merger GW shift, LMXB)
 
 # Electromagnetic extensions and vacuum properties
 python verification/nvg_em_extensions_proofs.py     # Lorentz invariance, vacuum polarization
