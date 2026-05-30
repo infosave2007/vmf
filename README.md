@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-31-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-20-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-7-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-28-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-26-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-2-orange)
 
 **Preprints:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
