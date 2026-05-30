@@ -110,6 +110,12 @@ CHECKS = [
         "critical": True,
     },
     {
+        "name": "Advanced Physical Calculations (JWST, FRB, Chiral Masses, QCD Phase, SGWB, T_bounce, KATRIN)",
+        "script": "nvg_advanced_calculations.py",
+        "claim": "All 7 advanced checks (JWST, FRB DM, Chiral Masses, QCD Phase diagram, SGWB, T_bounce, KATRIN 2025) pass",
+        "critical": True,
+    },
+    {
         "name": "Unified Field Equations & Core Limits",
         "script": "nvg_unified_field_equations.py",
         "claim": "Verify cosmological bounce, magnetar chiral instability, and magnetic backpressure",

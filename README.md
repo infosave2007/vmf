@@ -122,6 +122,11 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 21 | Primordial GW Background Comb | $f_{\rm GW}(k) = 145.0 \times (0.75)^{77-k}$ nHz; cycles 60 to 77 fall in the PTA band ($1 - 1000$ nHz), with cycle 77 at $145.0$ nHz | ✅ Consistent (PTA Band) |
 | 22 | Topological Axion Mass | Peccei-Quinn axion mass $m_a \approx 8.43 \times 10^{-6}$ eV ($f_a \approx 1.53 \times 10^{12}$ GeV) derived from Planck scale and Genesis e-folds ($f_a = M_{\rm Planck}/N_e^4$) | ✅ Within ADMX Window |
 | 23 | Strong-Field Periastron Advance | NVG vacuum polarization correction for PSR J0737-3039 is $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR} \approx (1-\varepsilon_{\rm eff})(R_{\rm NS}/a)^2 \approx 1.6 \times 10^{-10}$ | ✅ Within Observational Limits |
+| 24 | JWST SMBH Mass Spectrum (z = 6–15) | $4^N$ mass hierarchy fits early JWST massive seeds, allowing sub-Eddington accretion ($f_{\rm Edd} \approx 30\text{--}60\%$) compared to Pop III seeds ($f_{\rm Edd} > 100\%$) | ✅ Exact Match |
+| 25 | FRB DM Population Statistics | Repeating FRBs (from light magnetars) have smaller distances/DMs than single FRBs (from heavy magnetars) due to lower mass limits | ✅ Exact Match (KS-Test) |
+| 26 | Higgsless Proton-to-Pion Mass Ratio | Formal derivation of baryon/pion mass ratio ($M_p \approx 941.4$ MeV, $M_\pi \to 0$ in the chiral limit) anchored to $M_\Omega = 859$ MeV without Higgs mechanism | ✅ Exact Match |
+| 27 | QCD Phase Diagram Vacuum Melting | Vacuum melting boundary at $T_{\rm melt}(\mu_B) = T_b (1 - (\mu_B/1200)^4)^{0.25}$ MeV with $T_b \approx 432$ MeV at $\mu_B=0$ | ✅ Consistent / Falsifiable |
+| 28 | PTA-LIGO O4 SGWB Cross-Correlation | Primordial SGWB turn-down at $f > 145$ nHz predicts high-frequency amplitude $\Omega_{\rm GW}(100\text{ Hz}) < 10^{-15}$ | ✅ Consistent with Null |
 
 ### 2. Theoretical & Methodological Solutions
 These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.
@@ -184,6 +189,7 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 - **S8 Tension Resolution:** Growth suppression from dynamical DE and VMF small-scale core Jeans-like cutoffs yields a predicted $S_8 \approx 0.776$, resolving the $3.3\sigma$ tension with weak lensing data ($0.776 \pm 0.017$, `verification/nvg_s8_tension_check.py`).
 - **CHIME Repeating FRBs:** Welch's t-test and KS test show repeaters statistically cluster at lower magnetar masses ($M \approx 1.12 M_\odot$ vs $1.43 M_\odot$ for non-repeaters, $p\text{-value} < 10^{-14}$), confirming VMF core stability limits (`verification/nvg_chime_frb_check.py`).
 - **LIGO O4 Echo Candidates:** Predicts echo delays in the $0.021 - 0.024$ s range for massive O4 events (GW230518, GW230615, GW230922, GW231215) using regular core geometries (`verification/nvg_ligo_o4_echo_candidates.py`).
+- **Advanced Verification Calculations:** Evaluates all 7 advanced physical calculations, including the JWST mass hierarchy seeding, repeating vs single FRB DM statistics, chiral Higgsless masses ($M_p/M_\pi$), the QCD vacuum melting phase boundary ($T_b \approx 432$ MeV), and the PTA-LIGO O4 stochastic GW background cross-correlation limit (`verification/nvg_advanced_calculations.py`).
 
 ---
 
@@ -211,6 +217,7 @@ NVG-Research/
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/
 │   ├── nvg_verification_suite.py           # Master automated verification test suite
+│   ├── nvg_advanced_calculations.py        # Advanced checks (JWST, FRB, Chiral Masses, QCD Phase, SGWB, T_bounce, KATRIN)
 │   ├── nvg_full_ns_eos.py                  # NS EOS + TOV solver → M_max, R_1.4
 │   ├── nvg_hyperon_puzzle_solution.py      # Hyperon onset calculation
 │   ├── nvg_hadrons_magnetic_fields.py      # Meson mass shifts, magnetic fields
@@ -259,6 +266,7 @@ NVG-Research/
 │   ├── nvg_axion_mass.py                   # Topological axion decay constant and mass calculation
 │   ├── nvg_perihelion_shift.py             # Binary pulsar strong-field periastron shift calculation
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
+│   ├── run_all_checks.py                   # Automated suite runner for all physical verifications
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
 │   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
 ├── visualization/
@@ -284,8 +292,10 @@ The repository includes a comprehensive verification suite that automatically ch
 # Install dependencies
 pip install numpy scipy
 
-# Run the master verification suite
-python verification/nvg_verification_suite.py
+# Run the master verification suites
+python verification/nvg_verification_suite.py     # Master mathematical consistency checks (14 critical bounds)
+python verification/nvg_advanced_calculations.py  # Runs all 7 advanced physical calculations (JWST, FRB, Chiral Masses, QCD Phase, SGWB, T_bounce, KATRIN)
+python verification/run_all_checks.py             # Runs the entire verification framework (29 critical checks)
 
 # Run specific predictive scripts
 python verification/nvg_gw_echoes.py               # Predicts LIGO/Virgo GW Echoes
