@@ -13,7 +13,7 @@
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270025-blue.svg)](https://doi.org/10.5281/zenodo.20270025) *Resolution of the Slow-Rotating Magnetar Paradox via QCD Vacuum Permeability Phase Transitions*
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270202-blue.svg)](https://doi.org/10.5281/zenodo.20270202) *Eliminating the Observer Effect: Wave Function Collapse as Deterministic Topological Reconnection in a Condensate Vacuum*
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20463836-blue.svg)](https://doi.org/10.5281/zenodo.20463836) *Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in the Null-Vector Gravity Framework*
-  *Resolves the hyperon puzzle (shifting onset to $2.6 n_0$), the young pulsar cooling dichotomy (with a DURC threshold at $1.45 M_\odot$), and the speed of sound conformal limit violation (peaks at $c_{s,\max}^2 \approx 1/3$ and converges asymptotically to $c^2/3$), under a parameter-free description anchored to $M_{\Omega} = 859$ MeV.*
+  Resolves the hyperon puzzle (shifting onset to $2.6 n_0$), the young pulsar cooling dichotomy (with a DURC threshold at $1.45 M_\odot$), and the speed of sound conformal limit violation (peaks at $c_{s,\max}^2 \approx 1/3$ and converges asymptotically to $c^2/3$), under a parameter-free description anchored to $M_{\Omega} = 859$ MeV.
 
 ## Overview
 
