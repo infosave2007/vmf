@@ -12,6 +12,8 @@
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20269816-blue.svg)](https://doi.org/10.5281/zenodo.20269816) *A Discrete Cyclic Mass Hierarchy 4^N for Primordial Black Holes: Bridging Asteroid-Mass Dark Matter to Early JWST Heavy Seeds*
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270025-blue.svg)](https://doi.org/10.5281/zenodo.20270025) *Resolution of the Slow-Rotating Magnetar Paradox via QCD Vacuum Permeability Phase Transitions*
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20270202-blue.svg)](https://doi.org/10.5281/zenodo.20270202) *Eliminating the Observer Effect: Wave Function Collapse as Deterministic Topological Reconnection in a Condensate Vacuum*
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20463836-blue.svg)](https://doi.org/10.5281/zenodo.20463836) *Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in the Null-Vector Gravity Framework*
+  *Resolves the hyperon puzzle (shifting onset to $2.6 n_0$), the young pulsar cooling dichotomy (with a DURC threshold at $1.45 M_\odot$), and the speed of sound conformal limit violation (peaks at $c_{s,\max}^2 \approx 1/3$ and converges asymptotically to $c^2/3$), under a parameter-free description anchored to $M_{\Omega} = 859$ MeV.*
 
 ## Overview
 
@@ -31,7 +33,13 @@ where $\Phi(x) = \mathcal{W}(x) e^{i\theta(x)}$ is the complex vacuum condensate
 The framework consists of three main pillars:
 
 ### Pillar I: Dense Nuclear Matter (VMF)
-The melting of the vacuum mass in dense environments dictates the Equation of State (EOS) for neutron stars. The model successfully resolves causality ($c_s \leq c$) and stiffness problems, yielding a maximum neutron star mass of $M_{\max} \approx 2.3\,M_\odot$. It also predicts a measurable ~24% mass drop for the $\rho$-meson at $2n_0$ (testable at FAIR/HADES).
+The melting of the vacuum mass in dense environments dictates the Equation of State (EOS) for neutron stars (see preprint [Zenodo 20463836](https://doi.org/10.5281/zenodo.20463836)). The model successfully:
+- **Resolves the hyperon puzzle** by shifting the strange baryon onset to $2.6 n_0 > 2.0 n_0$ (quark-gluon plasma transition).
+- **Resolves the young pulsar cooling dichotomy** (with a parameter-free DURC threshold at $1.45 M_\odot$ between Cassiopeia A and Vela).
+- **Resolves conformal sound speed limit violation** (peaks at $c_{s,\max}^2 \approx 1/3$ and asymptotically approaches $c^2/3$ from below, supporting $2.25 M_\odot$ without over-stiffening).
+- **Predicts universal I-Love-Q relations** and a parameter-free tidal deformability ($\Lambda_{1.4} = 177$).
+- **Eliminates empirical parameter degeneracies** by utilizing a single QCD vacuum anchor ($M_{\Omega,0} = 859$ MeV) with zero free parameters.
+- Predicts a measurable ~24% mass drop for the $\rho$-meson at $2n_0$ (testable at FAIR/HADES).
 
 ### Pillar II: Cyclic Cosmology & Genesis (NVG)
 
