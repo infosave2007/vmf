@@ -205,6 +205,42 @@ CHECKS = [
         "claim": "NVG vacuum polarization correction for J0737-3039 is ~1.6e-10, safely below 0.02% limit",
         "critical": True,
     },
+    {
+        "name": "CMB Temperature from QCD Bounce",
+        "script": "nvg_cmb_temperature.py",
+        "claim": "Predicted CMB temperature today is T_CMB ≈ 2.725 K under unit bounce scaling",
+        "critical": True,
+    },
+    {
+        "name": "Baryon Asymmetry from Genesis Bounce",
+        "script": "nvg_baryon_asymmetry.py",
+        "claim": "Predicted baryon-to-photon ratio is η_B ≈ 6e-10 from out-of-equilibrium scaling",
+        "critical": True,
+    },
+    {
+        "name": "Post-merger GW peak frequency",
+        "script": "nvg_postmerger_fpeak.py",
+        "claim": "Predicted post-merger peak GW frequency is f_peak ≈ 2730 Hz from TOV R_1.6",
+        "critical": True,
+    },
+    {
+        "name": "NS Surface Gravitational Redshift",
+        "script": "nvg_ns_redshift.py",
+        "claim": "Predicted surface gravitational redshift is z_surf ≈ 0.235 from VMF R_1.4 = 12.0 km",
+        "critical": True,
+    },
+    {
+        "name": "SGR 1935+2154 Quiescent Thermal Emission",
+        "script": "nvg_sgr_temperature.py",
+        "claim": "Predicted quiescent T_spot ≈ 0.45 keV and L_thermal ≈ 1e34 erg/s for light magnetar",
+        "critical": True,
+    },
+    {
+        "name": "LiteBIRD B-mode Polarisation Cutoff",
+        "script": "nvg_litebird_prediction.py",
+        "claim": "Predicted tensor-to-scalar ratio r(l) drops below 0.001 at large scales (l < 10)",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [

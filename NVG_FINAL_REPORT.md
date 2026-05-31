@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-29 16:05:29
+**Generated:** 2026-05-31 11:58:55
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -42,7 +42,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | CMB Genesis Cutoff | N_e = 53.15 | `nvg_genesis_observable.py` | Confirmed (Planck PR4) |
 | NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
 | Tidal Deformability | Lambda_1.4 = 470 | `nvg_tidal_deformability_gw170817.py` | Compatible (GW170817) |
-| Gravitational Redshift | z_surf = 0.235 | `nvg_advanced_observables_I.py` | Awaiting STROBE-X |
+| Gravitational Redshift | z_surf = 0.235 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
 | Meson Mass Melting | rho shift = -23.2% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
@@ -51,8 +51,14 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
-| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (KATRIN) |
+| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Planck PR4 Limit) |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | Confirmed (SGR 1806-20) |
 | Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |
 | Topological Axion Mass | m_a = 8.43e-06 eV | `nvg_axion_mass.py` | Awaiting ADMX/CASPEr |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Confirmed (J0737-3039) |
+| CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | Confirmed (COBE/FIRAS) |
+| Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Confirmed (Planck+BBN) |
+| Post-merger f_peak | f_peak = 2730.0 Hz | `nvg_postmerger_fpeak.py` | Consistent / Falsifiable |
+| SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Confirmed (XMM-Newton) |
+| PSR J0437-4715 MR | R_1.4 = 11.10 km | `nvg_nicer_j0437_check.py` | Confirmed (NICER 2024) |
+| LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Consistent / Falsifiable |
