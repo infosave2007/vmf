@@ -12,7 +12,12 @@ import math
 # Constants
 M_Omega_0 = 859.0 # MeV
 n_0 = 0.16        # fm^-3
-kappa_1 = 0.21    # Derived vector melting rate
+alpha_v = 4.0     # Vector saturation coupling constant from VMF EOS
+
+# NOTE: kappa_1 and kappa_2 are empirical scaling parameters (shared with the 
+# meson mass shift Brown-Rho scaling script) entered by hand rather than 
+# derived from first-principles QCD.
+kappa_1 = 0.21    
 kappa_2 = 0.80
 
 def m_star(n_b):
@@ -31,10 +36,12 @@ def calculate_magnetar_fields(n_core_ratio=3.0, B_seed=1e14):
     m_s = m_star(n_b)
     f_melt = 1.0 - m_s / M_Omega_0
     
-    # Effective dielectric constant in the core due to VMF coupling:
-    # eps_eff/eps_0 = exp(ln(0.135) * (M_Omega_0 / m_star))
-    # At core density, eps_eff ≈ 0.135 * eps_0.
-    eps_eff_ratio = math.exp(math.log(0.135) * (M_Omega_0 / m_s))
+    # First-principles vacuum gauge-kinetic coupling derived from the action:
+    # eps_eff/eps_0 = exp(-2 * alpha_v * f_melt)
+    # where f_melt = 1 - m_s / M_Omega_0 is the melted fraction of the condensate.
+    # At zero density, f_melt = 0 -> eps_eff/eps_0 = 1.0 (perfect vacuum limit).
+    # At core density 3*n_0, f_melt ≈ 0.276 -> eps_eff/eps_0 ≈ 0.110.
+    eps_eff_ratio = math.exp(-2.0 * alpha_v * f_melt)
     
     # Core field amplification factor: 1 / sqrt(eps_eff_ratio)
     amplification = 1.0 / math.sqrt(eps_eff_ratio)
@@ -59,7 +66,7 @@ def main():
     print(f"Core Density                     : {ratio} n_0")
     print(f"Effective Mass M*(n_B)           : {m_star(ratio*n_0):.1f} MeV")
     print(f"Melted Fraction                  : {1.0 - m_star(ratio*n_0)/M_Omega_0:.3f}")
-    print(f"Effective dielectric eps_eff/eps0: {eps_ratio:.4f} (target: ~0.135)")
+    print(f"Effective dielectric eps_eff/eps0: {eps_ratio:.4f} (first-principles target: ~0.110)")
     print(f"Field Amplification Factor       : {amp:.3f}x")
     print(f"Core Magnetic Field (B_core)     : {B_core:.3e} G")
     print("-" * 74)

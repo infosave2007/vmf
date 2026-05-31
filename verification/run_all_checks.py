@@ -147,7 +147,7 @@ CHECKS = [
     },
     {
         "name": "Tidal Deformability GW170817 & Double Pulsar MoI",
-        "script": "nvg_tidal_deformability_gw170817.py",
+        "script": "nvg_tidal_deformability.py",
         "claim": "Verify R_1.4 ~ 11.1 km and Double Pulsar moment of inertia is compatible with obs (~1.12e45 g cm^2)",
         "critical": True,
     },

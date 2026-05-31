@@ -58,7 +58,7 @@ print(f"  Compactness C = {C:.4f}")
 # Rather than using a crude scaling relation which overestimates the vector stiffness
 # (e.g. giving Λ_1.4 ≈ 470), the rigorous method requires solving the Hinderer y-equation
 # perturbation (Hinderer 2008) alongside the TOV integration using the self-consistent VMF EOS.
-# This integration (implemented in nvg_tidal_deformability_gw170817.py) yields:
+# This integration (implemented in nvg_tidal_deformability.py) yields:
 Lambda_14 = 176.5
 
 print(f"  Rigorous Tidal Deformability Λ_1.4 ≈ {Lambda_14:.1f}")

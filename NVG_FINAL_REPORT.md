@@ -51,7 +51,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | CMB Genesis Cutoff | N_e = 53.15 | `nvg_genesis_observable.py` | Confirmed (Derived from D_LS/R_bounce) |
 | Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Confirmed (Derived from Cycle 77 Phase) |
 | NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
-| Tidal Deformability | Lambda_1.4 = 177 | `nvg_tidal_deformability_gw170817.py` | Confirmed (TOV + Hinderer y-integration) |
+| Tidal Deformability | Lambda_1.4 = 177 | `nvg_tidal_deformability.py` | Confirmed (TOV + Hinderer y-integration) |
 | Gravitational Redshift | z_surf = 0.235 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
 | Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR (Derived from W-field Coupling) |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
