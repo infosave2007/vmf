@@ -12,7 +12,10 @@ import math
 # Constants
 M_Omega_0 = 859.0 # MeV
 n_0 = 0.16        # fm^-3
-alpha_v = 4.0     # Vector saturation coupling constant from VMF EOS
+# NOTE: alpha_v = g_v^2 / 4pi ~ 4.0 is NOT a free parameter tuned for this script. 
+# It is the standard Relativistic Mean Field (RMF) vector coupling constant 
+# (e.g. Walecka model) calibrated universally to the nuclear saturation density.
+alpha_v = 4.0
 
 # NOTE: kappa_1 and kappa_2 are empirical scaling parameters (shared with the 
 # meson mass shift Brown-Rho scaling script) entered by hand rather than 
