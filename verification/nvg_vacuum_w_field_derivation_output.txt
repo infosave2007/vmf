@@ -1,51 +1,30 @@
 ================================================================================
-  QFT VACUUM CONDENSATE W-FIELD PHASE TRANSITION NUMERICAL MODEL
+   IN-MEDIUM VACUUM CONDENSATE W-FIELD PHASE TRANSITION NUMERICAL MODEL
 ================================================================================
-Model Parameters:
-  mu^2 (Mass Parameter)              : 1.0000
-  lambda (Self-coupling)             : 0.5000
-  Critical Gauge Threshold (|g|_crit): 1.0000
+1. QCD Anchor Calibration Check:
+  Nucleon Mass (M_N)                 : 939.0 MeV
+  Pion Mass (m_pi)                   : 139.57 MeV
+  Pion Decay Constant (f_pi)         : 92.4 MeV
+  Sigma Terms (pi-N, s-N)            : 44.0 MeV, 30.0 MeV
+  NJL Susceptibility Loop (I_1)      : 0.5277 (dim-less)
+  NJL Constituent Scaling (C)        : 1.1367
+  Calculated self-coupling (lambda)  : 1.0575 (Used in model: 1.05)
+  Calculated gauge coupling (q)      : 47.04 (Used in model: 47.04)
+  Vacuum VEV (W_0) anchored to       : 859.00 MeV
+  Mass Parameter (mu^2)              : 1387237.81 MeV^2 (mu = 1177.81 MeV)
 --------------------------------------------------------------------------------
-VEV EVOLUTION AS A FUNCTION OF GAPE FIELD GRADIENT |g|:
-   |g|     |    g^2     | Effective Mass Term (g^2 - mu^2) |    VEV (W_0)   
---------------------------------------------------------------------------------
-  0.0000   |   0.0000   |             -1.0000              |     1.4142      (SSB Condensate)
-  0.2500   |   0.0625   |             -0.9375              |     1.3693      (SSB Condensate)
-  0.5000   |   0.2500   |             -0.7500              |     1.2247      (SSB Condensate)
-  0.7500   |   0.5625   |             -0.4375              |     0.9354      (SSB Condensate)
-  0.9000   |   0.8100   |             -0.1900              |     0.6164      (SSB Condensate)
-  1.0000   |   1.0000   |              0.0000              |     0.0000      (Sym Restored (Melted))
-  1.1000   |   1.2100   |              0.2100              |     0.0000      (Sym Restored (Melted))
-  1.2500   |   1.5625   |              0.5625              |     0.0000      (Sym Restored (Melted))
-  1.5000   |   2.2500   |              1.2500              |     0.0000      (Sym Restored (Melted))
-  2.0000   |   4.0000   |              3.0000              |     0.0000      (Sym Restored (Melted))
---------------------------------------------------------------------------------
-EFFECTIVE POTENTIAL V_eff(W) VALUES FOR REGIMES:
-
-Regime: Sub-critical (Weak Field) (|g| = 0.50)
-      W      |       V_eff(W)      
-  ---------------------------------
-    0.0000   |        0.0000       
-    0.5000   |       -0.0859       
-    1.0000   |       -0.2500       
-    1.4140   |       -0.2501       
-    2.0000   |        0.5000       
-
-Regime: Critical (Phase Boundary) (|g| = 1.00)
-      W      |       V_eff(W)      
-  ---------------------------------
-    0.0000   |        0.0000       
-    0.5000   |        0.0078       
-    1.0000   |        0.1250       
-    1.4140   |        0.4997       
-    2.0000   |        2.0000       
-
-Regime: Super-critical (Strong Field) (|g| = 1.50)
-      W      |       V_eff(W)      
-  ---------------------------------
-    0.0000   |        0.0000       
-    0.5000   |        0.1641       
-    1.0000   |        0.7500       
-    1.4140   |        1.7493       
-    2.0000   |        4.5000       
+2. VEV AND ENERGY-MOMENTUM TENSOR EVOLUTION IN DENSE MEDIUM:
+n_B (n_0) | g_0 (MeV) | VEV W_0 (MeV) | rho_W (MeV/fm3) |  P_W (MeV/fm3)  | rho+3P (MeV/fm3)
+-------------------------------------------------------------------------------------
+   0.0    |   782.6   |     859.0     |    2.94e+04     |    -2.94e+04    |    -5.88e+04     (Condensate - SEC VIOLATED (Bounce))
+   0.5    |   304.8   |    1110.3     |    1.58e+04     |    -1.58e+04    |    -3.16e+04     (Condensate - SEC VIOLATED (Bounce))
+   1.0    |  -172.9   |    1137.0     |    1.30e+04     |    -1.30e+04    |    -2.61e+04     (Condensate - SEC VIOLATED (Bounce))
+   1.5    |  -650.7   |     958.1     |    2.64e+04     |    -2.64e+04    |    -5.28e+04     (Condensate - SEC VIOLATED (Bounce))
+   2.0    |  -1128.5  |     329.1     |    2.25e+04     |    -2.25e+04    |    -4.50e+04     (Condensate - SEC VIOLATED (Bounce))
+   2.5    |  -1606.3  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
+   3.0    |  -2084.0  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
+   4.0    |  -3039.6  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
+   5.0    |  -3995.1  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
+   8.0    |  -6861.8  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
+  10.0    |  -8772.9  |      0.0      |    1.86e+04     |    -1.86e+04    |    -3.72e+04     (Melted - SEC VIOLATED (Bounce))
 ================================================================================
