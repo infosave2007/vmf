@@ -16,6 +16,8 @@
   Resolves the hyperon puzzle (shifting onset to $2.6 n_0$), the young pulsar cooling dichotomy (with a DURC threshold at $1.45 M_\odot$), and the speed of sound conformal limit violation (peaks at $c_{s,\max}^2 \approx 1/3$ and converges asymptotically to $c^2/3$), under a parameter-free description anchored to $M_{\Omega} = 859$ MeV.
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20473318-blue.svg)](https://doi.org/10.5281/zenodo.20473318) *Dynamics of the QCD Vacuum Condensate Amplitude in Dense Matter and Cosmology*
   Provides a rigorous mathematical derivation of the classical equations of motion for the radial mode $W(x)$ governing in-medium hadron masses, its gauge-invariant coupling to baryon currents, and its cosmological FLRW reduction. Demonstrates how vacuum melting $W \to 0$ violates the Strong Energy Condition (SEC) to trigger a smooth cosmological bounce at $n_B \approx 2.05\,n_0$, avoiding the Big Bang singularity.
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20476890-blue.svg)](https://doi.org/10.5281/zenodo.20476890) *Seven Results of the Vacuum Condensate: From Nuclear Matter to Quantum Mechanics*
+  Derives seven physical consequences from a single vacuum condensate order parameter $\Phi = \Wc\,\ee^{\ii\theta}$ without quantization: Heisenberg uncertainty (via Cauchy--Schwarz), the Born rule (via Fokker--Planck osmotic balance), wave-function collapse (via phase thermalization), the Strong CP solution ($\bar\theta_{\rm QCD} = 0$), the thermodynamic arrow of time (via topological charge $Q=+1$), temperature-dependent Bell violation, and Hawking radiation.
 
 ## Overview
 

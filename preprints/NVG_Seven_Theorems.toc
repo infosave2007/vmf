@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Result I: Heisenberg Uncertainty Principle}{3}{section.2}%
+\contentsline {section}{\numberline {3}Result II: Born Rule}{4}{section.3}%
+\contentsline {section}{\numberline {4}Result III: Wave-Function Collapse}{6}{section.4}%
+\contentsline {section}{\numberline {5}Result IV: Strong CP Solution}{8}{section.5}%
+\contentsline {section}{\numberline {6}Result V: Topological Interpretation of the Arrow of Time}{9}{section.6}%
+\contentsline {section}{\numberline {7}Result VI: Temperature Dependence of Bell--CHSH Violation}{10}{section.7}%
+\contentsline {section}{\numberline {8}Result VII: Quantum Gravity Without Quantization}{13}{section.8}%
+\contentsline {section}{\numberline {9}Limitations and Open Problems}{15}{section.9}%
+\contentsline {section}{\numberline {10}Discussion}{17}{section.10}%
+\contentsline {paragraph}{Falsifiability.}{17}{section*.11}%
+\contentsline {paragraph}{Internal consistency.}{17}{section*.12}%
+\contentsline {section}{\numberline {11}Conclusion}{17}{section.11}%
+\contentsline {section}{\numberline {A}Derivation of Cosmological Entropy Growth over Tolman Cycles}{18}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Genesis Instanton and Initial Scale}{18}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Holographic Horizon Entropy Scaling}{18}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Bulk Matter and Radiation Entropy}{19}{subsection.A.3}%
