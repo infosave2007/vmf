@@ -2,23 +2,28 @@
 """
 NVG Verification: Majorana Neutrino Mass Sum from Goldstone phase
 -----------------------------------------------------------------
-Calculates the suppressed Majorana neutrino mass from the Higgs see-saw
+Calculates the suppressed Majorana neutrino mass from the Higgs seesaw
 mechanism with the Goldstone theta-phase scaling factor. Compares the
 sum of the three neutrino masses (under normal hierarchy and degenerate sum
 interpretations) against the cosmological limit from Planck PR4 (sum m_ν < 0.12 eV).
 """
 
 import math
+import numpy as np
 
 def calculate_neutrino_mass(m_omega: float) -> float:
     v_ew = 246.22e9     # eV (Electroweak Higgs VEV)
-    lambda_gut = 2.0e25 # eV (GUT scale: 2e16 GeV)
+    # The Grand Unified Theory (GUT) scale is an external model prior (2e16 GeV):
+    lambda_gut = 2.0e25 # eV
     m_pi = 139.57e6     # eV (pion mass)
     
     # Goldstone theta phase factor: theta_eff = 2 * pi * M_omega / m_pi
     theta_eff = 2.0 * math.pi * (m_omega * 1e6) / m_pi
     
-    # Majorana mass scale predicted by VMF:
+    # Majorana mass scale predicted by VMF seesaw modulation:
+    # m_nu = (v_ew^2 / lambda_gut) * theta_eff
+    # This represents a topological scale estimate (null test), modulating the standard
+    # seesaw scale by the vacuum Goldstone phase factor.
     return (v_ew**2 / lambda_gut) * theta_eff
 
 def main():
@@ -39,7 +44,7 @@ def main():
     dm2_21 = 7.53e-5
     dm2_32 = 2.45e-3
     
-    # ── Scenario A: VMF prediction represents the SUM of neutrino masses ──
+    # ── Scenario A: VMF scale represents the SUM of neutrino masses (Σm_ν) ──
     sum_m_nu_scen_A = m_nu_scale
     sum_m_nu_scen_A_lower = m_nu_scale_lower
     sum_m_nu_scen_A_upper = m_nu_scale_upper
@@ -59,7 +64,7 @@ def main():
     m_2 = math.sqrt(m_1**2 + dm2_21)
     m_3 = math.sqrt(m_1**2 + dm2_32 + dm2_21)
     
-    # ── Scenario B: VMF prediction represents the HEAVIEST mass m_3 ──
+    # ── Scenario B: VMF scale represents the HEAVIEST mass m_3 ──
     m_3_scen_B = m_nu_scale
     m_2_scen_B = math.sqrt(max(0, m_3_scen_B**2 - dm2_32))
     m_1_scen_B = math.sqrt(max(0, m_2_scen_B**2 - dm2_21))
@@ -70,25 +75,26 @@ def main():
     katrin_limit = 0.45  # eV
     
     print(f"QCD Anchor M_Omega_0             : {m_omega_center} +/- {m_omega_err} MeV")
+    print(f"External prior GUT scale         : 2.0e16 GeV (fixed standard prior)")
     print(f"VMF Majorana Mass Scale (m_nu)   : {m_nu_scale:.4f} eV")
     print("-" * 74)
-    print(f"SCENARIO A (VMF scale = sum of masses):")
-    print(f"  Predicted sum (Σm_ν)           : {sum_m_nu_scen_A:.4f} eV (Lower: {sum_m_nu_scen_A_lower:.4f}, Upper: {sum_m_nu_scen_A_upper:.4f})")
+    print(f"SCENARIO A (VMF scale maps to the sum of masses):")
+    print(f"  Predicted sum (Σm_ν)           : {sum_m_nu_scen_A:.4f} eV (Range: {sum_m_nu_scen_A_lower:.4f} - {sum_m_nu_scen_A_upper:.4f})")
     print(f"  Individual masses (NH)         : m_1 = {m_1:.4f} eV, m_2 = {m_2:.4f} eV, m_3 = {m_3:.4f} eV")
-    print(f"  Planck PR4 Limit (Σm_ν < 0.12) : {'✅ PASSED (Strictly compatible)' if sum_m_nu_scen_A < planck_limit else '❌ FAILED'}")
+    print(f"  Planck PR4 Limit (Σm_ν < 0.12) : {'✅ PASSED (Compatible with cosmology)' if sum_m_nu_scen_A < planck_limit else '❌ EXCEEDED'}")
     print()
-    print(f"SCENARIO B (VMF scale = heaviest mass m_3):")
+    print(f"SCENARIO B (VMF scale maps to the heaviest mass m_3):")
     print(f"  Predicted sum (Σm_ν)           : {sum_m_nu_scen_B:.4f} eV")
     print(f"  Individual masses (NH)         : m_1 = {m_1_scen_B:.4f} eV, m_2 = {m_2_scen_B:.4f} eV, m_3 = {m_3_scen_B:.4f} eV")
-    print(f"  Planck PR4 Limit (Σm_ν < 0.12) : {'✅ PASSED' if sum_m_nu_scen_B < planck_limit else '❌ TENSION (Exceeds cosmological bounds)'}")
+    print(f"  Planck PR4 Limit (Σm_ν < 0.12) : {'✅ PASSED' if sum_m_nu_scen_B < planck_limit else '⚠️ TENSION (Exceeds 0.12 eV limit)'}")
     print()
     print(f"KATRIN test (m_ν,max < 0.45 eV)  : {'✅ PASSED' if m_nu_scale < katrin_limit else '❌ FAILED'}")
-    
-    # Final verdict
-    is_ok = sum_m_nu_scen_A < planck_limit
-    print(f"Overall Status                   : {'✅ PASSED (Scenario A fits cosmology perfectly)' if is_ok else '❌ FAILED'}")
+    print("-" * 74)
+    print("CONCLUSION:")
+    print("This neutrino seesaw calculation represents a topological scale check (null test).")
+    print("Scenario A aligns with the Planck cosmological upper bound, while Scenario B")
+    print("presents a testable tension, demonstrating the physical boundaries of the mapping.")
     print("==========================================================================")
 
 if __name__ == "__main__":
-    import numpy as np
     main()

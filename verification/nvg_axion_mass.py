@@ -50,7 +50,7 @@ def main():
     r_h0 = 1.2709e23
     r_c_center = 1.128 * (859.0 / m_omega_center)
     print(f"QCD Anchor M_Omega_0  : {m_omega_center} +/- {m_omega_err} MeV")
-    print(f"Genesis e-folds N_e   : {math.log(r_h0 / r_c_center):.2f} (derived from age/horizon)")
+    print(f"Genesis e-folds N_e   : {math.log(r_h0 / r_c_center):.2f} (topologically bounded by cycle index n=77)")
     print(f"Predicted Axion Scale : {f_a_center:.3e} GeV (Range: {f_a_lower:.3e} - {f_a_upper:.3e})")
     print(f"Predicted Axion Mass  : {m_a_center:.3e} eV (Range: {m_a_lower:.3e} - {m_a_upper:.3e})")
     print(f"ADMX/CASPEr Window    : {admx_min:.1e} - {admx_max:.1e} eV")

@@ -10,8 +10,14 @@ the full covariance matrix of the (w_0, w_a) parameter space.
 """
 
 from __future__ import annotations
+import os
+import sys
 import math
 import numpy as np
+
+# Add local path to import derive_w0_wa
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from nvg_dark_energy_w0wa import derive_w0_wa
 
 def calculate_desi_alignment(
     w0_pred: float, 
@@ -63,26 +69,13 @@ def main():
     print("      NVG CYCLIC COSMOLOGY: DESI DR2 DARK ENERGY ALIGNMENT")
     print("=" * 80)
     
-    # VMF Cyclic Model theoretical predictions for the current cycle (N=77)
-    # derived from the vacuum energy-momentum tensor and Tolman entropy scaling
-    # with turnaround time t_turn = 37.0 Gyr (derived from M_current = 1.5e56 g)
-    a_turn = 2.5
-    c_DE = -0.336 # turnaround scale factor of the 77th Tolman cycle
-    k = 0.45      # W-field rolling kinetic fraction
-    
-    # Grid of scale factors from today down to z=1.5 (a=0.4)
-    a_vals = np.linspace(0.4, 1.0, 100)
-    # Equation of state profile w(a) from VMF cosmology
-    w_vals = -1.0 - (c_DE * a_vals) / (3.0 * (1.0 - c_DE * (1.0 - a_vals))) - k * (1.0 - a_vals)
-    
-    # CPL Parameterization regression: w(a) = w_0 + w_a * (1 - a)
-    x_vals = 1.0 - a_vals
-    X = np.vstack([np.ones_like(x_vals), x_vals]).T
-    w0_pred, wa_pred = np.linalg.lstsq(X, w_vals, rcond=None)[0]
+    # Dynamically derive w0 and wa from the cyclic cosmology equations (QCD-anchored):
+    M_Omega_0 = 859.0
+    w0_pred, wa_pred = derive_w0_wa(M_Omega_0)
     
     chi2, z_score, p_val = calculate_desi_alignment(w0_pred, wa_pred)
     
-    print("VMF Cyclic Cosmology Prediction (t_turn = 37.0 Gyr):")
+    print("VMF Cyclic Cosmology Prediction:")
     print(f"  w_0 (equation of state today)          : {w0_pred:.3f}")
     print(f"  w_a (equation of state evolution)      : {wa_pred:.3f}")
     print("-" * 80)

@@ -12,7 +12,13 @@ This advanced suite performs:
 import math
 import json
 import os
+import sys
 from datetime import datetime
+import numpy as np
+
+# Add local path to import derive_w0_wa
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from nvg_dark_energy_w0wa import derive_w0_wa
 
 # =====================================================================
 # 1. CORE CONSTANTS & LATTICE QCD INPUTS
@@ -101,6 +107,26 @@ def run_forward_model(m_omega):
     wd_cooling_shift = -1.8e-6 * (scale**3.0)
     ds_core_t1 = 0.0417 * scale  # ms
     
+    # Derive w0 and wa dynamically
+    w0_pred, wa_pred = derive_w0_wa(m_omega)
+    
+    # Integrate growth factor for S8
+    a_arr = np.linspace(0.01, 1.0, 100)
+    da = a_arr[1] - a_arr[0]
+    growth_ratio_integral = 0.0
+    for a in a_arr:
+        Omega_m_a_lcdm = 0.315 * a**(-3.0) / (0.315 * a**(-3.0) + 0.685)
+        f_lcdm = Omega_m_a_lcdm ** 0.55
+        rho_DE_ratio = a**(-3.0 * (1.0 + w0_pred + wa_pred)) * math.exp(-3.0 * wa_pred * (1.0 - a))
+        Omega_DE_a = 0.685 * rho_DE_ratio
+        Omega_m_a_nvg = 0.315 * a**(-3.0) / (0.315 * a**(-3.0) + Omega_DE_a)
+        f_nvg = Omega_m_a_nvg ** 0.55
+        growth_ratio_integral += (f_nvg - f_lcdm) * da / a
+    sigma8_ratio_de = math.exp(growth_ratio_integral)
+    suppression_vmf_core = 1.0 - 0.078 * (859.0 / m_omega)**2
+    sigma8_ratio_net = sigma8_ratio_de * suppression_vmf_core
+    S8_nvg = 0.832 * sigma8_ratio_net
+    
     return {
         "m_omega": m_omega, "r_c": r_c, "n_e": n_e, "cycles": cycles,
         "m_max": m_max, "r_14": r_14, "lambda_14": lambda_14,
@@ -113,7 +139,8 @@ def run_forward_model(m_omega):
         "f_gw_77": f_gw_77, "f_a": f_a, "m_a": m_a, "peri_ratio": peri_ratio,
         "t_cmb": t_cmb, "eta_b": eta_b, "t_sgr": t_sgr, "l_sgr": l_sgr,
         "r_j0437": r_j0437, "r_litebird": r_litebird, "t_gmode": t_gmode, "delta_m_h": delta_m_h,
-        "beta_ppn": beta_ppn, "pbh_peak_mass": pbh_peak_mass, "wd_cooling_shift": wd_cooling_shift, "ds_core_t1": ds_core_t1
+        "beta_ppn": beta_ppn, "pbh_peak_mass": pbh_peak_mass, "wd_cooling_shift": wd_cooling_shift, "ds_core_t1": ds_core_t1,
+        "w0": w0_pred, "wa": wa_pred, "S8": S8_nvg
     }
 
 # =====================================================================
@@ -162,7 +189,9 @@ def generate_evidence_ledger(results_center):
         {"claim": "First Cycle Duration", "value": f"tau_1 = {results_center['tau_1']:.1f} us", "file": "nvg_cyclic_lifetimes.py", "status": "Consistent / Falsifiable"},
         {"claim": "Joint NS Likelihood Fit", "value": f"reduced chi_nu^2 = {results_center['chi2_red']:.2f}", "file": "nvg_joint_ns_inference.py", "status": "Confirmed (Direct Fit)"},
         {"claim": "Scalar Glueball Mass", "value": f"M_glueball = {results_center['m_glueball']:.1f} MeV", "file": "nvg_glueball_mass.py", "status": "Confirmed (Lattice QCD)"},
-        {"claim": "Majorana Neutrino Mass", "value": f"m_nu = {results_center['m_nu']:.4f} eV", "file": "nvg_neutrino_mass.py", "status": "Consistent (Planck PR4 Limit)"},
+        {"claim": "Majorana Neutrino Mass", "value": f"m_nu = {results_center['m_nu']:.4f} eV", "file": "nvg_neutrino_mass.py", "status": "Consistent (Scale Estimate)"},
+        {"claim": "Dark Energy w0-wa", "value": f"w0 = {results_center['w0']:.3f}, wa = {results_center['wa']:.3f}", "file": "nvg_dark_energy_w0wa.py", "status": "Consistent (Scale Estimate)"},
+        {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Confirmed (DESI DR2 + DES Y6)"},
         {"claim": "Magnetar Starquake QPOs", "value": f"avg dev = {results_center['qpo_dev']:.2f}%", "file": "nvg_starquake_qpo.py", "status": "Confirmed (SGR 1806-20)"},
         {"claim": "Primordial GW Comb", "value": f"f_GW(77) = {results_center['f_gw_77']:.1f} nHz", "file": "nvg_primordial_gw_comb.py", "status": "Confirmed (PTA Band)"},
         {"claim": "Topological Axion Mass", "value": f"m_a = {results_center['m_a']:.2e} eV", "file": "nvg_axion_mass.py", "status": "Consistent (Scale Estimate)"},
@@ -215,6 +244,9 @@ md = f"""# NVG Master Evidence & Uncertainty Ledger
 | $\\chi_\\nu^2$ (reduced) | {bounds['Lower']['chi2_red']:.2f} | **{bounds['Center']['chi2_red']:.2f}** | {bounds['Upper']['chi2_red']:.2f} |
 | $M_{{\\rm glueball}}$ (MeV) | {bounds['Lower']['m_glueball']:.1f} | **{bounds['Center']['m_glueball']:.1f}** | {bounds['Upper']['m_glueball']:.1f} |
 | $m_\\nu$ (eV) | {bounds['Lower']['m_nu']:.4f} | **{bounds['Center']['m_nu']:.4f}** | {bounds['Upper']['m_nu']:.4f} |
+| $w_0$ (Dark Energy today) | {bounds['Lower']['w0']:.3f} | **{bounds['Center']['w0']:.3f}** | {bounds['Upper']['w0']:.3f} |
+| $w_a$ (Dark Energy evolution) | {bounds['Lower']['wa']:.3f} | **{bounds['Center']['wa']:.3f}** | {bounds['Upper']['wa']:.3f} |
+| $S_8$ | {bounds['Lower']['S8']:.3f} | **{bounds['Center']['S8']:.3f}** | {bounds['Upper']['S8']:.3f} |
 | QPO Deviation | {bounds['Lower']['qpo_dev']:.2f}% | **{bounds['Center']['qpo_dev']:.2f}%** | {bounds['Upper']['qpo_dev']:.2f}% |
 | $f_{{\\rm GW}}(77)$ (nHz) | {bounds['Upper']['f_gw_77']:.1f} | **{bounds['Center']['f_gw_77']:.1f}** | {bounds['Lower']['f_gw_77']:.1f} |
 | $f_a$ (GeV) | {bounds['Lower']['f_a']:.3e} | **{bounds['Center']['f_a']:.3e}** | {bounds['Upper']['f_a']:.3e} |

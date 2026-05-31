@@ -140,6 +140,12 @@ CHECKS = [
         "critical": True,
     },
     {
+        "name": "Dark Energy w0-wa Parameter Derivation",
+        "script": "nvg_dark_energy_w0wa.py",
+        "claim": "Derive CPL parameters (w0 = -0.888, wa = -0.597) dynamically from cyclic VMF cosmology",
+        "critical": True,
+    },
+    {
         "name": "Tidal Deformability GW170817 & Double Pulsar MoI",
         "script": "nvg_tidal_deformability_gw170817.py",
         "claim": "Verify R_1.4 ~ 11.1 km and Double Pulsar moment of inertia is compatible with obs (~1.12e45 g cm^2)",
