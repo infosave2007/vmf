@@ -31,27 +31,17 @@ where $\Phi(x) = \mathcal{W}(x) e^{i\theta(x)}$ is the complex vacuum condensate
 * **Emergent Time & Topological Flow ($\theta$):** The gradient of the Goldstone phase defines a preferred unit timelike vector field $u_\mu \equiv \partial_\mu \theta / \sqrt{-g^{\alpha\beta}\partial_\alpha \theta \partial_\beta \theta}$, anchoring the coordinate time direction. Its time evolution during collapse ($\dot{\theta} \neq 0$) couples to the EM field via the axion-like topological theta-term ($\theta F \tilde{F}$), driving exponential chiral magnetic field amplification in magnetars.
 
 #### Mathematical Derivation of $\mathcal{W}$-field Dynamics & Melting
-By performing a polar decomposition of the complex order parameter:
-$$ \Phi(x) = \frac{1}{\sqrt{2}} \mathcal{W}(x) e^{i \theta(x)} $$
-under a $U(1)$ gauge covariant derivative:
-$$ D_\mu = \partial_\mu - i q A_\mu $$
-the scalar sector kinetic term expands as:
-$$ (D_\mu \Phi)^\dagger (D^\mu \Phi) = \frac{1}{2} \partial_\mu \mathcal{W} \partial^\mu \mathcal{W} + \frac{1}{2} \mathcal{W}^2 (\partial_\mu \theta - q A_\mu)(\partial^\mu \theta - q A_\mu) $$
-With a Higgs-like potential:
-$$ V(\Phi) = -\mu^2 \Phi^\dagger \Phi + \lambda (\Phi^\dagger \Phi)^2 $$
-the Euler-Lagrange equations yield the equation of motion for the real amplitude $\mathcal{W}(x)$:
-$$ \square \mathcal{W} + \left[ \lambda \mathcal{W}^2 - (\mu^2 + g_\mu g^\mu) \right] \mathcal{W} = 0 $$
-where the gauge-invariant gradient is:
-$$ g_\mu \equiv \partial_\mu \theta - q A_\mu $$
-In spatial-dominated regimes where:
-$$ g_\mu g^\mu \approx -|\vec{g}|^2 $$
-the effective potential of the amplitude field becomes:
-$$ V_{\text{eff}}(\mathcal{W}) = \frac{1}{2} (|\vec{g}|^2 - \mu^2) \mathcal{W}^2 + \frac{1}{4} \lambda \mathcal{W}^4 $$
-* **Symmetric Phase (Melting):** For $|\vec{g}|^2 < \mu^2$, the vacuum expectation value (VEV) is:
-$$ \mathcal{W}_0 = \sqrt{\frac{\mu^2 - |\vec{g}|^2}{\lambda}} > 0 $$
-When external field energy exceeds the mass threshold ($|\vec{g}|^2 \ge \mu^2$), the effective mass term becomes positive, driving the VEV to:
-$$ \mathcal{W}_0 = 0 $$
-representing complete vacuum melting.
+The dynamics of the vacuum condensate amplitude are derived by performing a polar decomposition of the complex order parameter $\Phi(x) = \frac{1}{\sqrt{2}} \mathcal{W}(x) e^{i \theta(x)}$ under a $U(1)$ gauge covariant derivative $D_\mu = \partial_\mu - i q A_\mu$:
+
+$$
+\begin{aligned}
+\text{Kinetic term: } & (D_\mu \Phi)^\dagger (D^\mu \Phi) = \frac{1}{2} \partial_\mu \mathcal{W} \partial^\mu \mathcal{W} + \frac{1}{2} \mathcal{W}^2 (\partial_\mu \theta - q A_\mu)(\partial^\mu \theta - q A_\mu) \\
+\text{Equation of motion: } & \square \mathcal{W} + \left[ \lambda \mathcal{W}^2 - (\mu^2 + g_\mu g^\mu) \right] \mathcal{W} = 0 \quad \text{where } g_\mu \equiv \partial_\mu \theta - q A_\mu \\
+\text{Effective potential: } & V_{\text{eff}}(\mathcal{W}) = \frac{1}{2} (|\vec{g}|^2 - \mu^2) \mathcal{W}^2 + \frac{1}{4} \lambda \mathcal{W}^4 \quad \text{for } g_\mu g^\mu \approx -|\vec{g}|^2
+\end{aligned}
+$$
+
+* **Symmetric Phase (Melting):** If the external field strength is below the critical threshold ($|\vec{g}|^2 \le \mu^2$), the field acquires a non-zero vacuum expectation value $\mathcal{W}_0 = \sqrt{(\mu^2 - |\vec{g}|^2)/\lambda}$. When it exceeds the threshold ($|\vec{g}|^2 \ge \mu^2$), the effective mass term becomes positive, driving the VEV to $\mathcal{W}_0 = 0$ (complete vacuum melting).
 
 For a complete step-by-step mathematical proof, see the local preprint: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (English) or [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (Russian).
 
