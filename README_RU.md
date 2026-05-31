@@ -31,23 +31,9 @@ $$ S = \int d^4x \sqrt{-g} \left[ \frac{R}{16\pi G} - g^{\mu\nu} \partial_\mu \P
 * **Эмерджентное время и топологический ток ($\theta$):** Градиент голдстоуновской фазы задает выделенное единичное времениподобное векторное поле $u_\mu \equiv \partial_\mu \theta / \sqrt{-g^{\alpha\beta}\partial_\alpha \theta \partial_\beta \theta}$, фиксируя направление координатного времени. В динамических режимах ($\dot{\theta} \neq 0$) фазовый поток связывается с электромагнитным полем через топологический тета-член ($\theta F \tilde{F}$), вызывая экспоненциальное киральное усиление магнитных полей магнетаров.
 
 ##### Математический вывод динамики и плавления поля $\mathcal{W}$
-Динамика амплитуды вакуумного конденсата выводится из полярного представления комплексного параметра порядка $\Phi(x) = \frac{1}{\sqrt{2}} \mathcal{W}(x) e^{i \theta(x)}$ под действием $U(1)_B$ ковариантной производной $D_\mu = \partial_\mu - i q A_\mu$. Здесь калибровочное поле $A_\mu = \frac{g_\omega}{m_\omega^2} J_\mu$ идентифицировано как эффективное барионное векторное поле ($\omega$-мезон), связанное с барионным 4-током $J_\mu = n_B u_mu$, где барионная плотность $n_B \equiv J_\mu u^\mu$ является строгим Лоренц-скаляром.
+Динамика амплитуды вакуумного конденсата $\mathcal{W}(x)$ и ее фазовый переход (плавление) в плотной адронной среде выводятся из первых принципов квантовой теории поля (КТП). Калибровка потенциала осуществляется на основе пион-нуклонного и странного сигма-членов КХД, а связь с барионным током задается через векторное поле $\omega$-мезона. Нарушение сильного энергетического условия (SEC) при полном плавлении конденсата приводит к возникновению квадратичной космологической поправки вида $-\rho^2/\rho_c$, предотвращающей Большой взрыв.
 
-$$
-\begin{aligned}
-\text{Кинетический член: } & (D_\mu \Phi)^\dagger (D^\mu \Phi) = \frac{1}{2} \partial_\mu \mathcal{W} \partial^\mu \mathcal{W} + \frac{1}{2} \mathcal{W}^2 (\partial_\mu \theta - q A_\mu)(\partial^\mu \theta - q A^\mu) \\
-\text{Уравнение движения: } & \square \mathcal{W} + \left[ \lambda \mathcal{W}^2 - (\mu^2 + g_\mu g^\mu) \right] \mathcal{W} = 0 \quad \text{где } g_\mu \equiv \partial_\mu \theta - q A_\mu = \mu_\theta u_\mu - \gamma j_{B,\mu} \\
-\text{Энергия-импульс: } & T^{\mathcal{W}}_{\mu\nu} = \partial_\mu \mathcal{W} \partial_\nu \mathcal{W} + \mathcal{W}^2 g_\mu g_\nu - g_{\mu\nu} \left[ \frac{1}{2} \partial_\alpha \mathcal{W} \partial^\alpha \mathcal{W} + \frac{1}{2} \mathcal{W}^2 g_\alpha g^\alpha - V(\mathcal{W}) \right]
-\end{aligned}
-$$
-
-* **Лоренц-ковариантность и идентификация тока:** Вектор обобщенного импульса $g_\mu$ связывается с нормированным барионным 4-током $j_B^\mu \equiv J^\mu / n_0$ в виде $g_\mu = \mu_\theta u_\mu - \gamma j_{B,\mu}$, где $\gamma \equiv \frac{q g_\omega n_0}{m_\omega^2} \approx 955.5$ МэВ. Поскольку $u_\mu u^\mu = 1$, свертка $g_\mu g^\mu = (\mu_\theta - \gamma \frac{n_B}{n_0})^2$ является строгим Лоренц-скаляром, обеспечивая ковариантность.
-* **Калибровка и QCD-якоря:** В вакууме ($n_B = 0$, $A_\mu = 0$) ожидаемое значение VEV равно $\mathcal{W}_0 = M_{\Omega,0} = \sqrt{(\mu^2 - \mu_\theta^2)/\lambda} = 859$ МэВ. Параметры потенциала $\mu$ и $\lambda$ калибруются через пион-нуклонный ($\sigma_{\pi N} \approx 44$ МэВ) и странный ($\sigma_{sN} \approx 30$ МэВ) сигма-члены КХД, фиксируя $\lambda \approx 1.05$ (соответствует массе скалярного возбуждения $m_{\mathcal{W}} = \sqrt{2\lambda}\mathcal{W}_0 \approx 1245$ МэВ, отвечающей мезону $f_0(1370)$) и связывая константу $q = \frac{g_\omega M_{\Omega,0}}{2 f_\pi} \approx 47.01$ без свободных параметров.
-* **Нарушение SEC и отскок:** В пространстве FLRW тензор энергии-импульса дает $\rho_{\mathcal{W}} = \frac{1}{2} \dot{\mathcal{W}}^2 + \frac{1}{2} \mathcal{W}^2 g_0^2 + V(\mathcal{W})$ и $P_{\mathcal{W}} = \frac{1}{2} \dot{\mathcal{W}}^2 - \frac{1}{2} \mathcal{W}^2 g_0^2 - V(\mathcal{W})$. При $n_B \ge 2.5 n_0$ поле плавится ($\mathcal{W} \to 0$), выводя потенциал на барьерное значение $V(0) = \frac{1}{4}\lambda\mathcal{W}_0^4 > 0$. Это нарушает сильное энергетическое условие ($\rho_{\mathcal{W}} + 3 P_{\mathcal{W}} \to -2 V(0) < 0$). В этом режиме динамика зацепления дает $\rho_{\mathcal{W}} \approx -\rho_{\text{matter}}^2 / \rho_c$, модифицируя уравнения Эйнштейна для получения уравнения отскока Фридмана:
-  $$ H^2 = \frac{8\pi G}{3} \rho \left(1 - \frac{\rho}{\rho_c}\right) - \frac{kc^2}{a^2} + \frac{\Lambda_{\text{eff}}c^2}{3} $$
-
-
-Для подробного пошагового математического доказательства см. локальный препринт: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (английская версия) или [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (русская версия).
+Для подробного пошагового математического доказательства см. локальный препринт: [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (русская версия) или [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (английская версия).
 
 Структура состоит из трёх основных столпов:
 
