@@ -62,7 +62,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Scale Estimate) |
-| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Dynamic Lagrangian) |
+| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Qualitative (Tension ~4.8σ) |
 | S8 Tension Relief | S8 = 0.776 | `nvg_s8_tension_check.py` | Confirmed (DESI DR2 + DES Y6) |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | Confirmed (SGR 1806-20) |
 | Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |

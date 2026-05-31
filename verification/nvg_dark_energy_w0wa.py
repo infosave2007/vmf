@@ -57,17 +57,19 @@ def derive_w0_wa(m_omega: float = 859.0) -> tuple[float, float]:
     
     scale = 859.0 / m_omega
     
-    # First-principles parameters for the VMF coupled system:
-    # beta_melt represents the scaling of the mass melting effect (dlnM/dlna)
-    # It is derived exactly from the chain rule: dlnW/dlna = -3 * dlnW/dlnn_B
-    # In the sparse limit (n_B -> 0), the scalar field response gives:
-    # beta_melt = (3 * gamma^2) / (2 * mu^2 * n_0^2) * n_DM
+    # EMPIRICAL PARAMETER (Flag 1 resolution):
+    # beta_melt represents the scaling of the mass melting effect.
+    # While the formula beta_melt = (3 * gamma^2 / 2 * mu^2 * n_0^2) * n_DM is exact
+    # in the mean-field limit, the effective local density of dark matter nuggets 
+    # (n_DM_eff) is an empirical free parameter. We set it to ~0.002 fm^-3 
+    # (about 1% of nuclear density) to represent the density inside DM lumps.
+    # Therefore, beta_melt is the LAST REMAINING phenomenological parameter in this script.
     gamma = 1.0          # Effective scalar coupling
     mu = 1.0             # Effective scalar mass scale
     n_0 = 0.16           # Nuclear saturation density (fm^-3)
-    n_DM = 0.002048      # Effective local dark matter density (fm^-3)
+    n_DM_eff = 0.002048  # EMPIRICAL: Effective local dark matter density inside lumps
     
-    beta_melt = (3.0 * gamma**2) / (2.0 * mu**2 * n_0**2) * n_DM * scale
+    beta_melt = (3.0 * gamma**2) / (2.0 * mu**2 * n_0**2) * n_DM_eff * scale
     
     # Boundary conditions at a = 1.0 (z = 0)
     Omega_m0 = 0.315
@@ -113,8 +115,12 @@ def main():
     print("  Baseline W-field EOS w_W         : Derived dynamically from Lagrangian")
     print("-" * 74)
     print("Derived Effective CPL Parameterization:")
-    print(f"  w_0 (equation of state today)   : {w0:.4f} (baseline: -0.752)")
-    print(f"  w_a (equation of state evolution): {wa:.4f} (baseline: -0.860)")
+    print(f"  w_0 (equation of state today)   : {w0:.4f}")
+    print(f"  w_a (equation of state evolution): {wa:.4f}")
+    print("-" * 74)
+    print("DESI 2024 Observational Constraints (For comparison):")
+    print("  w_0 (observed baseline)         : -0.7300")
+    print("  w_a (observed baseline)         : -0.6800")
     print("==========================================================================")
 
 if __name__ == "__main__":
