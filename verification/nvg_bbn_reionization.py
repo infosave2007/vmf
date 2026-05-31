@@ -106,17 +106,15 @@ for M in masses:
 
 print(f"""
   OBSERVATIONAL DATA:
-  EXO 0748-676 (2002, Cottam et al.): z = 0.35 from Fe/O absorption lines
-  (later questioned but methodology remains valid for future observations).
+  Direct measurements of z_surf are currently absent; the early claim of z ≈ 0.35
+  for EXO 0748-676 (Cottam et al. 2002) was subsequently not confirmed by other studies.
   
-  For a 1.4 M_sun NS, VMF predicts z_surf ≈ 0.20-0.22.
-  For a heavier NS (~1.8 M_sun), z_surf ≈ 0.28-0.32.
+  For a 1.4 M_sun NS, VMF predicts z_surf ≈ 0.235 (crust-softened: 0.262).
   
-  The gravitational redshift is DIRECTLY measurable from spectral lines
-  in X-ray bursts. Future missions (STROBE-X, eXTP) will provide
-  precision z_surf measurements for multiple NSs.
+  The gravitational redshift is testable with next-generation X-ray missions
+  (STROBE-X, eXTP) which will measure z_surf to <1% precision.
 
-  STATUS: ✅ COMPUTED — testable with next-generation X-ray telescopes.
+  STATUS: ✅ COMPUTED — testable with future STROBE-X/eXTP observations.
 """)
 
 # ═══════════════════════════════════════════════════════════════════════

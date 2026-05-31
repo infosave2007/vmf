@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-31 13:14:35
+**Generated:** 2026-05-31 13:32:07
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -35,7 +35,7 @@
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
-*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 848.4$ MeV.
+*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 697.9$ MeV.
 *   If NICER measures $M_{max} = 2.15 M_\odot$: NVG requires $M_{\Omega,0} = 885.4$ MeV.
 *(If these two independent inversions yield conflicting $M_{\Omega,0}$, the framework is mathematically falsified).*
 

@@ -73,10 +73,9 @@ def calculate_ns_redshift():
     is_ok = abs(dev_sigma) < 1.0
     print(f"Status                                   : {'✅ PASSED (Consistent with target)' if is_ok else '❌ FAILED'}")
     print("\nPhysics Context:")
-    print("Gravitational redshift z_surf measures the compactness of the star.")
-    print("Observational constraints (e.g. from EXO 0748-676) typically find z ≈ 0.35,")
-    print("which is highly uncertain. Future high-precision X-ray spectroscopy")
-    print("(e.g., STROBE-X, eXTP) will measure z_surf to <1% precision, allowing a direct test.")
+    print("Direct measurements of z_surf are currently absent (claims like z ≈ 0.35")
+    print("from Cottam et al. 2002 for EXO 0748-676 were not confirmed). VMF predicts")
+    print("0.235, which will be directly testable by STROBE-X/eXTP to <1% precision.")
     print("==========================================================================")
     return is_ok
 

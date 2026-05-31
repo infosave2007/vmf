@@ -9,7 +9,7 @@ suppression on small scales due to the de Sitter regular core in PBH dark matter
 Compares the result against:
   1. Planck standard Lambda-CDM: S8 = 0.832 ± 0.013
   2. Weak Lensing (DESI DR2 + DES Y6): S8 = 0.776 ± 0.017
-Demonstrates that NVG predicts S8 ≈ 0.776, completely resolving the 3.3σ tension.
+Demonstrates that NVG predicts S8 ≈ 0.776, resolving the 3.3σ tension (under VMF growth suppression of ~7.8%).
 """
 
 import os
@@ -99,7 +99,8 @@ def run_s8_tension_check():
     print("de Sitter regular core of primordial black hole (PBH) dark matter. This core")
     print("acts as a physical regularization scale, preventing infinite density singular clustering.")
     print("The net predicted S8 ≈ 0.776 is in perfect agreement with the weak lensing")
-    print("measurements from DESI DR2 + DES Y6, completely resolving the 3.3σ S8 tension.")
+    print("measurements from DESI DR2 + DES Y6, resolving the 3.3σ S8 tension")
+    print("  (under the parameterized VMF core growth suppression of ~7.8%, i.e. suppression_vmf_core = 0.922).")
     print("==========================================================================")
 
 if __name__ == "__main__":
