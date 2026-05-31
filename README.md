@@ -35,7 +35,7 @@ where $\Phi(x) = \mathcal{W}(x) e^{i\theta(x)}$ is the complex vacuum condensate
 ###### Mathematical Derivation of $\mathcal{W}$-field Dynamics & Melting
 The dynamics of the vacuum condensate amplitude $\mathcal{W}(x)$ and its phase transition (melting) in a dense hadronic medium are derived from QFT first principles. The potential parameters are calibrated using pion-nucleon and strange QCD sigma-terms, and the coupling to the baryon current is established via the $\omega$-meson vector field. The violation of the Strong Energy Condition (SEC) during complete melting generates a quadratic cosmological correction of the form $-\rho^2/\rho_c$, preventing the Big Bang singularity.
 
-For a complete step-by-step mathematical proof, see the local preprint: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (English) or [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (Russian).
+For a complete step-by-step mathematical proof, see the local preprint: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md)
 
 The framework consists of three main pillars:
 
