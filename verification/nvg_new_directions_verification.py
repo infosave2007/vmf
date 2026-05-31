@@ -118,7 +118,7 @@ def run_echo_verification():
     t = np.arange(0, t_duration, 1.0/fs)
     
     # Echo parameters
-    dt_echo = 0.0445 # delay time (s)
+    dt_echo = 0.00512 # delay time (s)
     f_qnm = 250.0 # QNM frequency (Hz)
     tau_qnm = 0.004 # s
     
@@ -206,7 +206,7 @@ def main():
         
         # 7. Echoes
         f.write("## 7. Гравитационные эхо в архиве LIGO O4 (событие GW150914)\n\n")
-        f.write("Мы провели симуляцию восстановления эхо-сигнала в шумах детектора уровня LIGO O4 для слияния с полной массой $65 M_\\odot$ с периодом эхо-задержки $\\Delta t = 0.0445$ с:\n\n")
+        f.write("Мы провели симуляцию восстановления эхо-сигнала в шумах детектора уровня LIGO O4 для слияния с полной массой $65 M_\\odot$ с периодом эхо-задержки $\\Delta t = 0.00512$ с:\n\n")
         f.write(f"* **Период эхо-задержки (\\Delta t):** {echo['dt_echo']:.4f} с\n")
         f.write(f"* **Частота квазинормальной моды (QNM):** {echo['f_qnm']:.1f} Гц\n")
         f.write(f"* **Отношение сигнал/шум (SNR) приmatched-filtering с NVG-шаблоном:** {echo['snr_recovered']:.2f}\n")

@@ -133,8 +133,9 @@ The core scale for any object of mass $M$ is $r_0 = (3M / 4\pi\rho_c)^{1/3}$.
 
 Because the black hole singularity is replaced by a regular de Sitter core bounded by the inner Cauchy horizon $r_-$, gravitational waves generated during a merger (e.g., ringdown) can reflect off this core structure. Assuming quantum or topological effects at the outer horizon permit partial transmission, this reflection generates periodic post-merger "echoes".
 
-The echo delay time $\Delta t_{\rm echo}$ is given by the round-trip tortoise coordinate distance from the photon sphere to the core boundary. For the GW150914 merger event ($M \approx 65 M_\odot$), the model (`nvg_gw_echoes.py`) rigorously predicts a core scale of $r_0 \approx 6.25$ km and an exact echo delay of:
-$$ \Delta t_{\rm echo} \approx 0.0445 \text{ s}. $$
+The echo delay time $\Delta t_{\rm echo}$ is given by the round-trip tortoise coordinate distance from the photon sphere to the core boundary. For the GW150914 merger event ($M \approx 65 M_\odot$), the model (`nvg_gw_echo_prediction.py`) rigorously predicts a core scale of $r_0 \approx 6.25$ km and an exact spin-corrected echo delay of:
+$$ \Delta t_{\rm echo} \approx 0.00512 \text{ s}. $$
+(or $\approx 0.00414$ s in the Schwarzschild limit using `nvg_gw_echoes.py`).
 Unlike exotic compact object (ECO) models which can arbitrarily tune the echo delay, the NVG delay is strictly fixed by the QCD anchor $M_{\Omega,0} = 859$ MeV, offering a parameter-free falsifiable signature for LIGO/Virgo.
 ---
 

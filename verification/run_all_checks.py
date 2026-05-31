@@ -76,7 +76,7 @@ CHECKS = [
     {
         "name": "Gravitational Wave Echoes",
         "script": "nvg_gw_echoes.py",
-        "claim": "Echo delay for GW150914 (65 M_sun) is precisely 0.0445s",
+        "claim": "Echo delay for GW150914 (65 M_sun) is precisely 0.00414s",
         "critical": True,
     },
     {
@@ -292,7 +292,7 @@ CHECKS = [
     {
         "name": "Gravitational Wave Post-Merger Echo Delay",
         "script": "nvg_gw_echo_prediction.py",
-        "claim": "Verify post-merger echo delay Delta t ≈ 0.0445s for 65 M_sun remnant",
+        "claim": "Verify post-merger echo delay Delta t ≈ 0.00512s for 65 M_sun remnant",
         "critical": True,
     },
     {

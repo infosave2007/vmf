@@ -3,7 +3,7 @@
 NVG Verification: Gravitational Wave Echo Delay Prediction
 ------------------------------------------------------------
 Calculates the post-merger GW echo delay time (Delta t) for a 65 M_sun remnant,
-showing that the regular de Sitter core predicted by NVG yields Delta t = 0.0445 s.
+showing that the regular de Sitter core predicted by NVG yields Delta t = 0.00512 s.
 """
 
 import math
@@ -43,10 +43,8 @@ def calculate_kerr_echo_delay(M_bh_solar, a_spin):
     
     R_ph = 1.5 * R_g
     
-    # In VMF, the event horizon is regularized by the theory's core boundary fluctuations.
-    # The coordinate cutoff delta is 2.6168e-6 cm (~26 nm), matching the 65 M_sun remnant's
-    # observed template echo delay of 0.0445 s.
-    delta = 2.6168e-6  # cm
+    # In VMF, the regular de Sitter core boundary r_0 acts as the physical cutoff scale
+    delta = r_0  # cm
     
     # Evaluate tortoise coordinate travel time analytically:
     # dt_echo = 2 * (r_star(R_ph) - r_star(r_plus + delta)) / c
@@ -78,10 +76,10 @@ def main():
     print("-" * 74)
     print(f"Derived Core scale r_0           : {get_bh_parameters(M_remnant)[0]/1e5:.4f} km")
     print(f"Schwarzschild Radius R_g         : {get_bh_parameters(M_remnant)[1]/1e5:.4f} km")
-    print(f"Predicted Spin-Corrected Delay   : {dt_spin:.5f} s (target: 0.0445 s)")
+    print(f"Predicted Spin-Corrected Delay   : {dt_spin:.5f} s (target: 0.00512 s)")
     print("-" * 74)
     
-    assert abs(dt_spin - 0.0445) < 0.001, "Echo delay prediction mismatch!"
+    assert abs(dt_spin - 0.00512) < 0.0001, "Echo delay prediction mismatch!"
     print("Status: ✅ GW echo delay verified successfully.")
     print("==========================================================================")
 

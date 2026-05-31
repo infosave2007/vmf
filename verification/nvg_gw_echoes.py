@@ -40,7 +40,7 @@ def solve_roots(R_g, r_0):
 def calculate_echo_delay(M_bh_solar):
     """
     Calculates the Schwarzschild-Hayward post-merger echo delay analytically
-    using the physical proper distance cutoff l_cutoff = 1.0 cm (the bounce scale).
+    using the physical core radius r_0 as the event horizon regularization cutoff delta.
     """
     M_cgs, r_0, R_g = get_bh_parameters(M_bh_solar)
     r1, r2, r3 = solve_roots(R_g, r_0) # r1 negative, r2 = r_minus, r3 = r_plus
@@ -50,17 +50,14 @@ def calculate_echo_delay(M_bh_solar):
     A2 = (r2**3 + r_0**3) / ((r2 - r1) * (r2 - r3))
     A3 = (r3**3 + r_0**3) / ((r3 - r1) * (r3 - r2))
     
-    # Physical proper distance cutoff near the event horizon is equal to the
-    # cosmological bounce scale (l_cutoff = 1.0 cm).
-    # This corresponds to a coordinate cutoff of dr3 = l_cutoff^2 / (4 * A3)
-    l_cutoff = 1.0  # cm
-    dr3 = l_cutoff**2 / (4.0 * abs(A3))
+    # The regular de Sitter core boundary r_0 acts as the horizon cutoff scale delta:
+    delta = r_0  # cm
     
     # Exterior round-trip travel time: Delta t = 2 * (F_ext - F_r3_plus) / c
     # evaluated analytically to prevent double-precision loss.
     R_ph = 1.5 * R_g
     term_const = (1.5*R_g - r3) + A1 * math.log((1.5*R_g - r1)/(r3 - r1)) + A2 * math.log((1.5*R_g - r2)/(r3 - r2)) + A3 * math.log(1.5*R_g - r3)
-    diff = term_const - A3 * math.log(dr3)
+    diff = term_const - A3 * math.log(delta)
     
     delta_t_echo = 2.0 * diff / c_cgs
     
@@ -88,16 +85,16 @@ def main():
     for m in masses:
         res = calculate_echo_delay(m)
         if res:
-            print(f"{res['mass']:12.1f} | {res['r_0_km']:10.2e} | {res['r_minus_km']:12.2e} | {res['r_plus_km']:10.2f} | {res['delta_t_echo_s']:15.4f}")
+            print(f"{res['mass']:12.1f} | {res['r_0_km']:10.2e} | {res['r_minus_km']:12.2e} | {res['r_plus_km']:10.2f} | {res['delta_t_echo_s']:15.6f}")
             
     print("-" * 75)
     print("ANALYSIS:")
     print("- r_0 is the characteristic scale of the regular de Sitter core.")
     print("- r_- is the inner Cauchy horizon (boundary of the core).")
-    print("- The 'Echo Delay' is calculated analytically using the physical proper")
-    print("  distance cutoff l_cutoff = 1.0 cm (the VMF bounce scale) at the horizon.")
+    print("- The 'Echo Delay' is calculated analytically using the physical core")
+    print("  radius r_0 as the event horizon regularization cutoff scale delta.")
     print("  For GW150914 (65 M_sun), Schwarzschild echoes are predicted to arrive")
-    print("  every 0.0445 seconds.")
+    print("  every 0.00414 seconds.")
     print("\nOBSERVATIONAL GOAL:")
     print("Detecting repeating echoes with this specific frequency spacing")
     print("in LIGO/Virgo post-merger data would confirm the existence of")

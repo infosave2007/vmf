@@ -98,6 +98,7 @@ print("=" * 72)
 # For NVG Regular BHs, Delta_t depends on mass and spin.
 
 def generate_echo_params(M_sol, a_spin=0.7):
+    import math
     # Quasi-normal mode frequency (approximate for l=m=2)
     # f_QNM ≈ c^3 / (2 pi G M) * (1 - 0.63(1-a)^0.3)
     f_QNM = (c_cgs**3) / (2 * np.pi * G_cgs * M_sol * M_sun_g)
@@ -106,18 +107,39 @@ def generate_echo_params(M_sol, a_spin=0.7):
     # Damping time
     tau_QNM = 2.0 / (np.pi * f_QNM_Hz)  # rough approx for damping
     
-    # Echo delay
-    # Delta_t ≈ 4GM/c^3 * ln(r_s / l) where l is Hayward scale
-    # l ~ 10^-5 cm (from previous scripts). For 65 M_sun, r_s/l ~ 10^12
-    # ln(10^12) ≈ 27.6
-    M_sec = G_cgs * M_sol * M_sun_g / c_cgs**3
-    log_factor = 27.6  # weakly depends on mass
+    # NVG QCD Anchor parameters to get rho_c
+    M_Omega_0 = 859.0 # MeV
+    hbar_c = 197.327 # MeV fm
+    eps_max = M_Omega_0**4 / hbar_c**3  # MeV/fm^3
+    MeV_fm3_to_gcm3 = 1.7827e12
+    rho_c = eps_max * MeV_fm3_to_gcm3   # ~1.26e17 g/cm^3
+
+    # Calculate regular core radius r_0 as event horizon cutoff scale delta
+    M_cgs = M_sol * M_sun_g
+    r_0 = (3.0 * M_cgs / (4.0 * math.pi * rho_c))**(1/3.0)
+    R_g = 2.0 * G_cgs * M_cgs / c_cgs**2
+    M_geom = R_g / 2.0
+    a = a_spin * M_geom
     
-    # Spin correction to delay (longer delay for higher spin)
-    spin_correction = 1.0 + 0.5 * a_spin
-    Delta_t = 4.0 * M_sec * log_factor * spin_correction
+    # Kerr horizons in geometric units
+    r_plus = M_geom + math.sqrt(M_geom**2 - a**2) if M_geom > a else M_geom
+    r_minus = M_geom - math.sqrt(M_geom**2 - a**2) if M_geom > a else M_geom
     
-    return f_QNM_Hz, tau_QNM, Delta_t
+    R_ph = 1.5 * R_g
+    delta = r_0
+    
+    # Evaluate tortoise coordinate travel time analytically:
+    # dt_echo = 2 * (r_star(R_ph) - r_star(r_plus + delta)) / c
+    term1 = R_ph - r_plus
+    if r_plus > r_minus:
+        term2 = (2.0 * M_geom * r_plus / (r_plus - r_minus)) * math.log((R_ph - r_plus) / delta)
+        term3 = (2.0 * M_geom * r_minus / (r_plus - r_minus)) * math.log((R_ph - r_minus) / (r_plus - r_minus))
+        dt = 2.0 * (term1 + term2 - term3) / c_cgs
+    else:
+        # Schwarzschild limit (a = 0)
+        dt = 2.0 * (term1 + 2.0 * M_geom * math.log((R_ph - r_plus) / delta)) / c_cgs
+    
+    return f_QNM_Hz, tau_QNM, dt
 
 masses = [30.0, 65.0, 150.0]
 spins = [0.0, 0.7]
@@ -140,7 +162,7 @@ print(f"""
   parameter, NVG PREDICTS Δt deterministically from the QCD anchor
   (the Hayward core scale l = M_Ω⁴/(ℏc)³ is fixed).
   
-  - For GW150914 (M ≈ 65 M_sun, a ≈ 0.7): Δt ≈ 44.5 ms.
+  - For GW150914 (M ≈ 65 M_sun, a ≈ 0.7): Δt ≈ 5.1 ms.
   - This allows LIGO data analysts to search for a specific,
     narrowly constrained template rather than scanning a blind
     parameter space (which increases false-alarm rates).

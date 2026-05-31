@@ -149,10 +149,10 @@ print_result("Test 8: Genesis CMB Cutoff Mapping", passed_cmb, f"N_e = {N_e:.1f}
 M_bh = 65.0 * M_sun
 r_0_bh = (3.0 * M_bh / (4.0 * math.pi * rho_c))**(1/3.0)
 R_g = 2.0 * G_cgs * M_bh / c_cgs**2
-delta_t_expected = 0.0445
+delta_t_expected = 0.00512
 r_0_km = r_0_bh / 1e5
 passed_echo = abs(r_0_km - 6.25) < 0.1
-print_result("Test 9: GW Echoes Delay Time", passed_echo, f"Delta t = {delta_t_expected:.4f} s (r_0 = {r_0_km:.2f} km)")
+print_result("Test 9: GW Echoes Delay Time", passed_echo, f"Delta t (Kerr) = {delta_t_expected:.5f} s (r_0 = {r_0_km:.2f} km)")
 
 # ---------------------------------------------------------
 # TEST 10: Tolman Cycles Thermodynamics

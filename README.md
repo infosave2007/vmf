@@ -92,7 +92,7 @@ The framework replaces the black hole singularity with a **regular de Sitter cor
 - Unitary transfer: $\mathcal{I}_{n+1} = \mathcal{U}_b\,\mathcal{I}_n$ — information is carried through the core via the $\mathcal{W}$-sector.
 - The regular causal structure (two horizons, no singularity) ensures no loss-of-information region exists.
 
-**Key advantage over competing models:** Unlike generic Bardeen/Hayward (free parameter $g$), fuzzballs ($10^{500}$ string vacua), or loop quantum gravity (Planck-scale, untestable), NVG derives $r_0$ from a **measured** QCD quantity ($M_{\Omega,0} = 859$ MeV), yielding a strict prediction: gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0445$ s for a 65 $M_\odot$ merger (LIGO-testable).
+**Key advantage over competing models:** Unlike generic Bardeen/Hayward (free parameter $g$), fuzzballs ($10^{500}$ string vacua), or loop quantum gravity (Planck-scale, untestable), NVG derives $r_0$ from a **measured** QCD quantity ($M_{\Omega,0} = 859$ MeV), yielding a strict prediction: gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0051$ s (5.1 ms) spin-corrected for a 65 $M_\odot$ merger (LIGO-testable).
 
 Additionally, the theory provides a laboratory protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
 
@@ -200,7 +200,7 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 - **Young Neutron Star Cooling:** Resolves the Cas A cooling rate ($dT_s/dt \approx -3500$ K/yr observed vs $-3650$ K/yr predicted) and Vela surface temperature ($6.8 \times 10^5$ K observed vs $6.95 \times 10^5$ K predicted by Direct Urca) based on the $1.45 M_\odot$ VMF threshold.
 - **JWST Early SMBH Seeding:** NVG primordial seeds from Cycle N=10 ($4 \times 10^5 M_\odot$) grow to GN-z11 ($1.6 \times 10^7 M_\odot$) and UHZ1 ($4 \times 10^7 M_\odot$) under standard sub-Eddington accretion ($f_{\rm Edd} \approx 42-46\%$), whereas standard Pop III seeds ($100 M_\odot$) fail and require super-Eddington rates ($f_{\rm Edd} > 130\%$).
 - **Pulsar Population Dichotomy:** The $1.45 M_\odot$ VMF threshold predicts a sharp statistical gap ($>100\times$ difference) in thermal X-ray luminosities for young pulsars ($\tau < 30$ kyr) in the $P$-$\dot{P}$ diagram, dividing the population into distinct warm and cold groups.
-- **GW Echo Matched Filtering:** LIGO O4 matched filtering simulations with the Hayward core template ($\Delta t = 0.0445$ s) demonstrate significant SNR recovery compared to the null hypothesis.
+- **GW Echo Matched Filtering:** LIGO O4 matched filtering simulations with the Hayward core template ($\Delta t = 0.0051$ s) demonstrate significant SNR recovery compared to the null hypothesis.
 - **LiteBIRD B-mode Polarization:** Predicts tensor-to-scalar ratio $r < 0.001$ at CMB scales ($\ell < 10$) due to the Genesis cutoff, serving as a template check for the 2032 LiteBIRD mission (`verification/nvg_litebird_prediction.py`).
 - **NICER PSR J0437-4715 Radius:** The VMF predicted radius $R_{1.4} \approx 12.0$ km lies within $0.8\sigma$ of the 2024 NICER mass-radius measurement ($11.36 \pm 0.8$ km at $1.418 M_\odot$, `verification/nvg_nicer_j0437_check.py`).
 - **NANOGrav 15yr SGWB:** Superposition of GW emissions from discrete PBH merger cycles ($M_N = 0.38 \cdot 4^N$) matches the $f^{2/3}$ power-law spectrum and strain amplitude (`verification/nvg_nanograv_background.py`).
@@ -406,7 +406,7 @@ python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_RE
 
 Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchored to the QCD energy scale, making it strictly falsifiable across multiple disciplines:
 
-1. **Gravitational Wave Echoes:** Strict prediction of $\Delta t_{\rm echo} \approx 0.0445$ s for a 65 $M_\odot$ black hole merger (parameter-free, LIGO/Virgo testable).
+1. **Gravitational Wave Echoes:** Strict prediction of $\Delta t_{\rm echo} \approx 0.0051$ s (5.1 ms) spin-corrected for a 65 $M_\odot$ black hole merger (parameter-free, LIGO/Virgo testable).
 2. **Heavy-Ion Collisions (FAIR/HADES/NICA):** A ~20% drop in the invariant mass of the $\rho$-meson at $2n_0$. If no in-medium hadron mass shifts are observed at $n_B \sim 3$–$5\,n_0$, the VMF mass melting chain is falsified.
 3. **CMB Genesis Cutoff:** The low-$\ell$ suppression ($\ell=2,3$) is a deterministic physical cutoff from the $1.13$ km Genesis instanton stretched by $\sim 53$ e-folds, not merely "cosmic variance".
 4. **Neutron Stars:** A maximum mass of $\sim 2.3 M_\odot$ with an abrupt conformal phase transition at the core.

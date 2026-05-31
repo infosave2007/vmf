@@ -68,7 +68,7 @@ print("=" * 72)
 
 # Parameters for GW150914
 M_bh = 65.0       # M_sun
-delta_t = 0.0445  # seconds (calculated in nvg_gw_echoes.py)
+delta_t = 0.00512  # seconds (calculated in nvg_gw_echo_prediction.py)
 R_core = 0.8      # Reflectivity of the de Sitter core (phenomenological)
 
 print(f"  Target: GW150914 remnant (M = {M_bh} M_sun)")
