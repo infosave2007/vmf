@@ -159,6 +159,8 @@ The mass parameter $\mu^2$ is then locked using the vacuum phase frequency $\mu_
 
 $$ \mu^2 = \mu_\theta^2 + \lambda \mathcal{W}_0^2 \approx (782.6)^2 + 1.05 \times (859.0)^2 \approx 1.387 \times 10^6 \text{ MeV}^2 $$
 
+The physical justification for identifying the vacuum phase frequency with the mass of the vector meson ($\mu_\theta \approx m_\omega$) stems from the self-consistency of gauge invariance in the vacuum. Within the Hidden Local Symmetry (HLS) framework, the Goldstone phase $\theta$ serves as the longitudinal component of the vector field $A_\mu$ (a Stueckelberg-like mass-generation mechanism). For the vacuum state ($n_B = 0$, $A_\mu = 0$) to act as a physical absolute energy minimum with zero net current, the gauge-invariant generalized momentum $g_\mu = \partial_\mu \theta - q A_\mu$ must vanish. Since the vacuum phase frequency $\partial_0 \theta = \mu_\theta$ reflects the intrinsic scale of chiral symmetry breaking that determines the masses of the vector meson partners, the dynamical stability of the vacuum links these two scales: the frequency of the vacuum phase oscillations resonance-matches the mass of the vector field excitation that couples to the baryon number.
+
 ### 5.2. Calibration of the Coupling Constant $q$
 
 Although the classic Goldberger-Treiman relation connects the pseudoscalar pion-nucleon coupling, the coupling constant $q$ expresses a similar connection in the vector sector in the presence of a scalar condensate $\mathcal{W}$.
@@ -233,7 +235,7 @@ In the extreme compression regime near the bounce, the dynamics of the scalar fi
 
 $$ \mathcal{W}^2 = \frac{\mu^2 - g_0^2}{\lambda} $$
 
-where $g_0 = \mu_\theta - \gamma \frac{n_B}{n_0}$.
+where $g_0 = \mu_\theta - \gamma \frac{n_B}{n_0}$. The adiabaticity criterion for this approximation requires that the rate of change of the cosmological background (the compression rate) remains much smaller than the mass of the scalar excitations: $H \ll m_{\mathcal{W}}$. The characteristic response timescale of the scalar field is $\tau_{\mathcal{W}} = \hbar / m_{\mathcal{W}} \approx 5.3 \times 10^{-25}$ s, whereas the characteristic timescale of the cosmic contraction near the bounce is $t_b \approx 3.76 \times 10^{-6}$ s. Because $t_b \gg \tau_{\mathcal{W}}$ (differing by 19 orders of magnitude), the field adapts to the changing density instantaneously, fully justifying the quasi-static minimum approximation.
 
 Substituting this into the total energy density of the $\mathcal{W}$-sector (accounting for zero-point vacuum subtraction):
 
@@ -259,7 +261,7 @@ We perform the algebraic expansion of the numerator in powers of $x \equiv \gamm
    $$ 2 g_0^2 (\mu^2 - \mu_\theta^2) = 2 (\mu_\theta - x)^2 \lambda \mathcal{W}_0^2 = 2 \lambda \mathcal{W}_0^2 \mu_\theta^2 - 4 \lambda \mathcal{W}_0^2 \mu_\theta x + 2 \lambda \mathcal{W}_0^2 x^2 $$
 3. Combining these with the constant terms $3 \mu_\theta^4 - 2 \mu^2 \mu_\theta^2$:
    * $x^0$ (constant vacuum energy density) terms: $-\mu_\theta^4 + 2 \lambda \mathcal{W}_0^2 \mu_\theta^2 + 3 \mu_\theta^4 - 2 \mu^2 \mu_\theta^2 = 2 \mu_\theta^4 + 2 (\mu^2 - \mu_\theta^2) \mu_\theta^2 - 2 \mu^2 \mu_\theta^2 = 0$. The vacuum energy density at the minimum vanishes.
-   * $x^1$ (linear in density) terms: $4 \mu_\theta \left( \mu_\theta^2 - \lambda \mathcal{W}_0^2 \right) x$. While $\mu_\theta^2 - \lambda \mathcal{W}_0^2 \neq 0$, this term depends linearly on the density $n_B$ and is negligible (suppressed) compared to the quadratic term in the high-density regime $n_B \gg n_0$ as $O(n_0/n_B)$.
+   * $x^1$ (linear in density) terms: $4 \mu_\theta \left( \mu_\theta^2 - \lambda \mathcal{W}_0^2 \right) x$. While $\mu_\theta^2 - \lambda \mathcal{W}_0^2 \neq 0$, this term depends linearly on the density $n_B$ and is suppressed compared to the quadratic term in the high-density regime. An explicit numerical evaluation of the ratio between the linear and quadratic terms yields: $R \equiv \left| \frac{\text{linear}}{\text{quadratic}} \right| = \left| \frac{2 \mu_\theta (\mu_\theta^2 - \lambda \mathcal{W}_0^2)}{(3 \mu_\theta^2 - \lambda \mathcal{W}_0^2) x} \right| \approx \frac{0.25}{n_B / n_0}$. At nuclear density ($n_B = n_0$), the ratio is approximately $25\%$, while near the bounce threshold ($n_B \approx 2.5 n_0$), the linear term is only $10\%$ of the quadratic contribution and continues to fall as $O(n_0/n_B)$, validating the quadratic bounce approximation.
    * $x^2$ (quadratic in density) terms: $2 \left( \lambda \mathcal{W}_0^2 - 3 \mu_\theta^2 \right) x^2$.
 
 Dividing by the denominator $4\lambda$ and substituting $x = \gamma \frac{n_B}{n_0}$ yields the leading non-vanishing energy density correction:
