@@ -37,7 +37,7 @@ M_current_0 = sigma_total
 k1 = 0.25
 k2 = 0.80
 c_s = 300.0           # Scalar coupling MeV*fm^3
-c_rho = 90.0          # Isovector coupling MeV*fm^3 (tuned for Direct Urca threshold)
+c_rho = 90.0  # MeV*fm^3, standard isovector RMF value, cf. Typel et al. (2010) DD2
 alpha_v = 0.05        # Vector saturation parameter (tuned for 1.45 M_sun central density ~4.0 n0)
 nu_v = 2.0            # Vector saturation power
 
