@@ -30,6 +30,17 @@ where $\Phi(x) = \mathcal{W}(x) e^{i\theta(x)}$ is the complex vacuum condensate
 * **Vacuum Melting ($\mathcal{W}$):** Controls the amplitude of the vacuum energy density. In-medium melting in dense nuclear cores dictates the Equation of State (VMF) and resolves black hole/cosmological singularities when $\mathcal{W} \to 0$ and $V(0) = \frac{\lambda_v}{4} M_{\Omega,0}^4$ violates the Strong Energy Condition.
 * **Emergent Time & Topological Flow ($\theta$):** The gradient of the Goldstone phase defines a preferred unit timelike vector field $u_\mu \equiv \partial_\mu \theta / \sqrt{-g^{\alpha\beta}\partial_\alpha \theta \partial_\beta \theta}$, anchoring the coordinate time direction. Its time evolution during collapse ($\dot{\theta} \neq 0$) couples to the EM field via the axion-like topological theta-term ($\theta F \tilde{F}$), driving exponential chiral magnetic field amplification in magnetars.
 
+#### Mathematical Derivation of $\mathcal{W}$-field Dynamics & Melting
+By performing a polar decomposition $\Phi(x) = \frac{1}{\sqrt{2}} \mathcal{W}(x) e^{i \theta(x)}$ under a $U(1)$ gauge covariant derivative $D_\mu = \partial_\mu - i q A_\mu$, the scalar sector kinetic term expands as:
+$$ (D_\mu \Phi)^\dagger (D^\mu \Phi) = \frac{1}{2} \partial_\mu \mathcal{W} \partial^\mu \mathcal{W} + \frac{1}{2} \mathcal{W}^2 (\partial_\mu \theta - q A_\mu)(\partial^\mu \theta - q A^\mu) $$
+With a Higgs-like potential $V(\Phi) = -\mu^2 \Phi^\dagger \Phi + \lambda (\Phi^\dagger \Phi)^2$, the Euler-Lagrange equations yield the equation of motion for the real amplitude $\mathcal{W}(x)$:
+$$ \square \mathcal{W} + \left[ \lambda \mathcal{W}^2 - (\mu^2 + g_\mu g^\mu) \right] \mathcal{W} = 0 $$
+where $g_\mu \equiv \partial_\mu \theta - q A_\mu$. In spatial-dominated regimes ($g_\mu g^\mu \approx -|\vec{g}|^2$), the effective potential becomes:
+$$ V_{\text{eff}}(\mathcal{W}) = \frac{1}{2} (|\vec{g}|^2 - \mu^2) \mathcal{W}^2 + \frac{1}{4} \lambda \mathcal{W}^4 $$
+* **Symmetric Phase (Melting):** For $|\vec{g}|^2 < \mu^2$, the vacuum expectation value (VEV) is $\mathcal{W}_0 = \sqrt{(\mu^2 - |\vec{g}|^2)/\lambda} > 0$. When external field energy exceeds the mass threshold ($|\vec{g}|^2 \ge \mu^2$), the effective mass term becomes positive, driving the VEV to $\mathcal{W}_0 = 0$ (complete vacuum melting).
+
+For a complete step-by-step mathematical proof, see the local preprint: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (English) or [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (Russian).
+
 The framework consists of three main pillars:
 
 ### Pillar I: Dense Nuclear Matter (VMF)
@@ -214,6 +225,8 @@ NVG-Research/
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.md      # Mathematical derivation of the unified field action and equations
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.tex      # LaTeX file for the unified field equations
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.pdf      # PDF for the unified field equations
+│   ├── NVG_VACUUM_W_FIELD_DERIVATION_EN.md  # QFT derivation of the vacuum condensate amplitude W (EN)
+│   ├── NVG_VACUUM_W_FIELD_DERIVATION_RU.md  # QFT derivation of the vacuum condensate amplitude W (RU)
 │   └── *.pdf                               # PDF renders of all articles
 ├── verification/
 │   ├── nvg_verification_suite.py           # Master automated verification test suite
@@ -268,7 +281,8 @@ NVG-Research/
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── run_all_checks.py                   # Automated suite runner for all physical verifications
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
-│   └── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
+│   ├── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
+│   └── nvg_vacuum_w_field_derivation.py    # Numerical verification of the W-field phase transition
 ├── visualization/
 │   ├── nvg_3d_viz_v2.html                  # Interactive 3D Tolman Cycles Simulator
 │   ├── nvg_ns_merger_3d.html               # Interactive 3D BNS Merger & Mass Melting
@@ -352,6 +366,7 @@ python verification/nvg_starquake_qpo.py           # Validates magnetar QPO star
 python verification/nvg_primordial_gw_comb.py      # Calculates bounce frequencies for Tolman cycles
 python verification/nvg_axion_mass.py              # Calculates topological axion mass limits
 python verification/nvg_perihelion_shift.py        # Verifies binary pulsar strong-field periastron shift
+python verification/nvg_vacuum_w_field_derivation.py # Models QFT W-field phase transition & VEV
 python verification/run_nvg_suite.py               # MASTER SCRIPT (NVG_FINAL_REPORT.md)
 ```
 

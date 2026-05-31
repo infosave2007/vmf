@@ -30,6 +30,17 @@ $$ S = \int d^4x \sqrt{-g} \left[ \frac{R}{16\pi G} - g^{\mu\nu} \partial_\mu \P
 * **Плавление вакуума ($\mathcal{W}$):** Управляет амплитудой плотности энергии вакуума. Плавление в плотных адронных ядрах определяет уравнение состояния (VMF) и разрешает сингулярности черных дыр/космологии при $\mathcal{W} \to 0$, когда потенциал $V(0) = \frac{\lambda_v}{4} M_{\Omega,0}^4$ нарушает сильное энергетическое условие (SEC).
 * **Эмерджентное время и топологический ток ($\theta$):** Градиент голдстоуновской фазы задает выделенное единичное времениподобное векторное поле $u_\mu \equiv \partial_\mu \theta / \sqrt{-g^{\alpha\beta}\partial_\alpha \theta \partial_\beta \theta}$, фиксируя направление координатного времени. В динамических режимах ($\dot{\theta} \neq 0$) фазовый поток связывается с электромагнитным полем через топологический тета-член ($\theta F \tilde{F}$), вызывая экспоненциальное киральное усиление магнитных полей магнетаров.
 
+#### Математический вывод динамики и плавления поля $\mathcal{W}$
+При полярном разложении поля $\Phi(x) = \frac{1}{\sqrt{2}} \mathcal{W}(x) e^{i \theta(x)}$ под действием $U(1)$ ковариантной производной $D_\mu = \partial_\mu - i q A_\mu$, кинетический член сектора скалярного поля записывается как:
+$$ (D_\mu \Phi)^\dagger (D^\mu \Phi) = \frac{1}{2} \partial_\mu \mathcal{W} \partial^\mu \mathcal{W} + \frac{1}{2} \mathcal{W}^2 (\partial_\mu \theta - q A_\mu)(\partial^\mu \theta - q A^\mu) $$
+С потенциалом Хиггса-Гинзбурга-Ландау $V(\Phi) = -\mu^2 \Phi^\dagger \Phi + \lambda (\Phi^\dagger \Phi)^2$ уравнения Эйлера-Лагранжа дают уравнение движения для вещественной амплитуды $\mathcal{W}(x)$:
+$$ \square \mathcal{W} + \left[ \lambda \mathcal{W}^2 - (\mu^2 + g_\mu g^\mu) \right] \mathcal{W} = 0 $$
+где $g_\mu \equiv \partial_\mu \theta - q A_\mu$. В пространственно-подобных режимах ($g_\mu g^\mu \approx -|\vec{g}|^2$) эффективный потенциал равен:
+$$ V_{\text{eff}}(\mathcal{W}) = \frac{1}{2} (|\vec{g}|^2 - \mu^2) \mathcal{W}^2 + \frac{1}{4} \lambda \mathcal{W}^4 $$
+* **Симметричная фаза (Плавление):** При $|\vec{g}|^2 < \mu^2$ вакуумное ожидаемое значение (VEV) составляет $\mathcal{W}_0 = \sqrt{(\mu^2 - |\vec{g}|^2)/\lambda} > 0$. Когда плотность энергии внешнего калибровочного поля превышает порог массы ($|\vec{g}|^2 \ge \mu^2$), эффективная квадратичная масса становится положительной, переводя минимум потенциала в $\mathcal{W}_0 = 0$ (полное плавление вакуумного конденсата).
+
+Для подробного пошагового математического доказательства см. локальный препринт: [NVG_VACUUM_W_FIELD_DERIVATION_EN.md](article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md) (английская версия) или [NVG_VACUUM_W_FIELD_DERIVATION_RU.md](article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md) (русская версия).
+
 Структура состоит из трёх основных столпов:
 
 ### Столп I: Плотная ядерная материя (VMF)
@@ -216,6 +227,8 @@ NVG-Research/
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.md      # Математический вывод действия и уравнений единого поля
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.tex      # LaTeX-версия уравнений единого поля
 │   ├── NVG_UNIFIED_FIELD_EQUATIONS.pdf      # PDF-версия уравнений единого поля
+│   ├── NVG_VACUUM_W_FIELD_DERIVATION_EN.md  # Математический вывод амплитуды вакуума W из КТП (EN)
+│   ├── NVG_VACUUM_W_FIELD_DERIVATION_RU.md  # Математический вывод амплитуды вакуума W из КТП (RU)
 │   └── *.pdf                               # PDF-рендеры всех статей
 ├── verification/
 │   ├── nvg_verification_suite.py           # Мастер-набор автоматической верификации
@@ -267,7 +280,8 @@ NVG-Research/
 │   ├── run_nvg_suite.py                    # МАСТЕР-СКРИПТ: генерация финального отчета с погрешностями
 │   ├── run_all_checks.py                   # Автоматический запуск всех физических проверок
 │   ├── nvg_genesis_observable.py           # Инстантон Генезиса → хаббловский горизонт
-│   └── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
+│   ├── nvg_graphene_modulation.py          # Термодинамические пределы вакуумной модуляции
+│   └── nvg_vacuum_w_field_derivation.py    # Численное моделирование фазового перехода W-поля
 ├── visualization/
 │   ├── nvg_3d_viz_v2.html                  # 3D WebGL симулятор циклов Толмана
 │   ├── nvg_ns_merger_3d.html               # 3D симулятор слияния НЗ и массового плавления
@@ -351,6 +365,7 @@ python verification/nvg_starquake_qpo.py           # Проверка часто
 python verification/nvg_primordial_gw_comb.py      # Расчёт bounce-частот для циклов Толмана
 python verification/nvg_axion_mass.py              # Расчёт топологической массы аксиона
 python verification/nvg_perihelion_shift.py        # Проверка сдвига периастра двойного пульсара
+python verification/nvg_vacuum_w_field_derivation.py # Моделирование фазового перехода W-поля КТП
 python verification/run_nvg_suite.py               # МАСТЕР-СКРИПТ (NVG_FINAL_REPORT.md)
 ```
 
