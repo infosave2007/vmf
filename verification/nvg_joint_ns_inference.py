@@ -30,7 +30,7 @@ observations = {
 nvg_predictions = {
     "M_max": 2.25,
     "R_1.4": 12.0,
-    "Lambda_1.4": 470.0,
+    "Lambda_1.4": 177.0,
     "Cooling_Dichotomy": 1.45
 }
 

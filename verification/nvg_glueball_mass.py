@@ -8,7 +8,11 @@ vacuum excitation and compares it to Lattice QCD and experimental data.
 import math
 
 def calculate_glueball_mass(m_omega: float) -> float:
-    # Glue energy fraction in the trace anomaly
+    # Glue energy fraction in the trace anomaly (v_eff = 2/3).
+    # NOTE: This represents a model prior based on the partition of the trace anomaly
+    # into gluonic and quark components (where the gluonic part dominates by ~2/3).
+    # This is a qualitative scale estimate (null test) rather than a direct derivation
+    # from the VMF Lagrangian. The coefficient is chosen to test trace anomaly scaling.
     v_eff = 2.0 / 3.0
     # Excitation energy: M_glueball = (4/3) * M_omega / v_eff
     return (4.0 / 3.0) * m_omega / v_eff

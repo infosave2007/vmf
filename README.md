@@ -109,9 +109,9 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 1 | Nucleon mass: 91% from non-perturbative QCD ($M_{\Omega,0} = 859 \pm 8$ MeV) | Lattice QCD $\sigma_{\pi N} \approx 44$ MeV, $\sigma_{sN} \approx 30$ MeV | ✅ Confirmed |
 | 2 | $M_{\max} \approx 2.25\,M_\odot$ | NICER + LIGO: $M_{\rm TOV} \approx 2.25 \pm 0.07\,M_\odot$ | ✅ Exact Match |
 | 3 | $R_{1.4} \approx 12.0$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact Match |
-| 4 | Genesis Instanton $r_c \to$ $N_e = 53.08$ e-folds (topologically bounded to $[52.68, 53.38]$ by cycle $n=77$) | $R_{H0} = c/H_0 \approx 1.27 \times 10^{28}$ cm (consistent with $t_0 \approx 13.8$ Gyr) | ✅ Exact Match |
+| 4 | Genesis Instanton $r_c \to$ $N_e = 53.08$ e-folds (topologically bounded to $[(n-1)\ln 2, n\ln 2] = [52.68, 53.38]$ for cycle $n=77$) | $R_{H0} = c/H_0 \approx 1.27 \times 10^{28}$ cm (consistent with $t_0 \approx 13.8$ Gyr, see [nvg_hubble_tension.py](verification/nvg_hubble_tension.py) / [nvg_genesis_observable.py](verification/nvg_genesis_observable.py)) | ✅ Exact Match |
 | 5 | NS Cooling Dichotomy | Cas A (slow, $1.4 M_\odot$) and Vela (fast, $1.8 M_\odot$) | ✅ Reproduced via $1.45 M_\odot$ threshold |
-| 6 | Tidal deformability: $\Lambda_{1.4} \approx 177$ (derived from TOV + Hinderer $y$-integration) | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (direct hit in posterior center) | ✅ Exact Match |
+| 6 | Tidal deformability: $\Lambda_{1.4} \approx 177$ (derived from TOV + Hinderer $y$-integration in [nvg_tidal_deformability_gw170817.py](verification/nvg_tidal_deformability_gw170817.py)) | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (direct hit in posterior center) | ✅ Exact Match |
 | 7 | In-medium $\rho$-meson mass shift: $-20.0\%$ at $2n_0$ ($M_\rho^* \approx 621$ MeV), derived from $W$-field vector coupling | HADES Au+Au/Ag+Ag dielectron spectra peak shape shift ([hades_dielectron_sim.py](verification/nvg_hades_dielectron_sim.py)) | ⏳ Pending HADES |
 | 8 | Cosmic bounce density: $\rho_c = 7.09 \times 10^4$ MeV/fm³ (strictly from $M_{\Omega,0}^4$) | Classical bounce at $\rho_c/\rho_{\rm Planck} = 2.5 \times 10^{-77}$ without quantum gravity | ✅ Consistent / Falsifiable |
 | 9 | Hubble constant: $H_0 = 72.8$ km/s/Mpc (derived from cycle $n=77$ turnaround horizon $R_{77} = r_c \cdot 2^{76}$) | Local measurements (SH0ES: $73.04 \pm 1.04$ km/s/Mpc) matching the 77th Tolman cycle expansion phase ($\theta \approx 52.8^\circ$ at $t_0 \approx 13.8$ Gyr) ([hubble_tension.py](verification/nvg_hubble_tension.py)) | ✅ Resolves Tension |
@@ -169,7 +169,7 @@ NVG must not break General Relativity where it works reliably. These items prove
 | Gravitational Waves | $\gamma_{\rm PPN} \equiv 1$, $c_T = c$ | Cassini, GW170817: $|c_T/c - 1| < 10^{-15}$ |
 | External BH Metric | Strict Kerr/Schwarzschild outside horizon | LIGO O4a: 42 mergers, no macro-deviations |
 | Tidal Deformability | $\Lambda_{1.4} \approx 177$ | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (within interval) |
-| Dark Energy (DESI) | Cyclic evolution: $w_0 = -0.89$, $w_a = -0.60$ | DESI DR2: compatible within 2.8-sigma ($Z = 2.74\sigma$, compatibility $2.32\%$) |
+| Dark Energy (DESI) | Cyclic evolution: $w_0 = -0.890$, $w_a = -0.574$ | Derived dynamically: individual bins agree within $1.7\sigma$, whereas the joint 2D CPL ($w_0$, $w_a$) parameter space point lies on the $2.74\sigma$ confidence ellipse of the DESI DR2 joint constraints ([nvg_dark_energy_w0wa.py](verification/nvg_dark_energy_w0wa.py) / [nvg_dark_energy_desi.py](verification/nvg_dark_energy_desi.py)) |
 | BH Shadows (EHT) | Deviation from Kerr $\sim 10^{-70}$ | EHT (M87*, Sgr A*) sees no deviation from GR |
 | Lorentz Invariance | $0.0$ vacuum dispersion and birefringence | GRB 041219A / 090510 (Fermi/Swift) |
 | QNM Ringdown | Ringdown frequency shift $\sim 10^{-105}$ (Hayward core) | LIGO O4a: ringdown is mathematically indistinguishable from Kerr |
@@ -195,7 +195,7 @@ A formal letter has been sent to the **HADES Collaboration** (GSI/FAIR, Prof. Dr
 ### 5. Quantitative Verification against Observational Data
 A dedicated suite of statistical tests verifies the framework against actual public data:
 - **CMB Low-$\ell$ Suppression:** Derived comoving cutoff scale $\ell_c = 3.42$ (from $D_{LS}/R_{\rm bounce}$) matches the observed Planck PR4 quadrupole/octupole suppression with $\chi^2 = 0.615$ (p-value = $73.5\%$).
-- **DESI DR2 Dark Energy $w(z)$:** The predicted cyclic cosmology trajectory ($w_0 = -0.888, w_a = -0.597$) lies within $1.7\sigma$ of the binned data for all individual redshift bins $z \ge 0.15$ (with the joint CPL parameter space point $(w_0, w_a)$ lying at the $2.74\sigma$ confidence contour of the DESI DR2 joint likelihood ellipse).
+- **DESI DR2 Dark Energy $w(z)$:** The predicted cyclic cosmology trajectory ($w_0 = -0.890, w_a = -0.574$) is compatible with the DESI DR2 binned data. Specifically, individual redshift bins agree within $1.7\sigma$ on a 1D basis, whereas the joint 2D CPL ($w_0$, $w_a$) parameter space point lies on the $2.74\sigma$ confidence ellipse of the DESI DR2 joint constraints.
 - **GW170817 Tidal Deformability:** The predicted stable branch trajectory yields a constant binary tidal deformability $\tilde{\Lambda} \approx 209$, passing directly through the geometric center of the LIGO 90% confidence contour.
 - **Young Neutron Star Cooling:** Resolves the Cas A cooling rate ($dT_s/dt \approx -3500$ K/yr observed vs $-3650$ K/yr predicted) and Vela surface temperature ($6.8 \times 10^5$ K observed vs $6.95 \times 10^5$ K predicted by Direct Urca) based on the $1.45 M_\odot$ VMF threshold.
 - **JWST Early SMBH Seeding:** NVG primordial seeds from Cycle N=10 ($4 \times 10^5 M_\odot$) grow to GN-z11 ($1.6 \times 10^7 M_\odot$) and UHZ1 ($4 \times 10^7 M_\odot$) under standard sub-Eddington accretion ($f_{\rm Edd} \approx 42-46\%$), whereas standard Pop III seeds ($100 M_\odot$) fail and require super-Eddington rates ($f_{\rm Edd} > 130\%$).
@@ -266,6 +266,7 @@ NVG-Research/
 │   ├── nvg_unified_field_equations.py      # Verification of the unified field equations and core limits
 │   ├── nvg_hades_dielectron_sim.py         # HADES/CBM in-medium rho-meson dielectron spectral simulation
 │   ├── nvg_gw_echo_waveforms.py            # Post-merger black hole GW echoes waveform template simulator
+│   ├── nvg_dark_energy_w0wa.py             # CPL w0-wa parameter derivation from VMF cyclic cosmology
 │   ├── nvg_dark_energy_desi.py             # Cosmological dark energy w0-wa parameter alignment with DESI DR2
 │   ├── nvg_pbh_jwst_seeds.py               # JWST early supermassive black hole seeding puzzle simulation
 │   ├── nvg_pbh_continuity_test.py          # Continuous PBH mass spectrum
@@ -376,6 +377,8 @@ python verification/nvg_nicer_j0437_check.py        # Validates NVG radius again
 python verification/nvg_nanograv_background.py      # Models stochastic GW background from PBH merger cycles
 python verification/nvg_hubble_tension.py           # Calculates H_0 and resolves Hubble tension
 python verification/nvg_sgr_frb_rate.py             # Models magnetar mass vs stability and FRB burst rate
+python verification/nvg_dark_energy_w0wa.py         # Derives CPL dark energy parameters w0-wa
+python verification/nvg_dark_energy_desi.py         # Verifies dark energy w0-wa alignment vs DESI DR2
 python verification/nvg_s8_tension_check.py         # Growth suppression and S8 tension relief check
 python verification/nvg_chime_frb_check.py          # CHIME Catalog 1 repeater mass distribution check
 python verification/nvg_ligo_o4_echo_candidates.py  # Echo delay times for O4 candidates (M ~ 65 M_sun)

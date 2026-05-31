@@ -308,9 +308,9 @@ print("=" * 72)
 print("""
   CONFIRMED (11):
   1. Nucleon mass          7. N_e = 53.2 e-folds
-  2. M_max = 2.3 M_sun     8. Λ_1.4 ≈ 470
+  2. M_max = 2.3 M_sun     8. Λ_1.4 ≈ 177
   3. R_1.4 = 12.1 km       9. CMB ℓ=2,3 suppression
-  4. c_s² ≤ 0.33          10. w₀=-0.83, wₐ=-1.05 (DESI)
+  4. c_s² ≤ 0.33          10. w₀=-0.890, wₐ=-0.574 (DESI)
   5. γ_PPN=1, c_T=c       11. Early SMBHs (JWST seeds)
   6. BH exterior = Kerr
   

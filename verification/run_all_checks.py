@@ -136,7 +136,7 @@ CHECKS = [
     {
         "name": "DESI DR2 Dark Energy Parametric Alignment",
         "script": "nvg_dark_energy_desi.py",
-        "claim": "VMF cyclic cosmology prediction (w0 = -0.89, wa = -0.60) aligns within 2.8-sigma of DESI DR2",
+        "claim": "VMF cyclic cosmology prediction (w0 = -0.890, wa = -0.574) aligns within 2.8-sigma of DESI DR2",
         "critical": True,
     },
     {
@@ -287,6 +287,36 @@ CHECKS = [
         "name": "de Sitter Core Standing Wave Oscillations",
         "script": "nvg_ds_core_oscillations.py",
         "claim": "W-field oscillations inside the de Sitter core predict echo sub-structure",
+        "critical": True,
+    },
+    {
+        "name": "Gravitational Wave Post-Merger Echo Delay",
+        "script": "nvg_gw_echo_prediction.py",
+        "claim": "Verify post-merger echo delay Delta t ≈ 0.0445s for 65 M_sun remnant",
+        "critical": True,
+    },
+    {
+        "name": "Magnetar Core EOS and field amplification",
+        "script": "nvg_magnetar_eos.py",
+        "claim": "Verify effective dielectric eps_eff = 0.135 and core field B > 10^15 G",
+        "critical": True,
+    },
+    {
+        "name": "Cyclic Cosmology Parameters",
+        "script": "nvg_cyclic_cosmology.py",
+        "claim": "Verify Genesis instanton scale r_c = 1.13 km and current cycle index n ≈ 77",
+        "critical": True,
+    },
+    {
+        "name": "PBH Discrete Mass Spectrum",
+        "script": "nvg_pbh_mass_spectrum.py",
+        "claim": "Verify PBH mass spectrum hierarchy M_N = 0.38 * 4^N M_sun",
+        "critical": True,
+    },
+    {
+        "name": "Direct Urca cooling threshold",
+        "script": "nvg_direct_urca.py",
+        "claim": "Verify proton fraction exceeds critical threshold at M > 1.45 M_sun",
         "critical": True,
     },
 ]

@@ -18,7 +18,7 @@ M_tot = M1 + M2
 M_chirp = ((M1 * M2)**0.6) / (M_tot**0.2)
 
 # VMF specific parameters
-Lambda_14 = 470.0  # Tidal deformability
+Lambda_14 = 177.0  # Tidal deformability
 f_peak = 2730.0    # Post-merger peak frequency (Hz)
 melt_threshold = 1.45 # M_sun equivalent density threshold
 

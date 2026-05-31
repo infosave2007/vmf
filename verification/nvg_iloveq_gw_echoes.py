@@ -45,8 +45,8 @@ d_I = -6.953e-4
 e_I = 8.345e-6
 
 # VMF EOS predictions (from previous scripts):
-Lambda_14 = 470.0
-I_1338_cgs = 1.63e45  # g cm^2 (for double pulsar J0737-3039A)
+Lambda_14 = 177.0
+I_1338_cgs = 1.116e45  # g cm^2 (for double pulsar J0737-3039A)
 
 # Calculate universal prediction from Lambda_14
 ln_L = np.log(Lambda_14)
@@ -65,11 +65,11 @@ print(f"  Dimensionless I_bar = {I_bar_univ:.3f}")
 print(f"  Predicted I_1.4 = {I_14_predicted:.2e} g cm²")
 print(f"")
 print(f"  Comparison with VMF numerical TOV integration:")
-print(f"  VMF TOV I_1.338 ≈ 1.63e45 g cm²")
-print(f"  Extrapolated I_1.4 ≈ {1.63e45 * (1.4/1.338)**1.5:.2e} g cm²")
+print(f"  VMF TOV I_1.338 ≈ 1.116e45 g cm²")
+print(f"  Extrapolated I_1.4 ≈ {1.116e45 * (1.4/1.338)**1.5:.2e} g cm²")
 print(f"")
 
-error_pct = abs(I_14_predicted - 1.63e45 * (1.4/1.338)**1.5) / I_14_predicted * 100
+error_pct = abs(I_14_predicted - 1.116e45 * (1.4/1.338)**1.5) / I_14_predicted * 100
 
 print(f"  Deviation: {error_pct:.2f}%")
 print(f"""

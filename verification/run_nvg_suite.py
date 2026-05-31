@@ -152,8 +152,8 @@ def solve_inverse_qcd(obs_lambda_14=None, obs_m_max=None):
     """
     reconstructed = {}
     if obs_lambda_14:
-        # lambda = 470 * (859/M)^5 => M = 859 / (lambda/470)^(1/5)
-        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 470.0)**0.2
+        # lambda = 177 * (859/M)^5 => M = 859 / (lambda/177)^(1/5)
+        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 177.0)**0.2
         reconstructed['From Lambda_1.4'] = m_rec
     if obs_m_max:
         # m_max = 2.25 * (859/M)^1.5 => M = 859 / (m_max/2.25)^(2/3)
