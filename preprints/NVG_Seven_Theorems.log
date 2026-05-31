@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  31 MAY 2026 18:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2026.1.15)  31 MAY 2026 20:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -787,11 +787,11 @@ Package rerunfilecheck Info: File `NVG_Seven_Theorems.out' has not changed.
 (rerunfilecheck)             Checksum: 3872E4E453519215C8C17C0A73D94FA1;3414.
  ) 
 Here is how much of TeX's memory you used:
- 15743 strings out of 474662
- 251742 string characters out of 5751109
- 691554 words of memory out of 5000000
+ 15741 strings out of 474662
+ 251722 string characters out of 5751109
+ 692554 words of memory out of 5000000
  38070 multiletter control sequences out of 15000+600000
- 694059 words of font info for 288 fonts, out of 8000000 for 9000
+ 693972 words of font info for 287 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  75i,14n,79p,1025b,597s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025basic/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></u
@@ -817,7 +817,7 @@ exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025basic/texmf-
 dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2025basic/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025basic/te
 xmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on preprints/NVG_Seven_Theorems.pdf (21 pages, 3838861 bytes).
+Output written on preprints/NVG_Seven_Theorems.pdf (21 pages, 3838807 bytes).
 PDF statistics:
  513 PDF objects out of 1000 (max. 8388607)
  420 compressed objects within 5 object streams
