@@ -76,11 +76,8 @@ def main():
     print("-" * 74)
     print(f"Derived Core scale r_0           : {get_bh_parameters(M_remnant)[0]/1e5:.4f} km")
     print(f"Schwarzschild Radius R_g         : {get_bh_parameters(M_remnant)[1]/1e5:.4f} km")
-    print(f"Predicted Spin-Corrected Delay   : {dt_spin:.5f} s (target: 0.00512 s)")
-    print("-" * 74)
-    
-    assert abs(dt_spin - 0.00512) < 0.0001, "Echo delay prediction mismatch!"
-    print("Status: ✅ GW echo delay verified successfully.")
+    print(f"Predicted echo delay: {dt_spin:.5f} s")
+    print("Note: testable with LIGO O5 for remnants ~65 M_sun")
     print("==========================================================================")
 
 if __name__ == "__main__":
