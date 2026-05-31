@@ -64,7 +64,7 @@ CHECKS = [
     {
         "name": "Hadron Universality & FAIR/HADES Observables",
         "script": "nvg_fair_hades_link.py",
-        "claim": "f_Omega is universal for non-Goldstone light hadrons (~90%); rho drops by ~23% at 2n_0",
+        "claim": "f_Omega is universal for non-Goldstone light hadrons (~90%); rho drops by ~20% at 2n_0",
         "critical": True,
     },
     {
@@ -256,7 +256,31 @@ CHECKS = [
     {
         "name": "Higgs Boson Mass Shift from QCD Condensate",
         "script": "nvg_higgs_mass_shift.py",
-        "claim": "Verify Higgs mass shift delta_m_H ≈ 8.7 MeV lies within LHC experimental uncertainty (+/- 110 MeV)",
+        "claim": "Verify Higgs mass shift delta_m_H ≈ 4.4 MeV lies within LHC experimental uncertainty (+/- 110 MeV)",
+        "critical": True,
+    },
+    {
+        "name": "Macroscopic Weak-Field Limit (PPN Parameters)",
+        "script": "nvg_weak_field_ppn.py",
+        "claim": "NVG reduces exactly to GR in the macroscopic vacuum (gamma_PPN = 1, beta_PPN = 1)",
+        "critical": True,
+    },
+    {
+        "name": "PBH Dark Matter Fraction & Constraints",
+        "script": "nvg_pbh_dark_matter.py",
+        "claim": "PBH mass spectrum peak lies in asteroid-mass window and satisfies Subaru/LIGO bounds",
+        "critical": True,
+    },
+    {
+        "name": "White Dwarf Cooling rate correction",
+        "script": "nvg_wd_cooling.py",
+        "claim": "White dwarf cooling age correction lies within Gaia + SDSS limits",
+        "critical": True,
+    },
+    {
+        "name": "de Sitter Core Standing Wave Oscillations",
+        "script": "nvg_ds_core_oscillations.py",
+        "claim": "W-field oscillations inside the de Sitter core predict echo sub-structure",
         "critical": True,
     },
 ]
@@ -272,12 +296,6 @@ OPTIONAL_CHECKS = [
         "name": "Entropy-Time Cycle Toy Model",
         "script": "nvg_entropy_time_cycle_toy.py",
         "claim": "Finite cycle in emergent time is mathematically possible",
-        "critical": False,
-    },
-    {
-        "name": "Macroscopic Weak-Field Limit (PPN Parameters)",
-        "script": "nvg_weak_field_ppn.py",
-        "claim": "NVG reduces exactly to GR in the macroscopic vacuum (gamma_PPN = 1, beta_PPN = 1)",
         "critical": False,
     },
 ]

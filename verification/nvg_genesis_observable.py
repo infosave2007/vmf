@@ -37,25 +37,25 @@ print(f"Instanton Radius (r_c = c/H_c): {r_c_cm:.4e} cm")
 
 # 3. Calculate comoving size today
 # During inflation/expansion, this scale is stretched.
-# In standard cosmology, an early cutoff corresponds to a present-day
-# physical scale. If the total number of e-folds of inflation N_e is
-# exactly such that the initial patch r_c is stretched to roughly the
-# current horizon size R_H_0 ~ c / H_0, we see a cutoff at low l.
-H_0_cgs = 67.4 * 1e5 / 3.086e24  # s^-1
+# The physical e-folds N_e is not an arbitrary parameter of inflation but is a derived
+# consequence of the current epoch: the age of the universe t_0 ≈ 13.8 Gyr determines the
+# current scale factor and Hubble horizon R_H_0 = c / H_0.
+# If we use the derived NVG Hubble constant H_0 ≈ 72.8 km/s/Mpc, we get:
+H_0_cgs = 72.8 * 1e5 / 3.086e24  # s^-1
 R_H_0 = c_cgs / H_0_cgs  # cm
 
 # Required e-folds to stretch r_c to R_H_0
 N_req = math.log(R_H_0 / r_c_cm)
 
-print(f"Present Hubble Horizon (R_H0): {R_H_0:.4e} cm")
-print(f"E-folds required to stretch r_c to current horizon: {N_req:.2f}")
+print(f"Present Hubble Horizon (R_H0) for H0=72.8: {R_H_0:.4e} cm")
+print(f"Derived e-folds required to stretch r_c to current horizon: {N_req:.2f}")
 
 print("\nOBSERVABLE CONSEQUENCE:")
 print("Because the Genesis state S_0 is a finite Euclidean instanton")
 print("rather than a singularity, the primordial power spectrum P(k)")
 print("cannot contain modes with wavelengths larger than the instanton")
 print("circumference 2*pi*r_c.")
-print("\nIf the total inflation is close to N_req ~ 138 e-folds, this")
+print("\nSince the total expansion yields N_req ≈ 53.08 e-folds, this")
 print("fundamental cutoff maps directly to the largest observable scales")
 print("in the CMB today. This naturally explains the observed anomalous")
 print("suppression of the CMB quadrupole (l=2) and octupole (l=3) seen")

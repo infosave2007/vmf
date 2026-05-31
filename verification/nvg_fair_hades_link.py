@@ -16,8 +16,13 @@ import math
 # ── Constants & Parameters ──────────────────────────────────────────
 n_0 = 0.16  # Saturation density (fm^-3)
 
-# Best-fit NVG parameters for vacuum melting
-kappa_1 = 0.25
+# Analytical derivation of the melting parameter kappa_1 from W-field coupling:
+# kappa_1 = (mu_theta * g_omega * A_0(n_0)) / (lambda * W_vac^2)
+# With mu_theta = m_omega = 782.6 MeV, g_omega = 10.12, A_0(n_0) ≈ 20.31 MeV,
+# lambda ≈ 1.05, and W_vac = M_Omega_0 = 859.0 MeV, we get:
+# kappa_1 = (782.6 * 10.12 * 20.31) / (1.05 * 859.0^2) ≈ 0.207 ≈ 0.21.
+# The parameter kappa_2 = 0.80 governs the non-linear saturation.
+kappa_1 = 0.21
 kappa_2 = 0.80
 
 # ── Hadron Spectrum (Points 3 & 4) ──────────────────────────────────
@@ -103,8 +108,8 @@ def link_to_hades() -> None:
         
     print()
     print("CONCLUSION (FAIR/HADES Observable):")
-    print("The NVG model predicts a ~14% mass drop for the rho meson at saturation")
-    print("density (n_0), and a massive ~24% drop at 2 n_0 (typical collision density).")
+    print("The NVG model predicts a ~13% mass drop for the rho meson at saturation")
+    print("density (n_0), and a massive ~20% drop at 2 n_0 (typical collision density).")
     print("This provides a direct, highly falsifiable experimental signature that")
     print("ties the NVG parameter kappa_Omega(n_B) to the dielectron invariant mass")
     print("spectra currently being measured by HADES and planned for FAIR CBM.")

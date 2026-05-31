@@ -1,24 +1,28 @@
 #!/usr/bin/env python3
 """
-NVG Verification: CMB Temperature from QCD Bounce Parameters
--------------------------------------------------------------
-Derives today's Cosmic Microwave Background (CMB) temperature (T_CMB = 2.725 K) 
-from the VMF bounce parameters (T_bounce = 432.0 MeV, core scale r_0) 
-under adiabatic expansion with scale factor unit normalization (a_bounce = 1 cm).
+NVG Verification: CMB Temperature Consistency Check
+---------------------------------------------------
+Performs a consistency check on today's Cosmic Microwave Background (CMB) temperature
+(T_CMB = 2.725 K) against VMF bounce parameters.
+
+NOTE: This is a semi-empirical consistency check (null test) rather than a direct,
+parameter-free prediction from QCD, as it relies on:
+1. The observed mass of the observable universe (M_obs_g = 4.0e55 g) to set the comoving patch size.
+2. An arbitrary coordinate normalization for the scale factor at the bounce (a_bounce = 1 cm).
 """
 
 import math
 
 def calculate_cmb_temperature():
     print("==========================================================================")
-    print("  NVG/VMF CALCULATION: CMB TEMPERATURE TODAY FROM QCD BOUNCE")
+    print("  NVG/VMF CONSISTENCY CHECK: CMB TEMPERATURE TODAY FROM QCD BOUNCE")
     print("==========================================================================")
     
     # 1. Input QCD and cosmological scale parameters
     M_Omega_0 = 859.0       # MeV (lattice QCD vacuum mass anchor)
     hbar_c = 197.3269804    # MeV·fm
     MeV_fm3_to_gcm3 = 1.7827e12
-    M_obs_g = 4.0e55        # g, mass of the observable universe
+    M_obs_g = 4.0e55        # g, mass of the observable universe (empirical input)
     
     # 2. Critical density and bounce temperature
     eps_max = M_Omega_0**4 / hbar_c**3  # MeV/fm^3
@@ -32,7 +36,6 @@ def calculate_cmb_temperature():
     T_b_MeV = (30.0 * eps_MeV4 / (math.pi**2 * g_star_S_b))**0.25
     
     # Convert T_b to Kelvin: 1 eV = 11604.5 K => 1 MeV = 1.16045e10 K
-    # T_K = T_eV * (1.6022e-12 erg/eV) / (1.3806e-16 erg/K) = T_eV * 11604.5
     eV_to_K = 11604.518
     T_b_K = T_b_MeV * 1e6 * eV_to_K
     
@@ -41,11 +44,12 @@ def calculate_cmb_temperature():
     r_0_km = r_0_cm / 1e5
     
     # 4. Today's CMB temperature under adiabatic expansion
-    # Normalizing the scale factor at the bounce to the unit scale a_bounce = 1 cm,
-    # the expansion factor of the universe's scale factor is a_0 / a_bounce = r_0 / (1 cm).
+    # The scale factor bounce normalization a_bounce = 1 cm is arbitrary.
+    # The comoving scale today corresponding to the observable horizon is r_0.
+    # The expansion factor is a_0 / a_bounce = r_0 / (1 cm).
     # Entropy conservation: g_*S,b * a_bounce^3 * T_bounce^3 = g_*S,0 * a_0^3 * T_0^3
     # yields: T_0 = T_bounce * (g_*S,b / g_*S,0)^(1/3) * (a_bounce / a_0)
-    a_ratio = r_0_cm / 1.0  # since a_bounce = 1 cm
+    a_ratio = r_0_cm / 1.0  # since a_bounce = 1 cm coordinate scale
     g_ratio_13 = (g_star_S_b / g_star_S_0)**(1.0/3.0)
     T_0_pred_K = T_b_K * g_ratio_13 / a_ratio
     
@@ -68,7 +72,7 @@ def calculate_cmb_temperature():
     print(f"Deviation from Observation       : {dev_sigma:+.2f} sigma")
     
     is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                           : {'✅ PASSED (Exact match within 1-sigma)' if is_ok else '❌ FAILED'}")
+    print(f"Status                           : {'✅ PASSED (Consistent under standard unit bounce coordinate scaling)' if is_ok else '❌ FAILED'}")
     print("==========================================================================")
     return is_ok
 
