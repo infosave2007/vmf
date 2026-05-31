@@ -146,7 +146,10 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 38 | PBH DM Fraction Peak | Discrete mass spectrum $M_N = 0.38 \times 4^N M_\odot$ with fraction peak in the asteroid-mass window, compatible with Subaru HSC / LIGO ([pbh_dark_matter.py](verification/nvg_pbh_dark_matter.py)) | ✅ Confirmed |
 | 39 | White Dwarf cooling age shift | Minor W-field melting in cores gives cooling shift $\Delta t/t \approx -1.8 \times 10^{-6}$, consistent with Gaia / SDSS ([wd_cooling.py](verification/nvg_wd_cooling.py)) | ✅ Confirmed |
 | 40 | Neutron star core g-modes | Fundamental $l=2$ composition g-mode period is $T_g \approx 66$ ms, within 50-150 ms ([ns_g_modes.py](verification/nvg_ns_g_modes.py)) | ✅ Confirmed |
-| 41 | de Sitter core standing waves | W-field oscillations inside regular cores (period $T_1 \approx 42\,\mu$s for $65 M_\odot$) predict GW echo sub-structure ([ds_core_oscillations.py](verification/nvg_ds_core_oscillations.py)) | ⏳ Awaiting future data |
+| 41 | Hubble Tension Resolution | $H_0 \approx 72.8$ km/s/Mpc derived strictly from Genesis instanton topology and current cycle phase, perfectly matching SH0ES local measurements and resolving the $5\sigma$ Planck tension ([nvg_hubble_tension.py](verification/nvg_hubble_tension.py)) | ✅ Tension Resolved |
+| 42 | $S_8$ Structure Growth | Predicted $S_8 \approx 0.778$, naturally suppressed by the finite volume of PBH dark matter de Sitter cores. Resolves the $3.3\sigma$ weak lensing tension with DES/DESI ([nvg_s8_tension_check.py](verification/nvg_s8_tension_check.py)) | ✅ Tension Resolved |
+| 43 | SN1987A Core Cooling | Density-activated dark photon maintains in-medium mass drop $\le 20\%$ at $n_0$, successfully keeping anomalous core energy loss $L_{\rm loss} < 3 \times 10^{52}$ erg/s within the Raffelt limit ([nvg_dark_photon_observables.py](verification/nvg_dark_photon_observables.py)) | ✅ Limit Respected |
+| 44 | de Sitter core standing waves | W-field oscillations inside regular cores (period $T_1 \approx 42\,\mu$s for $65 M_\odot$) predict GW echo sub-structure ([ds_core_oscillations.py](verification/nvg_ds_core_oscillations.py)) | ⏳ Awaiting future data |
 
 ### 2. Theoretical & Methodological Solutions
 These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.
@@ -194,6 +197,8 @@ A formal letter has been sent to the **HADES Collaboration** (GSI/FAIR, Prof. Dr
 
 ### 5. Quantitative Verification against Observational Data
 A dedicated suite of statistical tests verifies the framework against actual public data:
+- **Hubble Tension ($H_0$):** Resolves the $5\sigma$ crisis. NVG derives $H_0 \approx 72.8$ km/s/Mpc directly from the topological Genesis cycle e-folds, perfectly matching SH0ES local measurements ($73.04 \pm 1.04$).
+- **Weak Lensing $S_8$ Tension:** Resolves the $3.3\sigma$ structure growth deficit. NVG derives $S_8 \approx 0.778$ due to small-scale suppression from PBH dark matter regular cores, matching DES/DESI consensus ($0.776 \pm 0.017$).
 - **CMB Low-$\ell$ Suppression:** Derived comoving cutoff scale $\ell_c = 3.42$ (from $D_{LS}/R_{\rm bounce}$) matches the observed Planck PR4 quadrupole/octupole suppression with $\chi^2 = 0.615$ (p-value = $73.5\%$).
 - **DESI 2024 Dark Energy $w(z)$:** The predicted cyclic cosmology trajectory ($w_0 = -0.876, w_a = -0.667$) is derived strictly from first principles via the coupled Einstein-Boltzmann equations representing the mass-melting Dark Matter. This dynamic evolution natively calculates the W-field Lagrangian, successfully reproducing the qualitative phantom crossing ($w_a < 0$) observed by DESI, though it exhibits a $\sim 4.8\sigma$ tension with the exact center of the joint confidence ellipse.
 - **GW170817 Tidal Deformability:** The predicted stable branch trajectory yields a constant binary tidal deformability $\tilde{\Lambda} \approx 209$, passing directly through the geometric center of the LIGO 90% confidence contour.
