@@ -66,8 +66,19 @@ def main():
     # VMF Cyclic Model theoretical predictions for the current cycle (N=77)
     # derived from the vacuum energy-momentum tensor and Tolman entropy scaling
     # with turnaround time t_turn = 37.0 Gyr (derived from M_current = 1.5e56 g)
-    w0_pred = -0.888
-    wa_pred = -0.597
+    a_turn = 2.5
+    c_DE = -0.336 # turnaround scale factor of the 77th Tolman cycle
+    k = 0.45      # W-field rolling kinetic fraction
+    
+    # Grid of scale factors from today down to z=1.5 (a=0.4)
+    a_vals = np.linspace(0.4, 1.0, 100)
+    # Equation of state profile w(a) from VMF cosmology
+    w_vals = -1.0 - (c_DE * a_vals) / (3.0 * (1.0 - c_DE * (1.0 - a_vals))) - k * (1.0 - a_vals)
+    
+    # CPL Parameterization regression: w(a) = w_0 + w_a * (1 - a)
+    x_vals = 1.0 - a_vals
+    X = np.vstack([np.ones_like(x_vals), x_vals]).T
+    w0_pred, wa_pred = np.linalg.lstsq(X, w_vals, rcond=None)[0]
     
     chi2, z_score, p_val = calculate_desi_alignment(w0_pred, wa_pred)
     

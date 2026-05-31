@@ -241,6 +241,24 @@ CHECKS = [
         "claim": "Predicted tensor-to-scalar ratio r(l) drops below 0.001 at large scales (l < 10)",
         "critical": True,
     },
+    {
+        "name": "Neutron Star Core Speed of Sound Curve",
+        "script": "nvg_speed_of_sound_curve.py",
+        "claim": "Verify c_s^2(n_B) profile respects causality (< 1) and conformal bound (1/3) asymptotically",
+        "critical": True,
+    },
+    {
+        "name": "Neutron Star Core g-mode Periods",
+        "script": "nvg_ns_g_modes.py",
+        "claim": "Verify fundamental l=2 g-mode oscillation period is T_g ≈ 66 ms (between 50 and 150 ms)",
+        "critical": True,
+    },
+    {
+        "name": "Higgs Boson Mass Shift from QCD Condensate",
+        "script": "nvg_higgs_mass_shift.py",
+        "claim": "Verify Higgs mass shift delta_m_H ≈ 8.7 MeV lies within LHC experimental uncertainty (+/- 110 MeV)",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
@@ -259,7 +277,7 @@ OPTIONAL_CHECKS = [
     {
         "name": "Macroscopic Weak-Field Limit (PPN Parameters)",
         "script": "nvg_weak_field_ppn.py",
-        "claim": "NVG reduces exactly to GR in the macroscopic vacuum (gamma_PPN = 1)",
+        "claim": "NVG reduces exactly to GR in the macroscopic vacuum (gamma_PPN = 1, beta_PPN = 1)",
         "critical": False,
     },
 ]

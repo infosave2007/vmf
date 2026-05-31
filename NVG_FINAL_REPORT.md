@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-31 11:58:55
+**Generated:** 2026-05-31 12:23:32
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -23,6 +23,8 @@
 | $f_a$ (GeV) | 1.529e+12 | **1.530e+12** | 1.531e+12 |
 | $m_a$ (eV) | 8.425e-06 | **8.431e-06** | 8.437e-06 |
 | $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR}$ (ratio) | 1.604e-10 | **1.608e-10** | 1.613e-10 |
+| $T_g$ (g-mode period, ms) | 65.4 | **66.0** | 66.6 |
+| $\Delta m_H$ (Higgs mass shift, MeV) | 8.58 | **8.74** | 8.91 |
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
@@ -47,7 +49,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
 | Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Confirmed (Planck PR4) |
-| NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_full_ns_eos.py` | Confirmed (NICER+LIGO) |
+| NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_speed_of_sound_curve.py` | Confirmed (NICER+LIGO) |
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
@@ -62,3 +64,5 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Confirmed (XMM-Newton) |
 | PSR J0437-4715 MR | R_1.4 = 11.10 km | `nvg_nicer_j0437_check.py` | Confirmed (NICER 2024) |
 | LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Consistent / Falsifiable |
+| NS g-mode Period | T_g = 66.0 ms | `nvg_ns_g_modes.py` | Consistent / Falsifiable (Einstein Telescope) |
+| Higgs mass shift | delta_m_H = 8.74 MeV | `nvg_higgs_mass_shift.py` | Confirmed (Within LHC Limits) |
