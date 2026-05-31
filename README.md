@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-55-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-52-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-3-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-56-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-52-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-4-orange)
 
 **Preprints:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State*
@@ -161,6 +161,7 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 53 | Quantum gravity without quantization | $T_H = \hbar c^3/(8\pi G M k_B) = \hbar/(k_B \tau_\theta)$ — Hawking temperature = θ-field thermalization at horizon (exact match). $S_{BH} = A/(4l_{Pl}^2) = N_\theta$ — entropy = θ-mode counting. Bounce at $\rho_c/\rho_{Pl} \sim 10^{-77}$ — fully semiclassical ([quantum_gravity.py](verification/nvg_quantum_gravity.py)) | ✅ Confirmed (theorem) |
 | 54 | Fine structure $\alpha_{EM} = 1/137$ from vacuum polarization | $\alpha_{EM} = \alpha_{bare}/Z_{EM}(W_0)$: UV cutoff = condensate scale $W_0 = 432.2$ MeV, not arbitrary renormalization. $1/\alpha(M_Z) = 126.6$ (NVG 1-loop) vs $127.95$ (exp.) ([fine_structure.py](verification/nvg_fine_structure.py)) | ✅ Confirmed |
 | 55 | Antimatter as $\theta \to -\theta$ | C-conjugation = Goldstone phase inversion. $\eta_B$ from topological choice $Q = +1$ at bounce. Annihilation = vortex reconnection with $\tau_{ann} = \hbar/(k_B T) = \tau_{collapse}$. Anti-universes = cycles with $Q = -1$ ([antimatter_topology.py](verification/nvg_antimatter_topology.py)) | ✅ Confirmed (theorem) |
+| 56 | 🔥 RHIC Bell Test — entanglement death | $S_{\rm CHSH}(T > T_c = 157\text{ MeV}) \to 0$: entanglement vanishes when condensate melts. Protocol: $\pi^0 \to \gamma\gamma$ in Au+Au at BES-II ($\sqrt{s_{NN}} = 7.7{-}27$ GeV). $\sqrt{s}_{\rm crit} = 7$ GeV. Standard QM: $S = 2\sqrt{2}$ at any $T$. **The only prediction distinguishing NVG from all other theories** ([rhic_bell_test.py](verification/nvg_rhic_bell_test.py)) | ⏳ Awaiting RHIC BES-II |
 
 ### 2. Theoretical & Methodological Solutions
 These points are not direct independent observations, but conceptually solve long-standing astrophysical enigmas.
@@ -330,7 +331,8 @@ NVG-Research/
 │   ├── nvg_neutrino_seesaw.py              # Neutrino mass from θ-seesaw without right-handed neutrinos
 │   ├── nvg_quantum_gravity.py             # Quantum gravity without quantization: Hawking from θ-thermalization
 │   ├── nvg_fine_structure.py              # α_EM = 1/137 from vacuum polarization Z_EM(W₀)
-│   └── nvg_antimatter_topology.py         # Antimatter as θ → −θ, annihilation = vortex reconnection
+│   ├── nvg_antimatter_topology.py         # Antimatter as θ → −θ, annihilation = vortex reconnection
+│   └── nvg_rhic_bell_test.py              # 🔥 RHIC Bell Test: S_CHSH(T > T_c) → 0, experimental protocol
 ├── visualization/
 │   ├── nvg_3d_viz_v2.html                  # Interactive 3D Tolman Cycles Simulator
 │   ├── nvg_ns_merger_3d.html               # Interactive 3D BNS Merger & Mass Melting
