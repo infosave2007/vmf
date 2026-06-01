@@ -18,6 +18,8 @@
   Provides a rigorous mathematical derivation of the classical equations of motion for the radial mode $W(x)$ governing in-medium hadron masses, its gauge-invariant coupling to baryon currents, and its cosmological FLRW reduction. Demonstrates how vacuum melting $W \to 0$ violates the Strong Energy Condition (SEC) to trigger a smooth cosmological bounce at $n_B \approx 2.05\,n_0$, avoiding the Big Bang singularity.
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20476890-blue.svg)](https://doi.org/10.5281/zenodo.20476890) *Seven Results of the Vacuum Condensate: From Nuclear Matter to Quantum Mechanics*
   Derives seven physical consequences from a single vacuum condensate order parameter $\Phi = \Wc\,\ee^{\ii\theta}$ without quantization: Heisenberg uncertainty (via Cauchy--Schwarz), the Born rule (via Fokker--Planck osmotic balance), wave-function collapse (via phase thermalization), the Strong CP solution ($\bar\theta_{\rm QCD} = 0$), the thermodynamic arrow of time (via topological charge $Q=+1$), temperature-dependent Bell violation, and Hawking radiation.
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20485836-blue.svg)](https://doi.org/10.5281/zenodo.20485836) *Resolution of the Hyperon Puzzle via QCD Vacuum Condensate Melting in the NVG/VMF Framework*
+  Formulates the QCD vacuum condensate melting phase transition inside dense hyperonic matter as a first-order phase transition with latent heat. Evaluates this model against standard stiff (NL3) and soft (SLy) RMF baselines, demonstrating a robust parameter-free resolution of the neutron-star Hyperon Puzzle while satisfying NICER and GW170817 constraints on stellar radii.
 
 ## Overview
 
@@ -261,6 +263,7 @@ NVG-Research/
 │   ├── nvg_advanced_calculations.py        # Advanced checks (JWST, FRB, Chiral Masses, QCD Phase, SGWB, T_bounce, KATRIN)
 │   ├── nvg_full_ns_eos.py                  # NS EOS + TOV solver → M_max, R_1.4
 │   ├── nvg_hyperon_puzzle_solution.py      # Hyperon onset calculation
+│   ├── nvg_hyperon_puzzle_tov.py           # TOV solver for Hyperon Puzzle (NL3/SLy baselines & figures)
 │   ├── nvg_hadrons_magnetic_fields.py      # Meson mass shifts, magnetic fields
 │   ├── nvg_weak_field_ppn.py               # PPN parameter verification (γ=1)
 │   ├── nvg_cosmology_tensions.py           # Hubble/S8 tensions, BBN constraints
@@ -392,6 +395,7 @@ python verification/nvg_iloveq_gw_echoes.py        # I-Love-Q, exact GW echo tem
 python verification/nvg_cmb_smbh_cyclic.py         # CMB anomalies, Early SMBHs
 python verification/nvg_black_hole_entropy.py      # BH core, entropy reset
 python verification/nvg_hyperon_puzzle_solution.py # Hyperon Puzzle resolution
+python verification/nvg_hyperon_puzzle_tov.py      # TOV solver for Hyperon Puzzle (NL3/SLy baselines & figures)
 python verification/nvg_advanced_observables_I.py  # HADES spectrum, z_surf, cycles
 python verification/nvg_advanced_observables_II.py # CMB P(k), EHT shadows, PBH mass
 python verification/nvg_advanced_observables_III.py# Mesons, Lorentz, NS Cooling

@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://python.org)
 [![CI Build & Verification](https://github.com/infosave2007/vmf/actions/workflows/verify.yml/badge.svg)](https://github.com/infosave2007/vmf/actions/workflows/verify.yml)
-![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-53-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-49-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-4-orange)
+![Predictions](https://img.shields.io/badge/Falsifiable_Predictions-56-blue) ![Verified](https://img.shields.io/badge/Confirmed_Against_Data-52-green) ![Awaiting](https://img.shields.io/badge/Awaiting_Future_Experiments-4-orange)
 
 **Препринты:**
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20214457-blue.svg)](https://doi.org/10.5281/zenodo.20214457) *Решёточные сигма-термы как якорь для уравнения состояния плотной ядерной материи*
@@ -18,6 +18,8 @@
   Предоставляет строгий математический вывод классических уравнений движения для радиальной моды $W(x)$, управляющей эффективными массами адронов в среде, её калибровочно-инвариантной связи с барионным током и космологической редукции Фридмана. Демонстрирует, как плавление вакуума $W \to 0$ нарушает сильное энергетическое условие (SEC), вызывая плавный космологический отскок при плотности $n_B \approx 2.05\,n_0$, что позволяет избежать сингулярности Большого взрыва.
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20476890-blue.svg)](https://doi.org/10.5281/zenodo.20476890) *Семь результатов вакуумного конденсата: от ядерной материи до квантовой механики*
   Выводит семь физических следствий из единого параметра порядка вакуумного конденсата $\Phi = \Wc\,\ee^{\ii\theta}$ без квантования: неопределённость Гейзенберга (через неравенство Коши--Буняковского), правило Борна (через осмотический баланс Фоккера--Планка), коллапс волновой функции (через фазовую термализацию), решение сильной CP-проблемы ($\bar\theta_{\rm QCD} = 0$), термодинамическую стрелу времени (через топологический заряд $Q=+1$), температурную зависимость нарушения неравенств Белла и излучение Хокинга.
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20485836-blue.svg)](https://doi.org/10.5281/zenodo.20485836) *Разрешение гиперонной загадки через плавление вакуумного конденсата КХД в рамках Гравитации Нулевого Вектора / Вакуумной Массовой Фракции*
+  Формулирует фазовый переход плавления вакуумного конденсата КХД в плотной гиперонной материи как фазовый переход первого рода с латентным теплом. Сопоставляет эту модель с жестким (NL3) и мягким (SLy) релятивистскими средними полями (RMF), демонстрируя робастное безпараметрическое разрешение гиперонной загадки для нейтронных звезд при одновременном выполнении ограничений NICER и GW170817 на радиусы звезд.
 
 ## Обзор
 
@@ -346,6 +348,7 @@ NVG-Research/
 │   ├── nvg_advanced_calculations.py        # Расширенные расчеты (JWST, FRB, массы, фазовая диаграмма КХД, PTA, KATRIN)
 │   ├── nvg_full_ns_eos.py                  # EOS НЗ + решатель TOV → M_max, R_1.4
 │   ├── nvg_hyperon_puzzle_solution.py      # Расчёт порога появления гиперонов
+│   ├── nvg_hyperon_puzzle_tov.py           # TOV-солвер для гиперонной загадки (базисы NL3/SLy и графики)
 │   ├── nvg_hadrons_magnetic_fields.py      # Сдвиг масс мезонов, магнитные поля
 │   ├── nvg_weak_field_ppn.py               # Верификация PPN параметра (γ=1)
 │   ├── nvg_cosmology_tensions.py           # Hubble/S8 tensions, BBN constraints
@@ -477,6 +480,7 @@ python verification/nvg_iloveq_gw_echoes.py        # I-Love-Q, шаблоны э
 python verification/nvg_cmb_smbh_cyclic.py         # Аномалии CMB, ранние SMBH
 python verification/nvg_black_hole_entropy.py      # Ядро ЧД, энтропия
 python verification/nvg_hyperon_puzzle_solution.py # Решение Hyperon Puzzle
+python verification/nvg_hyperon_puzzle_tov.py      # Решатель TOV для гиперонной загадки (базисы NL3/SLy и графики)
 python verification/nvg_advanced_observables_I.py  # Спектр HADES, z_surf, циклы
 python verification/nvg_advanced_observables_II.py # Спектр CMB, EHT, массы ПЧД
 python verification/nvg_advanced_observables_III.py# Мезоны, Лоренц, популяция НЗ
