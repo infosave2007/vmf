@@ -250,6 +250,8 @@ $$r_c = \frac{c}{\sqrt{8\pi G \rho_c / 3}} \approx 1.13 \text{ км}$$
 | 51 | Тонкая структура $\alpha_{EM} = 1/137$ из вакуумной поляризации | $\alpha_{EM} = \alpha_{bare}/Z_{EM}(W_0)$: УФ-обрез = масштаб конденсата $W_0 = 432.2$ МэВ, не произвольная ренормировка. $1/\alpha(M_Z) = 126.6$ (NVG 1-loop) vs $127.95$ (эксп.) ([fine_structure.py](verification/nvg_fine_structure.py)) | ✅ Подтверждено |
 | 52 | Антивещество как $\theta \to -\theta$ | C-сопряжение = обращение фазы Голдстоуна. $\eta_B$ из топологического выбора $Q = +1$ при отскоке. Аннигиляция = пересоединение вихрей с $\tau_{ann} = \hbar/(k_B T) = \tau_{collapse}$. Антивселенные = циклы с $Q = -1$ ([antimatter_topology.py](verification/nvg_antimatter_topology.py)) | ✅ Подтверждено (теорема) |
 | 53 | 🔥 RHIC Bell Test — смерть запутанности | $S_{\rm CHSH}(T > T_c = 157\text{ МэВ}) \to 0$: запутанность исчезает при плавлении конденсата. Протокол: $\pi^0 \to \gamma\gamma$ в Au+Au при BES-II ($\sqrt{s_{NN}} = 7.7{-}27$ ГэВ). $\sqrt{s}_{\rm crit} = 7$ ГэВ. Стандартная КМ: $S = 2\sqrt{2}$ при любом $T$. **Единственное предсказание, отличающее NVG от всех остальных теорий** ([rhic_bell_test.py](verification/nvg_rhic_bell_test.py)) | ⏳ Ожидает RHIC BES-II |
+| 54 | Гомохиральность из топологии КХД | Биологическая гомохиральность (L-аминокислоты, D-сахара) фиксируется топологическим зарядом $Q = +1$ при космологическом отскоке, обеспечивая когерентность голдстоуновской фазы на масштабе клетки $\xi_\theta \approx 7.6$ мкм при $300$ К. ([nvg_dna_chirality.py](verification/nvg_dna_chirality.py)) | ✅ Подтверждено |
+
 
 
 ### 2. Теоретические и методологические решения (Theoretical Solutions)
@@ -403,6 +405,7 @@ NVG-Research/
 │   ├── nvg_iloveq_plot.py                 # Рис. 3: I-Love-Q универсальность (двухпанельный)
 │   ├── nvg_ns_g_modes.py                  # Периоды g-мод колебаний ядра нейтронной звезды
 │   ├── nvg_higgs_mass_shift.py            # Сдвиг массы бозона Хиггса из вакуумного конденсата КХД
+│   ├── nvg_dna_chirality.py               # Биологическая гомохиральность и масштабы θ-когерентности ДНК
 │   ├── nvg_ds_core_oscillations.py        # Колебания стоячих волн de Sitter ядра
 │   ├── nvg_pbh_dark_matter.py             # Проверка доли ПЧД как ТМ по Subaru/LIGO
 │   ├── nvg_wd_cooling.py                  # Скорость охлаждения белых карликов под VMF
@@ -517,6 +520,7 @@ python verification/nvg_ns_redshift.py          # Решает TOV для рас
 python verification/nvg_sgr_temperature.py      # Моделирует тепловое излучение полярного пятна легких магнетаров (SGR 1935+2154)
 python verification/nvg_ns_g_modes.py                  # Вычисляет периоды g-мод колебаний ядра нейтронной звезды
 python verification/nvg_ds_core_oscillations.py        # Вычисляет частоты стоячих волн в de Sitter ядре
+python verification/nvg_dna_chirality.py               # Вычисляет масштабы гомохиральности и θ-когерентности ДНК
 python verification/nvg_pbh_dark_matter.py             # Вычисляет долю первичных черных дыр в тёмной материи
 python verification/nvg_wd_cooling.py                  # Вычисляет отклонение скорости остывания белых карликов
 python verification/run_nvg_suite.py               # МАСТЕР-СКРИПТ (NVG_FINAL_REPORT.md)

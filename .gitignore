@@ -33,6 +33,7 @@ article/*
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 .code/
 generator_project/
+vacuum_neural_networks/
 
 # Generated verification reports
 verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md

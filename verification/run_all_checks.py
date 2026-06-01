@@ -319,6 +319,12 @@ CHECKS = [
         "claim": "Verify proton fraction exceeds critical threshold at M > 1.45 M_sun",
         "critical": True,
     },
+    {
+        "name": "DNA Chirality & Biological θ-Coherence",
+        "script": "nvg_dna_chirality.py",
+        "claim": "Verify Goldstone phase collapse time (~25 fs) and coherence length (~7.6 um) at room temperature",
+        "critical": True,
+    },
 ]
 
 OPTIONAL_CHECKS = [
