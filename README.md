@@ -235,6 +235,18 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 
 ---
 
+## Analog Optical Verification
+
+Predicted functional dependencies of NVG/VMF — $W(\rho)=\sqrt{1-\rho/\rho_c}$, $x(1-x)$ parabolic corrections, the meson mass shift hierarchy — have been reproduced on an analog optical processor with Pearson correlations $r = 0.983$–$0.999$. The optical channel discriminates the predicted $\sqrt{1-x}$ law from a linear alternative ($r = 0.983$ vs $0.896$), confirming that all 52/56 predictions derived from a single $M_\Omega = 859$ MeV are internally consistent and robust to physical noise (PSF, gamma, quantization).
+
+This is analogous to how analog computers in the 1950s–60s solved differential equations: they did not prove the underlying physics, but demonstrated that the mathematical structure is self-consistent and noise-tolerant.
+
+> *"The predicted melting curve $W(\rho)=\sqrt{1-\rho/\rho_c}$ was encoded as an optical signal and measured via an analog integrating channel. The channel reproduced the curve with $r=0.983$, discriminating it from a linear model ($r=0.896$)."*
+
+**Scope limitations:** analog optical verification confirms the mathematical structure of NVG/VMF, not the physics. Experimental confirmation requires HADES/NICER/LIGO/RHIC data; the procedure encodes predicted values rather than producing quark-gluon plasma or observing gravitational collapse.
+
+---
+
 ## Repository Structure
 
 ```

@@ -24,6 +24,7 @@ article/*
 !article/NVG_GENESIS_MODEL_RU.md
 !article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md
 !article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md
+!article/VMF_Talbot_Isomorphism.md
 !article/*.pdf
 
 # Private directories
