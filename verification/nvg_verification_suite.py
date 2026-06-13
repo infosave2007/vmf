@@ -164,25 +164,17 @@ passed_tolman = (5.0 <= T_1_us <= 7.0)
 print_result("Test 10: Tolman Cycles Thermodynamics", passed_tolman, f"Genesis lifetime = {T_1_us:.1f} us (M_1 = {M_1/M_sun:.2f} M_sun)")
 
 # ---------------------------------------------------------
-# TEST 11: Laboratory Topological Limit (Graphene)
-# ---------------------------------------------------------
-eps_vac_J_m3 = (rho_c * c_cgs**2) * 0.1  # ergs/cm^3 to J/m^3
-ratio = 1e10 / eps_vac_J_m3  # efficiency of 10^10 J/m^3 bulk pumping
-passed_lab = ratio < 1e-15
-print_result("Test 11: Laboratory Topological Limit", passed_lab, f"Bulk pumping efficiency = {ratio:.1e} (< 1e-15)")
-
-# ---------------------------------------------------------
-# TEST 12: Biological θ-Coherence Scale
+# TEST 11: Biological θ-Coherence Scale
 # ---------------------------------------------------------
 # T = 300 K, xi_0 = 1.254 fm, T_c = 157.3 MeV = 1.825e12 K
 T_c_K = 1.825e12
 xi_room_um = (1.254 * (T_c_K / 300.0)) * 1e-9  # fm to microns (1e-15 m / 1e-6 m = 1e-9)
 tau_room_fs = (1.05457e-34 / (1.38065e-23 * 300.0)) * 1e15  # fs
 passed_bio = (5.0 <= xi_room_um <= 10.0) and (20.0 <= tau_room_fs <= 30.0)
-print_result("Test 12: Biological θ-Coherence Scale", passed_bio, f"xi_room = {xi_room_um:.2f} um, tau_room = {tau_room_fs:.1f} fs")
+print_result("Test 11: Biological θ-Coherence Scale", passed_bio, f"xi_room = {xi_room_um:.2f} um, tau_room = {tau_room_fs:.1f} fs")
 
 print("\n====================================================================")
-if all([passed_1, passed_causality, passed_mass, passed_radius, passed_hades, passed_ppn, passed_bbn, passed_cmb, passed_echo, passed_tolman, passed_lab, passed_bio]):
+if all([passed_1, passed_causality, passed_mass, passed_radius, passed_hades, passed_ppn, passed_bbn, passed_cmb, passed_echo, passed_tolman, passed_bio]):
     print(f" {c.OK}ALL IN-SILICO TESTS PASSED.{c.END}")
     print(" The NVG/VMF framework is mathematically consistent with current")
     print(" astrophysical and cosmological bounds.")

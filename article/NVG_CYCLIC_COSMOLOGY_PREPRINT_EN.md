@@ -58,8 +58,6 @@ The nonperturbative nucleon mass component $M_{\Omega,0} = 859$ MeV is identifie
 
 $$M_\Omega(n_B) = M_{\Omega,0}\left(1 + \kappa_2\frac{n_B}{n_0}\right)^{-\kappa_1/\kappa_2}, \quad \kappa_1 = 0.25,\;\kappa_2 = 0.80. \tag{2}$$
 
-**Topological vs. Thermodynamic Melting:**
-Recent in-silico laboratory simulations of the VMF model (`nvg_graphene_modulation.py`) demonstrate that bulk thermodynamic energy pumping is insufficient to induce macroscopic mass melting by ~15 orders of magnitude. This strictly implies that the melting of the vacuum field $\mathcal{W}$ — both in the laboratory and at the cosmological bounce — must be driven by *resonant topological phase coupling* rather than mere energy density, further cementing the role of the $\mathcal{W}$ field phase dynamics in the extreme UV regime.
 ### 2.3. The Uniqueness of the Critical Density $\rho_c$
 
 When all structural mass melts ($M_\Omega \to 0$), the field $\mathcal{W} \to 0$, reaching the local maximum of its potential $V(0) \equiv \varepsilon_{\max}$. We claim that this maximum density is strictly and uniquely given by:

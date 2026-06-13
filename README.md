@@ -98,8 +98,6 @@ The framework replaces the black hole singularity with a **regular de Sitter cor
 
 **Key advantage over competing models:** Unlike generic Bardeen/Hayward (free parameter $g$), fuzzballs ($10^{500}$ string vacua), or loop quantum gravity (Planck-scale, untestable), NVG derives $r_0$ from a **measured** QCD quantity ($M_{\Omega,0} = 859$ MeV), yielding a strict prediction: gravitational wave post-merger echoes at $\Delta t_{\rm echo} \approx 0.0051$ s (5.1 ms) spin-corrected for a 65 $M_\odot$ merger (LIGO-testable).
 
-Additionally, the theory provides a laboratory protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators — with in-silico verification proving that bulk thermodynamic energy pumping is insufficient by ~15 orders of magnitude, requiring resonant topological phase coupling.
-
 ## Observational Status & Verification (May 2026)
 
 The NVG/VMF framework has **zero free cosmological parameters** — every number is derived from a single QCD input: $M_{\Omega,0} = 859$ MeV. 
@@ -201,7 +199,6 @@ The boldest, high-risk predictions of the theory. These will either confirm or c
 
 | Direction | Forecasted Value / Interpretation | Experiment / Current Status |
 |---|---|---|
-| **Laboratory Vacuum** | Topological resonance, $COP > 1$ at 2.4 GHz | Tabletop Graphene / YBCO setup (Awaiting Realization) |
 | **CMB Anomaly $\ell < 10$** | Genesis physical cutoff, NOT cosmic variance | Planck PR4 sees lack of power. Awaiting LiteBIRD. |
 | **Meson Mass Shift** | Shifted integrated dielectron peak down to $702$ MeV (with $M_\rho^* \approx 621$ MeV at $2n_0$) | HADES simulation script ready; request submitted to HADES / CBM Collaboration (FAIR) |
 | **Gravitational Echo** | Echo spacing $\Delta t \approx 0.081$ s ($65\,M_\odot$) with decay amplitude $A_n \propto (1 - \mathcal{T})^n$ | Matched filtering templates ready; targeted search in LIGO O4/O5 archives |
@@ -343,7 +340,6 @@ NVG-Research/
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── run_all_checks.py                   # Automated suite runner for all physical verifications
 │   ├── nvg_genesis_observable.py           # Genesis instanton → Hubble horizon match
-│   ├── nvg_graphene_modulation.py          # Vacuum modulation thermodynamic limits
 │   ├── nvg_vacuum_w_field_derivation.py    # Numerical verification of the W-field phase transition
 │   ├── nvg_strong_cp_solution.py           # Strong CP problem solution from V(W,θ)
 │   ├── nvg_double_slit_madelung.py         # Double-slit interference from W-condensate Madelung hydrodynamics
@@ -364,8 +360,6 @@ NVG-Research/
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Matrix of falsifiable predictions
 │   ├── NVG_EM_OBSERVABLES.md               # Strict Checklist of EM Observables
-│   ├── NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md  # Graphene Laboratory Protocol
-│   ├── NVG_YBCO_PODKLETNOV_PROTOCOL.md     # Tabletop YBCO Experiment (Liquid Nitrogen)
 │   ├── NVG_ELECTROMAGNETIC_EXTENSIONS.md   # EM waves, wave-particle duality, research directions (RU)
 │   └── NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md # English version
 ├── README.md
@@ -388,7 +382,6 @@ python verification/run_all_checks.py             # Runs the entire verification
 # Run specific predictive scripts
 python verification/nvg_gw_echoes.py               # Predicts LIGO/Virgo GW Echoes
 python verification/nvg_cyclic_lifetimes.py        # Calculates Tolman cycle durations
-python verification/nvg_graphene_modulation.py     # Laboratory vacuum modulation bounds
 python verification/nvg_hadron_mass_fractions.py   # Shows the 91% nonperturbative QCD mass
 python verification/nvg_full_ns_eos.py             # Solves the NS EOS and TOV equations
 python verification/nvg_fair_hades_link.py         # Predicts the 20% rho-meson mass drop
@@ -483,13 +476,10 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 
 ## Speculative Directions & Future Tech
 
-### 1. Laboratory Vacuum Coupling & Decoherence
-Thermodynamic (DC) pumping leads to $COP < 1$ due to thermal scattering. However, a cryogenic (4 K) RF resonance at 2.4 GHz in graphene or HTS YBCO, using a **structured concentric Casimir cavity** to generate a $1/r$ vacuum gradient, is hypothesized to bypass the bulk scaling barrier ($COP > 1$), opening a long-term pathway for vacuum energy coupling research.
-
-### 2. Macroscopic Quantum Entanglement via Vacuum Condensate (QCD to Quantum Optics)
+### 1. Macroscopic Quantum Entanglement via Vacuum Condensate (QCD to Quantum Optics)
 If the VMF vacuum condensate is globally coherent, two spatially separated NVG auto-oscillators should exhibit a non-local correlation mediated by the Goldstone phase $\theta$. This predicts a tiny, anomalous time-dependent contribution to Bell inequality violations. High-precision atomic clock arrays (e.g. at NIST, PTB) could test this macroscopic phase coherence, opening a novel bridge from QCD to quantum optics.
 
-### 3. Dark Matter as a Relic VMF Instanton Condensate
+### 2. Dark Matter as a Relic VMF Instanton Condensate
 During the post-bounce expansion at $T < T_b$, a small fraction of the vacuum condensate is topologically locked/frozen into stable subatomic configurations (relic instantons). Without any free parameters, the freeze-out at $T_c \approx 157.3$ MeV naturally reproduces the observed dark matter density $\Omega_{\rm DM} \approx 0.268$, requiring a VMF self-coupling $\lambda_v \approx 1.02$ and a scalar vacuum excitation mass $m_{\mathcal{W}} \approx 1228.6$ MeV (matching the physical $f_0(1370)/f_0(1500)$ scalar QCD meson). Verified in `verification/nvg_relic_dark_matter.py`.
 
 ---

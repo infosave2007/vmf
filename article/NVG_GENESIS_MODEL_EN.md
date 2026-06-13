@@ -31,7 +31,7 @@ $$ dt \propto d\theta \tag{1} $$
 
 Under this proposal, time is the superfluid phase gradient of the breaking NVG vacuum. The Lorentzian metric $ds^2 = -dt^2 + a^2(t)d\Sigma^2$ emerges because the propagating symmetry-breaking front requires a causal light-cone structure. A full UV completion is required to strictly prove this mapping, but within the NVG EFT, it provides a consistent generative mechanism.
 
-This identification of time with the Goldstone phase is not merely mathematical poetry; it is a physical necessity. Recent quantitative simulations of the VMF model in macroscopic laboratory environments (`nvg_graphene_modulation.py`) have proven that "brute-force" thermodynamic energy density is vastly insufficient to couple to the vacuum state. Macroscopic interaction with the vacuum *requires* resonant topological coupling. The phase $\theta$ is the exact topological order parameter that bridges the quantum vacuum to macroscopic observables, making its gradient the unique natural candidate for the macroscopic arrow of time.
+This identification of time with the Goldstone phase is not merely mathematical poetry; it is a physical necessity. The phase $\theta$ is the exact topological order parameter that bridges the quantum vacuum to macroscopic observables, making its gradient the unique natural candidate for the macroscopic arrow of time.
 ## 3. Tunneling into the NVG Critical Core
 
 We can demonstrate why the first universe starts precisely at the NVG density limit by examining the standard matching conditions at the boundary between the Euclidean instanton and the Lorentzian spacetime.

@@ -150,8 +150,6 @@ Tesla coils create high-voltage EM fields. Quantitative assessment:
 | Characteristic scale | ~1 m | ~0.23 fm ($\lambda_{\mathcal{W}}$) | **15 orders** |
 | Coupling type | $U(1)_{EM}$ | $SU(3)_c$ (QCD) | Different sectors |
 
-Verification script `nvg_graphene_modulation.py` rigorously showed: **thermodynamic pumping is insufficient by ~15 orders of magnitude.**
-
 ### 3.2. The Correct Path: Topological Phase Coupling
 
 Instead of brute EM energy, what is needed is **resonant topological coupling** — modulation of the condensate phase through a system at the edge of a phase transition:
@@ -162,8 +160,6 @@ Instead of brute EM energy, what is needed is **resonant topological coupling** 
 | Medium | Copper coil | Graphene (Dirac fermions) |
 | Mechanism | EM field | NDR + topological transition (Berry phase $\pi$) |
 | Power | ~kW–MW | ~mW (resonance) |
-
-Detailed protocol: `.docs/NVG_GRAPHENE_AUTOGEN_EXPERIMENT.md`
 
 ---
 
@@ -219,10 +215,9 @@ The term "topological defect" of $\mathcal{W}$ in §2 should be understood as a 
 
 | # | Experiment | Observable | Status |
 |---|---|---|---|
-| 3.1 | Graphene NDR protocol | Anomalous energy from vacuum coupling | Protocol developed |
-| 3.2 | EM modification in dense media | X-ray spectra of NS (NICER) | Data available |
-| 3.3 | Threshold GW detector | Current jump during GW passage | Concept |
-| 3.4 | Double-slit experiment with $\mathcal{W}$ control | Strong-field influence on interference | Theoretical |
+| 3.1 | EM modification in dense media | X-ray spectra of NS (NICER) | Data available |
+| 3.2 | Threshold GW detector | Current jump during GW passage | Concept |
+| 3.3 | Double-slit experiment with $\mathcal{W}$ control | Strong-field influence on interference | Theoretical |
 
 ### 5.4. Verified Astrophysical and Cosmological Predictions
 

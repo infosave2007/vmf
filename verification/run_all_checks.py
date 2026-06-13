@@ -50,12 +50,6 @@ CHECKS = [
         "critical": True,
     },
     {
-        "name": "Condensate Modulation (Podkletnov/Modanese)",
-        "script": "nvg_condensate_modulation.py",
-        "claim": "2% weight loss matches η~0.02, spark discharge yields 1e6x force amplification",
-        "critical": True,
-    },
-    {
         "name": "Full Neutron Star EOS (Crust + Phase Transition)",
         "script": "nvg_full_ns_eos.py",
         "claim": "Phase transition lowers M_max to ~2.3 M_sun (phenomenologically viable)",
@@ -83,12 +77,6 @@ CHECKS = [
         "name": "Tolman Cycles & Entropy Growth",
         "script": "nvg_cyclic_lifetimes.py",
         "claim": "Genesis lifetime was ~5.9 us; current universe is the ~77th cycle",
-        "critical": True,
-    },
-    {
-        "name": "Laboratory Graphene Topological Limit",
-        "script": "nvg_graphene_modulation.py",
-        "claim": "Thermodynamic RF bulk pumping is < 10^-15 effective, requiring topological resonance",
         "critical": True,
     },
     {

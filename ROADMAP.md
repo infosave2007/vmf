@@ -18,8 +18,6 @@ This document outlines the short-term, medium-term, and long-term milestones for
 ### 2. Medium-Term (2027–2030) — Lab Tests & Next-Gen Surveys
 * **HADES Collaboration Cross-Check:**
   * Compare the parameter-free ρ-meson mass shift prediction ($M_\rho^* \approx 596$ MeV at $2n_0$) against GSI/FAIR dielectron spectra.
-* **Graphene Auto-Oscillators:**
-  * Setup laboratory protocol for testing macroscopic vacuum topological coupling using graphene auto-oscillators.
 * **JWST Early SMBH Seeds:**
   * Compare cycle accretion histories ($N=10$ seeds) with spectroscopic data of newly discovered high-z massive black holes.
 
