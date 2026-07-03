@@ -21,9 +21,12 @@ not an independent result.
 
 The IR-cutoff route to the Hubble tension has been TESTED (nvg_cmb_lowl_refit.py):
 the Genesis cutoff P(k) -> P(k)*exp(-(k_c/k)²) improves the Planck low-ℓ fit
-mildly (Δχ² ≈ +0.9, best-fit scale ≈ predicted k_c = 1/R_H0), but cannot shift
-the CMB-inferred H_0: the acoustic scale θ* (0.03% measurement) is untouched by
-a cutoff acting at ℓ ≲ 6, and forcing H_0 = 72.8 costs Δχ² ≈ +150 at high ℓ.
+mildly (Δχ² ≈ +0.9 at the predicted k_c = 1/R_H0; range −1.0…+1.9 across cutoff
+steepness and likelihood form), but cannot shift the CMB-inferred H_0: the
+acoustic scale θ* (0.03% measurement) is untouched by a cutoff acting at ℓ ≲ 6,
+and forcing H_0 = 72.8 costs Δχ² ≥ +46 at high ℓ even with θ* restored and n_s
+freed (conservative lower bound; the published full-likelihood exclusion is
+~10σ, i.e. Δχ² ~ 100).
 """
 
 import math
@@ -135,11 +138,12 @@ def run_hubble_tension_verification():
     
     print("\nStatus of the 'Hubble tension resolution' claim (tested in nvg_cmb_lowl_refit.py):")
     print("The Genesis IR cutoff P(k) -> P(k)*exp(-(k_c/k)^2) at k_c = 1/R_H0 improves the")
-    print("Planck 2018 low-l TT fit mildly (Delta chi2 ~ +0.9; the best-fit cutoff scale lies")
-    print("within ~1.2x of the predicted k_c). However, the CMB-inferred H_0 is fixed by the")
-    print("acoustic scale theta* (measured to 0.03%), which the cutoff (l <~ 6 only) does not")
-    print("touch: forcing H_0 = 72.8 costs Delta chi2 ~ +150 in the acoustic region even with")
-    print("theta* restored by refitting omch2. The cutoff therefore does NOT resolve the")
+    print("Planck 2018 low-l TT fit mildly (Delta chi2 ~ +0.9 at the predicted k_c; range")
+    print("-1.0..+1.9 across cutoff steepness and likelihood form). However, the CMB-inferred")
+    print("H_0 is fixed by the acoustic scale theta* (measured to 0.03%), which the cutoff")
+    print("(l <~ 6 only) does not touch: forcing H_0 = 72.8 costs Delta chi2 >= +46 at high l")
+    print("even with theta* restored and n_s freed (full likelihood: ~10 sigma). The cutoff")
+    print("therefore does NOT resolve the")
     print("Hubble tension. Surviving falsifiable claims: the interval prediction above and")
     print("the low-l cutoff scale itself.")
     print("==========================================================================")
