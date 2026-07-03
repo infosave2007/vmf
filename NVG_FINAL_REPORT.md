@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-03 22:06:51
+**Generated:** 2026-07-03 22:27:40
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -49,7 +49,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Claim | Result | Script | Status |
 |---|---|---|---|
 | CMB Genesis Cutoff | N_e = 53.08 | `nvg_genesis_observable.py` | Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77) |
-| Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77) |
+| Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py) |
 | NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
 | Tidal Deformability | Lambda_1.4 = 177 | `nvg_tidal_deformability.py` | Confirmed (TOV + Hinderer y-integration) |
 | Gravitational Redshift | z_surf = 0.235 | `nvg_ns_redshift.py` | Awaiting STROBE-X |

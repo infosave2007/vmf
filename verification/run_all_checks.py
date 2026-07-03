@@ -313,6 +313,12 @@ CHECKS = [
         "claim": "Verify Goldstone phase collapse time (~25 fs) and coherence length (~7.6 um) at room temperature",
         "critical": True,
     },
+    {
+        "name": "CMB Low-l Re-fit with Genesis IR Cutoff",
+        "script": "nvg_cmb_lowl_refit.py",
+        "claim": "Cutoff mildly improves low-l TT (Dchi2 ~ +0.9 at predicted k_c); cannot shift CMB H_0 — tension NOT resolved (requires camb, ~2-3 min)",
+        "critical": False,
+    },
 ]
 
 OPTIONAL_CHECKS = [

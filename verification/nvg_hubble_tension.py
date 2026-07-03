@@ -17,9 +17,13 @@ Within the interval, the specific value N_e = 53.08 is CALIBRATED to the local
 distance-ladder measurement H_0 ≈ 72.8 km/s/Mpc (SH0ES-anchored; see
 nvg_genesis_observable.py, where N_e = ln(R_H0/r_c) is computed from that H_0).
 The sub-1σ agreement with SH0ES reported below is therefore by construction,
-not an independent result. The physical claim that remains independently
-testable is the infrared cutoff exp(-k²/k_c²) mechanism that would shift the
-CMB-inferred H_0 toward the local value.
+not an independent result.
+
+The IR-cutoff route to the Hubble tension has been TESTED (nvg_cmb_lowl_refit.py):
+the Genesis cutoff P(k) -> P(k)*exp(-(k_c/k)²) improves the Planck low-ℓ fit
+mildly (Δχ² ≈ +0.9, best-fit scale ≈ predicted k_c = 1/R_H0), but cannot shift
+the CMB-inferred H_0: the acoustic scale θ* (0.03% measurement) is untouched by
+a cutoff acting at ℓ ≲ 6, and forcing H_0 = 72.8 costs Δχ² ≈ +150 at high ℓ.
 """
 
 import math
@@ -129,14 +133,15 @@ def run_hubble_tension_verification():
     print(f"  2. High-z CMB Standard Fit (Planck): {H_0_planck} ± {H_0_planck_err} km/s/Mpc")
     print(f"     NVG Deviation: {z_planck:+.2f}σ (Systematic shift due to standard LCDM assumption)")
     
-    print("\nResolution of the Hubble Tension:")
-    print("Standard Planck cosmology assumes no infrared cutoff in the primordial power spectrum.")
-    print("When fitting the low-l deficit, LCDM is forced to shift other cosmological parameters,")
-    print("lowering the inferred H_0 to 67.4 km/s/Mpc. In NVG, once the physical infrared cutoff")
-    print("exp(-k^2/k_c^2) from the Genesis instanton is explicitly included, the low-l deficit")
-    print("is naturally explained, which would shift the global CMB parameter fit toward the")
-    print("local value H_0 ≈ 72.8 km/s/Mpc. This IR-cutoff mechanism is the independently")
-    print("testable claim; a quantitative CMB re-fit with the cutoff has not yet been performed.")
+    print("\nStatus of the 'Hubble tension resolution' claim (tested in nvg_cmb_lowl_refit.py):")
+    print("The Genesis IR cutoff P(k) -> P(k)*exp(-(k_c/k)^2) at k_c = 1/R_H0 improves the")
+    print("Planck 2018 low-l TT fit mildly (Delta chi2 ~ +0.9; the best-fit cutoff scale lies")
+    print("within ~1.2x of the predicted k_c). However, the CMB-inferred H_0 is fixed by the")
+    print("acoustic scale theta* (measured to 0.03%), which the cutoff (l <~ 6 only) does not")
+    print("touch: forcing H_0 = 72.8 costs Delta chi2 ~ +150 in the acoustic region even with")
+    print("theta* restored by refitting omch2. The cutoff therefore does NOT resolve the")
+    print("Hubble tension. Surviving falsifiable claims: the interval prediction above and")
+    print("the low-l cutoff scale itself.")
     print("==========================================================================")
 
 if __name__ == "__main__":

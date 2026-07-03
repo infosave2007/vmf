@@ -180,7 +180,7 @@ FORECAST = {
 def generate_evidence_ledger(results_center):
     ledger = [
         {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77)"},
-        {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77)"},
+        {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py)"},
         {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_full_ns_eos.py", "status": "Confirmed (NICER)"},
         {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability.py", "status": "Confirmed (TOV + Hinderer y-integration)"},
         {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "nvg_ns_redshift.py", "status": "Awaiting STROBE-X"},
