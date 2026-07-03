@@ -1,10 +1,10 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-05-31 13:54:30
+**Generated:** 2026-07-03 22:06:51
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
 |---|---|---|---|
-| $N_e$ (Genesis e-folds) | 53.16 | **53.15** | 53.14 |
+| $N_e$ (Genesis e-folds) | 53.09 | **53.08** | 53.07 |
 | $M_{max}$ ($M_\odot$) | 2.22 | **2.25** | 2.28 |
 | $R_{1.4}$ (km) | 11.89 | **12.00** | 12.11 |
 | $\Lambda_{1.4}$ | 169 | **177** | 185 |
@@ -18,9 +18,9 @@
 | $\chi_\nu^2$ (reduced) | 0.63 | **0.63** | 0.63 |
 | $M_{\rm glueball}$ (MeV) | 1702.1 | **1718.0** | 1734.2 |
 | $m_\nu$ (eV) | 0.1161 | **0.1172** | 0.1183 |
-| $w_0$ (Dark Energy today) | -0.877 | **-0.876** | -0.875 |
-| $w_a$ (Dark Energy evolution) | -0.662 | **-0.667** | -0.672 |
-| $S_8$ | 0.777 | **0.776** | 0.775 |
+| $w_0$ (Dark Energy today) | -0.878 | **-0.876** | -0.875 |
+| $w_a$ (Dark Energy evolution) | -0.660 | **-0.667** | -0.674 |
+| $S_8$ | 0.779 | **0.778** | 0.777 |
 | QPO Deviation | 0.17% | **0.17%** | 0.17% |
 | $f_{\rm GW}(77)$ (nHz) | 143.6 | **145.0** | 146.4 |
 | $f_a$ (GeV) | 1.529e+12 | **1.530e+12** | 1.531e+12 |
@@ -48,8 +48,8 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 ## 4. Automatic Evidence Ledger
 | Claim | Result | Script | Status |
 |---|---|---|---|
-| CMB Genesis Cutoff | N_e = 53.15 | `nvg_genesis_observable.py` | Confirmed (Derived from D_LS/R_bounce) |
-| Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Confirmed (Derived from Cycle 77 Phase) |
+| CMB Genesis Cutoff | N_e = 53.08 | `nvg_genesis_observable.py` | Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77) |
+| Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77) |
 | NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
 | Tidal Deformability | Lambda_1.4 = 177 | `nvg_tidal_deformability.py` | Confirmed (TOV + Hinderer y-integration) |
 | Gravitational Redshift | z_surf = 0.235 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
@@ -62,8 +62,8 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Scale Estimate) |
-| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Qualitative (Tension ~4.8σ) |
-| S8 Tension Relief | S8 = 0.776 | `nvg_s8_tension_check.py` | Confirmed (DESI DR2 + DES Y6) |
+| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
+| S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Confirmed (DESI DR2 + DES Y6) |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | Confirmed (SGR 1806-20) |
 | Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |
 | Topological Axion Mass | m_a = 8.43e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |

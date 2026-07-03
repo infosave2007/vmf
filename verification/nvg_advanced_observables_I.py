@@ -145,9 +145,10 @@ def calculate_cycles(M_omega_MeV):
     # N_cycles = ln(S_current / S_0) / ln(f_entropy_growth)
     N_cycles = np.log(S_current / S_0) / np.log(f_entropy_growth)
     
-    # E-folds N_e = ln(R_H / r_0) ~ 53.2 at 859 MeV
+    # E-folds N_e = ln(R_H / r_0) ≈ 53.08 at 859 MeV (repo-wide anchor, calibrated to
+    # local H_0 = 72.8 km/s/Mpc; keep consistent with nvg_genesis_observable.py)
     # r_0 \propto M_Omega_0^{-4}, so higher mass = smaller core = more e-folds needed
-    N_e_base = 53.2
+    N_e_base = 53.08
     N_e = N_e_base + 4.0 * np.log(M_omega_MeV / M_base)
     
     return N_cycles, N_e

@@ -12,7 +12,8 @@ def calculate_axion_parameters(m_omega: float) -> tuple[float, float]:
     m_pi = 0.13957         # GeV
     f_pi = 0.0924          # GeV
     
-    # Present Hubble horizon derived from H_0 = 72.8 km/s/Mpc:
+    # Present Hubble horizon for the repo-wide anchor H_0 = 72.8 km/s/Mpc
+    # (calibrated to local measurements, not derived — see nvg_hubble_tension.py):
     # R_H0 = c/H_0 ≈ 1.27e23 km
     r_h0 = 1.2709e23       # km
     

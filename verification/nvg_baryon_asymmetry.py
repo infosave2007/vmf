@@ -10,6 +10,14 @@ NOTE: This is a dimensional scale estimate (similar to standard Sakharov-type
 estimates) rather than a rigorous first-principles derivation from QCD alone,
 as the presence of the Planck mass M_Pl indicates that the physics depends
 on quantum gravity and cosmological horizon boundary conditions.
+
+HONESTY NOTE: the functional form eta_B = pi*sqrt(T_b/M_Pl) is selected post hoc.
+Alternative dimensional combinations miss by many orders (T_b/M_Pl ~ 1e-20,
+(T_b/M_Pl)^(1/4) ~ 1e-5), so the 1/2 exponent and the prefactor pi carry the
+entire agreement and are not derived from the NVG action. A different
+winding-based ansatz in nvg_arrow_of_time.py gives ~1e-39; the two readings
+coincide only if a fitted factor is inserted there. Treat the check below as
+a consistency window, not a confirmed prediction.
 """
 
 import math
@@ -54,7 +62,7 @@ def calculate_baryon_asymmetry():
     print(f"Deviation from Observation    : {dev_sigma:+.2f} sigma")
     
     is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                        : {'✅ PASSED (Consistent within 1-sigma dimensional scale estimate)' if is_ok else '❌ FAILED'}")
+    print(f"Status                        : {'✅ PASSED (within 1σ; post-hoc dimensional ansatz — see HONESTY NOTE)' if is_ok else '❌ FAILED'}")
     print("==========================================================================")
     return is_ok
 

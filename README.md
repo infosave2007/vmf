@@ -81,10 +81,10 @@ This gives an initial mass of only $M_1 \approx 0.38\,M_\odot$ and a first-cycle
 **Tolman's Entropy Snowball:**
 Each cycle generates irreversible entropy (radiation, black hole formation), which is preserved through the bounce, causing subsequent cycles to expand larger and live longer. Through this "snowball effect":
 - **Cycle 1:** $r_c \approx 1.13$ km, lifetime $\sim 5.9\,\mu$s
-- **Cycle ~76 (now):** $M \approx 10^{56}$ g, turnaround lifetime $\approx 24.7$ Byr
+- **Cycle 77 (now; ≈76 completed doublings):** $M \approx 10^{56}$ g, turnaround lifetime $\approx 24.7$ Byr
 
 **CMB Low-$\ell$ Prediction:**
-The finite instanton size $r_c$ stretched by $N_e \approx 53$ e-folds maps precisely to the present Hubble horizon, providing a deterministic physical cutoff that explains the anomalous suppression of CMB multipoles $\ell=2,3$ — not cosmic variance, but a falsifiable consequence of the Genesis scale.
+The finite instanton size $r_c$ stretched by $N_e \approx 53$ e-folds (calibrated to the local $H_0$) spans the present Hubble horizon by construction; the falsifiable content is the resulting deterministic infrared cutoff that suppresses CMB multipoles $\ell=2,3$ — not cosmic variance, but a testable consequence of the Genesis scale.
 
 ### Pillar III: Black Hole Singularity Resolution & Information Preservation
 The framework replaces the black hole singularity with a **regular de Sitter core** (Hayward metric), where the core scale $r_0 = (3M / 4\pi\rho_c)^{1/3}$ is fixed by the QCD anchor — not a free parameter. For a $10\,M_\odot$ black hole, this gives two horizons (inner Cauchy: 1.15 km, outer: 29.34 km) and a finite Kretschner scalar $K(0) = 4.95\,\text{km}^{-4}$.
@@ -111,12 +111,12 @@ These are values that are manually tuned in standard models, but in NVG they are
 | 1 | Nucleon mass: 91% from non-perturbative QCD ($M_{\Omega,0} = 859 \pm 8$ MeV) | Lattice QCD $\sigma_{\pi N} \approx 44$ MeV, $\sigma_{sN} \approx 30$ MeV | ✅ Confirmed |
 | 2 | $M_{\max} \approx 2.25\,M_\odot$ | NICER + LIGO: $M_{\rm TOV} \approx 2.25 \pm 0.07\,M_\odot$ | ✅ Exact Match |
 | 3 | $R_{1.4} \approx 12.0$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact Match |
-| 4 | Genesis Instanton $r_c \to$ $N_e = 53.08$ e-folds (topologically bounded to $[(n-1)\ln 2, n\ln 2] = [52.68, 53.38]$ for cycle $n=77$) | $R_{H0} = c/H_0 \approx 1.27 \times 10^{28}$ cm (consistent with $t_0 \approx 13.8$ Gyr, see [nvg_hubble_tension.py](verification/nvg_hubble_tension.py) / [nvg_genesis_observable.py](verification/nvg_genesis_observable.py)) | ✅ Exact Match |
+| 4 | Genesis Instanton $r_c \to$ e-folds bounded to $N_e \in [52.68, 53.38]$ for cycle $n=77$; the specific $N_e = 53.08$ is **calibrated** to the local $H_0$, not derived | $R_{H0} = c/H_0 \approx 1.27 \times 10^{28}$ cm; $N_e = \ln(R_{H0}/r_c)$ is computed from $H_0 = 72.8$ km/s/Mpc as input (see [nvg_hubble_tension.py](verification/nvg_hubble_tension.py) / [nvg_genesis_observable.py](verification/nvg_genesis_observable.py)) | ⚠️ Calibrated (the interval is the prediction) |
 | 5 | NS Cooling Dichotomy | Cas A (slow, $1.4 M_\odot$) and Vela (fast, $1.8 M_\odot$) | ✅ Reproduced via $1.45 M_\odot$ threshold |
 | 6 | Tidal deformability: $\Lambda_{1.4} \approx 177$ (derived from TOV + Hinderer $y$-integration in [nvg_tidal_deformability.py](verification/nvg_tidal_deformability.py)) | GW170817: $\Lambda_{1.4} = 190^{+390}_{-120}$ (direct hit in posterior center) | ✅ Exact Match |
 | 7 | In-medium $\rho$-meson mass shift: $-20.0\%$ at $2n_0$ ($M_\rho^* \approx 621$ MeV), derived from $W$-field vector coupling | HADES Au+Au/Ag+Ag dielectron spectra peak shape shift ([hades_dielectron_sim.py](verification/nvg_hades_dielectron_sim.py)) | ⏳ Pending HADES |
 | 8 | Cosmic bounce density: $\rho_c = 7.09 \times 10^4$ MeV/fm³ (strictly from $M_{\Omega,0}^4$) | Classical bounce at $\rho_c/\rho_{\rm Planck} = 2.5 \times 10^{-77}$ without quantum gravity | ✅ Consistent / Falsifiable |
-| 9 | Hubble constant: $H_0 = 72.8$ km/s/Mpc (derived from cycle $n=77$ turnaround horizon $R_{77} = r_c \cdot 2^{76}$) | Local measurements (SH0ES: $73.04 \pm 1.04$ km/s/Mpc) matching the 77th Tolman cycle expansion phase ($\theta \approx 52.8^\circ$ at $t_0 \approx 13.8$ Gyr) ([hubble_tension.py](verification/nvg_hubble_tension.py)) | ✅ Resolves Tension |
+| 9 | Hubble constant, fit-free: hard bounds $H_0 \in [54.3, 108.5]$ km/s/Mpc from cycle $n=77$ turnaround horizons ($R_{77} = r_c \cdot 2^{76}$); zero-information mid-cycle value $H_0 = H_{77}/\sqrt{2} \approx 76.8$ km/s/Mpc (center is measure-dependent: $\approx 62$–$81$) | SH0ES ($73.04 \pm 1.04$ km/s/Mpc) lies within 5.1% of the fit-free midpoint and inside the measure spread; Planck ($67.4$) is also inside the spread; an exact point match still requires calibrating the intra-cycle phase ([hubble_tension.py](verification/nvg_hubble_tension.py)) | ⚠️ Fit-free interval + midpoint; exact value calibrated |
 | 10 | Surface gravitational redshift: $z_{\rm surf} = 0.235$ for $1.4\,M_\odot$ NS | Direct measurements of $z_{\rm surf}$ are currently absent; VMF predicts $0.235$ (testable by STROBE-X, [nvg_ns_redshift.py](verification/nvg_ns_redshift.py)) | ✅ Scale Estimate / Forecast |
 | 11 | Multi-meson mass shift hierarchy: $\rho, \omega$ (-20.0%), $K^*$ (-7.8%), $\phi$ (-2.9%), $J/\psi$ (-0.4%) | HADES, CBM (FAIR), NICA, and LHC in-medium invariant mass spectra ([fair_hades_link.py](verification/nvg_fair_hades_link.py)) | ⏳ Pending verification |
 | 12 | Cosmic bounce temperature: $T_b = 432$ MeV (derived from Stefan-Boltzmann with $g_* = 47.5$) | Consistent with QGP deconfinement scale ($T_c \approx 155\text{-}175$ MeV) at bounce | ✅ Consistent / Falsifiable |
@@ -241,7 +241,7 @@ Predicted NVG/VMF functional dependencies were encoded as optical signals and me
 | Meson hierarchy $\rho > K^* > \phi > J/\psi$ | $-20.0\%,\;-7.8\%,\;-2.9\%,\;-0.4\%$ | $-20.0\%,\;-8.8\%,\;-2.3\%,\;0.0\%$ | $r = 0.997$ |
 | Melting curve $W(\rho)=\sqrt{1-\rho/\rho_c}$ | $\sqrt{1-x}$ vs linear | $\sqrt{1-x}$: $r=0.983$; linear: $r=0.896$ | $r = 0.983$ |
 | Modified Friedmann $H^2 \propto \rho(1-\rho/\rho_c)$ | Parabola, zeros at $0$ and $\rho_c$ | Max at center, both zeros confirmed | $r = 0.983$ |
-| Tolman entropy snowball $M_n = M_1 \times 4^{n-1}$ | Exponential $4^n$ growth | 8 cycles reproduced | $r = 0.999$ |
+| Tolman entropy snowball $M_n = M_1 \times 4^{n-1}$ | Exponential $4^n$ growth | 8 cycles reproduced (internal consistency of the postulated ×4 law, not an observational test) | $r = 0.999$ |
 
 All 52/56 predictions derive from a single parameter $M_\Omega = 859$ MeV. The optical channel discriminates $\sqrt{1-x}$ from a linear model ($\Delta r = 0.087$), confirming internal consistency of the mathematical structure.
 

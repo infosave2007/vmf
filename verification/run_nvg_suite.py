@@ -31,7 +31,10 @@ LATTICE_PRIORS = {
     "Agadjanov (2023) approx": {"mean": 851.0, "err": 15.0}
 }
 
-R_H0_KM = 1.37e28 / 1e5  # Hubble horizon in km
+# Hubble horizon in km: R_H0 = c/H_0 for the repo-wide anchor H_0 = 72.8 km/s/Mpc
+# (calibrated to local measurements; consistent with nvg_genesis_observable.py).
+# The previous value 1.37e28 cm implied H_0 = 67.5 — inconsistent with the rest of the chain.
+R_H0_KM = 1.2709e28 / 1e5
 
 # =====================================================================
 # 2. FULL UNCERTAINTY PROPAGATION ENGINE
@@ -176,8 +179,8 @@ FORECAST = {
 # =====================================================================
 def generate_evidence_ledger(results_center):
     ledger = [
-        {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Confirmed (Derived from D_LS/R_bounce)"},
-        {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Confirmed (Derived from Cycle 77 Phase)"},
+        {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77)"},
+        {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77)"},
         {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_full_ns_eos.py", "status": "Confirmed (NICER)"},
         {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability.py", "status": "Confirmed (TOV + Hinderer y-integration)"},
         {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "nvg_ns_redshift.py", "status": "Awaiting STROBE-X"},

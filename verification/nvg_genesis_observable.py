@@ -37,12 +37,12 @@ print(f"Instanton Radius (r_c = c/H_c): {r_c_cm:.4e} cm")
 
 # 3. Calculate comoving size today
 # During inflation/expansion, this scale is stretched.
-# The physical e-folds N_e is topologically bounded by the completed cycle index (n = 77).
-# Since turnaround horizon scales as R_n = r_c * 2^(n-1), the number of e-folds since the bounce
-# is strictly bounded throughout the entire active cycle: N_e ∈ [76*ln(2), 77*ln(2)] = [52.68, 53.38].
-# This topologically quantizes N_e ≈ 53 without hand-tuning. The current phase (theta ≈ 52.8°)
-# determined by age t_0 ≈ 13.8 Gyr gives N_e = 52.68 + sin^2(theta)*ln(2) ≈ 53.08, corresponding
-# to H_0 ≈ 72.8 km/s/Mpc and horizon size R_H_0:
+# The cycle index bounds the e-folds: since the turnaround horizon scales as R_n = r_c * 2^(n-1),
+# any moment inside cycle n = 77 satisfies N_e ∈ [76*ln(2), 77*ln(2)] = [52.68, 53.38].
+# NOTE (calibration, not derivation): H_0 = 72.8 km/s/Mpc is an INPUT here, anchored to the
+# local distance-ladder measurement (SH0ES). N_req = ln(R_H0/r_c) ≈ 53.08 is computed FROM it
+# and then reused as N_e in nvg_hubble_tension.py. The model does not independently predict
+# the position within the cycle; only the interval above is a prediction.
 H_0_cgs = 72.8 * 1e5 / 3.086e24  # s^-1
 R_H_0 = c_cgs / H_0_cgs  # cm
 
@@ -50,14 +50,14 @@ R_H_0 = c_cgs / H_0_cgs  # cm
 N_req = math.log(R_H_0 / r_c_cm)
 
 print(f"Present Hubble Horizon (R_H0) for H0=72.8: {R_H_0:.4e} cm")
-print(f"Topological e-folds for current cycle phase: {N_req:.2f}")
+print(f"E-folds calibrated from local H_0 (bounded to [52.68, 53.38] by cycle 77): {N_req:.2f}")
 
 print("\nOBSERVABLE CONSEQUENCE:")
 print("Because the Genesis state S_0 is a finite Euclidean instanton")
 print("rather than a singularity, the primordial power spectrum P(k)")
 print("cannot contain modes with wavelengths larger than the instanton")
 print("circumference 2*pi*r_c.")
-print("\nSince the total expansion yields N_req ≈ 53.08 e-folds, this")
+print("\nSince the calibrated expansion yields N_req ≈ 53.08 e-folds, this")
 print("fundamental cutoff maps directly to the largest observable scales")
 print("in the CMB today. This naturally explains the observed anomalous")
 print("suppression of the CMB quadrupole (l=2) and octupole (l=3) seen")

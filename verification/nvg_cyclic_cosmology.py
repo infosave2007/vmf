@@ -44,8 +44,8 @@ def main():
     s_0_log = math.log10(S_genesis)
     
     # Today's holographic entropy is determined by the observable universe horizon R_H0 today:
-    # We use today's Hubble constant H_0 = 72.8 km/s/Mpc (derived from local measurements)
-    # to compute the Hubble horizon: R_H0 = c / H_0
+    # We use today's Hubble constant H_0 = 72.8 km/s/Mpc (taken from local distance-ladder
+    # measurements; calibrated anchor, see nvg_hubble_tension.py) to compute R_H0 = c / H_0
     H0_cgs = (72.8 * 1e5) / (3.086e24)  # s^-1 (converted from km/s/Mpc)
     R_H0 = c / H0_cgs
     S_current = math.pi * R_H0**2 / l_p**2

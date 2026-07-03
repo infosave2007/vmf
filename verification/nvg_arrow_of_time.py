@@ -19,11 +19,28 @@ Physics:
     2. Entropy production is proportional to the phase gradient
     3. The Second Law follows from ∂_μ(s · u^μ) ≥ 0
 
-  Prediction:
-    - Entropy amplification per cycle: S_{n+1}/S_n = exp(2π/N_e) ≈ 1.126
-    - Total entropy after n=77 cycles: S_77 = S_0 · exp(2π · 77/N_e)
-    - This is consistent with the observed entropy of the universe
-      S_obs ≈ 10^{88} k_B (Egan & Lineweaver 2010)
+  Quantitative status (honest accounting):
+    - The winding argument gives a per-cycle amplification S_{n+1}/S_n =
+      exp(2π/N_e) ≈ 1.126, which after 77 cycles yields only S_77 ~ 10^4.8 k_B —
+      short of the observed S_obs ≈ 3.1×10^104 k_B (Egan & Lineweaver 2010,
+      dominated by supermassive black holes) by ~100 orders of magnitude.
+    - The Tolman law used elsewhere in this repository (nvg_hubble_tension.py),
+      S_n = S_1 · 4^(n-1) from Gibbons-Hawking S ∝ R_H² with R_n = r_c·2^(n-1),
+      gives S_77 ≈ 10^122 — the cosmic-event-horizon entropy scale
+      (E&L 2010: S_CEH ≈ 2.6×10^122 k_B). That agreement is by construction,
+      since R_77 is matched to the observed horizon.
+    - Tuning-free consistent reading: the winding term supplies the DIRECTION
+      of time (Q = 1 ⇒ dS/dt > 0) but not the magnitude; the magnitude is
+      carried by the Gibbons-Hawking/Tolman law alone (×4 per doubling cycle
+      → 10^122 ≈ S_CEH), and the observed S_obs respects the holographic
+      bound S_obs < S_CEH. If exp(2π/N_e) were read as a competing magnitude
+      law it would contradict the ×4 law (the two agree only near cycle
+      n ≈ 7.5), so that reading is dropped. Even the cycle-resolved winding
+      sum (N_e(n) = n·ln2 per cycle) reaches only ~10^20 k_B.
+
+  What this script establishes is the qualitative H-theorem: monotonic
+  phase winding implies dS/dt > 0 (an arrow of time), independent of the
+  budget question above.
 
 Output: fig_arrow_of_time.png
 """
@@ -68,6 +85,10 @@ def entropy_amplification_factor():
     
     This gives the amplification factor per cycle:
       S_{n+1}/S_n = exp(2π/N_e)
+
+    NOTE: this factor quantifies phase-dynamics entropy production only.
+    It is subdominant by ~100 dex to the horizon (GH/Tolman) growth of
+    ×4 per cycle and is NOT the source of the cosmological entropy budget.
     """
     return math.exp(2 * math.pi / N_e)
 
@@ -166,18 +187,46 @@ def main():
     print(f"  ΔS/S = 2π/N_e = {2*math.pi/N_e:.4f}")
     print(f"  Amplification factor: exp(2π/N_e) = {amp:.4f}")
 
-    # ── 3. Total entropy after 77 cycles ───────────────────────────────
+    # ── 3. Total entropy after 77 cycles: two laws, honest comparison ──
     S_0_kB = S_0  # Initial entropy in k_B units
     S_77 = S_0_kB * amp**n_cycle
     log10_S_77 = math.log10(S_77)
 
+    # Gibbons-Hawking normalization used by the Tolman law in nvg_hubble_tension.py:
+    # S_n = π (R_n / l_p)² with R_n = r_c · 2^(n-1)
+    l_p_km = 1.616e-38          # km — Planck length
+    S_1_GH = math.pi * (r_c / l_p_km) ** 2
+    log10_S77_GH = math.log10(S_1_GH) + (n_cycle - 1) * math.log10(4.0)
+
+    log10_S_obs = 104.5         # E&L 2010: S_obs ≈ 3.1×10^104 k_B (incl. SMBHs)
+    log10_S_CEH = 122.4         # E&L 2010: cosmic event horizon entropy ≈ 2.6×10^122 k_B
+
+    # Cycle-resolved winding sum: each past cycle n had its own N_e(n) = n·ln2,
+    # not today's N_e (using a constant N_e for all cycles was a bug):
+    log10_S77_winding_res = (math.log10(S_0_kB)
+                             + (2 * math.pi / math.log(2))
+                             * sum(1.0 / n for n in range(1, n_cycle + 1))
+                             * math.log10(math.e))
+
     print(f"\n{'─'*80}")
-    print(f"Entropy evolution:")
+    print(f"Entropy budget — honest accounting of both growth laws in this repo:")
     print(f"  Initial entropy S_0 = {S_0_kB:.2f} k_B (Bekenstein bound at bounce)")
-    print(f"  After {n_cycle} cycles: S_{n_cycle} = S_0 · {amp:.4f}^{n_cycle}")
-    print(f"  log₁₀(S_{n_cycle}) = {log10_S_77:.1f}")
-    print(f"  Observed (Egan & Lineweaver 2010): log₁₀(S_obs) ≈ 88")
-    print(f"  Agreement: {abs(log10_S_77 - 88):.1f} orders of magnitude difference")
+    print(f"  (a) Winding law exp(2π/N_e) = {amp:.4f} per cycle:")
+    print(f"      log₁₀(S_{n_cycle}) = {log10_S_77:.1f}  vs observed log₁₀(S_obs) ≈ {log10_S_obs:.1f}")
+    print(f"      → SHORTFALL of ~{log10_S_obs - log10_S_77:.0f} orders of magnitude. "
+          f"NOT a confirmed prediction.")
+    print(f"      Cycle-resolved (N_e(n) = n·ln2, fixes the constant-N_e bug): "
+          f"log₁₀(S_{n_cycle}) = {log10_S77_winding_res:.1f}")
+    print(f"      → still ~{log10_S_obs - log10_S77_winding_res:.0f} orders short — "
+          f"the winding term cannot supply the magnitude.")
+    print(f"  (b) Tolman/GH law S_n = S_1·4^(n-1) (as used in nvg_hubble_tension.py):")
+    print(f"      log₁₀(S_{n_cycle}) = {log10_S77_GH:.1f}  vs horizon entropy log₁₀(S_CEH) ≈ {log10_S_CEH:.1f}")
+    print(f"      → agreement is BY CONSTRUCTION (S ∝ R², R_77 matched to the observed horizon).")
+    print(f"  (c) Read as competing magnitude laws, (a) and (b) disagree by ×{4.0/amp:.2f} per cycle")
+    print(f"      and would agree only near cycle n ≈ 7.5 — so that reading is dropped.")
+    print(f"  (d) Tuning-free consistent reading: topology fixes the DIRECTION (Q = 1 ⇒ dS/dt > 0),")
+    print(f"      the GH/Tolman law fixes the MAGNITUDE (log₁₀ S_{n_cycle} = {log10_S77_GH:.1f} ≈ S_CEH),")
+    print(f"      and observed S_obs ≈ 10^{log10_S_obs:.1f} respects the holographic bound S_obs < S_CEH ✅")
 
     # ── 4. H-theorem from topology ─────────────────────────────────────
     t_cycle, dS_dt, S_cycle, T_cycle = h_theorem_demonstration()
@@ -188,20 +237,22 @@ def main():
     print(f"  min(dS/dt) = {dS_dt.min():.4e} > 0 ✅")
     print(f"  S is monotonically increasing ✅")
 
-    # ── 5. Connection to baryon asymmetry ──────────────────────────────
-    # η_B from CPT violation at bounce
+    # ── 5. Connection to baryon asymmetry (honest status) ──────────────
     eta_B_obs = 6.14e-10  # Planck 2018
-    # NVG prediction: η_B ∝ Δθ/N_e · (M_Ω/M_Pl)²
+    # The winding-based ansatz η_B ∝ (Δθ/N_e)(M_Ω/M_Pl)² falls short by ~30 orders.
+    # The factor needed to close the gap is computed FROM the observed value below —
+    # i.e. it is fitted, not derived, so this ansatz has no predictive content.
     eta_B_nvg = (2 * math.pi / N_e) * (M_Omega_0 / M_Pl)**2
-    # Scale by a geometric factor (from full calculation)
-    geometric_factor = eta_B_obs / eta_B_nvg
+    missing_factor = eta_B_obs / eta_B_nvg
 
     print(f"\n{'─'*80}")
-    print(f"Connection to baryon asymmetry:")
+    print(f"Connection to baryon asymmetry — honest status:")
     print(f"  η_B(obs) = {eta_B_obs:.2e} (Planck 2018)")
-    print(f"  η_B ∝ (Δθ/N_e)(M_Ω/M_Pl)² = {eta_B_nvg:.2e}")
-    print(f"  Geometric enhancement factor needed: {geometric_factor:.2e}")
-    print(f"  This factor encodes the full bounce dynamics (sphaleron rate)")
+    print(f"  Winding ansatz (Δθ/N_e)(M_Ω/M_Pl)² = {eta_B_nvg:.2e} — short by ×{missing_factor:.1e};")
+    print(f"  the missing factor is NOT derived here, so this ansatz is not a prediction.")
+    print(f"  The repo's separate scale estimate π·√(T_b/M_Pl) ≈ 5.9e-10 (nvg_baryon_asymmetry.py)")
+    print(f"  matches observation, but its 1/2 exponent and prefactor π are chosen, not derived —")
+    print(f"  a first-principles derivation of η_B remains an open problem.")
 
     # ── 6. Key theorem ─────────────────────────────────────────────────
     print(f"\n{'─'*80}")
@@ -254,25 +305,33 @@ def main():
     ax2.set_facecolor('#fafafa')
 
     n_arr, S_arr = entropy_evolution(n_cycle, S_0_kB, amp)
-    ax2.semilogy(n_arr, S_arr, color='#E53935', linewidth=2.5, zorder=4)
-    ax2.axhline(1e88, color='#4CAF50', linestyle='--', linewidth=1.5, alpha=0.7,
-                label=r'$S_{\rm obs} \approx 10^{88}\,k_B$')
+    ax2.semilogy(n_arr, S_arr, color='#E53935', linewidth=2.5, zorder=4,
+                 label=r'Winding law $e^{2\pi/N_e}$ per cycle')
+    n_gh = np.arange(1, n_cycle + 1)
+    S_gh = S_1_GH * 4.0 ** (n_gh - 1)
+    ax2.semilogy(n_gh, S_gh, color='#7B1FA2', linewidth=2.0, linestyle='-.', zorder=4,
+                 label=r'Tolman/GH law $S_1 \cdot 4^{\,n-1}$')
+    ax2.axhline(3.1e104, color='#4CAF50', linestyle='--', linewidth=1.5, alpha=0.7,
+                label=r'$S_{\rm obs} \approx 3.1{\times}10^{104}\,k_B$')
+    ax2.axhline(2.6e122, color='#FF9800', linestyle='--', linewidth=1.2, alpha=0.7,
+                label=r'$S_{\rm CEH} \approx 2.6{\times}10^{122}\,k_B$')
     ax2.axvline(n_cycle, color='#2196F3', linestyle=':', linewidth=1.2, alpha=0.7,
                 label=f'Current cycle $n={n_cycle}$')
 
     ax2.set_xlabel('Genesis Cycle $n$', fontsize=13)
     ax2.set_ylabel(r'Entropy $S_n$ [$k_B$]', fontsize=13)
-    ax2.set_title('Entropy Growth over Cycles', fontsize=12, fontweight='bold', pad=10)
-    ax2.legend(fontsize=9, loc='upper left', framealpha=0.9, edgecolor='#ccc')
+    ax2.set_title('Entropy Budget: Two Laws vs Observation', fontsize=12, fontweight='bold', pad=10)
+    ax2.legend(fontsize=8, loc='center left', framealpha=0.9, edgecolor='#ccc')
     ax2.grid(True, linestyle='--', alpha=0.2)
 
-    # Result box
-    textstr = (r'$S_{n+1}/S_n = e^{2\pi/N_e}$' + '\n'
-               + r'$= %.4f$' % amp + '\n'
-               + r'$\log_{10} S_{77} = %.1f$' % log10_S_77)
-    props = dict(boxstyle='round,pad=0.4', facecolor='#E8F5E9',
-                 edgecolor='#81C784', alpha=0.9)
-    ax2.text(0.97, 0.55, textstr, transform=ax2.transAxes, fontsize=9.5,
+    # Result box — direction from topology, magnitude from GH/Tolman
+    textstr = ('Winding: $\\log_{10} S_{77} = %.1f$\n' % log10_S_77
+               + '(cycle-resolved: %.1f)\n' % log10_S77_winding_res
+               + 'GH/Tolman: $\\log_{10} S_{77} = %.1f$\n' % log10_S77_GH
+               + '$S_{\\rm obs} < S_{\\rm CEH}$ bound: OK')
+    props = dict(boxstyle='round,pad=0.4', facecolor='#FFF8E1',
+                 edgecolor='#FFB300', alpha=0.9)
+    ax2.text(0.97, 0.97, textstr, transform=ax2.transAxes, fontsize=9,
              verticalalignment='top', horizontalalignment='right', bbox=props)
 
     # Panel 3: H-theorem within one cycle
@@ -323,13 +382,19 @@ def main():
     # ── Assertions ─────────────────────────────────────────────────────
     assert amp > 1.0, "Entropy must increase per cycle!"
     assert dS_dt.min() > 0, "dS/dt must be positive for all t!"
-    assert log10_S_77 > 2, "Total entropy should grow over 77 cycles!"
+    # Internal-consistency check of the GH/Tolman chain (S ∝ R², R_77 matched to horizon):
+    assert abs(log10_S77_GH - log10_S_CEH) < 1.5, \
+        "GH/Tolman chain should land on the horizon-entropy scale by construction"
 
     print("\n" + "=" * 80)
-    print("CONCLUSION: Arrow of time is a THEOREM in NVG, not an axiom.")
-    print(f"  The Goldstone phase θ winds monotonically (topology: Q = 1 per cycle).")
-    print(f"  This guarantees dS/dt > 0 via the entropy current s^μ = s · u^μ.")
-    print(f"  Entropy amplification: {amp:.4f}× per cycle ({n_cycle} cycles → 10^{log10_S_77:.0f}).")
+    print("CONCLUSION: The arrow of time (dS/dt > 0) is a THEOREM in NVG:")
+    print(f"  the Goldstone phase θ winds monotonically (topology: Q = 1 per cycle),")
+    print(f"  which guarantees dS/dt > 0 via the entropy current s^μ = s · u^μ.")
+    print(f"  Tuning-free budget: DIRECTION from topology, MAGNITUDE from the GH/Tolman")
+    print(f"  ×4 law (10^{log10_S77_GH:.1f} ≈ S_CEH 10^{log10_S_CEH:.1f}; S_obs respects the bound).")
+    print(f"  Winding-based magnitude readings (10^{log10_S_77:.1f} constant-N_e, "
+          f"10^{log10_S77_winding_res:.1f} cycle-resolved)")
+    print(f"  fall far short and are NOT used as predictions.")
     print("=" * 80)
 
 
