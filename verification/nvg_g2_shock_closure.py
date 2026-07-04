@@ -37,9 +37,11 @@ eta_B; sigma_v by the structure-formation attractor), so g is the same
 each cycle — as the Tolman chain requires.
 
 STATUS after this step: g = 2 is derived at order-of-magnitude rigor from
-two measured quantities, with the remaining O(1) freedom localized in
-(i) the effective sigma_v at turnaround and (ii) the O(1) radiation share
-at equality. A percent-level derivation would need a collapse simulation.
+two measured quantities. The full-GR Misner-Sharp verification
+(nvg_g2_misner_sharp.py) confirms the gain law exactly through curvature
+domination and horizon crossing, and bounds the inhomogeneity corrections
+(BH locking, shock-density spread) at the +/-20% level; percent precision
+needs the astrophysical shock-density distribution.
 """
 
 from __future__ import annotations

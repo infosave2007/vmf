@@ -379,6 +379,12 @@ CHECKS = [
         "timeout": 300,
     },
     {
+        "name": "g = 2 Misner-Sharp GR Verification",
+        "script": "nvg_g2_misner_sharp.py",
+        "claim": "MS mass ODE through horizon crossing confirms the gain exactly; BH locking and shock spread bound g = 2 at +/-20% in full GR",
+        "critical": False,
+    },
+    {
         "name": "g = 2 Shock-Microphysics Closure",
         "script": "nvg_g2_shock_closure.py",
         "claim": "g = [(1+z_eq) sigma_v/c]^(3/4) = 2.0 at sigma_v = 222 km/s — doubling derived from two measured inputs at O(1) rigor",
