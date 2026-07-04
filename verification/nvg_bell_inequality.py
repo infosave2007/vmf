@@ -15,6 +15,20 @@ NVG content of this script is the TEMPERATURE DEPENDENCE S(T) — the
 predicted disappearance of Bell violation above T_c — not the origin
 of the violation itself.
 
+ROUTES TO A DERIVATION (theory task, 2026-07) — any successful derivation
+of E = -cos from the action must contain one of:
+  (a) contextuality: theta lives on field-configuration space, and the
+      measurement settings select nonseparable global mode functions —
+      the outcome depends on the joint configuration, not a local lambda;
+  (b) ground-state inheritance: the condensate vacuum is itself an
+      entangled quantum state — logically consistent but it makes the
+      "derivation of QM" circular (QM is smuggled in via the vacuum);
+  (c) cosmological measurement dependence: settings and theta_0 share a
+      common cause at the bounce (superdeterminism) — evades Bell at the
+      standard conceptual cost.
+Route (a) is the only one that would constitute a genuine derivation;
+making it precise is the open problem.
+
 Physics:
   Two "entangled" particles are two excitations of the SAME condensate
   field Φ = W·e^{iθ}. Their phases are correlated because they share

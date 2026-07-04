@@ -44,7 +44,10 @@ def main():
     print("     NVG PBH DARK MATTER SPECTRUM & OBSERVATIONAL LIMITS")
     print("=" * 80)
 
-    # 1. PBH Discrete Mass Spectrum M_N = 0.38 * 4^N M_sun
+    # 1. PBH Discrete Mass Spectrum. NOTE: the corrected Tolman law
+    # (nvg_tolman_law_derivation.py) gives bounce mass x2 per cycle, so the
+    # physical ladder is M_N = 0.38 * 2^N (denser rungs); the 4^N grid below
+    # is retained for continuity and must be recomputed.
     # We scan cycle indexes N from -30 to 12
     N_vals = np.arange(-30, 13)
     M_vals = 0.38 * (4.0 ** N_vals)

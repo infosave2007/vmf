@@ -18,6 +18,21 @@ entire agreement and are not derived from the NVG action. A different
 winding-based ansatz in nvg_arrow_of_time.py gives ~1e-39; the two readings
 coincide only if a fitted factor is inserted there. Treat the check below as
 a consistency window, not a confirmed prediction.
+
+MECHANISM ANALYSIS (theory task, 2026-07): the natural in-model route is
+spontaneous baryogenesis — the winding rate theta-dot acts as an effective
+chemical potential mu_B ~ theta-dot during the recondensation. Bracketing:
+  - Hubble-rate winding (theta-dot ~ beta ~ 1e-14 MeV) gives eta_B ~ 1e-19
+    — eight orders too small;
+  - condensate-oscillation winding (theta-dot ~ m_theta ~ 6.6 MeV) gives
+    eta_B ~ 1e-4 — six orders too large.
+  The answer lives in the B-transfer efficiency between these limits, and
+  faces a structural obstruction: at T ~ 150-430 MeV electroweak sphalerons
+  are exponentially frozen, so the Standard Model provides NO baryon-number
+  violation at the bounce. NVG baryogenesis therefore requires either a
+  B-violating operator beyond the SM or an asymmetry inherited through
+  cycles. This is the honest status of eta_B: mechanism identified,
+  bottleneck named, number not derivable yet.
 """
 
 import math

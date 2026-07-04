@@ -25,11 +25,11 @@ Frequency cross-check (two independent routes):
   - standard PT peak formula at T_b = 432 MeV, beta/H = 1:                72.5 nHz
   Agreement to ~15% — the comb anchor is robust.
 
-Comb structure:
-  GW energy redshifts as a^-4 while each bounce injects entropy (x4/cycle),
-  so every earlier tooth is diluted by 4^{4/3} = 6.35 in Omega. The comb is
-  therefore amplitude-dominated by the LAST bounce: a main bump at ~26-72 nHz
-  with a sub-tooth at 0.63 f of ~16% amplitude, then <3%.
+Comb structure (corrected Tolman law, nvg_tolman_law_derivation.py):
+  GW energy redshifts as a^-4 while the bounce scale grows 2^(1/3)/cycle,
+  so every earlier tooth is diluted by 2^{4/3} = 2.52 in Omega. The comb is
+  a main bump with sub-teeth at 0.79 f (40%), 0.63 f (16%), 0.50 f (6%) —
+  a richer structure than under the superseded x4 mass law.
 
 Honest status:
   (alpha, beta/H) are DERIVED in the companion nvg_recondensation_dynamics.py.
@@ -67,8 +67,9 @@ T_BOUNCE = 432.0      # MeV
 T_COND = 157.0        # MeV — recondensation completes near T_c
 NANOGRAV_F = 32.0     # nHz (f = 1/yr)
 NANOGRAV_OMEGA = 4e-9 # representative Omega_GW h^2 at 1/yr (15yr data, factor ~2)
-TOOTH_DILUTION = 4.0 ** (4.0 / 3.0)   # per earlier cycle: GW ~ a^-4 vs entropy x4
-TOOTH_SPACING = 4.0 ** (-1.0 / 3.0)
+# Corrected Tolman law (M x2/cycle): a_bounce ratio 2^(1/3) -> GW ~ a^-4 dilution:
+TOOTH_DILUTION = 2.0 ** (4.0 / 3.0)   # = 2.52 per earlier cycle
+TOOTH_SPACING = 2.0 ** (-1.0 / 3.0)
 
 
 def kappa_v(alpha: float) -> float:

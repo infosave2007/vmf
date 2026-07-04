@@ -31,7 +31,8 @@ f_Edd = 0.10                   # Average Eddington ratio (10% duty cycle)
 # Seeding parameters at z_start = 20
 z_start = 20.0
 M_seed_popIII = 100.0          # Solar masses (Pop III stellar remnant)
-# The PBH mass GRID 0.38*4^N follows from the theory; the SPECIFIC rung N=10
+# Under the corrected Tolman law (x2/cycle, nvg_tolman_law_derivation.py) the
+# same seed mass sits at rung N ~ 20 of the denser 2^N ladder. The SPECIFIC rung
 # (~4e5 M_sun) is selected as the seed that can grow into the JWST objects —
 # a choice within the discrete ladder, not derived for these particular sources.
 M_seed_nvg = 0.38 * (4**10)    # Solar masses (Cycle N=10 VMF primordial seed ~3.98e5 M_sun)

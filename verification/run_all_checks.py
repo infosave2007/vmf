@@ -328,6 +328,12 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "Tolman Growth Law from Turnaround Dynamics",
+        "script": "nvg_tolman_law_derivation.py",
+        "claim": "S_GH x4 <=> R x2 derived; mass law corrected to x2/cycle (x4 excluded); repo's own cycle-77 mass confirms x2",
+        "critical": False,
+    },
+    {
         "name": "Recondensation Dynamics: (alpha, beta/H) from the Action",
         "script": "nvg_recondensation_dynamics.py",
         "claim": "Quartic action: spinodal sliver, Omega_GW < 1e-13 (no PTA signal); dilaton CW form: deep supercooling -> NANOGrav band",

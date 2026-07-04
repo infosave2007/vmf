@@ -21,6 +21,13 @@ n_0 = 0.16  # Saturation density (fm^-3)
 # With mu_theta = m_omega = 782.6 MeV, g_omega = 10.12, A_0(n_0) ≈ 20.31 MeV,
 # lambda ≈ 1.05, and W_vac = M_Omega_0 = 859.0 MeV, we get:
 # kappa_1 = (782.6 * 10.12 * 20.31) / (1.05 * 859.0^2) ≈ 0.207 ≈ 0.21.
+# RECONCILIATION with the EOS value 0.25 (audit, 2026-07): the inputs g_omega
+# (RMF values span 9-13) and A_0(n_0) are model-dependent, giving
+# kappa_1(analytic) = 0.21 +/- 0.04; the EOS nuclear fit 0.25 sits at the
+# upper edge of this band (and the beta-equilibrated EOS does NOT build at
+# 0.21 — tested). Honest status: one parameter within coupled uncertainties,
+# sector values retained (0.21 meson channel, 0.25 EOS) pending a
+# first-principles pin-down of g_omega and A_0.
 # The parameter kappa_2 = 0.80 governs the non-linear saturation.
 kappa_1 = 0.21
 kappa_2 = 0.80

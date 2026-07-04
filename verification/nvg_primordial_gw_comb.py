@@ -13,9 +13,10 @@ Derivation (all quantities from the repo's own anchors):
       f_77 = (1/t_b) * (T_0/T_b) * (g_S0/g_Sb)^(1/3) = 62.9 nHz.
     (An earlier version used 145 nHz — that is (1/t_b)*(T_0/T_b) with the
     entropy g-factor omitted.)
-  - Inter-cycle spacing from the Tolman law M_n = M_1 * 4^(n-1) at fixed rho_c:
-    the bounce scale grows as M^(1/3), so consecutive comb teeth are spaced by
-    4^(-1/3) = 0.630. (An earlier version used 0.75, which had no derivation.)
+  - Inter-cycle spacing from the corrected Tolman law (bounce mass x2 per
+    cycle, derived from matter-era turnaround dynamics in
+    nvg_tolman_law_derivation.py): bounce scale x2^(1/3), teeth spaced by
+    2^(-1/3) = 0.794.
   - Convention caveat: the bounce emission peak may sit at 1/t_b or 1/(2 pi t_b),
     an O(2 pi) spread (anchor 10-63 nHz); either choice keeps the comb in the
     PTA band.
@@ -39,7 +40,10 @@ MEV_FM3_TO_GCM3 = 1.7827e12
 T_0_MEV = 2.7255 * 8.617333e-11   # CMB temperature today, MeV
 G_S_BOUNCE = 47.5        # entropy dof at the QGP bounce
 G_S_TODAY = 3.91         # photons + neutrinos
-SPACING = 4.0 ** (-1.0 / 3.0)     # Tolman: M x4 per cycle at fixed rho_c
+# Corrected Tolman law (nvg_tolman_law_derivation.py): matter-era turnaround
+# dynamics fixes the bounce-mass growth at x2 per cycle (not x4), so the
+# bounce scale grows by 2^(1/3) and consecutive teeth are spaced by:
+SPACING = 2.0 ** (-1.0 / 3.0)     # = 0.794
 
 
 def bounce_frequency_today(m_omega: float) -> float:
