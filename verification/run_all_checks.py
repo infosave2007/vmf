@@ -328,6 +328,18 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "g = 2 Mechanism Candidates",
+        "script": "nvg_g2_mechanism.py",
+        "claim": "Requirement ln g = ln 2 stated; winding/vacuum-release fail x3-6; binding-energy release brackets g -> 2 in the maximal-collapse limit",
+        "critical": False,
+    },
+    {
+        "name": "Two-Population PBH Abundance (JWST vs NANOGrav)",
+        "script": "nvg_pbh_two_population.py",
+        "claim": "JWST-calibrated heavy PBHs pass the CMB bound but fall ~1,700x short of NANOGrav — the PBH-binary NANOGrav claim is retired",
+        "critical": False,
+    },
+    {
         "name": "Tolman Growth Law from Turnaround Dynamics",
         "script": "nvg_tolman_law_derivation.py",
         "claim": "S_GH x4 <=> R x2 derived; mass law corrected to x2/cycle (x4 excluded); repo's own cycle-77 mass confirms x2",

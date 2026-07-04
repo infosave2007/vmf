@@ -11,6 +11,14 @@ This derivation computes the amplitude from first principles using the cosmologi
 PBH density and the theoretical primordial binary formation fraction (f_bin),
 and verifies that the superposed signal matches the power-law index (f^2/3) and 
 amplitude (A_GWB ~ 2.4e-15 in strain) detected in the NANOGrav 15-year dataset.
+
+STATUS: RETIRED (2026-07, nvg_pbh_two_population.py). The heavy-PBH population
+calibrated to the JWST seeding requirement (f_PBH ~ 1e-10..1e-9, the only
+abundance consistent with the CMB-accretion bound) yields an SGWB ~1,700x
+below the NANOGrav amplitude; closing the gap would violate the CMB bound by
+~4e5. Combined with the action-derived bounce spectrum peaking at microHz,
+NVG has NO mechanism for the NANOGrav signal — it is attributed to ordinary
+SMBH binaries. This script is kept as a record of the superseded claim.
 """
 
 import numpy as np

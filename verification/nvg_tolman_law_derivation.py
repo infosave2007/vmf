@@ -126,7 +126,9 @@ def main():
     print(f"   Holographic cycle count (from S_GH x4): unchanged, ~77 cycles")
 
     print("\n5. OPEN: a microscopic mechanism fixing g = 2 per cycle.")
-    print("   Winding gives 1.126, vacuum release 1.26 — both fail; x2 is the target.")
+    print("   Candidates evaluated in nvg_g2_mechanism.py: winding (1.126) and vacuum")
+    print("   release (1.26) fail; crunch binding-energy release brackets g -> 2 in")
+    print("   the maximal-collapse limit — the lead candidate, not yet a derivation.")
     print("=" * 78)
 
 

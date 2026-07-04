@@ -57,12 +57,19 @@ m_t = 172.76                    # GeV — top quark
 M_Z = 91.1876                   # GeV — Z boson mass
 M_W = 80.379                    # GeV — W boson mass
 v_EW = 246.22                   # GeV — electroweak VEV
-# AUDIT NOTE: 432.2 MeV is the BOUNCE TEMPERATURE T_b, not the vacuum value.
-# The vacuum condensate scale is W_0 = M_Omega,0 = 859 MeV (it reproduces
-# rho_c = 7.09e4 MeV/fm^3; see commit c946472). This script's 1-loop estimate
-# needs recomputation with the corrected scale; until then treat the quoted
-# 1/alpha(M_Z) = 126.6 as provisional.
-M_Omega = 432.2e-3              # GeV — MISLABELED scale, see audit note above
+# Corrected vacuum scale (audit): W_0 = M_Omega,0 = 859 MeV (432.2 MeV is the
+# bounce temperature T_b). The fermion set below the cutoff is unchanged
+# (no threshold between 432 and 859 MeV), so only ln(W_0/m_eff) shifts and the
+# inferred alpha_bare moves slightly.
+#
+# HONEST STATUS of this script: 1/alpha(M_Z) = 126.6 is STANDARD 1-loop QED
+# running, independent of W_0 (2-loop hadronic corrections close the gap to
+# 127.95). The NVG-specific content is interpretational: the UV cutoff is the
+# physical condensate scale rather than an arbitrary renormalization point,
+# and alpha_bare is INFERRED from the measured 1/137 — the script does not
+# derive alpha_EM. The genuinely falsifiable direction would be an in-medium
+# alpha shift where W melts (dense matter), not computed here.
+M_Omega = 0.859                 # GeV — vacuum condensate scale W_0 = M_Omega,0
 
 # Fermion charges and masses
 leptons = [
@@ -110,7 +117,7 @@ def Z_EM_nvg(W, W0=M_Omega):
     
     Z_EM(W) = 1 + (2α_bare)/(3π) × Σ_f N_c Q_f² × ln(W²/m_f²)
     
-    When W = W₀ ≈ 432 MeV (NVG condensate scale):
+    When W = W₀ = 859 MeV (NVG vacuum condensate scale):
     Z_EM(W₀) determines α_EM.
     """
     z = 1.0
