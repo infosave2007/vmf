@@ -5,6 +5,8 @@ NVG Verification: Bell Inequality Death at QCD Deconfinement — RHIC Protocol
 The SINGLE most falsifiable prediction of NVG that NO other theory makes:
 
     S_CHSH(T > T_c = 157 MeV) → 0
+    (NVG correlation form is postulated, not derived — see
+    nvg_bell_inequality.py; the testable content is S(T).)
 
 Below T_c: vacuum condensate Φ = W·e^{iθ} is coherent → global phase θ
 correlates entangled photons → S = 2√2 (Tsirelson bound, standard QM).

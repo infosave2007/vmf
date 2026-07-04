@@ -27,7 +27,10 @@ Physics:
   The Robertson-Schrödinger relation (the generalized HUP) also
   follows from the same Cauchy-Schwarz structure.
 
-  This is PURE MATHEMATICS — no quantum postulates required.
+  The inequality itself is pure mathematics (rigorous per the preprint's
+  Limitations table). The physical input is the identification p = ℏ∇θ:
+  the quantum of action enters through this definition rather than being
+  derived, so the postulate is relocated, not eliminated.
 
 Output: fig_heisenberg_proof.png
 """

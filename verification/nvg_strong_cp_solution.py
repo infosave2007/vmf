@@ -9,7 +9,10 @@ The key insight: the full NVG potential V(W, θ) includes the QCD topological
 susceptibility term. When W relaxes to its vacuum value W₀, the θ-dependent
 part of the potential has a UNIQUE global minimum at θ = 0.
 
-This is NOT a new symmetry (PQ) — it's a CONSEQUENCE of the vacuum condensate
+The result relies on identifying the QCD vacuum angle θ̄_QCD with the
+macroscopic condensate phase θ (a physical postulate — semi-rigorous per
+the preprint's Limitations). Given that identification, this is not a new
+symmetry (PQ) but a consequence of the vacuum condensate
 structure already present in the NVG Lagrangian.
 
 Physics:

@@ -2,10 +2,15 @@
 """
 NVG Verification: Wave Function "Collapse" as θ-Phase Thermalization
 =====================================================================
-Demonstrates that the "measurement problem" is resolved in NVG:
-wave function collapse is simply the THERMALIZATION of the Goldstone
-phase θ to a local minimum of the effective potential when the
-quantum system couples to a macroscopic apparatus.
+Models wave-function collapse as THERMALIZATION of the Goldstone
+phase θ when the system couples to a macroscopic apparatus
+(Caldeira-Leggett relaxation, τ ∝ ℏ/k_B T).
+
+STATUS (per the preprint's Limitations: SEMI-RIGOROUS). The mechanism
+supplies decoherence dynamics and the correct timescale; how the
+environment selects a particular pointer state without a pre-defined
+system/apparatus split remains open — the standard hard core of the
+measurement problem is narrowed, not closed.
 
 Physics:
   Before measurement:

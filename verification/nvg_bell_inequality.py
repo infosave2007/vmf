@@ -2,9 +2,18 @@
 """
 NVG Verification: Bell Inequality from Vacuum Condensate Coherence
 ==================================================================
-Demonstrates that Bell-type correlations in NVG arise from the GLOBAL
-coherence of the Goldstone phase θ(x) of the vacuum condensate — NOT
-from nonlocal "spooky action at a distance."
+Computes the NVG temperature dependence of Bell-CHSH correlations.
+
+STATUS (per the preprint's own Limitations table: CONJECTURAL).
+The correlation form E(a,b) = -cos(a-b) is POSTULATED by analogy with
+the quantum-optical result — it is not derived from the condensate
+action. Moreover, by Bell's theorem such a derivation cannot be local:
+a shared phase θ₀ read out locally is a hidden variable λ and yields
+S ≤ 2. Any future derivation of E = -cos from the action must therefore
+contain an explicitly nonlocal or contextual element. The falsifiable
+NVG content of this script is the TEMPERATURE DEPENDENCE S(T) — the
+predicted disappearance of Bell violation above T_c — not the origin
+of the violation itself.
 
 Physics:
   Two "entangled" particles are two excitations of the SAME condensate

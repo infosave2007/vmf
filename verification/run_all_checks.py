@@ -311,8 +311,8 @@ CHECKS = [
     {
         "name": "DNA Chirality & Biological θ-Coherence",
         "script": "nvg_dna_chirality.py",
-        "claim": "Verify Goldstone phase collapse time (~25 fs) and coherence length (~7.6 um) at room temperature",
-        "critical": True,
+        "claim": "Scale estimates for the speculative biological homochirality hypothesis (collapse time ~25 fs, coherence ~7.6 um)",
+        "critical": False,
     },
     {
         "name": "CMB Low-l Re-fit with Genesis IR Cutoff",
