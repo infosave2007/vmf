@@ -328,6 +328,12 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "DESI x S8 Joint Exclusion Map",
+        "script": "nvg_desi_s8_joint_map.py",
+        "claim": "0/48 grid points satisfy both constraints; CMB-anchored effective (w0,wa) improves on LCDM by only ~1 in chi2 — melting sector fails both",
+        "critical": False,
+    },
+    {
         "name": "CMB Low-ell TE Cutoff Check",
         "script": "nvg_cmb_te_check.py",
         "claim": "TE Delta chi^2 = +0.75 for the sharp8 IR cutoff — same direction as TT (+1.77), sub-1-sigma diagnostic",
