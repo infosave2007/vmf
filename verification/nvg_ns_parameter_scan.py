@@ -33,7 +33,7 @@ These sit close to the constraint edges, which is what makes them FALSIFIABLE:
 a confirmed NS above ~2.2 M_sun, or a GW170817-like event with Ltilde < ~400,
 or R_1.4 < ~12.0 km would exclude the model.
 
-Runtime: ~4-6 minutes (many TOV + tidal integrations).
+Runtime: well under a minute (grid of TOV + tidal integrations).
 """
 
 from __future__ import annotations
@@ -112,8 +112,12 @@ def main():
 
     print("\n" + "─" * 84)
     print(f"Surviving points: {len(survivors)} of {len(results)}")
-    mmax_o, r14_o = results[OLD][0], results[OLD][1]
-    print(f"Previous parameterization {OLD}: M_max = {mmax_o:.2f} M_sun "
+    # Falsification reference: the pre-canon parameterization lies OUTSIDE the
+    # fine grid above, so compute it explicitly.
+    hyb_old = soft.build_css_hybrid_eos(baseline, n_trans_ratio=OLD[0],
+                                        delta_eps_ratio=OLD[1], cs2_q=1.0 / 3.0)
+    mmax_o, r14_o = star_family(hyb_old)[:2]
+    print(f"Reference parameterization {OLD}: M_max = {mmax_o:.2f} M_sun "
           f"(vs J0740 2.08 ± 0.07 → {(mmax_o - 2.08) / 0.07:+.1f} sigma) — FALSIFIED")
     if best:
         mb = results[best]
@@ -129,7 +133,7 @@ def main():
     print(f"  - R_1.4 measured below ~12.0 km excludes it (canon {mc[1]:.2f} km).")
 
     # ── Assertions ──────────────────────────────────────────────────────
-    assert results[OLD][0] < 2.01, "old point should be falsified by J0740"
+    assert mmax_o < 2.01, "old point should be falsified by J0740"
     assert results[CANON][5], "canonical point must satisfy all constraints"
     assert best == CANON, (f"best-margin survivor {best} != canonical {CANON}; "
                            f"update the canon in nvg_tidal_deformability.py")

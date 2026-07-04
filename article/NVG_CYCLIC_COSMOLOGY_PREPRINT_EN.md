@@ -193,7 +193,7 @@ The NVG cyclic model, despite having zero free cosmological parameters, is consi
 | # | NVG Prediction | Observational Data | Status |
 |---|---|---|---|
 | 1 | $M_{\Omega,0} = 859 \pm 8$ MeV (91% nucleon mass from QCD vacuum) | Lattice QCD: $\sigma_{\pi N} \approx 44$ MeV, $\sigma_{sN} \approx 30$ MeV | ✅ Confirmed |
-| 2 | $M_{\max} = 2.05\,M_\odot$ (computed; earlier 2.25–2.3 values were EOS-table-edge artifacts) | PSR J0740+6620: $2.08 \pm 0.07\,M_\odot$ ($-0.4\sigma$) | ⚠️ Compatible, edge-falsifiable |
+| 2 | $M_{\max} = 2.05\,M_\odot$ (computed from the canonical EOS) | PSR J0740+6620: $2.08 \pm 0.07\,M_\odot$ ($-0.4\sigma$) | ⚠️ Compatible, edge-falsifiable |
 | 3 | $R_{1.4} \approx 12$ km | NICER PSR J0030+0451: $R \approx 12.2 \pm 0.5$ km | ✅ Exact match |
 | 4 | EOS causality: $c_s^2 \leq 0.33$ | LIGO/NICER constraints satisfied | ✅ |
 | 5 | $\gamma_{\rm PPN} = 1$, $c_T = c$ | Cassini ($< 2.3 \times 10^{-5}$); GW170817 ($< 10^{-15}$) | ✅ Exact match |

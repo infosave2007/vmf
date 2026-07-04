@@ -52,7 +52,7 @@ CHECKS = [
     {
         "name": "Full Neutron Star EOS (Crust + Phase Transition)",
         "script": "nvg_full_ns_eos.py",
-        "claim": "Phase transition lowers M_max to ~2.3 M_sun (phenomenologically viable)",
+        "claim": "Simplified PNM chain runs; canonical numbers come from nvg_tidal_deformability.py (illustrative only)",
         "critical": True,
     },
     {
@@ -90,6 +90,7 @@ CHECKS = [
         "script": "nvg_magnetar_mass_correlation.py",
         "claim": "Fitted progenitor seed ~42 kG, reconstructed masses in 1.1-2.3 M_sun span, correlation R ~ 0.61",
         "critical": True,
+        "timeout": 300,
     },
     {
         "name": "Quantitative Physical Predictions & Validation",
@@ -148,19 +149,19 @@ CHECKS = [
     {
         "name": "Joint NS Likelihood Fit",
         "script": "nvg_joint_ns_inference.py",
-        "claim": "Reduced chi_nu^2 = 0.63 for joint multi-messenger fit",
+        "claim": "Reduced chi_nu^2 ~ 1.0 for joint multi-messenger fit (calibrated rows excluded)",
         "critical": True,
     },
     {
         "name": "NICER PSR J0437 Mass-Radius Check",
         "script": "nvg_nicer_j0437_check.py",
-        "claim": "VMF predicted radius lies within 0.8 sigma of NICER 2024 bounds",
+        "claim": "Canonical radius vs NICER J0437: +1.5 sigma (inside 95%) — tightest tension of the model",
         "critical": True,
     },
     {
         "name": "Relic Dark Matter density",
         "script": "nvg_relic_dark_matter.py",
-        "claim": "Instanton relic density matches Planck PR4 Omega_DM = 0.268",
+        "claim": "Omega_DM is an observational input; inferred lambda_v lands in the f_0 scalar range (calibration)",
         "critical": True,
     },
     {
@@ -178,7 +179,7 @@ CHECKS = [
     {
         "name": "Magnetar Crustal Starquake QPOs",
         "script": "nvg_starquake_qpo.py",
-        "claim": "Shear frequency shifts from eps_eff match SGR 1806-20 observed QPOs with < 0.2% avg deviation",
+        "claim": "Internal scaling demo only — no independent GR baseline; observational claim retracted",
         "critical": True,
     },
     {
@@ -318,12 +319,14 @@ CHECKS = [
         "script": "nvg_cmb_lowl_refit.py",
         "claim": "Cutoff mildly improves low-l TT (Dchi2 ~ +0.9 at predicted k_c); cannot shift CMB H_0 — tension NOT resolved (requires camb, ~2-3 min)",
         "critical": False,
+        "timeout": 600,
     },
     {
         "name": "NS Transition-Parameter Scan (provenance of the canon)",
         "script": "nvg_ns_parameter_scan.py",
-        "claim": "Canonical (n_tr=2.0, dE=0) is the best-margin survivor of J0740+GW170817+NICER; old (1.8, 0.4) falsified (~4-6 min)",
+        "claim": "Canonical (n_tr=2.0, dE=0) is the best-margin survivor of J0740+GW170817+NICER; old (1.8, 0.4) falsified",
         "critical": False,
+        "timeout": 300,
     },
 ]
 
@@ -382,7 +385,7 @@ def main() -> int:
         print(f"  Script: {check['script']}")
 
         t0 = time.time()
-        success, output = run_script(check["script"])
+        success, output = run_script(check["script"], timeout=check.get("timeout", 120))
         elapsed = time.time() - t0
 
         status = "✓ PASS" if success else "✗ FAIL"
