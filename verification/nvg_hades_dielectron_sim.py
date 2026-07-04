@@ -25,8 +25,13 @@ Gamma_rho_vac = 149.1          # MeV
 M_rho_cur = 80.0               # MeV, current quark mass contribution
 M_rho_omega_vac = M_rho_vac - M_rho_cur
 
-# NVG vacuum melting parameters
-kappa_1 = 0.25
+# NVG vacuum melting parameters.
+# kappa_1 = 0.21 is the value DERIVED from the W-field coupling in
+# nvg_fair_hades_link.py (kappa_1 = mu_theta g_omega A_0 / (lambda W_vac^2)),
+# on which the published "-20% at 2n_0" prediction rests. (The EOS sector
+# uses kappa_1 = 0.25 as a nuclear-fit value; the two are not yet
+# reconciled — an open item of the framework.)
+kappa_1 = 0.21
 kappa_2 = 0.80
 
 # Fireball evolution parameters (Au+Au collision at SIS18)
@@ -146,18 +151,23 @@ def main():
     print("ANALYSIS & INTERPRETATION:")
     print("- Under standard collision broadening, the peak remains at ~775 MeV but gets")
     print("  widely smeared out (width is doubled).")
-    print("- Under NVG/VMF, the vacuum melting of W shifts the entire strength of the")
-    print("  spectral density to lower invariant masses, resulting in a prominent peak shift")
-    print(f"  down to ~{M_peak_vmf:.1f} MeV.")
-    print("- This shift is highly distinguishable from mere collision broadening and serves")
-    print("  as a direct smoking gun for VMF at GSI/FAIR energies.")
+    m_inst = get_in_medium_mass(n_max)
+    print(f"- INSTANTANEOUS in-medium mass at peak density {n_max/n_0:.1f} n_0: "
+          f"{m_inst:.0f} MeV ({(m_inst-M_rho_vac)/M_rho_vac*100:+.0f}%).")
+    print(f"- OBSERVABLE dielectron peak shift (integrated over the fireball history):")
+    print(f"  {M_peak_vmf:.0f} MeV ({shift_vmf_pct:+.1f}%). These differ because most")
+    print(f"  e+e- pairs are emitted from lower-density phases — HADES measures the")
+    print(f"  time-integrated spectrum, so the OBSERVABLE shift (~7-8%) is the")
+    print(f"  falsifiable prediction, NOT the instantaneous ~20% mass drop.")
+    print("- Still distinguishable from pure collision broadening (peak stays at 775),")
+    print("  which is the smoking gun for VMF at GSI/FAIR energies.")
     print("=" * 80)
     
     # Assertions for correctness
     assert M_peak_vac > 760.0 and M_peak_vac < 775.0, "Vacuum peak position out of bounds!"
     assert abs(M_peak_broad - M_peak_vac) < 20.0, "Broadening peak shift is unexpectedly large!"
-    assert M_peak_vmf < 720.0, "VMF mass shift is too small!"
-    assert M_peak_vmf > 680.0, "VMF mass shift is too large!"
+    assert M_peak_vmf < 730.0, "VMF observable peak shift is too small!"
+    assert M_peak_vmf > 690.0, "VMF observable peak shift is too large!"
     
     print("HADES dielectron spectrum simulation verified successfully.")
 

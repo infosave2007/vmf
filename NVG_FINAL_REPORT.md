@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 10:03:13
+**Generated:** 2026-07-04 10:31:40
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -53,7 +53,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | NS Max Mass | M_max = 2.05 M_sun | `nvg_tidal_deformability.py` | Compatible (J0740 -0.4 sigma; edge-falsifiable: any NS above ~2.2 M_sun excludes) |
 | Tidal Deformability | Lambda_1.4 = 519 | `nvg_tidal_deformability.py` | Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude) |
 | Gravitational Redshift | z_surf = 0.221 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
-| Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR (Derived from W-field Coupling) |
+| Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting HADES/CBM: instantaneous -20% at 2n_0, but OBSERVABLE dielectron-peak shift ~-7% (~712 MeV) is the actual test |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Null test (deviation ~1e-70 — indistinguishable from GR, untestable) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Null test (deviation ~1e-105 — indistinguishable from GR, untestable) |
 | Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range) |
