@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 09:21:34
+**Generated:** 2026-07-04 09:28:36
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -65,7 +65,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
 | S8 Tension Relief | S8 = 0.843 | `nvg_s8_tension_check.py` | Open problem: NVG dynamical DE shifts S8 away from lensing (~4 sigma); core mechanism ~45 orders short of the required 7.8% |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
-| Primordial GW Comb | f_GW(77) = 62.8 nHz | `nvg_primordial_gw_comb.py` | Frequencies derived (anchor 62.8 nHz from t_b + adiabatic redshift, spacing 4^(-1/3) from the Tolman law); amplitude derivation pending |
+| Primordial GW Comb | f_GW(77) = 62.8 nHz | `nvg_primordial_gw_comb.py` | Frequencies derived (62.8 nHz anchor, 4^(-1/3) spacing); amplitude window 1e-10..3e-7 brackets NANOGrav 15yr (nvg_gw_comb_amplitude.py; alpha, beta/H underived) |
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |

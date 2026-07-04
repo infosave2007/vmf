@@ -20,12 +20,13 @@ Derivation (all quantities from the repo's own anchors):
     an O(2 pi) spread (anchor 10-63 nHz); either choice keeps the comb in the
     PTA band.
 
-REMAINING OPEN TASK: the AMPLITUDE of each tooth is not yet predicted; PTA
-experiments constrain amplitude, so the comb becomes fully testable only once
-the GW production efficiency at the bounce is derived. The derived teeth
-(63, 40, 25, 16, 10, ... nHz) overlap the band of the stochastic signal
-reported by NANOGrav (2023), which makes the amplitude derivation the
-highest-value next step.
+AMPLITUDES: see the companion nvg_gw_comb_amplitude.py — treating the
+W-condensate recondensation after the bounce as a first-order transition,
+the sound-wave mechanism gives Omega_GW h^2 ~ 1e-10..3e-7 peaked at
+26-72 nHz, bracketing the NANOGrav 15yr signal; teeth from earlier cycles
+are diluted by 4^(4/3) = 6.35 per step, so the comb appears as a dominant
+bump with a ~16% sub-tooth at 0.63 f. The remaining underived inputs are
+the transition parameters (alpha, beta/H).
 """
 
 import math
@@ -95,8 +96,8 @@ def main():
     print("-" * 68)
     print(f"Result: cycles {pta_cycles[0]}-{pta_cycles[-1]} fall in the PTA band;")
     print(f"the teeth overlap the NANOGrav (2023) stochastic-signal band.")
-    print("OPEN TASK: derive the tooth AMPLITUDES — until then the comb is a")
-    print("frequency prediction awaiting its amplitude counterpart.")
+    print("Amplitudes: nvg_gw_comb_amplitude.py (sound-wave mechanism; brackets the")
+    print("NANOGrav 15yr signal for alpha ~ 0.2-0.5, beta/H ~ 1-10).")
     print("=" * 70)
 
     assert 40.0 < f_center < 90.0, "derived anchor should be ~63 nHz"

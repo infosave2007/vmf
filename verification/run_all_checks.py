@@ -322,6 +322,12 @@ CHECKS = [
         "timeout": 600,
     },
     {
+        "name": "GW Comb Tooth Amplitudes",
+        "script": "nvg_gw_comb_amplitude.py",
+        "claim": "First-order recondensation gives Omega_GW h^2 ~ 1e-10..3e-7 at 26-72 nHz, bracketing NANOGrav 15yr; (alpha, beta/H) underived",
+        "critical": False,
+    },
+    {
         "name": "NS Transition-Parameter Scan (provenance of the canon)",
         "script": "nvg_ns_parameter_scan.py",
         "claim": "Canonical (n_tr=2.0, dE=0) is the best-margin survivor of J0740+GW170817+NICER; old (1.8, 0.4) falsified",
