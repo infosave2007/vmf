@@ -82,7 +82,8 @@ def run_forward_model(m_omega):
     
     # Group B calculations
     # 1. Primordial GW Background Comb (frequency at k=77)
-    f_gw_77 = 145.0 * (m_omega / 859.0)
+    # Derived: (1/t_b)(T_0/T_b)(g_S0/g_Sb)^(1/3); see nvg_primordial_gw_comb.py
+    f_gw_77 = 62.8 * (m_omega / 859.0)
     
     # 2. Topological Axion Mass (m_a and f_a)
     m_planck = 1.2209e19   # GeV
@@ -202,7 +203,7 @@ def generate_evidence_ledger(results_center):
         {"claim": "Dark Energy w0-wa", "value": f"w0 = {results_center['w0']:.3f}, wa = {results_center['wa']:.3f}", "file": "nvg_dark_energy_w0wa.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Calibrated (7.8% suppression fitted to lensing S8, not derived)"},
         {"claim": "Magnetar Starquake QPOs", "value": f"avg dev = {results_center['qpo_dev']:.2f}%", "file": "nvg_starquake_qpo.py", "status": "RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content)"},
-        {"claim": "Primordial GW Comb", "value": f"f_GW(77) = {results_center['f_gw_77']:.1f} nHz", "file": "nvg_primordial_gw_comb.py", "status": "Scale estimate (no amplitude predicted; 145 nHz anchor and 0.75 spacing are inputs)"},
+        {"claim": "Primordial GW Comb", "value": f"f_GW(77) = {results_center['f_gw_77']:.1f} nHz", "file": "nvg_primordial_gw_comb.py", "status": "Frequencies derived (anchor 62.8 nHz from t_b + adiabatic redshift, spacing 4^(-1/3) from the Tolman law); amplitude derivation pending"},
         {"claim": "Topological Axion Mass", "value": f"m_a = {results_center['m_a']:.2e} eV", "file": "nvg_axion_mass.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "Strong-Field Periastron Shift", "value": f"fractional dev = {results_center['peri_ratio']:.2e}", "file": "nvg_perihelion_shift.py", "status": "Null test (fractional deviation ~1.6e-10 — unobservable)"},
         {"claim": "CMB Temperature", "value": f"T_CMB = {results_center['t_cmb']:.4f} K", "file": "nvg_cmb_temperature.py", "status": "No predictive content (depends on arbitrary a_bounce = 1 cm normalization)"},

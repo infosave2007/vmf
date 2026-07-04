@@ -185,7 +185,7 @@ CHECKS = [
     {
         "name": "Primordial GW Background Comb",
         "script": "nvg_primordial_gw_comb.py",
-        "claim": "Cycles 60 to 77 fall in the PTA nHz band (1-1000 nHz), with cycle 77 at 145.0 nHz",
+        "claim": "Derived comb: anchor 62.8 nHz, tooth spacing 4^(-1/3); cycles ~68-77 in the PTA band; amplitude pending",
         "critical": True,
     },
     {

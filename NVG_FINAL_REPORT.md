@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 08:50:03
+**Generated:** 2026-07-04 09:15:14
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -22,7 +22,7 @@
 | $w_a$ (Dark Energy evolution) | -0.660 | **-0.667** | -0.674 |
 | $S_8$ | 0.779 | **0.778** | 0.777 |
 | QPO Deviation | 0.17% | **0.17%** | 0.17% |
-| $f_{\rm GW}(77)$ (nHz) | 143.6 | **145.0** | 146.4 |
+| $f_{\rm GW}(77)$ (nHz) | 62.2 | **62.8** | 63.4 |
 | $f_a$ (GeV) | 1.537e+12 | **1.538e+12** | 1.539e+12 |
 | $m_a$ (eV) | 8.377e-06 | **8.383e-06** | 8.389e-06 |
 | $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR}$ (ratio) | 1.604e-10 | **1.608e-10** | 1.613e-10 |
@@ -65,7 +65,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
 | S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Calibrated (7.8% suppression fitted to lensing S8, not derived) |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
-| Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Scale estimate (no amplitude predicted; 145 nHz anchor and 0.75 spacing are inputs) |
+| Primordial GW Comb | f_GW(77) = 62.8 nHz | `nvg_primordial_gw_comb.py` | Frequencies derived (anchor 62.8 nHz from t_b + adiabatic redshift, spacing 4^(-1/3) from the Tolman law); amplitude derivation pending |
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
