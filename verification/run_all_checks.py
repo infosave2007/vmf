@@ -352,6 +352,12 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "g = 2 Crunch-Thermalization Theorem",
+        "script": "nvg_g2_crunch_thermalization.py",
+        "claim": "g = (rho_had/rho_conv)^(1/4) exact; g = 2 <=> crunch thermalizes at rho_had/16 — postulate reduced to one microphysical ratio",
+        "critical": False,
+    },
+    {
         "name": "g = 2 Mechanism Candidates",
         "script": "nvg_g2_mechanism.py",
         "claim": "Requirement ln g = ln 2 stated; winding/vacuum-release fail x3-6; binding-energy release brackets g -> 2 in the maximal-collapse limit",
