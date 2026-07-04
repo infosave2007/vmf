@@ -24,11 +24,12 @@ MODEL (minimal npLambda extension of the consistent EOS):
   - pressure from the exact identity p = n^2 d(eps/n)/dn.
 
 GATE: eps/A on the dense branch at P = 0, vs 930 MeV.
-  open  (< 930): NVG predicts absolutely stable strange-melted matter —
-                 the Witten hypothesis realized inside the model; the
-                 conversion barrier becomes the next computation;
-  closed (>= 930): no self-bound phase; condensate energy is reachable
-                 only under external (gravitational) pressure.
+  open  (< 930): NVG realizes the Witten hypothesis (absolutely stable
+                 strange matter) — with standard astrophysical
+                 consequences: strange stars, strangelet cosmic-ray
+                 phenomenology, and a conversion barrier to compute;
+  closed (>= 930): no self-bound phase; the melted regime exists only
+                 under external (gravitational) pressure.
 """
 
 from __future__ import annotations
@@ -198,11 +199,10 @@ def main():
     print(f"""
   READING: the gate verdict for the existence-constrained candidate is
   the model's honest answer to the Witten question. OPEN means NVG
-  predicts absolutely stable strange-melted matter (energy release
-  930 - eps/A per baryon on conversion, weak-suppressed barrier — the
-  physics-legal 'condensate fuel'); closed means condensate energy is
-  reachable only in neutron-star interiors. Either way the number
-  supersedes speculation. Approximations: npLambda only (no Sigma/Xi),
+  predicts absolutely stable strange matter (Bodmer-Witten scenario,
+  with its standard strange-star and strangelet phenomenology); closed
+  means the melted regime is confined to neutron-star interiors.
+  Either way the number supersedes speculation. Approximations: npLambda only (no Sigma/Xi),
   quark-counting couplings, crude leptons, two-pass U iteration.
 """)
     print("=" * 78)

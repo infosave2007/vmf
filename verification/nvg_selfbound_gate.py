@@ -174,7 +174,7 @@ def main():
     print(f"""
   NOTES (honest):
   - Bookkeeping A reproduces the published chain and its spurious deep
-    binding: the melting is free energy, so the dense phase looks
+    binding: the melting carries no energy cost, so the dense phase looks
     absolutely bound.  This bookkeeping violates the theory's own energy
     conservation for the W-field and is hereby retired for gate purposes.
   - Bookkeeping B is the minimal closed completion (U reconstructed from
