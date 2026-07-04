@@ -6,7 +6,12 @@ and checks which cycles fall in the Pulsar Timing Array (PTA) nHz band.
 """
 
 def calculate_comb_frequencies(m_omega: float) -> dict[int, float]:
-    # Redshifted bounce frequency scales linearly with m_omega: f_0 = 145 nHz at 859 MeV
+    # HONESTY NOTE: the anchor f_0 = 145 nHz and the inter-cycle factor 0.75 are
+    # NOT derived in this repository. The order of magnitude is consistent with
+    # 1/t_b ~ 2.7e5 Hz redshifted by a_0/a_b ~ 4e12 (giving ~60-150 nHz), but the
+    # specific values are inputs. More importantly, NO AMPLITUDE is predicted —
+    # PTA experiments constrain amplitude, so "frequencies fall in the PTA band"
+    # (three decades wide) is not by itself a testable claim.
     f_0 = 145.0 * (m_omega / 859.0)
     
     # Calculate frequencies for the last 30 cycles (from k=48 to 77)
@@ -54,7 +59,8 @@ def main():
         
     print("-" * 68)
     print(f"Result: Cycles {pta_cycles[0]} to {pta_cycles[-1]} fall in the Pulsar Timing Array band.")
-    print("This forms a discrete, testable frequency comb of bounce signals.")
+    print("STATUS: scale estimate only — the comb becomes testable once an AMPLITUDE")
+    print("is predicted; the 145 nHz anchor and 0.75 spacing are inputs, not derivations.")
     print("=" * 70)
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 08:13:34
+**Generated:** 2026-07-04 08:50:03
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -54,29 +54,29 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Tidal Deformability | Lambda_1.4 = 519 | `nvg_tidal_deformability.py` | Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude) |
 | Gravitational Redshift | z_surf = 0.221 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
 | Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR (Derived from W-field Coupling) |
-| Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
-| Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
+| Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Null test (deviation ~1e-70 — indistinguishable from GR, untestable) |
+| Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Null test (deviation ~1e-105 — indistinguishable from GR, untestable) |
 | Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range) |
 | NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_speed_of_sound_curve.py` | By construction (cs2 = 1/3 imposed in the quark phase) |
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 1.01 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma; cooling row excluded as calibrated) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
-| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Scale Estimate) |
+| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Excluded in LCDM by DESI DR2 (<0.064 eV); viable only with dynamical DE (<0.16) — co-testable with the NVG w0-wa claim |
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
 | S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Calibrated (7.8% suppression fitted to lensing S8, not derived) |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
-| Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |
+| Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Scale estimate (no amplitude predicted; 145 nHz anchor and 0.75 spacing are inputs) |
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
-| Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Confirmed (J0737-3039) |
+| Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
 | Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Consistent (Scale Estimate) |
 | Post-merger f_peak | f_peak = 2421.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
-| SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Confirmed (XMM-Newton) |
+| SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Consistency illustration (T follows from assumed L ~ L_obs via blackbody; VMF content is the qualitative Urca dichotomy) |
 | PSR J0437-4715 MR | R_1.4 = 12.55 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |
-| LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Consistent / Falsifiable |
+| LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Conditional forward prediction (suppression pattern; absolute r depends on unfixed r_star) |
 | NS g-mode Period | T_g = 66.0 ms | `nvg_ns_g_modes.py` | Consistent / Falsifiable (Einstein Telescope) |
 | Higgs mass shift | delta_m_H = 4.37 MeV | `nvg_higgs_mass_shift.py` | Confirmed (4.37 MeV, within LHC limits) |
-| PPN Beta Parameter | beta = 1.0000 | `nvg_weak_field_ppn.py` | Confirmed (Lunar Laser Ranging) |
-| PBH DM Peak Mass | M_peak = 8.64e-14 M_sun | `nvg_pbh_dark_matter.py` | Confirmed (Subaru HSC) |
-| White Dwarf cooling shift | Dt/t = -1.80e-06 | `nvg_wd_cooling.py` | Confirmed (Gaia/SDSS) |
+| PPN Beta Parameter | beta = 1.0000 | `nvg_weak_field_ppn.py` | Null test (beta = 1 exactly — indistinguishable from GR) |
+| PBH DM Peak Mass | M_peak = 8.64e-14 M_sun | `nvg_pbh_dark_matter.py` | Mass grid from theory; abundance peak PLACED in the allowed asteroid window (calibrated) |
+| White Dwarf cooling shift | Dt/t = -1.80e-06 | `nvg_wd_cooling.py` | Null test (predicted effect ~1e-6 is far below observational errors) |
 | de Sitter standing wave period | T_1 = 41.7 us | `nvg_ds_core_oscillations.py` | Consistent / Falsifiable |

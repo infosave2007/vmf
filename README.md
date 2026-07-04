@@ -243,7 +243,7 @@ Predicted NVG/VMF functional dependencies were encoded as optical signals and me
 | Modified Friedmann $H^2 \propto \rho(1-\rho/\rho_c)$ | Parabola, zeros at $0$ and $\rho_c$ | Max at center, both zeros confirmed | $r = 0.983$ |
 | Tolman entropy snowball $M_n = M_1 \times 4^{n-1}$ | Exponential $4^n$ growth | 8 cycles reproduced (internal consistency of the postulated ×4 law, not an observational test) | $r = 0.999$ |
 
-All 52/56 predictions derive from a single parameter $M_\Omega = 859$ MeV. The optical channel discriminates $\sqrt{1-x}$ from a linear model ($\Delta r = 0.087$), confirming internal consistency of the mathematical structure.
+All physical scales derive from the QCD anchor $M_\Omega = 859$ MeV combined with nuclear-calibrated EOS shape parameters. The claims table distinguishes computed forward predictions, compatibility checks, calibrations and null tests; every number traces to a script in `verification/`, and each falsifiable row states what future measurement would exclude the model. The optical channel discriminates $\sqrt{1-x}$ from a linear model ($\Delta r = 0.087$), confirming internal consistency of the mathematical structure.
 
 **Scope:** analog verification confirms the mathematical structure, not the physics. Experimental confirmation requires HADES/NICER/LIGO/RHIC data.
 

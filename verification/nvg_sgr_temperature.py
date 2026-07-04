@@ -52,6 +52,12 @@ def calculate_sgr_thermal():
     # Calculate spot temperature for light magnetar (Modified Urca):
     # T_spot = (T_passive^4 + T_heat_spot^4)^0.25
     # T_heat_spot = (L_heat / (f_spot * 4 * pi * R_ns^2 * sigma_SB))^(0.25)
+    # HONESTY NOTE: with L_heat set to ~the observed luminosity and R_spot to a
+    # typical polar-cap size, the spot temperature follows from Stefan-Boltzmann
+    # essentially by construction (L, A and T are not independent). This section
+    # is a CONSISTENCY ILLUSTRATION, not a prediction of T_spot. The VMF-specific
+    # content is qualitative: M = 1.10 M_sun < 1.45 (no Direct Urca heat sink)
+    # keeps the hot spot alive, while a heavy magnetar would be cold.
     L_heat = 1.1e34  # erg/s
     T_heat_spot = (L_heat / (f_spot * 4.0 * math.pi * R_ns**2 * sigma_SB))**0.25
     

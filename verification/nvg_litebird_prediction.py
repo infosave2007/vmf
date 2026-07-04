@@ -16,7 +16,10 @@ def calculate_litebird_predictions():
     print("  NVG LITEBIRD B-MODE TENSOR-TO-SCALAR RATIO PREDICTIONS")
     print("==========================================================================")
     
-    # Baseline tensor-to-scalar ratio at high-l (standard inflation baseline)
+    # Baseline tensor-to-scalar ratio at high-l. NOTE: r_star is NOT fixed by
+    # the theory (current bound is only r < 0.036); the falsifiable content is
+    # the low-l SUPPRESSION PATTERN r(l)/r_star = 1 - exp(-(l/l_c)^2), not the
+    # absolute values quoted below.
     r_star = 0.003
     
     # Genesis comoving cutoff multipole scale from Planck fit

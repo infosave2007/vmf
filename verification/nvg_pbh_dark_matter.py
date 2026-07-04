@@ -50,8 +50,12 @@ def main():
     M_vals = 0.38 * (4.0 ** N_vals)
 
     # 2. VMF Relic Abundance Distribution
-    # The abundance is peaked in the asteroid-mass window at N_peak = -21
-    # M_{-21} = 0.38 * 4^-21 ~ 8.6e-14 M_sun
+    # HONESTY NOTE: the mass GRID M_N = 0.38 * 4^N follows from the theory
+    # (instanton mass x Tolman factor), but the abundance PEAK position
+    # (N_peak = -21) and width (sigma_N = 1.3) are PLACED by hand exactly in
+    # the asteroid-mass window — the only mass range where 100% PBH dark
+    # matter is observationally allowed. The abundance profile is therefore a
+    # calibration; the falsifiable content is the discreteness of the grid.
     N_peak = -21
     sigma_N = 1.3
     
