@@ -51,6 +51,8 @@ chi_squared_total = 0.0
 print(f"{'Observable':<20} | {'NVG Pred':<10} | {'Observation':<15} | {'Pull (sigma)'}")
 print("-" * 65)
 
+CALIBRATED = {"Cooling_Dichotomy"}  # alpha_v tuned to 1.45 in nvg_direct_urca.py — matches by construction
+
 for key, obs in observations.items():
     pred = nvg_predictions[key]
     val = obs["value"]
@@ -65,13 +67,14 @@ for key, obs in observations.items():
         sigma = obs["sigma"]
         
     pull = (pred - val) / sigma
-    chi_sq = pull**2
-    chi_squared_total += chi_sq
-    
+    if key in CALIBRATED:
+        print(f"{key:<20} | {pred:<10.2f} | {val:<5.2f} +/- {sigma:<5.2f} | (calibrated — excluded from chi2)")
+        continue
+    chi_squared_total += pull**2
     print(f"{key:<20} | {pred:<10.2f} | {val:<5.2f} +/- {sigma:<5.2f} | {pull:>6.2f} sigma")
 
 # Compute p-value equivalent (roughly)
-dof = len(observations) - 1 # 4 observables - 1 parameter (M_Omega)
+dof = len(observations) - len(CALIBRATED) - 1  # independent observables minus anchor
 reduced_chi = chi_squared_total / dof
 
 print("-" * 65)

@@ -38,6 +38,10 @@ k1 = 0.25
 k2 = 0.80
 c_s = 300.0           # Scalar coupling MeV*fm^3
 c_rho = 90.0  # MeV*fm^3, standard isovector RMF value, cf. Typel et al. (2010) DD2
+# HONESTY NOTE: alpha_v here is TUNED so that the direct-Urca threshold opens at
+# 1.45 M_sun (and differs from the canonical EOS value alpha_v = 4.0 — an
+# internal inconsistency). The 'predicted 1.45' therefore matches the observed
+# dichotomy BY CONSTRUCTION and must not be counted as an independent success.
 alpha_v = 0.05        # Vector saturation parameter (tuned for 1.45 M_sun central density ~4.0 n0)
 nu_v = 2.0            # Vector saturation power
 

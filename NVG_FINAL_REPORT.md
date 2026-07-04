@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 08:03:25
+**Generated:** 2026-07-04 08:13:34
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -9,13 +9,13 @@
 | $R_{1.4}$ (km) | 12.43 | **12.55** | 12.67 |
 | $\Lambda_{1.4}$ | 495 | **519** | 544 |
 | $z_{surf}$ | 0.222 | **0.221** | 0.220 |
-| $f_{peak}$ (Hz) | 2692 | **2730** | 2768 |
+| $f_{peak}$ (Hz) | 2387 | **2421** | 2455 |
 | $\rho$-meson shift | -19.8% | **-20.0%** | -20.2% |
 | $\epsilon_{eff}/\epsilon_0$ | 0.132 | **0.135** | 0.138 |
 | $\Omega_{DM}$ | 0.266 | **0.268** | 0.271 |
 | $c_{s,\max}^2$ | 0.33 | **0.33** | 0.33 |
 | $\tau_1$ ($\mu$s) | 5.8 | **5.9** | 6.0 |
-| $\chi_\nu^2$ (reduced) | 0.67 | **0.67** | 0.67 |
+| $\chi_\nu^2$ (reduced) | 1.01 | **1.01** | 1.01 |
 | $M_{\rm glueball}$ (MeV) | 1702.1 | **1718.0** | 1734.2 |
 | $m_\nu$ (eV) | 0.1161 | **0.1172** | 0.1183 |
 | $w_0$ (Dark Energy today) | -0.878 | **-0.876** | -0.875 |
@@ -59,7 +59,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range) |
 | NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_speed_of_sound_curve.py` | By construction (cs2 = 1/3 imposed in the quark phase) |
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
-| Joint NS Likelihood Fit | reduced chi_nu^2 = 0.67 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma, conditional on nuclear calibration) |
+| Joint NS Likelihood Fit | reduced chi_nu^2 = 1.01 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma; cooling row excluded as calibrated) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Scale Estimate) |
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
@@ -70,9 +70,9 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Confirmed (J0737-3039) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
 | Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Consistent (Scale Estimate) |
-| Post-merger f_peak | f_peak = 2730.0 Hz | `nvg_postmerger_fpeak.py` | Consistent / Falsifiable |
+| Post-merger f_peak | f_peak = 2421.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Confirmed (XMM-Newton) |
-| PSR J0437-4715 MR | R_1.4 = 11.10 km | `nvg_nicer_j0437_check.py` | Confirmed (NICER 2024) |
+| PSR J0437-4715 MR | R_1.4 = 12.55 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |
 | LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Consistent / Falsifiable |
 | NS g-mode Period | T_g = 66.0 ms | `nvg_ns_g_modes.py` | Consistent / Falsifiable (Einstein Telescope) |
 | Higgs mass shift | delta_m_H = 4.37 MeV | `nvg_higgs_mass_shift.py` | Confirmed (4.37 MeV, within LHC limits) |

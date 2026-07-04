@@ -52,6 +52,9 @@ def run_forward_model(m_omega):
     pbh_asteroid_max = 1e-10 * (scale**1.5)
     
     # Neutron Stars
+    # NOTE: the scaling exponents below (1.5, 1, 5, -0.5, ...) are dimensional
+    # estimates used only to propagate the +/-1% M_Omega uncertainty; they are
+    # not derived scaling laws.
     # Canonical computed values (nvg_tidal_deformability.py, canon from
     # nvg_ns_parameter_scan.py). Previous anchors 2.25/12.0/177 were table-edge
     # artifacts / hardcodes not produced by any script.
@@ -59,7 +62,7 @@ def run_forward_model(m_omega):
     r_14 = 12.55 * scale
     lambda_14 = 519.0 * (scale**5)
     z_surf = 0.221 * (scale**(-0.5))
-    f_peak = 2730.0 * (scale**(-1.5))
+    f_peak = 2421.0 * (scale**(-1.5))  # forward prediction from canonical R_1.6 (no observation yet)
     rho_c = 4.5 * (scale**(-3)) # in n_0
     
     # High-Density & EM
@@ -72,7 +75,7 @@ def run_forward_model(m_omega):
     omega_dm = 0.268 * scale
     tau_1 = 5.9 * scale
     cs2_max = 0.33 * (scale**0.1) # weak scaling near conformal limit
-    chi2_red = 0.67  # nvg_joint_ns_inference.py with canonical predictions
+    chi2_red = 1.01  # nvg_joint_ns_inference.py, canonical predictions, calibrated rows excluded
     m_glueball = 1718.0 * scale
     m_nu = 0.1172 * scale
     qpo_dev = 0.17 / scale
@@ -102,7 +105,7 @@ def run_forward_model(m_omega):
     eta_b = 5.91e-10 * (scale**-0.5)
     t_sgr = 0.441 * (scale**-0.15)
     l_sgr = 1.10e34 * (scale**-0.6)
-    r_j0437 = 11.10 * scale
+    r_j0437 = 12.55 * scale  # canonical EOS radius; +1.5 sigma vs J0437 central value
     r_litebird = 0.0007 * scale
     t_gmode = 65.99 * scale
     delta_m_h = 4.37 * (scale**2)
@@ -193,7 +196,7 @@ def generate_evidence_ledger(results_center):
         {"claim": "Relic Dark Matter", "value": f"Omega_DM = {results_center['omega_dm']:.3f}", "file": "nvg_relic_dark_matter.py", "status": "Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range)"},
         {"claim": "NS Core Speed of Sound", "value": f"c_s^2,max = {results_center['cs2_max']:.2f}", "file": "nvg_speed_of_sound_curve.py", "status": "By construction (cs2 = 1/3 imposed in the quark phase)"},
         {"claim": "First Cycle Duration", "value": f"tau_1 = {results_center['tau_1']:.1f} us", "file": "nvg_cyclic_lifetimes.py", "status": "Consistent / Falsifiable"},
-        {"claim": "Joint NS Likelihood Fit", "value": f"reduced chi_nu^2 = {results_center['chi2_red']:.2f}", "file": "nvg_joint_ns_inference.py", "status": "Compatible (all pulls < 1 sigma, conditional on nuclear calibration)"},
+        {"claim": "Joint NS Likelihood Fit", "value": f"reduced chi_nu^2 = {results_center['chi2_red']:.2f}", "file": "nvg_joint_ns_inference.py", "status": "Compatible (all pulls < 1 sigma; cooling row excluded as calibrated)"},
         {"claim": "Scalar Glueball Mass", "value": f"M_glueball = {results_center['m_glueball']:.1f} MeV", "file": "nvg_glueball_mass.py", "status": "Confirmed (Lattice QCD)"},
         {"claim": "Majorana Neutrino Mass", "value": f"m_nu = {results_center['m_nu']:.4f} eV", "file": "nvg_neutrino_mass.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "Dark Energy w0-wa", "value": f"w0 = {results_center['w0']:.3f}, wa = {results_center['wa']:.3f}", "file": "nvg_dark_energy_w0wa.py", "status": "Consistent (Scale Estimate)"},
@@ -204,9 +207,9 @@ def generate_evidence_ledger(results_center):
         {"claim": "Strong-Field Periastron Shift", "value": f"fractional dev = {results_center['peri_ratio']:.2e}", "file": "nvg_perihelion_shift.py", "status": "Confirmed (J0737-3039)"},
         {"claim": "CMB Temperature", "value": f"T_CMB = {results_center['t_cmb']:.4f} K", "file": "nvg_cmb_temperature.py", "status": "No predictive content (depends on arbitrary a_bounce = 1 cm normalization)"},
         {"claim": "Baryon Asymmetry", "value": f"eta_B = {results_center['eta_b']:.2e}", "file": "nvg_baryon_asymmetry.py", "status": "Consistent (Scale Estimate)"},
-        {"claim": "Post-merger f_peak", "value": f"f_peak = {results_center['f_peak']:.1f} Hz", "file": "nvg_postmerger_fpeak.py", "status": "Consistent / Falsifiable"},
+        {"claim": "Post-merger f_peak", "value": f"f_peak = {results_center['f_peak']:.1f} Hz", "file": "nvg_postmerger_fpeak.py", "status": "Forward prediction (no post-merger signal observed yet; ET/CE testable)"},
         {"claim": "SGR 1935+2154 T_spot", "value": f"T_spot = {results_center['t_sgr']:.3f} keV", "file": "nvg_sgr_temperature.py", "status": "Confirmed (XMM-Newton)"},
-        {"claim": "PSR J0437-4715 MR", "value": f"R_1.4 = {results_center['r_j0437']:.2f} km", "file": "nvg_nicer_j0437_check.py", "status": "Confirmed (NICER 2024)"},
+        {"claim": "PSR J0437-4715 MR", "value": f"R_1.4 = {results_center['r_j0437']:.2f} km", "file": "nvg_nicer_j0437_check.py", "status": "Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon"},
         {"claim": "LiteBIRD B-mode Cutoff", "value": f"r(2) = {results_center['r_litebird']:.4f}", "file": "nvg_litebird_prediction.py", "status": "Consistent / Falsifiable"},
         {"claim": "NS g-mode Period", "value": f"T_g = {results_center['t_gmode']:.1f} ms", "file": "nvg_ns_g_modes.py", "status": "Consistent / Falsifiable (Einstein Telescope)"},
         {"claim": "Higgs mass shift", "value": f"delta_m_H = {results_center['delta_m_h']:.2f} MeV", "file": "nvg_higgs_mass_shift.py", "status": "Confirmed (4.37 MeV, within LHC limits)"},

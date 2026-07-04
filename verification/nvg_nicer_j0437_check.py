@@ -72,12 +72,12 @@ def run_nicer_check():
     is_ok = abs(z_score) <= 1.5
     print(f"  Status: {'✅ COMPATIBLE (within 1.5σ)' if is_ok else '⚠️ TENSION'}")
     
-    print("\nPhysics Context:")
-    print("The NVG EOS features vector-vector self-interactions and proton fraction")
-    print("threshold effects at density M >= 1.45 M_sun. For a 1.418 M_sun pulsar,")
-    print("the predicted radius R ≈ 12.0 km is slightly larger than the central")
-    print("observed value of 11.36 km, but comfortably lies within the 68% CI (10.56 - 12.16 km).")
-    print("This confirms the NVG EOS is completely viable and compatible with the latest NICER data.")
+    print("\nPhysics Context (honest reading):")
+    print(f"The canonical NVG EOS predicts R = {R_nvg:.2f} km at {M_nvg:.3f} M_sun, i.e.")
+    print(f"{z_score:+.1f} sigma above the J0437 central value {R_obs} km — outside the 68% CI")
+    print("but inside 95%. This is currently the TIGHTEST tension of the canonical model:")
+    print("a future J0437 radius confirmed below ~12.0 km at high precision would stress")
+    print("the canonical parameterization (see nvg_ns_parameter_scan.py).")
     print("==========================================================================")
 
 if __name__ == "__main__":

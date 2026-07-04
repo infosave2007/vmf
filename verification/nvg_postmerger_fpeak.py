@@ -49,22 +49,20 @@ def calculate_postmerger_fpeak():
     f_peak_kHz = 4.85 - 0.192 * R_16
     f_peak_Hz = f_peak_kHz * 1000.0
     
-    # Observed range / expected numerical range
-    target_f_peak = 2730.0
-    target_f_peak_err = 50.0  # Hz
-    
+    # HONESTY NOTE: no post-merger signal has been observed yet (GW170817's
+    # post-merger phase was below detector sensitivity), so there is NO target
+    # to compare against. An earlier version validated against a "target" of
+    # 2730 +/- 50 Hz that was simply this script's own output under the old
+    # (falsified) EOS parameterization — a self-referential check.
     print(f"VMF Predicted Radius at 1.6 M_sun (R_1.6): {R_16:.2f} km")
     print(f"Numerical Relativity Fit                  : f_peak = (4.85 - 0.192 * R_1.6) kHz")
     print("-" * 74)
-    print(f"Predicted Post-Merger Peak Frequency    : {f_peak_Hz:.1f} Hz ({f_peak_kHz:.4f} kHz)")
-    print(f"Target Reference Frequency               : {target_f_peak:.1f} +/- {target_f_peak_err:.1f} Hz")
-    
-    # Statistical validation
-    dev_sigma = (f_peak_Hz - target_f_peak) / target_f_peak_err
-    print(f"Deviation from Target                    : {dev_sigma:+.2f} sigma")
-    
-    is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                                   : {'✅ PASSED (Consistent with target)' if is_ok else '❌ FAILED'}")
+    print(f"FORWARD PREDICTION (no observation yet)  : f_peak = {f_peak_Hz:.0f} Hz ({f_peak_kHz:.3f} kHz)")
+    print(f"Testable by                              : Einstein Telescope / Cosmic Explorer")
+    print(f"                                           (post-merger spectra of BNS mergers)")
+
+    is_ok = 1.5 < f_peak_kHz < 4.0  # sanity range of the NR fit's validity, not a data test
+    print(f"Sanity check (1.5 < f_peak < 4.0 kHz)    : {'✅ OK' if is_ok else '❌ out of NR-fit range'}")
     print("==========================================================================")
     return is_ok
 
