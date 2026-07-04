@@ -25,8 +25,8 @@ kappa_1 = 0.25
 kappa_2 = 0.80
 
 # Known NS results from VMF TOV solver
-R_14 = 12.1    # km, radius at 1.4 M_sun
-M_max = 2.27   # M_sun
+R_14 = 12.55   # km, canonical radius at 1.4 M_sun
+M_max = 2.05   # M_sun (canonical)
 G_over_c2 = 1.4766  # km / M_sun
 
 def M_Omega_star(n_B):
@@ -87,13 +87,13 @@ print("=" * 72)
 masses = [1.4, 1.8, 2.0, M_max]
 # Approximate R(M) from VMF TOV (monotonically decreasing for stable branch)
 def R_of_M(M):
-    # Simple parametric fit to VMF M-R curve
-    if M <= 1.0:
-        return 13.0
-    elif M <= 2.0:
-        return 12.1 - 0.8 * (M - 1.4)
+    # Parametric fit to the CANONICAL VMF M-R curve (nvg_tidal_deformability.py):
+    # gently rising to a broad maximum ~12.65 km near 1.6 M_sun, then falling.
+    # Anchors: R(1.0)=12.15, R(1.4)=12.53, R(1.6)=12.65, R(2.0)=12.27, M_max=2.05.
+    if M <= 1.6:
+        return 12.15 + (12.65 - 12.15) * (M - 1.0) / 0.6
     else:
-        return 11.6 - 1.5 * (M - 2.0)
+        return 12.65 - 0.95 * (M - 1.6)
 
 print(f"{'M (M_sun)':>10} | {'R (km)':>8} | {'C = GM/Rc²':>10} | {'z_surf':>8} | {'1+z':>6}")
 print("-" * 52)
@@ -109,7 +109,7 @@ print(f"""
   Direct measurements of z_surf are currently absent; the early claim of z ≈ 0.35
   for EXO 0748-676 (Cottam et al. 2002) was subsequently not confirmed by other studies.
   
-  For a 1.4 M_sun NS, VMF predicts z_surf ≈ 0.235 (crust-softened: 0.262).
+  For a 1.4 M_sun NS at the canonical R_1.4 = 12.55 km, z_surf ≈ 0.221.
   
   The gravitational redshift is testable with next-generation X-ray missions
   (STROBE-X, eXTP) which will measure z_surf to <1% precision.
@@ -325,10 +325,10 @@ print("""
 │      │  I ≈ 1.3 × 10⁴⁵ g cm²                   │  Awaiting meas.  │
 ├──────┼──────────────────────────────────────────┼──────────────────┤
 │  H   │  Gravitational Redshift z_surf           │  ✅ COMPUTED     │
-│      │  z(1.4 M_sun) ≈ 0.21                    │  Testable (X-ray)│
+│      │  z(1.4 M_sun) ≈ 0.22                    │  Testable (X-ray)│
 ├──────┼──────────────────────────────────────────┼──────────────────┤
 │  I   │  Post-merger GW frequency f_peak         │  ✅ COMPUTED     │
-│      │  f ≈ 2.8–3.2 kHz                        │  Awaiting LIGO O5│
+│      │  f_peak ≈ 2.4 kHz                        │  Awaiting LIGO O5│
 ├──────┼──────────────────────────────────────────┼──────────────────┤
 │  J   │  Proton fraction → Direct Urca onset     │  ✅ COMPUTED     │
 │      │  Y_p > 11% at ~2.0 n_0                  │  Cas A consistent│
