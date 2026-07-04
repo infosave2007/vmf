@@ -359,6 +359,18 @@ CHECKS = [
         "critical": True,
     },
     {
+        "name": "Bell from the Action — Dichotomy",
+        "script": "nvg_bell_from_action.py",
+        "claim": "Classical spacetime theta: S <= 2 by exhaustion (experiment-excluded); quantized W gives config-space theta with QM as input — representation, not derivation",
+        "critical": False,
+    },
+    {
+        "name": "BSM Baryogenesis Closure",
+        "script": "nvg_baryogenesis_bsm_closure.py",
+        "claim": "T_max = 432 MeV forever; sphalerons/instantons dead; 550-TeV operator proton-excluded by 43 orders; gates fail — eta_B has no NVG mechanism",
+        "critical": False,
+    },
+    {
         "name": "eta_B Inheritance Closing Test",
         "script": "nvg_etab_inheritance.py",
         "claim": "Inherited asymmetry diluted 2^76 -> needs eta_1 ~ 1e13 > 1 — excluded; per-cycle BSM B-violation is the only route",

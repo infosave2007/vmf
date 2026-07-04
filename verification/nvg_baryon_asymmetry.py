@@ -31,8 +31,12 @@ chemical potential mu_B ~ theta-dot during the recondensation. Bracketing:
   are exponentially frozen, so the Standard Model provides NO baryon-number
   violation at the bounce. NVG baryogenesis therefore requires either a
   B-violating operator beyond the SM or an asymmetry inherited through
-  cycles. This is the honest status of eta_B: mechanism identified,
-  bottleneck named, number not derivable yet.
+  cycles. FINAL CLOSURE (nvg_baryogenesis_bsm_closure.py): every regeneration
+  channel is computed and closed — T never exceeds T_b in any cycle (no
+  sphalerons ever), EW instantons at 1e-164, the required 550-TeV operator
+  is proton-decay-excluded by 43 orders and both gates fail. eta_B is an
+  OPEN PROBLEM for NVG; the ansatz below is retained as a dimensional
+  note, not a claim.
 """
 
 import math

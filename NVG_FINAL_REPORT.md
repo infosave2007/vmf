@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 11:44:27
+**Generated:** 2026-07-04 14:27:52
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -62,14 +62,14 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 1.01 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma; cooling row excluded as calibrated) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | RETIRED mapping — superseded by the theta-seesaw sector (Sigma = 59 meV, passes DESI DR2 unconditionally; nvg_neutrino_seesaw.py) |
-| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
+| Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | RETIRED — CMB-anchored frame gives only ~1 in chi2 over LCDM vs DESI while raising S8 to ~0.9 (nvg_desi_s8_joint_map.py); NVG currently predicts w = -1 and does not explain the DESI w0-wa hint |
 | S8 Tension Relief | S8 = 0.843 | `nvg_s8_tension_check.py` | Open problem: NVG dynamical DE shifts S8 away from lensing (~4 sigma); core mechanism ~45 orders short of the required 7.8% |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
 | Primordial GW Comb | f_GW(77) = 62.8 nHz | `nvg_primordial_gw_comb.py` | Frequencies derived; (alpha, beta/H) derived from the action: bounce signal peaks at 18-42 microHz, Omega ~ 1e-9 (muAres-testable); PTA-band tail negligible — NANOGrav is NOT the NVG bounce (nvg_recondensation_dynamics.py) |
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
-| Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Consistent (Scale Estimate) |
+| Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | OPEN PROBLEM — no mechanism in current field content (nvg_baryogenesis_bsm_closure.py); ansatz withdrawn as a claim |
 | Post-merger f_peak | f_peak = 2421.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Consistency illustration (T follows from assumed L ~ L_obs via blackbody; VMF content is the qualitative Urca dichotomy) |
 | PSR J0437-4715 MR | R_1.4 = 12.55 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |
