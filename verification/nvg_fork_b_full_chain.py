@@ -124,6 +124,13 @@ def calibrate3():
     return None
 
 
+A_RHO = 0.0          # density dependence of the rho coupling (iter 2)
+
+
+def c_rho_of(nb, c_rho0):
+    return c_rho0 * math.exp(-A_RHO * (nb / N0 - 1.0))
+
+
 # ── beta-equilibrated npLambda matter ───────────────────────────────────
 def beta_state(nb, c_s, c_om, b, c, c_rho, with_lambda=True):
     y_p, y_l = 0.04, 0.0
@@ -148,10 +155,11 @@ def beta_state(nb, c_s, c_om, b, c, c_rho, with_lambda=True):
         mN, mL = M_NUC - s, M_L - XS * s
         Qv = n_n + n_p + XW * n_l
         vshift = c_om * Qv
+        crho_n = c_rho_of(nb, c_rho)
         mun = math.sqrt(base.kf_from_density(n_n) ** 2 + mN ** 2) + vshift \
-            + c_rho * (n_n - n_p)
+            + crho_n * (n_n - n_p)
         mup = math.sqrt(base.kf_from_density(n_p) ** 2 + mN ** 2) + vshift \
-            - c_rho * (n_n - n_p)
+            - crho_n * (n_n - n_p)
         mul = math.sqrt(base.kf_from_density(n_l) ** 2 + mL ** 2) \
             + XW * vshift if n_l > 0 else mL + XW * vshift
         mue = max(mun - mup, base.m_e)
@@ -172,7 +180,7 @@ def beta_state(nb, c_s, c_om, b, c, c_rho, with_lambda=True):
            base.fermion_energy_density(n_e, base.m_e) +
            base.fermion_energy_density(n_mu, base.m_mu) +
            e_sig + 0.5 * c_om * Qv * Qv +
-           0.5 * c_rho * (n_n - n_p) ** 2)
+           0.5 * c_rho_of(nb, c_rho) * (n_n - n_p) ** 2)
     return eps, y_p, y_l, mN
 
 
@@ -222,6 +230,7 @@ def main():
     print("  NVG FORK B: FULL NEUTRON-STAR CHAIN")
     print("=" * 78)
 
+    global A_RHO
     cal = calibrate4()
     tag = "4-condition (K = 240)"
     if cal is None:
@@ -235,10 +244,34 @@ def main():
     kf = base.kf_from_density(N0 / 2)
     j_kin = kf ** 2 / (6.0 * math.sqrt(kf ** 2 + m0 ** 2))
     c_rho = 2.0 * (J_SYM - j_kin) / N0
+    # iteration 2: L-tuning via A_RHO. E_sym(n) ~ j_kin(n) + c_rho(n) n/2;
+    # L = 3 n0 dE_sym/dn at n0, computed numerically; target L = 55 MeV.
+    def L_of(a):
+        global A_RHO
+        A_RHO = a
+        nn = np.linspace(0.85 * N0, 1.15 * N0, 7)
+        es = []
+        for x in nn:
+            kfx = base.kf_from_density(x / 2)
+            mx = m0  # slowly varying near n0
+            es.append(kfx ** 2 / (6 * math.sqrt(kfx ** 2 + mx ** 2)) +
+                      0.5 * c_rho_of(x, c_rho) * x)
+        return 3.0 * N0 * float(np.gradient(np.array(es), nn)[3])
+    lo_a, hi_a = 0.0, 2.5
+    for _ in range(50):
+        mid = 0.5 * (lo_a + hi_a)
+        if L_of(mid) > 55.0:
+            lo_a = mid
+        else:
+            hi_a = mid
+    A_RHO = 0.5 * (lo_a + hi_a)
+    L_final = L_of(A_RHO)
     print(f"\n  0. Calibration [{tag}]: c_s = {c_s:.0f}, c_om = {c_om:.0f}, "
           f"b = {b:.2e}, c = {c:.2e}")
     print(f"     E/A = {ea:+.2f}, p = {p0:+.3f}, m*/M = {m0/M_NUC:.3f}, "
-          f"K = {K:.0f} MeV, c_rho = {c_rho:.0f}")
+          f"K = {K:.0f} MeV")
+    print(f"     symmetry: J = {J_SYM:.0f} MeV, a_rho = {A_RHO:.2f} -> "
+          f"L = {L_final:.0f} MeV (target 55)")
 
     # 1-2. hadronic + hyperonic tables and gates
     dl = build_table(c_s, c_om, b, c, c_rho, with_lambda=True)
@@ -277,7 +310,7 @@ def main():
 
     # 3. CSS scan + tidal
     print(f"\n  2. CSS transition scan (c_s^2 = 1/3) + crust + tidal:")
-    print(f"     {'n_tr':>5} {'dE':>4} {'M_max':>6} {'R_1.4':>6} "
+    print(f"     {'n_tr':>5} {'dE':>4} {'cs2q':>4} {'M_max':>6} {'R_1.4':>6} "
           f"{'L_1.4':>6} {'chi2':>6}")
     best = None
     for ntr in (1.6, 1.8, 2.0, 2.4):
@@ -285,10 +318,11 @@ def main():
         p_tr, e_tr = dl["p"][i_tr], dl["eps"][i_tr]
         if p_tr <= 0:
             continue
-        for de_frac in (0.0, 0.25, 0.5):
+        for de_frac, cs2q in ((0.25, 1/3), (0.25, 0.5), (0.25, 0.65),
+                              (0.5, 0.5), (0.5, 0.65), (0.0, 0.5)):
             de = de_frac * e_tr
             p_ext = np.geomspace(p_tr * 1.001, 4000, 160)
-            e_ext = e_tr + de + (p_ext - p_tr) * 3.0
+            e_ext = e_tr + de + (p_ext - p_tr) / cs2q
             p_all = np.concatenate([dl["p"][:i_tr + 1], p_ext])
             e_all = np.concatenate([dl["eps"][:i_tr + 1], e_ext])
             fam = star_family(p_all, e_all)
@@ -298,19 +332,19 @@ def main():
                     ((fam["r14"] - 12.2) / 0.5) ** 2 +
                     ((fam["r14"] - 11.36) / 0.8) ** 2 +
                     ((fam["l136"] - 300.0) / 255.0) ** 2)
-            print(f"     {ntr:>5.1f} {de_frac:>4.2f} {fam['m_max']:>6.2f} "
+            print(f"     {ntr:>5.1f} {de_frac:>4.2f} {cs2q:>4.2f} {fam['m_max']:>6.2f} "
                   f"{fam['r14']:>6.2f} {fam['l14']:>6.0f} {chi2:>6.2f}")
             if best is None or chi2 < best[0]:
-                best = (chi2, ntr, de_frac, fam)
+                best = (chi2, ntr, de_frac, cs2q, fam)
 
     if best is None:
         print("     no viable CSS point")
         return
-    chi2, ntr, de_frac, fam = best
+    chi2, ntr, de_frac, cs2q, fam = best
     z = (1.0 - 2.0 * 1.4766 * 1.4 / fam["r14"]) ** -0.5 - 1.0
     f_peak = 8.16 - 0.46 * fam["r16"]
     print(f"\n  3. FORK-B CANONICAL CANDIDATE: n_tr = {ntr} n_0, "
-          f"delta_eps = {de_frac} eps_tr")
+          f"delta_eps = {de_frac} eps_tr, cs2_q = {cs2q:.2f}")
     print(f"     M_max = {fam['m_max']:.2f} M_sun   (J0740: 2.08 +- 0.07)")
     print(f"     R_1.4 = {fam['r14']:.2f} km       (J0030 12.2 +- 0.5; "
           f"J0437 11.36 +- 0.8)")
