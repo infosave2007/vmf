@@ -365,6 +365,18 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "Theta-Sector Identity Audit",
+        "script": "nvg_theta_sector_audit.py",
+        "claim": "Four theta masses found; resolution: theta = eta' (WV 967 vs 958); cogenesis Lambda -> 1.7 PeV, Br -> 4e-8; ADMX axion = separate field",
+        "critical": False,
+    },
+    {
+        "name": "Dark-Matter Budget Audit",
+        "script": "nvg_dm_budget_audit.py",
+        "claim": "Three sectors summed to 0.577 vs 0.264 (x2.19); fix: defects 0.215 (lambda_v -> 1.011), chi 0.049, PBH trace",
+        "critical": False,
+    },
+    {
         "name": "B-L Cogenesis Construction (dark neutron)",
         "script": "nvg_adm_bl_cogenesis.py",
         "claim": "Neutron-portal cogenesis passes all constraints: corridor 937.9-938.8 MeV, Lambda = 556 TeV, Br(n->chi gamma) ~ 4e-6 floor; 18.6% DM subcomponent; 5.36 NOT derived",

@@ -52,6 +52,12 @@ BETA_LAT = 0.0144           # GeV^3, lattice <0|udd|n>
 ALPHA_EM = 1.0 / 137.036
 TAU_N_GEV = 7.5e-28         # free-neutron width, GeV
 
+# THETA IDENTIFICATION UPDATE (nvg_theta_sector_audit.py): the condensate
+# phase is the eta-prime (958 MeV), not a 6.6-MeV mode; with the thermal cap
+# mu ~ pi T the cogenesis scale becomes Lambda ~ 1.7 PeV and the laboratory
+# floor Br(n -> chi gamma) ~ 4e-8 (x100 below the numbers printed by this
+# script, which are retained as the m_theta = 6.6 MeV variant for record).
+
 # ── cosmology / cogenesis inputs ────────────────────────────────────────
 T_STAR = 0.2                # GeV
 M_THETA = 6.6e-3            # GeV (theta-dot bias = m_theta)
