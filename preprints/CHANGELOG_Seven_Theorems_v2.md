@@ -22,6 +22,13 @@ full provenance in the repository history (github.com/infosave2007/vmf).
    subsection; the correct exponents are R ∝ M^{2/3} (radiation) and
    R ∝ M (matter-dominated late cycles, the regime of the doubling chain).
 
+3. **θ-mass formula corrected.** Version 1 quoted m_θ = √χ_top/f_π ≈ 958
+   MeV, which does not follow numerically from any standard χ_top. The
+   correct statement is the Witten–Veneziano identification of the
+   condensate phase with the η′: m_θ = √(6χ_top^quenched)/f_π ≈ 967 MeV
+   vs m_η′ = 958 MeV. The physical conclusion of that section (instant
+   CP relaxation) is unchanged and strengthened.
+
 The rigor classification of the seven results (Limitations table) is
 unchanged. The holographic horizon chain (R×2 ⟺ S_GH×4 per cycle, the
 77-cycle count) is unchanged and is now additionally supported by an
