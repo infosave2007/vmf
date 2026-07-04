@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 14:27:52
+**Generated:** 2026-07-04 14:42:38
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -69,7 +69,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
-| Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | OPEN PROBLEM — no mechanism in current field content (nvg_baryogenesis_bsm_closure.py); ansatz withdrawn as a claim |
+| Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Extension constructed: B-L cogenesis via neutron portal (nvg_adm_bl_cogenesis.py) — calibrated Lambda = 556 TeV, falsifiable floor Br(n->chi gamma) ~ 4e-6; within original field content: no mechanism (closure stands) |
 | Post-merger f_peak | f_peak = 2421.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Consistency illustration (T follows from assumed L ~ L_obs via blackbody; VMF content is the qualitative Urca dichotomy) |
 | PSR J0437-4715 MR | R_1.4 = 12.55 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |

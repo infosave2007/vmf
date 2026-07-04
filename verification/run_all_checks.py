@@ -365,6 +365,12 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "B-L Cogenesis Construction (dark neutron)",
+        "script": "nvg_adm_bl_cogenesis.py",
+        "claim": "Neutron-portal cogenesis passes all constraints: corridor 937.9-938.8 MeV, Lambda = 556 TeV, Br(n->chi gamma) ~ 4e-6 floor; 18.6% DM subcomponent; 5.36 NOT derived",
+        "critical": False,
+    },
+    {
         "name": "BSM Baryogenesis Closure",
         "script": "nvg_baryogenesis_bsm_closure.py",
         "claim": "T_max = 432 MeV forever; sphalerons/instantons dead; 550-TeV operator proton-excluded by 43 orders; gates fail — eta_B has no NVG mechanism",

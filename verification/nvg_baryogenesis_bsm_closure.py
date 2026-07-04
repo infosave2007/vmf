@@ -46,8 +46,11 @@ mechanism. Combined with the inheritance closure, eta_B is promoted from
 the pi*sqrt(T_b/M_Pl) ansatz is withdrawn as a claim (a dimensional
 coincidence, retained only as a note). An honest positive statement
 survives: any future NVG extension must add B-violation that is (i)
-active at T <= 432 MeV, (ii) proton-safe by symmetry (not by gating) —
-e.g. an exactly conserved B-L with a dark-sector asymmetry partner.
+active at T <= 432 MeV, (ii) proton-safe by symmetry (not by gating).
+FOLLOW-UP: exactly that extension is constructed and passes every
+computed constraint in nvg_adm_bl_cogenesis.py (B-L cogenesis, dark
+neutron in the 0.88-MeV corridor, Lambda = 556 TeV, lab floor
+Br(n -> chi gamma) ~ 4e-6).
 """
 
 from __future__ import annotations
