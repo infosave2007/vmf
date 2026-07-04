@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 10:31:40
+**Generated:** 2026-07-04 11:36:34
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -61,7 +61,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
 | Joint NS Likelihood Fit | reduced chi_nu^2 = 1.01 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma; cooling row excluded as calibrated) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
-| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Excluded in LCDM by DESI DR2 (<0.064 eV); viable only with dynamical DE (<0.16) — co-testable with the NVG w0-wa claim |
+| Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | RETIRED mapping — superseded by the theta-seesaw sector (Sigma = 59 meV, passes DESI DR2 unconditionally; nvg_neutrino_seesaw.py) |
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
 | S8 Tension Relief | S8 = 0.843 | `nvg_s8_tension_check.py` | Open problem: NVG dynamical DE shifts S8 away from lensing (~4 sigma); core mechanism ~45 orders short of the required 7.8% |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |

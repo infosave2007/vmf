@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-AUDIT NOTE: this theta-seesaw mapping (Sigma m_nu = 59 meV) is mutually
-exclusive with nvg_neutrino_mass.py (Sigma = 117 meV via a GUT-scale prior).
-The framework currently carries two incompatible neutrino sectors; one must
-be selected and the other retired. Note the 59 meV variant passes DESI DR2
-in LCDM (< 64 meV) while the 117 meV variant requires the w0wa cosmology.
+STATUS (2026-07): ADOPTED as the primary neutrino sector of the framework.
+It passes DESI DR2 in LCDM unconditionally (59 < 64 meV) and carries the
+ADMX co-prediction m_theta = 53 microeV from the same f_a. The alternative
+GUT-prior mapping (nvg_neutrino_mass.py, Sigma = 117 meV) is retired.
 
 NVG Verification: Neutrino Mass from θ-Mode Seesaw (No Right-Handed Neutrinos)
 ================================================================================

@@ -1032,23 +1032,37 @@ In the first cycle (Genesis), the universe is born with a hot QGP core of volume
 \end{equation}
 where $g_{*S} \approx 47.5$ is the effective number of relativistic degrees of freedom for a three-flavor quark-gluon plasma.
 
-Across successive cycles, the turnaround mass scales as $M_n = M_1 \cdot 2^{n-1}$. In the radiation-dominated era, the turnaround horizon radius scales as $R_n \propto \sqrt{M_n}$, which implies the turnaround volume scales as:
+The present-day bulk entropy does not require the inter-cycle ladder at all:
+it follows adiabatically from the most recent bounce. Entropy conservation
+$s(T)\,a^3 = \mathrm{const}$ between the cycle-77 bounce ($T_b \approx 432$~MeV)
+and today ($T_0 = 2.7255$~K) fixes the present entropy density at the standard
+value $s_0 \approx 2.9 \times 10^{3}\,k_B\,\mathrm{cm}^{-3}$ (photons and
+neutrinos), so that the entropy within the present Hubble volume is
 \begin{equation}
-  V_n = V_1 \cdot \left( 2^{3/2} \right)^{n-1} \approx V_1 \cdot 2.828^{n-1}.
+  S_{\rm obs} \,=\, s_0 \cdot \frac{4}{3}\pi R_{H_0}^{3}
+  \,\approx\, 2 \times 10^{88}\,k_B,
 \end{equation}
-Under the assumption that the average entropy density at turnaround is governed by the universal QCD phase transition scale and remains approximately constant, the bulk thermodynamic entropy scales proportionally to the volume:
+in agreement with the standard evaluation
+($S_{\rm obs} \approx 1.7\text{--}2.5 \times 10^{88}\,k_B$ depending on the
+volume convention). We emphasize the honest status of this statement: it is a
+\emph{consistency} of the bounce temperature with standard adiabatic
+expansion, not an independent prediction, and it carries no free parameter.
+(An earlier version of this appendix reproduced $10^{88}$ through a compounded
+per-cycle factor $f_S \approx 2.545$; that factor was fitted to the observed
+entropy and is withdrawn. It also used $R_n \propto \sqrt{M_n}$ for the
+radiation era, which is dynamically inconsistent with the turnaround relation
+$R_n \propto M_n$ used above; the exact radiation-era exponent is
+$R_n \propto M_n^{2/3}$, while the late, matter-dominated cycles obey
+$R_n \propto M_n$ — the regime in which the doubling chain of the previous
+subsection is valid.)
+
+The bulk entropy remains far below the holographic horizon bound
+$S_{\rm hor, 77} \approx 8.8 \times 10^{121}\,k_B$:
 \begin{equation}
-  S_{\rm obs, n} = S_{\rm obs, 1} \cdot (f_S)^{n-1},
+  \frac{S_{\rm obs}}{S_{\rm hor, 77}} \approx
+  \frac{2 \times 10^{88}}{8.8 \times 10^{121}} \approx 2 \times 10^{-34},
 \end{equation}
-where $f_S \approx 2.545$ is the effective thermodynamic growth factor per cycle, slightly suppressed from the ideal volume scaling ($2^{3/2} \approx 2.828$) due to realistic dissipation and the transfer of matter into black hole regular cores (which are reset at each bounce). For the current cycle ($n = 77$), this yields:
-\begin{equation}
-  S_{\rm obs, 77} = 1.31 \times 10^{57} \cdot (2.545)^{76} \approx 1.70 \times 10^{88} \, k_B,
-\end{equation}
-which matches the observed bulk entropy of the present universe (dominated by the CMB and cosmic neutrinos, $S_{\rm obs} \approx 1.7 \times 10^{88} \, k_B$) exactly. This bulk thermodynamic entropy remains always far below the holographic horizon entropy bound $S_{\rm hor, 77} \approx 8.8 \times 10^{121} \, k_B$, satisfying the holographic principle at all epochs. Specifically, the ratio is:
-\begin{equation}
-  \frac{S_{\rm obs, 77}}{S_{\rm hor, 77}} \approx \frac{1.70 \times 10^{88}}{8.815 \times 10^{121}} \approx 1.93 \times 10^{-34},
-\end{equation}
-showing that the bulk matter/radiation entropy represents a highly diluted fraction of the maximum available horizon degrees of freedom.
+satisfying the holographic principle at all epochs.
 
 
 %%% ── acknowledgments ──────────────────────────────────────
