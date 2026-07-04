@@ -164,6 +164,142 @@ def analyze_branch(name, V_of_T, W_search, T_grid, delta_v_of_T=None):
     return None, None, None, results
 
 
+# ── Branch B exit: QCD-anomaly (quark-condensate) tilt ───────────────────
+# Linear tilt from the Yukawa coupling of W to light quarks:
+#   V_tilt = -b f_on(T) W,  b = 2 g_Q |<qbar q>|,  g_Q = (M_Omega/3)/W_0 = 1/3,
+#   <qbar q> = -(272 MeV)^3;  f_on models the chiral-condensate onset below
+#   T_chi ~ 132 MeV with sharpness n (lattice: growth over ~10-20% in T).
+B_TILT = 2.0 * (1.0 / 3.0) * 272.0 ** 3     # MeV^3, anchored
+DV_CW = LAM * W0 ** 4 / 16.0                # depth of the CW true vacuum
+
+
+def V_of_T_exit(T, b_scale=1.0, T_chi=132.0, n=12):
+    a2 = D_CW * T * T
+    tilt = B_TILT * b_scale / (1.0 + (T / T_chi) ** n)
+    V = lambda w: (a2 * w * w + 0.25 * LAM * w ** 4
+                   * (math.log(max(w, 1e-6) / W0) - 0.25) - tilt * w)
+    dV = lambda w: (2 * a2 * w + LAM * w ** 3
+                    * math.log(max(w, 1e-6) / W0) - tilt)
+    return V, dV
+
+
+def extrema_general(dV, W_hi):
+    """(W_false, W_top, W_true) for a tilted potential; None if no barrier."""
+    Ws = np.geomspace(W_hi * 1e-6, W_hi, 6000)
+    dVs = np.array([dV(w) for w in Ws])
+    flips = np.where(np.diff(np.sign(dVs)) != 0)[0]
+    roots = [0.5 * (Ws[i] + Ws[i + 1]) for i in flips]
+    if dVs[0] > 0:                      # origin is the false minimum
+        if len(roots) < 2:
+            return None
+        return 0.0, roots[0], roots[-1]
+    if len(roots) < 3:                  # tilted origin: need min, top, min
+        return None
+    return roots[0], roots[1], roots[-1]
+
+
+def bounce_S3_general(V, dV, W_f, W_top, W_true):
+    """O(3) bounce from a (possibly displaced) false vacuum W_f."""
+    Vs = lambda w: V(w) - V(W_f)
+    span = W_top - W_f
+    m2 = abs(2.0 * (Vs(W_top + 0.05 * span) - 2 * Vs(W_top)
+                    + Vs(W_top - 0.05 * span)) / (0.05 * span) ** 2) + 1e-12
+    m = math.sqrt(m2)
+    dr = 0.02 / m
+    n_max = 50000
+
+    def shoot(phi0, collect=False):
+        phi, dphi, r = phi0, 0.0, 1e-8 / m
+        S = 0.0
+        for _ in range(n_max):
+            def acc(p, dp, rr):
+                return dV(p) - 2.0 * dp / rr
+            k1p, k1d = dphi, acc(phi, dphi, r)
+            k2p, k2d = (dphi + 0.5 * dr * k1d,
+                        acc(phi + 0.5 * dr * k1p, dphi + 0.5 * dr * k1d,
+                            r + 0.5 * dr))
+            k3p, k3d = (dphi + 0.5 * dr * k2d,
+                        acc(phi + 0.5 * dr * k2p, dphi + 0.5 * dr * k2d,
+                            r + 0.5 * dr))
+            k4p, k4d = (dphi + dr * k3d,
+                        acc(phi + dr * k3p, dphi + dr * k3d, r + dr))
+            if collect:
+                S += 4.0 * math.pi * r * r * (0.5 * dphi ** 2 + Vs(phi)) * dr
+            phi += dr / 6.0 * (k1p + 2 * k2p + 2 * k3p + k4p)
+            dphi += dr / 6.0 * (k1d + 2 * k2d + 2 * k3d + k4d)
+            r += dr
+            if phi < W_f - 0.05 * span:
+                return +1, S
+            if dphi > 0 and phi > W_f + 0.05 * span:
+                return -1, S
+            if abs(phi - W_f) < 1e-4 * span and abs(dphi) * r < 1e-4 * span:
+                return 0, S
+        return 0, S
+
+    lo, hi = W_top + 1e-4 * span, W_true * 0.9999
+    for _ in range(50):
+        mid = 0.5 * (lo + hi)
+        flag, _ = shoot(mid)
+        if flag > 0:
+            hi = mid
+        else:
+            lo = mid
+    _, S3 = shoot(0.5 * (lo + hi), collect=True)
+    return S3
+
+
+def find_exit(b_scale=1.0, T_chi=132.0, n=12, verbose=True):
+    """T*, alpha, beta/H for the tilted dilaton potential."""
+    # 1. barrier-disappearance temperature T_spin (bisection, cheap)
+    def has_barrier(T):
+        _, dV = V_of_T_exit(T, b_scale, T_chi, n)
+        return extrema_general(dV, 1.5 * W0) is not None
+    lo, hi = 60.0, 210.0
+    if not has_barrier(hi):
+        return None
+    for _ in range(40):
+        mid = 0.5 * (lo + hi)
+        if has_barrier(mid):
+            hi = mid
+        else:
+            lo = mid
+    T_spin = hi
+
+    # 2. nucleation scan just above T_spin
+    prev = None
+    for T in T_spin * np.geomspace(1.5, 1.002, 16):
+        if T > 209.0:
+            continue
+        V, dV = V_of_T_exit(T, b_scale, T_chi, n)
+        ext = extrema_general(dV, 1.5 * W0)
+        if ext is None:
+            continue
+        W_f, W_top, W_true = ext
+        dv = V(W_f) - V(W_true)
+        if dv <= 0:
+            continue
+        S3 = bounce_S3_general(V, dV, W_f, W_top, W_true)
+        target = nucleation_target(T, dv)
+        if prev and prev[1] > prev[2] and S3 / T <= target:
+            T1, s1, _ = prev
+            T2, s2 = T, S3 / T
+            Tstar = T2 + (T1 - T2) * (target - s2) / (s1 - s2 + 1e-30)
+            beta_H = abs(Tstar * (s1 - s2) / (T1 - T2))
+            alpha = dv / RHO_RAD(Tstar)
+            return Tstar, alpha, beta_H, dv
+        prev = (T, S3 / T, target)
+    # no crossing: spinodal completion; beta/H from the last slope
+    V, dV = V_of_T_exit(T_spin * 1.001, b_scale, T_chi, n)
+    ext = extrema_general(dV, 1.5 * W0)
+    if ext is None:
+        return None
+    W_f, W_top, W_true = ext
+    dv = V(W_f) - V(W_true)
+    beta_H = (abs(prev[0] * (prev[1]) / (prev[0] - T_spin))
+              if prev and prev[0] != T_spin else 100.0)
+    return T_spin, dv / RHO_RAD(T_spin), min(beta_H, 1e4), dv
+
+
 def main():
     print("=" * 78)
     print("  NVG: (alpha, beta/H) OF THE RECONDENSATION FROM THE W-FIELD ACTION")
@@ -216,20 +352,51 @@ def main():
                         * math.log(max(w, 1e-6) / W0))
         return V, dV
 
-    DV_CW = LAM * W0 ** 4 / 16.0
     T_grid = np.geomspace(TC, 2.0, 40)
     Tstar, alpha, beta_H, res = analyze_branch(
-        "B (Coleman-Weinberg / dilaton)", V_of_T_cw, 1.5 * W0, T_grid,
+        "B (Coleman-Weinberg / dilaton, no exit)", V_of_T_cw, 1.5 * W0, T_grid,
         delta_v_of_T=True)
-    if Tstar is not None:
-        om = omega_peak(min(alpha, 1e3), max(beta_H, 1.0))
-        print(f"  Supercooling to T*/T_c = {Tstar / TC:.2f}; "
-              f"=> Omega_GW h^2 ~ {om:.1e}")
-        summary["B (dilaton)"] = (alpha, beta_H, om)
-    else:
-        print("  No nucleation found in the scanned range "
-              "(supercooling continues below 2 MeV — even deeper).")
-        summary["B (dilaton)"] = (float('inf'), None, None)
+    if Tstar is None:
+        print("  No nucleation in the pure CW branch (over-supercooling) —")
+        print("  a graceful exit is REQUIRED, supplied below by the QCD tilt.")
+
+    # ── Branch B with the QCD-anomaly (quark-condensate) exit ───────────
+    print(f"\n{'─' * 78}\nBranch B + QCD tilt exit "
+          f"(b anchored = 2 g_Q |<qq>| = ({B_TILT ** (1/3.):.0f} MeV)^3):")
+    from nvg_gw_comb_amplitude import spectral_shape, f_peak_nHz
+    variations = [
+        ("central          (b x1, T_chi=132, n=12)", 1.0, 132.0, 12),
+        ("weak tilt        (b x0.3)               ", 0.3, 132.0, 12),
+        ("strong tilt      (b x3)                 ", 3.0, 132.0, 12),
+        ("early onset      (T_chi=150)            ", 1.0, 150.0, 12),
+        ("late onset       (T_chi=120)            ", 1.0, 120.0, 12),
+        ("gradual onset    (n=6)                  ", 1.0, 132.0, 6),
+        ("sharp onset      (n=24)                 ", 1.0, 132.0, 24),
+    ]
+    om32_band = []
+    for label, bs, tchi, nn in variations:
+        out = find_exit(bs, tchi, nn)
+        if out is None:
+            print(f"  {label}: no exit found")
+            continue
+        Ts, al, bh, dv = out
+        T_reh = max(Ts, (30.0 * dv / (math.pi ** 2 * G_STAR)) ** 0.25)
+        f_p = f_peak_nHz(T_reh, max(bh, 1.0))
+        om_p = omega_peak(min(al, 1e3), max(bh, 1.0))
+        om32 = om_p * spectral_shape(32.0 / f_p)
+        om32_band.append(om32)
+        print(f"  {label}: T* = {Ts:6.1f} MeV, alpha = {al:6.2f}, "
+              f"beta/H = {bh:7.1f}")
+        print(f"    -> T_reh = {T_reh:.0f} MeV, f_peak = {f_p:7.0f} nHz, "
+              f"Omega_peak = {om_p:.1e}, Omega(32 nHz) = {om32:.1e}")
+        if label.startswith("central"):
+            summary["B (dilaton + QCD exit)"] = (al, bh, om32)
+    if om32_band:
+        print(f"\n  POINT PREDICTION at 32 nHz: Omega_GW h^2 = "
+              f"{min(om32_band):.1e} .. {max(om32_band):.1e}")
+        print(f"  NANOGrav 15yr reference:     ~4e-09")
+        print(f"  Spectral slope in the PTA band: rising ~f^3 flank of the peak")
+        print(f"  (SMBH binaries: Omega ~ f^(2/3) — distinguishable in shape).")
 
     # ── Verdict ──────────────────────────────────────────────────────────
     print(f"\n{'=' * 78}\nVERDICT:")
@@ -239,22 +406,23 @@ def main():
     print("The NANOGrav-band amplitude of nvg_gw_comb_amplitude.py is NOT")
     print("reproduced by the current action.")
     print()
-    print("Branch B — the scale-invariant Coleman-Weinberg form natural for a")
-    print("trace-anomaly condensate — keeps W = 0 metastable (no spinodal) and")
-    print("supercools deeply: with lambda_v = 1.02 no nucleation occurs even at")
-    print("2 MeV, i.e. the pure CW branch OVER-supercools. Realistic completion")
-    print("requires the QCD-anomaly tilt of the potential near Lambda_QCD — the")
-    print("standard graceful exit of supercooled-confinement scenarios — which")
-    print("fixes T_* at O(0.1-1) Lambda_QCD and gives alpha >> 1, beta/H ~ O(10):")
-    print("exactly the PTA-band corner of nvg_gw_comb_amplitude.py.")
+    print("Branch B — the scale-invariant CW form supercools (no nucleation without")
+    print("an exit), and the ANCHORED QCD tilt b = 2 g_Q |<qq>| = (238 MeV)^3 supplies")
+    print("one — but its high-T tail triggers the exit at T* = 149-186 MeV, BEFORE")
+    print("deep supercooling develops: alpha = 1.3-3.6 and beta/H ~ 540-1230. The")
+    print("fast transition puts the peak at 18-42 microHz with Omega_peak ~ 1e-9;")
+    print("the PTA band receives only the f^3 tail, Omega(32 nHz) ~ 3e-18..6e-17.")
     print()
-    print("CONCLUSION: the GW comb amplitude is a sharp DISCRIMINATOR of the")
-    print("W-potential's shape. If NVG keeps the quartic potential, it predicts")
-    print("NO PTA signal from the bounce (NANOGrav must then be SMBH binaries);")
-    print("if the potential is dilaton-like — as the trace-anomaly origin of W")
-    print("motivates — the bounce recondensation naturally lands in the")
-    print("NANOGrav band. Writing down and committing to one form is now a")
-    print("decision with an observational consequence.")
+    print("CONCLUSION: with (alpha, beta/H) actually DERIVED, neither branch")
+    print("reproduces the NANOGrav signal — the amplitude window of")
+    print("nvg_gw_comb_amplitude.py required beta/H ~ 1-10, and the action")
+    print("delivers ~500+ (quartic: spinodal sliver; dilaton: anchored-tilt")
+    print("exit). The surviving falsifiable prediction moves to the microHz")
+    print("band: Omega_GW h^2 ~ 1e-9 peaked at ~20-40 microHz — in reach of")
+    print("proposed microHz missions (muAres) and the low-frequency edge of")
+    print("LISA. Conversely, if PTAs establish the ~30 nHz signal as a")
+    print("QCD-scale phase transition, that would DISFAVOR the derived NVG")
+    print("parameters — the bounce, per this derivation, does not ring there.")
     print("=" * 78)
 
     # ── Figure: S3/T vs nucleation target for both branches ────────────
@@ -281,6 +449,9 @@ def main():
     assert a_quartic < 0.05, "quartic action should give a weak transition"
     om_q = summary["A (quartic action, E central)"][2]
     assert om_q < 1e-11, "quartic-action GW signal should be far below PTA"
+    exit_al, exit_bh, exit_om32 = summary["B (dilaton + QCD exit)"]
+    assert exit_al > 1.0, "anchored-tilt exit should still be a strong transition"
+    assert exit_om32 < 1e-12, "derived PTA-band tail must be negligible"
 
 
 if __name__ == "__main__":

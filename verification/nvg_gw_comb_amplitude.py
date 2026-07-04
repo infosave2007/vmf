@@ -32,16 +32,16 @@ Comb structure:
   with a sub-tooth at 0.63 f of ~16% amplitude, then <3%.
 
 Honest status:
-  (alpha, beta/H) are DERIVED in the companion nvg_recondensation_dynamics.py
-  from the action, with a decisive split: the repo's written quartic potential
-  gives a spinodal-sliver transition (alpha ~ 1e-4..0.03, beta/H ~ 60..500,
-  Omega_GW ~ 1e-22..5e-14 — no PTA signal), while the scale-invariant
-  Coleman-Weinberg form natural for a trace-anomaly condensate supercools
-  deeply and, with the QCD-anomaly graceful exit, lands at alpha >> 1,
-  beta/H ~ O(10) — inside the window below. NANOGrav 15yr (arXiv:2306.16213)
-  reports a signal in this band, and its new-physics analysis
-  (arXiv:2306.16219) lists a QCD-scale first-order transition as viable.
-  The amplitude question is therefore now a question about the FORM of V(W). Caveats: the sound-wave formula is applied by
+  (alpha, beta/H) are DERIVED in the companion nvg_recondensation_dynamics.py.
+  The grid below shows what WOULD match NANOGrav (beta/H ~ 1-10); the action
+  does not deliver it: the quartic potential gives a spinodal sliver
+  (Omega_GW ~ 1e-22..5e-14), and the dilaton form with the anchored QCD-tilt
+  exit gives alpha = 1.3-3.6 but beta/H ~ 540-1230, moving the peak to
+  18-42 microHz (Omega_peak ~ 1e-9) with a negligible PTA-band tail
+  (~1e-17). The derived NVG prediction is therefore a microHz bump —
+  testable by proposed microHz missions — and NOT the NANOGrav signal;
+  a confirmed QCD-scale-PT interpretation of the PTA signal would
+  disfavor these derived parameters. Caveats: the sound-wave formula is applied by
   analogy in a post-bounce (nonstandard) setting, and finite sound-wave
   lifetime corrections introduce O(10) amplitude uncertainty. Scale estimate,
   not a unique prediction — the model MATCHES the signal but does not yet
