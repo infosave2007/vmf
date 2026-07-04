@@ -5,6 +5,9 @@ NVG Cosmology: DESI DR1 Dark Energy Parametric Alignment Check
 This script compares the theoretical prediction of the dynamic dark energy
 equation of state from the VMF cyclic cosmology model against the empirical
 constraints from the DESI (Dark Energy Spectroscopic Instrument) DR1 2024 data.
+STATUS: the melting sector supplying these (w0, wa) is RETIRED
+(see nvg_dark_energy_w0wa.py / nvg_desi_s8_joint_map.py); this alignment
+check is retained as the record of the superseded claim.
 It evaluates the chi-squared (chi^2) and Z-score (confidence level) using
 the full covariance matrix of the (w_0, w_a) parameter space.
 """

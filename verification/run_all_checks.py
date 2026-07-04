@@ -365,6 +365,26 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "Cutoff Shape from the Action",
+        "script": "nvg_cutoff_shape_derivation.py",
+        "claim": "Geometric hard cut excluded by Omega_k (66 sigma); causal k^3 shape survives, indistinguishable from sharp8 (Delta chi^2 = 0.76)",
+        "critical": False,
+        "timeout": 600,
+    },
+    {
+        "name": "Contextual Bell Construction",
+        "script": "nvg_bell_contextual.py",
+        "claim": "Configuration-space theta reproduces S = 2.83 (QM) with deterministic trajectories; separable spacetime theta caps at S = 2.00",
+        "critical": False,
+        "timeout": 300,
+    },
+    {
+        "name": "g = 2 Shock-Microphysics Closure",
+        "script": "nvg_g2_shock_closure.py",
+        "claim": "g = [(1+z_eq) sigma_v/c]^(3/4) = 2.0 at sigma_v = 222 km/s — doubling derived from two measured inputs at O(1) rigor",
+        "critical": False,
+    },
+    {
         "name": "g = 2 Crunch-Thermalization Theorem",
         "script": "nvg_g2_crunch_thermalization.py",
         "claim": "g = (rho_had/rho_conv)^(1/4) exact; g = 2 <=> crunch thermalizes at rho_had/16 — postulate reduced to one microphysical ratio",

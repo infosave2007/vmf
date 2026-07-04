@@ -154,8 +154,10 @@ def run_s8_tension_check():
     print(f"  3. Weak lensing therefore ACTIVELY CONSTRAINS the melting sector:")
     print(f"     beta * ln(1/a_on) must be << the w0-wa-fit value — the NVG dark-energy")
     print(f"     mechanism and S8 are in direct conflict through the model's own sector.")
-    print(f"  4. S8 status: OPEN PROBLEM, sharpened into a falsifier — the honest NVG")
-    print(f"     value without melting is S8 = {S8_nvg:.3f} ({tension_nvg:.1f} sigma, worse than LCDM's 3.3).")
+    print(f"  4. SECTOR RETIRED (nvg_desi_s8_joint_map.py): with the melting mechanism")
+    print(f"     withdrawn, NVG's dark energy is w = -1 and its S8 equals the LCDM value")
+    print(f"     0.832 — the 3.3-sigma lensing tension is inherited, neither solved nor")
+    print(f"     worsened. S8 remains an open problem for NVG as for LCDM.")
     is_ok = True  # honest accounting; no observational claim of resolution
     
     print("==========================================================================")

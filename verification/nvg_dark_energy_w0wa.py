@@ -5,6 +5,17 @@ NVG Master Framework: Dark Energy w0-wa Parameter Derivation
 Derives the CPL parameters (w0, wa) from VMF cyclic cosmology equations by numerically
 integrating the coupled Einstein-Boltzmann background system for the W-field (vacuum condensate)
 and the mass-varying dark matter (mass-melting effect).
+
+STATUS: RETIRED AS THE DARK-ENERGY MECHANISM (2026-07). The (w0, wa) below
+are derived in a TODAY-anchored frame; the observationally correct
+CMB-anchored evolution (nvg_desi_s8_joint_map.py) gives effective
+(w0, wa) = (-0.813, -0.909) at the same coupling — only Delta chi^2 ~ 1
+better than LCDM against DESI DR2 — while raising S8 to ~0.86-0.90 and
+Omega_m0 to 0.352. No region of (beta, a_on) satisfies DESI and weak
+lensing together. NVG's dark sector therefore currently predicts w = -1
+(potential-dominated W-field); the DESI w0-wa preference, if it holds up,
+is UNEXPLAINED by NVG — an open problem, not a success. This script is
+kept as the record of the superseded derivation.
 """
 import numpy as np
 from scipy.integrate import odeint

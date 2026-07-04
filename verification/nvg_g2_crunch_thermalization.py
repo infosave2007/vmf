@@ -81,22 +81,17 @@ def main():
   COROLLARY: the derived Tolman factor g = 2 (nvg_tolman_law_derivation.py)
   holds if and only if rho_conv = rho_had / 16.
 
-  Physical reading: the expansion hadronizes smoothly (adiabatic, at
-  rho_had ~ the QCD crossover scale), while the crunch — carrying the
-  cycle's structure: halos, shocks, merging black holes — thermalizes
-  EARLIER, at 16x lower density. g > 1 is the cycle's irreversibility
-  made quantitative; g = 2 pins the shock-thermalization density.
+  CORRECTION (same session): on the expansion side the patch energy falls
+  as 1/a until matter-radiation EQUALITY, not until hadronization — the
+  correct identification is rho_X = rho_eq, so
+      g = (rho_eq / rho_conv)^{1/4},  g = 2 <=> rho_conv = rho_eq / 16.
+  The microphysical closure of rho_conv (bulk velocities blueshift as 1/a
+  and relativize at a_conv = a_0 sigma_v / c) is computed in
+  nvg_g2_shock_closure.py, giving g = [(1+z_eq) sigma_v/c]^{3/4} = 2.0
+  at sigma_v = 222 km/s — the observed structure-velocity scale.
 
-  Scale check with the model's own numbers: rho_had ~ 1e3 MeV/fm^3
-  (QCD crossover energy density) -> rho_conv ~ 60 MeV/fm^3 ~ 0.4 eps_nuc:
-  the crunch must go relativistic around half nuclear density — i.e. when
-  collapsing structures (neutron-star-scale objects, merger shocks)
-  dominate the energy budget. Order-of-magnitude plausible; deriving
-  rho_conv from collapse microphysics is the remaining task.
-
-  STATUS: the doubling is no longer a free postulate — it is equivalent
-  to one microphysical ratio (rho_had/rho_conv = 16), with the right sign
-  forced by the second law. Not yet a first-principles derivation.
+  STATUS: theorem exact; the doubling reduces to two measured inputs
+  (z_eq and sigma_v); the sign g > 1 is forced by the second law.
 """)
     print("=" * 78)
 

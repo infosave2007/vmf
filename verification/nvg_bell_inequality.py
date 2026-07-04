@@ -26,8 +26,11 @@ of E = -cos from the action must contain one of:
   (c) cosmological measurement dependence: settings and theta_0 share a
       common cause at the bounce (superdeterminism) — evades Bell at the
       standard conceptual cost.
-Route (a) is the only one that would constitute a genuine derivation;
-making it precise is the open problem.
+Route (a) is made explicit and verified numerically in nvg_bell_contextual.py:
+configuration-space theta dynamics reproduces S = 2*sqrt(2) with deterministic
+trajectories, while the separable spacetime-local control caps at S = 2. The
+remaining open problem is deriving the configuration-space structure from the
+spacetime action (until then the construction hosts QM rather than derives it).
 
 Physics:
   Two "entangled" particles are two excitations of the SAME condensate
