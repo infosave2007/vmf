@@ -328,6 +328,13 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "Recondensation Dynamics: (alpha, beta/H) from the Action",
+        "script": "nvg_recondensation_dynamics.py",
+        "claim": "Quartic action: spinodal sliver, Omega_GW < 1e-13 (no PTA signal); dilaton CW form: deep supercooling -> NANOGrav band",
+        "critical": False,
+        "timeout": 300,
+    },
+    {
         "name": "NS Transition-Parameter Scan (provenance of the canon)",
         "script": "nvg_ns_parameter_scan.py",
         "claim": "Canonical (n_tr=2.0, dE=0) is the best-margin survivor of J0740+GW170817+NICER; old (1.8, 0.4) falsified",

@@ -32,12 +32,16 @@ Comb structure:
   with a sub-tooth at 0.63 f of ~16% amplitude, then <3%.
 
 Honest status:
-  alpha and beta/H are NOT yet derived from the W-field action — they are the
-  two remaining dimensionless unknowns. This script shows that for alpha ~
-  0.2-1 and beta/H ~ 1-10 the predicted amplitude brackets the stochastic
-  signal reported by NANOGrav 15yr (arXiv:2306.16213), whose own new-physics
-  analysis (arXiv:2306.16219) lists a QCD-scale first-order transition among
-  viable interpretations. Caveats: the sound-wave formula is applied by
+  (alpha, beta/H) are DERIVED in the companion nvg_recondensation_dynamics.py
+  from the action, with a decisive split: the repo's written quartic potential
+  gives a spinodal-sliver transition (alpha ~ 1e-4..0.03, beta/H ~ 60..500,
+  Omega_GW ~ 1e-22..5e-14 — no PTA signal), while the scale-invariant
+  Coleman-Weinberg form natural for a trace-anomaly condensate supercools
+  deeply and, with the QCD-anomaly graceful exit, lands at alpha >> 1,
+  beta/H ~ O(10) — inside the window below. NANOGrav 15yr (arXiv:2306.16213)
+  reports a signal in this band, and its new-physics analysis
+  (arXiv:2306.16219) lists a QCD-scale first-order transition as viable.
+  The amplitude question is therefore now a question about the FORM of V(W). Caveats: the sound-wave formula is applied by
   analogy in a post-bounce (nonstandard) setting, and finite sound-wave
   lifetime corrections introduce O(10) amplitude uncertainty. Scale estimate,
   not a unique prediction — the model MATCHES the signal but does not yet
