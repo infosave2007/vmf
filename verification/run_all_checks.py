@@ -30,6 +30,7 @@ CHECKS = [
         "script": "nvg_eos_beta_saturated_vector.py",
         "claim": "At least one point passes core screening with c_s^2 ≤ 1",
         "critical": True,
+        "timeout": 300,
     },
     {
         "name": "Symmetric Matter Screening (corrected units)",
@@ -113,7 +114,7 @@ CHECKS = [
     {
         "name": "HADES Dielectron Spectral Simulation",
         "script": "nvg_hades_dielectron_sim.py",
-        "claim": "VMF meson mass shift creates a prominent peak shift to ~702 MeV, distinct from broadening",
+        "claim": "VMF meson melting shifts the integrated dielectron peak to ~712 MeV (kappa_1 = 0.21), distinct from broadening-only ~775",
         "critical": True,
     },
     {
@@ -125,13 +126,13 @@ CHECKS = [
     {
         "name": "DESI DR2 Dark Energy Parametric Alignment",
         "script": "nvg_dark_energy_desi.py",
-        "claim": "VMF cyclic cosmology prediction (w0 = -0.890, wa = -0.574) aligns within 2.8-sigma of DESI DR2",
+        "claim": "RETIRED sector record: today-anchored (w0, wa) alignment superseded by the CMB-anchored joint map",
         "critical": True,
     },
     {
         "name": "Dark Energy w0-wa Parameter Derivation",
         "script": "nvg_dark_energy_w0wa.py",
-        "claim": "Derive CPL parameters (w0 = -0.888, wa = -0.597) dynamically from cyclic VMF cosmology",
+        "claim": "RETIRED sector record: today-anchored derivation kept for history; NVG currently predicts w = -1",
         "critical": True,
     },
     {
@@ -185,7 +186,7 @@ CHECKS = [
     {
         "name": "Primordial GW Background Comb",
         "script": "nvg_primordial_gw_comb.py",
-        "claim": "Derived comb: anchor 62.8 nHz, tooth spacing 4^(-1/3); cycles ~68-77 in the PTA band; amplitude pending",
+        "claim": "Derived comb: anchor 62.8 nHz, tooth spacing 2^(-1/3) = 0.794 (corrected Tolman law); bounce bump at 18-42 microHz",
         "critical": True,
     },
     {
