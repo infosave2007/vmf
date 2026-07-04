@@ -133,9 +133,9 @@ def run_forward_model(m_omega):
         f_nvg = Omega_m_a_nvg ** 0.55
         growth_ratio_integral += (f_nvg - f_lcdm) * da / a
     sigma8_ratio_de = math.exp(growth_ratio_integral)
-    suppression_vmf_core = 1.0 - 0.078 * (859.0 / m_omega)**2
-    sigma8_ratio_net = sigma8_ratio_de * suppression_vmf_core
-    S8_nvg = 0.832 * sigma8_ratio_net
+    # Honest S8: DE growth only — the de Sitter core mechanism cannot contribute
+    # at Mpc scales (DM core volume fraction ~1e-47); see nvg_s8_tension_check.py
+    S8_nvg = 0.832 * sigma8_ratio_de
     
     return {
         "m_omega": m_omega, "r_c": r_c, "n_e": n_e, "cycles": cycles,
@@ -201,7 +201,7 @@ def generate_evidence_ledger(results_center):
         {"claim": "Scalar Glueball Mass", "value": f"M_glueball = {results_center['m_glueball']:.1f} MeV", "file": "nvg_glueball_mass.py", "status": "Confirmed (Lattice QCD)"},
         {"claim": "Majorana Neutrino Mass", "value": f"m_nu = {results_center['m_nu']:.4f} eV", "file": "nvg_neutrino_mass.py", "status": "Excluded in LCDM by DESI DR2 (<0.064 eV); viable only with dynamical DE (<0.16) — co-testable with the NVG w0-wa claim"},
         {"claim": "Dark Energy w0-wa", "value": f"w0 = {results_center['w0']:.3f}, wa = {results_center['wa']:.3f}", "file": "nvg_dark_energy_w0wa.py", "status": "Consistent (Scale Estimate)"},
-        {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Calibrated (7.8% suppression fitted to lensing S8, not derived)"},
+        {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Open problem: NVG dynamical DE shifts S8 away from lensing (~4 sigma); core mechanism ~45 orders short of the required 7.8%"},
         {"claim": "Magnetar Starquake QPOs", "value": f"avg dev = {results_center['qpo_dev']:.2f}%", "file": "nvg_starquake_qpo.py", "status": "RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content)"},
         {"claim": "Primordial GW Comb", "value": f"f_GW(77) = {results_center['f_gw_77']:.1f} nHz", "file": "nvg_primordial_gw_comb.py", "status": "Frequencies derived (anchor 62.8 nHz from t_b + adiabatic redshift, spacing 4^(-1/3) from the Tolman law); amplitude derivation pending"},
         {"claim": "Topological Axion Mass", "value": f"m_a = {results_center['m_a']:.2e} eV", "file": "nvg_axion_mass.py", "status": "Consistent (Scale Estimate)"},

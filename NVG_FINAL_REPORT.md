@@ -1,5 +1,5 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 09:15:14
+**Generated:** 2026-07-04 09:21:34
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
@@ -20,7 +20,7 @@
 | $m_\nu$ (eV) | 0.1161 | **0.1172** | 0.1183 |
 | $w_0$ (Dark Energy today) | -0.878 | **-0.876** | -0.875 |
 | $w_a$ (Dark Energy evolution) | -0.660 | **-0.667** | -0.674 |
-| $S_8$ | 0.779 | **0.778** | 0.777 |
+| $S_8$ | 0.843 | **0.843** | 0.844 |
 | QPO Deviation | 0.17% | **0.17%** | 0.17% |
 | $f_{\rm GW}(77)$ (nHz) | 62.2 | **62.8** | 63.4 |
 | $f_a$ (GeV) | 1.537e+12 | **1.538e+12** | 1.539e+12 |
@@ -63,7 +63,7 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Excluded in LCDM by DESI DR2 (<0.064 eV); viable only with dynamical DE (<0.16) — co-testable with the NVG w0-wa claim |
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
-| S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Calibrated (7.8% suppression fitted to lensing S8, not derived) |
+| S8 Tension Relief | S8 = 0.843 | `nvg_s8_tension_check.py` | Open problem: NVG dynamical DE shifts S8 away from lensing (~4 sigma); core mechanism ~45 orders short of the required 7.8% |
 | Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
 | Primordial GW Comb | f_GW(77) = 62.8 nHz | `nvg_primordial_gw_comb.py` | Frequencies derived (anchor 62.8 nHz from t_b + adiabatic redshift, spacing 4^(-1/3) from the Tolman law); amplitude derivation pending |
 | Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |

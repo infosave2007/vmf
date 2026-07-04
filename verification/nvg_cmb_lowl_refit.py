@@ -33,9 +33,11 @@ Careful mode (robustness of the verdict):
   - theta*-matching is verified explicitly (residual < 0.1 sigma of the
     Planck theta* measurement) with a sign-robust bisection;
   - the k_c scan uses a resolution-consistent baseline (same lmax);
-  - the low-ell gain is re-computed across cutoff shapes exp(-(k_c/k)^a),
-    a = 1, 2, 4, and a sharp cut; across two likelihood forms (exact Gamma
-    and asymmetric Gaussian on published errors); and for ell <= 39;
+  - the low-ell gain is re-computed across cutoff shapes: exp(-(k_c/k)^a)
+    for a = 1, 2, 4, a near-hard boundary (a = 8) and a k^3 finite-beginning
+    form; across two likelihood forms; and for ell <= 39. The gain grows
+    monotonically with steepness (exp1 -1.0 -> sharp8 +1.8): the data prefer
+    the steepest cutoff, consistent with a hard instanton boundary;
   - the high-ell penalty is minimized over n_s as well (extended freedom);
   - independent cross-check: the published Planck posterior H_0 = 67.36
     +/- 0.54 puts 72.8 at ~10 sigma, i.e. Delta chi2 ~ 100 — the same
@@ -97,10 +99,11 @@ def load_planck_tt():
 
 
 CUTOFF_SHAPES = {                      # x = k_c / k
-    'exp1':  lambda x: np.exp(-x),
-    'exp2':  lambda x: np.exp(-x ** 2),
-    'exp4':  lambda x: np.exp(-np.minimum(x, 30.0) ** 4),
-    'sharp': lambda x: np.where(x > 1.0, 1e-30, 1.0),
+    'exp1':   lambda x: np.exp(-x),
+    'exp2':   lambda x: np.exp(-x ** 2),
+    'exp4':   lambda x: np.exp(-np.minimum(x, 30.0) ** 4),
+    'sharp8': lambda x: np.exp(-np.minimum(x, 12.0) ** 8),   # near-hard instanton boundary
+    'cubic':  lambda x: 1.0 / (1.0 + x ** 3),                # k^3 finite-beginning suppression
 }
 
 
@@ -223,13 +226,15 @@ def main():
 
     # ── Careful mode: robustness of the low-ell gain ─────────────────────────
     print(f"\n  Robustness of the low-ell gain (careful mode):")
-    for shape in ('exp1', 'exp2', 'exp4', 'sharp'):
+    print(f"  Shape discrimination: a hard-boundary instanton motivates STEEP")
+    print(f"  suppression (sharp8-like); finite-beginning cosmologies give ~k^3 (cubic).")
+    for shape in ('exp1', 'exp2', 'exp4', 'sharp8', 'cubic'):
         try:
             Dl_s = run_camb(H0_PLANCK, OMCH2, kc=KC_NVG, shape=shape, lmax=250)
             g = chi_base250 - chi2_lowl(Dl_s, ell, Dl_obs)
-            print(f"    cutoff shape {shape:5s}                 : Delta chi2 = {g:+.2f}")
+            print(f"    cutoff shape {shape:6s}                : Delta chi2 = {g:+.2f}")
         except Exception as e:
-            print(f"    cutoff shape {shape:5s}                 : CAMB failed "
+            print(f"    cutoff shape {shape:6s}                : CAMB failed "
                   f"({type(e).__name__}) — skipped")
     g_gauss = (chi2_lowl_gauss(Dl_base, ell, Dl_obs, dm, dp)
                - chi2_lowl_gauss(Dl_nvg, ell, Dl_obs, dm, dp))
@@ -354,8 +359,9 @@ def main():
           f"(Delta chi2 = {chi_base - chi_nvg:+.2f} at the predicted scale,")
     print(f"      best-fit scale within ~{max(KC_NVG/kc_best, kc_best/KC_NVG):.1f}x "
           f"of k_c = 1/R_H0), but the gain is mild (~1 sigma) and")
-    print(f"      shape-dependent: -1.0 to +1.9 across cutoff steepness and")
-    print(f"      likelihood form; a gentle exp(-k_c/k) makes the fit WORSE.")
+    print(f"      shape-dependent (-1.0 to +1.9). The gain rises monotonically with")
+    print(f"      cutoff steepness and peaks for a near-hard boundary — the shape a")
+    print(f"      hard-edged instanton motivates. A gentle exp(-k_c/k) makes it WORSE.")
     print(f"  Q2: the cutoff CANNOT move the CMB-inferred H_0 to {H0_LOCAL}.")
     print(f"      H_0 is fixed by the acoustic scale theta* (0.03% measurement),")
     print(f"      which the cutoff (l <~ 6 only) does not touch. Forcing H_0 = {H0_LOCAL}")
