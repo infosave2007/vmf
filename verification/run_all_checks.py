@@ -328,6 +328,13 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "CMB Low-ell TE Cutoff Check",
+        "script": "nvg_cmb_te_check.py",
+        "claim": "TE Delta chi^2 = +0.75 for the sharp8 IR cutoff — same direction as TT (+1.77), sub-1-sigma diagnostic",
+        "critical": False,
+        "timeout": 600,
+    },
+    {
         "name": "GW Spectrum Template (bump + comb)",
         "script": "nvg_gw_spectrum_template.py",
         "claim": "Machine-readable Omega_GW(f): peak 1.9e-9 at 25 microHz, log-2 comb contrast 65% — muAres-testable",
