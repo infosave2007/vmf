@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
 """
-NVG Verification: Magnetar Starquake QPO Frequencies.
-Calculates the shift in crustal shear mode frequencies due to the NVG
-vacuum dielectric constant (eps_eff = 0.135 eps_0) and compares them to SGR 1806-20.
+NVG Magnetar Starquake QPO Frequencies — NO INDEPENDENT CONTENT (retracted).
+
+HONESTY NOTE: an earlier version claimed an "avg 0.17% match" to the SGR
+1806-20 QPOs. That match was manufactured: the "standard GR shear mode
+frequencies" [49, 71, 251, 409, 1703, 5013] Hz are NOT literature values —
+they are exactly the OBSERVED QPOs [18, 26, 92, 150, 625, 1840] Hz divided
+by the NVG factor sqrt(0.135) = 0.367. Multiplying them back and reporting
+the roundoff as agreement is circular by construction.
+
+What survives as genuine (conditional) content: IF eps_eff = 0.135 rescales
+crustal shear speeds, NVG predicts a UNIFORM ratio ~0.367 between observed
+QPO frequencies and an INDEPENDENTLY computed GR baseline. Until such a
+baseline (from a crust shear-mode calculation not derived from these same
+data) is plugged in, this script demonstrates internal scaling only and
+must not be cited as an observational confirmation.
 """
 
 import math
@@ -13,7 +25,8 @@ def calculate_qpo_frequencies(m_omega: float) -> list[float]:
     # The crustal shear speed and frequency scale as sqrt(eps_eff)
     factor = math.sqrt(eps_eff_ratio)
     
-    # Standard general relativistic shear mode frequencies (Hz)
+    # WARNING: these are NOT independent GR values — they equal the observed
+    # SGR 1806-20 QPOs divided by sqrt(0.135). See the module docstring.
     standard_frequencies = [49.0, 71.0, 251.0, 409.0, 1703.0, 5013.0]
     
     return [freq * factor for freq in standard_frequencies]
@@ -55,8 +68,10 @@ def main():
         
     avg_error = sum(errors) / len(errors)
     print("-" * 78)
-    print(f"Average NVG Deviation  : {avg_error:.2f}%")
-    print(f"Status                 : {'✅ EXCELLENT MATCH (< 3% avg error)' if avg_error < 3.0 else '❌ DISCREPANT'}")
+    print(f"Average deviation      : {avg_error:.2f}% — BY CONSTRUCTION (baseline was")
+    print(f"                         reverse-engineered from these same observations).")
+    print(f"Status                 : ⚠️ NO INDEPENDENT CONTENT — requires an external GR")
+    print(f"                         crust shear-mode baseline before any claim can be made.")
     print("=" * 80)
 
 if __name__ == "__main__":

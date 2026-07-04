@@ -2,8 +2,13 @@
 """
 NVG Verification: Gravitational Redshift z_surf from NS surface
 ---------------------------------------------------------------
-Calculates the surface gravitational redshift z_surf for a 1.4 M_sun neutron star 
-using the exact VMF EOS TOV radius (both the baseline R_1.4 = 12.0 km and the crust-softened R_1.4 = 11.1 km).
+Calculates the surface gravitational redshift z_surf for a 1.4 M_sun neutron
+star from the canonical VMF EOS TOV radius (computed, not hardcoded).
+
+HONESTY NOTE: an earlier version compared z(R = 12.0 km hardcoded) against a
+"target" 0.235 that was itself derived from the same 12.0 km — a circular
+self-check. Now z_surf is derived from the canonical EOS radius and presented
+as a forward prediction for STROBE-X/eXTP, with no target to "pass".
 """
 
 import os
@@ -42,40 +47,24 @@ def calculate_ns_redshift():
     masses_sorted = np.array(masses)[sort_idx]
     radii_sorted = np.array(radii)[sort_idx]
     
-    R_14_soft = np.interp(1.4, masses_sorted, radii_sorted)
-    
-    # 2. Baseline VMF radius without crust-softening
-    R_14_base = 12.0
-    
-    # 3. Calculate redshifts
-    # z_surf = (1 - 2GM/Rc^2)^(-0.5) - 1
-    C_soft = G_over_c2 * M_ref / R_14_soft
-    z_soft = (1.0 - 2.0 * C_soft)**(-0.5) - 1.0
-    
-    C_base = G_over_c2 * M_ref / R_14_base
-    z_base = (1.0 - 2.0 * C_base)**(-0.5) - 1.0
-    
-    # Target value (quiescent prediction in README table #10)
-    target_z = 0.235
-    target_err = 0.03  # observational/theoretical uncertainty band
-    
-    print(f"VMF Baseline Radius at 1.4 M_sun (R_1.4) : {R_14_base:.2f} km")
-    print(f"Calculated Redshift (Baseline)          : z_surf = {z_base:.4f}")
-    print(f"VMF Soft-Crust Radius at 1.4 M_sun      : {R_14_soft:.2f} km")
-    print(f"Calculated Redshift (Soft-Crust)         : z_surf = {z_soft:.4f}")
+    R_14 = np.interp(1.4, masses_sorted, radii_sorted)
+
+    # z_surf = (1 - 2GM/Rc^2)^(-0.5) - 1, from the COMPUTED canonical radius
+    C_14 = G_over_c2 * M_ref / R_14
+    z_14 = (1.0 - 2.0 * C_14)**(-0.5) - 1.0
+
+    print(f"Canonical VMF EOS radius at 1.4 M_sun    : R_1.4 = {R_14:.2f} km (computed)")
+    print(f"Compactness GM/(Rc^2)                    : {C_14:.4f}")
+    print(f"Predicted surface redshift               : z_surf = {z_14:.4f}")
     print("-" * 74)
-    print(f"Target Reference Redshift                : {target_z:.3f} +/- {target_err:.3f}")
-    
-    # Statistical validation of baseline
-    dev_sigma = (z_base - target_z) / target_err
-    print(f"Deviation from Target (Baseline)         : {dev_sigma:+.2f} sigma")
-    
-    is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                                   : {'✅ PASSED (Consistent with target)' if is_ok else '❌ FAILED'}")
     print("\nPhysics Context:")
     print("Direct measurements of z_surf are currently absent (claims like z ≈ 0.35")
-    print("from Cottam et al. 2002 for EXO 0748-676 were not confirmed). VMF predicts")
-    print("0.235, which will be directly testable by STROBE-X/eXTP to <1% precision.")
+    print("from Cottam et al. 2002 for EXO 0748-676 were not confirmed). This is a")
+    print("FORWARD prediction with no observed target yet — directly testable by")
+    print("STROBE-X/eXTP to <1% precision.")
+
+    is_ok = 0.1 < z_14 < 0.4  # sanity range for a 1.4 M_sun NS, not an observational test
+    print(f"\nSanity check (0.1 < z < 0.4)             : {'✅ OK' if is_ok else '❌ out of range'}")
     print("==========================================================================")
     return is_ok
 

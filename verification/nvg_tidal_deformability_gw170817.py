@@ -64,7 +64,9 @@ class EOS:
         sys.path.append(os.path.dirname(os.path.abspath(__file__)))
         import nvg_eos_beta_css_softening as soft
         baseline = soft.build_baseline_arrays()
-        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=1.8, delta_eps_ratio=0.4, cs2_q=1.0/3.0)
+        # Canonical transition (see nvg_ns_parameter_scan.py): crossover at 2.0 n_0,
+        # zero latent heat. The old (1.8, 0.4) point is falsified by PSR J0740+6620.
+        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=2.0, delta_eps_ratio=0.0, cs2_q=1.0/3.0)
         self.p_arr = hybrid["p_sorted"]
         self.eps_arr = hybrid["e_sorted"]
         self.p_match = p_match
@@ -215,7 +217,7 @@ def main():
     eos = EOS(p_match=1.5, Gamma=1.35)
 
     # Scan
-    P_centers = np.logspace(-1.0, 2.8, 100)
+    P_centers = np.logspace(-1.0, 3.4, 120)  # extended past the mass turnover
     results_raw = []
     for Pc in P_centers:
         M, R, k2, Lam = solve_tov_tidal(eos, Pc)

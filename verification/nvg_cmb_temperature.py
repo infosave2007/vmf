@@ -67,12 +67,15 @@ def calculate_cmb_temperature():
     print(f"Predicted CMB Temperature T_0    : {T_0_pred_K:.4f} K")
     print(f"Observed COBE/FIRAS Temperature  : {T_obs_K:.4f} +/- {T_obs_err:.4f} K")
     
-    # Statistical validation
+    # HONESTY NOTE: T_0_pred scales linearly with the arbitrary normalization
+    # a_bounce = 1 cm chosen above. Change that unit and the "prediction" changes
+    # proportionally — the match to 2.7255 K carries NO predictive content.
     dev_sigma = (T_0_pred_K - T_obs_K) / T_obs_err
     print(f"Deviation from Observation       : {dev_sigma:+.2f} sigma")
-    
-    is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                           : {'✅ PASSED (Consistent under standard unit bounce coordinate scaling)' if is_ok else '❌ FAILED'}")
+    print("Status                           : ⚠️ NOT A PREDICTION — the result depends")
+    print("linearly on the arbitrary bounce normalization a_bounce = 1 cm; only the")
+    print("adiabatic-scaling FORM (T ∝ 1/a with g_* factors) is model content.")
+    is_ok = True  # sanity: script ran; no observational claim is made
     print("==========================================================================")
     return is_ok
 

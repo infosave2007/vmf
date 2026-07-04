@@ -64,7 +64,14 @@ class EOS:
         sys.path.append(os.path.dirname(os.path.abspath(__file__)))
         import nvg_eos_beta_css_softening as soft
         baseline = soft.build_baseline_arrays()
-        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=1.8, delta_eps_ratio=0.4, cs2_q=1.0/3.0)
+        # Canonical transition: crossover at 2.0 n_0 with zero latent heat (delta_eps = 0).
+        # Selected by the systematic scan in nvg_ns_parameter_scan.py: the previous
+        # (1.8, 0.4) parameterization gives a true M_max = 1.79 M_sun once the EOS
+        # table is extended to massive-star cores — falsified by PSR J0740+6620
+        # (2.08 ± 0.07). The (2.0, 0.0) point satisfies J0740, GW170817 (binary
+        # Lambda-tilde ≤ 720) and NICER radii simultaneously, and the 2 n_0 crossover
+        # matches the vacuum-melting density of the HADES meson-shift prediction.
+        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=2.0, delta_eps_ratio=0.0, cs2_q=1.0/3.0)
         self.p_arr = hybrid["p_sorted"]
         self.eps_arr = hybrid["e_sorted"]
         self.p_match = p_match
@@ -215,7 +222,9 @@ def main():
     eos = EOS(p_match=1.5, Gamma=1.35)
 
     # Scan
-    P_centers = np.logspace(-1.0, 2.8, 100)
+    # Scan must extend beyond the mass-curve turnover; the old cap 10^2.8 stopped
+    # before M_max and the last scanned point was misreported as the maximum mass.
+    P_centers = np.logspace(-1.0, 3.4, 120)
     results_raw = []
     for Pc in P_centers:
         M, R, k2, Lam = solve_tov_tidal(eos, Pc)

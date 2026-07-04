@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 """
-NVG Full Neutron Star EOS: Crust Matching + Phase Transition + TOV Solver.
+NVG Simplified NS EOS (pure neutron matter) + CSS softening + TOV solver.
 
-This script executes points 1 & 2 of the NVG Research Program:
-1. Crust matching: Joins a low-density crust EOS (polytropic approximation
-   of BPS) to the NVG hadronic core.
-2. High-density softening: Implements a first-order phase transition to a 
-   conformal quark matter phase (CSS: Constant Speed of Sound = 1/3).
-3. TOV Integration: Solves the Tolman-Oppenheimer-Volkoff equations to 
-   compute the Mass-Radius relation, proving that NVG can produce
-   realistic neutron stars (M_max ~ 2.1 M_sun, R_1.4 ~ 12.5 km).
-
-This proves the phenomenological viability of the NVG framework.
+Simplified pedagogical version of the NS chain: pure-neutron-matter core
+(no beta equilibrium, NO crust — despite what an earlier docstring claimed)
+with a CSS softening at the canonical crossover (n_trans = 2 n_0,
+delta_eps = 0; see nvg_ns_parameter_scan.py). The quantitative canonical
+numbers come from nvg_tidal_deformability.py (beta-equilibrated chain):
+M_max = 2.05 M_sun, R_1.4 = 12.55 km. This script only demonstrates that
+the TOV machinery produces a qualitatively similar M-R curve for the
+simplified EOS; treat its outputs as illustrative, not canonical.
 """
 
 from __future__ import annotations
@@ -221,11 +219,12 @@ def main():
     print("2. High-density softening (First-order phase transition to conformal matter)")
     print()
     
-    # Define phase transition parameters
-    # Transition at 2.0 n_0 (onset of vacuum melting)
-    # Energy density jump = 350 MeV/fm^3 (latent heat of transition)
+    # Canonical transition parameters (nvg_ns_parameter_scan.py):
+    # crossover at 2.0 n_0 (onset of vacuum melting), ZERO latent heat.
+    # The previous delta_eps = 350 MeV/fm^3 first-order jump belongs to the
+    # falsified parameterization family (true M_max < 2 M_sun there).
     n_trans = 2.0
-    delta_eps = 350.0
+    delta_eps = 0.0
     
     print(f"Phase Transition parameters:")
     print(f"  Onset density: n_trans = {n_trans} n_0")
@@ -253,17 +252,19 @@ def main():
         radii.append(R)
         print(f"  {Pc:12.1f}  {R:12.2f}  {M:12.3f}")
         
-    M_max = max(masses)
-    
-    # Estimate R_1.4
+    # Use only the stable branch up to the first mass maximum.
+    # (An earlier version interpolated across the low-mass branch and reported
+    # a spurious R_1.4 = 22.6 km from the wrong crossing.)
+    i_max = int(np.argmax(masses))
+    branch_m = np.array(masses[:i_max + 1])
+    branch_r = np.array(radii[:i_max + 1])
+    M_max = float(branch_m.max())
+
     R_14 = 0.0
-    for i in range(len(masses)-1):
-        if (masses[i] < 1.4 and masses[i+1] >= 1.4) or (masses[i] >= 1.4 and masses[i+1] < 1.4):
-            # linear interp
-            frac = (1.4 - masses[i]) / (masses[i+1] - masses[i])
-            R_14 = radii[i] + frac * (radii[i+1] - radii[i])
-            break
-            
+    if branch_m.max() >= 1.4:
+        order = np.argsort(branch_m)
+        R_14 = float(np.interp(1.4, branch_m[order], branch_r[order]))
+
     print()
     print("RESULTS:")
     print(f"  Maximum Mass (M_max): {M_max:.2f} M_sun")
@@ -274,12 +275,11 @@ def main():
         
     print()
     print("CONCLUSION:")
-    print("By combining the NVG core EOS with a realistic crust and introducing")
-    print("a first-order phase transition to conformal quark matter (melting of M_Omega),")
-    print("the NVG framework naturally produces a realistic Maximum Mass (M_max ~ 2.1 M_sun)")
-    print("and respects the R_1.4 ~ 12-13 km constraints from LIGO GW170817.")
-    print()
-    print("This explicitly resolves the 'stiffness' problem mentioned in the article.")
+    print("This simplified pure-neutron-matter chain with the canonical 2 n_0 crossover")
+    print(f"produces M_max = {M_max:.2f} M_sun and R_1.4 = {R_14:.2f} km (computed above —")
+    print("no crust is included, so low-mass radii are not trustworthy). The canonical")
+    print("quantitative numbers of the framework come from nvg_tidal_deformability.py:")
+    print("M_max = 2.05 M_sun, R_1.4 = 12.55 km, Lambda_1.4 = 519.")
     
 if __name__ == "__main__":
     main()

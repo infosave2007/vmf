@@ -52,10 +52,13 @@ def run_forward_model(m_omega):
     pbh_asteroid_max = 1e-10 * (scale**1.5)
     
     # Neutron Stars
-    m_max = 2.25 * (scale**1.5)
-    r_14 = 12.0 * scale
-    lambda_14 = 177.0 * (scale**5)
-    z_surf = 0.235 * (scale**(-0.5))
+    # Canonical computed values (nvg_tidal_deformability.py, canon from
+    # nvg_ns_parameter_scan.py). Previous anchors 2.25/12.0/177 were table-edge
+    # artifacts / hardcodes not produced by any script.
+    m_max = 2.05 * (scale**1.5)
+    r_14 = 12.55 * scale
+    lambda_14 = 519.0 * (scale**5)
+    z_surf = 0.221 * (scale**(-0.5))
     f_peak = 2730.0 * (scale**(-1.5))
     rho_c = 4.5 * (scale**(-3)) # in n_0
     
@@ -69,7 +72,7 @@ def run_forward_model(m_omega):
     omega_dm = 0.268 * scale
     tau_1 = 5.9 * scale
     cs2_max = 0.33 * (scale**0.1) # weak scaling near conformal limit
-    chi2_red = 0.63
+    chi2_red = 0.67  # nvg_joint_ns_inference.py with canonical predictions
     m_glueball = 1718.0 * scale
     m_nu = 0.1172 * scale
     qpo_dev = 0.17 / scale
@@ -82,7 +85,7 @@ def run_forward_model(m_omega):
     m_planck = 1.2209e19   # GeV
     m_pi = 0.13957         # GeV
     f_pi = 0.0924          # GeV
-    r_h0 = 1.37e23         # km
+    r_h0 = 1.2709e23       # km — repo-wide horizon anchor (H_0 = 72.8), consistent with line above
     r_c_axion = 1.13 * (859.0 / m_omega)
     n_e_axion = math.log(r_h0 / r_c_axion)
     f_a = m_planck / (n_e_axion ** 4)
@@ -156,11 +159,11 @@ def solve_inverse_qcd(obs_lambda_14=None, obs_m_max=None):
     reconstructed = {}
     if obs_lambda_14:
         # lambda = 177 * (859/M)^5 => M = 859 / (lambda/177)^(1/5)
-        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 177.0)**0.2
+        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 519.0)**0.2
         reconstructed['From Lambda_1.4'] = m_rec
     if obs_m_max:
         # m_max = 2.25 * (859/M)^1.5 => M = 859 / (m_max/2.25)^(2/3)
-        m_rec = M_OMEGA_CENTRAL / (obs_m_max / 2.25)**(2/3)
+        m_rec = M_OMEGA_CENTRAL / (obs_m_max / 2.05)**(2/3)
         reconstructed['From M_max'] = m_rec
     return reconstructed
 
@@ -169,7 +172,7 @@ def solve_inverse_qcd(obs_lambda_14=None, obs_m_max=None):
 # =====================================================================
 FORECAST = {
     "LIGO O5 / Einstein Telescope": "Must measure Lambda_1.4 with precision < 20 to falsify NVG scale.",
-    "STROBE-X / eXTP": "Must measure z_surf of 1.4 M_sun NS to < 1% precision (target: 0.235).",
+    "STROBE-X / eXTP": "Must measure z_surf of 1.4 M_sun NS to < 1% precision (canonical prediction: 0.221).",
     "CBM / FAIR": "Must resolve rho meson mass peak shift at 2n_0 to better than 2% resolution.",
     "EHT (Next Gen)": "Deviation of shadow from Kerr is ~1e-70. NVG is safe from ANY EHT macroscopic falsification."
 }
@@ -181,25 +184,25 @@ def generate_evidence_ledger(results_center):
     ledger = [
         {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77)"},
         {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py)"},
-        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_full_ns_eos.py", "status": "Confirmed (NICER)"},
-        {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability.py", "status": "Confirmed (TOV + Hinderer y-integration)"},
+        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_tidal_deformability.py", "status": "Compatible (J0740 -0.4 sigma; edge-falsifiable: any NS above ~2.2 M_sun excludes)"},
+        {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability.py", "status": "Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude)"},
         {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "nvg_ns_redshift.py", "status": "Awaiting STROBE-X"},
         {"claim": "Meson Mass Melting", "value": f"rho shift = -{results_center['rho_shift']:.1f}%", "file": "nvg_fair_hades_link.py", "status": "Awaiting CBM/FAIR (Derived from W-field Coupling)"},
         {"claim": "Null Test: BH Shadow", "value": f"Deviation = {results_center['eht_dev']:.1e}", "file": "nvg_advanced_observables_II.py", "status": "Confirmed (EHT)"},
         {"claim": "Null Test: QNM Ringdown", "value": f"Deviation = {results_center['qnm_shift']:.1e}", "file": "nvg_advanced_observables_III.py", "status": "Confirmed (LIGO O4a)"},
-        {"claim": "Relic Dark Matter", "value": f"Omega_DM = {results_center['omega_dm']:.3f}", "file": "nvg_relic_dark_matter.py", "status": "Confirmed (Planck PR4)"},
-        {"claim": "NS Core Speed of Sound", "value": f"c_s^2,max = {results_center['cs2_max']:.2f}", "file": "nvg_speed_of_sound_curve.py", "status": "Confirmed (NICER+LIGO)"},
+        {"claim": "Relic Dark Matter", "value": f"Omega_DM = {results_center['omega_dm']:.3f}", "file": "nvg_relic_dark_matter.py", "status": "Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range)"},
+        {"claim": "NS Core Speed of Sound", "value": f"c_s^2,max = {results_center['cs2_max']:.2f}", "file": "nvg_speed_of_sound_curve.py", "status": "By construction (cs2 = 1/3 imposed in the quark phase)"},
         {"claim": "First Cycle Duration", "value": f"tau_1 = {results_center['tau_1']:.1f} us", "file": "nvg_cyclic_lifetimes.py", "status": "Consistent / Falsifiable"},
-        {"claim": "Joint NS Likelihood Fit", "value": f"reduced chi_nu^2 = {results_center['chi2_red']:.2f}", "file": "nvg_joint_ns_inference.py", "status": "Confirmed (Direct Fit)"},
+        {"claim": "Joint NS Likelihood Fit", "value": f"reduced chi_nu^2 = {results_center['chi2_red']:.2f}", "file": "nvg_joint_ns_inference.py", "status": "Compatible (all pulls < 1 sigma, conditional on nuclear calibration)"},
         {"claim": "Scalar Glueball Mass", "value": f"M_glueball = {results_center['m_glueball']:.1f} MeV", "file": "nvg_glueball_mass.py", "status": "Confirmed (Lattice QCD)"},
         {"claim": "Majorana Neutrino Mass", "value": f"m_nu = {results_center['m_nu']:.4f} eV", "file": "nvg_neutrino_mass.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "Dark Energy w0-wa", "value": f"w0 = {results_center['w0']:.3f}, wa = {results_center['wa']:.3f}", "file": "nvg_dark_energy_w0wa.py", "status": "Consistent (Scale Estimate)"},
-        {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Confirmed (DESI DR2 + DES Y6)"},
-        {"claim": "Magnetar Starquake QPOs", "value": f"avg dev = {results_center['qpo_dev']:.2f}%", "file": "nvg_starquake_qpo.py", "status": "Confirmed (SGR 1806-20)"},
+        {"claim": "S8 Tension Relief", "value": f"S8 = {results_center['S8']:.3f}", "file": "nvg_s8_tension_check.py", "status": "Calibrated (7.8% suppression fitted to lensing S8, not derived)"},
+        {"claim": "Magnetar Starquake QPOs", "value": f"avg dev = {results_center['qpo_dev']:.2f}%", "file": "nvg_starquake_qpo.py", "status": "RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content)"},
         {"claim": "Primordial GW Comb", "value": f"f_GW(77) = {results_center['f_gw_77']:.1f} nHz", "file": "nvg_primordial_gw_comb.py", "status": "Confirmed (PTA Band)"},
         {"claim": "Topological Axion Mass", "value": f"m_a = {results_center['m_a']:.2e} eV", "file": "nvg_axion_mass.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "Strong-Field Periastron Shift", "value": f"fractional dev = {results_center['peri_ratio']:.2e}", "file": "nvg_perihelion_shift.py", "status": "Confirmed (J0737-3039)"},
-        {"claim": "CMB Temperature", "value": f"T_CMB = {results_center['t_cmb']:.4f} K", "file": "nvg_cmb_temperature.py", "status": "Consistent (Consistency Check)"},
+        {"claim": "CMB Temperature", "value": f"T_CMB = {results_center['t_cmb']:.4f} K", "file": "nvg_cmb_temperature.py", "status": "No predictive content (depends on arbitrary a_bounce = 1 cm normalization)"},
         {"claim": "Baryon Asymmetry", "value": f"eta_B = {results_center['eta_b']:.2e}", "file": "nvg_baryon_asymmetry.py", "status": "Consistent (Scale Estimate)"},
         {"claim": "Post-merger f_peak", "value": f"f_peak = {results_center['f_peak']:.1f} Hz", "file": "nvg_postmerger_fpeak.py", "status": "Consistent / Falsifiable"},
         {"claim": "SGR 1935+2154 T_spot", "value": f"T_spot = {results_center['t_sgr']:.3f} keV", "file": "nvg_sgr_temperature.py", "status": "Confirmed (XMM-Newton)"},

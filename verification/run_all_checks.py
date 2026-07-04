@@ -319,6 +319,12 @@ CHECKS = [
         "claim": "Cutoff mildly improves low-l TT (Dchi2 ~ +0.9 at predicted k_c); cannot shift CMB H_0 — tension NOT resolved (requires camb, ~2-3 min)",
         "critical": False,
     },
+    {
+        "name": "NS Transition-Parameter Scan (provenance of the canon)",
+        "script": "nvg_ns_parameter_scan.py",
+        "claim": "Canonical (n_tr=2.0, dE=0) is the best-margin survivor of J0740+GW170817+NICER; old (1.8, 0.4) falsified (~4-6 min)",
+        "critical": False,
+    },
 ]
 
 OPTIONAL_CHECKS = [

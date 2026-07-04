@@ -3,10 +3,17 @@
 NVG Verification: Joint Neutron Star Inference
 ----------------------------------------------
 Combines multiple independent astrophysical datasets (LIGO, NICER, X-ray cooling)
-into a single Bayesian Likelihood function to test the NVG Equation of State.
+into a single joint chi-squared to test the canonical NVG Equation of State.
 
-Because NVG has only ONE free parameter (the QCD anchor M_Omega_0), this
-inference runs in milliseconds rather than requiring weeks on a supercluster.
+PARAMETER HONESTY: besides the QCD anchor M_Omega_0 = 859 MeV (derived from
+lattice sigma-terms), the EOS carries shape parameters (kappa_1, kappa_2,
+alpha_v, nu_v, C_omega) calibrated to NUCLEAR data (saturation, Dirac mass,
+causality — see nvg_eos_beta_saturated_vector.py), and CSS transition
+parameters (n_trans = 2 n_0, delta_eps = 0) selected by the constraint scan in
+nvg_ns_parameter_scan.py. The NS observables below are therefore predictions
+CONDITIONAL on that calibration, not a zero-parameter derivation. An earlier
+version claimed "only ONE free parameter" and used hardcoded predictions
+(M_max = 2.25, R = 12.0, Lambda = 177) that the code did not produce.
 """
 import numpy as np
 
@@ -25,12 +32,14 @@ observations = {
 }
 
 # =====================================================================
-# 2. NVG PREDICTIONS (from M_Omega_0 = 859 MeV)
+# 2. NVG PREDICTIONS — computed outputs of the canonical EOS chain
+#    (nvg_tidal_deformability.py with the nvg_ns_parameter_scan.py canon;
+#    values are that script's printed results, quoted here for speed)
 # =====================================================================
 nvg_predictions = {
-    "M_max": 2.25,
-    "R_1.4": 12.0,
-    "Lambda_1.4": 177.0,
+    "M_max": 2.05,
+    "R_1.4": 12.55,
+    "Lambda_1.4": 519.0,
     "Cooling_Dichotomy": 1.45
 }
 
@@ -70,11 +79,11 @@ print(f"Total Chi-Squared : {chi_squared_total:.2f}")
 print(f"Reduced Chi-Sq    : {reduced_chi:.2f}")
 print(f"Global Fit Status : {'EXCELLENT' if reduced_chi < 2.0 else 'POOR'} (Rule of thumb: < 2.0 is a good fit)")
 
-print("\nOBSERVATIONAL IMPACT:")
-print("In standard astrophysics, fitting an EOS to NICER + LIGO + Cooling data requires")
-print("running a Markov Chain Monte Carlo (MCMC) with 5-10 free parameters (speed of sound,")
-print("polytropic indices) for weeks on a supercluster.")
-print("Because NVG derives the ENTIRE sequence from a single QCD anchor (859 MeV), we")
-print("can compute the Joint Likelihood instantly. The reduced chi-squared of 0.63")
-print("proves that NVG naturally threads the needle through ALL independent datasets.")
+print("\nHONEST READING:")
+print("The NVG EOS (QCD anchor + nuclear-calibrated shape parameters + scan-selected")
+print("transition) is simultaneously compatible with J0740-class maximum masses,")
+print("GW170817 tidal bounds and NICER radii — with every observable within ~1 sigma")
+print("but close to a constraint edge. That edge-proximity is the falsifiable content:")
+print("a confirmed NS above ~2.2 M_sun, Ltilde < ~400, or R_1.4 < ~12.0 km would")
+print("exclude the canonical model (see nvg_ns_parameter_scan.py).")
 print("======================================================================")

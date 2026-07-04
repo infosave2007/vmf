@@ -9,7 +9,9 @@ suppression on small scales due to the de Sitter regular core in PBH dark matter
 Compares the result against:
   1. Planck standard Lambda-CDM: S8 = 0.832 ± 0.013
   2. Weak Lensing (DESI DR2 + DES Y6): S8 = 0.776 ± 0.017
-Demonstrates that NVG predicts S8 ≈ 0.776, resolving the 3.3σ tension (under VMF growth suppression of ~7.8%).
+Maps the S8 tension onto a VMF core growth suppression. NOTE: the 7.8%
+suppression coefficient is FITTED to the lensing S8, not derived (see the
+honesty note in the code) — this is a calibration, not a resolution.
 """
 
 import os
@@ -68,11 +70,12 @@ def run_s8_tension_check():
     # Growth ratio from DE evolution only
     sigma8_ratio_de = np.exp(growth_ratio_integral)
     
-    # 4. Small-scale growth suppression due to VMF regular core in PBH dark matter
-    # The finite volume of the de Sitter core inside PBH dark matter halos introduces
-    # a physical Jeans-like cutoff on small scales (k > k_core). The growth suppression
-    # scales quadratically with the core volume (r_c^3)^2 / R_halo^2. 
-    # This yields a derived suppression factor:
+    # 4. Small-scale growth suppression attributed to the VMF regular core in PBH DM.
+    # HONESTY NOTE: the coefficient 0.078 below is NOT derived anywhere in this repo —
+    # it is exactly the fractional gap between the Planck input S8 = 0.832 and the
+    # weak-lensing target 0.776, i.e. a FITTED parameter dressed as a mechanism.
+    # Until the suppression is computed from the core scale (r_c, halo profile),
+    # this row is a calibration, not a resolution of the S8 tension.
     suppression_vmf_core = 1.0 - 0.078 * (859.0 / M_Omega_0)**2
     
     # Net growth suppression ratio: D_NVG(a=1) / D_LCDM(a=1)
@@ -92,15 +95,17 @@ def run_s8_tension_check():
     print(f"  Remaining tension with Weak Lensing: {tension_nvg:.2f}σ")
     
     is_ok = tension_nvg <= 1.0
-    print(f"  Status: {'✅ COMPLETELY RESOLVED (within 1σ)' if is_ok else '⚠️ TENSION REMAINS'}")
+    print(f"  Status: ⚠️ CALIBRATED, not resolved — the 7.8% suppression is fitted to the")
+    print(f"          lensing S8 (see honesty note above); deriving it from the core scale")
+    print(f"          is an open task.")
     
     print("\nPhysics Context:")
     print("Under NVG cyclic cosmology, the small-scale structure growth is suppressed by the")
     print("de Sitter regular core of primordial black hole (PBH) dark matter. This core")
     print("acts as a physical regularization scale, preventing infinite density singular clustering.")
-    print("The net predicted S8 ≈ 0.776 is in perfect agreement with the weak lensing")
-    print("measurements from DESI DR2 + DES Y6, resolving the 3.3σ S8 tension")
-    print("  (under the parameterized VMF core growth suppression of ~7.8%, i.e. suppression_vmf_core = 0.922).")
+    print("The net S8 ≈ 0.776 matches weak lensing BY CONSTRUCTION: the 7.8% core")
+    print("suppression was fitted to that value. Deriving it from the core scale (r_c,")
+    print("halo profile) would turn this calibration into a genuine prediction.")
     print("==========================================================================")
 
 if __name__ == "__main__":

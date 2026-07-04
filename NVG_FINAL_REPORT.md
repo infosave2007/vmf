@@ -1,21 +1,21 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-03 22:27:40
+**Generated:** 2026-07-04 08:03:25
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
 |---|---|---|---|
 | $N_e$ (Genesis e-folds) | 53.09 | **53.08** | 53.07 |
-| $M_{max}$ ($M_\odot$) | 2.22 | **2.25** | 2.28 |
-| $R_{1.4}$ (km) | 11.89 | **12.00** | 12.11 |
-| $\Lambda_{1.4}$ | 169 | **177** | 185 |
-| $z_{surf}$ | 0.236 | **0.235** | 0.234 |
+| $M_{max}$ ($M_\odot$) | 2.02 | **2.05** | 2.08 |
+| $R_{1.4}$ (km) | 12.43 | **12.55** | 12.67 |
+| $\Lambda_{1.4}$ | 495 | **519** | 544 |
+| $z_{surf}$ | 0.222 | **0.221** | 0.220 |
 | $f_{peak}$ (Hz) | 2692 | **2730** | 2768 |
 | $\rho$-meson shift | -19.8% | **-20.0%** | -20.2% |
 | $\epsilon_{eff}/\epsilon_0$ | 0.132 | **0.135** | 0.138 |
 | $\Omega_{DM}$ | 0.266 | **0.268** | 0.271 |
 | $c_{s,\max}^2$ | 0.33 | **0.33** | 0.33 |
 | $\tau_1$ ($\mu$s) | 5.8 | **5.9** | 6.0 |
-| $\chi_\nu^2$ (reduced) | 0.63 | **0.63** | 0.63 |
+| $\chi_\nu^2$ (reduced) | 0.67 | **0.67** | 0.67 |
 | $M_{\rm glueball}$ (MeV) | 1702.1 | **1718.0** | 1734.2 |
 | $m_\nu$ (eV) | 0.1161 | **0.1172** | 0.1183 |
 | $w_0$ (Dark Energy today) | -0.878 | **-0.876** | -0.875 |
@@ -23,8 +23,8 @@
 | $S_8$ | 0.779 | **0.778** | 0.777 |
 | QPO Deviation | 0.17% | **0.17%** | 0.17% |
 | $f_{\rm GW}(77)$ (nHz) | 143.6 | **145.0** | 146.4 |
-| $f_a$ (GeV) | 1.529e+12 | **1.530e+12** | 1.531e+12 |
-| $m_a$ (eV) | 8.425e-06 | **8.431e-06** | 8.437e-06 |
+| $f_a$ (GeV) | 1.537e+12 | **1.538e+12** | 1.539e+12 |
+| $m_a$ (eV) | 8.377e-06 | **8.383e-06** | 8.389e-06 |
 | $\delta\phi_{\rm NVG}/\Delta\phi_{\rm GR}$ (ratio) | 1.604e-10 | **1.608e-10** | 1.613e-10 |
 | $T_g$ (g-mode period, ms) | 65.4 | **66.0** | 66.6 |
 | $\Delta m_H$ (Higgs mass shift, MeV) | 4.29 | **4.37** | 4.45 |
@@ -35,13 +35,13 @@
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
-*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 697.9$ MeV.
-*   If NICER measures $M_{max} = 2.15 M_\odot$: NVG requires $M_{\Omega,0} = 885.4$ MeV.
+*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 865.4$ MeV.
+*   If NICER measures $M_{max} = 2.15 M_\odot$: NVG requires $M_{\Omega,0} = 832.2$ MeV.
 *(If these two independent inversions yield conflicting $M_{\Omega,0}$, the framework is mathematically falsified).*
 
 ## 3. Forecast Module (Future Falsification)
 - **LIGO O5 / Einstein Telescope**: Must measure Lambda_1.4 with precision < 20 to falsify NVG scale.
-- **STROBE-X / eXTP**: Must measure z_surf of 1.4 M_sun NS to < 1% precision (target: 0.235).
+- **STROBE-X / eXTP**: Must measure z_surf of 1.4 M_sun NS to < 1% precision (canonical prediction: 0.221).
 - **CBM / FAIR**: Must resolve rho meson mass peak shift at 2n_0 to better than 2% resolution.
 - **EHT (Next Gen)**: Deviation of shadow from Kerr is ~1e-70. NVG is safe from ANY EHT macroscopic falsification.
 
@@ -50,25 +50,25 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 |---|---|---|---|
 | CMB Genesis Cutoff | N_e = 53.08 | `nvg_genesis_observable.py` | Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77) |
 | Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py) |
-| NS Max Mass | M_max = 2.25 M_sun | `nvg_full_ns_eos.py` | Confirmed (NICER) |
-| Tidal Deformability | Lambda_1.4 = 177 | `nvg_tidal_deformability.py` | Confirmed (TOV + Hinderer y-integration) |
-| Gravitational Redshift | z_surf = 0.235 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
+| NS Max Mass | M_max = 2.05 M_sun | `nvg_tidal_deformability.py` | Compatible (J0740 -0.4 sigma; edge-falsifiable: any NS above ~2.2 M_sun excludes) |
+| Tidal Deformability | Lambda_1.4 = 519 | `nvg_tidal_deformability.py` | Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude) |
+| Gravitational Redshift | z_surf = 0.221 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
 | Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting CBM/FAIR (Derived from W-field Coupling) |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Confirmed (EHT) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Confirmed (LIGO O4a) |
-| Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Confirmed (Planck PR4) |
-| NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_speed_of_sound_curve.py` | Confirmed (NICER+LIGO) |
+| Relic Dark Matter | Omega_DM = 0.268 | `nvg_relic_dark_matter.py` | Calibrated (Omega_DM is an observational input; checkable content is lambda_v -> f_0 range) |
+| NS Core Speed of Sound | c_s^2,max = 0.33 | `nvg_speed_of_sound_curve.py` | By construction (cs2 = 1/3 imposed in the quark phase) |
 | First Cycle Duration | tau_1 = 5.9 us | `nvg_cyclic_lifetimes.py` | Consistent / Falsifiable |
-| Joint NS Likelihood Fit | reduced chi_nu^2 = 0.63 | `nvg_joint_ns_inference.py` | Confirmed (Direct Fit) |
+| Joint NS Likelihood Fit | reduced chi_nu^2 = 0.67 | `nvg_joint_ns_inference.py` | Compatible (all pulls < 1 sigma, conditional on nuclear calibration) |
 | Scalar Glueball Mass | M_glueball = 1718.0 MeV | `nvg_glueball_mass.py` | Confirmed (Lattice QCD) |
 | Majorana Neutrino Mass | m_nu = 0.1172 eV | `nvg_neutrino_mass.py` | Consistent (Scale Estimate) |
 | Dark Energy w0-wa | w0 = -0.876, wa = -0.667 | `nvg_dark_energy_w0wa.py` | Consistent (Scale Estimate) |
-| S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Confirmed (DESI DR2 + DES Y6) |
-| Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | Confirmed (SGR 1806-20) |
+| S8 Tension Relief | S8 = 0.778 | `nvg_s8_tension_check.py` | Calibrated (7.8% suppression fitted to lensing S8, not derived) |
+| Magnetar Starquake QPOs | avg dev = 0.17% | `nvg_starquake_qpo.py` | RETRACTED (baseline reverse-engineered from the observed QPOs; no independent content) |
 | Primordial GW Comb | f_GW(77) = 145.0 nHz | `nvg_primordial_gw_comb.py` | Confirmed (PTA Band) |
-| Topological Axion Mass | m_a = 8.43e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
+| Topological Axion Mass | m_a = 8.38e-06 eV | `nvg_axion_mass.py` | Consistent (Scale Estimate) |
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Confirmed (J0737-3039) |
-| CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | Consistent (Consistency Check) |
+| CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
 | Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Consistent (Scale Estimate) |
 | Post-merger f_peak | f_peak = 2730.0 Hz | `nvg_postmerger_fpeak.py` | Consistent / Falsifiable |
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Confirmed (XMM-Newton) |

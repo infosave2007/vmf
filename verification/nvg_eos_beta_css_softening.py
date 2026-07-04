@@ -139,8 +139,12 @@ def build_css_hybrid_eos(baseline, n_trans_ratio, delta_eps_ratio, cs2_q):
     p_plateau = np.array([p_trans, p_trans + tiny_dp])
     e_plateau = np.array([e_trans, e_trans + delta_eps])
 
-    p_css_max = max(pressure[-1] * 2.0, p_trans * 25.0)
-    p_css = np.geomspace(p_trans + 2.0 * tiny_dp, p_css_max, 140)
+    # The CSS branch must cover all central pressures reachable in TOV integration.
+    # The old cap max(2*p_last, 25*p_trans) ~ 214 MeV/fm^3 truncated the table below
+    # massive-star cores; interpolation clamping beyond the edge then made matter
+    # artificially incompressible and inflated M_max (2.13/2.25/2.30 were artifacts).
+    p_css_max = max(pressure[-1] * 2.0, p_trans * 25.0, 4000.0)
+    p_css = np.geomspace(p_trans + 2.0 * tiny_dp, p_css_max, 200)
     e_css = e_trans + delta_eps + (p_css - (p_trans + tiny_dp)) / cs2_q
 
     p_full = np.concatenate([p_had, p_plateau, p_css])
