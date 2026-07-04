@@ -31,6 +31,9 @@ f_Edd = 0.10                   # Average Eddington ratio (10% duty cycle)
 # Seeding parameters at z_start = 20
 z_start = 20.0
 M_seed_popIII = 100.0          # Solar masses (Pop III stellar remnant)
+# The PBH mass GRID 0.38*4^N follows from the theory; the SPECIFIC rung N=10
+# (~4e5 M_sun) is selected as the seed that can grow into the JWST objects —
+# a choice within the discrete ladder, not derived for these particular sources.
 M_seed_nvg = 0.38 * (4**10)    # Solar masses (Cycle N=10 VMF primordial seed ~3.98e5 M_sun)
 
 # JWST Observational Targets
@@ -103,8 +106,10 @@ def main():
     print("- Under standard sub-Eddington accretion (f_Edd = 10% average):")
     print("  - Pop III stellar seeds (100 M_sun) fail to explain JWST observations by up to")
     print("    3 orders of magnitude (e.g. reaching only ~3e4 M_sun at z=10.1 vs. 4e7 M_sun observed).")
-    print("  - NVG primordial seeds (4e5 M_sun) comfortably match and exceed the observed masses,")
-    print("    proving that the cyclic PBH hierarchy easily resolves the early SMBH seeding puzzle.")
+    print("  - An NVG primordial seed on the N=10 rung (4e5 M_sun) reaches the observed")
+    print("    masses at sub-Eddington rates, so IF such a seed exists the JWST early-SMBH")
+    print("    puzzle is resolved. The open question is whether the N=10 PBH abundance is")
+    print("    right — the ladder is predicted, the occupation of this rung is not.")
     print("- To match GN-z11's mass of 1.6e6 M_sun starting from the NVG seed, an Eddington ratio")
     print(f"  of just ~{f_Edd * (math.log(1.6e6/M_seed_nvg) / math.log(grow_black_hole(M_seed_nvg, t_start, cosmic_age_Gyr(10.6))/M_seed_nvg)) * 100.0:.2f}% is required.")
     print("=" * 80)

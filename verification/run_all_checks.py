@@ -70,7 +70,7 @@ CHECKS = [
     {
         "name": "Gravitational Wave Echoes",
         "script": "nvg_gw_echoes.py",
-        "claim": "Echo delay for GW150914 (65 M_sun) is precisely 0.00414s",
+        "claim": "Forward prediction: GW150914 (65 M_sun) core echo delay 0.00414s (delta = r_0 fixed by rho_c); not yet observed",
         "critical": True,
     },
     {
@@ -143,7 +143,7 @@ CHECKS = [
     {
         "name": "JWST Early Black Hole Seeding Puzzle",
         "script": "nvg_pbh_jwst_seeds.py",
-        "claim": "NVG primordial seeds (~4e5 M_sun) resolve the early SMBH seeding puzzle at z > 6, whereas Pop III seeds fail",
+        "claim": "An N=10 PBH seed (~4e5 M_sun) grows into the JWST SMBHs sub-Eddington (Pop III fails); conditional on the N=10 rung being occupied",
         "critical": True,
     },
     {

@@ -232,7 +232,8 @@ def main() -> None:
     print("   INTERIOR (r < R_s): DIFFERENT from GR")
     print("     - No singularity (finite ε_max)")
     print("     - Conformal core with P = ε/3")
-    print("     - Information preserved in regular core (resolves Hawking paradox)")
+    print("     - A regular core is a NECESSARY condition for information")
+    print("       preservation, but unitary evaporation is not shown here.")
     if n_conformal is not None:
         print(f"     - Conformal transition at n_B ~ {n_conformal:.0f} n_0")
     print()
@@ -245,11 +246,13 @@ def main() -> None:
     # 7. Why this is physically consistent
     print("7. PHYSICAL CONSISTENCY")
     print("   ✓ Exterior matches GR exactly (Birkhoff's theorem)")
-    print("   ✓ No new fields or modified gravity equations needed")
+    print("   ✓ Gravity is unmodified GR; the only added field is the W-condensate")
+    print("     already present in the NVG action (no EXTRA fields beyond it)")
     print("   ✓ Mass melting is established QCD physics (chiral restoration)")
     print(f"   ✓ ε_max is finite ({eps_max:.2e} MeV/fm³)")
     print("   ✓ Conformal limit c_s² = 1/3 < 1 (causal)")
-    print("   ✓ Information is preserved (unitary evaporation)")
+    print("   ○ Regular core removes the singularity; full unitary evaporation")
+    print("     (Page-curve recovery) is a conjecture, not computed here")
     print()
 
 
