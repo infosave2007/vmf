@@ -35,6 +35,7 @@ def run_s8_tension_check():
     # 2. Observational parameters
     S8_planck = 0.832
     S8_planck_err = 0.013
+    sigma8_planck = 0.811   # Planck 2018 LCDM
     S8_lensing = 0.776      # DESI DR2 + DES Y6 / DES Y3 consensus
     S8_lensing_err = 0.017
     
@@ -83,82 +84,78 @@ def run_s8_tension_check():
     r_core_cm = (3.0 * M_pbh_g / (4.0 * np.pi * rho_c_gcm3)) ** (1.0 / 3.0)
     gap_needed = 0.078               # suppression required to reach the lensing S8
 
-    # 4b. MASS-MELTING DARK MATTER: the in-model mechanism the earlier version
-    # missed. The same coupling beta_melt that produces the w0-wa background
-    # (derive_w0_wa) implies DM particles were LIGHTER in the past: the
-    # comoving matter density scales as rho_m a^3 ~ a^beta, so the growth
-    # source term was weaker at early times and sigma8 is suppressed.
-    # Solve the linear growth ODE for both cosmologies with the SAME
-    # beta_melt already fixed by the DESI w0-wa fit (no new parameter).
-    from nvg_dark_energy_w0wa import derive_w0_wa as _unused  # provenance
+    # 4b. MASS-MELTING DARK MATTER AND THE ANCHORING FRAME.
+    # The w0-wa sector (derive_w0_wa) transfers energy INTO matter:
+    # Q = +beta H rho_m, i.e. DM masses GROW with time and the comoving
+    # matter density scales as rho_m a^3 ~ a^beta after the melting is active.
+    # The observable consequence depends on where the evolution is anchored:
+    #
+    #   (A) anchored TODAY (Omega_m0 fixed, deficit pushed into the past):
+    #       the growth source is weaker at early times and sigma8 drops.
+    #       This frame puts a large matter deficit into the CMB era and is
+    #       NOT observable — kept below only as a diagnostic.
+    #   (B) anchored at RECOMBINATION (the physically correct frame: same
+    #       omega_m and same primordial amplitude as Planck, melting acts
+    #       only afterwards): late-time matter is HIGHER than the a^-3
+    #       continuation, growth is ENHANCED and Omega_m0 rises — S8 goes UP.
+    #
+    # A frame-A computation in an earlier revision suggested S8 ~ 0.75
+    # ("relief"); that result was an artifact of the anchoring and is
+    # RETRACTED here. Frame B is what the data see.
     beta_melt = (3.0 * 1.0**2) / (2.0 * 1.0**2 * 0.16**2) * 0.002048  # = 0.12, as in derive_w0_wa
 
-    def growth_D(beta, w0, wa, a_i=0.005, n=8000):
-        # rho_m(a) = Om0 a^-3 * (a^beta / 1^beta) [comoving density ~ a^beta]
-        # rho_de(a): CPL
+    def growth_D_anchored(beta, a_on, w0, wa, om_early=Omega_m, a_i=0.005, n=8000):
+        """Growth factor with CMB-side anchoring: comoving matter density equals
+        the LCDM value before a_on, then grows as (a/a_on)^beta. Returns
+        (D_today, Omega_m_today). beta=0 reproduces LCDM/CPL."""
         import numpy as _np
         a = _np.linspace(a_i, 1.0, n)
-        Om0, Ode0 = Omega_m, Omega_DE
-        rho_m = Om0 * a**(-3.0) * a**beta
-        rho_de = Ode0 * a**(-3.0*(1.0 + w0 + wa)) * _np.exp(-3.0*wa*(1.0 - a))
+        boost = _np.where(a > a_on, (a / a_on) ** beta, 1.0)
+        om_a = om_early * boost                    # comoving density rho_m a^3
+        om_today = float(om_a[-1])
+        ode_today = 1.0 - om_today                 # flat: DE drained into matter
+        rho_m = om_a * a ** (-3.0)
+        rho_de = ode_today * a ** (-3.0 * (1.0 + w0 + wa)) * _np.exp(-3.0 * wa * (1.0 - a))
         E2 = rho_m + rho_de
-        # d2D/da2 + [3/a + dlnE/da/... ] -> use standard form:
-        # D'' + (3/a + E'/(2E) ... implement via two 1st-order ODEs with
-        # dlnE2/da computed numerically
         dlnE2 = _np.gradient(_np.log(E2), a)
         D = _np.zeros(n); Dp = _np.zeros(n)
-        D[0], Dp[0] = a[0], 1.0     # matter-era growing mode D ~ a
+        D[0], Dp[0] = a[0], 1.0
         for i in range(n - 1):
-            h = a[i+1] - a[i]
-            coef = 3.0/a[i] + 0.5*dlnE2[i]
-            src = 1.5 * rho_m[i] / (E2[i] * a[i]**2)
-            Dpp = -coef*Dp[i] + src*D[i]/1.0
-            Dp[i+1] = Dp[i] + h*Dpp
-            D[i+1] = D[i] + h*Dp[i]
-        return D[-1]
+            h = a[i + 1] - a[i]
+            Dpp = -(3.0 / a[i] + 0.5 * dlnE2[i]) * Dp[i] + 1.5 * rho_m[i] / (E2[i] * a[i] ** 2) * D[i]
+            Dp[i + 1] = Dp[i] + h * Dpp
+            D[i + 1] = D[i] + h * Dp[i]
+        return float(D[-1]), om_today
 
-    D_lcdm = growth_D(0.0, -1.0, 0.0)
-    D_nvg = growth_D(beta_melt, w_0, w_a)
-    melt_ratio = D_nvg / D_lcdm
-    S8_nvg = S8_planck * melt_ratio
+    D_lcdm, _ = growth_D_anchored(0.0, 1.0, -1.0, 0.0)
+    print(f"\nMass-melting DM in the CMB-anchored frame (the observable one):")
+    print(f"  Same early universe as Planck; melting active for a > a_on with")
+    print(f"  beta = {beta_melt:.3f} (fixed by the DESI w0-wa fit — no new parameter).")
+    print(f"  {'a_on':>6} {'z_on':>6} {'Om_m0':>7} {'D/D_L':>7} {'sigma8':>7} {'S8':>6} {'tension':>8}")
+    S8_w0wa_fit = None
+    for a_on in (0.40, 0.50, 0.70):
+        D_nvg, om0 = growth_D_anchored(beta_melt, a_on, w_0, w_a)
+        sig8 = sigma8_planck * D_nvg / D_lcdm
+        S8_b = sig8 * (om0 / 0.3) ** 0.5
+        t = abs(S8_b - S8_lensing) / S8_lensing_err
+        flag = "  <- w0-wa fit range" if a_on == 0.40 else ""
+        print(f"  {a_on:6.2f} {1/a_on-1:6.2f} {om0:7.3f} {D_nvg/D_lcdm:7.4f} {sig8:7.4f} {S8_b:6.3f} {t:7.1f}σ{flag}")
+        if a_on == 0.40:
+            S8_w0wa_fit = (S8_b, t, om0)
+
+    S8_nvg = S8_planck * sigma8_ratio_de   # DE-background effect only (no melting rescue)
     tension_nvg = abs(S8_nvg - S8_lensing) / S8_lensing_err
 
-    print(f"\nNVG Structure Growth Results (honest accounting):")
-    print(f"  Growth shift from DE w(z) alone:      {sigma8_ratio_de:.4f} ({(sigma8_ratio_de - 1.0)*100:+.1f}%)")
-    print(f"  Mass-melting DM: comoving rho_m a^3 ~ a^beta with beta = {beta_melt:.3f}")
-    print(f"  (same coupling already fixed by the DESI w0-wa fit — no new parameter)")
-    print(f"  Full growth ratio D_NVG/D_LCDM:       {melt_ratio:.4f} ({(melt_ratio-1.0)*100:+.1f}%)")
-    print(f"  NVG S8 (DE + melting DM):             {S8_nvg:.4f}")
-    # Viability check: constant beta back to recombination rescales the matter
-    # budget between recombination and today by (1/a_rec)^beta — CMB+BAO fix
-    # both ends to ~1%, so the naive extrapolation is excluded.
-    a_rec = 1.0 / 1090.0
-    budget_factor = (1.0 / a_rec) ** beta_melt
-    print(f"\n  VIABILITY CHECK: constant-beta melting from recombination to today")
-    print(f"  rescales the matter budget by (1/a_rec)^beta = {budget_factor:.2f} —")
-    print(f"  excluded by the joint CMB + low-z matter determinations (~1% each).")
-    print(f"  The S8 relief above therefore requires the melting to activate only")
-    print(f"  at LATE times (z <~ few); the current Lagrangian provides no such")
-    print(f"  switch — deriving one is the concrete open task. (The same z<1.5")
-    print(f"  limitation applies to the w0-wa fit itself, though DE is subdominant")
-    print(f"  at high z so the background impact there is milder.)")
-    print(f"  Tension with weak lensing:  {tension_nvg:.2f}σ "
-          f"(vs {abs(S8_planck - S8_lensing)/S8_lensing_err:.2f}σ in LCDM)")
-    print(f"\n  Core-mechanism capacity check:")
-    print(f"    DM volume fraction inside de Sitter cores: {filling:.1e}")
-    print(f"    Core radius: {r_core_cm:.1f} cm vs sigma8 scale 8 Mpc = 2.5e25 cm")
-    print(f"    Suppression needed to reach lensing S8: {gap_needed:.3f} (7.8%)")
-    print(f"    → the core mechanism is ~45 orders of magnitude short of 7.8%;")
-    print(f"      PBH dark matter behaves as CDM on all cosmological scales.")
-    print(f"\n  Status: PARTIAL in-model mechanism found — mass-melting DM (coupling")
-    print(f"  already fixed by the DESI w0-wa fit, zero new parameters) suppresses")
-    print(f"  growth by ~10%, giving S8 = {S8_nvg:.3f} and relieving the tension from 3.3")
-    print(f"  to {tension_nvg:.1f} sigma as a genuine cross-prediction. HOWEVER the naive")
-    print(f"  constant-beta extrapolation violates the CMB-era matter budget (see")
-    print(f"  viability check above), so the relief stands only if the melting")
-    print(f"  activates at late times — a switch the current Lagrangian does not")
-    print(f"  provide. Deriving it is the concrete open task; without it S8 remains")
-    print(f"  an open problem for NVG.")
+    print(f"\n  VERDICT (frame-honest):")
+    print(f"  1. The earlier 'relief to 1.6 sigma' was a today-anchored artifact — retracted.")
+    print(f"  2. In the CMB-anchored frame the melting mechanism RAISES S8: with the")
+    print(f"     w0-wa-fit configuration (a_on ~ 0.4) S8 = {S8_w0wa_fit[0]:.3f} ({S8_w0wa_fit[1]:.1f} sigma from")
+    print(f"     lensing) and Omega_m0 = {S8_w0wa_fit[2]:.3f} (vs BAO/SNe ~ 0.30-0.33).")
+    print(f"  3. Weak lensing therefore ACTIVELY CONSTRAINS the melting sector:")
+    print(f"     beta * ln(1/a_on) must be << the w0-wa-fit value — the NVG dark-energy")
+    print(f"     mechanism and S8 are in direct conflict through the model's own sector.")
+    print(f"  4. S8 status: OPEN PROBLEM, sharpened into a falsifier — the honest NVG")
+    print(f"     value without melting is S8 = {S8_nvg:.3f} ({tension_nvg:.1f} sigma, worse than LCDM's 3.3).")
     is_ok = True  # honest accounting; no observational claim of resolution
     
     print("==========================================================================")
