@@ -34,6 +34,15 @@ nuclear saturation (scalar sector); the mapping exponent lambda is
 bounded by NA60 dileptons (meson sector).  The two inputs are calibrated
 on disjoint data sets; their product shapes the template but neither is
 tuned to HADES.
+
+Vacuum anchor for Gamma_eff (update): HADES' own N* measurement
+(pi- p -> n e+e- at sqrt(s) = 1.49 GeV; Phys. Lett. B 875 (2026) 140338,
+arXiv:2205.15914) pins the rho-baryon transition strength in vacuum via
+a VDM line-shape fit — the same fit methodology requested here, applied
+in vacuum.  That coupling is the dominant input to the in-medium
+broadening Gamma_eff ~ 350 MeV used by BOTH templates; it constrains the
+common width (template systematics), not the pole (the selector), so
+architecture selection still requires the in-medium excess line shape.
 """
 
 from __future__ import annotations

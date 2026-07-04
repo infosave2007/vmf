@@ -49,7 +49,7 @@ BLOCKS = [
         ("R [km] vs NICER J0437",         12.49,  11.36,  0.8,   "rows 3/29; Choudhury+24"),
         ("Lambda_tilde vs GW170817",      313.0,  300.0,  255.0, "row 6; LVC 90% +420 -> /1.645"),
     ]),
-    ("Hadron spectrum (anchor independent of the observable)", 0, [
+    ("Hadron spectrum (vs LATTICE; experimental glueball ID unsettled)", 0, [
         ("Glueball mass [GeV] vs lattice", 1.72,   1.70,   0.10,  "row 18; 2 M_Omega"),
     ]),
     # NOTE: T_c = 157 MeV is NOT in this list — adopted from lattice QCD
