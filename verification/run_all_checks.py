@@ -366,6 +366,24 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "g = 2 Press-Schechter Distribution",
+        "script": "nvg_g2_press_schechter.py",
+        "claim": "Mass-weighted <g> = 2.30, model band [1.82, 2.71] brackets 2 — semi-analytic stand-in for the crunch simulation",
+        "critical": False,
+    },
+    {
+        "name": "DESI DR3 Binary Forecast",
+        "script": "nvg_desi_dr3_forecast.py",
+        "claim": "NVG predicts w = -1 exactly; DR2 disfavors at 4.5 sigma; DR3 with unchanged central -> DEAD; survival needs 64% drift to LCDM",
+        "critical": False,
+    },
+    {
+        "name": "Falsifier Dashboard",
+        "script": "nvg_falsifier_dashboard.py",
+        "claim": "8/8 falsifiers alive as of 2026-07; dead-man switch asserts on any tripped kill condition",
+        "critical": False,
+    },
+    {
         "name": "Theta-Sector Identity Audit",
         "script": "nvg_theta_sector_audit.py",
         "claim": "Four theta masses found; resolution: theta = eta' (WV 967 vs 958); cogenesis Lambda -> 1.7 PeV, Br -> 4e-8; ADMX axion = separate field",
