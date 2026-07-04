@@ -7,9 +7,12 @@ unknowns, using the repo's own action inputs:
 
   W_0 = 859 MeV, lambda_v = 1.02 (relic-DM inversion; m_W = sqrt(2 lambda) W_0
   = 1.24 GeV -> f_0(1370), consistent), T_c = 157.3 MeV, g_* = 47.5.
-  (NOTE: the Seven-Theorems preprint quotes W_0 = 432.2 MeV — a factor-2
-  convention discrepancy with the rest of the repo; results below use the
-  repo canon 859 and the sensitivity to this is reported.)
+  (The vacuum value is W_0 = M_Omega,0 = 859 MeV: it reproduces the repo's
+  rho_c = W_0^4/(hbar c)^3 = 7.09e4 MeV/fm^3, whereas 432 MeV does not
+  (432^4 -> 4.5e3). The "W_0 = 432 MeV" that appeared in the Seven-Theorems
+  preprint was a misidentification of the BOUNCE TEMPERATURE T_b = 432 MeV
+  (Stefan-Boltzmann at M_Omega = 859, g_* = 47.5) as the vacuum value;
+  the preprint has been corrected.)
 
 Method (standard finite-temperature field theory, one loop):
   V(W,T) = D (T^2 - T_0^2) W^2 - E T W^3 + (lambda/4) W^4        [branch A]
@@ -51,7 +54,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from nvg_gw_comb_amplitude import omega_peak, kappa_v
 
 # ── Repo anchors ─────────────────────────────────────────────────────────
-W0 = 859.0            # MeV (repo canon; preprint's 432.2 flagged in docstring)
+W0 = 859.0            # MeV = M_Omega,0 (reproduces rho_c = 7.09e4 MeV/fm^3)
 LAM = 1.02            # lambda_v from the relic-DM inversion
 TC = 157.3            # MeV
 G_STAR = 47.5
