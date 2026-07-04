@@ -328,6 +328,30 @@ CHECKS = [
         "critical": False,
     },
     {
+        "name": "GW Spectrum Template (bump + comb)",
+        "script": "nvg_gw_spectrum_template.py",
+        "claim": "Machine-readable Omega_GW(f): peak 1.9e-9 at 25 microHz, log-2 comb contrast 65% — muAres-testable",
+        "critical": False,
+    },
+    {
+        "name": "GWTC Log-2 Ladder Test (real catalog)",
+        "script": "nvg_gwtc_ladder_test.py",
+        "claim": "V-test at rung phase null (p = 0.43/0.80); coherent ladder fraction < ~10% of BBHs — honest null constraint",
+        "critical": False,
+    },
+    {
+        "name": "Global Statistical Significance",
+        "script": "nvg_global_significance.py",
+        "claim": "8 independent quantitative tests: chi2_red = 0.63, p = 0.75; max pull +1.5 sigma < 2.4 sigma trials expectation",
+        "critical": True,
+    },
+    {
+        "name": "eta_B Inheritance Closing Test",
+        "script": "nvg_etab_inheritance.py",
+        "claim": "Inherited asymmetry diluted 2^76 -> needs eta_1 ~ 1e13 > 1 — excluded; per-cycle BSM B-violation is the only route",
+        "critical": False,
+    },
+    {
         "name": "g = 2 Mechanism Candidates",
         "script": "nvg_g2_mechanism.py",
         "claim": "Requirement ln g = ln 2 stated; winding/vacuum-release fail x3-6; binding-energy release brackets g -> 2 in the maximal-collapse limit",

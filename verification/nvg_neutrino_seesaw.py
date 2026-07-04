@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 """
+FORWARD TEST (haloscopes): the adopted f_a = 1.07e11 GeV puts the theta-mode
+at m_theta = 53 microeV (12.8 GHz). This is ABOVE the region ADMX has scanned
+(2.7-4.2 microeV published); coverage of 40-120 microeV is the design target
+of MADMAX and ADMX-EFR (late 2020s-2030s). A haloscope exclusion at
+53 microeV with DFSZ-level coupling would falsify this sector; a detection
+at 53 microeV would simultaneously confirm the neutrino-mass mapping —
+the two share the single parameter f_a.
+
 STATUS (2026-07): ADOPTED as the primary neutrino sector of the framework.
 It passes DESI DR2 in LCDM unconditionally (59 < 64 meV) and carries the
 ADMX co-prediction m_theta = 53 microeV from the same f_a. The alternative
