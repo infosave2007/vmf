@@ -41,8 +41,11 @@ PULLS = [
     ("R_1.4 [km] vs NICER J0030",     12.55,  12.2,   0.5,   "row 3; Vinciguerra+24"),
     ("R [km] vs NICER J0437",         12.55,  11.36,  0.8,   "rows 3/29; Choudhury+24"),
     ("Lambda_tilde vs GW170817",      610.0,  300.0,  255.0, "row 5; LVC 90% +420 -> /1.645"),
-    ("Glueball mass [GeV] vs lattice", 1.72,   1.70,   0.10,  "row 18"),
-    ("T_c [MeV] vs lattice QCD",      157.3,  156.5,  1.5,   "row 6; HotQCD"),
+    ("Glueball mass [GeV] vs lattice", 1.72,   1.70,   0.10,  "row 18; 2 M_Omega"),
+    # NOTE: T_c = 157 MeV is NOT in this list — the audit established it is
+    # ADOPTED from lattice QCD (the preprint cites HotQCD for it), i.e. an
+    # input identification, not an NVG prediction. Including it would compare
+    # the lattice number with itself. (An earlier revision had it; removed.)
     ("Cas A dT/dt [K/yr]",            -3650., -3500., 350.,  "S5 bullet; ~10% obs err"),
     ("Vela T_s [1e5 K]",              6.95,   6.8,    0.35,  "S5 bullet; ~5% obs err"),
 ]
