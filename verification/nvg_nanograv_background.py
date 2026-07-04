@@ -36,7 +36,16 @@ def run_nanograv_verification():
     # First-Principles Theoretical Parameters for the VMF PBH Population
     # PBHs constitute the entirety of dark matter in VMF
     Omega_PBH = 0.26
-    # Theoretical fraction of PBHs in merging binaries (Ali-Haimoud et al. analog for VMF)
+    # HONESTY NOTE: f_bin below is quoted to three digits but Ali-Haimoud-type
+    # binary-fraction estimates span orders of magnitude depending on clustering
+    # and disruption — this value functions as the amplitude calibration, so
+    # "without empirical tuning" claims are not supportable. Moreover, the
+    # heavy-rung PBH abundance this background needs is set to ~zero by the
+    # repo's own PBH distribution (nvg_pbh_dark_matter.py: peak N=-21,
+    # sigma_N=1.3) — an internal inconsistency requiring a two-population
+    # abundance model. Finally, per nvg_recondensation_dynamics.py the bounce
+    # itself radiates at 18-42 microHz, so this PBH-binary channel is the ONLY
+    # candidate NVG source in the PTA band.
     f_bin = 0.0041 
     # The overall amplitude scale parameter depends on Omega_PBH and f_bin
     theoretical_calib = f_bin * Omega_PBH

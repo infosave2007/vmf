@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 """
+AUDIT NOTE: this theta-seesaw mapping (Sigma m_nu = 59 meV) is mutually
+exclusive with nvg_neutrino_mass.py (Sigma = 117 meV via a GUT-scale prior).
+The framework currently carries two incompatible neutrino sectors; one must
+be selected and the other retired. Note the 59 meV variant passes DESI DR2
+in LCDM (< 64 meV) while the 117 meV variant requires the w0wa cosmology.
+
 NVG Verification: Neutrino Mass from θ-Mode Seesaw (No Right-Handed Neutrinos)
 ================================================================================
 Demonstrates that the pseudo-Goldstone θ-mode of the NVG vacuum condensate

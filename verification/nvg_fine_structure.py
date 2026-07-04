@@ -57,7 +57,12 @@ m_t = 172.76                    # GeV — top quark
 M_Z = 91.1876                   # GeV — Z boson mass
 M_W = 80.379                    # GeV — W boson mass
 v_EW = 246.22                   # GeV — electroweak VEV
-M_Omega = 432.2e-3              # GeV — NVG bounce scale M_{Ω,0}
+# AUDIT NOTE: 432.2 MeV is the BOUNCE TEMPERATURE T_b, not the vacuum value.
+# The vacuum condensate scale is W_0 = M_Omega,0 = 859 MeV (it reproduces
+# rho_c = 7.09e4 MeV/fm^3; see commit c946472). This script's 1-loop estimate
+# needs recomputation with the corrected scale; until then treat the quoted
+# 1/alpha(M_Z) = 126.6 as provisional.
+M_Omega = 432.2e-3              # GeV — MISLABELED scale, see audit note above
 
 # Fermion charges and masses
 leptons = [
