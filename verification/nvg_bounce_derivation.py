@@ -4,7 +4,7 @@ NVG Bounce Derivation: Three key calculations to elevate the cyclic
 cosmology framework from hypothesis to quantitative model.
 
 1. Derive modified Friedmann from FLRW minisuperspace Hamiltonian
-2. Prove uniqueness of rho_c = M_Omega^4 / (hbar*c)^3
+2. Fix the SCALE of rho_c = C M_Omega^4/(hbar c)^3 (C = 1 natural)
 3. CMB/BAO/LSS compatibility check
 """
 import numpy as np
@@ -116,8 +116,13 @@ def derive_modified_friedmann():
   │                                                         │
   └─────────────────────────────────────────────────────────┘
 
-  This is NOT postulated — it follows from the backreaction of V(W)
-  on the geometry when W tracks the matter density adiabatically.
+  HONEST STATUS: the QUADRATIC correction -ρ²/ρ_c (and hence the
+  existence of a bounce) follows robustly from V(W) backreaction with
+  adiabatic tracking and the SEC violation shown below. The exact
+  closed form H² = (8πG/3)ρ(1 - ρ/ρ_c) is the leading-order result for
+  the symmetric double well; as the "some function" caveat above marks,
+  the precise coefficient beyond quadratic order depends on the full
+  W-trajectory and is not derived to all orders here.
 """)
 
     # Numerical verification of the adiabatic tracking
@@ -140,11 +145,11 @@ def derive_modified_friedmann():
 
 
 # ══════════════════════════════════════════════════════════════════
-# PART 2: UNIQUENESS OF ρ_c = M_Ω⁴/(ℏc)³
+# PART 2: SCALE OF ρ_c = C·M_Ω⁴/(ℏc)³ (form unique; O(1) coefficient natural)
 # ══════════════════════════════════════════════════════════════════
 def prove_rho_c_uniqueness():
     print("\n" + "=" * 78)
-    print("PART 2: UNIQUENESS OF ρ_c = M_Ω₀⁴/(ℏc)³")
+    print("PART 2: SCALE OF ρ_c = C·M_Ω₀⁴/(ℏc)³  (form unique; C = 1 natural)")
     print("=" * 78)
 
     eps_max = M_Omega_0**4 / hbar_c**3
@@ -169,7 +174,15 @@ def prove_rho_c_uniqueness():
     → β = -3     (fm)
     → α = 4
 
-    ∴ ε_max = M_Ω₀⁴ / (ℏc)³      (unique, no free coefficient)
+    ∴ ε_max = C · M_Ω₀⁴ / (ℏc)³   with a dimensionless C ~ O(1)
+
+  Dimensional analysis fixes the POWERS (4, −3) uniquely but NOT the
+  coefficient C: any O(1) number is allowed on dimensional grounds.
+  Arguments 2–4 below motivate the natural choice C = 1; they do not
+  prove it. Different O(1) conventions (e.g. a Stefan–Boltzmann π²/30,
+  or a Compton volume (2π λ_C)³) would rescale ρ_c, r_c and the H_0
+  interval — so "the form is derived, the coefficient is a natural
+  normalization" is the honest statement.
 """)
 
     print("  ARGUMENT 2: Physical Saturation")
@@ -183,6 +196,8 @@ def prove_rho_c_uniqueness():
     print(f"    V_nucleon ~ λ_C³ = {vol:.4f} fm³")
     print(f"    ε_max = M_Ω₀/λ_C³ = {M_Omega_0}/{vol:.4f} = {eps_compton:.2f} MeV/fm³")
     print(f"    = M_Ω₀⁴/(ℏc)³ = {eps_max:.2f} MeV/fm³  ✓  (same expression)")
+    print(f"    NOTE: this fixes C = 1 by CHOOSING V = λ_C³ exactly; a volume")
+    print(f"    (2π λ_C)³ or (λ_C/2)³ would give a different C. Motivation, not proof.")
     print()
 
     print("  ARGUMENT 3: No Higher Density is Physically Meaningful")
@@ -207,12 +222,12 @@ def prove_rho_c_uniqueness():
     print(f"\n  M_Ω₀ is the PHYSICAL (measured) scale of the QCD condensate")
     print(f"  inside a nucleon, while Λ_QCD is the perturbative running scale.")
     print(f"  M_Ω₀ > Λ_QCD because it includes confinement + anomaly + gluon KE.")
-    print(f"\n  ┌──────────────────────────────────────────────────────┐")
-    print(f"  │ ρ_c = M_Ω₀⁴/(ℏc)³ is the unique maximum density   │")
-    print(f"  │ because it is the total vacuum energy per nucleon    │")
-    print(f"  │ divided by the minimum volume set by that energy.    │")
-    print(f"  │ No free parameter. No alternative scale exists.      │")
-    print(f"  └──────────────────────────────────────────────────────┘")
+    print(f"\n  ┌────────────────────────────────────────────────────────────┐")
+    print(f"  │ ρ_c = C · M_Ω₀⁴/(ℏc)³ with C = 1 the natural choice.        │")
+    print(f"  │ The SCALE (M_Ω₀, hence the power law) is unique — no other   │")
+    print(f"  │ energy scale exists in the model. The O(1) COEFFICIENT is a  │")
+    print(f"  │ normalization convention motivated (not proved) by Args 2-4. │")
+    print(f"  └────────────────────────────────────────────────────────────┘")
 
 
 # ══════════════════════════════════════════════════════════════════
