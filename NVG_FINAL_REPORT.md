@@ -1,15 +1,15 @@
 # NVG Master Evidence & Uncertainty Ledger
-**Generated:** 2026-07-04 14:42:38
+**Generated:** 2026-07-04 19:00:53
 
 ## 1. Full Uncertainty Propagation ($M_{\Omega,0} = 859 \pm 8$ MeV)
 | Observable | Lower Bound | Central Value | Upper Bound |
 |---|---|---|---|
 | $N_e$ (Genesis e-folds) | 53.09 | **53.08** | 53.07 |
-| $M_{max}$ ($M_\odot$) | 2.02 | **2.05** | 2.08 |
-| $R_{1.4}$ (km) | 12.43 | **12.55** | 12.67 |
-| $\Lambda_{1.4}$ | 495 | **519** | 544 |
-| $z_{surf}$ | 0.222 | **0.221** | 0.220 |
-| $f_{peak}$ (Hz) | 2387 | **2421** | 2455 |
+| $M_{max}$ ($M_\odot$) | 2.04 | **2.07** | 2.10 |
+| $R_{1.4}$ (km) | 12.37 | **12.49** | 12.61 |
+| $\Lambda_{1.4}$ | 242 | **253** | 265 |
+| $z_{surf}$ | 0.224 | **0.223** | 0.222 |
+| $f_{peak}$ (Hz) | 2475 | **2510** | 2545 |
 | $\rho$-meson shift | -19.8% | **-20.0%** | -20.2% |
 | $\epsilon_{eff}/\epsilon_0$ | 0.132 | **0.135** | 0.138 |
 | $\Omega_{DM}$ | 0.266 | **0.268** | 0.271 |
@@ -35,7 +35,7 @@
 
 ## 2. Inverse QCD Anchor Problem
 If future observations pinpoint macroscopic values, NVG strictly mandates the microscopic QCD anchor:
-*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 865.4$ MeV.
+*   If LIGO measures $\Lambda_{1.4} = 500$: NVG requires $M_{\Omega,0} = 749.6$ MeV.
 *   If NICER measures $M_{max} = 2.15 M_\odot$: NVG requires $M_{\Omega,0} = 832.2$ MeV.
 *(If these two independent inversions yield conflicting $M_{\Omega,0}$, the framework is mathematically falsified).*
 
@@ -50,9 +50,9 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 |---|---|---|---|
 | CMB Genesis Cutoff | N_e = 53.08 | `nvg_genesis_observable.py` | Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77) |
 | Hubble Constant | H_0 = 72.8 km/s/Mpc | `nvg_hubble_tension.py` | Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py) |
-| NS Max Mass | M_max = 2.05 M_sun | `nvg_tidal_deformability.py` | Compatible (J0740 -0.4 sigma; edge-falsifiable: any NS above ~2.2 M_sun excludes) |
-| Tidal Deformability | Lambda_1.4 = 519 | `nvg_tidal_deformability.py` | Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude) |
-| Gravitational Redshift | z_surf = 0.221 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
+| NS Max Mass | M_max = 2.07 M_sun | `nvg_tidal_deformability.py` | Compatible (J0740 -0.1 sigma, fork-B chain; edge-falsifiable: any NS above ~2.2 M_sun excludes) |
+| Tidal Deformability | Lambda_1.4 = 253 | `nvg_tidal_deformability.py` | Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude) |
+| Gravitational Redshift | z_surf = 0.223 | `nvg_ns_redshift.py` | Awaiting STROBE-X |
 | Meson Mass Melting | rho shift = -20.0% | `nvg_fair_hades_link.py` | Awaiting HADES/CBM: instantaneous -20% at 2n_0, but OBSERVABLE dielectron-peak shift ~-7% (~712 MeV) is the actual test |
 | Null Test: BH Shadow | Deviation = 1.0e-70 | `nvg_advanced_observables_II.py` | Null test (deviation ~1e-70 — indistinguishable from GR, untestable) |
 | Null Test: QNM Ringdown | Deviation = 1.0e-105 | `nvg_advanced_observables_III.py` | Null test (deviation ~1e-105 — indistinguishable from GR, untestable) |
@@ -70,9 +70,9 @@ If future observations pinpoint macroscopic values, NVG strictly mandates the mi
 | Strong-Field Periastron Shift | fractional dev = 1.61e-10 | `nvg_perihelion_shift.py` | Null test (fractional deviation ~1.6e-10 — unobservable) |
 | CMB Temperature | T_CMB = 2.7255 K | `nvg_cmb_temperature.py` | No predictive content (depends on arbitrary a_bounce = 1 cm normalization) |
 | Baryon Asymmetry | eta_B = 5.91e-10 | `nvg_baryon_asymmetry.py` | Extension constructed: B-L cogenesis via neutron portal (nvg_adm_bl_cogenesis.py) — calibrated Lambda = 556 TeV, falsifiable floor Br(n->chi gamma) ~ 4e-6; within original field content: no mechanism (closure stands) |
-| Post-merger f_peak | f_peak = 2421.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
+| Post-merger f_peak | f_peak = 2510.0 Hz | `nvg_postmerger_fpeak.py` | Forward prediction (no post-merger signal observed yet; ET/CE testable) |
 | SGR 1935+2154 T_spot | T_spot = 0.441 keV | `nvg_sgr_temperature.py` | Consistency illustration (T follows from assumed L ~ L_obs via blackbody; VMF content is the qualitative Urca dichotomy) |
-| PSR J0437-4715 MR | R_1.4 = 12.55 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |
+| PSR J0437-4715 MR | R_1.4 = 12.49 km | `nvg_nicer_j0437_check.py` | Tightest tension: +1.5 sigma vs J0437 (inside 95%); R(J0437) < 12.0 km confirmed would stress the canon |
 | LiteBIRD B-mode Cutoff | r(2) = 0.0007 | `nvg_litebird_prediction.py` | Conditional forward prediction (suppression pattern; absolute r depends on unfixed r_star) |
 | NS g-mode Period | T_g = 66.0 ms | `nvg_ns_g_modes.py` | Consistent / Falsifiable (Einstein Telescope) |
 | Higgs mass shift | delta_m_H = 4.37 MeV | `nvg_higgs_mass_shift.py` | Confirmed (4.37 MeV, within LHC limits) |

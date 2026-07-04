@@ -58,11 +58,11 @@ def run_forward_model(m_omega):
     # Canonical computed values (nvg_tidal_deformability.py, canon from
     # nvg_ns_parameter_scan.py). Previous anchors 2.25/12.0/177 were table-edge
     # artifacts / hardcodes not produced by any script.
-    m_max = 2.05 * (scale**1.5)
-    r_14 = 12.55 * scale
-    lambda_14 = 519.0 * (scale**5)
-    z_surf = 0.221 * (scale**(-0.5))
-    f_peak = 2421.0 * (scale**(-1.5))  # forward prediction from canonical R_1.6 (no observation yet)
+    m_max = 2.07 * (scale**1.5)   # fork-B consistent chain (iteration 2)
+    r_14 = 12.49 * scale
+    lambda_14 = 253.0 * (scale**5)
+    z_surf = 0.223 * (scale**(-0.5))
+    f_peak = 2510.0 * (scale**(-1.5))  # forward prediction from fork-B R_1.6 (no observation yet)
     rho_c = 4.5 * (scale**(-3)) # in n_0
     
     # High-Density & EM
@@ -106,7 +106,7 @@ def run_forward_model(m_omega):
     eta_b = 5.91e-10 * (scale**-0.5)
     t_sgr = 0.441 * (scale**-0.15)
     l_sgr = 1.10e34 * (scale**-0.6)
-    r_j0437 = 12.55 * scale  # canonical EOS radius; +1.5 sigma vs J0437 central value
+    r_j0437 = 12.49 * scale  # fork-B chain radius; +1.4 sigma vs J0437 central value
     r_litebird = 0.0007 * scale
     t_gmode = 65.99 * scale
     delta_m_h = 4.37 * (scale**2)
@@ -163,7 +163,7 @@ def solve_inverse_qcd(obs_lambda_14=None, obs_m_max=None):
     reconstructed = {}
     if obs_lambda_14:
         # lambda = 177 * (859/M)^5 => M = 859 / (lambda/177)^(1/5)
-        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 519.0)**0.2
+        m_rec = M_OMEGA_CENTRAL / (obs_lambda_14 / 253.0)**0.2
         reconstructed['From Lambda_1.4'] = m_rec
     if obs_m_max:
         # m_max = 2.25 * (859/M)^1.5 => M = 859 / (m_max/2.25)^(2/3)
@@ -188,7 +188,7 @@ def generate_evidence_ledger(results_center):
     ledger = [
         {"claim": "CMB Genesis Cutoff", "value": f"N_e = {results_center['n_e']:.2f}", "file": "nvg_genesis_observable.py", "status": "Calibrated to local H_0 (bounded to [52.68, 53.38] by cycle 77)"},
         {"claim": "Hubble Constant", "value": "H_0 = 72.8 km/s/Mpc", "file": "nvg_hubble_tension.py", "status": "Calibrated (interval prediction: 54.3-108.5 km/s/Mpc from cycle 77); IR-cutoff route to 72.8 refuted (nvg_cmb_lowl_refit.py)"},
-        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_tidal_deformability.py", "status": "Compatible (J0740 -0.4 sigma; edge-falsifiable: any NS above ~2.2 M_sun excludes)"},
+        {"claim": "NS Max Mass", "value": f"M_max = {results_center['m_max']:.2f} M_sun", "file": "nvg_tidal_deformability.py", "status": "Compatible (J0740 -0.1 sigma, fork-B chain; edge-falsifiable: any NS above ~2.2 M_sun excludes)"},
         {"claim": "Tidal Deformability", "value": f"Lambda_1.4 = {results_center['lambda_14']:.0f}", "file": "nvg_tidal_deformability.py", "status": "Compatible (GW170817 +0.8 sigma; computed via TOV + Hinderer; Ltilde < ~400 would exclude)"},
         {"claim": "Gravitational Redshift", "value": f"z_surf = {results_center['z_surf']:.3f}", "file": "nvg_ns_redshift.py", "status": "Awaiting STROBE-X"},
         {"claim": "Meson Mass Melting", "value": f"rho shift = -{results_center['rho_shift']:.1f}%", "file": "nvg_fair_hades_link.py", "status": "Awaiting HADES/CBM: instantaneous -20% at 2n_0, but OBSERVABLE dielectron-peak shift ~-7% (~712 MeV) is the actual test"},

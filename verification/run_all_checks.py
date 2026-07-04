@@ -28,7 +28,7 @@ CHECKS = [
     {
         "name": "Core EOS: Saturating Vector Sector",
         "script": "nvg_eos_beta_saturated_vector.py",
-        "claim": "At least one point passes core screening with c_s^2 ≤ 1",
+        "claim": "SUPERSEDED-chain record (kappa EOS baseline, audit bugs #1-#3 documented); fork-B replaces it",
         "critical": True,
         "timeout": 300,
     },
@@ -138,7 +138,7 @@ CHECKS = [
     {
         "name": "Tidal Deformability GW170817 & Double Pulsar MoI",
         "script": "nvg_tidal_deformability.py",
-        "claim": "Verify R_1.4 ~ 12.55 km (canonical EOS) and Double Pulsar moment of inertia is compatible with obs (~1.12e45 g cm^2)",
+        "claim": "SUPERSEDED-chain record (kappa EOS): runs as regression; canonical numbers now come from nvg_fork_b_full_chain.py (R_1.4 = 12.49)",
         "critical": True,
     },
     {
@@ -150,13 +150,13 @@ CHECKS = [
     {
         "name": "Joint NS Likelihood Fit",
         "script": "nvg_joint_ns_inference.py",
-        "claim": "Reduced chi_nu^2 ~ 1.0 for joint multi-messenger fit (calibrated rows excluded)",
+        "claim": "SUPERSEDED-chain record: joint fit of the kappa EOS; the consistent joint chi^2 = 2.35/4 lives in nvg_fork_b_full_chain.py",
         "critical": True,
     },
     {
         "name": "NICER PSR J0437 Mass-Radius Check",
         "script": "nvg_nicer_j0437_check.py",
-        "claim": "Canonical radius vs NICER J0437: +1.5 sigma (inside 95%) — tightest tension of the model",
+        "claim": "Fork-B radius vs NICER J0437: +1.4 sigma (inside 95%) — tightest tension of the model",
         "critical": True,
     },
     {

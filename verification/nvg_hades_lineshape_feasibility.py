@@ -77,6 +77,33 @@ def discrimination(sigma_res):
     return n3, m[j], chi2_per_event
 
 
+def emit_templates(bin_edges_mev, path=None):
+    """Emit fork-A/fork-B excess templates integrated over ARBITRARY bins.
+
+    HADES publications use experiment-specific (variable) invariant-mass
+    binning; rather than guessing it, this emitter produces the templates
+    in any binning the collaboration specifies (CSV: lo, hi, A, B with
+    unit total integral each). Default files ship 40-MeV and 20-MeV
+    binnings over 0.2-0.8 GeV as ready-to-use examples."""
+    edges = np.asarray(bin_edges_mev, dtype=float)
+    m_fine = np.linspace(edges[0], edges[-1], 2400)
+    a = template(m_fine, POLE_A, 20.0)
+    b = template(m_fine, POLE_B, 20.0)
+    a /= np.trapz(a, m_fine)
+    b /= np.trapz(b, m_fine)
+    rows = []
+    for lo, hi in zip(edges[:-1], edges[1:]):
+        sel = (m_fine >= lo) & (m_fine < hi)
+        rows.append((lo, hi, float(np.trapz(a[sel], m_fine[sel])),
+                     float(np.trapz(b[sel], m_fine[sel]))))
+    if path:
+        with open(path, "w") as fh:
+            fh.write("# M_lo[MeV], M_hi[MeV], forkA_frac, forkB_frac\n")
+            for r in rows:
+                fh.write(f"{r[0]:.0f}, {r[1]:.0f}, {r[2]:.6e}, {r[3]:.6e}\n")
+    return rows
+
+
 def main():
     print("=" * 78)
     print("  NVG: ARCHITECTURE SELECTOR AT HADES — LINE-SHAPE FEASIBILITY")
@@ -110,6 +137,16 @@ def main():
   2026-27 in-medium vector-meson analysis.
 """)
     print("=" * 78)
+
+    # ship example binnings; any binning reproducible via emit_templates()
+    import os
+    here = os.path.dirname(os.path.abspath(__file__))
+    emit_templates(np.arange(200, 841, 40),
+                   os.path.join(here, "data", "hades_templates_40MeV.csv"))
+    emit_templates(np.arange(200, 821, 20),
+                   os.path.join(here, "data", "hades_templates_20MeV.csv"))
+    print("  Template CSVs written (40- and 20-MeV example binnings);")
+    print("  any collaboration binning via emit_templates(bin_edges).")
 
     assert n3_46 > n3_20 > 0
 
