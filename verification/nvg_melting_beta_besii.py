@@ -1,19 +1,34 @@
 #!/usr/bin/env python3
 """
-Task 2 — testing the vacuum melting universality class on RHIC BES data.
+Task 2 — method for testing the vacuum melting universality class against
+heavy-ion critical-fluctuation data (STAR BES-I, PRL 126, 092301, 2021).
 
 The melting exponent beta is fixed by the universality class of the rho_c
 transition together with the correlation-length exponent nu (mean-field:
 beta=0.5, nu=0.5; 3D Ising: beta=0.326, nu=0.630). Heavy-ion net-proton
-cumulants probe nu directly (Stephanov 2009): near the critical point the
+cumulants probe nu (Stephanov 2009): near the critical point the
 critical contributions scale as C2~xi^2, C3~xi^4.5, C4~xi^7, so the measurable
 kappa*sigma^2 = C4/C2 ~ xi^5, and xi(mu_B) ~ |mu_B - mu_c|^{-nu}. A wider (larger
-nu) correlation-length peak in mu_B, hence in sqrt(s), is the Ising signature.
+nu) correlation-length peak in mu_B, hence in sqrt(s), would be the Ising
+signature.
+
+WHAT THIS FIT ACTUALLY CONSTRAINS: only the correlation-length exponent nu,
+through the heuristic xi(mu_B) profile. beta=0.326 enters ONLY through the
+assumed universality class that co-fixes (beta, nu); it is NOT a direct data
+measurement of beta.
 
 This is a SCALING-SHAPE demonstration on published STAR BES-I net-proton
 kappa*sigma^2 (0-5% central Au+Au, PRL 126, 092301, 2021, approximate central
-values). It is not an acceptance-corrected analysis; the definitive selection
-is a BES-II deliverable. It shows the METHOD and the current lean.
+values). It is NOT an acceptance-corrected analysis.
+
+HONEST STATUS (adversarial review): the BES-I (STAR, PRL 126, 092301, 2021)
+central values are CONSISTENT WITH NO critical structure. A flat null
+kappa*sigma^2 = 1 already fits the 9 points at chi^2/dof ~ 0.27; both critical
+hypotheses fit at chi^2/dof ~ 0.13-0.22 -- "too good", the signature of an
+over-flexible 2-parameter (mu_c, amplitude) model absorbing one marginal point.
+The Delta chi^2 ~ 0.6 between mean-field and 3D-Ising is only ~0.8 sigma, i.e.
+NOISE: it CANNOT distinguish universality classes. This code fixes the METHOD;
+the definitive, acceptance-corrected selection is a FUTURE BES-II deliverable.
 """
 import numpy as np
 
@@ -50,7 +65,7 @@ def fit(nu):
     return best  # (chi2, mu_c, amp)
 
 print("="*74)
-print("Task 2 — BES net-proton kappa*sigma^2 scaling: mean-field vs 3D Ising")
+print("Task 2 — BES-I net-proton kappa*sigma^2 scaling: mean-field vs 3D Ising")
 print("="*74)
 print("\nScaling: kappa*sigma^2 = C4/C2 ~ xi^5,  xi(mu_B) ~ |mu_B-mu_c|^{-nu}")
 print("  mean-field: nu=0.500 (co-exponent beta=0.500)")
@@ -68,15 +83,22 @@ for name, nu in (("mean-field", 0.500), ("3D Ising", 0.630)):
 
 dchi2 = res['mean-field'][0] - res['3D Ising'][0]
 print(f"\nDelta chi2 (mean-field - Ising) = {dchi2:+.2f}")
-pref = "3D Ising (beta=0.326)" if dchi2 > 0 else "mean-field (beta=0.5)"
-print(f"Preferred by this STAR-shape test: {pref}")
-print("\nReading:")
-print(" * The non-monotonic dip near sqrt(s)~20 GeV has a WIDTH in sqrt(s) that the")
-print("   broader Ising correlation-length peak (nu=0.63) reproduces more naturally")
-print("   than the narrower mean-field peak (nu=0.5).")
-print(" * Because nu and beta are co-fixed by the universality class, a data-collapse")
-print("   that selects Ising nu=0.63 is the SAME result as beta=0.326 for the vacuum")
-print("   melting law -- i.e. RHIC directly tests NVG's melting exponent.")
+lower_hyp = "3D Ising (beta=0.326)" if dchi2 > 0 else "mean-field (beta=0.5)"
+print(f"Lower nominal chi2: {lower_hyp}  (sign only -- NOT a preference; see below)")
+print("\nHONEST READING (this is NOT a detection of a universality class):")
+print(" * A flat null kappa*sigma^2 = 1 already fits these 9 BES-I (STAR, PRL 126,")
+print("   092301, 2021) points at chi2/dof ~ 0.27; both critical hypotheses fit at")
+print("   chi2/dof ~ 0.13-0.22. Such 'too good' fits are the signature of an")
+print("   over-flexible 2-parameter (mu_c, amplitude) model absorbing a single")
+print("   marginal point, not evidence of critical structure.")
+print(f" * Delta chi2 ~ {abs(dchi2):.1f} between the two hypotheses is only ~0.8 sigma,")
+print("   i.e. NOISE. It CANNOT distinguish 3D-Ising from mean-field: the BES-I")
+print("   central values are CONSISTENT WITH NO critical structure.")
+print(" * The sign of Delta chi2 may be robust across nuisance parameters, but")
+print("   robustness of the SIGN does NOT rescue statistical significance.")
+print(" * This fit constrains only the correlation-length exponent nu (via the")
+print("   heuristic xi(mu_B) profile). beta=0.326 enters ONLY through the assumed")
+print("   universality class -- this is NOT a direct data measurement of beta.")
 print("\nCAVEAT: demonstration on published central values with a heuristic xi(mu_B)")
 print("profile and fitted (mu_c, amplitude); the definitive, acceptance-corrected")
-print("selection is a BES-II Phase-II deliverable. This fixes the METHOD, not the verdict.")
+print("selection is a FUTURE BES-II deliverable. This fixes the METHOD, not a verdict.")

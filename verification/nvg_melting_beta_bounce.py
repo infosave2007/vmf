@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 """
+*** SUPERSEDED (crude proxy) -- see nvg_melting_beta_horizon_chain.py. ***
+This script evaluates the comoving Hubble radius R_H at an ARBITRARY melting-onset
+density r* in {0.9, 0.99}; that point choice is what inflates ell_c to 5-7.6 and
+motivates the "Planck ALSO constrains beta" reading below. The horizon-chain
+treatment shows that reading does NOT hold: under the framework's committed
+instanton cutoff ell_c is pinned to H_0 (a near-tautology), and the low-ell chi^2
+gaps are sub-2 sigma anyway -- so the CMB does NOT constrain beta. Keep this file
+only as the differential bounce-duration demonstration; ignore its CMB conclusion.
+
 Task 1 — how the vacuum melting exponent beta feeds the cyclic bounce and the
 CMB low-ell cutoff. The modified Friedmann bounce term is generalised from the
 mean-field mean-field form (2 beta = 1) to (1 - rho/rho_c)^{2 beta}, where beta is
@@ -62,10 +71,12 @@ print("   onset is SMALLER -> k_c larger -> the CMB cutoff moves to HIGHER ell."
 print(f" * For 3D Ising (beta=0.326) the cutoff shifts from ell_c={ELL_C_MF} up to")
 print(f"   ~{ELL_C_MF/(RH(0.9,0.326)/RH(0.9,0.5)):.1f}-{ELL_C_MF/(RH(0.99,0.326)/RH(0.99,0.5)):.1f}")
 print("   depending on the melting-onset density r*.")
-print(" * CONSEQUENCE: the framework's ell_c=3.42 fit to Planck (chi^2=0.615, low-ell")
-print("   deficit at ell=2-3) is NOT beta-neutral. A larger ell_c pushes the cutoff")
-print("   past the quadrupole/octupole, DEGRADING the low-ell fit -> so the Planck")
-print("   low-ell data ALSO constrains beta, independently of RHIC BES-II.")
+print(" * NAIVE CONSEQUENCE (SUPERSEDED): a larger ell_c would push the cutoff past the")
+print("   quadrupole/octupole and seem to let Planck low-ell ALSO constrain beta. But the")
+print("   ell_c shift here is a point-r* artefact: the horizon-chain treatment")
+print("   (nvg_melting_beta_horizon_chain.py) shows ell_c is pinned to H_0 by the N_e")
+print("   calibration and the low-ell chi^2 gaps are sub-2 sigma -> the CMB does NOT")
+print("   constrain beta. Treat only the bounce-duration ratio above as robust.")
 print("\nCAVEAT: exact ell_c requires re-running the CAMB pipeline (nvg_cmb_lowl_refit.py")
 print("with camb installed) and the full horizon chain; the numbers above are the")
 print("differential beta-dependence under the stated radiation-bounce scaling.")

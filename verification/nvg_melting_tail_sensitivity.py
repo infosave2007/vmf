@@ -1,15 +1,31 @@
 #!/usr/bin/env python3
 """
-Tail-sensitivity test: does the neutron-star TAIL of the chiral condensate feel
-the melting exponent beta, or is it completely blind?
+Tail-sensitivity test (HONEST-SCIENCE CORRECTION after adversarial review):
+is the neutron-star TAIL sensitive to the chiral melting exponent beta, or blind?
 
-The two-condensate resolution puts the chiral/dense-matter critical point at a few
-n0. Neutron-star cores reach ~7 n0, i.e. right through that region, sampling the
-melting law W_chiral(x) = (1 - x/x_c)^beta near (and possibly beyond) its critical
-density. If two laws with beta=0.326 vs 0.5 are MATCHED at a low reference density
-(so they agree where NS surely probe) but differ in exponent above it, do any
-observables (M_max, R_1.4, and especially R_2.0 -- the heavy star whose core is
-closest to x_c) discriminate beta? Run on the canonical beta+crust+tidal model.
+WHAT THIS SCRIPT ACTUALLY MEASURES (corrected):
+In this hybrid EOS the matter above the 2 n0 CSS transition is PURE
+constant-sound-speed (CSS) matter with NO chiral melting law. The +/-9% Gaussian
+bump placed at 5.5 n0 therefore lies ENTIRELY inside the CSS-masked region. Its
+only physical effect is a small (~2.4%) shift of the CSS-branch intercept via the
+numerically-differentiated transition pressure at 2 n0. So the measured
+|Delta R_2.0| ~ 0.52 km is a response to a GENERIC high-density stiffness change
+-- one that co-moves M_max, R_1.4 and R_2.0 together and is fully degenerate with
+cs2_q, the transition density and the latent heat -- NOT a measurement of the
+melting exponent beta. A heavy-NS radius is therefore NOT a "second, independent
+handle on beta".
+
+Moreover W_{0.326}-W_{0.5} for (1-x/x_c)^beta is a one-sided, monotone,
+slope-diverging function toward x_c, not a symmetric Gaussian; the 0.09 bump
+amplitude was asserted, not derived; and x_c was never assigned. The Gaussian is
+NOT a faithful proxy for the true W_{0.326}-W_{0.5} difference.
+
+CONCLUSION: within this hybrid model the neutron-star tail is effectively BLIND to
+beta (consistent with the identifiability result). A heavy-NS radius is NOT shown
+to be a handle on the chiral exponent. A proper test would put the melting law
+where it physically acts -- push the CSS transition above the max central density,
+or apply beta to the hadronic branch below the transition -- and propagate the
+true Delta W(x); left as future work.
 """
 import os, sys, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -54,14 +70,20 @@ print("""
     high-density branch and MASKS any sharp chiral melting, so no critical
     exponent can be imprinted on NS structure directly.""")
 
-# (2) robust perturbative beta-signal: at matched low-density slope the two laws
-# differ only in curvature; the difference W_{0.326}-W_{0.5} reaches ~0.09 near
-# 5-6 n0 for a realistic melting slope. Apply that as a smooth high-density bump
-# on the CALIBRATED baseline and read the observable response.
+# (2) NOT a beta-signal. The region above the 2 n0 CSS transition is pure CSS
+# matter, so a bump placed at 5.5 n0 sits INSIDE the CSS-masked region and cannot
+# carry the melting exponent. It only shifts the CSS-branch intercept (~2.4%) via
+# the numerically-differentiated transition pressure at 2 n0 -- i.e. a GENERIC
+# high-density stiffness change, degenerate with cs2_q / transition density / latent
+# heat. Note also W_{0.326}-W_{0.5} is a one-sided, monotone, slope-diverging
+# function toward x_c -- NOT a symmetric Gaussian; the 0.09 amplitude was asserted,
+# not derived, and x_c was never assigned. We keep the +/-9% Gaussian only as a
+# crude high-density stiffness perturbation to read the observable response; it is
+# NOT a faithful proxy for the true W_{0.326}-W_{0.5} difference.
 def bump(delta, x0=5.5, w=1.2):
     return lambda x: g_power(x)*(1.0 + delta*math.exp(-0.5*((x-x0)/w)**2))
-print("(2) Robust perturbative test: apply the beta=0.326-vs-0.5 difference")
-print(f"    (~0.09 near 5.5 n0) as a smooth bump on the calibrated baseline:")
+print("(2) Generic-stiffness probe (NOT a beta measurement): apply a +/-9% Gaussian")
+print(f"    bump at 5.5 n0 -- inside the CSS-masked region -- to the calibrated baseline:")
 print(f"    {'perturbation':>18} {'M_max':>7} {'R_1.4':>7} {'R_2.0':>7}")
 res = {}
 for name, d in (("baseline", 0.0), ("+9% at 5.5 n0", +0.09), ("-9% at 5.5 n0", -0.09)):
@@ -69,7 +91,7 @@ for name, d in (("baseline", 0.0), ("+9% at 5.5 n0", +0.09), ("-9% at 5.5 n0", -
     if o: print(f"    {name:>18} {o[0]:7.3f} {o[1]:7.2f} {o[2]:7.2f}")
 if res.get("+9% at 5.5 n0") and res.get("-9% at 5.5 n0"):
     op, om = res["+9% at 5.5 n0"], res["-9% at 5.5 n0"]
-    print(f"\n    beta-signal (full +/-9% swing): "
+    print(f"\n    generic-stiffness response (full +/-9% swing, NOT a beta-signal): "
           f"|Delta M_max|={abs(op[0]-om[0]):.3f}  |Delta R_1.4|={abs(op[1]-om[1]):.2f} km  "
           f"|Delta R_2.0|={abs(op[2]-om[2]):.2f} km")
 
@@ -77,9 +99,14 @@ print("\n" + "="*74)
 print("VERDICT")
 print("="*74)
 print(" * Heavy-NS radius precision: NICER ~0.5-1 km; STROBE-X/eXTP/ET ~0.2-0.3 km.")
-print(" * The beta-signal in R_2.0 from the difference between beta=0.326 and 0.5 is")
-print("   the |Delta R_2.0| above. If it is below ~0.3 km, the NS tail is effectively")
-print("   BLIND to beta: the exponent is a pure heavy-ion (BES-II) / CMB observable and")
-print("   cannot be cross-checked with neutron stars -- confirming the identifiability")
-print("   result. If it is above ~0.3 km, a next-gen heavy-NS radius would give a")
-print("   SECOND, independent handle on the chiral melting exponent.")
+print(" * The |Delta R_2.0| ~ 0.52 km above is REAL and above TOV discretization noise,")
+print("   but it is NOT a measurement of beta. The bump lives inside the CSS-masked")
+print("   region, so R_2.0 responds to a ~2.4% shift of the 2 n0 CSS transition anchor /")
+print("   overall high-density stiffness -- a GENERIC DEGENERACY, confounded with cs2_q")
+print("   and the transition parameters, that co-moves M_max, R_1.4 and R_2.0 together.")
+print(" * CONCLUSION: within this hybrid model the NS tail is effectively BLIND to beta,")
+print("   consistent with the identifiability result. A heavy-NS radius is NOT shown to")
+print("   be a handle on the chiral melting exponent. A proper test would put the melting")
+print("   law where it physically acts -- push the CSS transition above the max central")
+print("   density, or apply beta to the hadronic branch below the transition -- and")
+print("   propagate the true Delta W(x); left as future work.")

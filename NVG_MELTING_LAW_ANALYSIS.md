@@ -25,8 +25,10 @@ Reproduce everything with three scripts in [`verification/`](verification/):
 | `nvg_bounce_schrodinger_bridge.py` | the bounce as a Schrödinger bridge — per-cycle entropy production (Tolman) |
 | `nvg_melting_ginzburg.py` | Ginzburg criterion from the framework's own $\lambda_v$, $v_0$ — is $\beta=1/2$ self-consistent? |
 | `nvg_melting_beta_cmb_chi2.py` | **real CAMB** low-$\ell$ $\chi^2$ for the $\beta$-shifted cutoff vs Planck 2018 |
-| `nvg_two_condensate_resolution.py` | resolves the CMB/heavy-ion $\beta$ tension via two decoupled condensates |
-| `nvg_melting_tail_sensitivity.py` | does a heavy-NS radius $R_{2.0}$ feel the chiral exponent $\beta$? ($\Delta R_{2.0}\approx0.5$ km) |
+| `nvg_two_condensate_resolution.py` | **hypothesis** that two weakly-coupled condensates would remove the (weak) CMB/heavy-ion $\beta$ tension — model input, not derived |
+| `nvg_melting_tail_sensitivity.py` | does a heavy-NS radius $R_{2.0}$ feel the chiral exponent $\beta$? (**no** — the $\approx0.5$ km signal is a generic stiffness knob, not $\beta$) |
+| `nvg_melting_beta_horizon_chain.py` | **horizon-chain refinement**: is $\ell_c(\beta)$ real or a proxy artefact? (instanton $r_c=c/H_c$ is $\beta$-independent; integrated $k_c$ + real CAMB) |
+| `nvg_melting_master_report.py` | runs all scripts, confirms they execute, writes the consolidated [`NVG_MELTING_REPORT.md`](NVG_MELTING_REPORT.md) |
 
 The canonical forward model (`nvg_tidal_deformability.py`) reproduces the framework's
 published numbers **$M_{\max}=2.05\,M_\odot$, $R_{1.4}=12.55$ km, $\Lambda_{1.4}=519$**, so the
@@ -94,10 +96,14 @@ $Q=-\tfrac{\hbar^2}{2m}\nabla^2\sqrt{W}/\sqrt{W}=0$, so the stationary Fokker–
 balance reduces to $V'(W)=0$ — the classical minimum. **The phenomenological $\sqrt{\;}$-law is
 therefore the exact mean-field extremum of NVG's own potential** — a genuine derivation, not a guess.
 
-**But $\beta=1/2$ is a mean-field *assumption*.** A genuine 3-D second-order critical point forbids
-$\beta=1/2$. The **QCD critical point is established to lie in the 3-D Ising universality class**
-(Stephanov, Rajagopal, Shuryak). A finite-temperature transition — the bounce at $T_b=432$ MeV,
-heavy-ion at $T_c\approx157$ MeV — dimensionally reduces $3{+}1\!\to\!3$D, so:
+**But $\beta=1/2$ is a mean-field *assumption* — indeed it is the Landau ansatz restated.** $\beta=1/2$
+follows directly and *only* from the assumed **linear** melting $v^2(\rho)=v_0^2(1-\rho/\rho_c)$ (any
+melting power $p$ gives $\beta=p/2$), so identifying the $\sqrt{\;}$-law with mean field is not an
+independent prediction but a consequence of the linear ansatz. A genuine 3-D second-order critical point
+forbids $\beta=1/2$. *If* the QCD critical point exists, it is **expected to lie in the 3-D Ising
+universality class** (Stephanov, Rajagopal, Shuryak) — a theoretical expectation, not an established
+measurement. A finite-temperature transition — the bounce at $T_b=432$ MeV, heavy-ion at
+$T_c\approx157$ MeV — dimensionally reduces $3{+}1\!\to\!3$D, so:
 
 | $\beta$ | class |
 |---|---|
@@ -122,12 +128,15 @@ Strong-Energy-Condition violation implicitly assumes $2\beta=1$. If $\beta=0.326
 $2\beta=0.653$, i.e. $H^2=\tfrac{8\pi G}{3}\rho\,(1-\rho/\rho_c)^{0.65}$ — a **different bounce**,
 feeding the e-folds, the CMB low-$\ell$ cutoff, and the pre-bounce $w(z)$ (DESI).
 
-> **Falsifiable, on existing data.** The exponent $\beta$ is measurable **now** from RHIC **BES-II**
-> net-proton cumulant scaling near $T_c\approx157$ MeV: a two-hypothesis data-collapse of
-> $C_4/C_2$, $C_3/C_2$ selects $\beta=1/2$ (VMF $\sqrt{\;}$-law) versus $\beta=0.326$ (3-D Ising).
-> The **same** $\beta$ ties the neutron-star deep core (Finding 1, where the stars are blind),
-> heavy-ion physics (where $\beta$ is measured), and the cosmological bounce (where $\beta$
-> reshapes the Friedmann term) into **one number** — the single highest-leverage quantity to pin.
+> **Where could $\beta$ actually be measured?** Heavy-ion is the only realistic handle. RHIC net-proton
+> cumulant scaling near $T_c\approx157$ MeV could in principle select $\beta=1/2$ (VMF $\sqrt{\;}$-law)
+> versus $\beta=0.326$ (3-D Ising) via a two-hypothesis collapse of $C_4/C_2$, $C_3/C_2$ — but the
+> **existing BES-I** central values (STAR, PRL 126, 092301, 2021) do **not yet discriminate** (a flat
+> no-critical-point null already fits; see consequence 2). **BES-II** is the clean *future* test.
+> The neutron-star deep core is **blind** to $\beta$ (Finding 1), and — as the CMB analysis below shows —
+> the cosmological cutoff does **not robustly** constrain it either. So $\beta$ is best read as a
+> **theoretical-consistency parameter constrained by at most one domain (heavy-ion)**, not a single
+> number simultaneously measured across three.
 
 ---
 
@@ -150,75 +159,121 @@ likelihood, $k^3$ cutoff) gives:
 | 3-D Ising $\beta=0.326$ ($\ell_c\sim5.1$) | 27.66 | $+1.9$ |
 | 3-D Ising $\beta=0.326$ ($\ell_c\sim7.6$) | 36.62 | $+10.9$ |
 
-So the Planck low-$\ell$ deficit **prefers $\beta=1/2$ and disfavours $\beta=0.326$** — the opposite of
-what heavy-ion / lattice-QCD universality wants.
+On this **point-proxy** mapping the Planck low-$\ell$ deficit appears to **prefer $\beta=1/2$** — the
+opposite of what heavy-ion / lattice-QCD universality wants. But that mapping evaluated the comoving
+Hubble radius at an *arbitrary* melting-onset density $r_*=0.9$–$0.99$, and the apparent tension turns
+out to hinge entirely on that choice.
 
-> **A genuine, quantified tension.** The **same** exponent is pulled to $\beta\approx0.326$ by the
-> QCD-scale melting (heavy-ion, lattice universality — consequence 2 and `nvg_melting_ginzburg.py`) and
-> to $\beta=1/2$ by the cosmological bounce cutoff (CMB, above). One "$W$" cannot be a mean-field bounce
-> **and** a 3-D-Ising QCD melting. Either the bounce transition ($T_b=432$ MeV) is a different
-> universality class from the dense-matter one ($T_c\approx157$ MeV) — which dovetails with the earlier
-> **two-scale $\rho_c$** result (Finding 2) — or the crude radiation-bounce $k_c(\beta)$ mapping needs
-> the full horizon-chain treatment. Both are concrete next steps, and the tension itself is a real,
-> falsifiable prediction of the single-condensate hypothesis.
+**Horizon-chain refinement (`nvg_melting_beta_horizon_chain.py`) — the tension is *not robust*.**
+Redoing the cutoff with the framework's actual Genesis horizon chain (`nvg_genesis_observable.py`):
+
+- **(A) Committed mechanism — the Genesis instanton.** The cutoff scale is the Euclidean instanton
+  $r_c=c/H_c$ with $H_c=\sqrt{8\pi G\rho_c/3}$, which uses $\rho_c$ **alone**, so read this way $\beta$
+  never enters $\ell_c=3.42$. But this $\beta$-independence is **conditional**, not a physical robustness:
+  it holds only if (i) the cutoff is the *unsuppressed* de Sitter scale $H_c$ rather than the bounce
+  **peak-curvature** scale $H_{\max}$ at $\rho=\rho_c/(1{+}\beta)$ — which carries the melting factor
+  $(1-\rho/\rho_c)^{\beta}$ and **reintroduces $\beta$ at the $\sim10\%$ level** ($r_c(0.326)/r_c(0.5)\approx0.90$)
+  — and (ii) $N_e$ is a *free* calibration to the local $H_0$. Indeed, since $N_e=\ln(R_{H0}/r_c)$ by
+  construction $k_c=1/R_{H0}$: the cutoff is **pinned to today's Hubble horizon regardless of $r_c$**, so
+  $\ell_c=3.42$ is a near-tautology fixed by $H_0$, **not a $\beta$-discriminating prediction**. Reading (A)
+  *removes a robust constraint*; it does not prove $\ell_c$ is physically $\beta$-independent.
+- **(B) Alternative — the near-bounce particle horizon.** If instead one identifies the cutoff with the
+  *integrated* particle horizon $\eta(\beta)\propto\int r^{-5/4}(1-r)^{-\beta}\,dr$, the ratio
+  $k_c(0.326)/k_c(0.5)\approx1.44$ ($r_*=0.5$; ranges $1.2$–$2.0$ over $r_*\in[0.1,0.9]$) — a real but
+  $r_*$-dependent shift. Feeding this integrated $k_c$ to the same CAMB likelihood gives $\chi^2=27.31$
+  (**$+1.55$**), and the earlier $+10.9$ runaway ($\ell_c\sim7.6$) is the point-proxy's $r_*\!\to\!1$ blow-up.
+
+> **Statistically, the low-$\ell$ CMB does not discriminate $\beta$ at all.** At $\ell=2$–$29$ cosmic
+> variance dominates, and the $\chi^2$ gaps are tiny: $\beta=0.5$ vs no-cutoff is $\Delta\chi^2=1.01$
+> ($\sim1.0\sigma$), $\beta=0.5$ vs $\beta=0.326$(integrated) is $1.9$ ($\sim1.4\sigma$) — **both below
+> $2\sigma$**, further reduced by the $f_{\rm sky}\!\sim\!0.86$ mask, and Planck 2018 (X) reports no
+> significant low-$\ell$ cutoff. So the CMB is **consistent with $\beta=0.5$, no-cutoff, and $\beta=0.326$
+> alike**; the $+10.9$ figure is not a physical disfavouring but the uncertain $k_c(\beta)$ mapping (two
+> admissible mappings span $\chi^2=27.7$–$36.6$). **Planck does not constrain $\beta$** — whether through
+> the (conditional) instanton reading or through raw significance. The two-condensate picture below is a
+> *hypothesis motivated by the two-scale $\rho_c$* (Finding 2), **not** anchored by a CMB $\beta$-measurement.
 
 **Is $\beta=1/2$ even self-consistent?** `nvg_melting_ginzburg.py` applies the Ginzburg criterion with
 the framework's own $\lambda_v=1.02$, $v_0=859$ MeV ($m_\sigma=\sqrt{2\lambda_v}\,v_0=1.22$ GeV,
-$\xi_0=0.16$ fm). The verdict is honestly **borderline**: the $4\pi$-suppressed loop parameter
-$u=\lambda_v/4\pi=0.08$ gives a *small* Ginzburg window ($t_G\sim0.007$, favouring mean field), but
-$\xi_0$ is only $\sim0.7\times$ the microscopic length and $\lambda_v$ is $O(1)$, so the mean-field
-averaging is marginal. The crux is decided **externally** by lattice QCD (critical point 3-D Ising,
-$N_f{=}2$ chiral O(4) — both non-mean-field). Hence the value of an actual RHIC BES-II measurement.
+$\xi_0=0.16$ fm). The naive Ginzburg number $t_G\sim0.007$ (from $u=\lambda_v/4\pi=0.08$) *looks*
+mean-field-friendly, but that estimate is **unreliable and cannot be counted as evidence**: the file's
+own numbers give $\xi_0=0.161$ fm $<\,l_{\rm micro}=0.230$ fm, so the correlation length never exceeds
+the microscopic scale — there is **no mean-field window** and the Ginzburg–Levanyuk long-wavelength
+premise fails — while $u=\lambda_v/4\pi$ understates the true QCD-scale coupling. So the in-framework
+diagnostic and external lattice QCD (critical point 3-D Ising, $N_f{=}2$ chiral O(4)) **agree**, not
+disagree: the transition is **non-mean-field, $\beta\approx0.33$**. This is *not* borderline. (Recall
+$\beta=1/2$ was itself only the Landau ansatz restated, above.) Hence the value of an actual RHIC BES-II
+measurement to fix the exponent directly.
 
 **(2) RHIC BES cumulant scaling** — `nvg_melting_beta_besii.py`. Within a universality class $\beta$
 and the correlation-length exponent $\nu$ are co-fixed (mean-field $\nu=0.5$; 3-D Ising $\nu=0.630$),
 and net-proton $\kappa\sigma^2=C_4/C_2\sim\xi^5$, $\xi\sim|\mu_B-\mu_c|^{-\nu}$. A scaling-shape fit to
-published STAR BES-I $\kappa\sigma^2$ (0–5% central Au+Au) mildly **prefers 3-D Ising** ($\Delta\chi^2=+0.6$,
-$\mu_c\approx200$ MeV, $\sqrt{s}_c\approx19$ GeV) — the broader Ising peak matches the width of the
-$\sqrt{s}\sim20$ GeV dip better than mean field. Not decisive with BES-I errors; **BES-II** is the deliverable.
+published **STAR BES-I** $\kappa\sigma^2$ (0–5% central Au+Au; PRL 126, 092301, 2021) **cannot
+distinguish** the classes: a flat no-critical-point null ($\kappa\sigma^2\equiv1$) already fits the nine
+points at $\chi^2/{\rm dof}\approx0.27$, and both critical hypotheses fit "too good" at
+$\chi^2/{\rm dof}\approx0.13$–$0.22$ (an over-flexible 2-parameter model absorbing one marginal point).
+The $\Delta\chi^2\approx0.6$ leaning to Ising is $\approx0.8\sigma$ — **noise**. Moreover the fit
+constrains only $\nu$; $\beta$ enters solely through the assumed universality class, so this is not a
+direct $\beta$ measurement. **BES-II** (future) is the clean test; current data do not select an exponent.
 
 **(3) Cyclic-entropy (Tolman) problem** — `nvg_bounce_schrodinger_bridge.py`. Posing the bounce as a
 **Schrödinger bridge** (entropic optimal transport, Sinkhorn) between the pre- and post-bounce
 mini-superspace marginals gives a **finite, positive, computable** per-cycle entropy production
 ($\Delta S\sim0.14$ nats per mode here), turning Tolman's postulated "$M\times2$" into a derived
 transport entropy — no prior art was found for this framing. $\Delta S>0$ forbids eternal cyclicity
-(a finite number of past cycles), and $\Delta S$ is itself $\beta$-dependent (via the marginal widths
-from consequence 1). So **the one exponent $\beta$ ties heavy-ion, the CMB cutoff, and the cyclic
-entropy budget together.**
+(a finite number of past cycles). This is a **proof-of-concept** of the framing, not a measurement:
+$\Delta S$ formally *depends* on $\beta$ (via the marginal widths), but like the CMB cutoff it does not
+provide an independent observational handle on the exponent. So of the "consequences," $\beta$
+**propagates** into the bounce, the CMB cutoff, and the cyclic-entropy budget at the level of *theory*,
+but only **heavy-ion** could actually measure it — the CMB does not constrain it (above) and the cyclic
+entropy is not yet an observable. The honest reading is one exponent *appearing* in several places, not
+one number simultaneously *measured* across them.
 
-## Resolving the tension: two condensates, not one
+## A hypothesis, not a resolution: two condensates, not one
 
-The CMB-vs-heavy-ion $\beta$ tension dissolves if "$W$" is not one field. `nvg_two_condensate_resolution.py`
-computes the decoupling on the canonical model: the maximum-mass star has a central density $\sim 7.2\,n_0$
-($\varepsilon_c\approx1088$ MeV/fm³), where the **deep vacuum** condensate $W_{\rm deep}=\sqrt{1-\rho/\rho_c^{\rm cosmo}}$
-is **$99.2\%$ intact** (only $0.8\%$ melted, since $\rho_c^{\rm cosmo}=7.09\times10^4$ MeV/fm³ is $\sim65\times$
-beyond the NS core). A frozen condensate adds only a **constant** to $M^\*$, so its exponent $\beta_{\rm deep}$
-does not enter NS structure at all. Forcing a *critical* melting into the NS density range instead makes the
-star unphysical — confirming NS cores sit **below** any melting critical point.
+*If* "$W$" is not one field, the (already weak) CMB-vs-heavy-ion tension is a non-issue.
+`nvg_two_condensate_resolution.py` **assesses this hypothesis** (it does not derive it). The maximum-mass
+star has a central density $\sim5$–$6\,n_0$ (the $\varepsilon_c/M_N$ estimate of $\sim7.2\,n_0$
+*overestimates* it, since $E/A\gg M_N$ at the core; $\varepsilon_c\approx1088$ MeV/fm³), where the
+**deep vacuum** condensate $W_{\rm deep}=\sqrt{1-\rho/\rho_c^{\rm cosmo}}$ is only $\sim0.8\%$ melted. Note
+the earlier "adds a constant, so $\beta_{\rm deep}$ doesn't enter" reasoning is **wrong**: $W$ linearises
+to $1-\beta\,\rho/\rho_c$, whose slope is $\propto\beta$, so $\beta_{\rm deep}$ *formally does* enter — it
+is simply **numerically negligible** (WEAK coupling, not decoupling), and only because the *assumed*
+$\rho_c^{\rm cosmo}=7.09\times10^4$ MeV/fm³ sits $\sim65\times$ beyond the core. That $0.8\%$ is marginal
+and EOS-dependent, and it **flips** to $\sim8\%$ if $\rho_c^{\rm cosmo}$ were $\sim10\times$ lower — so it
+rests on a speculative CMB fit, not on NS physics.
 
-So the consistent picture is **two condensates at two scales**, each with its own universality class:
+So a **physically-plausible hypothesis** (not a derived result) is two condensates at two scales:
 
-| condensate | $\rho_c$ | $\beta$ | class | probed by |
+| condensate | $\rho_c$ | $\beta$ (assumed) | class | associated with |
 |---|---|---|---|---|
-| **deep vacuum** | $7.09\times10^4$ MeV/fm³ ($\sim470\,n_0$) | $0.5$ | mean-field | CMB bounce ($\ell_c=3.42$) |
-| **chiral / dense-matter** | few $\times n_0$ | $0.326$ | 3-D Ising | RHIC BES-II (+ NS as its low-density tail) |
+| **deep vacuum** | $7.09\times10^4$ MeV/fm³ ($\sim470\,n_0$) | $0.5$ | mean-field | cosmological bounce ($\ell_c=3.42$; *not* a $\beta$-measurement) |
+| **chiral / dense-matter** | few $\times n_0$ | $0.326$ | 3-D Ising | RHIC BES-II (heavy-ion) |
 
-This is the physical form of the earlier **two-scale $\rho_c$** ($\sim150\times$) result: the QCD chiral
-condensate and the deep vacuum condensate are **different order parameters**, so no single $\beta$ is
-over-constrained. Neutron stars sit below both critical points and pin **neither** exponent (matching the
-identifiability study). The resolution makes a **discriminating, falsifiable prediction**: BES-II must give
-$\beta=0.326$ (chiral) *while* the CMB stays $\beta=0.5$ (deep vacuum) — a single condensate, forced to one
-$\beta$, is already disfavoured ($\chi^2$: CMB wants $0.5$, heavy-ion wants $0.326$).
+This is the physical *form* the earlier **two-scale $\rho_c$** ($\sim150\times$) result would take: the QCD
+chiral condensate and the deep vacuum condensate as **different order parameters**, so no single $\beta$ is
+over-constrained. But it is **model input, not a prediction**: the two $\beta$ values ($0.5$, $0.326$) are
+the very inputs used to motivate the split (post-hoc accommodation), and the CMB does not independently
+supply $\beta=0.5$ (it does not measure $\beta$ at all, above). A genuine test would need a *third*,
+independent probe of one of the two exponents. Neutron stars sit below both critical points and pin
+**neither** (matching the identifiability study).
 
-**A second, weak handle: heavy-NS radius** — `nvg_melting_tail_sensitivity.py`. Are neutron stars *entirely*
-blind to the chiral $\beta$? Replacing the melting law by a sharp chiral critical form fails (the RMF
-self-calibration diverges or the star runs away) — within this framework the CSS quark crossover at $2\,n_0$
-masks any sharp chiral melting. But the $\beta=0.326$-vs-$0.5$ *difference* ($\sim9\%$ in the condensate near
-$5.5\,n_0$), applied as a smooth perturbation on the calibrated baseline, moves $R_{2.0}$ by $\approx0.52$ km
-(and $R_{1.4}$ by $0.36$ km, $M_{\max}$ by $0.05$). That is at the edge of current NICER heavy-NS radius
-precision ($\sim0.5$–$1$ km) and **within reach of next-gen instruments** (STROBE-X / eXTP / Einstein
-Telescope, $\sim0.2$–$0.3$ km). So a heavy-neutron-star radius is a **second, independent handle** on the
-chiral melting exponent besides RHIC BES-II — the NS tail is weakly, not totally, sensitive to $\beta$.
+**Can a heavy-NS radius feel the chiral $\beta$? No — it is a stiffness knob, not a $\beta$ handle** —
+`nvg_melting_tail_sensitivity.py`. Replacing the melting law by a sharp chiral critical form fails (the RMF
+self-calibration diverges or the star runs away): within this framework the CSS quark crossover at $2\,n_0$
+($c_s^2\to1/3$) governs the high-density branch and **masks** any sharp chiral melting. A perturbative test
+does give a numerically real signal — a $\pm9\%$ high-density bump moves $R_{2.0}$ by $\approx0.52$ km
+($R_{1.4}$ by $0.36$, $M_{\max}$ by $0.05$), above TOV discretisation noise — **but it is not a
+$\beta$ measurement**. Above the $2\,n_0$ transition the EOS is pure constant-sound-speed matter with *no*
+melting law, so the bump sits inside the masked region; its only effect is a $\sim2.4\%$ shift of the CSS
+transition anchor, i.e. a **generic high-density stiffness change** that co-moves $M_{\max}$, $R_{1.4}$,
+$R_{2.0}$ together and is degenerate with $c_{s,q}^2$, the transition density, and the latent heat. (The
+$\pm9\%$ symmetric Gaussian is also not a faithful proxy for the true one-sided, slope-diverging
+$W_{0.326}-W_{0.5}$.) **Honest conclusion:** within this hybrid model the neutron-star tail is effectively
+**blind** to $\beta$ — consistent with the identifiability result — and a heavy-NS radius is *not* shown to
+be a handle on the chiral exponent. A real test would put the melting law where the star samples it (push
+the CSS transition above the maximum central density, or apply $\beta$ to the hadronic branch below it) and
+propagate the exact $\Delta W(\rho)$ — left as future work.
 
 ## Honest caveats
 
@@ -232,16 +287,34 @@ chiral melting exponent besides RHIC BES-II — the NS tail is weakly, not total
   effectively 4-D at its upper critical dimension (mean field survives, $\beta=1/2$ + logs) is the
   physics question to settle first; both branches are falsifiable against BES-II.
 - The three "consequences" scripts are **differential / demonstration level**, with the scope stated
-  in each: the CMB $\ell_c$ shift is the $\beta$-dependence under a radiation-bounce scaling (the exact
-  value needs the CAMB horizon-chain pipeline); the BES-II fit uses published central values with a
-  heuristic $\xi(\mu_B)$ profile (the definitive selection is a BES-II Phase-II analysis); and the
-  Schrödinger-bridge $\Delta S$ is a proof-of-concept of the (apparently novel) framing, not yet
-  evaluated on the true mini-superspace action.
+  in each: the CMB $\ell_c$ shift was originally the $\beta$-dependence under a radiation-bounce scaling,
+  now **superseded** by the horizon-chain treatment (`nvg_melting_beta_horizon_chain.py`), which shows the
+  shift is largely a point-proxy artefact and the CMB does not robustly constrain $\beta$; the cumulant
+  fit uses published **STAR BES-I** central values (PRL 126, 092301, 2021) with a heuristic $\xi(\mu_B)$
+  profile and **cannot distinguish** the classes ($\Delta\chi^2\approx0.6\approx0.8\sigma$; a flat null
+  already fits) — the definitive selection is a future BES-II analysis; and the Schrödinger-bridge
+  $\Delta S$ is a proof-of-concept of the (apparently novel) framing, not yet evaluated on the true
+  mini-superspace action.
+- The horizon-chain result rests on an **interpretive** point: whether the CMB low-$\ell$ cutoff is the
+  Genesis instanton (conditionally β-independent) or the near-bounce particle horizon (mildly β-dependent).
+  Reading (A) is the framework's committed mechanism, but even it only *removes a robust constraint*
+  (the cutoff is pinned to $H_0$ by the $N_e$ calibration; the peak-curvature scale reintroduces $\beta$ at
+  $\sim10\%$); the honest conclusion is that the earlier tension was **not a robust prediction** either way,
+  not that $\ell_c$ is physically $\beta$-independent.
+- The **two-condensate split is a hypothesis / model input**, not a derived resolution: the two $\beta$
+  values are the inputs that motivate it (post-hoc), and no independent probe supplies either exponent. And
+  the neutron-star "second handle" on $\beta$ does **not** survive scrutiny — the $\approx0.5$ km $R_{2.0}$
+  signal is a generic high-density-stiffness response (degenerate with $c_{s,q}^2$/transition parameters),
+  not a $\beta$ measurement; the NS tail is effectively **blind** to $\beta$.
 
 ## Bottom line
 
-The $\sqrt{\;}$-law is **not arbitrary** — it is the mean-field extremum of NVG's own potential.
-But $\beta=1/2$ is a mean-field assumption that a QCD-anchored critical point likely corrects to
-$\beta\approx0.326$, which is **testable on existing RHIC BES-II data** and **reshapes the bounce**.
-And neutron stars, contrary to a natural reading, constrain $W(\rho)$ only up to $\sim2.5\,n_0$ —
-the deep core is a heavy-ion measurement, not an astrophysical one.
+The $\sqrt{\;}$-law is **not arbitrary** — it is the mean-field extremum of NVG's own potential — but
+$\beta=1/2$ is the **Landau ansatz restated** (it follows only from the assumed *linear* melting), and if
+the $\rho_c$ transition is a genuine 3-D critical point the exponent is $\beta\approx0.326$. Crucially,
+$\beta$ is **hard to measure**: neutron stars constrain $W(\rho)$ only up to $\sim2.5\,n_0$ and their tail
+is effectively blind to $\beta$ (a generic stiffness knob, not a $\beta$ handle); the CMB low-$\ell$ cutoff
+does not robustly constrain $\beta$ either. **Heavy-ion physics is the only realistic handle** — and even
+there the existing STAR **BES-I** data cannot yet distinguish the classes; **BES-II** is the clean future
+test. So $\beta$ is best understood as a **theoretical-consistency parameter**, sharply consequential in
+principle but, on present evidence, measurable at most in one arena rather than jointly across three.
