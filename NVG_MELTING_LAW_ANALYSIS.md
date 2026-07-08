@@ -20,6 +20,9 @@ Reproduce everything with three scripts in [`verification/`](verification/):
 | `nvg_melting_identifiability.py` | fast (crustless) overview: cosmological law is inert at NS density; effective $\rho_c$; form degeneracy |
 | `nvg_melting_freeform_beta.py` | **canonical** $\beta$-equilibrium + crust + tidal model: sensitivity of $M_{\max}, R_{1.4}, \Lambda_{1.4}$ to $W(\rho)$, and the deep-core identifiability band |
 | `nvg_melting_exponent.py` | derivation of the melting exponent $\beta$ from the NVG quartic $V(|\Phi|)$, and the universality correction |
+| `nvg_melting_beta_bounce.py` | how $\beta$ shifts the bounce duration and the CMB low-$\ell$ cutoff $\ell_c$ |
+| `nvg_melting_beta_besii.py` | mean-field vs 3-D Ising scaling test on published STAR net-proton $\kappa\sigma^2$ |
+| `nvg_bounce_schrodinger_bridge.py` | the bounce as a Schrödinger bridge — per-cycle entropy production (Tolman) |
 
 The canonical forward model (`nvg_tidal_deformability.py`) reproduces the framework's
 published numbers **$M_{\max}=2.05\,M_\odot$, $R_{1.4}=12.55$ km, $\Lambda_{1.4}=519$**, so the
@@ -124,6 +127,34 @@ feeding the e-folds, the CMB low-$\ell$ cutoff, and the pre-bounce $w(z)$ (DESI)
 
 ---
 
+## The exponent $\beta$ propagates: three consequences
+
+The melting exponent is not confined to the neutron-star / heavy-ion boundary — it feeds three
+different observables. Each is worked out (differential / demonstration level) in a dedicated script.
+
+**(1) CMB low-$\ell$ cutoff** — `nvg_melting_beta_bounce.py`. Generalising the bounce term to
+$H^2\propto\rho\,(1-\rho/\rho_c)^{2\beta}$, a smaller $\beta$ makes $H^2$ fall less steeply into the
+bounce: the bounce is **sharper** (proper time $\sim0.69\times$ for 3-D Ising) and the comoving
+Hubble radius at melting onset is smaller, so the cutoff moves to **higher** $\ell$. The framework's
+$\ell_c=3.42$ (Planck fit $\chi^2=0.615$) shifts to $\ell_c\sim 5$–$7.6$ for $\beta=0.326$ — which
+would **degrade** the low-$\ell$ deficit fit. So **Planck also constrains $\beta$**, independently of RHIC.
+
+**(2) RHIC BES cumulant scaling** — `nvg_melting_beta_besii.py`. Within a universality class $\beta$
+and the correlation-length exponent $\nu$ are co-fixed (mean-field $\nu=0.5$; 3-D Ising $\nu=0.630$),
+and net-proton $\kappa\sigma^2=C_4/C_2\sim\xi^5$, $\xi\sim|\mu_B-\mu_c|^{-\nu}$. A scaling-shape fit to
+published STAR BES-I $\kappa\sigma^2$ (0–5% central Au+Au) mildly **prefers 3-D Ising** ($\Delta\chi^2=+0.6$,
+$\mu_c\approx200$ MeV, $\sqrt{s}_c\approx19$ GeV) — the broader Ising peak matches the width of the
+$\sqrt{s}\sim20$ GeV dip better than mean field. Not decisive with BES-I errors; **BES-II** is the deliverable.
+
+**(3) Cyclic-entropy (Tolman) problem** — `nvg_bounce_schrodinger_bridge.py`. Posing the bounce as a
+**Schrödinger bridge** (entropic optimal transport, Sinkhorn) between the pre- and post-bounce
+mini-superspace marginals gives a **finite, positive, computable** per-cycle entropy production
+($\Delta S\sim0.14$ nats per mode here), turning Tolman's postulated "$M\times2$" into a derived
+transport entropy — no prior art was found for this framing. $\Delta S>0$ forbids eternal cyclicity
+(a finite number of past cycles), and $\Delta S$ is itself $\beta$-dependent (via the marginal widths
+from consequence 1). So **the one exponent $\beta$ ties heavy-ion, the CMB cutoff, and the cyclic
+entropy budget together.**
+
 ## Honest caveats
 
 - The **crustless** `nvg_melting_identifiability.py` gives untrustworthy absolute radii (~21 km)
@@ -135,6 +166,12 @@ feeding the e-folds, the CMB low-$\ell$ cutoff, and the pre-bounce $w(z)$ (DESI)
   transition is genuinely fluctuation-dominated 3-D (universality wins, $\beta\approx0.33$) or
   effectively 4-D at its upper critical dimension (mean field survives, $\beta=1/2$ + logs) is the
   physics question to settle first; both branches are falsifiable against BES-II.
+- The three "consequences" scripts are **differential / demonstration level**, with the scope stated
+  in each: the CMB $\ell_c$ shift is the $\beta$-dependence under a radiation-bounce scaling (the exact
+  value needs the CAMB horizon-chain pipeline); the BES-II fit uses published central values with a
+  heuristic $\xi(\mu_B)$ profile (the definitive selection is a BES-II Phase-II analysis); and the
+  Schrödinger-bridge $\Delta S$ is a proof-of-concept of the (apparently novel) framing, not yet
+  evaluated on the true mini-superspace action.
 
 ## Bottom line
 
