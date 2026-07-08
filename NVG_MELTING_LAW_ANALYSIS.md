@@ -26,6 +26,7 @@ Reproduce everything with three scripts in [`verification/`](verification/):
 | `nvg_melting_ginzburg.py` | Ginzburg criterion from the framework's own $\lambda_v$, $v_0$ — is $\beta=1/2$ self-consistent? |
 | `nvg_melting_beta_cmb_chi2.py` | **real CAMB** low-$\ell$ $\chi^2$ for the $\beta$-shifted cutoff vs Planck 2018 |
 | `nvg_two_condensate_resolution.py` | resolves the CMB/heavy-ion $\beta$ tension via two decoupled condensates |
+| `nvg_melting_tail_sensitivity.py` | does a heavy-NS radius $R_{2.0}$ feel the chiral exponent $\beta$? ($\Delta R_{2.0}\approx0.5$ km) |
 
 The canonical forward model (`nvg_tidal_deformability.py`) reproduces the framework's
 published numbers **$M_{\max}=2.05\,M_\odot$, $R_{1.4}=12.55$ km, $\Lambda_{1.4}=519$**, so the
@@ -208,6 +209,16 @@ over-constrained. Neutron stars sit below both critical points and pin **neither
 identifiability study). The resolution makes a **discriminating, falsifiable prediction**: BES-II must give
 $\beta=0.326$ (chiral) *while* the CMB stays $\beta=0.5$ (deep vacuum) — a single condensate, forced to one
 $\beta$, is already disfavoured ($\chi^2$: CMB wants $0.5$, heavy-ion wants $0.326$).
+
+**A second, weak handle: heavy-NS radius** — `nvg_melting_tail_sensitivity.py`. Are neutron stars *entirely*
+blind to the chiral $\beta$? Replacing the melting law by a sharp chiral critical form fails (the RMF
+self-calibration diverges or the star runs away) — within this framework the CSS quark crossover at $2\,n_0$
+masks any sharp chiral melting. But the $\beta=0.326$-vs-$0.5$ *difference* ($\sim9\%$ in the condensate near
+$5.5\,n_0$), applied as a smooth perturbation on the calibrated baseline, moves $R_{2.0}$ by $\approx0.52$ km
+(and $R_{1.4}$ by $0.36$ km, $M_{\max}$ by $0.05$). That is at the edge of current NICER heavy-NS radius
+precision ($\sim0.5$–$1$ km) and **within reach of next-gen instruments** (STROBE-X / eXTP / Einstein
+Telescope, $\sim0.2$–$0.3$ km). So a heavy-neutron-star radius is a **second, independent handle** on the
+chiral melting exponent besides RHIC BES-II — the NS tail is weakly, not totally, sensitive to $\beta$.
 
 ## Honest caveats
 
