@@ -105,8 +105,10 @@ def main():
         print(f"   {g:6.2f} {ab:7.3f} {g:9.3f} {g*g:10.3f} "
               f"{g**(2./3.):9.3f} {g**(4./3.):10.3f}")
     print("   Horizon chain requires a_t x2 and S_GH x4:")
-    print("   -> matter-era turnaround fixes g = 2 (mass x2 per cycle);")
+    print("   -> matter-era turnaround requires g = 2 (mass x2 per cycle).")
     print("   -> 'M x4 per cycle' would give a_t x4, S_GH x16 — EXCLUDED.")
+    print("   NOTE: g = 2 is an EMPIRICAL POSTULATE chosen to fit the current")
+    print("   Universe mass (~10^56 g) at cycle 77. It is NOT derived from microphysics.")
 
     # ── Repo self-consistency check ─────────────────────────────────────
     M1_g = 0.38 * 1.989e33
@@ -127,8 +129,7 @@ def main():
 
     print("\n5. OPEN: a microscopic mechanism fixing g = 2 per cycle.")
     print("   Candidates evaluated in nvg_g2_mechanism.py: winding (1.126) and vacuum")
-    print("   release (1.26) fail; crunch binding-energy release brackets g -> 2 in")
-    print("   the maximal-collapse limit — the lead candidate, not yet a derivation.")
+    print("   release (1.26) fail. Until derived, g=2 remains an EMPIRICAL ANSATZ.")
     print("=" * 78)
 
 

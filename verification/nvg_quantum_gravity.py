@@ -79,17 +79,35 @@ def schwarzschild_radius(M):
     return 2 * G * M / c**2
 
 
+def horizon_acceleration(M):
+    """
+    Surface gravity (acceleration) at the Schwarzschild horizon.
+    κ = c⁴ / (4 G M)
+    """
+    return c**4 / (4 * G * M)
+
+
+def SED_unruh_temperature(a):
+    """
+    In Stochastic Electrodynamics (SED), an observer with acceleration 'a'
+    sees the classical zero-point fluctuations of the vacuum (the θ-field)
+    as a thermal bath with a Planck spectrum (Unruh effect for classical fields).
+    T = ℏ a / (2π c k_B)
+    """
+    return hbar * a / (2 * math.pi * c * k_B)
+
+
+def unruh_temperature(a):
+    """Unruh temperature T = ℏa/(2πck_B) [K]."""
+    return hbar * a / (2 * math.pi * c * k_B)
+
+
 def theta_collapse_time_at_horizon(M):
     """
     NVG θ-thermalization time at the horizon:
     τ_collapse = ℏ/(k_B T_H) = 8πGM/c³  [s].
     """
     return 8 * math.pi * G * M / c**3
-
-
-def unruh_temperature(a):
-    """Unruh temperature T = ℏa/(2πck_B) [K]."""
-    return hbar * a / (2 * math.pi * c * k_B)
 
 
 def surface_gravity(M):
@@ -142,17 +160,19 @@ def main():
     print(f"\n1. HAWKING TEMPERATURE = θ-THERMALIZATION:")
     print(f"   Standard QFT:  T_H = ℏc³/(8πGMk_B)")
     print(f"   NVG:           T_H = 1/τ_collapse at horizon")
-    print(f"   τ_collapse = ℏ/(k_B T) → T = ℏ/(k_B τ)")
-    print(f"   At horizon: τ = 8πGM/c³ (light-crossing time of r_s)")
-    print(f"   → T_H = ℏc³/(8πGMk_B)  — IDENTICAL.")
-    print(f"")
-    print(f"   No graviton. No spin-2 quantization. No UV divergences.")
-    print(f"   Just θ-thermalization in curved classical spacetime.")
+    print(f"   [SED DERIVATION]:")
+    print(f"   In Stochastic Electrodynamics (SED), the vacuum is a real, classical")
+    print(f"   stochastic fluctuating field. An observer at the Schwarzschild horizon")
+    print(f"   experiences an acceleration κ = c⁴ / (4GM).")
+    print(f"   Due to the Rindler horizon, the zero-point fluctuations of the θ-field")
+    print(f"   appear as a thermal Planck spectrum with Unruh temperature:")
+    print(f"   T = ℏκ/(2πck_B) = ℏc³/(8πGMk_B) = T_H.")
+    print(f"   → Hawking radiation is the classical stochastic noise of the vacuum.")
 
     # Verify for several masses
     print(f"\n{'─'*80}")
     print(f"2. VERIFICATION FOR DIFFERENT BLACK HOLE MASSES:")
-    print(f"   {'Object':<25} {'Mass [M☉]':>12} {'T_H [K]':>14} {'τ_θ [s]':>14} {'T_θ⁻¹ [K]':>14} {'Match':>8}")
+    print(f"   {'Object':<25} {'Mass [M☉]':>12} {'T_H [K]':>14} {'κ [m/s²]':>14} {'T_SED [K]':>14} {'Match':>8}")
     print(f"   {'─'*25} {'─'*12} {'─'*14} {'─'*14} {'─'*14} {'─'*8}")
 
     test_masses = [
@@ -167,10 +187,10 @@ def main():
     for name, m_solar in test_masses:
         M = m_solar * M_sun
         T_H = hawking_temperature(M)
-        tau_theta = theta_collapse_time_at_horizon(M)
-        T_from_tau = hbar / (k_B * tau_theta)
-        match = abs(T_H - T_from_tau) / T_H < 1e-10
-        print(f"   {name:<25} {m_solar:>12.2e} {T_H:>14.4e} {tau_theta:>14.4e} {T_from_tau:>14.4e} {'✅' if match else '❌':>8}")
+        kappa = horizon_acceleration(M)
+        T_SED = SED_unruh_temperature(kappa)
+        match = abs(T_H - T_SED) / T_H < 1e-10
+        print(f"   {name:<25} {m_solar:>12.2e} {T_H:>14.4e} {kappa:>14.4e} {T_SED:>14.4e} {'✅' if match else '❌':>8}")
 
     # ── 3. Why gravity doesn't need quantization ─────────────────
     print(f"\n{'─'*80}")
@@ -192,7 +212,6 @@ def main():
     print(f"4. BEKENSTEIN-HAWKING ENTROPY = θ-MODE COUNTING:")
     M_test = 10 * M_sun
     S_BH = bekenstein_hawking_entropy(M_test)
-    S_theta = theta_mode_entropy(M_test)
     r_s = schwarzschild_radius(M_test)
     A = 4 * math.pi * r_s**2
 
@@ -202,13 +221,10 @@ def main():
     print(f"   Planck area:          l_Pl² = {l_Pl**2:.2e} m²")
     print(f"")
     print(f"   Bekenstein-Hawking:    S_BH = A/(4l_Pl²) = {S_BH:.4e} k_B")
-    print(f"   NVG θ-mode count:     N_θ  = A/(4l_Pl²) = {S_theta:.4e} k_B")
-    print(f"   Match:                {abs(S_BH - S_theta)/S_BH < 1e-10}")
-    print(f"")
-    print(f"   Physical meaning: each Planck-area cell on the horizon")
-    print(f"   carries one θ-phase degree of freedom (0 to 2π).")
-    print(f"   Information content = ln(N states per cell) × N cells")
-    print(f"   = 1 bit/cell × A/(4l_Pl²) cells = S_BH")
+    print(f"   The Bekenstein-Hawking entropy S = A/(4l_Pl²) arises in NVG as the")
+    print(f"   thermodynamic entropy of the SED thermal bath of the θ-field.")
+    print(f"   It is the classical stochastic phase space volume, not a quantum")
+    print(f"   state count (d.o.f. density scaling).")
 
     # ── 5. Evaporation from θ-thermalization ─────────────────────
     print(f"\n{'─'*80}")
@@ -462,13 +478,13 @@ def main():
     print(f"\nSaved: {plot_path}")
 
     # ── Assertions ────────────────────────────────────────────────
-    # 1. T_Hawking ≡ T_θ (exact)
+    # 1. T_Hawking ≡ T_SED (exact)
     for M in [M_Pl, M_sun, 1e6 * M_sun, 1e20]:
         T_H = hawking_temperature(M)
-        tau = theta_collapse_time_at_horizon(M)
-        T_theta = hbar / (k_B * tau)
-        assert abs(T_H - T_theta) / T_H < 1e-12, \
-            f"T_H ≠ T_θ for M={M}: {T_H} vs {T_theta}"
+        kappa = horizon_acceleration(M)
+        T_SED = SED_unruh_temperature(kappa)
+        assert abs(T_H - T_SED) / T_H < 1e-12, \
+            f"T_H ≠ T_SED for M={M}: {T_H} vs {T_SED}"
 
     # 2. S_BH = N_θ (exact)
     for M in [M_sun, 10 * M_sun, 1e6 * M_sun]:
@@ -483,7 +499,7 @@ def main():
 
     # 4. τ_collapse at horizon = 4π r_s / c
     for M in [M_sun, 10 * M_sun]:
-        tau = theta_collapse_time_at_horizon(M)
+        tau = hbar / (k_B * T_SED)
         r_s = schwarzschild_radius(M)
         # τ = 8πGM/c³ = 4π(2GM/c²)/c = 4π r_s / c
         tau_check = 4 * math.pi * r_s / c
@@ -491,9 +507,9 @@ def main():
             f"τ ≠ 4πr_s/c: {tau} vs {tau_check}"
 
     print("\n" + "=" * 80)
-    print("THEOREM: All quantum-gravitational effects (Hawking, Bekenstein,")
-    print("  Unruh, evaporation) arise from θ-phase thermalization")
-    print("  of the NVG vacuum condensate in curved classical spacetime.")
+    print("THEOREM: All quantum-gravitational effects (Hawking, Bekenstein)")
+    print("  arise from Stochastic Electrodynamics (SED) of the classical θ-phase.")
+    print("  The horizon acts as an Unruh bath for classical zero-point fluctuations.")
     print("  NO quantization of gravity is required.")
     print(f"  Bounce density ρ_c/ρ_Pl ~ {rho_c_NVG_SI/rho_Pl:.0e} — fully semiclassical.")
     print("=" * 80)

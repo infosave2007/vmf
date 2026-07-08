@@ -233,13 +233,13 @@ def main():
     dx_arr = np.array(dx_arr)
     dp_arr = np.array(dp_arr)
 
-    print(f"\n{'─'*80}")
-    print(f"4. THEOREM (Heisenberg Uncertainty from NVG):")
-    print(f"   In NVG, the vacuum condensate Φ = W·e^{{iθ}} decomposes into")
-    print(f"   amplitude W (↔ position information) and phase θ (↔ momentum).")
-    print(f"   Δx·Δp ≥ ℏ/2 is the Cauchy-Schwarz inequality for ∇log W and ∇θ.")
-    print(f"   This is PURE MATHEMATICS — no quantum postulate needed.")
-    print(f"   Minimum uncertainty (Δx·Δp = ℏ/2) = Gaussian = ground state of W.")
+    print(f"   [CLASSICAL HYDRODYNAMICS DERIVATION]:")
+    print(f"   The Cauchy-Schwarz inequality for L² spaces is a fundamental")
+    print(f"   mathematical property of classical waves (the Fourier limit).")
+    print(f"   By treating the vacuum condensate as a classical Madelung fluid,")
+    print(f"   its structural uncertainty Δx·Δ(∇θ) ≥ 1/2 is purely classical.")
+    print(f"   The constant ℏ is introduced simply as the dimensionful scale")
+    print(f"   converting fluid phase gradient to momentum: p ≡ ℏ∇θ.")
 
     # ══════════════════════════════════════════════════════════════
     # PUBLICATION FIGURE
@@ -374,8 +374,9 @@ def main():
 
     print("\n" + "=" * 80)
     print("THEOREM: Δx·Δp ≥ ℏ/2 is the Cauchy-Schwarz inequality for")
-    print("  the Madelung fields (∇log W, ∇θ) of the vacuum condensate.")
-    print("  Pure mathematics — no quantum postulate needed.")
+    print("  the Madelung hydrodynamics of the classical vacuum condensate.")
+    print("  It represents the classical Fourier limit of fluid wave packets,")
+    print("  where ℏ serves as the fundamental scaling constant p = ℏ∇θ.")
     print("  Verified for all test states: Gaussian, squeezed, superposition.")
     print("=" * 80)
 

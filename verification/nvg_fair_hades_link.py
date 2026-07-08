@@ -25,11 +25,10 @@ n_0 = 0.16  # Saturation density (fm^-3)
 # (RMF values span 9-13) and A_0(n_0) are model-dependent, giving
 # kappa_1(analytic) = 0.21 +/- 0.04; the EOS nuclear fit 0.25 sits at the
 # upper edge of this band (and the beta-equilibrated EOS does NOT build at
-# 0.21 — tested). Honest status: one parameter within coupled uncertainties,
-# sector values retained (0.21 meson channel, 0.25 EOS) pending a
-# first-principles pin-down of g_omega and A_0.
+# 0.21 — tested). Honest status: this parameter is calibrated to 0.25 in the 
+# nuclear sector due to uncertainties in g_omega and A_0.
 # The parameter kappa_2 = 0.80 governs the non-linear saturation.
-kappa_1 = 0.21
+kappa_1 = 0.25
 kappa_2 = 0.80
 
 # ── Hadron Spectrum (Points 3 & 4) ──────────────────────────────────
@@ -90,6 +89,8 @@ def link_to_hades() -> None:
     print("The dominant source of these pairs is the decay of vector mesons (rho, omega).")
     print("If the QCD vacuum melts (as NVG predicts), the mass of these mesons should")
     print("shift downward in the dense medium.")
+    print("NOTE: The coupling kappa_1 is calibrated to 0.25 to match the nuclear EOS,")
+    print("within the analytic uncertainty band of 0.21 +/- 0.04.")
     print()
     
     densities = [0.0, 0.5, 1.0, 1.5, 2.0, 3.0]

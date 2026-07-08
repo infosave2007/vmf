@@ -309,38 +309,33 @@ def main():
           f"{'CLOSED (no self-bound phase)' if gate_ok and not pneg.any() else ('PASS' if gate_ok else 'FAIL')}")
 
     # 3. CSS scan + tidal
-    print(f"\n  2. CSS transition scan (c_s^2 = 1/3) + crust + tidal:")
-    print(f"     {'n_tr':>5} {'dE':>4} {'cs2q':>4} {'M_max':>6} {'R_1.4':>6} "
-          f"{'L_1.4':>6} {'chi2':>6}")
-    best = None
-    for ntr in (1.6, 1.8, 2.0, 2.4):
-        i_tr = np.argmin(abs(dl["n"] - ntr * N0))
-        p_tr, e_tr = dl["p"][i_tr], dl["eps"][i_tr]
-        if p_tr <= 0:
-            continue
-        for de_frac, cs2q in ((0.25, 1/3), (0.25, 0.5), (0.25, 0.65),
-                              (0.5, 0.5), (0.5, 0.65), (0.0, 0.5)):
-            de = de_frac * e_tr
-            p_ext = np.geomspace(p_tr * 1.001, 4000, 160)
-            e_ext = e_tr + de + (p_ext - p_tr) / cs2q
-            p_all = np.concatenate([dl["p"][:i_tr + 1], p_ext])
-            e_all = np.concatenate([dl["eps"][:i_tr + 1], e_ext])
-            fam = star_family(p_all, e_all)
-            if not np.isfinite(fam["r14"]):
-                continue
-            chi2 = (((fam["m_max"] - 2.08) / 0.07) ** 2 +
-                    ((fam["r14"] - 12.2) / 0.5) ** 2 +
-                    ((fam["r14"] - 11.36) / 0.8) ** 2 +
-                    ((fam["l136"] - 300.0) / 255.0) ** 2)
-            print(f"     {ntr:>5.1f} {de_frac:>4.2f} {cs2q:>4.2f} {fam['m_max']:>6.2f} "
-                  f"{fam['r14']:>6.2f} {fam['l14']:>6.0f} {chi2:>6.2f}")
-            if best is None or chi2 < best[0]:
-                best = (chi2, ntr, de_frac, cs2q, fam)
-
-    if best is None:
-        print("     no viable CSS point")
+    print(f"\n  2. CSS transition (c_s^2 = 1/3) + crust + tidal:")
+    # The transition parameters are EMPIRICALLY CALIBRATED to match J0740, NICER, and GW170817.
+    # They are NOT zero-parameter predictions from the QCD anchor.
+    ntr = 1.6
+    de_frac = 0.25
+    cs2q = 1.0 / 3.0
+    
+    i_tr = np.argmin(abs(dl["n"] - ntr * N0))
+    p_tr, e_tr = dl["p"][i_tr], dl["eps"][i_tr]
+    if p_tr <= 0:
+        print("     Error: p_tr <= 0")
         return
-    chi2, ntr, de_frac, cs2q, fam = best
+        
+    de = de_frac * e_tr
+    p_ext = np.geomspace(p_tr * 1.001, 4000, 160)
+    e_ext = e_tr + de + (p_ext - p_tr) / cs2q
+    p_all = np.concatenate([dl["p"][:i_tr + 1], p_ext])
+    e_all = np.concatenate([dl["eps"][:i_tr + 1], e_ext])
+    fam = star_family(p_all, e_all)
+    if not np.isfinite(fam["r14"]):
+        print("     Error: r14 not finite")
+        return
+        
+    chi2 = (((fam["m_max"] - 2.08) / 0.07) ** 2 +
+            ((fam["r14"] - 12.2) / 0.5) ** 2 +
+            ((fam["r14"] - 11.36) / 0.8) ** 2 +
+            ((fam["l136"] - 300.0) / 255.0) ** 2)
     z = (1.0 - 2.0 * 1.4766 * 1.4 / fam["r14"]) ** -0.5 - 1.0
     f_peak = 8.16 - 0.46 * fam["r16"]
     print(f"\n  3. FORK-B CANONICAL CANDIDATE: n_tr = {ntr} n_0, "
@@ -354,10 +349,10 @@ def main():
           f"(Bauswein-type)")
     print(f"     z_surf(1.4) = {z:.3f};  joint chi^2 = {chi2:.2f} (4 pulls)")
     print(f"""
-  STATUS: fork-B full chain complete at first pass. These numbers
-  supersede the old canon (12.55 km family) pending review; K = {K:.0f}
-  and the crust model are the quoted systematics. The strange gate is
-  closed on the consistent EOS — no self-bound phase of any flavor.
+  STATUS: fork-B full chain complete. The macroscopic core parameters 
+  are EMPIRICALLY CALIBRATED to match observations (ntr=1.6, dE=0.25). 
+  They are not zero-parameter predictions. The strange gate is closed 
+  on the consistent EOS — no self-bound phase of any flavor.
 """)
     print("=" * 78)
 
