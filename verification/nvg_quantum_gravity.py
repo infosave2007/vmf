@@ -499,6 +499,8 @@ def main():
 
     # 4. τ_collapse at horizon = 4π r_s / c
     for M in [M_sun, 10 * M_sun]:
+        kappa = horizon_acceleration(M)
+        T_SED = SED_unruh_temperature(kappa)
         tau = hbar / (k_B * T_SED)
         r_s = schwarzschild_radius(M)
         # τ = 8πGM/c³ = 4π(2GM/c²)/c = 4π r_s / c
