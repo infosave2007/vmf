@@ -23,6 +23,8 @@ Reproduce everything with three scripts in [`verification/`](verification/):
 | `nvg_melting_beta_bounce.py` | how $\beta$ shifts the bounce duration and the CMB low-$\ell$ cutoff $\ell_c$ |
 | `nvg_melting_beta_besii.py` | mean-field vs 3-D Ising scaling test on published STAR net-proton $\kappa\sigma^2$ |
 | `nvg_bounce_schrodinger_bridge.py` | the bounce as a Schrödinger bridge — per-cycle entropy production (Tolman) |
+| `nvg_melting_ginzburg.py` | Ginzburg criterion from the framework's own $\lambda_v$, $v_0$ — is $\beta=1/2$ self-consistent? |
+| `nvg_melting_beta_cmb_chi2.py` | **real CAMB** low-$\ell$ $\chi^2$ for the $\beta$-shifted cutoff vs Planck 2018 |
 
 The canonical forward model (`nvg_tidal_deformability.py`) reproduces the framework's
 published numbers **$M_{\max}=2.05\,M_\odot$, $R_{1.4}=12.55$ km, $\Lambda_{1.4}=519$**, so the
@@ -132,12 +134,39 @@ feeding the e-folds, the CMB low-$\ell$ cutoff, and the pre-bounce $w(z)$ (DESI)
 The melting exponent is not confined to the neutron-star / heavy-ion boundary — it feeds three
 different observables. Each is worked out (differential / demonstration level) in a dedicated script.
 
-**(1) CMB low-$\ell$ cutoff** — `nvg_melting_beta_bounce.py`. Generalising the bounce term to
-$H^2\propto\rho\,(1-\rho/\rho_c)^{2\beta}$, a smaller $\beta$ makes $H^2$ fall less steeply into the
-bounce: the bounce is **sharper** (proper time $\sim0.69\times$ for 3-D Ising) and the comoving
-Hubble radius at melting onset is smaller, so the cutoff moves to **higher** $\ell$. The framework's
-$\ell_c=3.42$ (Planck fit $\chi^2=0.615$) shifts to $\ell_c\sim 5$–$7.6$ for $\beta=0.326$ — which
-would **degrade** the low-$\ell$ deficit fit. So **Planck also constrains $\beta$**, independently of RHIC.
+**(1) CMB low-$\ell$ cutoff — now with a real CAMB refit** — `nvg_melting_beta_bounce.py`,
+`nvg_melting_beta_cmb_chi2.py`. Generalising the bounce term to $H^2\propto\rho\,(1-\rho/\rho_c)^{2\beta}$,
+a smaller $\beta$ makes the bounce **sharper** (proper time $\sim0.69\times$ for 3-D Ising) and moves the
+comoving Genesis cutoff to **higher** $\ell$: $\ell_c=3.42\to\sim5$–$7.6$ for $\beta=0.326$. Running the
+**actual CAMB** low-$\ell$ likelihood against the Planck 2018 TT deficit ($\ell=2$–$29$, exact Gamma
+likelihood, $k^3$ cutoff) gives:
+
+| model | $\chi^2_{\rm low\text{-}\ell}$ | vs mean field |
+|---|---|---|
+| no cutoff ($\Lambda$CDM) | 26.77 | |
+| **mean-field $\beta=0.5$** ($\ell_c=3.42$) | **25.76** | best |
+| 3-D Ising $\beta=0.326$ ($\ell_c\sim5.1$) | 27.66 | $+1.9$ |
+| 3-D Ising $\beta=0.326$ ($\ell_c\sim7.6$) | 36.62 | $+10.9$ |
+
+So the Planck low-$\ell$ deficit **prefers $\beta=1/2$ and disfavours $\beta=0.326$** — the opposite of
+what heavy-ion / lattice-QCD universality wants.
+
+> **A genuine, quantified tension.** The **same** exponent is pulled to $\beta\approx0.326$ by the
+> QCD-scale melting (heavy-ion, lattice universality — consequence 2 and `nvg_melting_ginzburg.py`) and
+> to $\beta=1/2$ by the cosmological bounce cutoff (CMB, above). One "$W$" cannot be a mean-field bounce
+> **and** a 3-D-Ising QCD melting. Either the bounce transition ($T_b=432$ MeV) is a different
+> universality class from the dense-matter one ($T_c\approx157$ MeV) — which dovetails with the earlier
+> **two-scale $\rho_c$** result (Finding 2) — or the crude radiation-bounce $k_c(\beta)$ mapping needs
+> the full horizon-chain treatment. Both are concrete next steps, and the tension itself is a real,
+> falsifiable prediction of the single-condensate hypothesis.
+
+**Is $\beta=1/2$ even self-consistent?** `nvg_melting_ginzburg.py` applies the Ginzburg criterion with
+the framework's own $\lambda_v=1.02$, $v_0=859$ MeV ($m_\sigma=\sqrt{2\lambda_v}\,v_0=1.22$ GeV,
+$\xi_0=0.16$ fm). The verdict is honestly **borderline**: the $4\pi$-suppressed loop parameter
+$u=\lambda_v/4\pi=0.08$ gives a *small* Ginzburg window ($t_G\sim0.007$, favouring mean field), but
+$\xi_0$ is only $\sim0.7\times$ the microscopic length and $\lambda_v$ is $O(1)$, so the mean-field
+averaging is marginal. The crux is decided **externally** by lattice QCD (critical point 3-D Ising,
+$N_f{=}2$ chiral O(4) — both non-mean-field). Hence the value of an actual RHIC BES-II measurement.
 
 **(2) RHIC BES cumulant scaling** — `nvg_melting_beta_besii.py`. Within a universality class $\beta$
 and the correlation-length exponent $\nu$ are co-fixed (mean-field $\nu=0.5$; 3-D Ising $\nu=0.630$),
