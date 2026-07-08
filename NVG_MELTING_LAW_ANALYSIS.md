@@ -25,6 +25,7 @@ Reproduce everything with three scripts in [`verification/`](verification/):
 | `nvg_bounce_schrodinger_bridge.py` | the bounce as a Schrödinger bridge — per-cycle entropy production (Tolman) |
 | `nvg_melting_ginzburg.py` | Ginzburg criterion from the framework's own $\lambda_v$, $v_0$ — is $\beta=1/2$ self-consistent? |
 | `nvg_melting_beta_cmb_chi2.py` | **real CAMB** low-$\ell$ $\chi^2$ for the $\beta$-shifted cutoff vs Planck 2018 |
+| `nvg_two_condensate_resolution.py` | resolves the CMB/heavy-ion $\beta$ tension via two decoupled condensates |
 
 The canonical forward model (`nvg_tidal_deformability.py`) reproduces the framework's
 published numbers **$M_{\max}=2.05\,M_\odot$, $R_{1.4}=12.55$ km, $\Lambda_{1.4}=519$**, so the
@@ -183,6 +184,30 @@ transport entropy — no prior art was found for this framing. $\Delta S>0$ forb
 (a finite number of past cycles), and $\Delta S$ is itself $\beta$-dependent (via the marginal widths
 from consequence 1). So **the one exponent $\beta$ ties heavy-ion, the CMB cutoff, and the cyclic
 entropy budget together.**
+
+## Resolving the tension: two condensates, not one
+
+The CMB-vs-heavy-ion $\beta$ tension dissolves if "$W$" is not one field. `nvg_two_condensate_resolution.py`
+computes the decoupling on the canonical model: the maximum-mass star has a central density $\sim 7.2\,n_0$
+($\varepsilon_c\approx1088$ MeV/fm³), where the **deep vacuum** condensate $W_{\rm deep}=\sqrt{1-\rho/\rho_c^{\rm cosmo}}$
+is **$99.2\%$ intact** (only $0.8\%$ melted, since $\rho_c^{\rm cosmo}=7.09\times10^4$ MeV/fm³ is $\sim65\times$
+beyond the NS core). A frozen condensate adds only a **constant** to $M^\*$, so its exponent $\beta_{\rm deep}$
+does not enter NS structure at all. Forcing a *critical* melting into the NS density range instead makes the
+star unphysical — confirming NS cores sit **below** any melting critical point.
+
+So the consistent picture is **two condensates at two scales**, each with its own universality class:
+
+| condensate | $\rho_c$ | $\beta$ | class | probed by |
+|---|---|---|---|---|
+| **deep vacuum** | $7.09\times10^4$ MeV/fm³ ($\sim470\,n_0$) | $0.5$ | mean-field | CMB bounce ($\ell_c=3.42$) |
+| **chiral / dense-matter** | few $\times n_0$ | $0.326$ | 3-D Ising | RHIC BES-II (+ NS as its low-density tail) |
+
+This is the physical form of the earlier **two-scale $\rho_c$** ($\sim150\times$) result: the QCD chiral
+condensate and the deep vacuum condensate are **different order parameters**, so no single $\beta$ is
+over-constrained. Neutron stars sit below both critical points and pin **neither** exponent (matching the
+identifiability study). The resolution makes a **discriminating, falsifiable prediction**: BES-II must give
+$\beta=0.326$ (chiral) *while* the CMB stays $\beta=0.5$ (deep vacuum) — a single condensate, forced to one
+$\beta$, is already disfavoured ($\chi^2$: CMB wants $0.5$, heavy-ion wants $0.326$).
 
 ## Honest caveats
 
