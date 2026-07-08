@@ -206,6 +206,7 @@ The boldest, high-risk predictions of the theory. These will either confirm or c
 | **Gravitational Echo** | Echo spacing $\Delta t \approx 0.081$ s ($65\,M_\odot$) with decay amplitude $A_n \propto (1 - \mathcal{T})^n$ | Matched filtering templates ready; targeted search in LIGO O4/O5 archives |
 | **NS Gravitational Redshift** | $z_{\rm surf}(1.4 M_\odot) \approx 0.223$ (fork-B $R_{1.4} = 12.49$ km) | STROBE-X / eXTP (future X-ray observatories) |
 | **Post-merger $f_{\rm peak}$** | $f_{\rm peak} \approx 2510$ Hz (fork-B $R_{1.6} = 12.27$ km) | LIGO O5 / Einstein Telescope (future detectors) |
+| **Vacuum melting exponent $\beta$** | $W\sim(1-\rho/\rho_c)^{\beta}$: the $\sqrt{\;}$-law is mean-field $\beta=1/2$, but a QCD-anchored 3-D critical point gives $\beta=0.326$ (Ising) or $0.349$ (XY) — reshaping the bounce term to $(1-\rho/\rho_c)^{2\beta}$ | RHIC **BES-II** net-proton cumulant scaling near $T_c\approx157$ MeV — *existing data*. Derivation & consequences: [`NVG_MELTING_LAW_ANALYSIS.md`](NVG_MELTING_LAW_ANALYSIS.md) |
 
 ### External Verification Outreach
 
@@ -231,6 +232,7 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 - **CHIME Repeating FRBs:** Welch's t-test and KS test show repeaters statistically cluster at lower magnetar masses ($M \approx 1.12 M_\odot$ vs $1.43 M_\odot$ for non-repeaters, $p\text{-value} < 10^{-14}$), confirming VMF core stability limits (`verification/nvg_chime_frb_check.py`).
 - **LIGO O4 Echo Candidates:** Predicts echo delays in the $0.021 - 0.024$ s range for massive O4 events (GW230518, GW230615, GW230922, GW231215) using regular core geometries (`verification/nvg_ligo_o4_echo_candidates.py`).
 - **Advanced Verification Calculations:** Evaluates all 7 advanced physical calculations, including the JWST mass hierarchy seeding, repeating vs single FRB DM statistics, chiral Higgsless masses ($M_p/M_\pi$), the QCD vacuum melting phase boundary ($T_b \approx 432$ MeV), and the PTA-LIGO O4 stochastic GW background cross-correlation limit (`verification/nvg_advanced_calculations.py`).
+- **Vacuum Melting Law $W(\rho)$ — Identifiability & Critical Exponent:** A focused, reproducible study of what the melting law is actually measured by, using the framework's own forward models ([**NVG_MELTING_LAW_ANALYSIS.md**](NVG_MELTING_LAW_ANALYSIS.md)). Three results: (i) on the canonical β-equilibrium + crust + tidal model (validated to $M_{\max}=2.05$, $R_{1.4}=12.55$, $\Lambda_{1.4}=519$), neutron stars measure $W(\rho)$ only up to $\sim 2.5\,n_0$ — the deep core ($\ge 4\,n_0$) stays $\sim 30$–$50\%$ degenerate even with GW170817 tidal data (`verification/nvg_melting_freeform_beta.py`); (ii) the cosmological $\sqrt{1-\rho/\rho_c}$ law is inert at NS density — NS structure needs an effective $\rho_c$ about $150\times$ lower (`verification/nvg_melting_identifiability.py`); (iii) the $\sqrt{\;}$-law is the exact mean-field extremum of the NVG quartic ($\beta=1/2$), but a QCD-anchored 3-D critical point corrects it to $\beta\approx0.326$, testable on RHIC BES-II and reshaping the bounce (`verification/nvg_melting_exponent.py`).
 
 ---
 
