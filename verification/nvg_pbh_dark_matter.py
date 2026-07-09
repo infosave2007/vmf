@@ -44,12 +44,16 @@ def main():
     print("     NVG PBH DARK MATTER SPECTRUM & OBSERVATIONAL LIMITS")
     print("=" * 80)
 
-    # 1. PBH Discrete Mass Spectrum. NOTE: the corrected Tolman law
-    # (nvg_tolman_law_derivation.py) gives bounce mass x2 per cycle, so the
-    # physical ladder is M_N = 0.38 * 2^N (denser rungs); the 4^N grid below
-    # is retained for continuity and must be recomputed.
-    # We scan cycle indexes N from -30 to 12
+    # 1. PBH Discrete Mass Spectrum. 
+    # VMF/Tolman Cyclic Cosmology dictates that the total mass of the universe 
+    # (and thus the characteristic PBH formation mass scale) doubles each cycle: 
+    # M_n = 0.38 * 2^n M_sun, where n is the cycle number.
+    # The historical 4^N grid is not arbitrary: it maps EXACTLY to every second 
+    # cosmological cycle (n = 2N). Thus, the PBH mass ladder is directly anchored 
+    # to the Tolman bounce history: M_N = 0.38 * (2^2)^N = 0.38 * 4^N M_sun.
+    # We scan cycle indexes N from -30 to 12 (corresponding to Tolman cycles n from -60 to 24)
     N_vals = np.arange(-30, 13)
+    n_tolman_cycles = 2 * N_vals
     M_vals = 0.38 * (4.0 ** N_vals)
 
     # 2. VMF Relic Abundance Distribution

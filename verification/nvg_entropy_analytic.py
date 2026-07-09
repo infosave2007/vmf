@@ -17,8 +17,8 @@ def compute_precise(M_solar_float):
     epsilon = l_val / rg
     
     # 5th order expansion for roots to ensure extreme precision
-    # x_in = e + 1/2 e^2 + 5/8 e^3 + 7/8 e^4 + 21/16 e^5
-    x_in = epsilon + Decimal('0.5')*epsilon**2 + Decimal('0.625')*epsilon**3 + Decimal('0.875')*epsilon**4 + Decimal('1.3125')*epsilon**5
+    # x_in = e + 1/2 e^2 + 5/8 e^3 + e^4 + 231/128 e^5
+    x_in = epsilon + Decimal('0.5')*epsilon**2 + Decimal('0.625')*epsilon**3 + epsilon**4 + Decimal('1.8046875')*epsilon**5
     r_in = rg * x_in
     
     # x_out = 1 - e^2 - 2 e^4
