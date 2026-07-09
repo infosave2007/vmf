@@ -30,7 +30,7 @@ def calculate_bh_interior(m_tot_solar, eps_max_mev_fm3):
     
     # Kretschmann scalar K = R_abcd R^abcd
     # For f(r) = 1 - 2M(r)/r, it is a known analytical expression
-    # K = f''^2 + 2(f'/r)^2 + 2((1-f)/r^2)^2
+    # K = f''^2 + 4(f'/r)^2 + 4((1-f)/r^2)^2
     f_prime = (2 * m_r / r**2) - (2 / r) * (3 * m_tot * r**2 * r_0**3 / (r**3 + r_0**3)**2)
     
     # At r=0, f(r) ~ 1 - (2 m_tot / r_0^3) r^2
@@ -44,11 +44,18 @@ def calculate_bh_interior(m_tot_solar, eps_max_mev_fm3):
     print(f"Effective Cosmological Constant at center: {Lambda_eff:.4f} km^-2")
     
     # Check values at r=0
-    K_0 = 8 * (Lambda_eff / 3)**2 # de Sitter Kretschmann
+    # Core Genesis scale l = r_c
+    l_rc = np.sqrt(3 / (8 * np.pi * eps_max_geom))
+    K_0 = 24 * (Lambda_eff / 3)**2 # de Sitter Kretschmann (24/l^4)
+    
+    # Explicit regression test for K(0)
+    expected_K0 = 24 / (l_rc**4)
+    assert abs(K_0 - expected_K0) < 1e-10, f"K(0) regression failed! {K_0} != {expected_K0}"
+    
     print(f"\nAt r -> 0:")
     print(f"  f(r) -> 1")
     print(f"  Metric completely regular.")
-    print(f"  Kretschmann scalar K(0): {K_0:.4e} km^-4 (FINITE)")
+    print(f"  Kretschmann scalar K(0): {K_0:.4f} km^-4 (FINITE) [Verified 24/l^4]")
     print(f"  Energy Density eps(0): {eps_r[0] / 1.323e-6:.1e} MeV/fm^3")
     
     # Verify strong energy condition violation at core
