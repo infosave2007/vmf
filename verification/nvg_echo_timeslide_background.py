@@ -116,6 +116,7 @@ def p_to_sigma(p):
 
 
 def analyse(name, masses):
+    """Fetch O1-O3 open strain via the pycbc catalog, then run the coherent search."""
     try:
         m = Merger(name)
     except Exception:
@@ -127,22 +128,22 @@ def analyse(name, masses):
                 pass
         if m is None:
             return None
-    t0 = m.time
-    mass_final = masses.get(name, 60.0)
-    dt0 = 0.022 * (mass_final / 65.0)
-
-    # common merger-relative grid from H1
     dets = {}
     for det in ("H1", "L1"):
         try:
-            strain = m.strain(det)
+            dets[det] = condition(m.strain(det))
         except Exception:
             continue
-        strain, psd = condition(strain)
-        dets[det] = (strain, psd)
     if "H1" not in dets:
         return None
+    return analyse_strains(dets, m.time, masses.get(name, 60.0), name)
 
+
+def analyse_strains(dets, t0, mass_final, name):
+    """Coherent time-slide search on conditioned {det: (strain, psd)} dicts.
+
+    Reused by both the O1-O3 (catalog) and O4 (direct GWOSC fetch) drivers."""
+    dt0 = 0.022 * (mass_final / 65.0)
     # shared merger-relative grid, taken from H1 at the central delay
     s, psd_h = dets["H1"]
     snr0 = matched_filter(_sized_template(mass_final, s, dt0), s,
