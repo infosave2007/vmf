@@ -68,10 +68,12 @@ print(f"  stellar scale  M_Planck^3/m_nucleon^2 = {M_stellar_scale/Msun:.3f} M_s
 print(f"  (Chandrasekhar mass 1.4 M_sun, NS maxima ~2 M_sun live on this same scale)")
 print(f"  ratio M_crit / (M_Planck^3/m_Omega^2) = {C:.4f}  (pure O(1) number)")
 print("=" * 74)
-print("""  CONCLUSION: M_crit ~ 1 M_sun is NOT a coincidence or a tuned prediction.
-  It is the Chandrasekhar-type combination  M_Planck^3 / m^2  evaluated at the QCD
-  condensate mass m = M_Omega. Any theory whose collapse scale is set by a hadron
-  mass and gravity lands at ~1 M_sun; that is the same dimensional reason white
-  dwarfs and neutron stars top out near a solar mass. The striking-looking
-  "critical horizon mass = mass of the Sun" is dimensional physics, not mysticism.""")
+print("""  CONCLUSION: M_crit ~ 1 M_sun is not mysticism and not a tuned fit -- it is the
+  Chandrasekhar-type combination M_Planck^3/m^2 at the QCD condensate mass m = M_Omega,
+  the same gravity+QCD scale that puts white-dwarf and neutron-star masses near ~M_sun.
+  HONEST SCOPE: the M_Pl^3/m^2 POWER comes from the collapse/horizon balance law (not
+  from dimensions alone), so only the ORDER OF MAGNITUDE is forced; the clean ~1 M_sun
+  also needs m ~ nucleon-scale and the geometric prefactor C. And it is GENERIC -- any
+  Hayward/Bardeen regular core with a QCD-scale cutoff gives an extremal mass of order
+  M_sun -- so the value does not by itself discriminate NVG. See nvg_mcrit_family.py.""")
 print("=" * 74)
