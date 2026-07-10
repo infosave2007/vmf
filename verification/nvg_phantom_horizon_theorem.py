@@ -1,77 +1,68 @@
 #!/usr/bin/env python3
+"""
+NVG: Horizon-area deficit of the Hayward regular black hole (exact area identity).
+
+For the dimensionless horizon equation  z^3 - z^2 + eps^2 = 0
+(z = r/r_Sch, eps = l/r_Sch), Vieta's formulas give e1 = 1, e2 = 0, so the sum
+of squares of the three roots is exactly p2 = e1^2 - 2 e2 = 1, independent of
+mass. Two roots are the physical outer/inner horizons; the third is a negative
+(unphysical) root. The identity p2 = 1 lets the outer+inner horizon-area deficit
+relative to a Schwarzschild hole of the same mass be written in closed form:
+
+    dA / A_Sch = 1 - (z_out^2 + z_in^2) = z_phantom^2 .
+
+This is an exact but ELEMENTARY algebraic property of the cubic -- a compact
+expression for the area deficit, NOT a physical conservation law. The third root
+is negative (no horizon lives there), so no Bekenstein-Hawking entropy attaches
+to it, and the identity says nothing about the unitarity of Hawking evaporation
+or the information paradox (those concern evaporation dynamics, not static areas).
+"""
+import numpy as np
 import sympy as sp
 
+
 def main():
-    print("=" * 80)
-    print("  NVG THEOREM: EXACT ENTROPY DEFICIT VIA PHANTOM HORIZON")
-    print("=" * 80)
-    
+    print("=" * 78)
+    print("  NVG: Hayward horizon-area deficit (exact area identity)")
+    print("=" * 78)
+
     eps = sp.Symbol('eps', positive=True)
-    z = sp.Symbol('z')
-    
-    # The horizon equation in dimensionless form x = r/r_g
-    # x^3 - x^2 + eps^2 = 0
-    # Let the roots be x_in, x_out, and x_phantom
-    x_in = sp.Symbol('x_in')
-    x_out = sp.Symbol('x_out')
-    x_phantom = sp.Symbol('x_phantom')
-    
-    print("1. Vieta's formulas for cubic z^3 - z^2 + 0*z + eps^2 = 0:")
-    print("   Sum of roots:           x_in + x_out + x_phantom = 1")
-    print("   Sum of pair products:   x_in*x_out + x_out*x_phantom + x_phantom*x_in = 0")
-    print("   Product of roots:       x_in * x_out * x_phantom = -eps^2")
-    
-    print("\n2. The sum of squares of the roots is:")
-    print("   x_in^2 + x_out^2 + x_phantom^2 = (x_in + x_out + x_phantom)^2 - 2*(pair products)")
-    print("                                  = 1^2 - 2(0) = 1")
-    
-    print("\n3. Area and Entropy Deficit:")
-    print("   A_Schw = 4*pi*r_g^2")
-    print("   A_out + A_in = 4*pi*r_g^2 * (x_out^2 + x_in^2)")
-    print("                = 4*pi*r_g^2 * (1 - x_phantom^2)")
-    print("   Delta A = A_Schw - (A_out + A_in) = 4*pi*r_g^2 * x_phantom^2 = A_phantom")
-    print("   Delta S = S_phantom !")
-    
-    print("\n4. Verifying against the perturbative series:")
-    # We use our previous expansions
-    # x_in = eps / sqrt(1-x_in)
-    x = 0
-    for i in range(15):
-        x = eps * (1 - x)**(-sp.Rational(1, 2))
-        x = x.series(eps, 0, 15).removeO()
-        
-    # x_out = 1 - y, where y = eps^2 / (1-y)^2
-    delta = eps**2
-    y = 0
-    for i in range(10):
-        y = delta * (1 - y)**(-2)
-        y = y.series(eps, 0, 15).removeO()
-        
-    x_in_series = x
-    x_out_series = 1 - y
-    
-    # Phantom root from sum of roots = 1
-    x_phantom_series = 1 - x_in_series - x_out_series
-    
-    print("   x_phantom = y - x_in = ")
-    print("  ", sp.expand(x_phantom_series))
-    
-    S_deficit = (2*y - y**2 - x**2) / eps**2
-    S_deficit = S_deficit.series(eps, 0, 15).removeO()
-    
-    phantom_area_ratio = (x_phantom_series**2) / eps**2
-    phantom_area_ratio = phantom_area_ratio.series(eps, 0, 15).removeO()
-    
-    print("\n   [Series] Delta S / S_in(infty):")
-    print("  ", sp.expand(S_deficit))
-    
-    print("\n   [Series] (x_phantom / eps)^2:")
-    print("  ", sp.expand(phantom_area_ratio))
-    
-    if sp.expand(S_deficit - phantom_area_ratio) == 0:
-        print("\n   => EXACT MATCH CONFIRMED TO ALL ORDERS CALCUATED.")
-        print("      The information loss is precisely the entropy of the phantom root!")
-    print("=" * 80)
+
+    # 1. Vieta / Newton: sum of squares of the roots is exactly 1 (no series needed).
+    e1, e2, e3 = sp.Integer(1), sp.Integer(0), -eps**2   # z^3 - z^2 + 0*z + eps^2
+    p2 = e1**2 - 2 * e2
+    print("\n1. Vieta on z^3 - z^2 + eps^2 = 0:")
+    print(f"   e1 = sum z_i         = {e1}")
+    print(f"   e2 = sum z_i z_j     = {e2}")
+    print(f"   e3 = z_out z_in z_ph = {e3}")
+    print(f"   p2 = sum z_i^2 = e1^2 - 2 e2 = {p2}   (exact, mass-independent)")
+    assert p2 == 1, "Sum of squares of the roots must be exactly 1."
+
+    # 2. Numerical confirmation at several eps: real roots, sum of squares = 1,
+    #    and dA/A_Sch = z_phantom^2 to machine precision. The extremal (double-root)
+    #    case is at eps = 2/(3*sqrt(3)) ~ 0.3849, so all test values are below it.
+    print("\n2. Numerical check (roots of the cubic):")
+    header = (f"   {'eps':>9} | {'z_out':>12} | {'z_in':>12} | {'z_phantom':>12} | "
+              f"{'sum z^2':>9} | {'dA/A - z_ph^2':>14}")
+    print(header)
+    print("   " + "-" * (len(header) - 3))
+    for eps_val in [1e-1, 1e-2, 1e-3, 1e-4, 1e-6]:
+        roots = np.sort(np.roots([1.0, -1.0, 0.0, eps_val ** 2]).real)
+        z_ph, z_in, z_out = roots            # ascending: negative, small+, ~1
+        sum_sq = float(np.sum(roots ** 2))
+        dA_over_A = 1.0 - (z_out ** 2 + z_in ** 2)
+        resid = dA_over_A - z_ph ** 2
+        print(f"   {eps_val:>9.0e} | {z_out:>12.8f} | {z_in:>12.8f} | "
+              f"{z_ph:>12.8f} | {sum_sq:>9.6f} | {resid:>14.2e}")
+        assert abs(sum_sq - 1.0) < 1e-9,  "sum of squares must equal 1"
+        assert abs(resid) < 1e-9,         "dA/A_Sch must equal z_phantom^2"
+        assert z_ph < 0.0,                "third root must be negative (unphysical)"
+
+    print("\n   => Confirmed: sum of squares = 1 and dA/A_Sch = z_phantom^2 exactly.")
+    print("      The third root is negative (no horizon); this is algebraic")
+    print("      bookkeeping for the area deficit, not a new conservation law.")
+    print("=" * 78)
+
 
 if __name__ == "__main__":
     main()
