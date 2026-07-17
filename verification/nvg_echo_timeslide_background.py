@@ -194,6 +194,7 @@ def analyse_strains(dets, t0, mass_final, name):
         "name": name, "mass_final": mass_final, "n_det": len(dets),
         "S0": S0, "h1": h1_only, "l1": l1_only,
         "bkg_med": float(np.median(bkg)) if bkg.size else float("nan"),
+        "bkg_p90": float(np.percentile(bkg, 90)) if bkg.size else float("nan"),
         "bkg_max": float(bkg.max()) if bkg.size else float("nan"),
         "n_slide": int(bkg.size), "p": p,
     }
