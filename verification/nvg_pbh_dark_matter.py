@@ -3,8 +3,16 @@
 NVG Verification: PBH Dark Matter Fraction & Observational Constraints
 ----------------------------------------------------------------------
 Calculates the discrete PBH mass spectrum M_N = 0.38 * 4^N M_sun, models the
-Dark Matter fraction f_PBH at each mass bin, and compares it against observational
-constraints from Subaru HSC (microlensing), Hawking radiation (Voyager/Fermi), and LIGO.
+Dark Matter fraction f_PBH at each mass bin, and compares it against the
+constraints that actually apply to NVG objects.
+
+Constraint routing (this is where NVG differs from ordinary PBHs): every object
+below M_crit ~ 0.99 M_sun is a HORIZONLESS de Sitter remnant (README rows 35/54;
+nvg_hayward_evaporation.py) with zero Hawking flux, so the evaporation bounds
+(Voyager e+-, EGRET/Fermi gamma background) that close the standard PBH window
+below ~1e17 g DO NOT APPLY. Gravitational constraints (microlensing, LIGO merger
+rates) apply unchanged. The standard-PBH limit is printed alongside for
+comparison, making explicit which mass bins NVG re-opens.
 """
 
 from __future__ import annotations
@@ -26,7 +34,11 @@ def get_subaru_limit(M_msun: float) -> float:
         return 1e-3
 
 def get_hawking_limit(M_msun: float) -> float:
-    """Analytical representation of Hawking radiation constraints (Voyager 1 / EGRET)."""
+    """Standard-PBH Hawking evaporation bound (Voyager 1 / EGRET).
+
+    Kept for COMPARISON ONLY: NVG objects below M_crit ~ 0.99 M_sun are
+    horizonless remnants with zero Hawking flux (nvg_hayward_evaporation.py),
+    so this bound does not apply to them."""
     if M_msun >= 1e-16:
         return 1.0
     elif M_msun > 1e-18:
@@ -79,20 +91,25 @@ def main():
     print("  " + "-" * 76)
 
     all_passed = True
+    n_reopened = 0
     for N, M, f in zip(N_vals, M_vals, f_pbh):
-        # Determine relevant constraint
-        if M < 1e-16:
-            limit = get_hawking_limit(M)
-            source = "Hawking Radiation"
-        elif M < 1.0:
+        # Applicable constraint for an NVG object of this mass. Below M_crit the
+        # remnant is horizonless (no Hawking flux): only gravitational bounds apply.
+        if M < 1.0:
             limit = get_subaru_limit(M)
             source = "Subaru HSC / EROS"
-        elif 1.0 <= M <= 100.0:
-            limit = 1e-3  # LIGO constraint on stellar mass
-            source = "LIGO Microlensing"
+        elif M <= 100.0:
+            limit = 1e-3  # LIGO merger-rate constraint on stellar mass
+            source = "LIGO merger rate"
         else:
             limit = 1.0  # Weak constraints for very high masses (serve as seeds)
             source = "Unconstrained (Seeds)"
+
+        # standard-PBH comparison: evaporation bound that WOULD apply with a horizon
+        std_limit = min(limit, get_hawking_limit(M))
+        if std_limit < limit and f <= limit:
+            n_reopened += 1
+            source += "  [evap N/A: horizonless]"
 
         status = "PASSED" if f <= limit else "FAILED"
         if f > limit:
@@ -100,10 +117,14 @@ def main():
 
         # Only print representative or significant cycles
         if N in [-28, -25, -22, -20, -18, -15, -10, 0, 3, 10]:
-            print(f"  N = {N:<4d} | {M:<18.2e} | {f:<10.2e} | {limit:<10.2e} | {source:<20} | {status:<8}")
+            print(f"  N = {N:<4d} | {M:<18.2e} | {f:<10.2e} | {limit:<10.2e} | {source:<38} | {status:<8}")
 
     print("-" * 80)
     print(f"Constraints Verification Status: {'✅ ALL PASSED' if all_passed else '❌ FAILED'}")
+    print(f"Mass bins re-opened vs ordinary PBHs (evaporation bound inapplicable): {n_reopened}")
+    print("The 1e10-1e17 g range, closed for standard PBHs by evaporation, is available")
+    print("to NVG horizonless remnants; see nvg_hayward_evaporation.py for the exact")
+    print("T_H ceiling and the associated falsifiers (PBH burst / MeV background).")
     assert all_passed, "PBH Dark Matter spectrum violates observational bounds!"
     print("=" * 80)
 

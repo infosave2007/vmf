@@ -264,7 +264,8 @@ CHECKS = [
     {
         "name": "PBH Dark Matter Fraction & Constraints",
         "script": "nvg_pbh_dark_matter.py",
-        "claim": "PBH mass spectrum peak lies in asteroid-mass window and satisfies Subaru/LIGO bounds",
+        "claim": "PBH mass spectrum peak lies in asteroid-mass window and satisfies the applicable "
+                 "gravitational bounds (Subaru/LIGO); Hawking bounds inapplicable to horizonless remnants",
         "critical": True,
     },
     {
@@ -283,6 +284,13 @@ CHECKS = [
         "name": "Gravitational Wave Post-Merger Echo Delay",
         "script": "nvg_gw_echo_prediction.py",
         "claim": "Verify post-merger echo delay Delta t ≈ 0.00512s for 65 M_sun remnant",
+        "critical": True,
+    },
+    {
+        "name": "Hawking Temperature Ceiling",
+        "script": "nvg_hayward_evaporation.py",
+        "claim": "Exact Hayward T_H: ceiling T_max = 3.6e-8 K at 1.29 M_sun; no NVG BH ever "
+                 "evaporates; sub-M_crit remnants horizonless (evaporation bounds N/A)",
         "critical": True,
     },
     {
@@ -356,7 +364,7 @@ CHECKS = [
     {
         "name": "Global Statistical Significance",
         "script": "nvg_global_significance.py",
-        "claim": "8 independent quantitative tests: chi2_red = 0.63, p = 0.75; max pull +1.5 sigma < 2.4 sigma trials expectation",
+        "claim": "7 quantitative pulls in correlation blocks -> 3 effective tests: chi2 = 2.76/3, p = 0.43; max pull +1.4 sigma below trials expectation",
         "critical": True,
     },
     {
