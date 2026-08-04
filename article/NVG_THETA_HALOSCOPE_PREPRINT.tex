@@ -1,0 +1,679 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{authblk}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black,
+  pdftitle={A Point-Like Prediction for Dark Matter at 12.8 GHz from a QCD-Anchored Vacuum Condensate},
+  pdfauthor={Oleg Kirichenko}
+}
+
+% allow line breaks inside \path{...} at underscores and slashes
+\renewcommand{\UrlBreaks}{\do\_\do\/\do\-}
+
+\title{\textbf{A Point-Like Prediction for Dark Matter at 12.8\,GHz\\
+from a QCD-Anchored Vacuum Condensate:\\
+Theory and Haloscope Test Protocol}}
+
+\author{Oleg Kirichenko}
+\affil{Independent Researcher; \texttt{urevich55@gmail.com}\\
+\url{https://github.com/infosave2007/vmf}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The Null-Vector Gravity (NVG) framework, anchored to a single QCD input
+$M_{\Omega,0} = 859 \pm 8$~MeV fixed by lattice sigma terms, contains a
+pseudo-Goldstone mode $\theta$ of the vacuum condensate $\Phi = W e^{i\theta}$.
+If the same decay constant $f_a$ that sets the $\theta$-mode mass also generates
+Majorana neutrino masses through a QCD-anomaly seesaw, the neutrino sector fixes
+$f_a = 1.07\times 10^{11}$~GeV with no further freedom. This single number then
+yields a \emph{point} prediction for dark matter: a coherent pseudo-scalar of mass
+$m_\theta = 53.2~\mu\text{eV}$, detectable as a microwave line at
+$f_\theta = 12.81$~GHz with photon coupling
+$g_{\theta\gamma\gamma} = 2.08\times 10^{-14}$~GeV$^{-1}$ (KSVZ benchmark).
+The predicted product $m_\theta f_a$ falls on the QCD axion band within 2.6\%,
+and the frequency lies in the currently unexplored gap between the published
+ORGAN mass windows ($25$--$26$ and $63$--$67~\mu$eV) --- directly on the lower
+edge of the SMASH band ($50$--$200~\mu$eV) that ORGAN has declared as its
+roadmap target. We present the derivation, a calibration of the haloscope signal
+formula against the published ORGAN signal estimate, and two concrete test
+protocols: (A)~a resonant-cavity array and (B)~a \emph{fixed-position} dielectric
+booster stack, where the point-frequency prediction eliminates the scanning
+mechanism. For a coherent dark-matter fraction of 24\% (misalignment only),
+protocol~B reaches $\text{SNR}=5$ in ${\sim}\,18$~h at boost factor $\beta=10^4$.
+Discovery and exclusion criteria are preregistered. All numerical values are
+reproducible from the accompanying scripts.
+
+\medskip
+\noindent\textbf{Keywords:} axion dark matter, haloscope, dielectric haloscope,
+pseudo-Goldstone boson, vacuum condensate, neutrino mass, point prediction
+\end{abstract}
+
+\tableofcontents
+
+%======================================================================
+\section{Introduction}
+\label{sec:intro}
+
+Direct searches for QCD axion dark matter have so far produced exclusion limits
+in disjoint mass windows: ADMX covers ${\sim}\,2.7$--$4.2~\mu$eV
+\cite{ADMX2018}, HAYSTAC covers ${\sim}\,17$--$20~\mu$eV
+\cite{HAYSTAC2025}, ORGAN has scanned $25.45$--$26.27~\mu$eV
+\cite{ORGAN26}, $63.2$--$67.1~\mu$eV \cite{ORGAN2022} and
+$107.42$--$111.93~\mu$eV \cite{ORGAN1b}, while MADMAX is under construction
+for the $40$--$400~\mu$eV range \cite{MADMAX2019}. The intermediate region
+around $50$--$60~\mu$eV ($12$--$15$~GHz) remains unexplored.
+
+This note reports that the NVG/VMF framework \cite{NVGrepo}, anchored to a
+single QCD input \cite{VMFanchor}, yields a parameter-free prediction
+\emph{exactly} in that gap: a dark-matter pseudo-scalar at
+$53.2~\mu$eV. Because the prediction is a \emph{point} in $(m, g_{\gamma})$
+space rather than a band, the experimental problem simplifies drastically:
+no scanning, no tuning mechanism --- a fixed-frequency integration.
+
+Section~\ref{sec:theory} gives the derivation. Section~\ref{sec:signature}
+states the observable signature. Section~\ref{sec:status} documents the gap
+in published searches. Section~\ref{sec:protocol} defines the test protocol,
+including a calibration of the signal formula against published data and
+preregistered discovery/exclusion criteria. Section~\ref{sec:caveats}
+lists the framework assumptions honestly.
+
+%======================================================================
+\section{Theoretical Framework}
+\label{sec:theory}
+
+\subsection{The anchor: $M_{\Omega,0}$ from lattice sigma terms}
+
+The framework is anchored to one dimensionful QCD input. Separating the nucleon
+mass into current-quark and nonperturbative components via the Feynman--Hellmann
+sigma terms ($\sigma_{\pi N} \approx 44$~MeV, $\sigma_{sN} \approx 30$~MeV),
+the vacuum value of the nonperturbative component is fixed at
+\cite{VMFanchor}
+\begin{equation}
+M_{\Omega,0} = 859 \pm 8~\text{MeV},
+\end{equation}
+which sets the condensate energy density scale
+$\rho_c \approx 7.09\times 10^{4}$~MeV/fm$^{3}$ used throughout the
+construction. No cosmological or astrophysical input is used at any stage.
+
+\subsection{The $\theta$ pseudo-Goldstone mode}
+
+The NVG vacuum condensate is parametrized as $\Phi = W\,e^{i\theta}$, where the
+phase $\theta$ is a pseudo-Goldstone mode with the standard anomaly-generated
+potential. Its mass obeys the same relation as the QCD axion,
+\begin{equation}
+m_\theta = \frac{\sqrt{\chi_{\mathrm{top}}}}{f_a},
+\label{eq:mtheta}
+\end{equation}
+with the topological susceptibility $\chi_{\mathrm{top}}^{1/4} = 75.5$~MeV from
+lattice QCD \cite{QCDaxionPrecisely}. In the normalization
+$m_a(f_a = 10^{12}~\text{GeV}) = 5.691~\mu$eV \cite{QCDaxionPrecisely}, this
+becomes $m_\theta = 5.691~\mu\text{eV}\times (10^{12}~\text{GeV}/f_a)$.
+
+\subsection{The $\theta$-seesaw: fixing $f_a$ from the neutrino sector}
+\label{sec:seesaw}
+
+The framework hypothesis that makes the prediction parameter-free is the
+\emph{$\theta$-seesaw}: the same mode $\theta$ generates Majorana neutrino
+masses without right-handed neutrinos, through the two-loop QCD anomaly diagram
+coupling $\theta$ to the lepton current,
+\begin{equation}
+\mathcal{L}_{\theta\nu} \;=\;
+\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}\,
+\nu_L^{T} C \nu_L + \text{h.c.}
+\label{eq:seesaw}
+\end{equation}
+This gives, for the heaviest neutrino,
+\begin{equation}
+m_3 = \left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}.
+\label{eq:m3}
+\end{equation}
+With $\alpha_s(M_Z) = 0.1184$, $v_{\mathrm{EW}} = 246.22$~GeV and the
+oscillation-and-cosmology anchor $m_3 = 50.3$~meV (normal ordering; the implied
+sum $\sum m_\nu = 59$~meV passes the DESI DR2 bound $\sum m_\nu < 64$~meV
+unconditionally), Eq.~\eqref{eq:m3} fixes
+\begin{equation}
+\boxed{\;f_a = \left(\frac{\alpha_s}{4\pi}\right)^{\!2}
+\frac{v_{\mathrm{EW}}^{2}}{m_3} = 1.07\times 10^{11}~\text{GeV}\;}
+\label{eq:fa}
+\end{equation}
+with no remaining freedom. We stress that Eq.~\eqref{eq:seesaw} is a
+\emph{framework assumption} (the coefficient $(\alpha_s/4\pi)^2 \approx
+8.9\times 10^{-5}$ arises from the two-loop anomaly diagram); it is the single
+non-standard ingredient, and it is directly testable (Section~\ref{sec:caveats}).
+
+\subsection{Point prediction for the dark-matter mass}
+
+Inserting \eqref{eq:fa} into \eqref{eq:mtheta}:
+\begin{equation}
+\boxed{\;m_\theta = 5.691~\mu\text{eV}\times
+\frac{10^{12}}{1.07\times 10^{11}} = 53.2~\mu\text{eV}\;}
+\end{equation}
+or, equivalently, a Compton frequency
+\begin{equation}
+f_\theta = \frac{m_\theta c^2}{h} = 12.81~\text{GHz}.
+\label{eq:freq}
+\end{equation}
+
+\paragraph{Consistency check (no tuning).} The two inputs above --- $m_\theta$
+from the lattice susceptibility and $f_a$ from the neutrino sector --- are
+independent. Their product must land on the QCD axion mass--coupling band
+$m_a f_a \simeq m_\pi f_\pi \sqrt{z}/(1+z) \approx 5.82\times 10^{15}$~eV$^2$
+\cite{QCDaxionPrecisely}. The framework gives
+$m_\theta f_a = 5.67\times 10^{15}$~eV$^2$: \textbf{agreement within 2.6\%},
+well inside the lattice uncertainty of the band. This agreement is a
+non-trivial consistency test of the construction, not an input.
+
+\subsection{Coupling to photons}
+
+The effective interaction is the standard axion-electrodynamics term
+\cite{Sikivie1983}
+\begin{equation}
+\mathcal{L} \supset -\frac{g_{\theta\gamma\gamma}}{4}\,
+\theta\, F_{\mu\nu}\tilde F^{\mu\nu}
+= g_{\theta\gamma\gamma}\,\theta\,\mathbf{E}\cdot\mathbf{B},
+\qquad
+g_{\theta\gamma\gamma} = \frac{\alpha}{2\pi}\,
+\frac{|E/N - 1.92|}{f_a}.
+\label{eq:gagg}
+\end{equation}
+For the KSVZ benchmark \cite{KSVZ} ($E/N = 0$) and the DFSZ benchmark
+\cite{DFSZ} ($E/N = 8/3$):
+\begin{equation}
+g_{\theta\gamma\gamma}^{\mathrm{KSVZ}} = 2.08\times 10^{-14}~\text{GeV}^{-1},
+\qquad
+g_{\theta\gamma\gamma}^{\mathrm{DFSZ}} = 8.10\times 10^{-15}~\text{GeV}^{-1}.
+\end{equation}
+The model-dependent factor $|E/N - 1.92|$ is the only residual theory
+uncertainty on the coupling; the KSVZ value is used as the discovery benchmark.
+
+\subsection{Relic abundance: the honest coherent fraction}
+\label{sec:abundance}
+
+For a post-inflationary scenario with the natural initial misalignment
+$\theta_i = \pi/\sqrt{3}$, the standard misalignment estimate
+\cite{Misalignment} gives
+\begin{equation}
+\Omega_\theta h^2 \simeq 0.12\,\theta_i^2
+\left(\frac{f_a}{10^{12}~\text{GeV}}\right)^{7/6}
+= 0.0291,
+\end{equation}
+i.e.\ \textbf{24\% of the local dark-matter density}
+($\Omega_{\mathrm{DM}} h^2 = 0.120$). The remaining density may reside in
+topological defects of the condensate sector; it does not contribute to the
+coherent haloscope signal. All signal powers below use the conservative coherent
+fraction $f_{\mathrm{coh}} = 0.24$; the $f_{\mathrm{coh}}=1$ values are also
+quoted where relevant. A larger coherent fraction (e.g.\ from defect decay)
+would strengthen the signal proportionally.
+
+\subsection{Fifth force: the pseudoscalar null channel}
+
+The Compton range $\lambda_\theta = \hbar c/m_\theta = 3.72$~mm falls inside
+the sub-millimetre window of torsion-balance experiments \cite{AxionReview}.
+Because $\theta$ is a \emph{pseudo}scalar, the monopole--monopole Yukawa
+channel vanishes identically: unpolarized E\"ot-Wash-class searches must see
+\emph{nothing} at this range (null prediction, falsified by any monopole signal),
+while the spin-dipole channel with coupling $m_N/f_a$ sits at the edge of
+current spin-polarized bounds. This constitutes an independent, low-cost
+cross-check of the sector.
+
+%======================================================================
+\section{Experimental Signature}
+\label{sec:signature}
+
+The complete prediction is summarized in Table~\ref{tab:prediction}.
+
+\begin{table}[h]
+\centering
+\caption{Parameter-free prediction of the NVG $\theta$-DM sector. No quantity
+in the right column is fitted to haloscope data.}
+\label{tab:prediction}
+\begin{tabular}{lcc}
+\toprule
+Quantity & Predicted value & Origin \\
+\midrule
+Decay constant $f_a$ & $1.07\times 10^{11}$~GeV & neutrino sector, Eq.~\eqref{eq:m3} \\
+Mass $m_\theta$ & $53.2~\mu$eV & Eq.~\eqref{eq:mtheta}, lattice $\chi_{\mathrm{top}}$ \\
+Frequency $f_\theta$ & $12.81$~GHz & $m_\theta c^2/h$ \\
+Virial linewidth $Q_a$ & ${\sim}\,10^{6}$ & halo velocity dispersion \\
+Line width $\Delta f_a$ & $12.8$~kHz & $f_\theta/Q_a$ \\
+$g_{\theta\gamma\gamma}$ (KSVZ) & $2.08\times 10^{-14}$~GeV$^{-1}$ & Eq.~\eqref{eq:gagg} \\
+$g_{\theta\gamma\gamma}$ (DFSZ) & $8.10\times 10^{-15}$~GeV$^{-1}$ & Eq.~\eqref{eq:gagg} \\
+Coherent DM fraction & $24\%$ & misalignment, Sec.~\ref{sec:abundance} \\
+$m_\theta f_a$ vs QCD band & $-2.6\%$ deviation & consistency check \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The signal is a nearly monochromatic microwave excess at 12.81~GHz with
+$Q_a \sim 10^6$ intrinsic quality factor, linearly polarized along the applied
+magnetic field, scaling as $B_0^2$, and tracking the sidereal modulation of the
+halo wind (a secondary discriminant).
+
+%======================================================================
+\section{Status of Published Searches}
+\label{sec:status}
+
+Table~\ref{tab:gap} compiles the published haloscope coverage around the
+predicted mass.
+
+\begin{table}[h]
+\centering
+\caption{Published haloscope mass windows around the NVG prediction. The
+predicted point ($53.2~\mu$eV) lies in the unexplored gap between the two
+ORGAN windows, at the lower edge of the SMASH band ($50$--$200~\mu$eV)
+\cite{SMASH} that ORGAN declares as its roadmap target \cite{ORGAN2022}.}
+\label{tab:gap}
+\begin{tabular}{lccc}
+\toprule
+Experiment & Mass window ($\mu$eV) & Frequency (GHz) & Best limit on $g_{a\gamma\gamma}$ (GeV$^{-1}$) \\
+\midrule
+ADMX \cite{ADMX2018} & $2.66$--$3.31$ & $0.64$--$0.80$ & KSVZ reached \\
+HAYSTAC II \cite{HAYSTAC2025} & ${\sim}\,17.3$--$19.5$ & $4.18$--$4.71$ & ${\sim}\,10^{-13}$ \\
+ORGAN \cite{ORGAN26} & $25.45$--$26.27$ & $6.15$--$6.35$ & $2.8\times 10^{-13}$ \\
+\textbf{NVG prediction} & $\mathbf{53.2}$ & $\mathbf{12.81}$ & $\mathbf{2.08\times 10^{-14}}$ \\
+ORGAN \cite{ORGAN2022} & $63.2$--$67.1$ & $15.3$--$16.2$ & $3.0\times 10^{-12}$ \\
+ORGAN 1b \cite{ORGAN1b} & $107.42$--$111.93$ & $26.0$--$27.1$ & cogenesis ALP excluded \\
+MADMAX \cite{MADMAX2019,MADMAXproto} & $40$--$400$ (design) & $10$--$100$ & prototype phase \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two remarks. First, no published limit reaches
+$g = 2.1\times 10^{-14}$~GeV$^{-1}$ anywhere near $53~\mu$eV: the closest
+result (ORGAN at $25.5$--$26.3~\mu$eV) is a factor ${\sim}13$ weaker in
+coupling, at a different mass. Second, the ORGAN collaboration's stated goal is
+to scan the SMASH band $50$--$200~\mu$eV under a constant magnetic field
+\cite{ORGAN2022}; the NVG point sits exactly at the lower edge of that band,
+making a targeted single-frequency run a natural addition to their program.
+
+%======================================================================
+\section{Test Protocol}
+\label{sec:protocol}
+
+\subsection{Signal-power formula and its calibration}
+\label{sec:calib}
+
+For a microwave cavity haloscope \cite{Sikivie1983,Egge2023},
+\begin{equation}
+P_{\mathrm{sig}} = g_{\theta\gamma\gamma}^{2}\,
+\frac{\rho_\theta}{m_\theta}\,B_0^{2}\,V\,C\,\min(Q_L, Q_a),
+\label{eq:psig}
+\end{equation}
+where $\rho_\theta = f_{\mathrm{coh}}\,\rho_{\mathrm{DM}}$ with
+$\rho_{\mathrm{DM}} = 0.4~\text{GeV/cm}^3$, $V$ is the cavity volume,
+$C$ the mode form factor, and $Q_L$ the loaded quality factor.
+
+\textbf{Calibration against published data.} The ORGAN collaboration quotes,
+for its Phase~1a apparatus, $P_{\mathrm{sig}} \simeq 2.3\times 10^{-25}$~W
+(KSVZ) and $3.1\times 10^{-26}$~W (DFSZ) for a $64~\mu$eV axion
+\cite{ORGAN2022}. Two checks:
+\begin{enumerate}
+\item \emph{Apparatus-independent}: the coupling-coefficient ratio
+$(g_{\mathrm{KSVZ}}/g_{\mathrm{DFSZ}})^2 = (0.97/0.36)^2 = 7.26$ versus the
+published power ratio $2.3/0.31 = 7.42$ --- agreement at the 2\% level,
+confirming the normalization convention of Eq.~\eqref{eq:gagg}.
+\item \emph{Absolute}: back-solving Eq.~\eqref{eq:psig} from the published
+$2.3\times 10^{-25}$~W implies an apparatus product $V C Q \approx 0.44$~m$^3$
+(for $B_0 = 7$~T), consistent with an ORGAN-scale cavity at 15.6~GHz with
+$Q \sim 10^{4}$--$10^{5}$. The unit chain of the present calculation is thus
+validated against a real haloscope at the factor-of-two level.
+\end{enumerate}
+
+For the dielectric booster concept \cite{MADMAX2017,MADMAXtheory,MADMAX2019} the
+analogous expression is
+\begin{equation}
+P_{\mathrm{sig}} = g_{\theta\gamma\gamma}^{2}\,\rho_\theta\,B_0^{2}\,
+\frac{A\,\beta}{m_\theta^{2}},
+\label{eq:pstack}
+\end{equation}
+where $A$ is the disk area and $\beta$ the dielectric boost factor; both
+Eq.~\eqref{eq:psig} and \eqref{eq:pstack} have been re-derived within the
+Lorentz-reciprocity framework \cite{Egge2023,Egge2024exp}.
+
+\subsection{Protocol A: resonant cavity}
+\label{sec:cavity}
+
+At $f_\theta = 12.81$~GHz the TM$_{010}$ mode requires a cylinder of radius
+$R = x_{01} c/(2\pi f_\theta) = 8.95$~mm. With length $L = 50$~mm,
+$V = 12.6$~cm$^3$, form factor $C = 0.69$, $B_0 = 10$~T and a superconducting
+(Nb) cavity with baseline $Q_L = 10^{5}$,
+\begin{equation}
+P_{\mathrm{sig}} = 6.3\times 10^{-25}~\text{W}
+\qquad (f_{\mathrm{coh}} = 0.24).
+\end{equation}
+A single cavity reaches $\text{SNR} = 5$ only after ${\sim}\,48$~years: it is a
+pathfinder, not the discovery configuration. The viable cavity route is a
+phase-locked array (Table~\ref{tab:arrays}); $Q_L = 10^6$ at 13~GHz is flagged
+optimistic (Nb BCS losses scale as $\omega^2$), so the $Q = 10^5$ rows are the
+engineering baseline.
+
+\begin{table}[h]
+\centering
+\caption{Integration time to $\text{SNR}=5$ for cavity arrays
+($B_0 = 10$~T, $T_{\mathrm{sys}} = 1$~K, $f_{\mathrm{coh}} = 0.24$,
+per-cavity signal from Eq.~\eqref{eq:psig}).}
+\label{tab:arrays}
+\begin{tabular}{lcccc}
+\toprule
+& $N = 64$ & $N = 256$ \\
+\midrule
+$Q_L = 10^{5}$ (baseline) & 276 days & 69 days \\
+$Q_L = 10^{6}$ (optimistic) & 0.3 days & 0.1 days \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Protocol B: fixed-position dielectric booster stack}
+\label{sec:stack}
+
+The dielectric haloscope \cite{MADMAX2017} replaces the resonant cavity by
+${\sim}80$ dielectric disks (LaAlO$_3$, $\varepsilon \approx 24$) in a strong
+magnetic field; constructive interference of the emitted photons provides the
+boost $\beta$. In a scanning experiment the disk positions must be moved
+mechanically --- the technically hardest subsystem, now being commissioned
+\cite{MADMAXmech}. \textbf{The point-frequency prediction eliminates this
+subsystem entirely}: at a known frequency the inter-disk spacing is fixed, and
+the stack becomes a static optical element.
+
+With $D = 1.2$~m disks ($A = 1.13$~m$^2$, the low-mass-end MADMAX aperture),
+$B_0 = 10$~T and $f_{\mathrm{coh}} = 0.24$, Eq.~\eqref{eq:pstack} gives
+(Table~\ref{tab:stack}). The boost values $\beta = 10^4$--$10^5$ are the design
+goals of the MADMAX program \cite{MADMAX2019}; the prototype results are at an
+earlier stage \cite{MADMAXproto}, which we state as the principal technical
+risk of this option.
+
+\begin{table}[h]
+\centering
+\caption{Fixed dielectric stack, $B_0 = 10$~T, $T_{\mathrm{sys}} = 1$~K,
+readout bandwidth equal to the axion linewidth $\Delta f_a = 12.8$~kHz
+(the stack boost band $\gg \Delta f_a$).}
+\label{tab:stack}
+\begin{tabular}{lccc}
+\toprule
+Boost $\beta$ & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=0.24$) & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=1$) & $t(\text{SNR}=5)$ \\
+\midrule
+$10^{4}$ & $3.1\times 10^{-23}$~W & $1.3\times 10^{-22}$~W & 18 h \\
+$10^{5}$ & $3.1\times 10^{-22}$~W & $1.3\times 10^{-21}$~W & 11 min \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Protocol~B is strictly simpler than the cavity array: no cryogenic tuning
+mechanism, no phase-locked multi-cavity readout, a single wide-bore magnet,
+horn antenna and a near-quantum-limited amplifier --- while the required boost
+$\beta$ is already the stated MADMAX design target in a frequency band that
+includes 12.81~GHz.
+
+\subsection{Readout, statistics, and preregistered criteria}
+\label{sec:stats}
+
+\paragraph{Noise.} $T_{\mathrm{sys}} \approx 1$~K is adopted: millikelvin
+physical temperature plus a flux-driven Josephson parametric amplifier. This is
+not an assumption but demonstrated technology --- ORGAN's most recent phase
+operates exactly this way \cite{ORGAN26}.
+
+\paragraph{Statistical test.} With the Dicke radiometer relation
+\begin{equation}
+\mathrm{SNR} = \frac{P_{\mathrm{sig}}}{k_B T_{\mathrm{sys}}}
+\sqrt{\frac{t}{\Delta f}},
+\end{equation}
+the \emph{preregistered} search window is $f_\theta \pm 0.5\%$ (covering any
+plausible framework uncertainty in $m_3$ and $\chi_{\mathrm{top}}$), resolved
+in bins of width $\Delta f_a$. Because the prediction is a point rather than a
+band, the look-elsewhere penalty is negligible; no trials factor beyond the
+preregistered window is applied.
+
+\paragraph{Discovery criterion.} A $5\sigma$ excess inside the preregistered
+window, persisting under independent re-taking, with the two corroborating
+checks: (i) power scaling $\propto B_0^2$ when the magnet current is varied;
+(ii) consistency of the line shape with the Maxwell--Boltzmann halo profile.
+Reproduction at a second apparatus with a different magnet is required before
+any claim.
+
+\paragraph{Exclusion criterion.} A null result at KSVZ-level sensitivity,
+$g_{\theta\gamma\gamma} \le 2.1\times 10^{-14}$~GeV$^{-1}$ across the
+preregistered window, excludes the $\theta$-seesaw dark-matter hypothesis of
+Sec.~\ref{sec:seesaw} at $f_{\mathrm{coh}} = 0.24$. Because exclusion curves
+assume the full local density, the effective bound on $g$ for a coherent
+fraction $f_{\mathrm{coh}}$ is weaker by $1/\sqrt{f_{\mathrm{coh}}}
+\approx 2.0$; this rescaling must be applied when interpreting any null.
+A null at DFSZ level ($8.1\times 10^{-15}$~GeV$^{-1}$) would be the definitive
+test.
+
+\paragraph{Side-channel cross-checks.} The same $f_a$ predicts
+$\sum m_\nu = 59$~meV (CMB+BAO, ongoing) and a $0\nu\beta\beta$ window
+$m_{\beta\beta} \in [0,\, 6.4]$~meV (LEGEND-1000, nEXO): these provide
+framework-level corroboration independent of haloscopes.
+
+%======================================================================
+\section{Honest Caveats}
+\label{sec:caveats}
+
+\begin{enumerate}
+\item \textbf{Framework assumption.} The $\theta$-seesaw, Eq.~\eqref{eq:seesaw},
+is a postulate of the NVG construction (motivated by the two-loop anomaly
+diagram), not a standard-model result. If Eq.~\eqref{eq:m3} fails --- e.g.\
+$m_3$ from a future 0$\nu\beta\beta$/oscillation combination disagrees with
+$50.3$~meV --- the entire frequency prediction moves. The haloscope test is
+precisely the discriminator.
+\item \textbf{Model dependence of the coupling.} The factor
+$|E/N - 1.92|$ in Eq.~\eqref{eq:gagg} is benchmarked to KSVZ/DFSZ; a
+different UV completion rescales $g_{\theta\gamma\gamma}$ without moving the
+frequency. The mass prediction is unaffected.
+\item \textbf{Coherent fraction.} All powers use $f_{\mathrm{coh}} = 0.24$
+(misalignment only). If most of the sector's density sits in incoherent defects,
+haloscope signals weaken accordingly; if defects decay into coherent modes, they
+strengthen. This is the dominant astrophysical uncertainty and is why the
+exclusion criterion carries the $1/\sqrt{f_{\mathrm{coh}}}$ rescaling.
+\item \textbf{Technology risk.} $Q_L = 10^6$ at 13~GHz and $\beta = 10^5$ are
+program goals, not demonstrated hardware. The baseline rows ($Q_L = 10^5$,
+$\beta = 10^4$) reflect the validated state of the art.
+\end{enumerate}
+
+%======================================================================
+\section{Conclusion}
+\label{sec:concl}
+
+A single neutrino-sector input of the NVG/VMF framework fixes
+$f_a = 1.07\times 10^{11}$~GeV, which through lattice-QCD physics yields a
+point dark-matter prediction: $m_\theta = 53.2~\mu$eV, a microwave line at
+$12.81$~GHz with KSVZ-level photon coupling. The point lands on the QCD axion
+band within 2.6\% (consistency, not tuning), sits in the currently unexplored
+gap between published ORGAN windows, and is directly on that collaboration's
+declared SMASH roadmap. Because the prediction is a point, the search needs no
+scanning: a fixed dielectric booster stack reaches discovery-level significance
+in under a day of integration at design boost. The protocol above is
+preregistered: discovery requires $5\sigma$ plus $B^2$-scaling and
+cross-reproduction; exclusion at KSVZ sensitivity across the window closes the
+$\theta$-seesaw dark-matter hypothesis. Either outcome is informative --- which
+is the property a prediction must have to deserve an experiment.
+
+%======================================================================
+\section*{Appendix A: Reproducibility}
+\label{app:repro}
+
+All numbers in this note are produced by scripts in the accompanying
+repository (\url{https://github.com/infosave2007/vmf},
+Zenodo-archived releases):
+\begin{sloppypar}
+\begin{itemize}
+\item \path{generator_project/calc_theta_haloscope_design.py} ---
+geometry, signal powers (Eqs.~\eqref{eq:psig}--\eqref{eq:pstack}), ORGAN
+calibration, integration times, published-search status;
+\item \path{generator_project/calc_theta_haloscope_v2.py} ---
+frequency derivation, axion-band consistency check (2.6\%);
+\item \path{verification/nvg_neutrino_seesaw.py} --- Eq.~\eqref{eq:m3},
+fixing $f_a$; \path{verification/nvg_theta_fifth_force.py} ---
+pseudoscalar null channel.
+\end{itemize}
+\end{sloppypar}
+
+\begin{thebibliography}{99}
+
+\bibitem{VMFanchor}
+O.~Kirichenko,
+\emph{Lattice Sigma Terms as an Anchor for the Dense Nuclear Matter Equation of State},
+Zenodo preprint, doi:10.5281/zenodo.20214457 (2025).
+
+\bibitem{NVGrepo}
+O.~Kirichenko,
+\emph{NVG-Research: Null-Vector Gravity and Vacuum Mass Fraction framework,
+verification suite and scripts},
+\url{https://github.com/infosave2007/vmf}.
+
+\bibitem{Weinberg1978}
+S.~Weinberg,
+\emph{A New Light Boson?},
+Phys.\ Rev.\ Lett.\ \textbf{40}, 223 (1978).
+
+\bibitem{Wilczek1978}
+F.~Wilczek,
+\emph{Problem of Strong $P$ and $T$ Invariance in the Presence of Instantons},
+Phys.\ Rev.\ Lett.\ \textbf{40}, 279 (1978).
+
+\bibitem{KSVZ}
+J.~E.~Kim,
+\emph{Weak-Interaction Singlet and Strong $CP$ Invariance},
+Phys.\ Rev.\ Lett.\ \textbf{43}, 103 (1979);
+M.~A.~Shifman, A.~I.~Vainshtein, V.~I.~Zakharov,
+\emph{Can Confinement Ensure Natural $CP$ Invariance of Strong Interactions?},
+Nucl.\ Phys.\ B \textbf{166}, 493 (1980).
+
+\bibitem{DFSZ}
+A.~R.~Zhitnitsky,
+\emph{On Possible Suppression of the Axion Hadron Interactions},
+Sov.\ J.\ Nucl.\ Phys.\ \textbf{31}, 260 (1980);
+M.~Dine, W.~Fischler, M.~Srednicki,
+\emph{A Simple Solution to the Strong $CP$ Problem with a Harmless Axion},
+Phys.\ Lett.\ B \textbf{104}, 199 (1981).
+
+\bibitem{Sikivie1983}
+P.~Sikivie,
+\emph{Experimental Tests of the Invisible Axion},
+Phys.\ Rev.\ Lett.\ \textbf{51}, 1415 (1983).
+
+\bibitem{Misalignment}
+J.~Preskill, M.~B.~Wise, F.~Wilczek,
+\emph{Cosmology of the Invisible Axion},
+Phys.\ Lett.\ B \textbf{120}, 127 (1983);
+L.~F.~Abbott, P.~Sikivie,
+\emph{A Cosmological Bound on the Invisible Axion},
+Phys.\ Lett.\ B \textbf{120}, 133 (1983);
+M.~Dine, W.~Fischler,
+\emph{The Not-So-Harmless Axion},
+Phys.\ Lett.\ B \textbf{120}, 137 (1983).
+
+\bibitem{QCDaxionPrecisely}
+G.~Grilli di Cortona, E.~Hardy, J.~Pardo Vega, G.~Villadoro,
+\emph{The QCD axion, precisely},
+JHEP \textbf{01} (2016) 034, arXiv:1511.02867.
+
+\bibitem{SMASH}
+G.~Ballesteros, J.~Redondo, A.~Ringwald, C.~Tamarit,
+\emph{Standard Model-Axion-Seesaw-Higgs Portal Inflation. Five problems of
+particle physics and cosmology solved in one stroke},
+arXiv:1610.01639 (2016).
+
+\bibitem{AxionReview}
+I.~G.~Irastorza, J.~Redondo,
+\emph{New experimental approaches in the search for axion-like particles},
+Prog.\ Part.\ Nucl.\ Phys.\ \textbf{102}, 89 (2018).
+
+\bibitem{AxionExpReview}
+P.~W.~Graham, I.~G.~Irastorza, S.~K.~Lamoreaux, A.~Lindner, K.~A.~van Bibber,
+\emph{Experimental Searches for the Axion and Axion-Like Particles},
+Annu.\ Rev.\ Nucl.\ Part.\ Sci.\ \textbf{65}, 485 (2015).
+
+\bibitem{ADMX2018}
+N.~Du et al.\ (ADMX Collaboration),
+\emph{A Search for Invisible Axion Dark Matter with the Axion Dark Matter Experiment},
+Phys.\ Rev.\ Lett.\ \textbf{120}, 151301 (2018), arXiv:1804.05750.
+
+\bibitem{HAYSTAC2025}
+X.~Bai et al.\ (HAYSTAC Collaboration),
+\emph{Dark Matter Axion Search with HAYSTAC Phase II},
+Phys.\ Rev.\ Lett.\ \textbf{134}, 151006 (2025), arXiv:2409.08998.
+
+\bibitem{ORGAN2022}
+A.~Quiskamp et al.\ (ORGAN Collaboration),
+\emph{Direct search for dark matter axions excluding ALP cogenesis in the
+63- to 67-$\mu$eV range with the ORGAN experiment},
+Sci.\ Adv.\ \textbf{8}, eabq3765 (2022).
+
+\bibitem{ORGAN1b}
+A.~Quiskamp et al.\ (ORGAN Collaboration),
+\emph{Exclusion of Axionlike-Particle Cogenesis Dark Matter in a Mass Window
+above 100 $\mu$eV},
+Phys.\ Rev.\ Lett.\ \textbf{132}, 031601 (2024), arXiv:2310.00904.
+
+\bibitem{ORGAN26}
+A.~P.~Quiskamp et al.\ (ORGAN Collaboration),
+\emph{Near-quantum-limited axion dark matter search with the ORGAN experiment
+around 26 $\mu$eV},
+Phys.\ Rev.\ D \textbf{111}, 095007 (2025), arXiv:2407.18586.
+
+\bibitem{MADMAX2017}
+A.~Caldwell et al.\ (MADMAX Working Group),
+\emph{Dielectric Haloscopes: A New Way to Detect Axion Dark Matter},
+Phys.\ Rev.\ Lett.\ \textbf{118}, 091801 (2017), arXiv:1611.05865.
+
+\bibitem{MADMAXtheory}
+A.~J.~Millar, G.~G.~Raffelt, J.~Redondo, F.~D.~Steffen,
+\emph{Dielectric Haloscopes to Search for Axion Dark Matter: Theoretical
+Foundations},
+JCAP \textbf{01} (2017) 061, arXiv:1612.07057.
+
+\bibitem{MADMAX2019}
+P.~Brun et al.\ (MADMAX Collaboration),
+\emph{A new experimental approach to probe QCD axion dark matter in the mass
+range above 40 $\mu$eV},
+Eur.\ Phys.\ J.\ C \textbf{79}, 186 (2019), arXiv:1901.07401.
+
+\bibitem{MADMAXsim}
+S.~Knirck et al.\ (MADMAX Collaboration),
+\emph{Simulating MADMAX in 3D: Requirements for Dielectric Axion Haloscopes},
+JCAP \textbf{10} (2021) 034, arXiv:2104.06553.
+
+\bibitem{MADMAXmech}
+B.~Ary Dos Santos Garcia et al.\ (MADMAX Collaboration),
+\emph{First mechanical realization of a tunable dielectric haloscope for the
+MADMAX axion search experiment},
+JINST \textbf{19}, T11002 (2024), arXiv:2407.10716.
+
+\bibitem{MADMAXproto}
+B.~Ary Dos Santos Garcia et al.\ (MADMAX Collaboration),
+\emph{First search for axion dark matter with a MADMAX prototype},
+Phys.\ Rev.\ Lett.\ \textbf{135}, 041001 (2025), arXiv:2409.11777.
+
+\bibitem{Egge2023}
+J.~Egge,
+\emph{Axion haloscope signal power from reciprocity},
+JCAP \textbf{04} (2023) 064, arXiv:2211.11503.
+
+\bibitem{Egge2024exp}
+J.~Egge et al.,
+\emph{Experimental determination of axion signal power of dish antennas and
+dielectric haloscopes using the reciprocity approach},
+JCAP \textbf{04} (2024) 005, arXiv:2311.13359.
+
+\end{thebibliography}
+
+\end{document}

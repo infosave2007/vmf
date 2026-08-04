@@ -26,6 +26,7 @@ article/*
 !article/NVG_VACUUM_W_FIELD_DERIVATION_EN.md
 !article/VMF_Talbot_Isomorphism.md
 !article/*.pdf
+!article/NVG_THETA_HALOSCOPE_PREPRINT.tex
 
 # Private directories
 .letters/
@@ -41,3 +42,4 @@ verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md
 verification/NVG_NEW_DIRECTIONS_RU.md
 calc_peltier_generator_output.txt
 NVG_CONTRACT_EXECUTION.md
+NVG_RESEARCH_CONTRACT.md
