@@ -35,12 +35,12 @@ The crude estimate (`nvg_melting_beta_bounce.py`) evaluated the comoving Hubble 
 
 ## Per-script findings
 
-### `nvg_melting_identifiability.py` — ✓ (6s)
+### `nvg_melting_identifiability.py` — ✓ (16s)
 *Question.* Can a neutron star see the *cosmological* melting law W=sqrt(1-rho/rho_c^cosmo)?
 
 *Finding.* No. The cosmological law is inert at NS densities (M_max=2.02, unchanged); the NS only fixes an EFFECTIVE rho_c ~ 462 MeV/fm^3 and the functional form is degenerate.
 
-### `nvg_melting_freeform_beta.py` — ✓ (7s)
+### `nvg_melting_freeform_beta.py` — ✓ (121s)
 *Question.* How deep in density does a neutron star actually constrain the melting curve W(rho)?
 
 *Finding.* Only up to ~2.5 n0. Above that the deep core is 30-50% degenerate: NS structure does not pin W(rho) in the region where a critical exponent would live.
@@ -65,12 +65,12 @@ The crude estimate (`nvg_melting_beta_bounce.py`) evaluated the comoving Hubble 
 
 *Finding.* CRUDE proxy: evaluating R_H at an arbitrary onset r*=0.9..0.99 gives ell_c 3.42 -> 5.1..7.6. Superseded by the horizon-chain refinement below.
 
-### `nvg_melting_beta_cmb_chi2.py` — ✓ (1s)
+### `nvg_melting_beta_cmb_chi2.py` — ✓ (61s)
 *Question.* Real CAMB low-ell chi^2 of the cutoff shift -- is it statistically significant?
 
 *Finding.* No. At ell=2-29 cosmic variance dominates: beta=0.5 vs no-cutoff is Delta chi^2=1.01 (~1.0 sigma), vs beta=0.326 is 1.9 (~1.4 sigma) -- both sub-2 sigma, cut further by f_sky~0.86. The CMB is CONSISTENT with beta=0.5, no-cutoff, AND beta=0.326 alike; the +10.9 is the uncertain k_c(beta) mapping (spans chi^2 27.7-36.6), not a physical disfavouring.
 
-### `nvg_melting_beta_horizon_chain.py` — ✓ (1s)
+### `nvg_melting_beta_horizon_chain.py` — ✓ (2s)
 *Question.* Refined ell_c(beta) via the framework's ACTUAL Genesis horizon chain + real CAMB.
 
 *Finding.* REFINEMENT: the CMB tension is NOT robust. On the committed instanton mechanism (r_c=c/H_c uses rho_c only; N_e fixed by local H_0) ell_c is beta-INDEPENDENT (no tension). Under the alternative bounce-horizon reading, the integrated k_c(0.326)/k_c(0.5) ~ 1.4x (r*=0.5) -- a real but r*-dependent shift; integration kills only the point-proxy's ell_c~7.6 (+10.9 chi^2) runaway.
