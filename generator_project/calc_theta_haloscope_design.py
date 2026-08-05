@@ -192,6 +192,22 @@ sig_fix = 0.5 * (pct_fix[3] - pct_fix[1]) / pct_fix[2]     # relative 1-sigma
 _, _, f_lo_all = seesaw_chain(3.0)
 _, _, f_hi_all = seesaw_chain(1.0/3.0)
 
+# trials factor: the preregistered window still contains many independent
+# axion-line templates of width df_axion (look-elsewhere correction)
+f_win_lo = pct_fix[2]*(1 - 3*sig_fix)             # GHz
+f_win_hi = pct_fix[2]*(1 + 3*sig_fix)
+N_eff = (f_win_hi - f_win_lo)*1e9 / df_axion
+# local threshold z giving GLOBAL 5-sigma: N_eff * erfc(z/sqrt2) = erfc(5/sqrt2)
+p_glob = math.erfc(5.0/math.sqrt(2.0))
+z_lo, z_hi = 5.0, 9.0
+for _ in range(200):
+    z_mid = 0.5*(z_lo + z_hi)
+    if N_eff * math.erfc(z_mid/math.sqrt(2.0)) > p_glob:
+        z_lo = z_mid
+    else:
+        z_hi = z_mid
+z_local_thr = 0.5*(z_lo + z_hi)
+
 # ---------------------------------------------------------------------------
 print("=" * 78)
 print("  NVG theta-DM RESONATOR - DESIGN v4 (beta^2 convention, c_nu, MC)")
@@ -236,7 +252,7 @@ print("""\
       25.45-26.27 ueV  (6.15-6.35 GHz), g >~ 2.8e-13   [PRD 111, 095007]
       63.2 - 67.1 ueV  (15.3-16.2 GHz), g <= 3.0e-12   [Sci Adv 2022]
       107  - 112  ueV  (26.0-27.1 GHz), cogenesis ALP  [PRL 132, 031601]
-    NVG point: 53 ueV = 12.81 GHz -> sits in the GAP between 26 and 63 ueV.
+    NVG point: 53 ueV = 12.86 GHz -> sits in the GAP between 26 and 63 ueV.
     No published limit reaches g = 2.1e-14 anywhere near this mass.
     ORGAN's declared roadmap is the SMASH band 50-200 ueV: the NVG point
     lies at the very bottom of it - a targeted request is well-motivated.
@@ -254,6 +270,11 @@ print(f"       = [{pct_fix[2]*(1-3*sig_fix):.2f}, {pct_fix[2]*(1+3*sig_fix):.2f}
 print(f"       (replaces the +-0.5% window of v1: the dominant uncertainty is")
 print(f"        c_nu, not m_3 or chi_top; the +-0.5% window covered only the")
 print(f"        latter two)")
+print(f"    TRIALS FACTOR: window [{f_win_lo:.2f}, {f_win_hi:.2f}] GHz holds")
+print(f"       N_eff = {N_eff:.2e} independent bins of width {df_axion/1e3:.1f} kHz")
+print(f"       -> local 5-sigma ~ global 2-sigma; global 5-sigma requires a")
+print(f"          local threshold ~ {z_local_thr:.2f} sigma (final N_eff from the")
+print(f"          matched-filter bank + noise-only Monte Carlo)")
 print(f"    extreme model envelope c_nu in [1/3, 3]:"
       f" f_theta in [{f_lo_all:.1f}, {f_hi_all:.1f}] GHz (~9x band; honest scan)")
 print("-" * 78)

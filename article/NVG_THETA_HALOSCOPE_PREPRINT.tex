@@ -156,14 +156,13 @@ suppression scale and coefficient,
 \qquad \tilde H \equiv i\sigma_2 H^{*},
 \label{eq:seesaw}
 \end{equation}
-where $c_\nu$ is an unknown dimensionless coefficient. Since $c_\nu$ already
-absorbs the UV normalization, we \emph{define} it through the physical
-relation~\eqref{eq:m3} below; the overall prefactor of
-Eq.~\eqref{eq:seesaw} --- including the displayed factor of 2, which
-compensates the two factors of $1/\sqrt{2}$ from
-$\langle H \rangle = v_{\mathrm{EW}}/\sqrt{2}$ --- is then conventional and
-carries no independent physical meaning. After EWSB the operator reduces to
-the Majorana mass, for the heaviest neutrino,
+where $c_\nu$ is an unknown dimensionless coefficient. The normalization
+convention of this Weinberg-like operator, including symmetry factors in
+flavor space and the factors of $1/\sqrt{2}$ from
+$\langle H \rangle = v_{\mathrm{EW}}/\sqrt{2}$, is absorbed into $c_\nu$;
+accordingly, $c_\nu = 1$ defines a benchmark normalization rather than a
+UV-derived coefficient. The operator is \emph{defined} through the physical
+post-EWSB relation, for the heaviest neutrino,
 \begin{equation}
 m_3 = c_\nu\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}.
 \label{eq:m3}
@@ -499,57 +498,74 @@ physical temperature plus a flux-driven Josephson parametric amplifier. This is
 not an assumption but demonstrated technology --- ORGAN's most recent phase
 operates exactly this way \cite{ORGAN26}.
 
-\paragraph{Statistical test.} With the Dicke radiometer relation
+\paragraph{Statistical target definition.} With the Dicke radiometer relation
 \begin{equation}
 \mathrm{SNR} = \frac{P_{\mathrm{sig}}}{k_B T_{\mathrm{sys}}}
 \sqrt{\frac{t}{\Delta f}},
 \end{equation}
-the \emph{preregistered} search window combines a Monte Carlo propagation of
-the statistical inputs (Appendix~\ref{app:repro}),
-$m_3 \sim \mathcal{N}(50.3,\,0.25)$~meV,
-$\chi_{\mathrm{top}}^{1/4} \sim \mathcal{N}(75.5,\,0.7\%)$~MeV, with explicit
-conditional scenarios for the unknown coefficient $c_\nu$. We treat $c_\nu$ as
-a parameter, not a random error: no prior on it is motivated, so the
-$c_\nu$-dependent ranges below are \emph{sensitivity scenarios}, not
-statistical credible intervals.
+the narrow search window below is conditional on the benchmark coefficient
+$c_\nu = 1$. Statistical uncertainties in $m_3$ and $\chi_{\mathrm{top}}$
+are propagated by Monte Carlo (Appendix~\ref{app:repro}: $m_3 \sim
+\mathcal{N}(50.3,\,0.25)$~meV, $\chi_{\mathrm{top}}^{1/4} \sim
+\mathcal{N}(75.5,\,0.7\%)$~MeV), while $c_\nu$ is \emph{not} assigned a
+statistical prior: it is an explicit theory parameter. Broader intervals
+obtained by varying $c_\nu$ below are sensitivity scenarios, not confidence
+intervals.
 \begin{itemize}
-\item \textbf{Benchmark window ($c_\nu = 1$ fixed).} The target-frequency
-distribution has median $12.86$~GHz and a 68\% interval
+\item \textbf{Conditional benchmark window ($c_\nu = 1$ fixed).} The
+target-frequency distribution has median $12.86$~GHz and a 68\% interval
 $[12.67,\,13.05]$~GHz (relative width $1.5\%$, dominated by
-$\chi_{\mathrm{top}}$). The preregistered window is the $3\sigma$ envelope
-$12.86\,\text{GHz} \times (1 \pm 4.4\%) = [12.29,\,13.43]$~GHz, resolved in
-bins of width $\Delta f_a$.
-\item \textbf{Sensitivity scenario ($c_\nu$ varied over $[1/2,\,2]$).} Via
-Eq.~\eqref{eq:scaling} the conditional band spans $6.4$--$25.7$~GHz; a
-discovery program over this band carries the corresponding trials factor,
-which we state honestly.
+$\chi_{\mathrm{top}}$). The corresponding pre-specified $3\sigma$ analysis
+window is $[12.29,\,13.43]$~GHz, resolved in bins of width $\Delta f_a$.
+\item \textbf{Illustrative coefficient scenario ($c_\nu$ varied over
+$[1/2,\,2]$).} Via Eq.~\eqref{eq:scaling} this non-statistical sensitivity
+scenario broadens the target range to $6.4$--$25.7$~GHz. It is a scan, not a
+point-target test, and must carry its full trials factor and sensitivity
+variation across the band.
 \item \textbf{Extreme envelope ($c_\nu \in [1/3,\,3]$).} $f_\theta \in
 [4.3,\,38.6]$~GHz ($\sim$9 times the benchmark band): the full scan cost if
 $c_\nu$ is never fixed by theory.
 \end{itemize}
-\paragraph{Signal power across the band.} Along the curve~\eqref{eq:scaling},
-\emph{at fixed coherent fraction}, the signal powers scale simply:
-$P_{\mathrm{sig}}^{\mathrm{stack}} \propto g^2/m_\theta^2 \propto c_\nu^{0}$
-for the dielectric stack (exactly invariant under $c_\nu$ rescaling) and
-$P_{\mathrm{sig}}^{\mathrm{cavity}} \propto g^2/m_\theta \propto c_\nu^{-1}$
-for the cavity, so the integration times of
+\paragraph{Signal power and sensitivity across the band.} Along the
+curve~\eqref{eq:scaling}, \emph{at fixed coherent fraction}, the signal
+powers scale simply: $P_{\mathrm{sig}}^{\mathrm{stack}} \propto g^2/m_\theta^2
+\propto c_\nu^{0}$ for the dielectric stack (exactly invariant under $c_\nu$
+rescaling) and $P_{\mathrm{sig}}^{\mathrm{cavity}} \propto g^2/m_\theta
+\propto c_\nu^{-1}$ for the cavity, so the integration times of
 Tables~\ref{tab:arrays}--\ref{tab:stack} apply unchanged to the stack and
 rescale as $c_\nu^2$ for the cavity at any other benchmark value of $c_\nu$.
 If instead the misalignment estimate of Sec.~\ref{sec:abundance} is imposed,
 the coherent fraction itself scales as $f_{\mathrm{coh}} \propto f_a^{7/6}
-\propto c_\nu^{7/6}$, which multiplies both powers accordingly.
-The $\pm 0.5\%$ window of the v1 draft covered only $m_3$ and
-$\chi_{\mathrm{top}}$ and is superseded. Because the benchmark target is a
-point rather than a band, the look-elsewhere penalty inside the preregistered
-window is negligible; no trials factor beyond it is applied to the benchmark
-test.
+\propto c_\nu^{7/6}$, which multiplies both powers accordingly. Across
+coefficient scenarios the required sensitivity is therefore not constant: at
+fixed $E/N$, $g_{\theta\gamma\gamma} \propto c_\nu^{-1}$, while the assumed
+misalignment abundance also changes with $f_a \propto c_\nu$; consequently, a
+broad-$c_\nu$ program requires a frequency-dependent sensitivity forecast
+rather than a uniform scan-time rescaling. The $\pm 0.5\%$ window of the v1
+draft covered only $m_3$ and $\chi_{\mathrm{top}}$ and is superseded.
 
-\paragraph{Discovery criterion.} A $5\sigma$ excess inside the preregistered
-window, persisting under independent re-taking, with the two corroborating
-checks: (i) power scaling $\propto B_0^2$ when the magnet current is varied;
-(ii) consistency of the line shape with the Maxwell--Boltzmann halo profile.
-Reproduction at a second apparatus with a different magnet is required before
-any claim.
+\paragraph{Trials factor and global significance.} The benchmark prediction
+is a \emph{conditional narrow target} in model-parameter space, but the
+experimentally searched frequency interval still contains many statistically
+independent axion-line templates: the $1.14$~GHz benchmark window holds
+$N_{\mathrm{eff}} \simeq 8.9\times 10^{4}$ independent bins of width
+$\Delta f_a = 12.8$~kHz. A local $5\sigma$ excess scanned over the whole
+window corresponds to only ${\sim}\,2\sigma$ globally, so the discovery
+statistic must report both a local significance and a global significance
+corrected for the pre-specified $N_{\mathrm{eff}}$. Pre-registration fixes
+the analysis window and procedure; it does not remove the trials correction.
+
+\paragraph{Discovery criterion.} A candidate must exceed a pre-specified
+local threshold corresponding to a \emph{global} $5\sigma$ false-alarm
+probability after correction for $N_{\mathrm{eff}}$ templates in the
+benchmark window. For the conservative independent-bin estimate above,
+$N_{\mathrm{eff}} \simeq 8.9\times 10^{4}$ implies a local threshold of
+approximately $6.9\sigma$. The final $N_{\mathrm{eff}}$ shall be obtained
+from the matched-filter bank and verified with noise-only Monte Carlo. The
+candidate must also persist under independent re-taking, scale as $B_0^2$
+when the magnet current is varied, match the expected Maxwell--Boltzmann halo
+lineshape, and be reproduced at a second apparatus with a different magnet
+before any claim.
 
 \paragraph{Exclusion criterion.} Exclusion is reported at two levels.
 (1)~A null result at KSVZ-level sensitivity,
