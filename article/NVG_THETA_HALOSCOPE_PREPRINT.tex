@@ -16,14 +16,14 @@
   linkcolor=blue!60!black,
   citecolor=blue!60!black,
   urlcolor=blue!60!black,
-  pdftitle={A Point-Like Prediction for Dark Matter at 12.8 GHz from a QCD-Anchored Vacuum Condensate},
+  pdftitle={A Point-Like Dark-Matter Target at 12.8 GHz from a QCD-Anchored Vacuum Condensate},
   pdfauthor={Oleg Kirichenko}
 }
 
 % allow line breaks inside \path{...} at underscores and slashes
 \renewcommand{\UrlBreaks}{\do\_\do\/\do\-}
 
-\title{\textbf{A Point-Like Prediction for Dark Matter at 12.8\,GHz\\
+\title{\textbf{A Point-Like Dark-Matter Target at 12.8\,GHz\\
 from a QCD-Anchored Vacuum Condensate:\\
 Theory and Haloscope Test Protocol}}
 
@@ -41,29 +41,38 @@ Theory and Haloscope Test Protocol}}
 The Null-Vector Gravity (NVG) framework, anchored to a single QCD input
 $M_{\Omega,0} = 859 \pm 8$~MeV fixed by lattice sigma terms, contains a
 pseudo-Goldstone mode $\theta$ of the vacuum condensate $\Phi = W e^{i\theta}$.
-If the same decay constant $f_a$ that sets the $\theta$-mode mass also generates
-Majorana neutrino masses through a QCD-anomaly seesaw, the neutrino sector fixes
-$f_a = 1.07\times 10^{11}$~GeV with no further freedom. This single number then
-yields a \emph{point} prediction for dark matter: a coherent pseudo-scalar of mass
-$m_\theta = 53.2~\mu\text{eV}$, detectable as a microwave line at
-$f_\theta = 12.81$~GHz with photon coupling
+We examine the phenomenological consequences of the hypothesis that the same
+decay constant $f_a$ that sets the $\theta$-mode mass also generates Majorana
+neutrino masses through a Weinberg-like dimension-five operator suppressed by
+a two-loop QCD-anomaly coefficient. Introducing the unknown overall coefficient
+of this operator as an explicit parameter $c_\nu$, the benchmark choice
+$c_\nu = 1$ fixes $f_a = 1.07\times 10^{11}$~GeV from the neutrino sector and
+yields a \emph{conditional point target} for dark matter: a coherent
+pseudo-scalar of mass $m_\theta = 53.2~\mu\text{eV}$, detectable as a
+microwave line at $f_\theta = 12.86$~GHz with photon coupling
 $g_{\theta\gamma\gamma} = 2.08\times 10^{-14}$~GeV$^{-1}$ (KSVZ benchmark).
-The predicted product $m_\theta f_a$ falls on the QCD axion band within 2.6\%,
-and the frequency lies in the currently unexplored gap between the published
-ORGAN mass windows ($25$--$26$ and $63$--$67~\mu$eV) --- directly on the lower
-edge of the SMASH band ($50$--$200~\mu$eV) that ORGAN has declared as its
-roadmap target. We present the derivation, a calibration of the haloscope signal
-formula against the published ORGAN signal estimate, and two concrete test
-protocols: (A)~a resonant-cavity array and (B)~a \emph{fixed-position} dielectric
-booster stack, where the point-frequency prediction eliminates the scanning
-mechanism. For a coherent dark-matter fraction of 24\% (misalignment only),
-protocol~B reaches $\text{SNR}=5$ in ${\sim}\,18$~h at boost factor $\beta=10^4$.
-Discovery and exclusion criteria are preregistered. All numerical values are
-reproducible from the accompanying scripts.
+The product $m_\theta f_a$ agrees with the QCD axion band at 2.6\% --- a
+normalization cross-check, not an independent test --- and the benchmark
+frequency lies in the currently unexplored gap between the published ORGAN
+mass windows ($25$--$26$ and $63$--$67~\mu$eV), directly on the lower edge of
+the SMASH band ($50$--$200~\mu$eV) that ORGAN has declared as its roadmap
+target. We present the derivation, a calibration of the haloscope signal
+formula against the published ORGAN signal estimate, a Monte Carlo propagation
+of all input uncertainties ($m_3$, $\chi_{\mathrm{top}}$, $c_\nu$) to the
+target-frequency distribution, and two concrete test protocols: (A)~a
+resonant-cavity array and (B)~a \emph{fixed-position} dielectric booster
+stack, where the point target eliminates the scanning mechanism. For a
+coherent dark-matter fraction of 24\% (misalignment only), protocol~B reaches
+$\text{SNR}=5$ in ${\sim}\,18$~h at power boost $\beta^2 = 10^4$ (MADMAX
+convention, $\beta^2 \equiv P_{\mathrm{sig}}/P_0$). Discovery and exclusion
+criteria are preregistered. This is a \emph{phenomenological target paper}:
+the $\theta$-seesaw operator is stated as a hypothesis, its coefficient is
+propagated as a parameter, and every derived quantity is conditional on it.
+All numerical values are reproducible from the accompanying scripts.
 
 \medskip
 \noindent\textbf{Keywords:} axion dark matter, haloscope, dielectric haloscope,
-pseudo-Goldstone boson, vacuum condensate, neutrino mass, point prediction
+pseudo-Goldstone boson, vacuum condensate, neutrino mass, phenomenological target
 \end{abstract}
 
 \tableofcontents
@@ -82,9 +91,10 @@ for the $40$--$400~\mu$eV range \cite{MADMAX2019}. The intermediate region
 around $50$--$60~\mu$eV ($12$--$15$~GHz) remains unexplored.
 
 This note reports that the NVG/VMF framework \cite{NVGrepo}, anchored to a
-single QCD input \cite{VMFanchor}, yields a parameter-free prediction
+single QCD input \cite{VMFanchor}, yields --- conditional on one stated
+hypothesis (the $\theta$-seesaw, Sec.~\ref{sec:seesaw}) --- a point target
 \emph{exactly} in that gap: a dark-matter pseudo-scalar at
-$53.2~\mu$eV. Because the prediction is a \emph{point} in $(m, g_{\gamma})$
+$53.2~\mu$eV. Because the target is a \emph{point} in $(m, g_{\gamma})$
 space rather than a band, the experimental problem simplifies drastically:
 no scanning, no tuning mechanism --- a fixed-frequency integration.
 
@@ -130,56 +140,74 @@ becomes $m_\theta = 5.691~\mu\text{eV}\times (10^{12}~\text{GeV}/f_a)$.
 \subsection{The $\theta$-seesaw: fixing $f_a$ from the neutrino sector}
 \label{sec:seesaw}
 
-The framework hypothesis that makes the prediction parameter-free is the
-\emph{$\theta$-seesaw}: the same mode $\theta$ generates Majorana neutrino
-masses without right-handed neutrinos, through the two-loop QCD anomaly diagram
-coupling $\theta$ to the lepton current,
+The framework hypothesis behind the target is the \emph{$\theta$-seesaw}: the
+same mode $\theta$ generates Majorana neutrino masses without right-handed
+neutrinos. To be consistent with the electroweak gauge group above EWSB, the
+operator must have the unique gauge-invariant dimension-five (Weinberg)
+structure \cite{Weinberg1979}; the NVG hypothesis specifies only its
+suppression scale and coefficient,
 \begin{equation}
-\mathcal{L}_{\theta\nu} \;=\;
-\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}\,
-\nu_L^{T} C \nu_L + \text{h.c.}
+\mathcal{L}_{\mathrm{eff}} \;=\;
+2\,c_\nu\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{1}{f_a}\,
+\bigl(\tilde H^\dagger L\bigr)^{T} C\,
+\bigl(\tilde H^\dagger L\bigr) + \text{h.c.},
+\qquad \tilde H \equiv i\sigma_2 H^{*},
 \label{eq:seesaw}
 \end{equation}
-This gives, for the heaviest neutrino,
+where $c_\nu$ is an unknown dimensionless coefficient. After EWSB
+($\langle H \rangle = v_{\mathrm{EW}}/\sqrt{2}$; the factor of 2 compensates
+the two factors of $1/\sqrt{2}$) this reduces to the Majorana mass, for the
+heaviest neutrino,
 \begin{equation}
-m_3 = \left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}.
+m_3 = c_\nu\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}.
 \label{eq:m3}
 \end{equation}
 With $\alpha_s(M_Z) = 0.1184$, $v_{\mathrm{EW}} = 246.22$~GeV and the
-oscillation-and-cosmology anchor $m_3 = 50.3$~meV (normal ordering; the implied
-sum $\sum m_\nu = 59$~meV passes the DESI DR2 bound $\sum m_\nu < 64$~meV
-unconditionally), Eq.~\eqref{eq:m3} fixes
+oscillation-and-cosmology anchor $m_3 = 50.3$~meV (normal ordering; the
+implied sum $\sum m_\nu = 59$~meV passes the DESI DR2 bound
+$\sum m_\nu < 64$~meV unconditionally), Eq.~\eqref{eq:m3} fixes
 \begin{equation}
-\boxed{\;f_a = \left(\frac{\alpha_s}{4\pi}\right)^{\!2}
-\frac{v_{\mathrm{EW}}^{2}}{m_3} = 1.07\times 10^{11}~\text{GeV}\;}
+\boxed{\;f_a = c_\nu\left(\frac{\alpha_s}{4\pi}\right)^{\!2}
+\frac{v_{\mathrm{EW}}^{2}}{m_3} = 1.07\times 10^{11}\,c_\nu~\text{GeV}\;}
 \label{eq:fa}
 \end{equation}
-with no remaining freedom. We stress that Eq.~\eqref{eq:seesaw} is a
-\emph{framework assumption} (the coefficient $(\alpha_s/4\pi)^2 \approx
-8.9\times 10^{-5}$ arises from the two-loop anomaly diagram); it is the single
-non-standard ingredient, and it is directly testable (Section~\ref{sec:caveats}).
+We stress the status of Eq.~\eqref{eq:seesaw}: it is a \emph{framework
+hypothesis}, the single non-standard ingredient of this note. The nominal
+coefficient $(\alpha_s/4\pi)^2 \approx 8.9\times 10^{-5}$ is motivated by the
+two-loop QCD-anomaly diagram, but possible flavor factors and RG running are
+not computed here, and the UV completion that generates the operator is not
+derived. The parameter $c_\nu$ absorbs all of this freedom: the benchmark
+$c_\nu = 1$ defines the headline target, and every result below is rescaled
+with $c_\nu$ (Section~\ref{sec:stats}). The haloscope test discriminates the
+hypothesis directly (Section~\ref{sec:caveats}).
 
-\subsection{Point prediction for the dark-matter mass}
+\subsection{Point target for the dark-matter mass}
 
 Inserting \eqref{eq:fa} into \eqref{eq:mtheta}:
 \begin{equation}
 \boxed{\;m_\theta = 5.691~\mu\text{eV}\times
-\frac{10^{12}}{1.07\times 10^{11}} = 53.2~\mu\text{eV}\;}
+\frac{10^{12}}{1.07\times 10^{11}\,c_\nu}
+= \frac{53.2}{c_\nu}~\mu\text{eV}\;}
 \end{equation}
 or, equivalently, a Compton frequency
 \begin{equation}
-f_\theta = \frac{m_\theta c^2}{h} = 12.81~\text{GHz}.
+f_\theta = \frac{m_\theta c^2}{h} = \frac{12.86}{c_\nu}~\text{GHz}.
 \label{eq:freq}
 \end{equation}
+The benchmark $c_\nu = 1$ gives $m_\theta = 53.2~\mu$eV, $f_\theta =
+12.86$~GHz throughout the rest of this note.
 
-\paragraph{Consistency check (no tuning).} The two inputs above --- $m_\theta$
-from the lattice susceptibility and $f_a$ from the neutrino sector --- are
-independent. Their product must land on the QCD axion mass--coupling band
-$m_a f_a \simeq m_\pi f_\pi \sqrt{z}/(1+z) \approx 5.82\times 10^{15}$~eV$^2$
-\cite{QCDaxionPrecisely}. The framework gives
-$m_\theta f_a = 5.67\times 10^{15}$~eV$^2$: \textbf{agreement within 2.6\%},
-well inside the lattice uncertainty of the band. This agreement is a
-non-trivial consistency test of the construction, not an input.
+\paragraph{Normalization cross-check (not an independent test).} Once
+Eq.~\eqref{eq:mtheta} is accepted, the product $m_\theta f_a =
+\sqrt{\chi_{\mathrm{top}}}$ is fixed by the same QCD input, so its landing on
+the QCD axion band $m_a f_a \simeq m_\pi f_\pi \sqrt{z}/(1+z) \approx
+5.82\times 10^{15}$~eV$^2$ \cite{QCDaxionPrecisely} cannot count as an
+independent confirmation of NVG or of the seesaw hypothesis. The framework
+gives $m_\theta f_a = 5.67\times 10^{15}$~eV$^2$: the 2.6\% deviation is a
+numerical consistency check of two lattice normalizations (the
+$\chi_{\mathrm{top}}$ of \cite{QCDaxionPrecisely} against the VMF anchor),
+and nothing more. The genuinely independent content of the target is the
+\emph{value} of $f_a$ itself, fixed by the neutrino sector.
 
 \subsection{Coupling to photons}
 
@@ -202,7 +230,11 @@ g_{\theta\gamma\gamma}^{\mathrm{KSVZ}} = 2.08\times 10^{-14}~\text{GeV}^{-1},
 g_{\theta\gamma\gamma}^{\mathrm{DFSZ}} = 8.10\times 10^{-15}~\text{GeV}^{-1}.
 \end{equation}
 The model-dependent factor $|E/N - 1.92|$ is the only residual theory
-uncertainty on the coupling; the KSVZ value is used as the discovery benchmark.
+uncertainty on the coupling. We emphasize that $g_{\theta\gamma\gamma}$ is
+\emph{not predicted} by NVG: the framework fixes $f_a$ but not the UV anomaly
+ratio $E/N$, so KSVZ and DFSZ are benchmarks, not consequences of the model.
+A null result at KSVZ level therefore excludes only KSVZ-like realizations
+(Section~\ref{sec:stats}). The KSVZ value is used as the discovery benchmark.
 
 \subsection{Relic abundance: the honest coherent fraction}
 \label{sec:abundance}
@@ -227,23 +259,26 @@ would strengthen the signal proportionally.
 
 The Compton range $\lambda_\theta = \hbar c/m_\theta = 3.72$~mm falls inside
 the sub-millimetre window of torsion-balance experiments \cite{AxionReview}.
-Because $\theta$ is a \emph{pseudo}scalar, the monopole--monopole Yukawa
-channel vanishes identically: unpolarized E\"ot-Wash-class searches must see
-\emph{nothing} at this range (null prediction, falsified by any monopole signal),
-while the spin-dipole channel with coupling $m_N/f_a$ sits at the edge of
-current spin-polarized bounds. This constitutes an independent, low-cost
-cross-check of the sector.
+Because $\theta$ is a \emph{pseudo}scalar, the leading-order
+monopole--monopole Yukawa exchange between unmixed states vanishes, so
+unpolarized E\"ot-Wash-class searches are expected to see nothing at this
+range. The residual channels --- spin-dipole exchange with coupling
+$m_N/f_a$, loop-induced scalar admixtures, two-boson exchange, or
+condensate mixing --- require a dedicated analysis and are not claimed here
+as quantitative predictions; we state only the robust null expectation for
+the unpolarized monopole channel.
 
 %======================================================================
 \section{Experimental Signature}
 \label{sec:signature}
 
-The complete prediction is summarized in Table~\ref{tab:prediction}.
+The benchmark target is summarized in Table~\ref{tab:prediction}.
 
 \begin{table}[h]
 \centering
-\caption{Parameter-free prediction of the NVG $\theta$-DM sector. No quantity
-in the right column is fitted to haloscope data.}
+\caption{Benchmark target of the NVG $\theta$-DM sector, conditional on the
+$\theta$-seesaw hypothesis with $c_\nu = 1$. No quantity in the right column
+is fitted to haloscope data.}
 \label{tab:prediction}
 \begin{tabular}{lcc}
 \toprule
@@ -251,7 +286,7 @@ Quantity & Predicted value & Origin \\
 \midrule
 Decay constant $f_a$ & $1.07\times 10^{11}$~GeV & neutrino sector, Eq.~\eqref{eq:m3} \\
 Mass $m_\theta$ & $53.2~\mu$eV & Eq.~\eqref{eq:mtheta}, lattice $\chi_{\mathrm{top}}$ \\
-Frequency $f_\theta$ & $12.81$~GHz & $m_\theta c^2/h$ \\
+Frequency $f_\theta$ & $12.86$~GHz & $m_\theta c^2/h$ \\
 Virial linewidth $Q_a$ & ${\sim}\,10^{6}$ & halo velocity dispersion \\
 Line width $\Delta f_a$ & $12.8$~kHz & $f_\theta/Q_a$ \\
 $g_{\theta\gamma\gamma}$ (KSVZ) & $2.08\times 10^{-14}$~GeV$^{-1}$ & Eq.~\eqref{eq:gagg} \\
@@ -262,7 +297,7 @@ $m_\theta f_a$ vs QCD band & $-2.6\%$ deviation & consistency check \\
 \end{tabular}
 \end{table}
 
-The signal is a nearly monochromatic microwave excess at 12.81~GHz with
+The signal is a nearly monochromatic microwave excess at 12.86~GHz with
 $Q_a \sim 10^6$ intrinsic quality factor, linearly polarized along the applied
 magnetic field, scaling as $B_0^2$, and tracking the sidereal modulation of the
 halo wind (a secondary discriminant).
@@ -276,8 +311,8 @@ predicted mass.
 
 \begin{table}[h]
 \centering
-\caption{Published haloscope mass windows around the NVG prediction. The
-predicted point ($53.2~\mu$eV) lies in the unexplored gap between the two
+\caption{Published haloscope mass windows around the NVG target. The
+benchmark point ($53.2~\mu$eV) lies in the unexplored gap between the two
 ORGAN windows, at the lower edge of the SMASH band ($50$--$200~\mu$eV)
 \cite{SMASH} that ORGAN declares as its roadmap target \cite{ORGAN2022}.}
 \label{tab:gap}
@@ -288,7 +323,7 @@ Experiment & Mass window ($\mu$eV) & Frequency (GHz) & Best limit on $g_{a\gamma
 ADMX \cite{ADMX2018} & $2.66$--$3.31$ & $0.64$--$0.80$ & KSVZ reached \\
 HAYSTAC II \cite{HAYSTAC2025} & ${\sim}\,17.3$--$19.5$ & $4.18$--$4.71$ & ${\sim}\,10^{-13}$ \\
 ORGAN \cite{ORGAN26} & $25.45$--$26.27$ & $6.15$--$6.35$ & $2.8\times 10^{-13}$ \\
-\textbf{NVG prediction} & $\mathbf{53.2}$ & $\mathbf{12.81}$ & $\mathbf{2.08\times 10^{-14}}$ \\
+\textbf{NVG target} & $\mathbf{53.2}$ & $\mathbf{12.86}$ & $\mathbf{2.08\times 10^{-14}}$ \\
 ORGAN \cite{ORGAN2022} & $63.2$--$67.1$ & $15.3$--$16.2$ & $3.0\times 10^{-12}$ \\
 ORGAN 1b \cite{ORGAN1b} & $107.42$--$111.93$ & $26.0$--$27.1$ & cogenesis ALP excluded \\
 MADMAX \cite{MADMAX2019,MADMAXproto} & $40$--$400$ (design) & $10$--$100$ & prototype phase \\
@@ -301,8 +336,9 @@ $g = 2.1\times 10^{-14}$~GeV$^{-1}$ anywhere near $53~\mu$eV: the closest
 result (ORGAN at $25.5$--$26.3~\mu$eV) is a factor ${\sim}13$ weaker in
 coupling, at a different mass. Second, the ORGAN collaboration's stated goal is
 to scan the SMASH band $50$--$200~\mu$eV under a constant magnetic field
-\cite{ORGAN2022}; the NVG point sits exactly at the lower edge of that band,
-making a targeted single-frequency run a natural addition to their program.
+\cite{ORGAN2022}; the NVG benchmark sits exactly at the lower edge of that
+band, making a targeted single-frequency run a natural addition to their
+program.
 
 %======================================================================
 \section{Test Protocol}
@@ -341,19 +377,25 @@ For the dielectric booster concept \cite{MADMAX2017,MADMAXtheory,MADMAX2019} the
 analogous expression is
 \begin{equation}
 P_{\mathrm{sig}} = g_{\theta\gamma\gamma}^{2}\,\rho_\theta\,B_0^{2}\,
-\frac{A\,\beta}{m_\theta^{2}},
+\frac{A\,\beta^{2}}{m_\theta^{2}},
 \label{eq:pstack}
 \end{equation}
-where $A$ is the disk area and $\beta$ the dielectric boost factor; both
-Eq.~\eqref{eq:psig} and \eqref{eq:pstack} have been re-derived within the
-Lorentz-reciprocity framework \cite{Egge2023,Egge2024exp}.
+where $A$ is the disk area and $\beta^{2} \equiv P_{\mathrm{sig}}/P_0$ is the
+\emph{power} boost relative to a bare magnetized mirror
+($P_0 = g_{\theta\gamma\gamma}^{2}\rho_\theta B_0^{2} A/m_\theta^{2}$),
+following the MADMAX convention \cite{MADMAXproto} in which $\beta$ itself
+denotes the amplitude boost; all boost figures quoted in this note are power
+boosts $\beta^2$. Both Eq.~\eqref{eq:psig} and \eqref{eq:pstack} have been
+re-derived within the Lorentz-reciprocity framework \cite{Egge2023,Egge2024exp};
+an in-situ reciprocity measurement with a source antenna is the final
+normalization check of the stack before any dark-matter run.
 
 \subsection{Protocol A: resonant cavity}
 \label{sec:cavity}
 
-At $f_\theta = 12.81$~GHz the TM$_{010}$ mode requires a cylinder of radius
-$R = x_{01} c/(2\pi f_\theta) = 8.95$~mm. With length $L = 50$~mm,
-$V = 12.6$~cm$^3$, form factor $C = 0.69$, $B_0 = 10$~T and a superconducting
+At $f_\theta = 12.86$~GHz the TM$_{010}$ mode requires a cylinder of radius
+$R = x_{01} c/(2\pi f_\theta) = 8.92$~mm. With length $L = 50$~mm,
+$V = 12.5$~cm$^3$, form factor $C = 0.69$, $B_0 = 10$~T and a superconducting
 (Nb) cavity with baseline $Q_L = 10^{5}$,
 \begin{equation}
 P_{\mathrm{sig}} = 6.3\times 10^{-25}~\text{W}
@@ -387,18 +429,19 @@ $Q_L = 10^{6}$ (optimistic) & 0.3 days & 0.1 days \\
 The dielectric haloscope \cite{MADMAX2017} replaces the resonant cavity by
 ${\sim}80$ dielectric disks (LaAlO$_3$, $\varepsilon \approx 24$) in a strong
 magnetic field; constructive interference of the emitted photons provides the
-boost $\beta$. In a scanning experiment the disk positions must be moved
-mechanically --- the technically hardest subsystem, now being commissioned
-\cite{MADMAXmech}. \textbf{The point-frequency prediction eliminates this
-subsystem entirely}: at a known frequency the inter-disk spacing is fixed, and
-the stack becomes a static optical element.
+power boost $\beta^2$. In a scanning experiment the disk positions must be
+moved mechanically --- the technically hardest subsystem, now being
+commissioned \cite{MADMAXmech}. \textbf{The point-frequency target eliminates
+this subsystem entirely}: at a known frequency the inter-disk spacing is
+fixed, and the stack becomes a static optical element.
 
 With $D = 1.2$~m disks ($A = 1.13$~m$^2$, the low-mass-end MADMAX aperture),
 $B_0 = 10$~T and $f_{\mathrm{coh}} = 0.24$, Eq.~\eqref{eq:pstack} gives
-(Table~\ref{tab:stack}). The boost values $\beta = 10^4$--$10^5$ are the design
-goals of the MADMAX program \cite{MADMAX2019}; the prototype results are at an
-earlier stage \cite{MADMAXproto}, which we state as the principal technical
-risk of this option.
+(Table~\ref{tab:stack}). The power-boost targets $\beta^2 = 10^4$--$10^5$ are
+the design goals of the MADMAX program \cite{MADMAX2019}; the three-disk
+prototype has so far demonstrated $\beta^2$ up to ${\sim}2000$ with
+$13$--$17\%$ uncertainty \cite{MADMAXproto}, which we state as the principal
+technical risk of this option.
 
 \begin{table}[h]
 \centering
@@ -408,7 +451,7 @@ readout bandwidth equal to the axion linewidth $\Delta f_a = 12.8$~kHz
 \label{tab:stack}
 \begin{tabular}{lccc}
 \toprule
-Boost $\beta$ & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=0.24$) & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=1$) & $t(\text{SNR}=5)$ \\
+Power boost $\beta^2$ & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=0.24$) & $P_{\mathrm{sig}}$ ($f_{\mathrm{coh}}=1$) & $t(\text{SNR}=5)$ \\
 \midrule
 $10^{4}$ & $3.1\times 10^{-23}$~W & $1.3\times 10^{-22}$~W & 18 h \\
 $10^{5}$ & $3.1\times 10^{-22}$~W & $1.3\times 10^{-21}$~W & 11 min \\
@@ -418,9 +461,9 @@ $10^{5}$ & $3.1\times 10^{-22}$~W & $1.3\times 10^{-21}$~W & 11 min \\
 
 Protocol~B is strictly simpler than the cavity array: no cryogenic tuning
 mechanism, no phase-locked multi-cavity readout, a single wide-bore magnet,
-horn antenna and a near-quantum-limited amplifier --- while the required boost
-$\beta$ is already the stated MADMAX design target in a frequency band that
-includes 12.81~GHz.
+horn antenna and a near-quantum-limited amplifier --- while the required power
+boost $\beta^2$ is already the stated MADMAX design target in a frequency band
+that includes 12.86~GHz.
 
 \subsection{Readout, statistics, and preregistered criteria}
 \label{sec:stats}
@@ -435,11 +478,29 @@ operates exactly this way \cite{ORGAN26}.
 \mathrm{SNR} = \frac{P_{\mathrm{sig}}}{k_B T_{\mathrm{sys}}}
 \sqrt{\frac{t}{\Delta f}},
 \end{equation}
-the \emph{preregistered} search window is $f_\theta \pm 0.5\%$ (covering any
-plausible framework uncertainty in $m_3$ and $\chi_{\mathrm{top}}$), resolved
-in bins of width $\Delta f_a$. Because the prediction is a point rather than a
-band, the look-elsewhere penalty is negligible; no trials factor beyond the
-preregistered window is applied.
+the \emph{preregistered} search window is derived by Monte Carlo propagation
+of all inputs (Appendix~\ref{app:repro}): $m_3 \sim \mathcal{N}(50.3,\,
+0.25)$~meV, $\chi_{\mathrm{top}}^{1/4} \sim \mathcal{N}(75.5,\,0.7\%)$~MeV,
+and $c_\nu$ treated as a parameter rather than an error.
+\begin{itemize}
+\item \textbf{Benchmark window ($c_\nu = 1$ fixed).} The target-frequency
+distribution has median $12.86$~GHz and a 68\% interval
+$[12.67,\,13.05]$~GHz (relative width $1.5\%$, dominated by
+$\chi_{\mathrm{top}}$). The preregistered window is the $3\sigma$ envelope
+$12.86\,\text{GHz} \times (1 \pm 4.4\%) = [12.29,\,13.43]$~GHz, resolved in
+bins of width $\Delta f_a$.
+\item \textbf{Benchmark scenario ($c_\nu$ log-uniform in $[1/2,\,2]$).} The
+95\% interval widens to $6.7$--$24.9$~GHz; a discovery program over this band
+carries the corresponding trials factor, which we state honestly.
+\item \textbf{Extreme envelope ($c_\nu \in [1/3,\,3]$).} $f_\theta \in
+[4.3,\,38.6]$~GHz ($\sim$9 times the benchmark band): the full scan cost if
+$c_\nu$ is never fixed by theory.
+\end{itemize}
+The $\pm 0.5\%$ window of the v1 draft covered only $m_3$ and
+$\chi_{\mathrm{top}}$ and is superseded. Because the benchmark target is a
+point rather than a band, the look-elsewhere penalty inside the preregistered
+window is negligible; no trials factor beyond it is applied to the benchmark
+test.
 
 \paragraph{Discovery criterion.} A $5\sigma$ excess inside the preregistered
 window, persisting under independent re-taking, with the two corroborating
@@ -448,15 +509,19 @@ checks: (i) power scaling $\propto B_0^2$ when the magnet current is varied;
 Reproduction at a second apparatus with a different magnet is required before
 any claim.
 
-\paragraph{Exclusion criterion.} A null result at KSVZ-level sensitivity,
+\paragraph{Exclusion criterion.} Exclusion is reported at two levels.
+(1)~A null result at KSVZ-level sensitivity,
 $g_{\theta\gamma\gamma} \le 2.1\times 10^{-14}$~GeV$^{-1}$ across the
-preregistered window, excludes the $\theta$-seesaw dark-matter hypothesis of
-Sec.~\ref{sec:seesaw} at $f_{\mathrm{coh}} = 0.24$. Because exclusion curves
-assume the full local density, the effective bound on $g$ for a coherent
-fraction $f_{\mathrm{coh}}$ is weaker by $1/\sqrt{f_{\mathrm{coh}}}
-\approx 2.0$; this rescaling must be applied when interpreting any null.
-A null at DFSZ level ($8.1\times 10^{-15}$~GeV$^{-1}$) would be the definitive
-test.
+preregistered window, excludes the \emph{KSVZ-benchmark realization} of the
+$\theta$-seesaw target at $f_{\mathrm{coh}} = 0.24$ --- and only that
+realization, since $E/N$ is UV-dependent. (2)~A null at DFSZ level
+($8.1\times 10^{-15}$~GeV$^{-1}$) additionally covers the DFSZ benchmark;
+excluding the neutrino--axion linkage itself would further require a fixed
+$E/N$ assignment and a cosmological determination of $f_{\mathrm{coh}}$.
+Because exclusion curves assume the full local density, the effective bound on
+$g$ for a coherent fraction $f_{\mathrm{coh}}$ is weaker by
+$1/\sqrt{f_{\mathrm{coh}}} \approx 2.0$; this rescaling must be applied when
+interpreting any null.
 
 \paragraph{Side-channel cross-checks.} The same $f_a$ predicts
 $\sum m_\nu = 59$~meV (CMB+BAO, ongoing) and a $0\nu\beta\beta$ window
@@ -468,43 +533,58 @@ framework-level corroboration independent of haloscopes.
 \label{sec:caveats}
 
 \begin{enumerate}
-\item \textbf{Framework assumption.} The $\theta$-seesaw, Eq.~\eqref{eq:seesaw},
-is a postulate of the NVG construction (motivated by the two-loop anomaly
-diagram), not a standard-model result. If Eq.~\eqref{eq:m3} fails --- e.g.\
-$m_3$ from a future 0$\nu\beta\beta$/oscillation combination disagrees with
-$50.3$~meV --- the entire frequency prediction moves. The haloscope test is
-precisely the discriminator.
+\item \textbf{Framework hypothesis and its coefficient.} The $\theta$-seesaw,
+Eq.~\eqref{eq:seesaw}, is a postulate of the NVG construction, and its UV
+origin is not derived. The coefficient $c_\nu$ --- encoding the two-loop
+anomaly diagram, possible flavor factors and RG running --- is unknown and is
+propagated as a parameter throughout; $c_\nu = 1$ is a benchmark, not a
+derived value. If Eq.~\eqref{eq:m3} fails --- e.g.\ $m_3$ from a future
+0$\nu\beta\beta$/oscillation combination disagrees with $50.3$~meV --- the
+entire frequency target moves. The haloscope test is precisely the
+discriminator.
+\item \textbf{Spectral premise.} The input $m_3 = 50.3$~meV assumes normal
+ordering and a near-minimal lightest neutrino mass. Oscillation experiments
+measure only mass-squared differences, and cosmology bounds the sum of masses
+without fixing $m_3$ at this precision. The target is therefore conditional on
+this premise; the Monte Carlo window of Sec.~\ref{sec:stats} covers the
+stated uncertainty, and a shift to inverted ordering or a heavier lightest
+state would move the target outside the benchmark window.
 \item \textbf{Model dependence of the coupling.} The factor
 $|E/N - 1.92|$ in Eq.~\eqref{eq:gagg} is benchmarked to KSVZ/DFSZ; a
 different UV completion rescales $g_{\theta\gamma\gamma}$ without moving the
-frequency. The mass prediction is unaffected.
+frequency. The mass target is unaffected; the coupling is not predicted.
 \item \textbf{Coherent fraction.} All powers use $f_{\mathrm{coh}} = 0.24$
 (misalignment only). If most of the sector's density sits in incoherent defects,
 haloscope signals weaken accordingly; if defects decay into coherent modes, they
 strengthen. This is the dominant astrophysical uncertainty and is why the
 exclusion criterion carries the $1/\sqrt{f_{\mathrm{coh}}}$ rescaling.
-\item \textbf{Technology risk.} $Q_L = 10^6$ at 13~GHz and $\beta = 10^5$ are
-program goals, not demonstrated hardware. The baseline rows ($Q_L = 10^5$,
-$\beta = 10^4$) reflect the validated state of the art.
+\item \textbf{Technology risk.} $Q_L = 10^6$ at 13~GHz and $\beta^2 = 10^5$
+are program goals, not demonstrated hardware (the MADMAX prototype reached
+$\beta^2 \sim 2000$). The baseline rows ($Q_L = 10^5$, $\beta^2 = 10^4$)
+reflect the validated state of the art.
 \end{enumerate}
 
 %======================================================================
 \section{Conclusion}
 \label{sec:concl}
 
-A single neutrino-sector input of the NVG/VMF framework fixes
+This note is a phenomenological target paper. Under the stated
+$\theta$-seesaw hypothesis with benchmark coefficient $c_\nu = 1$, a single
+neutrino-sector input of the NVG/VMF framework fixes
 $f_a = 1.07\times 10^{11}$~GeV, which through lattice-QCD physics yields a
-point dark-matter prediction: $m_\theta = 53.2~\mu$eV, a microwave line at
-$12.81$~GHz with KSVZ-level photon coupling. The point lands on the QCD axion
-band within 2.6\% (consistency, not tuning), sits in the currently unexplored
-gap between published ORGAN windows, and is directly on that collaboration's
-declared SMASH roadmap. Because the prediction is a point, the search needs no
-scanning: a fixed dielectric booster stack reaches discovery-level significance
-in under a day of integration at design boost. The protocol above is
-preregistered: discovery requires $5\sigma$ plus $B^2$-scaling and
-cross-reproduction; exclusion at KSVZ sensitivity across the window closes the
-$\theta$-seesaw dark-matter hypothesis. Either outcome is informative --- which
-is the property a prediction must have to deserve an experiment.
+point dark-matter target: $m_\theta = 53.2~\mu$eV, a microwave line at
+$12.86$~GHz with KSVZ-level photon coupling. The point lands on the QCD axion
+band within 2.6\% (a normalization cross-check, not an independent test),
+sits in the currently unexplored gap between published ORGAN windows, and is
+directly on that collaboration's declared SMASH roadmap. Because the target is
+a point, the search needs no scanning: a fixed dielectric booster stack
+reaches discovery-level significance in under a day of integration at design
+power boost $\beta^2 = 10^4$. The protocol above is preregistered, the
+frequency window is derived by Monte Carlo from all stated uncertainties, and
+the exclusion statements are scoped precisely: a KSVZ-level null closes the
+KSVZ-benchmark realization of the target, not every conceivable
+$\theta$-model. Either outcome is informative --- which is the property a
+target must have to deserve an experiment.
 
 %======================================================================
 \section*{Appendix A: Reproducibility}
@@ -515,9 +595,12 @@ repository (\url{https://github.com/infosave2007/vmf},
 Zenodo-archived releases):
 \begin{sloppypar}
 \begin{itemize}
-\item \path{generator_project/calc_theta_haloscope_design.py} ---
-geometry, signal powers (Eqs.~\eqref{eq:psig}--\eqref{eq:pstack}), ORGAN
-calibration, integration times, published-search status;
+\item \path{generator_project/calc_theta_haloscope_design.py} (v4) ---
+geometry, signal powers (Eqs.~\eqref{eq:psig}--\eqref{eq:pstack}, MADMAX
+$\beta^2$ convention), ORGAN calibration, integration times,
+published-search status, the $c_\nu$-parametrized $\theta$-seesaw chain, and
+the Monte Carlo block that produces the preregistered window of
+Sec.~\ref{sec:stats};
 \item \path{generator_project/calc_theta_haloscope_v2.py} ---
 frequency derivation, axion-band consistency check (2.6\%);
 \item \path{verification/nvg_neutrino_seesaw.py} --- Eq.~\eqref{eq:m3},
@@ -564,6 +647,11 @@ Sov.\ J.\ Nucl.\ Phys.\ \textbf{31}, 260 (1980);
 M.~Dine, W.~Fischler, M.~Srednicki,
 \emph{A Simple Solution to the Strong $CP$ Problem with a Harmless Axion},
 Phys.\ Lett.\ B \textbf{104}, 199 (1981).
+
+\bibitem{Weinberg1979}
+S.~Weinberg,
+\emph{Baryon- and Lepton-Nonconserving Processes},
+Phys.\ Rev.\ Lett.\ \textbf{43}, 1566 (1979).
 
 \bibitem{Sikivie1983}
 P.~Sikivie,

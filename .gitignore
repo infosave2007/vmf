@@ -34,7 +34,9 @@ article/*
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS.md
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 .code/
-generator_project/
+generator_project/*
+!generator_project/calc_theta_haloscope_design.py
+!generator_project/calc_theta_haloscope_v2.py
 vacuum_neural_networks/
 
 # Generated verification reports
