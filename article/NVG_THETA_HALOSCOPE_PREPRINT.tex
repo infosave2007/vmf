@@ -57,9 +57,11 @@ frequency lies in the currently unexplored gap between the published ORGAN
 mass windows ($25$--$26$ and $63$--$67~\mu$eV), directly on the lower edge of
 the SMASH band ($50$--$200~\mu$eV) that ORGAN has declared as its roadmap
 target. We present the derivation, a calibration of the haloscope signal
-formula against the published ORGAN signal estimate, a Monte Carlo propagation
-of all input uncertainties ($m_3$, $\chi_{\mathrm{top}}$, $c_\nu$) to the
-target-frequency distribution, and two concrete test protocols: (A)~a
+formula against the published ORGAN signal estimate, a Monte Carlo
+propagation of the statistical input uncertainties ($m_3$,
+$\chi_{\mathrm{top}}$), together with explicit conditional sensitivity
+scenarios for the unknown coefficient $c_\nu$, and two concrete test
+protocols: (A)~a
 resonant-cavity array and (B)~a \emph{fixed-position} dielectric booster
 stack, where the point target eliminates the scanning mechanism. For a
 coherent dark-matter fraction of 24\% (misalignment only), protocol~B reaches
@@ -154,10 +156,14 @@ suppression scale and coefficient,
 \qquad \tilde H \equiv i\sigma_2 H^{*},
 \label{eq:seesaw}
 \end{equation}
-where $c_\nu$ is an unknown dimensionless coefficient. After EWSB
-($\langle H \rangle = v_{\mathrm{EW}}/\sqrt{2}$; the factor of 2 compensates
-the two factors of $1/\sqrt{2}$) this reduces to the Majorana mass, for the
-heaviest neutrino,
+where $c_\nu$ is an unknown dimensionless coefficient. Since $c_\nu$ already
+absorbs the UV normalization, we \emph{define} it through the physical
+relation~\eqref{eq:m3} below; the overall prefactor of
+Eq.~\eqref{eq:seesaw} --- including the displayed factor of 2, which
+compensates the two factors of $1/\sqrt{2}$ from
+$\langle H \rangle = v_{\mathrm{EW}}/\sqrt{2}$ --- is then conventional and
+carries no independent physical meaning. After EWSB the operator reduces to
+the Majorana mass, for the heaviest neutrino,
 \begin{equation}
 m_3 = c_\nu\left(\frac{\alpha_s}{4\pi}\right)^{\!2}\frac{v_{\mathrm{EW}}^{2}}{f_a}.
 \label{eq:m3}
@@ -183,7 +189,18 @@ hypothesis directly (Section~\ref{sec:caveats}).
 
 \subsection{Point target for the dark-matter mass}
 
-Inserting \eqref{eq:fa} into \eqref{eq:mtheta}:
+Because every derived quantity depends on $c_\nu$ through $f_a$ alone, the
+parametric structure is transparent (for fixed $E/N$):
+\begin{equation}
+f_a = f_{a,0}\,c_\nu,\qquad
+m_\theta = \frac{m_{\theta,0}}{c_\nu},\qquad
+f_\theta = \frac{f_{\theta,0}}{c_\nu},\qquad
+g_{\theta\gamma\gamma} = \frac{g_{\theta\gamma\gamma,0}}{c_\nu},
+\label{eq:scaling}
+\end{equation}
+where the subscript $0$ denotes the benchmark values at $c_\nu = 1$. A larger
+$c_\nu$ means a larger $f_a$, hence a \emph{smaller} mass and frequency and a
+weaker photon coupling. Inserting \eqref{eq:fa} into \eqref{eq:mtheta}:
 \begin{equation}
 \boxed{\;m_\theta = 5.691~\mu\text{eV}\times
 \frac{10^{12}}{1.07\times 10^{11}\,c_\nu}
@@ -196,6 +213,15 @@ f_\theta = \frac{m_\theta c^2}{h} = \frac{12.86}{c_\nu}~\text{GHz}.
 \end{equation}
 The benchmark $c_\nu = 1$ gives $m_\theta = 53.2~\mu$eV, $f_\theta =
 12.86$~GHz throughout the rest of this note.
+
+\paragraph{Point versus band.} If a UV completion fixes $c_\nu$, the target
+is a genuine \emph{conditional point} in $(m, g_\gamma, f)$ space. If $c_\nu$
+remains free, the point degrades to a \emph{broad conditional search band}
+along the one-parameter curve~\eqref{eq:scaling} --- $4.3$--$38.6$~GHz for
+$c_\nu \in [1/3,\,3]$ (Sec.~\ref{sec:stats}) --- and the fixed-frequency
+advantage is retained only conditionally, at a chosen benchmark value of
+$c_\nu$. We use the terminology ``conditional point target'' and ``broad
+conditional search band'' accordingly.
 
 \paragraph{Normalization cross-check (not an independent test).} Once
 Eq.~\eqref{eq:mtheta} is accepted, the product $m_\theta f_a =
@@ -478,10 +504,14 @@ operates exactly this way \cite{ORGAN26}.
 \mathrm{SNR} = \frac{P_{\mathrm{sig}}}{k_B T_{\mathrm{sys}}}
 \sqrt{\frac{t}{\Delta f}},
 \end{equation}
-the \emph{preregistered} search window is derived by Monte Carlo propagation
-of all inputs (Appendix~\ref{app:repro}): $m_3 \sim \mathcal{N}(50.3,\,
-0.25)$~meV, $\chi_{\mathrm{top}}^{1/4} \sim \mathcal{N}(75.5,\,0.7\%)$~MeV,
-and $c_\nu$ treated as a parameter rather than an error.
+the \emph{preregistered} search window combines a Monte Carlo propagation of
+the statistical inputs (Appendix~\ref{app:repro}),
+$m_3 \sim \mathcal{N}(50.3,\,0.25)$~meV,
+$\chi_{\mathrm{top}}^{1/4} \sim \mathcal{N}(75.5,\,0.7\%)$~MeV, with explicit
+conditional scenarios for the unknown coefficient $c_\nu$. We treat $c_\nu$ as
+a parameter, not a random error: no prior on it is motivated, so the
+$c_\nu$-dependent ranges below are \emph{sensitivity scenarios}, not
+statistical credible intervals.
 \begin{itemize}
 \item \textbf{Benchmark window ($c_\nu = 1$ fixed).} The target-frequency
 distribution has median $12.86$~GHz and a 68\% interval
@@ -489,13 +519,25 @@ $[12.67,\,13.05]$~GHz (relative width $1.5\%$, dominated by
 $\chi_{\mathrm{top}}$). The preregistered window is the $3\sigma$ envelope
 $12.86\,\text{GHz} \times (1 \pm 4.4\%) = [12.29,\,13.43]$~GHz, resolved in
 bins of width $\Delta f_a$.
-\item \textbf{Benchmark scenario ($c_\nu$ log-uniform in $[1/2,\,2]$).} The
-95\% interval widens to $6.7$--$24.9$~GHz; a discovery program over this band
-carries the corresponding trials factor, which we state honestly.
+\item \textbf{Sensitivity scenario ($c_\nu$ varied over $[1/2,\,2]$).} Via
+Eq.~\eqref{eq:scaling} the conditional band spans $6.4$--$25.7$~GHz; a
+discovery program over this band carries the corresponding trials factor,
+which we state honestly.
 \item \textbf{Extreme envelope ($c_\nu \in [1/3,\,3]$).} $f_\theta \in
 [4.3,\,38.6]$~GHz ($\sim$9 times the benchmark band): the full scan cost if
 $c_\nu$ is never fixed by theory.
 \end{itemize}
+\paragraph{Signal power across the band.} Along the curve~\eqref{eq:scaling},
+\emph{at fixed coherent fraction}, the signal powers scale simply:
+$P_{\mathrm{sig}}^{\mathrm{stack}} \propto g^2/m_\theta^2 \propto c_\nu^{0}$
+for the dielectric stack (exactly invariant under $c_\nu$ rescaling) and
+$P_{\mathrm{sig}}^{\mathrm{cavity}} \propto g^2/m_\theta \propto c_\nu^{-1}$
+for the cavity, so the integration times of
+Tables~\ref{tab:arrays}--\ref{tab:stack} apply unchanged to the stack and
+rescale as $c_\nu^2$ for the cavity at any other benchmark value of $c_\nu$.
+If instead the misalignment estimate of Sec.~\ref{sec:abundance} is imposed,
+the coherent fraction itself scales as $f_{\mathrm{coh}} \propto f_a^{7/6}
+\propto c_\nu^{7/6}$, which multiplies both powers accordingly.
 The $\pm 0.5\%$ window of the v1 draft covered only $m_3$ and
 $\chi_{\mathrm{top}}$ and is superseded. Because the benchmark target is a
 point rather than a band, the look-elsewhere penalty inside the preregistered
@@ -572,7 +614,7 @@ This note is a phenomenological target paper. Under the stated
 $\theta$-seesaw hypothesis with benchmark coefficient $c_\nu = 1$, a single
 neutrino-sector input of the NVG/VMF framework fixes
 $f_a = 1.07\times 10^{11}$~GeV, which through lattice-QCD physics yields a
-point dark-matter target: $m_\theta = 53.2~\mu$eV, a microwave line at
+conditional point target: $m_\theta = 53.2~\mu$eV, a microwave line at
 $12.86$~GHz with KSVZ-level photon coupling. The point lands on the QCD axion
 band within 2.6\% (a normalization cross-check, not an independent test),
 sits in the currently unexplored gap between published ORGAN windows, and is

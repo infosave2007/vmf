@@ -11,11 +11,15 @@ Changes vs v3:
   [*] NEW: explicit coefficient c_nu of the theta-seesaw operator. The
       coefficient (alpha_s/4pi)^2 of the two-loop anomaly diagram is a
       framework hypothesis, not a derived result; c_nu = 1 is the
-      benchmark, and every derived quantity is rescaled with it
-      (f_a ~ c_nu, m_theta and f_theta ~ 1/c_nu).
-  [*] NEW: block [8] Monte Carlo propagation of all input uncertainties
-      (m_3, chi_top, c_nu) to the target-frequency distribution, replacing
-      the ad-hoc +-0.5% search window of the v1 preprint.
+      benchmark, and every derived quantity is rescaled with it:
+      f_a ~ c_nu, m_theta ~ 1/c_nu, f_theta ~ 1/c_nu, g_thetagg ~ 1/c_nu
+      (E/N fixed). At fixed coherent fraction the STACK signal power is
+      exactly c_nu-invariant (g^2/m^2 ~ c_nu^0), the CAVITY power scales
+      as 1/c_nu (integration time ~ c_nu^2).
+  [*] NEW: block [8] Monte Carlo propagation of the statistical inputs
+      (m_3, chi_top) plus explicit sensitivity scenarios for c_nu
+      (treated as a parameter, not a random error), replacing the ad-hoc
+      +-0.5% search window of the v1 preprint.
 
 Changes vs v2:
   [0] NEW: the Sikivie power formula is CALIBRATED against a published
@@ -239,7 +243,7 @@ print("""\
 """)
 print("[8] MONTE CARLO TARGET-FREQUENCY DISTRIBUTION (N = %d):" % N_MC)
 print(f"    inputs: m3 ~ G(50.3, 0.25) meV; chi_top^1/4 ~ G(75.5, 0.7%) MeV;")
-print(f"            c_nu log-uniform in [0.5, 2] (benchmark scenario)")
+print(f"            c_nu log-uniform in [0.5, 2] (sensitivity scenario; not a prior)")
 print(f"    f_theta percentiles (GHz): 2.5% = {pct[0]:.2f} | 16% = {pct[1]:.2f} |"
       f" median = {pct[2]:.2f} | 84% = {pct[3]:.2f} | 97.5% = {pct[4]:.2f}")
 print(f"    conditional (c_nu = 1 fixed): median = {pct_fix[2]:.2f} GHz,"
