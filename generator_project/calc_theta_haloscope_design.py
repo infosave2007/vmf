@@ -220,20 +220,28 @@ Cn = -0.02 - 0.02*0.0 + 0.88*0.0 - 0.49*0.0
 g_thpp = Cp*MP_GEV/f_a_GeV
 g_thnn = Cn*MN_GEV/f_a_GeV
 tb3 = 3.0
-cb3, sb3 = tb3**2/(1+tb3**2), 1.0/(1+tb3**2)
+cb3, sb3 = 1.0/(1+tb3**2), tb3**2/(1+tb3**2)    # cos^2b, sin^2b
 Ce_dfsz = cb3/3.0                                # DFSZ-like tree
 g_thee_dfsz = Ce_dfsz*ME_GEV/f_a_GeV
 g_thee_ksvz = 1.0e-5*ME_GEV/f_a_GeV              # loop-suppressed
+Cu0_d, Cd0_d = cb3/3.0, sb3/3.0                  # DFSZ-like quark charges
+Cp_d = -0.47 + 0.88*Cu0_d - 0.39*Cd0_d - 0.49*Cd0_d
+Cn_d = -0.02 - 0.02*Cu0_d + 0.88*Cd0_d - 0.49*Cd0_d
+g_thpp_d = Cp_d*MP_GEV/f_a_GeV
+g_thnn_d = Cn_d*MN_GEV/f_a_GeV
 Cnu3 = 1.0                                       # theta-seesaw phase
 m3_meV = M3_MEV*1e3                              # M3_MEV stored in eV
 g_thnnu = Cnu3*m3_meV*1e-12/f_a_GeV              # ~ m_3/f_a
-# rank-1 flavor scenario (NO, m_1 = 0), NuFIT 5.2
+# minimal normal-ordering flavor benchmark (NO, m_1 = 0), NuFIT 5.2;
+# m_2 from a second (PQ-neutral) operator sector, m_3 from the PQ-carrying one
 S12, S13, D21 = 0.307, 0.0220, 7.42e-5           # sin^2 th_12/13, Dm21^2 [eV^2]
 m2_nu = (D21**0.5)*1e3                           # meV
 sum_nu = m2_nu + m3_meV
 mbeta_nu = (S12*(1-S13)*m2_nu**2 + S13*m3_meV**2)**0.5
 a_bb, b_bb = S12*(1-S13)*m2_nu, S13*m3_meV
-# UV matching: type-I seesaw with M_N = kappa f_a
+# UV matching: perturbative consistency example, type-I seesaw M_N = kappa f_a.
+# Demonstrates the benchmark normalization is perturbative; it does NOT
+# derive the (alpha_s/4pi)^2 suppression, which remains in c_nu.
 y_tau = 1.77686/V_EW
 UV_MATCH = 1.0/(2.0*LOOP2)                       # c_nu = UV_MATCH y^2/kappa
 
@@ -310,20 +318,26 @@ print("-" * 78)
 print("[9] MULTI-CHANNEL INTERACTION BLOCK (f_a = %.2e GeV):" % f_a_GeV)
 print(f"    nucleons (KSVZ-like, Cq0 = 0): C_p = {Cp:+.2f}, C_n = {Cn:+.2f}")
 print(f"       g_theta_pp = {g_thpp:+.2e}, g_theta_nn = {g_thnn:+.2e}")
-print(f"    electron: DFSZ-like tree (tan b = 3, C_e = cos^2b/3 = {Ce_dfsz:.2f}):"
+print(f"    electron: DFSZ-like tree (tan b = 3, C_e = cos^2b/3 = {Ce_dfsz:.3f}):"
       f" g_theta_ee = {g_thee_dfsz:.2e}")
 print(f"              KSVZ-like loop (C_e ~ 1e-5): g_theta_ee ~ {g_thee_ksvz:.1e}")
 print(f"       white-dwarf bound g_ae <~ 3e-13: both PASS")
+print(f"    nucleons (DFSZ-like, tan b = 3): C_p = {Cp_d:+.2f}, C_n = {Cn_d:+.2f}")
+print(f"       g_theta_pp = {g_thpp_d:+.2e}, g_theta_nn = {g_thnn_d:+.2e}")
 print(f"    neutrino (theta-seesaw phase, NVG-specific):"
       f" g_theta_nu3nu3 ~ m_3/f_a = {g_thnnu:.2e}")
 print(f"       theta -> nu nu: kinematically FORBIDDEN (2 m_3 = "
       f"{2*m3_meV:.1f} meV >> m_theta = {m_theta_ueV*1e-3:.3f} meV)")
-print(f"    rank-1 flavor scenario (NO, m_1 = 0; NuFIT 5.2):")
+print(f"    minimal NO flavor benchmark (m_1 = 0; NuFIT 5.2; m_2 via a second,")
+print(f"    PQ-neutral operator sector):")
 print(f"       sum m_nu = {sum_nu:.1f} meV | m_beta = {mbeta_nu:.1f} meV |"
       f" m_betabeta in [{abs(a_bb-b_bb):.2f}, {a_bb+b_bb:.2f}] meV (nonzero floor)")
 print(f"       IO alternative: sum ~ 106 meV -> cosmological discriminator")
-print(f"    UV matching (type-I seesaw, M_N = kappa f_a):"
+print(f"    UV matching (perturbative consistency example, M_N = kappa f_a):"
       f" c_nu = {UV_MATCH:.2e} y_nu^2/kappa")
+print(f"       -> shows c_nu = 1 is perturbative (y_nu ~ tau Yukawa); does NOT"
+      f" derive")
+print(f"          the (alpha_s/4pi)^2 suppression - that remains in c_nu")
 print(f"       c_nu = 1 (kappa = 1) -> y_nu = {(1.0/UV_MATCH)**0.5:.2e}"
       f" = {(1.0/UV_MATCH)**0.5/y_tau:.1f} y_tau (perturbative)")
 print(f"       c_nu in [1/3, 3] <-> y_nu in [{(1/(3*UV_MATCH))**0.5:.2e},"
