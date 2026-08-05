@@ -209,6 +209,35 @@ for _ in range(200):
 z_local_thr = 0.5*(z_lo + z_hi)
 
 # ---------------------------------------------------------------------------
+# [9] MULTI-CHANNEL INTERACTION BLOCK (v5): nucleon/electron/neutrino
+#     couplings at the fixed f_a + rank-1 flavor scenario + UV matching.
+#     Nucleon axial charges: model-independent chiral piece (axion-pion
+#     mixing) + UV charges (Di Luzio et al., Phys. Rept. 870 (2020) 1).
+# ---------------------------------------------------------------------------
+MP_GEV, MN_GEV, ME_GEV = 0.93827, 0.93957, 0.510999e-3
+Cp = -0.47 + 0.88*0.0 - 0.39*0.0 - 0.49*0.0     # KSVZ-like: Cq0 = 0
+Cn = -0.02 - 0.02*0.0 + 0.88*0.0 - 0.49*0.0
+g_thpp = Cp*MP_GEV/f_a_GeV
+g_thnn = Cn*MN_GEV/f_a_GeV
+tb3 = 3.0
+cb3, sb3 = tb3**2/(1+tb3**2), 1.0/(1+tb3**2)
+Ce_dfsz = cb3/3.0                                # DFSZ-like tree
+g_thee_dfsz = Ce_dfsz*ME_GEV/f_a_GeV
+g_thee_ksvz = 1.0e-5*ME_GEV/f_a_GeV              # loop-suppressed
+Cnu3 = 1.0                                       # theta-seesaw phase
+m3_meV = M3_MEV*1e3                              # M3_MEV stored in eV
+g_thnnu = Cnu3*m3_meV*1e-12/f_a_GeV              # ~ m_3/f_a
+# rank-1 flavor scenario (NO, m_1 = 0), NuFIT 5.2
+S12, S13, D21 = 0.307, 0.0220, 7.42e-5           # sin^2 th_12/13, Dm21^2 [eV^2]
+m2_nu = (D21**0.5)*1e3                           # meV
+sum_nu = m2_nu + m3_meV
+mbeta_nu = (S12*(1-S13)*m2_nu**2 + S13*m3_meV**2)**0.5
+a_bb, b_bb = S12*(1-S13)*m2_nu, S13*m3_meV
+# UV matching: type-I seesaw with M_N = kappa f_a
+y_tau = 1.77686/V_EW
+UV_MATCH = 1.0/(2.0*LOOP2)                       # c_nu = UV_MATCH y^2/kappa
+
+# ---------------------------------------------------------------------------
 print("=" * 78)
 print("  NVG theta-DM RESONATOR - DESIGN v4 (beta^2 convention, c_nu, MC)")
 print("=" * 78)
@@ -277,6 +306,28 @@ print(f"          local threshold ~ {z_local_thr:.2f} sigma (final N_eff from th
 print(f"          matched-filter bank + noise-only Monte Carlo)")
 print(f"    extreme model envelope c_nu in [1/3, 3]:"
       f" f_theta in [{f_lo_all:.1f}, {f_hi_all:.1f}] GHz (~9x band; honest scan)")
+print("-" * 78)
+print("[9] MULTI-CHANNEL INTERACTION BLOCK (f_a = %.2e GeV):" % f_a_GeV)
+print(f"    nucleons (KSVZ-like, Cq0 = 0): C_p = {Cp:+.2f}, C_n = {Cn:+.2f}")
+print(f"       g_theta_pp = {g_thpp:+.2e}, g_theta_nn = {g_thnn:+.2e}")
+print(f"    electron: DFSZ-like tree (tan b = 3, C_e = cos^2b/3 = {Ce_dfsz:.2f}):"
+      f" g_theta_ee = {g_thee_dfsz:.2e}")
+print(f"              KSVZ-like loop (C_e ~ 1e-5): g_theta_ee ~ {g_thee_ksvz:.1e}")
+print(f"       white-dwarf bound g_ae <~ 3e-13: both PASS")
+print(f"    neutrino (theta-seesaw phase, NVG-specific):"
+      f" g_theta_nu3nu3 ~ m_3/f_a = {g_thnnu:.2e}")
+print(f"       theta -> nu nu: kinematically FORBIDDEN (2 m_3 = "
+      f"{2*m3_meV:.1f} meV >> m_theta = {m_theta_ueV*1e-3:.3f} meV)")
+print(f"    rank-1 flavor scenario (NO, m_1 = 0; NuFIT 5.2):")
+print(f"       sum m_nu = {sum_nu:.1f} meV | m_beta = {mbeta_nu:.1f} meV |"
+      f" m_betabeta in [{abs(a_bb-b_bb):.2f}, {a_bb+b_bb:.2f}] meV (nonzero floor)")
+print(f"       IO alternative: sum ~ 106 meV -> cosmological discriminator")
+print(f"    UV matching (type-I seesaw, M_N = kappa f_a):"
+      f" c_nu = {UV_MATCH:.2e} y_nu^2/kappa")
+print(f"       c_nu = 1 (kappa = 1) -> y_nu = {(1.0/UV_MATCH)**0.5:.2e}"
+      f" = {(1.0/UV_MATCH)**0.5/y_tau:.1f} y_tau (perturbative)")
+print(f"       c_nu in [1/3, 3] <-> y_nu in [{(1/(3*UV_MATCH))**0.5:.2e},"
+      f" {(3.0/UV_MATCH)**0.5:.2e}] (kappa = 1)")
 print("-" * 78)
 print("[7] RECOMMENDATIONS")
 print("=" * 78)

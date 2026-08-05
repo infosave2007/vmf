@@ -66,7 +66,10 @@ resonant-cavity array and (B)~a \emph{fixed-position} dielectric booster
 stack, where the point target eliminates the scanning mechanism. For a
 coherent dark-matter fraction of 24\% (misalignment only), protocol~B reaches
 $\text{SNR}=5$ in ${\sim}\,18$~h at power boost $\beta^2 = 10^4$ (MADMAX
-convention, $\beta^2 \equiv P_{\mathrm{sig}}/P_0$). Discovery and exclusion
+convention, $\beta^2 \equiv P_{\mathrm{sig}}/P_0$). The target is extended
+to nucleon, electron and neutrino channels with no additional free
+parameters, and a minimal UV completion of the $\theta$-seesaw is sketched
+in Appendix~\ref{app:uv}. Discovery and exclusion
 criteria are preregistered. This is a \emph{phenomenological target paper}:
 the $\theta$-seesaw operator is stated as a hypothesis, its coefficient is
 propagated as a parameter, and every derived quantity is conditional on it.
@@ -104,7 +107,11 @@ Section~\ref{sec:theory} gives the derivation. Section~\ref{sec:signature}
 states the observable signature. Section~\ref{sec:status} documents the gap
 in published searches. Section~\ref{sec:protocol} defines the test protocol,
 including a calibration of the signal formula against published data and
-preregistered discovery/exclusion criteria. Section~\ref{sec:caveats}
+preregistered discovery/exclusion criteria.
+Section~\ref{sec:interactions} extends the target to nucleon, electron and
+neutrino channels; Appendix~\ref{app:uv} sketches a minimal UV completion
+of the $\theta$-seesaw.
+Section~\ref{sec:caveats}
 lists the framework assumptions honestly.
 
 %======================================================================
@@ -326,6 +333,121 @@ The signal is a nearly monochromatic microwave excess at 12.86~GHz with
 $Q_a \sim 10^6$ intrinsic quality factor, linearly polarized along the applied
 magnetic field, scaling as $B_0^2$, and tracking the sidereal modulation of the
 halo wind (a secondary discriminant).
+
+%======================================================================
+\section{Multi-Channel Interaction Block}
+\label{sec:interactions}
+
+The photon coupling of Sec.~\ref{sec:theory} is one entry of the full
+low-energy interaction block. Completing it makes the target multi-channel
+falsifiable without introducing new free parameters: the fermion axial
+charges below are fixed either by the same UV benchmark choice (KSVZ-like or
+DFSZ-like) already made for $E/N$, or --- in the neutrino channel --- by the
+$\theta$-seesaw operator itself.
+
+\subsection{Effective Lagrangian and channel benchmarks}
+
+\begin{equation}
+\mathcal{L}_{\mathrm{int}} =
+-\frac{g_{\theta\gamma\gamma}}{4}\,\theta\,F\tilde F
++ \frac{\partial_\mu\theta}{2f_a}\sum_{f} C_f\,
+\bar f \gamma^\mu\gamma^5 f,
+\label{eq:lint}
+\end{equation}
+with $f = e, p, n, \nu_3$. Using the fermion equations of motion, each
+derivative coupling is equivalent to a pseudoscalar Yukawa coupling
+$g_{\theta ff} = C_f\, m_f/f_a$.
+
+\paragraph{Nucleons.} The axial charges split into a model-independent
+chiral piece (axion--pion mixing, fixed by QCD) and the UV charges
+$C_q^{0}$ \cite{AxionLandscape}:
+\begin{equation}
+C_p = -0.47 + 0.88\,C_u^{0} - 0.39\,C_d^{0} - 0.49\,C_s^{0},\qquad
+C_n = -0.02 - 0.02\,C_u^{0} + 0.88\,C_d^{0} - 0.49\,C_s^{0}.
+\label{eq:ccharges}
+\end{equation}
+For the KSVZ-like benchmark ($C_q^{0} = 0$ --- the same UV choice as
+$E/N = 0$), $C_p = -0.47$ and $C_n = -0.02$ are \emph{predictions}, not
+parameters: $g_{\theta pp} = -4.1\times 10^{-12}$ and
+$g_{\theta nn} = -1.8\times 10^{-13}$. The spin-dependent fifth-force
+channel of Sec.~\ref{sec:signature} is thereby upgraded from the order-of-magnitude
+quote $m_N/f_a$ to a definite coupling.
+
+\paragraph{Electrons.} The two photon benchmarks separate sharply here:
+DFSZ-like UV gives a tree-level $C_e = \cos^{2}\!\beta/3$ (illustratively
+$0.30$ at $\tan\beta = 3$, $g_{\theta ee} \simeq 1.4\times 10^{-15}$),
+while KSVZ-like UV gives $C_e = 0$ at tree level and a loop-suppressed
+$C_e \sim 10^{-5}$ ($g_{\theta ee} \sim 5\times 10^{-20}$). A 4.5-order
+difference makes the electron channel a UV discriminator. Both values pass
+the white-dwarf cooling constraint $g_{ae} \lesssim 3\times 10^{-13}$
+\cite{AxionReview} with wide margins.
+
+\paragraph{Neutrinos.} The $\theta$-seesaw operator itself carries the
+PQ phase, so the mass term reads $m_3\,e^{i\theta/f_a}$: the heaviest
+neutrino obtains an axial charge $C_{\nu_3} = 1$ in the normalization of
+Eq.~\eqref{eq:seesaw}, i.e.\ $g_{\theta\nu_3\nu_3} \simeq m_3/f_a =
+4.7\times 10^{-22}$. This coupling is a distinctive NVG signature --- it is
+absent in plain KSVZ and DFSZ --- and the decay $\theta\to\nu\nu$ is
+kinematically forbidden ($2m_3 \gg m_\theta$), so the channel affects
+stability of the dark-matter candidate not at all.
+
+\begin{table}[h]
+\centering
+\caption{Multi-channel benchmark couplings at
+$f_a = 1.07\times 10^{11}$~GeV ($c_\nu = 1$), all scaling as $1/c_\nu$.
+Rows marked ``benchmark'' inherit the same UV choice as the photon channel;
+the neutrino row and the flavor scenario of
+Sec.~\ref{sec:flavor} follow from the $\theta$-seesaw itself.}
+\label{tab:channels}
+\begin{tabular}{lcc}
+\toprule
+Channel & KSVZ-like benchmark & DFSZ-like ($\tan\beta = 3$, illustrative) \\
+\midrule
+Photon $g_{\theta\gamma\gamma}$ (GeV$^{-1}$) & $2.1\times 10^{-14}$ & $8.1\times 10^{-15}$ \\
+Nucleon $g_{\theta pp}$ & $-4.1\times 10^{-12}$ & ${\sim}\,-2\times 10^{-12}$ \\
+Nucleon $g_{\theta nn}$ & $-1.8\times 10^{-13}$ & ${\sim}\,-1\times 10^{-13}$ \\
+Electron $g_{\theta ee}$ & ${\sim}\,5\times 10^{-20}$ (loop) & $1.4\times 10^{-15}$ (tree) \\
+Neutrino $g_{\theta\nu_3\nu_3}$ & \multicolumn{2}{c}{$4.7\times 10^{-22}$ (NVG-specific)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Rank-one flavor scenario}
+\label{sec:flavor}
+
+If the Weinberg-like operator is rank one and aligned with the heaviest
+mass eigenstate --- as the single-coefficient chain~\eqref{eq:m3} assumes ---
+normal ordering with $m_1 = 0$ is the natural case. With the NuFIT~5.2
+oscillation parameters \cite{NuFIT}, this \emph{illustrative scenario}
+yields the correlated triple
+\begin{equation}
+\sum m_\nu = 58.9~\text{meV},\qquad
+m_\beta = 8.8~\text{meV},\qquad
+m_{\beta\beta} \in [1.5,\,3.7]~\text{meV},
+\label{eq:rank1}
+\end{equation}
+where the $0\nu\beta\beta$ value carries a \emph{nonzero floor}
+($|U_{e2}^{2} m_2 - U_{e3}^{2} m_3|$ at destructive Majorana phase).
+The inverted-ordering alternative gives
+$\sum m_\nu \approx 106$~meV, so the rank-one hypothesis is a clean
+cosmological discriminator: it places the mass sum at the normal-ordering
+minimum, and a measurement $\sum m_\nu \gtrsim 75$~meV (CMB-S4/DESI-class
+sensitivity) would exclude it. As with the $c_\nu$ scenarios of
+Sec.~\ref{sec:stats}, rank-one alignment is a scenario assumption, not a
+framework derivation.
+
+\subsection{Experimental mapping}
+
+The predicted nucleon couplings fall inside the design window of
+NMR/spin-precession programs: the CASPEr design band
+$f_a \sim 10^{9}$--$10^{12}$~GeV \cite{CASPEr} contains
+$f_a = 1.07\times 10^{11}$~GeV, and at $m_\theta = 53.2~\mu$eV the
+oscillating nuclear EDM channel (CASPEr-electric type) and the
+spin--gradient channel (CASPEr-wind, QUAX, ARIADNE type) address the same
+mass with a \emph{predicted} coupling rather than a scanned one. The
+electron channel is a UV discriminator rather than a prediction; the
+fifth-force channel of Sec.~\ref{sec:signature} remains qualitative pending
+a computation of the loop-induced scalar admixture.
 
 %======================================================================
 \section{Status of Published Searches}
@@ -582,8 +704,10 @@ $1/\sqrt{f_{\mathrm{coh}}} \approx 2.0$; this rescaling must be applied when
 interpreting any null.
 
 \paragraph{Side-channel cross-checks.} The same $f_a$ predicts
-$\sum m_\nu = 59$~meV (CMB+BAO, ongoing) and a $0\nu\beta\beta$ window
-$m_{\beta\beta} \in [0,\, 6.4]$~meV (LEGEND-1000, nEXO): these provide
+$\sum m_\nu = 59$~meV (CMB+BAO, ongoing) and, in the general case, a
+$0\nu\beta\beta$ window $m_{\beta\beta} \in [0,\, 6.4]$~meV, narrowing to
+the nonzero range $[1.5,\,3.7]$~meV under the rank-one scenario of
+Sec.~\ref{sec:flavor} (LEGEND-1000, nEXO): these provide
 framework-level corroboration independent of haloscopes.
 
 %======================================================================
@@ -592,11 +716,15 @@ framework-level corroboration independent of haloscopes.
 
 \begin{enumerate}
 \item \textbf{Framework hypothesis and its coefficient.} The $\theta$-seesaw,
-Eq.~\eqref{eq:seesaw}, is a postulate of the NVG construction, and its UV
-origin is not derived. The coefficient $c_\nu$ --- encoding the two-loop
+Eq.~\eqref{eq:seesaw}, is a postulate of the NVG construction. The
+coefficient $c_\nu$ --- encoding the two-loop
 anomaly diagram, possible flavor factors and RG running --- is unknown and is
 propagated as a parameter throughout; $c_\nu = 1$ is a benchmark, not a
-derived value. If Eq.~\eqref{eq:m3} fails --- e.g.\ $m_3$ from a future
+derived value. Appendix~\ref{app:uv} sketches a minimal UV completion and
+shows that the benchmark corresponds to a perturbative, $\tau$-Yukawa-scale
+neutrino coupling with ${\sim}\,5$--$10\%$ RG running --- i.e.\ it is
+natural --- but it does not fix $c_\nu$. If Eq.~\eqref{eq:m3} fails --- e.g.\
+$m_3$ from a future
 0$\nu\beta\beta$/oscillation combination disagrees with $50.3$~meV --- the
 entire frequency target moves. The haloscope test is precisely the
 discriminator.
@@ -656,9 +784,12 @@ Zenodo-archived releases):
 \item \path{generator_project/calc_theta_haloscope_design.py} (v4) ---
 geometry, signal powers (Eqs.~\eqref{eq:psig}--\eqref{eq:pstack}, MADMAX
 $\beta^2$ convention), ORGAN calibration, integration times,
-published-search status, the $c_\nu$-parametrized $\theta$-seesaw chain, and
-the Monte Carlo block that produces the preregistered window of
-Sec.~\ref{sec:stats};
+published-search status, the $c_\nu$-parametrized $\theta$-seesaw chain, the
+Monte Carlo block that produces the preregistered window of
+Sec.~\ref{sec:stats}, the trials-factor estimate of the discovery criterion,
+and the multi-channel interaction block (nucleon/electron/neutrino
+couplings, rank-one flavor scenario, UV matching) of
+Sec.~\ref{sec:interactions} and Appendix~\ref{app:uv};
 \item \path{generator_project/calc_theta_haloscope_v2.py} ---
 frequency derivation, axion-band consistency check (2.6\%);
 \item \path{verification/nvg_neutrino_seesaw.py} --- Eq.~\eqref{eq:m3},
@@ -666,6 +797,84 @@ fixing $f_a$; \path{verification/nvg_theta_fifth_force.py} ---
 pseudoscalar null channel.
 \end{itemize}
 \end{sloppypar}
+
+%======================================================================
+\section*{Appendix B: A Minimal UV Completion of the $\theta$-Seesaw}
+\label{app:uv}
+
+This appendix shows that the benchmark coefficient $c_\nu = 1$ is
+\emph{natural} --- generated by perturbative, non-hierarchical UV physics ---
+and quantifies the RG running absorbed into $c_\nu$. It does \emph{not}
+predict $c_\nu$: the coefficient remains a free parameter of the framework.
+
+\paragraph{Field content and PQ charges.} A global $U(1)_{\mathrm{PQ}}$ is
+spontaneously broken by a scalar $\sigma$ (charge $X_\sigma = 2$) at the
+scale $f_a$; the phase of $\sigma$ is $\theta$. The spectrum beyond the
+Standard Model is:
+\begin{itemize}
+\item one right-handed neutrino $N$ ($X_N = 1$), with Majorana mass from
+$\frac{1}{2}y_\sigma\sigma N^{T}CN$: $M_N = y_\sigma f_a/\sqrt{2} \equiv
+\kappa f_a$, carrying the PQ phase $e^{i\theta/f_a}$;
+\item lepton doublets and charged-lepton singlets with $X_L = X_{e_R} = 1$,
+so that both $\bar L \tilde H N$ and $\bar L H e_R$ are PQ-invariant while
+quarks and $H$ are neutral;
+\item one vectorlike color-triplet $Q$ (KSVZ-like, electromagnetically
+neutral), which makes $U(1)_{\mathrm{PQ}}$ anomalous under color and yields
+$E/N = 0$ --- the photon benchmark of Sec.~\ref{sec:theory}.
+\end{itemize}
+
+\paragraph{Generation of the Weinberg operator.} Integrating out $N$ at
+tree level through the standard seesaw diagram
+$L\tilde H$--$N$--$\tilde H^{\dagger}L^{\dagger}$ produces
+\begin{equation}
+\mathcal{L}_{W} = \frac{y_\nu^{2}}{2M_N}\,
+\frac{\sigma^{\dagger}}{|\sigma|}\,
+\bigl(\tilde H^{\dagger}L\bigr)^{T}C\bigl(\tilde H^{\dagger}L\bigr)
++ \text{h.c.},
+\end{equation}
+i.e.\ the Weinberg operator of Eq.~\eqref{eq:seesaw} with its PQ phase
+$e^{-i\theta/f_a}$ generated automatically. Matching to the normalization
+of Eq.~\eqref{eq:m3} gives
+\begin{equation}
+c_\nu = \frac{y_\nu^{2}}{2\kappa\,(\alpha_s/4\pi)^{2}}
+= 5.6\times 10^{3}\,\frac{y_\nu^{2}}{\kappa}.
+\label{eq:matching}
+\end{equation}
+
+\paragraph{What the matching does --- and does not --- imply.}
+The benchmark $c_\nu = 1$ with $\kappa = 1$ corresponds to
+$y_\nu = 1.3\times 10^{-2} \approx 1.8\,y_\tau$: a perturbative Yukawa of
+$\tau$-lepton magnitude, with no hierarchy and no fine-tuning. The scenario
+range $c_\nu \in [1/3,\,3]$ corresponds to
+$y_\nu \in [7.7\times 10^{-3},\,2.3\times 10^{-2}]/\sqrt{\kappa}$, i.e.\ a
+factor of ${\sim}\,2$ around $y_\tau$. Perturbativity
+($y_\nu^2 \lesssim 4\pi$) alone bounds
+$c_\nu \lesssim 7\times 10^{4}/\kappa$, which is not restrictive: absent
+additional flavor dynamics, $c_\nu$ is not calculable, and the haloscope
+test of Sec.~\ref{sec:protocol} remains the discriminator.
+
+\paragraph{RG running.} The one-loop running of the Weinberg coefficient in
+the Standard Model \cite{AntuschRG},
+\begin{equation}
+16\pi^{2}\frac{dC_W}{d\ln\mu} =
+\bigl(-3g_2^{2} + 6y_t^{2} + \lambda\bigr)C_W
++ \bigl(Y_e^{\dagger}Y_e\bigr)C_W + C_W\bigl(Y_e^{\dagger}Y_e\bigr)^{T},
+\end{equation}
+shifts the coefficient by ${\sim}\,5$--$10\%$ between $M_N = f_a$ and the
+electroweak scale; this is absorbed into $c_\nu$ and is subleading relative
+to the benchmark scenario granularity. The two-loop QCD-anomaly suppression
+$(\alpha_s/4\pi)^{2}$ in Eq.~\eqref{eq:seesaw} refers to the mechanism that
+ties the operator's normalization to the QCD scale; Eq.~\eqref{eq:matching}
+shows how any given UV realization maps onto the effective coefficient.
+
+\paragraph{Neutrino coupling and domain walls.} The phase
+$e^{i\theta/f_a}$ in the mass term yields the axial coupling
+$C_{\nu_3} = 1$ ($g_{\theta\nu_3\nu_3} \simeq m_3/f_a$) used in
+Sec.~\ref{sec:interactions} --- the NVG-specific signature absent in plain
+KSVZ/DFSZ. The colored sector carries unit anomaly, so the domain-wall
+number is $N_{\mathrm{DW}} = 1$ and any walls formed in the post-inflationary
+scenario are unstable, consistent with the cosmology of
+Sec.~\ref{sec:abundance}.
 
 \begin{thebibliography}{99}
 
@@ -819,6 +1028,26 @@ J.~Egge et al.,
 \emph{Experimental determination of axion signal power of dish antennas and
 dielectric haloscopes using the reciprocity approach},
 JCAP \textbf{04} (2024) 005, arXiv:2311.13359.
+
+\bibitem{AxionLandscape}
+L.~Di Luzio, M.~Giannotti, E.~Nardi, L.~Visinelli,
+\emph{The landscape of QCD axion models},
+Phys.\ Rept.\ \textbf{870}, 1 (2020), arXiv:2003.01100.
+
+\bibitem{AntuschRG}
+S.~Antusch, J.~Kersten, M.~Lindner, M.~Ratz, M.~A.~Schmidt,
+\emph{Running neutrino mass parameters in see-saw scenarios},
+JHEP \textbf{03} (2005) 024, arXiv:hep-ph/0501272.
+
+\bibitem{CASPEr}
+D.~Budker, P.~W.~Graham, M.~Ledbetter, S.~Rajendran, A.~O.~Sushkov,
+\emph{Proposal for a Cosmic Axion Spin Precession Experiment (CASPEr)},
+Phys.\ Rev.\ X \textbf{4}, 021030 (2014), arXiv:1306.6089.
+
+\bibitem{NuFIT}
+I.~Esteban, M.~C.~Gonzalez-Garcia, M.~Maltoni, T.~Schwetz, A.~Zhou,
+\emph{NuFIT 5.2 --- Three-neutrino fit of oscillation data},
+\url{http://www.nu-fit.org} (2022).
 
 \end{thebibliography}
 
