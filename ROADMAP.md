@@ -16,6 +16,8 @@ This document outlines the short-term, medium-term, and long-term milestones for
   * Refine the Jeans-like small-scale growth suppression models with upcoming weak lensing surveys (DES Y6, Euclid).
 * **Vacuum Melting Exponent $\beta$ (RHIC BES-II, *existing data*):**
   * Test $W\sim(1-\rho/\rho_c)^\beta$: a two-hypothesis data-collapse of BES-II net-proton cumulants ($C_4/C_2$, $C_3/C_2$) near $T_c\approx157$ MeV selects mean-field $\beta=1/2$ (the $\sqrt{\;}$-law) vs 3-D Ising $\beta=0.326$; $\beta$ also reshapes the bounce term $(1-\rho/\rho_c)^{2\beta}$. Derivation & identifiability study: [NVG_MELTING_LAW_ANALYSIS.md](NVG_MELTING_LAW_ANALYSIS.md).
+* **Dark-Sector Band Discrimination (dark-dimension cross-check):**
+  * NVG pseudoscalar bands ($m_\theta = 53.2$ μeV, topological axion 8.4 μeV) are disjoint from the dark-dimension KK tower window (2 meV–1 eV at $R \in [0.2, 100]$ μm) — any haloscope detection discriminates the two programs. Registered live falsifiers: DESI $w(z) \neq -1$ at growing significance (NVG predicts $w=-1$ exactly) and KATRIN around $m_\beta \approx 29$ meV (two-sided $\theta$-seesaw test). Diagnostic: `verification/nvg_de_axion_crosscheck.py` (CONJECTURED status under `SPEC-v2`).
 
 ### 2. Medium-Term (2027–2030) — Lab Tests & Next-Gen Surveys
 * **HADES Collaboration Cross-Check:**

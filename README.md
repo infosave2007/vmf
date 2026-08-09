@@ -249,7 +249,22 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 
 ### 6. Additional Calculations (August 2026)
 
-A new batch of 8 scripts in `verification/` (pure Python standard library, each reproducible with a single command). Every calculation is either a closed-form identity or a forward prediction with a stated falsification channel; honest audits of discrepancies are preserved in the script outputs.
+A new batch of 10 scripts in `verification/` (pure Python standard library, each reproducible with a single command). Every calculation is either a closed-form identity or a forward prediction with a stated falsification channel; honest audits of discrepancies are preserved in the script outputs.
+
+#### Evidential-strength hierarchy (audit without stretching)
+
+Per the contract [NVG_RESEARCH_CONTRACT.md](NVG_RESEARCH_CONTRACT.md) (`SPEC-v2`), compatibility with data is never labelled “proof”; the tiers below are the maximum an honest audit may claim:
+
+| Tier | Content | Basis |
+|------|---------|-------|
+| **I. Exact identities (mathematically ironclad)** | $\rho_c r_c^2 = 3c^2/8\pi G$ (precision $2\times10^{-16}$), $M_1 = c^3 t_b/(2G)$, $T_b/M_\Omega = (30/\pi^2 g_*)^{1/4}$, $M_{\rm crit} = (9/8\sqrt{2\pi})M_{\rm Pl}^3/M_\Omega^2$ — all from the SINGLE input $M_\Omega = 859\pm8$ MeV, zero free parameters (`nvg_anchor_identities.py`, PASS) | algebra + dimensions |
+| **II. Overdetermined predictions (one parameter → two or more independent outputs)** | $\theta$-seesaw: a single $f_a = 1.07\times10^{11}$ GeV yields simultaneously $m_\theta = 53.2$ μeV, $m_{\nu_3} \approx 50$ meV and $\sum m_\nu = 63.3$ meV with no right-handed neutrinos ($m_{\beta\beta} > 10$ meV excludes the sector) | action-derived + DESI/KATRIN data |
+| **III. Confirmed compatibilities** | $2M_\Omega$ and the scalar glueball (lattice QCD), $M_{\rm crit} = 0.992\,M_\odot$ vs the absence of sub-solar horizons in GWTC, Cas A/Vela bimodality, $\tilde\Lambda\approx313$ inside the LIGO 90% CI | data, but without baseline discrimination (`SPEC-v2` C3) |
+| **IV. Calibrations (not evidence)** | $H_0 = 72.8$, Direct Urca threshold $1.45\,M_\odot$, EOS shape parameters | one fitted input per block |
+| **V. Conjectures (CONJECTURED)** | the $m_a \leftrightarrow \rho_{\rm DE}$ link via $N_e$ (see the new table row) | ansatz + shared $H_0$ calibration (reverse-solution structure, `SPEC-v2` rejection boundary item 2) |
+
+The ironclad core of the framework is tiers I–II; tiers III–V are honestly labelled and never pooled into a single evidence count. Note: the triple-hierarchy identities (`nvg_dual_hierarchy_identity.py`) are tier-I algebra with a calibrated $H_0$ input — a consistency closure, not evidence.
+
 
 | Script | Result | Status |
 |--------|--------|--------|
@@ -261,8 +276,10 @@ A new batch of 8 scripts in `verification/` (pure Python standard library, each 
 | `nvg_spin_limits_rmodes.py` | Fork-B Kepler limits: 1083 Hz (canonical), 1565 Hz ($M_{\max}$) > 716 Hz (J1748−2446ad); r-mode window (calibrated to Lindblom–Owen–Morsink): mature pulsars stable, hot fast-spinning phases unstable | PASS |
 | `nvg_theta_superradiance.py` | $\theta$-mode superradiance band: $M_{\rm BH} \in [5.0\times10^{-7}, 1.3\times10^{-6}]\,M_\odot$ (~0.3 Earth masses); closest $4^N$ ladder rung: $N=9$ (1.41× band center); horizonless remnants: channel closed | forward null test |
 | `nvg_tidal_heating_null.py` | Tidal heating: GW phase deficit ~32 cycles (EMRI, LISA) for a Kerr BH vs 0 for a horizonless remnant | forward null test |
+| `nvg_de_axion_crosscheck.py` | Cross-check against the dark-dimension window (0.2–100 μm): $\Lambda_{\rm DE}^{1/4} = 2.28$ meV, window KK masses 2 meV–1 eV; NVG pseudoscalar Compton radii ($R_a = 23.5$ mm, $R_\theta = 3.71$ mm) miss the window by ×235–×3710 → geometric identification REFUTED; internal ansatz sensitivity $d\ln m_a/d\ln\rho_{\rm DE} = -2/N_e = -3.77\%$ with an inverse anchor ($m_a$ to 1% → $H_0$ to ±0.18 km/s/Mpc); NVG haloscope band (μeV) and the KK tower band (meV–eV) are disjoint | CONJECTURED diagnostic (`SPEC-v2`) |
+| `nvg_dual_hierarchy_identity.py` | Triple-hierarchy identity: $\rho_c r_c^2 = \rho_{\rm crit}R_{H0}^2 = 3c^2/8\pi G$ closes density ($\rho_c/\rho_{\rm DE} = e^{2N_e}/\Omega_{\rm DE} = 1.85\times10^{46}$), entropy ($S_{\rm now}/S_{\rm gen} = 4^n$) and mass ($M_U = M_1 2^n = 4.30\times10^{22}\,M_\odot$) with the single number $e^{N_e} = R_{H0}/r_c$ at $n = N_e/\ln2 = 76.58$ (precision $5\times10^{-16}$); audit of item 15: "77.2" = $\log_4(2.6\times10^{122}/10^{76}) = 77.09$ from rounded anchors, "±0.3" = $\ln2/2$ (cycle-interval half-width; true QCD sensitivity ±0.013) | closed identity (calibrated $H_0$) |
 
-Key new falsifiable content: (i) **moment of inertia of J0737A** — orbital precession of the double pulsar will measure $I$ at ~10%, discriminating stiff from soft EOS; (ii) **$m_{\beta\beta} > 10$ meV excludes the minimal $\theta$-seesaw**; (iii) **any monopole fifth-force signal at 3–4 mm excludes the $\theta$ sector**; (iv) a confirmed cosmic birefringence $\beta \neq 0$ at LiteBIRD precision pins $\gamma_{\rm topo}\Delta\theta$; (v) superradiance and tidal heating provide population tests of horizonless remnants.
+Key new falsifiable content: (i) **moment of inertia of J0737A** — orbital precession of the double pulsar will measure $I$ at ~10%, discriminating stiff from soft EOS; (ii) **$m_{\beta\beta} > 10$ meV excludes the minimal $\theta$-seesaw**; (iii) **any monopole fifth-force signal at 3–4 mm excludes the $\theta$ sector**; (iv) a confirmed cosmic birefringence $\beta \neq 0$ at LiteBIRD precision pins $\gamma_{\rm topo}\Delta\theta$; (v) superradiance and tidal heating provide population tests of horizonless remnants; (vi) **a detection in the μeV band vs the meV–eV band** discriminates NVG from dark-dimension KK dark matter, and DESI $w(z) \neq -1$ at growing significance is the sharpest live falsifier of the dark sector; (vii) KATRIN: $m_\beta \approx 29$ meV (normal ordering, no $\nu_R$) — a lower limit or a higher discovery tests the $\theta$-seesaw two-sidedly.
 
 ---
 
@@ -360,6 +377,8 @@ NVG-Research/
 │   ├── nvg_starquake_qpo.py                # Magnetar starquake QPO shear frequencies
 │   ├── nvg_primordial_gw_comb.py           # Primordial gravitational wave frequency comb generator
 │   ├── nvg_axion_mass.py                   # Topological axion decay constant and mass calculation
+│   ├── nvg_de_axion_crosscheck.py          # Dark-energy/axion cross-check vs the dark-dimension window (CONJECTURED)
+│   ├── nvg_dual_hierarchy_identity.py      # Triple-hierarchy identity (density/entropy/mass from 3c²/8πG)
 │   ├── nvg_perihelion_shift.py             # Binary pulsar strong-field periastron shift calculation
 │   ├── nvg_cmb_temperature.py              # CMB temperature today from QCD bounce scale
 │   ├── nvg_baryon_asymmetry.py            # Baryon asymmetry (eta_B) from Genesis bounce
@@ -471,6 +490,8 @@ python verification/nvg_neutrino_mass.py           # Calculates the Majorana neu
 python verification/nvg_starquake_qpo.py           # Validates magnetar QPO starquake frequencies
 python verification/nvg_primordial_gw_comb.py      # Calculates bounce frequencies for Tolman cycles
 python verification/nvg_axion_mass.py              # Calculates topological axion mass limits
+python verification/nvg_de_axion_crosscheck.py     # Dark-energy <-> axion-sector cross-check (dark-dimension window)
+python verification/nvg_dual_hierarchy_identity.py # Triple-hierarchy identity + cycle-count audit
 python verification/nvg_perihelion_shift.py        # Verifies binary pulsar strong-field periastron shift
 python verification/nvg_vacuum_w_field_derivation.py # Models QFT W-field phase transition & VEV
 python verification/nvg_cmb_temperature.py      # Derives CMB temperature $T_{\rm CMB} = 2.725$ K from QCD bounce scale
@@ -503,7 +524,7 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 12. **GW Echo Template:** Parameterized echo train with decaying amplitude ($R_{\rm core}^n$) and alternating phase — ready-to-use template for LIGO matched-filtering.
 13. **NS Cooling Population Dichotomy:** Strict threshold at $1.45 M_\odot$. Regardless of envelope composition, light NSs are bright ($10^{33}$ erg/s), while heavy ones (Direct Urca) drop to $10^{31}$ erg/s. An old, hot heavy star falsifies the EOS.
 14. **Gravitational Redshift and f_peak:** Strict curves for the NS population: $z_{surf} = 0.223$ for a $1.4 M_\odot$ star (target for STROBE-X/eXTP) and a post-merger peak frequency of $f_{peak} \approx 2.51$ kHz for LIGO O5.
-15. **Cycles and Genesis Robustness:** The entropy growth equation $S \propto 4^N$ yields exactly 77.2 cycles from the Genesis instanton ($10^{76} k_B$) to today ($10^{122} k_B$). The full lattice QCD uncertainty (851-867 MeV) shifts the cycle count by a mere $\pm 0.3$, and the Genesis duration $N_e$ only from 53.16 to 53.24 e-folds.
+15. **Cycles and Genesis Robustness:** The closed form $n = N_e/\ln 2 = 76.58 \pm 0.013$ (anchored $H_0 = 72.8$) lands exactly inside integer cycle 77 of the Tolman ladder: the interval $N_e \in [76\ln2, 77\ln2] = [52.68, 53.38]$ (`verification/nvg_hubble_tension.py`). Audit: the previously quoted "77.2" is $\log_4(2.6\times10^{122}/10^{76}) = 77.09$ built on rounded E&L entropy anchors, and "±0.3" is the cycle-interval half-width $\ln2/2$, not the QCD sensitivity (true value ±0.013) (`verification/nvg_dual_hierarchy_identity.py`).
 16. **EM Sector ($\epsilon_{eff}$):** The effective vacuum dielectric constant in a NS core drops to $\epsilon_{eff} = 0.135 \epsilon_0$, preserving QED on Earth ($\epsilon_{eff} = \epsilon_0$).
 17. **W-Sector Lorentz Invariance:** Outside dense media, vacuum dispersion and birefringence are strictly $0.0$, satisfying the most stringent GRB astrophysical limits.
 18. **Kerr QNM (Ringdown):** The Hayward core modification at the Planck scale shifts Quasi-Normal Mode frequencies by $\sim 10^{-105}$, making the geometry mathematically indistinguishable for LIGO/LISA.
@@ -513,6 +534,8 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 22. **Cosmic birefringence:** Static branch $\beta = 0$; a detection of $\beta \neq 0$ at LiteBIRD precision pins the combination $\gamma_{\rm topo}\Delta\theta$ ($0.033°$ per unit) (`verification/nvg_cmb_birefringence.py`).
 23. **$\theta$-mode superradiance:** Kerr band $M_{\rm BH} \in [5\times10^{-7}, 1.3\times10^{-6}]\,M_\odot$; a spinning horizon PBH inside the band excludes the horizonless interpretation of the corresponding remnants (`verification/nvg_theta_superradiance.py`).
 24. **Tidal heating:** Horizonless remnants predict a zero absorption-phase contribution in EMRIs vs ~32 cycles for a Kerr BH (LISA) (`verification/nvg_tidal_heating_null.py`).
+25. **Dark-sector band discrimination:** The NVG bands (8–53 μeV) and the dark-dimension KK tower band (2 meV–1 eV at $R\in[0.2,100]$ μm) are disjoint — a detection in either band discriminates the programs; live falsifiers: DESI $w(z)\neq-1$ and KATRIN around $m_\beta\approx29$ meV (`verification/nvg_de_axion_crosscheck.py`).
+26. **Triple-hierarchy identity:** $\rho_c r_c^2 = \rho_{\rm crit}R_{H0}^2 = 3c^2/8\pi G$ → the three hierarchies are powers of the single number $e^{N_e} = R_{H0}/r_c$: density $\rho_c/\rho_{\rm DE} = e^{2N_e}/\Omega_{\rm DE} = 1.85\times10^{46}$, entropy $S_{\rm now}/S_{\rm gen} = e^{2N_e} = 4^n$, mass $M_U = M_1\times 2^n = 4.30\times10^{22}\,M_\odot$ (the Hubble-sphere mass; closure at $5\times10^{-16}$ precision). Status: closed identity with a calibrated $H_0$ — consistency, not evidence (`verification/nvg_dual_hierarchy_identity.py`).
 
 ---
 
