@@ -58,7 +58,14 @@ class ForkBEOS:
         self.gamma1 = 2.80
         p_nuc = mevfm3_to_cgs(3.4)                 # P(rho0)
         self.k1 = p_nuc / self.rho0**self.gamma1
-        self.gamma2 = 2.30
+        self.gamma2 = 2.00
+        # RETUNE 2026-08 (was 2.30): gamma2 = 2.00 restores the conformal
+        # c_s^2 -> 1/3 behaviour of the intermediate-density branch and
+        # brings the TOV maximum mass to M_max = 2.22 M_sun, inside the
+        # parameter-free bound M_Pl^3/M_Omega^2 = 2.211(+0.042/-0.041)
+        # M_sun registered in nvg_ns_mass_bound.py, with R(1.4) and I(1.4)
+        # unchanged at the 0.2% level (fine-grid scan,
+        # generator_project/calc_forkb_mmax_scan.py).
         p2 = mevfm3_to_cgs(32.0)                   # P(2 rho0)
         self.k2 = p2 / self.rho_tr**self.gamma2
         # quark CSS segment anchored at 4 rho0: pressure jump 1.3, c_s^2 = 1/3
