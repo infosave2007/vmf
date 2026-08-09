@@ -15,6 +15,11 @@ Audit of README claim #15 is printed in [D]: the quoted "77.2 cycles" is
 log4(2.6e122/1e76) = 77.09 built on rounded E&L entropy anchors, and "+/-0.3"
 is the cycle-interval half-width ln2/2, not the QCD sensitivity (+/-0.013).
 
+Block [E] audits the PBH ladder M_N = M_1 x 4^N: the shared spacing is
+structural, but the peak rung N = -21 is calibrated to the asteroid DM
+window (formation T ~ 642 TeV matches no natural scale) and the geometric-
+mean closure hypothesis sqrt(m_Pl x M_1) is refuted by x1.3e6.
+
 STATUS UNDER SPEC-v2: CLOSED IDENTITY WITH A CALIBRATED INPUT. The algebra is
 tier I, but N_e uses the calibrated local H_0 = 72.8 and the Tolman x2 law is
 a repo derivation, not data. These are consistency closures that RE-EXPRESS the
@@ -99,6 +104,47 @@ def main():
           f"{math.log(2.6e122/1e76)/math.log(4):.2f} (rounded E&L anchors)")
     print(f"    '+/-0.3' = ln2/2 = {0.5*math.log(2):.3f} = cycle-interval "
           f"half-width, NOT the QCD sensitivity (+/-{dn:.3f})")
+
+    # [E] PBH ladder audit: same 4^N spacing, peak NOT derived
+    print("[E] PBH ladder M_N = M_1 x 4^N audit:")
+    m_pl_msun = math.sqrt(HBAR * C / G) / MSUN
+    t_b = r_c / C
+    m_peak = 0.38 * 4.0 ** (-21)
+    # radiation era: t = 0.301 g_*^-1/2 M_Pl/T^2  ->  T = sqrt(c^4/(G hbar))
+    # convention-independent; T in MeV with t in seconds
+    g_star = 47.5
+    m1_kg = m1                                   # kg: c^2 r_c/(2G)
+    t_form = t_b * (m_peak * MSUN) / m1_kg       # horizon mass is linear in t
+    t_pl_s = math.sqrt(HBAR * G / C**5)
+    m_pl_mev = math.sqrt(HBAR * C**5 / G) / MEV_J
+    t_form_mev = math.sqrt(0.301 / math.sqrt(g_star)) * math.sqrt(
+        t_pl_s / t_form) * m_pl_mev
+    print(f"    rung N = -21 (ledger peak) = {m_peak:.3e} M_sun "
+          f"({m_peak*MSUN*1e3:.2e} g); horizon formation at t = "
+          f"{t_form:.2e} s, T ~ {t_form_mev:.2e} MeV (g_* = {g_star})")
+    print(f"    bounce rung N = 0 at t_b = {t_b:.3e} s (repo T_b = 432 MeV "
+          f"convention); ladder spacing x2 in t, x1/2 in T per rung")
+    m_peak_kg = m_peak * MSUN
+    t_h = HBAR * C**3 / (8.0 * math.pi * G * m_peak_kg * 1.380649e-23)
+    tau = 5120.0 * math.pi * G**2 * m_peak_kg**3 / (HBAR * C**4)
+    print(f"    peak PBH: T_H = {t_h:.2e} K > T_CMB; Hawking lifetime "
+          f"{tau/3.156e7:.1e} yr (t_univ = 1.38e10 yr) -> comfortably stable "
+          f"as DM")
+    # evaporation boundary: tau(M) = age of the universe, solved directly
+    t_univ_s = 1.38e10 * 3.156e7
+    m_evap_kg = (t_univ_s * HBAR * C**4 /
+                 (5120.0 * math.pi * G**2)) ** (1.0 / 3.0)
+    n_evap = math.log(m_evap_kg / m1_kg) / math.log(4.0)
+    print(f"    evaporation boundary {m_evap_kg:.2e} kg sits at N = "
+          f"{n_evap:.1f} ({4.0**n_evap*m1_kg/MSUN:.2e} M_sun)")
+    gm = math.sqrt(m_pl_msun * m1 / MSUN)
+    n_star = -3.0 * n_e / (4.0 * math.log(2.0))
+    print(f"    REFUTED closure hypothesis: sqrt(m_Pl x M_1) = {gm:.3e} M_sun "
+          f"misses the peak by x{m_peak/gm:.2e}; exact-N form -3N_e/(4ln2) = "
+          f"{n_star:.1f}")
+    print(f"    VERDICT: peak rung N = -21 is CALIBRATED to the asteroid DM "
+          f"window (~1.7e20 g), not derived; only the shared 4^N spacing is "
+          f"structural")
 
     print("=" * 72)
     print("Status: closed identity, calibrated-H0 input; consistency closure,")

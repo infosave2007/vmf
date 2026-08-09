@@ -249,7 +249,7 @@ A dedicated suite of statistical tests verifies the framework against actual pub
 
 ### 6. Additional Calculations (August 2026)
 
-A new batch of 10 scripts in `verification/` (pure Python standard library, each reproducible with a single command). Every calculation is either a closed-form identity or a forward prediction with a stated falsification channel; honest audits of discrepancies are preserved in the script outputs.
+A new batch of 11 scripts in `verification/` (pure Python standard library, each reproducible with a single command). Every calculation is either a closed-form identity or a forward prediction with a stated falsification channel; honest audits of discrepancies are preserved in the script outputs.
 
 #### Evidential-strength hierarchy (audit without stretching)
 
@@ -278,8 +278,9 @@ The ironclad core of the framework is tiers I–II; tiers III–V are honestly l
 | `nvg_tidal_heating_null.py` | Tidal heating: GW phase deficit ~32 cycles (EMRI, LISA) for a Kerr BH vs 0 for a horizonless remnant | forward null test |
 | `nvg_de_axion_crosscheck.py` | Cross-check against the dark-dimension window (0.2–100 μm): $\Lambda_{\rm DE}^{1/4} = 2.28$ meV, window KK masses 2 meV–1 eV; NVG pseudoscalar Compton radii ($R_a = 23.5$ mm, $R_\theta = 3.71$ mm) miss the window by ×235–×3710 → geometric identification REFUTED; internal ansatz sensitivity $d\ln m_a/d\ln\rho_{\rm DE} = -2/N_e = -3.77\%$ with an inverse anchor ($m_a$ to 1% → $H_0$ to ±0.18 km/s/Mpc); NVG haloscope band (μeV) and the KK tower band (meV–eV) are disjoint | CONJECTURED diagnostic (`SPEC-v2`) |
 | `nvg_dual_hierarchy_identity.py` | Triple-hierarchy identity: $\rho_c r_c^2 = \rho_{\rm crit}R_{H0}^2 = 3c^2/8\pi G$ closes density ($\rho_c/\rho_{\rm DE} = e^{2N_e}/\Omega_{\rm DE} = 1.85\times10^{46}$), entropy ($S_{\rm now}/S_{\rm gen} = 4^n$) and mass ($M_U = M_1 2^n = 4.30\times10^{22}\,M_\odot$) with the single number $e^{N_e} = R_{H0}/r_c$ at $n = N_e/\ln2 = 76.58$ (precision $5\times10^{-16}$); audit of item 15: "77.2" = $\log_4(2.6\times10^{122}/10^{76}) = 77.09$ from rounded anchors, "±0.3" = $\ln2/2$ (cycle-interval half-width; true QCD sensitivity ±0.013) | closed identity (calibrated $H_0$) |
+| `nvg_ns_mass_bound.py` | Parameter-free neutron-star mass bound from a single anchor: $M_{\rm Pl}^3/M_\Omega^2 = 2.211^{+0.042}_{-0.041}\,M_\odot$; live data cut: J0740+6620 $2.08\pm0.07$ keeps the bound alive with a $2.5\sigma$ margin, J0952−0607 ($2.35\pm0.17$, disputed) sits $0.6\sigma$ above the band; falsifier — any robust cold NS $\geq 2.25\,M_\odot$; audits: hardcoded targets 2.99/2.91 in `nvg_hyperon_puzzle_tov.py` and a 3.6% tension with fork-B TOV $M_{\max}=2.29$ | registered bound (live) |
 
-Key new falsifiable content: (i) **moment of inertia of J0737A** — orbital precession of the double pulsar will measure $I$ at ~10%, discriminating stiff from soft EOS; (ii) **$m_{\beta\beta} > 10$ meV excludes the minimal $\theta$-seesaw**; (iii) **any monopole fifth-force signal at 3–4 mm excludes the $\theta$ sector**; (iv) a confirmed cosmic birefringence $\beta \neq 0$ at LiteBIRD precision pins $\gamma_{\rm topo}\Delta\theta$; (v) superradiance and tidal heating provide population tests of horizonless remnants; (vi) **a detection in the μeV band vs the meV–eV band** discriminates NVG from dark-dimension KK dark matter, and DESI $w(z) \neq -1$ at growing significance is the sharpest live falsifier of the dark sector; (vii) KATRIN: $m_\beta \approx 29$ meV (normal ordering, no $\nu_R$) — a lower limit or a higher discovery tests the $\theta$-seesaw two-sidedly.
+Key new falsifiable content: (i) **moment of inertia of J0737A** — orbital precession of the double pulsar will measure $I$ at ~10%, discriminating stiff from soft EOS; (ii) **$m_{\beta\beta} > 10$ meV excludes the minimal $\theta$-seesaw**; (iii) **any monopole fifth-force signal at 3–4 mm excludes the $\theta$ sector**; (iv) a confirmed cosmic birefringence $\beta \neq 0$ at LiteBIRD precision pins $\gamma_{\rm topo}\Delta\theta$; (v) superradiance and tidal heating provide population tests of horizonless remnants; (vi) **a detection in the μeV band vs the meV–eV band** discriminates NVG from dark-dimension KK dark matter, and DESI $w(z) \neq -1$ at growing significance is the sharpest live falsifier of the dark sector; (vii) KATRIN: $m_\beta \approx 29$ meV (normal ordering, no $\nu_R$) — a lower limit or a higher discovery tests the $\theta$-seesaw two-sidedly; (viii) audit of the PBH ladder $M_N = 0.38\times4^N\,M_\odot$: the shared ×4 spacing is structural (horizon masses), but the peak rung $N=-21$ is calibrated to the asteroid window (formation epoch $t = 8.5\times10^{-19}$ s, $T\approx642$ TeV matches no natural scale); the closure hypothesis $\sqrt{m_{\rm Pl}M_1}$ is REFUTED (×1.3×10⁶); the peak is Hawking-stable with a $\sim10^{18}$ lifetime margin, evaporation boundary at $N=-31$.
 
 ---
 
@@ -379,6 +380,7 @@ NVG-Research/
 │   ├── nvg_axion_mass.py                   # Topological axion decay constant and mass calculation
 │   ├── nvg_de_axion_crosscheck.py          # Dark-energy/axion cross-check vs the dark-dimension window (CONJECTURED)
 │   ├── nvg_dual_hierarchy_identity.py      # Triple-hierarchy identity (density/entropy/mass from 3c²/8πG)
+│   ├── nvg_ns_mass_bound.py                # Parameter-free NS mass bound M_Pl³/M_Ω² = 2.21 M_⊙ + live cut
 │   ├── nvg_perihelion_shift.py             # Binary pulsar strong-field periastron shift calculation
 │   ├── nvg_cmb_temperature.py              # CMB temperature today from QCD bounce scale
 │   ├── nvg_baryon_asymmetry.py            # Baryon asymmetry (eta_B) from Genesis bounce
@@ -492,6 +494,7 @@ python verification/nvg_primordial_gw_comb.py      # Calculates bounce frequenci
 python verification/nvg_axion_mass.py              # Calculates topological axion mass limits
 python verification/nvg_de_axion_crosscheck.py     # Dark-energy <-> axion-sector cross-check (dark-dimension window)
 python verification/nvg_dual_hierarchy_identity.py # Triple-hierarchy identity + cycle-count audit
+python verification/nvg_ns_mass_bound.py     # Parameter-free NS mass bound + live data cut
 python verification/nvg_perihelion_shift.py        # Verifies binary pulsar strong-field periastron shift
 python verification/nvg_vacuum_w_field_derivation.py # Models QFT W-field phase transition & VEV
 python verification/nvg_cmb_temperature.py      # Derives CMB temperature $T_{\rm CMB} = 2.725$ K from QCD bounce scale
@@ -536,6 +539,7 @@ Unlike abstract quantum gravity models, the NVG/VMF framework is rigidly anchore
 24. **Tidal heating:** Horizonless remnants predict a zero absorption-phase contribution in EMRIs vs ~32 cycles for a Kerr BH (LISA) (`verification/nvg_tidal_heating_null.py`).
 25. **Dark-sector band discrimination:** The NVG bands (8–53 μeV) and the dark-dimension KK tower band (2 meV–1 eV at $R\in[0.2,100]$ μm) are disjoint — a detection in either band discriminates the programs; live falsifiers: DESI $w(z)\neq-1$ and KATRIN around $m_\beta\approx29$ meV (`verification/nvg_de_axion_crosscheck.py`).
 26. **Triple-hierarchy identity:** $\rho_c r_c^2 = \rho_{\rm crit}R_{H0}^2 = 3c^2/8\pi G$ → the three hierarchies are powers of the single number $e^{N_e} = R_{H0}/r_c$: density $\rho_c/\rho_{\rm DE} = e^{2N_e}/\Omega_{\rm DE} = 1.85\times10^{46}$, entropy $S_{\rm now}/S_{\rm gen} = e^{2N_e} = 4^n$, mass $M_U = M_1\times 2^n = 4.30\times10^{22}\,M_\odot$ (the Hubble-sphere mass; closure at $5\times10^{-16}$ precision). Status: closed identity with a calibrated $H_0$ — consistency, not evidence (`verification/nvg_dual_hierarchy_identity.py`).
+27. **Parameter-free neutron-star mass bound:** $M_{\rm Pl}^3/M_\Omega^2 = 2.211^{+0.042}_{-0.041}\,M_\odot$ — the only dimensional maximum-mass scale obtainable from the single frozen anchor $M_\Omega$, with no EOS modeling. Registered falsifier: any robustly confirmed cold neutron star $\geq 2.25\,M_\odot$ refutes the bound (e.g. a J0952−0607-class object confirmed by Shapiro delay). Live cut: J0740+6620 $2.08\pm0.07\,M_\odot$ keeps the bound alive with a $2.5\sigma$ margin; the disputed J0952−0607 sits $0.6\sigma$ above the band and is not treated as a refutation. Honest audits inside: the hardcoded targets 2.99/2.91 $M_\odot$ in `nvg_hyperon_puzzle_tov.py` are presentation choices, not TOV outputs; the fork-B TOV $M_{\max}=2.29\,M_\odot$ exceeds the bound by 3.6% (open tension, needs an EOS re-tune) (`verification/nvg_ns_mass_bound.py`).
 
 ---
 
