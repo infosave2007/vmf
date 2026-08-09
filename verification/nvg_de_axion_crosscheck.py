@@ -115,11 +115,19 @@ def main():
     # [E] falsification channels
     print("[E] Registered falsification channels:")
     m_nu3 = C_SEE * V_EW**2 / FA_THETA * 1e9         # eV
-    m_beta = m_nu3 / math.sqrt(3.0)
+    # KATRIN observable is PMNS-weighted, NOT m_3/sqrt(3) (AUDIT FIX 2026-08,
+    # consistent with nvg_neutrinoless_dbeta.py): m1 -> 0, normal ordering.
+    dm2_21, dm2_31 = 7.53e-5, 2.45e-3                # eV^2 (NuFIT 5.2, NO)
+    s12_2, s13_2 = 0.304, 0.0222
+    m2 = math.sqrt(dm2_21)
+    m3 = math.sqrt(dm2_21 + dm2_31)
+    m_beta = math.sqrt(s12_2 * (1 - s13_2) * m2**2 + s13_2 * m3**2)
     print(f"    DESI: NVG predicts w = -1 exactly; DR2 dynamical-DE pull")
     print(f"          (3.1sigma primary) is the sharpest live falsifier.")
-    print(f"    KATRIN: m_beta = {m_beta*1e3:.1f} meV (seesaw, NO) -- a"
-          f" KATRIN limit below this or a discovery above it kills/fits it;")
+    print(f"    KATRIN: m_beta = {m_beta*1e3:.1f} meV (seesaw, NO, PMNS-weighted) --")
+    print(f"            below KATRIN's ~200 meV design reach; a discovery")
+    print(f"            m_beta > 20 meV excludes the minimal theta-seesaw")
+    print(f"            (two-sided test belongs to Project 8, sigma ~ 10 meV);")
     print(f"            RH-neutrino signals at O(100) meV also exclude NO.")
     print(f"    Haloscopes: NVG band 8-53 ueV (ADMX/HAYSTAC territory) is")
     print(f"          disjoint from the KK meV-eV band -> band detection")
