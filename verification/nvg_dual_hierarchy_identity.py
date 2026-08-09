@@ -20,6 +20,10 @@ structural, but the peak rung N = -21 is calibrated to the asteroid DM
 window (formation T ~ 642 TeV matches no natural scale) and the geometric-
 mean closure hypothesis sqrt(m_Pl x M_1) is refuted by x1.3e6.
 
+Block [F] closes the fourth hierarchy: t_H0/t_b = exp(N_e) (the time
+hierarchy), upgrading the identity to a QUAD hierarchy, and records the
+honest non-closure of the entropy-per-baryon ratio (area law / volume count).
+
 STATUS UNDER SPEC-v2: CLOSED IDENTITY WITH A CALIBRATED INPUT. The algebra is
 tier I, but N_e uses the calibrated local H_0 = 72.8 and the Tolman x2 law is
 a repo derivation, not data. These are consistency closures that RE-EXPRESS the
@@ -145,6 +149,26 @@ def main():
     print(f"    VERDICT: peak rung N = -21 is CALIBRATED to the asteroid DM "
           f"window (~1.7e20 g), not derived; only the shared 4^N spacing is "
           f"structural")
+
+    # [F] time hierarchy: the fourth closure of the same number e^N_e
+    t_b = r_c / C
+    t_h0 = 1.0 / h0
+    print(f"[F] time hierarchy: t_b = r_c/c = {t_b:.4e} s ; "
+          f"t_H0 = 1/H_0 = {t_h0:.4e} s")
+    print(f"    t_H0/t_b = {t_h0/t_b:.6e} = exp(N_e) "
+          f"(rel diff {abs(t_h0/t_b-math.exp(n_e))/math.exp(n_e):.1e})")
+    print(f"    -> QUAD hierarchy: density/entropy/mass/TIME are all powers")
+    print(f"    of the single number exp(N_e) = R_H0/r_c")
+    # honest non-closure: entropy per baryon mixes area law with a volume
+    # number count, so no pure exp(N_e) form can exist
+    eta_b, n_gamma = 6.1e-10, 410.7e6          # Planck eta_B; CMB photons/m^3
+    n_b = eta_b * n_gamma * 4.0 * math.pi * r_h0**3 / 3.0
+    s_per_b = s_now / n_b
+    print(f"    NON-CLOSURE audit: S_now/N_b = {s_per_b:.3e} vs "
+          f"exp(2N_e)/Omega_b = {math.exp(2*n_e)/0.0493:.3e} "
+          f"(ratio {s_per_b/(math.exp(2*n_e)/0.0493):.2e});")
+    print(f"    the area law (R^2) divided by a volume count (R^3) leaves a "
+          f"1/(eta n_gamma R) residual -- no closure, recorded honestly")
 
     print("=" * 72)
     print("Status: closed identity, calibrated-H0 input; consistency closure,")

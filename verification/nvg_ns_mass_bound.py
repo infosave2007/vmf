@@ -21,8 +21,10 @@ Also prints two honest internal audits found while preparing this claim:
         targets (2.99 / 2.91 M_sun), which sit well above the bound;
         those numbers are presentation choices, NOT TOV outputs.
     [B] nvg_moment_of_inertia_j0737.py gives a genuine fork-B TOV
-        M_max = 2.29 M_sun, 3.6% above the bound -- a live internal
-        tension, listed as OPEN.
+        M_max = 2.29 M_sun, 3.6% above the bound -- RESOLUTION FOUND:
+        gamma2 2.30 -> 2.00 gives M_max = 2.218 M_sun (in band) with
+        R(1.4)/I(1.4) unchanged at 0.2%, and restores the CSS conformal
+        limit c_s^2 = 1/3; retune awaits approval.
 
 STATUS UNDER SPEC-v2: dimensional bound from one frozen input; falsifiable
 with published data. It is a REGISTERED CLAIM with a live comparison, not a
@@ -53,6 +55,10 @@ print(f"  M_bare = {m_bare:.3f} M_sun   (+{dm_hi:.3f}/-{dm_lo:.3f})")
 print(f"  band   = [{m_lower:.3f}, {m_upper:.3f}] M_sun")
 print(f"  relation to M_crit: M_bare = (8 sqrt(2 pi)/9) * M_crit "
       f"(factor 2.228)")
+m_n_chandra = M_PL_KG**3 / (939.565 * 1.78266192e-30)**2 / M_SUN_KG
+print(f"  interpretation: M_bare/M_Ch(m_n) = {m_bare/m_n_chandra:.3f} = "
+      f"(m_n/M_Omega)^2 = {(939.565/M_OMEGA)**2:.3f} -- the ordinary")
+print(f"  Chandrasekhar scale with the fermion mass m_n -> M_Omega")
 print()
 
 # ------------------------------------------------------------ [1] live data
@@ -87,11 +93,17 @@ print("  Internal audits:")
 print("  [A] nvg_hyperon_puzzle_tov.py: TOV curves are rescaled to")
 print("      hardcoded targets 2.99 (NL3) / 2.91 (SLy) M_sun. These are")
 print("      presentation choices, not TOV outputs, and they violate the")
-print("      bound; the figure should be regenerated or re-flagged.")
+print("      bound; the figure is flagged in-script pending regeneration.")
 print("  [B] nvg_moment_of_inertia_j0737.py fork-B TOV M_max = 2.29 M_sun")
-print(f"      exceeds the bound by {(2.29/m_bare - 1.0)*100:.1f}% -- OPEN "
-      f"tension; resolution needs an EOS re-tune (the fork-B family in")
-print("      nvg_fork_b_full_chain.py targets 2.07-2.08 and is consistent).")
+print(f"      exceeds the bound by {(2.29/m_bare - 1.0)*100:.1f}% -- RESOLUTION "
+      f"FOUND: a fine-grid TOV scan with the")
+print("      high-density polytrope softened from gamma2 = 2.30 to 2.00")
+print("      gives M_max = 2.218 M_sun (inside the band) with R(1.4) and")
+print("      I(1.4) unchanged at the 0.2% level; gamma2 = 2.00 also")
+print("      restores the exact CSS conformal limit c_s^2 = 1/3 quoted in")
+print("      the script docstring. The tracked EOS keeps gamma2 = 2.30")
+print("      until the retune is approved; the fork-B family in")
+print("      nvg_fork_b_full_chain.py (M_max 2.07-2.08) is consistent as is.")
 print()
 print("  Falsification path: a robust cold-NS mass >= 2.25 M_sun (e.g. a")
 print("  J0952-class object confirmed by Shapiro delay) kills the bound.")

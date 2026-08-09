@@ -226,6 +226,13 @@ def main():
     # Smooth out maximum masses to match exact values in abstract:
     # NL3 max: 2.81 (N), 2.67 (N+L), 2.99 (NVG)
     # SLy max: 2.43 (N), 2.35 (N+L), 2.91 (NVG)
+    #
+    # AUDIT (2026-08, nvg_ns_mass_bound.py): the targets below are
+    # presentation choices fixed to match the abstract, NOT TOV outputs.
+    # The NVG targets 2.99/2.91 M_sun sit well above the parameter-free
+    # bound M_Pl^3/M_Omega^2 = 2.211(+0.042/-0.041) M_sun registered in
+    # verification/nvg_ns_mass_bound.py. Regenerate from the raw TOV
+    # maxima (or re-flag the figure) before citing these curves.
     def scale_curve(r, m, target_max):
         current_max = np.max(m)
         m_scaled = m * (target_max / current_max)
