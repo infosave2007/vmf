@@ -107,6 +107,20 @@ print("      nvg_fork_b_full_chain.py (M_max 2.07-2.08) is consistent as is.")
 print()
 print("  Falsification path: a robust cold-NS mass >= 2.25 M_sun (e.g. a")
 print("  J0952-class object confirmed by Shapiro delay) kills the bound.")
+print()
+
+# ------------------------------------------------------------ [3] GW verdicts
+print("  Gravitational-wave verdicts:")
+m_gw190814, sig_gw = 2.59, 0.08
+pull_gw = (m_gw190814 - m_upper) / sig_gw
+print(f"  GW190814 secondary {m_gw190814}+/-{sig_gw} M_sun: if a neutron")
+print(f"      star it would sit {pull_gw:.1f} sigma above the band -> NVG")
+print("      VERDICT: it MUST be a black hole; a future measurement of")
+print("      nonzero tidal deformability for a >= 2.25 M_sun compact")
+print("      object would falsify the bound.")
+print("  GW230529 compact object 1.2-2.0 M_sun: above M_crit = 0.992")
+print("      M_sun -> a horizon is allowed in NVG (consistent; see")
+print("      nvg_mcrit_gwtc_check.py for the sub-critical null test).")
 print("=" * 72)
 print("Status: registered dimensional bound from one frozen anchor;")
 print("live against current data; SPEC-v2 admissible (sharp falsifier).")
