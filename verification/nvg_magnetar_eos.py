@@ -1,85 +1,85 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Magnetar Core EOS and Field Amplification
-------------------------------------------------------------
-Calculates the VMF core magnetic field amplification in magnetars,
-verifying that the effective dielectric constant eps_eff = 0.135
-amplifies the core field to B > 10^15 G.
+"""Magnetar dense-matter response sensitivity.
+
+The VMF melting fraction and conservative loop dielectric response are reused
+from the maintained nvg_magnetar_closure module.  The seed field and
+magnetar-field interpretation remain explicit scenario inputs; no population
+likelihood or magnetic-field inference is performed here.
 """
 
-import math
+from __future__ import annotations
 
-# Constants
-M_Omega_0 = 859.0 # MeV
-n_0 = 0.16        # fm^-3
-# NOTE: alpha_v = g_v^2 / 4pi ~ 4.0 is NOT a free parameter tuned for this script. 
-# It is the standard Relativistic Mean Field (RMF) vector coupling constant 
-# (e.g. Walecka model) calibrated universally to the nuclear saturation density.
+import os
+import sys
+from typing import Any
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from nvg_magnetar_closure import eps_eff_ratio_loop, m_omega_star, melted_fraction, N_0
+
+M_Omega_0 = 859.0
+n_0 = N_0
 alpha_v = 4.0
-
-# NOTE: kappa_1 and kappa_2 are empirical scaling parameters (shared with the 
-# meson mass shift Brown-Rho scaling script) entered by hand rather than 
-# derived from first-principles QCD.
-kappa_1 = 0.21    
+kappa_1 = 0.25
 kappa_2 = 0.80
 
-def m_star(n_b):
-    x = n_b / n_0
-    return M_Omega_0 * (1.0 + kappa_2 * x) ** (-kappa_1 / kappa_2)
 
-def calculate_magnetar_fields(n_core_ratio=3.0, B_seed=1e14):
-    """
-    Computes the effective dielectric constant eps_eff and the resulting
-    amplified magnetic field in the core.
-    """
-    # Core density
+def m_star(n_b: float) -> float:
+    """Canonical VMF omega-sector mass used by the closure producer."""
+
+    return float(m_omega_star(n_b))
+
+
+def calculate_magnetar_fields(n_core_ratio: float = 3.0, B_seed: float = 1e14) -> tuple[float, float, float]:
+    """Compute loop-response amplification for an explicit seed field scenario."""
+
+    if n_core_ratio < 0.0 or B_seed < 0.0:
+        raise ValueError("density ratio and seed field must be non-negative")
     n_b = n_core_ratio * n_0
-    
-    # Constituent mass and melted fraction
-    m_s = m_star(n_b)
-    f_melt = 1.0 - m_s / M_Omega_0
-    
-    # First-principles vacuum gauge-kinetic coupling derived from the action:
-    # eps_eff/eps_0 = exp(-2 * alpha_v * f_melt)
-    # where f_melt = 1 - m_s / M_Omega_0 is the melted fraction of the condensate.
-    # At zero density, f_melt = 0 -> eps_eff/eps_0 = 1.0 (perfect vacuum limit).
-    # At core density 3*n_0, f_melt ≈ 0.276 -> eps_eff/eps_0 ≈ 0.110.
-    eps_eff_ratio = math.exp(-2.0 * alpha_v * f_melt)
-    
-    # Core field amplification factor: 1 / sqrt(eps_eff_ratio)
-    amplification = 1.0 / math.sqrt(eps_eff_ratio)
-    
-    # Amplified magnetic field: B_core = B_seed * amplification
-    B_core = B_seed * amplification
-    
-    return eps_eff_ratio, amplification, B_core
+    f_melt = melted_fraction(n_b)
+    eps_ratio = float(eps_eff_ratio_loop(n_b))
+    amplification = 1.0 / eps_ratio**0.5
+    return eps_ratio, amplification, B_seed * amplification
 
-def main():
-    print("==========================================================================")
-    print("  NVG COSMOLOGY: MAGNETAR CORE EOS & FIELD AMPLIFICATION")
-    print("==========================================================================")
-    print(f"QCD Anchor M_Omega_0             : {M_Omega_0} MeV")
-    
-    # Test at core density 3.0 n_0
+
+def compute_magnetar_state() -> dict[str, Any]:
     ratio = 3.0
-    seed = 4.0e14 # G, typical pre-collapse seed field from flux freezing
-    
-    eps_ratio, amp, B_core = calculate_magnetar_fields(ratio, seed)
-    
-    print(f"Core Density                     : {ratio} n_0")
-    print(f"Effective Mass M*(n_B)           : {m_star(ratio*n_0):.1f} MeV")
-    print(f"Melted Fraction                  : {1.0 - m_star(ratio*n_0)/M_Omega_0:.3f}")
-    print(f"Effective dielectric eps_eff/eps0: {eps_ratio:.4f} (first-principles target: ~0.110)")
-    print(f"Field Amplification Factor       : {amp:.3f}x")
-    print(f"Core Magnetic Field (B_core)     : {B_core:.3e} G")
-    print("-" * 74)
-    
-    # Assertions
-    assert eps_ratio < 0.20, "Effective dielectric ratio is too high!"
-    assert B_core > 1.0e15, "Core magnetic field is below the magnetar threshold!"
-    
-    print("Status: ✅ Magnetar core EOS and field amplification verified successfully.")
-    print("==========================================================================")
+    seed = 4.0e14
+    eps_ratio, amplification, field = calculate_magnetar_fields(ratio, seed)
+    return {
+        "density_ratio": ratio,
+        "seed_field_G": seed,
+        "m_star_MeV": m_star(ratio * n_0),
+        "melted_fraction": melted_fraction(ratio * n_0),
+        "eps_ratio": eps_ratio,
+        "amplification": amplification,
+        "core_field_G": field,
+        "evidence_status": "CANONICAL_MODEL_SENSITIVITY",
+        "observed_likelihood": None,
+        "canonical_producer": "verification/nvg_magnetar_closure.py:m_omega_star,eps_eff_ratio_loop",
+        "limitation": "No independent magnetar mass/field likelihood is present.",
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_magnetar_state()
+    print("=" * 74)
+    print("  NVG MAGNETAR CORE RESPONSE SENSITIVITY")
+    print("=" * 74)
+    print(f"QCD anchor M_Omega                      : {M_Omega_0:.1f} MeV")
+    print(f"Core density                             : {state['density_ratio']:.1f} n_0")
+    print(f"Canonical m_omega*                       : {state['m_star_MeV']:.1f} MeV")
+    print(f"Melted fraction                          : {state['melted_fraction']:.3f}")
+    print(f"Loop dielectric ratio                    : {state['eps_ratio']:.5f}")
+    print(f"Amplification for seed {state['seed_field_G']:.2e} G : {state['amplification']:.3f}x")
+    print(f"Scenario core field                      : {state['core_field_G']:.3e} G")
+    print("Evidence status                          : CANONICAL_MODEL_SENSITIVITY")
+    print("No observed magnetic-field likelihood is evaluated.")
+    print("=" * 74)
+    return state
+
 
 if __name__ == "__main__":
     main()

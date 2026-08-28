@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-NVG Physical Predictions and Validation Calculations
+NVG Conditional Forecast Calculations
 ---------------------------------------------------
-This script calculates the following quantitative predictions:
+This script calculates conditional model outputs (not independently validated predictions):
 1. FAIR/NICA dilepton spectrum: Breit-Wigner width and significance at 2n_0.
 2. Post-merger GW spectrum: shift in f_2 frequency due to magnetic backpressure.
 3. LMXB crust thermal balance: dark photon cooling suppression vs neutrino cooling.
@@ -150,8 +150,8 @@ def main():
     print(f"  Dark photon decay width Gamma_A'      : {width_MeV:.3f} MeV")
     print(f"  Integrated Signal Events (10 pb^-1)   : {s_events:.1f} counts")
     print(f"  Idealized Breit-Wigner Significance   : {sig:.2f} sigma")
-    print(f"  Realistic Expected Significance       : >3 sigma (accounting for background systematics/tails)")
-    print(f"  Status                                : ✅ DETECTABLE (>3σ)")
+    print("  Realistic significance                : not evaluated (no detector/systematics model)")
+    print("  Status                                : CONDITIONAL FORECAST (idealized background only)")
     print()
     
     # 2. Post-merger GW shift
@@ -165,20 +165,20 @@ def main():
     B_core_ext = B_surf_ext / max(1.0 - get_S_factor(2.5, T_GeV=0.010), 0.01)
     P_mag_ext = ((B_core_ext**2) / (8.0 * math.pi)) / 1.60217663e33
     df2_ext = -20.0 * P_mag_ext
-    print(f"  Post-merger f_2 shift (B_surf=1e15 G)  : {df2:.3f} Hz  (detectable with ET within 40 Mpc)")
-    print(f"  Post-merger f_2 shift (B_surf=3e15 G)  : {df2_ext:.3f} Hz  (detectable with ET within 40 Mpc)")
-    print("  Status                                : ✅ COMPUTATIONALLY VIABLE FOR LIGO O5 / ET")
+    print(f"  Post-merger f_2 shift (B_surf=1e15 G)  : {df2:.3f} Hz")
+    print(f"  Post-merger f_2 shift (B_surf=3e15 G)  : {df2_ext:.3f} Hz")
+    print("  Status                                : CONDITIONAL FORECAST (no detector model)")
     print()
     
     # 3. LMXB crust cooling suppression
     sigma_ratio, boltzmann, suppression = calculate_lmxb_suppression()
     print("3. LMXB CRUST ACCRETION THERMAL BALANCE & COOLING SUPPRESSION")
     print("-" * 80)
-    print(f"  Condensate integrity ratio sigma/sigma0: {sigma_ratio:.4f}  (> 0.8)")
+    print(f"  Condensate integrity ratio sigma/sigma0: {sigma_ratio:.4f}")
     print(f"  On-shell Boltzmann factor exp(-m/T)   : {boltzmann:.2e}")
     print(f"  Off-shell virtual suppression (T/m)^4 : {suppression:.2e}")
-    print(f"  Ratio of dark photon / standard cooling: {suppression:.2e}  (suppressed by >10^24, indistinguishable from zero)")
-    print("  Status                                : ✅ CRUST THERMAL SECURITY CONFIRMED (LMXB SAFE)")
+    print(f"  Ratio of dark photon / standard cooling: {suppression:.2e}")
+    print("  Status                                : CONDITIONAL MODEL OUTPUT (no crust transport fit)")
     print("=" * 80)
 
 if __name__ == "__main__":

@@ -50,12 +50,20 @@ class PureEOS:
         self.p_arr = np.array(self.p_arr)
 
     def get_eps(self, P: float) -> float:
-        if P <= 0.0: return 0.0
-        if P >= self.p_arr[-1]: return self.eps_arr[-1]
+        if not np.isfinite(P):
+            raise ValueError("pressure must be finite")
+        if P == 0.0:
+            return 0.0  # explicit vacuum continuation
+        if P < self.p_arr[0] or P > self.p_arr[-1]:
+            raise ValueError(f"pressure {P:g} outside tabulated EOS domain")
         return float(np.interp(P, self.p_arr, self.eps_arr))
 
     def get_dedp(self, P: float) -> float:
-        dP = max(P * 1e-4, 1e-8)
+        if P <= self.p_arr[0] or P >= self.p_arr[-1]:
+            raise ValueError("dE/dP requested at an EOS endpoint")
+        dP = min(max(P * 1e-4, 1e-8), 0.5 * (P - self.p_arr[0]), 0.5 * (self.p_arr[-1] - P))
+        if dP <= 0.0:
+            raise ValueError("insufficient interior EOS interval for derivative")
         e1 = self.get_eps(P + dP)
         e2 = self.get_eps(max(P - dP, 0.0))
         return (e1 - e2) / (2.0 * dP)
@@ -105,27 +113,32 @@ def solve_tov_tidal(eos, P_center: float):
         return dm_dr, dP_dr, dy_dr
 
     while P > 1e-4 and r < 100.0:
+        # Stop at the explicit tabulated surface; never extend the last table
+        # value to an unsupported positive pressure.
+        if P < eos.p_arr[0]:
+            P = 0.0
+            break
         dm1, dp1, dy1 = derivs(r, m, P, y)
 
         r2 = r + 0.5 * dr
         m2 = m + 0.5 * dr * dm1
         P2 = P + 0.5 * dr * dp1
         y2 = y + 0.5 * dr * dy1
-        if P2 <= 0: break
+        if P2 < eos.p_arr[0]: break
         dm2, dp2, dy2 = derivs(r2, m2, P2, y2)
 
         r3 = r + 0.5 * dr
         m3 = m + 0.5 * dr * dm2
         P3 = P + 0.5 * dr * dp2
         y3 = y + 0.5 * dr * dy2
-        if P3 <= 0: break
+        if P3 < eos.p_arr[0]: break
         dm3, dp3, dy3 = derivs(r3, m3, P3, y3)
 
         r4 = r + dr
         m4 = m + dr * dm3
         P4 = P + dr * dp3
         y4 = y + dr * dy3
-        if P4 <= 0: break
+        if P4 < eos.p_arr[0]: break
         dm4, dp4, dy4 = derivs(r4, m4, P4, y4)
 
         m += (dr / 6.0) * (dm1 + 2*dm2 + 2*dm3 + dm4)
@@ -171,9 +184,18 @@ P_centers = np.logspace(-1.0, 2.8, 50)
 masses = []
 lambdas = []
 for Pc in P_centers:
-    m, r, k2, L = solve_tov_tidal(eos, Pc)
+    if Pc < eos.p_arr[0] or Pc > eos.p_arr[-1]:
+        continue
+    try:
+        m, r, k2, L = solve_tov_tidal(eos, Pc)
+    except ValueError:
+        continue
     masses.append(m)
     lambdas.append(L)
 
-L14 = float(np.interp(1.4, masses, lambdas))
-print(f"Lambda_1.4 = {L14:.1f}")
+if masses and min(masses) <= 1.4 <= max(masses):
+    L14 = float(np.interp(1.4, masses, lambdas))
+    print(f"Lambda_1.4 = {L14:.1f} (exploratory in-domain interpolation)")
+else:
+    L14 = float("nan")
+    print("Lambda_1.4 = unavailable (target outside exploratory in-domain branch)")

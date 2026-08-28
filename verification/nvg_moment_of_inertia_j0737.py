@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Moment of inertia of the double pulsar PSR J0737-3039A.
+"""Quarantined alternate moment-of-inertia route for PSR J0737-3039A.
 
 The moment of inertia I(M) is the cleanest radius-independent discriminator
-of the VMF EOS: relativistic timing of the double pulsar is projected to
-measure I_A at the ~10% level (Lattimer & Schutz 2005).
+of an EOS, but this legacy 12.49-km fork-B calibration is retained for
+descriptive context only.  It is dated, not connected to the maintained
+canonical transition record, and carries zero independent evidence weight.
+Relativistic timing of the double pulsar is projected to measure I_A at the
+~10% level (Lattimer & Schutz 2005), but no current inference is made here.
 
-Method (no free parameters beyond the fork-B EOS anchor):
-  1. Piecewise-polytrope EOS calibrated to the fork-B canonical star:
+Method (no free parameters beyond the legacy fork-B EOS anchor):
+  1. Piecewise-polytrope EOS calibrated to the legacy fork-B star:
      R(1.4 M_sun) = 12.49 km, transition to quark matter near 4 rho_0
      with the conformal CSS limit c_s^2 = 1/3.
   2. Full TOV integration (geometric units, G = c = 1) for M_max, R(M).
@@ -23,12 +25,28 @@ Method (no free parameters beyond the fork-B EOS anchor):
      Verified in-code against the constant-density star series
         I/(MR^2) = (2/5)(1 + 6Z/7 + 106Z^2/105 + ...), Z = GM/Rc^2.
 
-Prediction targets:
+Retained context outputs:
   - I(1.4 M_sun) and I_A = I(1.2489 M_sun) for PSR J0737-3039A
-  - falsification threshold for fork B once I_A is measured at 10%.
+  - an illustrative contrast with a stiffer radius model.
 """
 
 import math
+
+
+MODEL_IDENTITY = {
+    "model_id": "fork_b_alternate_moment_12p49",
+    "status": "QUARANTINED_ALTERNATE_CALIBRATION",
+    "as_of": "2026-08-27",
+    "canonical": False,
+    "independent": False,
+    "evidence_weight": 0.0,
+    "anchor_radius_km": 12.49,
+    "source": "verification/nvg_moment_of_inertia_j0737.py",
+    "reason": (
+        "legacy fork-B moment-of-inertia EOS anchor is not connected to the "
+        "current canonical TOV transition record"
+    ),
+}
 
 # --- physical constants (CGS) ---
 CC = 2.99792458e10       # cm/s
@@ -49,7 +67,7 @@ def mevfm3_to_cgs(rho_mevfm3: float) -> float:
 
 # ---------------------------------------------------------------- EOS
 class ForkBEOS:
-    """Piecewise polytrope calibrated to fork B: R_1.4 ~ 12.5 km, M_max ~ 2."""
+    """Legacy piecewise polytrope for the quarantined fork-B context route."""
 
     def __init__(self):
         # all internal EOS values in CGS energy density (erg/cm^3)
@@ -97,7 +115,7 @@ class ForkBEOS:
 
 # ---------------------------------------------------------------- TOV
 class TOVResult:
-    pass
+    """Container populated by the legacy alternate TOV integration."""
 
 
 def tov_star(eos: ForkBEOS, eps_c_cgs: float, dr: float = 5.0e3,
@@ -250,8 +268,14 @@ def constant_density_test():
 
 def main():
     print("=" * 72)
-    print(" NVG/VMF MOMENT OF INERTIA: PSR J0737-3039A (DOUBLE PULSAR)")
+    print(" NVG/VMF ALTERNATE MOMENT CONTEXT: PSR J0737-3039A (QUARANTINED)")
     print("=" * 72)
+    print(
+        " status=" + MODEL_IDENTITY["status"]
+        + "; as_of=" + MODEL_IDENTITY["as_of"]
+        + "; independent=False; evidence_weight=0.0"
+    )
+    print(" This legacy 12.49-km-style route is descriptive context, not a current evidence surface.")
 
     ratio, series, z = constant_density_test()
     print(f"[sanity] constant-density star, Z = {z:.4f}:")
@@ -280,7 +304,7 @@ def main():
     for m, r, i, c in results:
         print(f"{m:10.3f} {r:8.2f} {i/1e45:15.3f} {c:9.3f}")
     print("-" * 72)
-    print(f"M_max = {m_max:.2f} M_sun (fork-B target >= 2.0; NICER J0740: 2.08)")
+    print(f"M_max = {m_max:.2f} M_sun (alternate fork-B context; NICER J0740 input: 2.08)")
 
     def interp(target_m):
         for a, b in zip(results[:-1], results[1:]):
@@ -289,7 +313,7 @@ def main():
                 return (a[1] + w * (b[1] - a[1]), a[2] + w * (b[2] - a[2]))
         return None
 
-    for label, mt in (("Canonical 1.40 M_sun", 1.40),
+    for label, mt in (("Alternate 1.40 M_sun", 1.40),
                       ("J0737-3039A (1.2489 M_sun)", 1.2489)):
         out = interp(mt)
         if out:
@@ -301,13 +325,16 @@ def main():
     if out14:
         i_forkb = out14[1]
         i_stiff = i_forkb * (13.1 / 12.49) ** 2   # R -> 13.1 km (NL3-like)
-        print("DISCRIMINATION vs a stiffer canonical EOS (R_1.4 = 13.1 km):")
-        print(f"  fork B:  I_1.4 = {i_forkb/1e45:.2f}e45 g cm^2")
-        print(f"  stiff:   I_1.4 ~ {i_stiff/1e45:.2f}e45 g cm^2  "
+        print("ILLUSTRATIVE CONTRAST vs a stiffer radius model (R_1.4 = 13.1 km):")
+        print(f"  alternate fork-B context: I_1.4 = {i_forkb/1e45:.2f}e45 g cm^2")
+        print(f"  stiff context:           I_1.4 ~ {i_stiff/1e45:.2f}e45 g cm^2  "
               f"(~{(i_stiff/i_forkb-1)*100:.0f}% higher)")
-        print("  A 10% measurement of I_A (double pulsar) separates the two at")
-        print(f"  ~{(i_stiff/i_forkb-1)/0.10:.1f} sigma. Falsification of fork B: "
-              f"I_1.4 > {1.10*i_forkb/1e45:.2f}e45 g cm^2")
+        print("  A 10% I_A measurement would provide a future comparison, but")
+        print("  this legacy route supplies no current discrimination or evidence.")
+    print("=" * 72)
+    print("STATUS: QUARANTINED_ALTERNATE_CALIBRATION (zero independent evidence weight)")
+    print("Numeric outputs above are retained for reproducibility only; they are")
+    print("not promoted to the canonical model or a current observational claim.")
     print("=" * 72)
 
 

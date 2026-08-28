@@ -1,5 +1,10 @@
+from __future__ import annotations
+
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+OUTPUT_PATH = Path(__file__).resolve().parent / "nvg_echo_template.png"
 
 def generate_nvg_echo_waveform(
     mass_solar=65.0,
@@ -82,6 +87,6 @@ if __name__ == '__main__':
     
     plt.xlim(-5, 300)
     plt.tight_layout()
-    plt.savefig('nvg_echo_template.png', dpi=300)
-    print("Waveform generated and saved to 'nvg_echo_template.png'")
+    plt.savefig(OUTPUT_PATH, dpi=300)
+    print(f"Waveform generated and saved to '{OUTPUT_PATH}'")
     print("Notice the extremely long, weakly attenuating train of echoes (due to T_H ~ 10^-15 K).")

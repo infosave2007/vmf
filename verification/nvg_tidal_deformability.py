@@ -5,9 +5,9 @@ NVG Cross-Check: Tidal Deformability vs GW170817
 Calculates Love number k_2, dimensionless tidal deformability Λ, and the
 binary tidal deformability Λ_tilde for direct comparison with GW170817.
 
-Method: TOV + Hinderer (2008) y-equation, using the same NVG EOS and
-unit conventions as nvg_full_ns_eos.py (which is verified to produce
-M_max ~ 2.27 M_sun).
+Method: TOV + Hinderer (2008) y-equation, using the maintained canonical
+hybrid EOS and the unit conventions shared with the other NS verification
+entry points.
 
 References:
   Hinderer (2008) ApJ 677, 1216
@@ -15,8 +15,19 @@ References:
 """
 
 from __future__ import annotations
+import hashlib
+import inspect
 import math
 import numpy as np
+
+try:
+    from nvg_ns_canonical import canonical_selection
+except ImportError:  # pragma: no cover - package/direct-script compatibility
+    from verification.nvg_ns_canonical import canonical_selection
+
+
+# Public aliases make the selection record discoverable to callers and tests.
+CANONICAL_SELECTION = canonical_selection()
 
 # ── Constants ────────────────────────────────────────────────────────
 hbar_c = 197.3269804    # MeV·fm
@@ -27,6 +38,102 @@ c_cgs = 2.998e10
 M_sun_g = 1.989e33
 M_sun_km = 1.4766       # G M_sun / c^2 in km
 k_conv = 1.3234e-6      # MeV/fm^3 → km^-2
+
+# The optional convergence path is intentionally explicit here rather than
+# inferred by audit consumers.  Keeping the backend, method and cap rule next
+# to the implementation gives generated artifacts one authoritative source of
+# ODE provenance.
+ADAPTIVE_SOLVER_BACKEND = "scipy.integrate.solve_ivp"
+ADAPTIVE_SOLVER_METHOD = "DOP853"
+ADAPTIVE_SOLVER_MAX_STEP_RULE = "max(dr, 0.05 if rtol <= 1.0e-4 else 0.10)"
+ADAPTIVE_SOLVER_MAX_STEP_CAP_KM = {
+    "rtol_le_1e-4": 0.05,
+    "rtol_gt_1e-4": 0.10,
+}
+
+
+def adaptive_solver_max_step(dr: float, rtol: float) -> float:
+    """Return the exact ``solve_ivp`` max-step cap used by the audit path."""
+
+    cap = 0.05 if float(rtol) <= 1.0e-4 else 0.10
+    return max(float(dr), cap)
+
+
+def adaptive_solver_provenance() -> dict[str, object]:
+    """Return and validate the live adaptive ODE implementation metadata.
+
+    The source checks deliberately inspect the actual ``solve_ivp`` call and
+    the cap helper.  Audit artifacts record the resulting digest, so loading a
+    stale artifact after an implementation change fails closed instead of
+    silently presenting old convergence metadata as current.
+    """
+
+    source = inspect.getsource(solve_tov_tidal)
+    cap_source = inspect.getsource(adaptive_solver_max_step)
+    call_start = source.find("solution = solve_ivp(")
+    call_source = source[call_start:] if call_start >= 0 else ""
+    required = {
+        "solve_ivp_call": call_start >= 0,
+        "method_DOP853": 'method="DOP853"' in call_source,
+        "rtol_forwarded": "rtol=float(rtol)" in call_source,
+        "atol_forwarded": "atol=float(atol)" in call_source,
+        "max_step_cap": "max_step=adaptive_solver_max_step(dr, rtol)" in call_source,
+        "cap_rule": "0.05 if float(rtol) <= 1.0e-4 else 0.10" in cap_source,
+    }
+    if not all(required.values()):
+        missing = [name for name, present in required.items() if not present]
+        raise RuntimeError(
+            "adaptive ODE implementation/provenance mismatch: " + ", ".join(missing)
+        )
+    source_digest = hashlib.sha256(
+        (source + "\n" + cap_source).encode("utf-8")
+    ).hexdigest()
+    return {
+        "backend": ADAPTIVE_SOLVER_BACKEND,
+        "method": ADAPTIVE_SOLVER_METHOD,
+        "method_description": "SciPy solve_ivp(method='DOP853')",
+        "rtol_parameter": "solve_ivp rtol",
+        "atol_parameter": "solve_ivp atol",
+        "max_step_rule": ADAPTIVE_SOLVER_MAX_STEP_RULE,
+        "max_step_cap_km": dict(ADAPTIVE_SOLVER_MAX_STEP_CAP_KM),
+        "event_handling": "terminal downward transition/surface events",
+        "source_sha256": source_digest,
+        "source_checks": required,
+    }
+
+
+def hinderer_density_jump_y_match(
+    y_minus: float,
+    radius_km: float,
+    mass_solar: float,
+    delta_eps_mev_fm3: float,
+) -> float:
+    """Apply the first-order density-jump Hinderer matching condition.
+
+    For a finite density discontinuity at fixed transition pressure the
+    perturbation variable is matched as
+
+    ``y_plus = y_minus - 4*pi*r_t**3*Delta_epsilon_geo/m_t_geo``.
+
+    This is Eq. (15) of Postnikov, Prakash & Lattimer, *Phys. Rev. D* 82,
+    024016 (2010), arXiv:1004.5098.  Their Eq. (14) supplies the
+    distributional ``d rho/d p`` term that leads to this interface update.
+    ``delta_eps_mev_fm3`` is converted to
+    geometric km^-2 with the same canonical ``k_conv`` used by the TOV RHS;
+    ``mass_solar`` is converted to geometric km with ``M_sun_km``.
+    """
+
+    values = (y_minus, radius_km, mass_solar, delta_eps_mev_fm3)
+    if not all(np.isfinite(float(value)) for value in values):
+        raise ValueError("density-jump match inputs must be finite")
+    if float(radius_km) <= 0.0 or float(mass_solar) <= 0.0:
+        raise ValueError("density-jump match requires positive radius and mass")
+    if float(delta_eps_mev_fm3) < 0.0:
+        raise ValueError("density-jump match requires a non-negative energy jump")
+    radius_km = float(radius_km)
+    mass_km = float(mass_solar) * M_sun_km
+    delta_eps_geo = float(delta_eps_mev_fm3) * k_conv
+    return float(y_minus) - 4.0 * math.pi * radius_km**3 * delta_eps_geo / mass_km
 
 # ── NVG Core Model (identical to nvg_full_ns_eos.py) ─────────────────
 M_Omega_0 = 859.0
@@ -64,46 +171,179 @@ class EOS:
         sys.path.append(os.path.dirname(os.path.abspath(__file__)))
         import nvg_eos_beta_css_softening as soft
         baseline = soft.build_baseline_arrays()
-        # Canonical transition: crossover at 2.0 n_0 with zero latent heat (delta_eps = 0).
-        # Selected by the systematic scan in nvg_ns_parameter_scan.py: the previous
-        # (1.8, 0.4) parameterization gives a true M_max = 1.79 M_sun once the EOS
-        # table is extended to massive-star cores — falsified by PSR J0740+6620
-        # (2.08 ± 0.07). The (2.0, 0.0) point satisfies J0740, GW170817 (binary
-        # Lambda-tilde ≤ 720) and NICER radii simultaneously, and the 2 n_0 crossover
-        # matches the vacuum-melting density of the HADES meson-shift prediction.
-        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=2.0, delta_eps_ratio=0.0, cs2_q=1.0/3.0)
+        if baseline is None:
+            raise RuntimeError("canonical NS baseline EOS could not be built")
+        # The scan-selected transition is an in-sample/conditional input.  Its
+        # machine-readable provenance travels with every EOS instance.
+        selection = canonical_selection()
+        hybrid = soft.build_css_hybrid_eos(baseline, **selection["parameters"])
+        if hybrid is None:
+            raise RuntimeError("canonical NS transition could not build a valid EOS")
         self.p_arr = hybrid["p_sorted"]
         self.eps_arr = hybrid["e_sorted"]
+        self.table_pressure_min = float(self.p_arr[0])
+        # The crust continuation makes the public EOS domain start at zero;
+        # ``table_pressure_min`` records the first tabulated point.
+        self.pressure_min = 0.0
+        self.pressure_max = float(self.p_arr[-1])
+        if (not np.isfinite(p_match) or p_match < self.table_pressure_min
+                or p_match > self.pressure_max):
+            raise ValueError("p_match must lie inside the canonical EOS table domain")
+        if not np.isfinite(Gamma) or Gamma <= 0.0:
+            raise ValueError("Gamma must be a positive finite value")
         self.p_match = p_match
         self.Gamma = Gamma
         self.eps_match = float(np.interp(p_match, self.p_arr, self.eps_arr))
+        if not np.isfinite(self.eps_match) or self.eps_match <= 0.0:
+            raise RuntimeError("canonical EOS matching energy is not physical")
+        self.canonical_selection = selection
+        self.canonical_provenance = selection["provenance"]
 
     def get_eps(self, P: float) -> float:
-        if P <= 0.0: return 0.0
+        P = float(P)
+        if not np.isfinite(P):
+            raise ValueError("pressure must be finite")
+        if P < 0.0:
+            raise ValueError("pressure must be non-negative")
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P > p_max:
+            raise ValueError(
+                f"pressure {P:g} exceeds canonical EOS domain maximum {p_max:g}"
+            )
+        if P == 0.0: return 0.0
         if P < self.p_match:
             return self.eps_match * (P / self.p_match) ** (1.0 / self.Gamma)
-        if P >= self.p_arr[-1]: return self.eps_arr[-1]
+        if P < self.table_pressure_min:
+            raise ValueError("pressure lies below the canonical EOS table domain")
+        # Optional exact first-order phase branches.  Audit-created EOS
+        # instances install these attributes explicitly; the canonical
+        # zero-jump constructor does not, preserving its historical table
+        # values.  At P_t the lower-density branch is used and the jump is
+        # applied by solve_tov_tidal when crossing the interface.
+        transition_pressure = getattr(self, "transition_pressure", None)
+        if transition_pressure is not None and P > float(transition_pressure):
+            cs2_q = float(getattr(self, "transition_cs2_q"))
+            energy_high = float(getattr(self, "transition_energy_high"))
+            return energy_high + (P - float(transition_pressure)) / cs2_q
+        had_p_arr = getattr(self, "had_p_arr", None)
+        had_eps_arr = getattr(self, "had_eps_arr", None)
+        if (had_p_arr is not None and had_eps_arr is not None
+                and transition_pressure is not None and P <= float(transition_pressure)):
+            return float(np.interp(P, had_p_arr, had_eps_arr))
         return float(np.interp(P, self.p_arr, self.eps_arr))
 
     def get_dedp(self, P: float) -> float:
         """dε/dP = 1/c_s² via finite difference."""
+        P = float(P)
+        if not np.isfinite(P):
+            raise ValueError("pressure must be finite")
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P < 0.0 or P > p_max:
+            raise ValueError("pressure is outside the canonical EOS domain")
+        transition_pressure = getattr(self, "transition_pressure", None)
+        if transition_pressure is not None:
+            transition_pressure = float(transition_pressure)
+            if P > transition_pressure:
+                cs2_q = float(getattr(self, "transition_cs2_q"))
+                if not np.isfinite(cs2_q) or cs2_q <= 0.0:
+                    raise ValueError("invalid CSS sound speed on transition branch")
+                return 1.0 / cs2_q
         dP = max(P * 1e-4, 1e-8)
+        # Never take a finite-difference stencil across a density jump.  The
+        # The distributional contribution is matched explicitly in the y
+        # equation at P_t.  Postnikov, Prakash & Lattimer (2010) introduce the
+        # distributional d rho/dp term in Eq. 14 and give the integrated
+        # interface condition used here in Eq. 15.
+        if transition_pressure is not None and P <= transition_pressure and P + dP > transition_pressure:
+            p_lo = max(float(self.table_pressure_min), P - dP)
+            if transition_pressure > p_lo:
+                return (self.get_eps(transition_pressure) - self.get_eps(p_lo)) / (transition_pressure - p_lo)
+        if P <= dP:
+            return (self.get_eps(P + dP) - self.get_eps(P)) / dP
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P + dP > p_max:
+            return (self.get_eps(P) - self.get_eps(P - dP)) / dP
         e1 = self.get_eps(P + dP)
-        e2 = self.get_eps(max(P - dP, 0.0))
+        e2 = self.get_eps(P - dP)
         return (e1 - e2) / (2.0 * dP)
 
 
 # ── TOV + Tidal y-equation ───────────────────────────────────────────
 
-def solve_tov_tidal(eos: EOS, P_center: float) -> tuple[float, float, float, float]:
+def solve_tov_tidal(
+    eos: EOS,
+    P_center: float,
+    *,
+    dr: float = 0.05,
+    rtol: float | None = None,
+    atol: float | None = None,
+    density_jump_matching: bool = False,
+) -> tuple[float, float, float, float]:
     """
     Integrate TOV + Hinderer y-equation.
     Returns (M_solar, R_km, k2, Lambda).
 
     Units: m in M_sun via (m_km / 1.4766), r in km, P in MeV/fm³.
     All geometric factors use κ = 1.3234e-6 km⁻² per MeV/fm³.
+
+    ``dr`` preserves the historical fixed-step RK4 path when ``rtol`` and
+    ``atol`` are omitted.  Supplying both tolerances enables the adaptive
+    SciPy ``scipy.integrate.solve_ivp`` path with ``method="DOP853"``; the
+    requested ``rtol`` and ``atol`` are passed directly to ``solve_ivp``.
+    Each phase uses the explicit cap
+    ``max_step=max(dr, 0.05 if rtol <= 1.0e-4 else 0.10)`` km (where ``dr``
+    remains the historical fixed-step increment).  The optional path is a
+    convergence hook for audits; existing callers retain their original
+    numerical defaults.  When ``density_jump_matching`` is true, an
+    audit-created EOS must expose ``transition_pressure`` and
+    ``transition_energy_jump``.  Crossing that pressure applies the
+    distributional Hinderer match
+    ``y+ = y- - 4*pi*r_t**3*Delta_epsilon/m_t`` from Postnikov, Prakash &
+    Lattimer (2010), arXiv:1004.5098, Eq. 15.  Eq. 14 in that source is the
+    distributional derivative whose integration yields this finite jump.
     """
-    dr = 0.05  # km
+    P_center = float(P_center)
+    if not np.isfinite(P_center) or P_center <= 0.0:
+        raise ValueError("central pressure must be a positive finite value")
+    # Fail closed before integration: an EOS endpoint must never be silently
+    # reused as a continuation for an out-of-domain central pressure.
+    eos.get_eps(P_center)
+
+    dr = float(dr)
+    if not np.isfinite(dr) or dr <= 0.0:
+        raise ValueError("dr must be a positive finite length in km")
+    adaptive = rtol is not None or atol is not None
+    if adaptive:
+        if rtol is None or atol is None:
+            raise ValueError("rtol and atol must be supplied together")
+        rtol = float(rtol)
+        atol = float(atol)
+        if not np.isfinite(rtol) or rtol <= 0.0:
+            raise ValueError("rtol must be a positive finite value")
+        if not np.isfinite(atol) or atol <= 0.0:
+            raise ValueError("atol must be a positive finite value")
+    transition_pressure = getattr(eos, "transition_pressure", None)
+    transition_jump = getattr(eos, "transition_energy_jump", 0.0)
+    if density_jump_matching:
+        if transition_pressure is None or not np.isfinite(float(transition_pressure)):
+            raise ValueError("density-jump matching requires a finite transition_pressure")
+        if not np.isfinite(float(transition_jump)) or float(transition_jump) < 0.0:
+            raise ValueError("density-jump matching requires a non-negative transition jump")
+        transition_pressure = float(transition_pressure)
+        transition_jump = float(transition_jump)
+    else:
+        transition_pressure = None
+        transition_jump = 0.0
+    # Audit-created EOS instances carry the same transition metadata for
+    # zero- and positive-latent-heat rows.  Keep the interface event pending
+    # whenever the centre lies above P_t, including an exact zero jump, so the
+    # same matcher is invoked with a literal zero update.  The historical
+    # canonical constructor has no transition metadata and the default solver
+    # flag is false, so its fixed-step path remains unchanged.
+    transition_pending = bool(
+        density_jump_matching and transition_pressure is not None
+        and P_center > transition_pressure
+    )
     r = 1e-6   # km
     m = 0.0    # km (geometric mass)
     P = P_center
@@ -146,38 +386,194 @@ def solve_tov_tidal(eos: EOS, P_center: float) -> tuple[float, float, float, flo
 
         return dm_dr, dP_dr, dy_dr
 
-    while P > 1e-4 and r < 100.0:
-        dm1, dp1, dy1 = derivs(r, m, P, y)
+    def rk4_step(r_val, state, step):
+        """Advance one RK4 step, returning (m, P, y)."""
 
-        r2 = r + 0.5 * dr
-        m2 = m + 0.5 * dr * dm1
-        P2 = P + 0.5 * dr * dp1
-        y2 = y + 0.5 * dr * dy1
-        if P2 <= 0: break
-        dm2, dp2, dy2 = derivs(r2, m2, P2, y2)
+        m_val, p_val, y_val = state
+        dm1, dp1, dy1 = derivs(r_val, m_val, p_val, y_val)
+        r2 = r_val + 0.5 * step
+        s2 = (m_val + 0.5 * step * dm1,
+              p_val + 0.5 * step * dp1,
+              y_val + 0.5 * step * dy1)
+        if s2[1] <= 0.0:
+            return None
+        dm2, dp2, dy2 = derivs(r2, *s2)
+        r3 = r_val + 0.5 * step
+        s3 = (m_val + 0.5 * step * dm2,
+              p_val + 0.5 * step * dp2,
+              y_val + 0.5 * step * dy2)
+        if s3[1] <= 0.0:
+            return None
+        dm3, dp3, dy3 = derivs(r3, *s3)
+        r4 = r_val + step
+        s4 = (m_val + step * dm3,
+              p_val + step * dp3,
+              y_val + step * dy3)
+        if s4[1] <= 0.0:
+            return None
+        dm4, dp4, dy4 = derivs(r4, *s4)
+        return (
+            m_val + (step / 6.0) * (dm1 + 2.0 * dm2 + 2.0 * dm3 + dm4),
+            p_val + (step / 6.0) * (dp1 + 2.0 * dp2 + 2.0 * dp3 + dp4),
+            y_val + (step / 6.0) * (dy1 + 2.0 * dy2 + 2.0 * dy3 + dy4),
+        )
 
-        r3 = r + 0.5 * dr
-        m3 = m + 0.5 * dr * dm2
-        P3 = P + 0.5 * dr * dp2
-        y3 = y + 0.5 * dr * dy2
-        if P3 <= 0: break
-        dm3, dp3, dy3 = derivs(r3, m3, P3, y3)
+    def apply_density_jump(state_before, state_after, r_before, step):
+        """Interpolate P=P_t and apply the first-order Eq. 15 y jump.
 
-        r4 = r + dr
-        m4 = m + dr * dm3
-        P4 = P + dr * dp3
-        y4 = y + dr * dy3
-        if P4 <= 0: break
-        dm4, dp4, dy4 = derivs(r4, m4, P4, y4)
+        ``transition_jump`` may be exactly zero.  In that case the helper is
+        still called and returns the unchanged y value, certifying one common
+        interface path for zero- and positive-latent-heat audit rows.
+        """
 
-        m += (dr / 6.0) * (dm1 + 2*dm2 + 2*dm3 + dm4)
-        P += (dr / 6.0) * (dp1 + 2*dp2 + 2*dp3 + dp4)
-        y += (dr / 6.0) * (dy1 + 2*dy2 + 2*dy3 + dy4)
-        r += dr
+        nonlocal transition_pending
+        if not transition_pending or transition_pressure is None:
+            return state_after, r_before + step, False
+        p_before = float(state_before[1])
+        p_after = float(state_after[1])
+        if not (p_before > transition_pressure >= p_after):
+            return state_after, r_before + step, False
+        denominator = p_before - p_after
+        fraction = 1.0 if denominator <= 0.0 else (p_before - transition_pressure) / denominator
+        fraction = min(1.0, max(0.0, fraction))
+        r_transition = r_before + fraction * step
+        # Integrate the pre-interface segment on the high-density branch when
+        # possible.  Linear interpolation across a step that straddles P_t
+        # evaluates the RHS on both phases and made the result depend strongly
+        # on the requested adaptive tolerance.  Refine the event step by
+        # bisection on the RK4 pressure endpoint; the short RK4 segment ends at
+        # the located event and its pressure is then set exactly to P_t before
+        # the first-order match is applied.
+        pre_step = fraction * step
+        lo, hi = 0.0, step
+        bracketed = False
+        for _ in range(24):
+            mid = 0.5 * (lo + hi)
+            candidate = rk4_step(r_before, state_before, mid)
+            if candidate is None or not np.isfinite(float(candidate[1])):
+                hi = mid
+                continue
+            if float(candidate[1]) > transition_pressure:
+                lo = mid
+            else:
+                hi = mid
+                bracketed = True
+        if bracketed:
+            pre_step = hi
+            r_transition = r_before + pre_step
+        pre_state = rk4_step(r_before, state_before, pre_step) if pre_step > 1.0e-12 else state_before
+        if pre_state is None or not np.isfinite(float(pre_state[0])) or not np.isfinite(float(pre_state[2])):
+            m_transition = float(state_before[0] + fraction * (state_after[0] - state_before[0]))
+            y_transition = float(state_before[2] + fraction * (state_after[2] - state_before[2]))
+        else:
+            m_transition = float(pre_state[0])
+            y_transition = float(pre_state[2])
+        y_transition = hinderer_density_jump_y_match(
+            y_transition,
+            r_transition,
+            m_transition,
+            transition_jump,
+        )
+        transition_pending = False
+        return (m_transition, transition_pressure, y_transition), r_transition, True
 
-        if P < 0:
-            P = 0.0
-            break
+    state = (m, P, y)
+    if adaptive:
+        # SciPy's high-order adaptive integrator provides a stable error
+        # controller around the Hinderer surface cells.  Integrate each phase
+        # separately so a density discontinuity is an actual event rather than
+        # a finite-width pressure interpolation.  The historical default path
+        # below remains the original fixed-step RK4 implementation.
+        try:
+            from scipy.integrate import solve_ivp
+        except ImportError as exc:  # pragma: no cover - requirements include scipy
+            raise RuntimeError("adaptive tidal integration requires scipy") from exc
+
+        def rhs(radius, values):
+            return np.asarray(derivs(float(radius), float(values[0]),
+                                     float(values[1]), float(values[2])), dtype=float)
+
+        def surface_event(radius, values):
+            del radius
+            return float(values[1]) - 1.0e-4
+
+        surface_event.terminal = True
+        surface_event.direction = -1
+
+        def transition_event(radius, values):
+            del radius
+            return float(values[1]) - float(transition_pressure)
+
+        transition_event.terminal = True
+        transition_event.direction = -1
+
+        def integrate_phase(start_radius, start_state, *, stop_at_transition):
+            events = [transition_event, surface_event] if stop_at_transition else [surface_event]
+            solution = solve_ivp(
+                rhs,
+                (float(start_radius), 100.0),
+                np.asarray(start_state, dtype=float),
+                method="DOP853",
+                rtol=float(rtol),
+                atol=float(atol),
+                # ``dr`` is the historical fixed-step increment.  Requested
+                # tolerances at or below 1e-4 retain the conservative 0.05 km
+                # cap; looser tolerances use 0.10 km without changing the
+                # resolved transition/surface event semantics.
+                max_step=adaptive_solver_max_step(dr, rtol),
+                events=events,
+            )
+            if not solution.success:
+                raise RuntimeError(f"adaptive tidal integration failed: {solution.message}")
+            return solution
+
+        if transition_pending:
+            high_solution = integrate_phase(r, state, stop_at_transition=True)
+            event_values = high_solution.t_events[0]
+            if len(event_values) == 0 or high_solution.y_events[0].shape[0] == 0:
+                raise RuntimeError("density transition event was not located")
+            transition_r = float(event_values[0])
+            transition_state = np.asarray(high_solution.y_events[0][0], dtype=float)
+            transition_state[1] = float(transition_pressure)
+            transition_state[2] = hinderer_density_jump_y_match(
+                float(transition_state[2]),
+                transition_r,
+                float(transition_state[0]),
+                transition_jump,
+            )
+            transition_pending = False
+            low_solution = integrate_phase(transition_r, transition_state, stop_at_transition=False)
+            state = tuple(float(value) for value in low_solution.y[:, -1])
+            r = float(low_solution.t[-1])
+        else:
+            solution = integrate_phase(r, state, stop_at_transition=False)
+            state = tuple(float(value) for value in solution.y[:, -1])
+            r = float(solution.t[-1])
+    else:
+        while state[1] > 1e-4 and r < 100.0:
+            next_state = rk4_step(r, state, dr)
+            if next_state is None:
+                break
+            matched_state, matched_r, matched = apply_density_jump(state, next_state, r, dr)
+            if matched:
+                # Do not discard the portion of a fixed step that lies just
+                # outside the interface.  Integrating that short remainder
+                # keeps zero- and epsilon-positive rows on one representation
+                # while avoiding a finite-width pressure plateau.
+                remainder = max(0.0, (r + dr) - matched_r)
+                tail = rk4_step(matched_r, matched_state, remainder) if remainder > 1.0e-12 else matched_state
+                if tail is not None:
+                    state = tail
+                    r += dr
+                else:
+                    state, r = matched_state, matched_r
+            else:
+                state, r = matched_state, matched_r
+            if state[1] < 0.0:
+                state = (state[0], 0.0, state[2])
+                break
+
+    m, P, y = state
 
     R = r
     M_solar = m
@@ -218,6 +614,7 @@ def main():
     print("=" * 80)
     print("  NVG CROSS-CHECK: TIDAL DEFORMABILITY vs GW170817")
     print("=" * 80)
+    print("  Comparison status: CONDITIONAL_IN_SAMPLE (transition selected on J0740/GW170817/NICER)")
 
     eos = EOS(p_match=1.5, Gamma=1.35)
 
@@ -299,27 +696,20 @@ def main():
     # LIGO constraint
     L_lo, L_med, L_hi = 70, 300, 720
     print(f"\n  LIGO/Virgo 90% CI (low-spin): Λ̃ = {L_med} [{L_lo}, {L_hi}]")
-    # PHYSICS JUSTIFICATION FOR CSS PARAMETERS:
-    # Pure hadronic VMF predicts a massive tidal deformability (Λ_1.4 ~ 8300) because 
-    # the strong vector repulsion (which correctly solves the hyperon puzzle) makes 
-    # the star extremely stiff. 
-    # Therefore, the GW170817 constraint (Λ_1.4 < 720) PHYSICALLY MANDATES a phase 
-    # transition to a softer phase (e.g., quark matter) before 1.4 M_sun is reached. 
-    # The CSS parameters used in this script (p_match=1.5, Gamma=1.35, etc.) are 
-    # NOT arbitrary tweaks to the VMF baseline. They are standard Constant Speed of Sound 
-    # phase transition parameters explicitly demonstrating that the required softening 
-    # maps the VMF vector stiffness safely into the GW170817 bounds.
+    # The CSS transition is a scan-selected in-sample input.  This comparison
+    # reports the resulting runtime values conditionally; it does not establish
+    # an independent fit or confirmation of the EOS.
     ok_sym = L_lo <= Lt_sym <= L_hi
     ok_asym = L_lo <= Lt_asym <= L_hi
-    print(f"  NVG symmetric:  Λ̃ = {Lt_sym:.0f}  →  ({'✅ PASS' if ok_sym else '⚠️ TENSION'} satisfies GW170817)")
-    print(f"  NVG asymmetric: Λ̃ = {Lt_asym:.0f}  →  ({'✅ PASS' if ok_asym else '⚠️ TENSION'} satisfies GW170817)")
+    print(f"  NVG symmetric:  Λ̃ = {Lt_sym:.0f}  →  ({'within' if ok_sym else 'outside'} GW170817 bounds; conditional/in-sample)")
+    print(f"  NVG asymmetric: Λ̃ = {Lt_asym:.0f}  →  ({'within' if ok_asym else 'outside'} GW170817 bounds; conditional/in-sample)")
 
     # ── R_1.4 vs NICER ───────────────────────────────────────────────
     if 1.4 in interp:
         R14 = interp[1.4][0]
         print(f"\n  R_1.4 = {R14:.2f} km  (NICER: 12.45 ± 0.65 km)")
         ok_R = 11.0 <= R14 <= 14.0
-        print(f"  Status: {'✅ COMPATIBLE' if ok_R else '⚠️  TENSION'}")
+        print(f"  Status: {'within' if ok_R else 'outside'} stated NICER interval (conditional/in-sample)")
 
     # ── Double Pulsar I ──────────────────────────────────────────────
     if 1.338 in interp:
@@ -330,10 +720,10 @@ def main():
         M_cm = 1.338 * M_sun_g * G_cgs / c_cgs**2
         I_cgs = I_bar * M_cm**3 / (G_cgs / c_cgs**2)
         print(f"\n  Double Pulsar J0737-3039A (M=1.338 M_sun):")
-        print(f"  I (NVG) = {I_cgs:.3e} g cm²")
-        print(f"  I (obs) = 1.15 (+0.38/-0.24) × 10^45 g cm²")
+        print(f"  I from Lambda transform (no independent I solve) = {I_cgs:.3e} g cm²")
+        print(f"  Observed interval (context only; no validation): 1.15 (+0.38/-0.24) × 10^45 g cm²")
         ok_I = 0.91e45 <= I_cgs <= 1.53e45
-        print(f"  Status: {'✅ COMPATIBLE' if ok_I else '⚠️  TENSION'}")
+        print(f"  Transform overlap (descriptive only; not validation): {'yes' if ok_I else 'no'}")
 
     # ── Summary ──────────────────────────────────────────────────────
     print("\n" + "=" * 80)
@@ -349,7 +739,7 @@ def main():
 
     assert M_max > 2.0, f"M_max = {M_max:.2f} < 2.0!"
     assert ok_sym or ok_asym, f"Λ̃ outside GW170817 90% CI!"
-    print("All tidal deformability cross-checks PASSED.")
+    print("Runtime tidal calculation complete; all displayed comparisons are conditional/in-sample.")
 
 
 if __name__ == "__main__":

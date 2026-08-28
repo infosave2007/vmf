@@ -39,6 +39,8 @@ except Exception as exc:  # pragma: no cover
     sys.exit(1)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import nvg_echo_timeslide_background as ts  # manifest-checked catalog/mass helpers
 
 # Loud, well-localised BBH events spanning a range of remnant masses.
 EVENTS = [
@@ -56,20 +58,8 @@ EDGE = 4.0              # s, filter-corrupted crop each side
 
 
 def load_remnant_masses() -> dict:
-    path = os.path.join(HERE, "data", "gwtc_events.csv")
-    out = {}
-    if not os.path.exists(path):
-        return out
-    with open(path, newline="") as fh:
-        for row in csv.DictReader(fh):
-            name = row.get("commonName") or ""
-            for key, fac in (("final_mass_source", 1.0), ("total_mass_source", 0.95)):
-                try:
-                    out.setdefault(name, float(row[key]) * fac)
-                    break
-                except (KeyError, ValueError, TypeError):
-                    continue
-    return out
+    # Reuse the manifest-checked catalog loader from the time-slide engine.
+    return ts.load_masses()
 
 
 def echo_comb(mass_final: float, sample_rate: float, duration: float,
@@ -120,7 +110,7 @@ def search_event(name: str, masses: dict):
         if m is None:
             return None
     t0 = m.time
-    mass_final = masses.get(name, 60.0)
+    mass_final = ts.require_mass(masses.get(name), name)
     dt_central = 0.022 * (mass_final / 65.0)
 
     # network |SNR|^2(t) on a common merger-relative time grid, summed over detectors
@@ -200,14 +190,17 @@ def main():
     print("  " + "-" * 88)
 
     results = []
+    skipped: dict[str, int] = {}
     for name in EVENTS:
         try:
             r = search_event(name, masses)
         except Exception as exc:
             print(f"  {name:<18} skipped ({type(exc).__name__}: {exc})")
+            skipped[type(exc).__name__] = skipped.get(type(exc).__name__, 0) + 1
             continue
         if r is None:
             print(f"  {name:<18} skipped (no data)")
+            skipped["no_data"] = skipped.get("no_data", 0) + 1
             continue
         results.append(r)
         snr_on = math.sqrt(max(0.0, r["on_peak"]))
@@ -216,6 +209,7 @@ def main():
               f"   (netSNR_on={snr_on:.2f})")
 
     print("-" * 92)
+    print(f"  Sample ledger: used={len(results)}, skipped={sum(skipped.values())}, reasons={skipped or 'none'}")
     if not results:
         print("  No events returned usable data (network/catalog).")
         print("=" * 92)

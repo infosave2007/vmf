@@ -1,67 +1,92 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Spontaneous Baryogenesis from Vacuum Phase Evolution
-----------------------------------------------------------------------
-Calculates the baryon-to-photon ratio eta_B ≈ 6e-10 using Spontaneous 
-Baryogenesis. As the universe expands from the bounce, the dynamic evolution 
-of the background QCD phase theta (theta-dot) acts as an effective chemical 
-potential mu_B for baryon number.
+"""Spontaneous-baryogenesis source-term audit.
 
-In NVG, the B-violation occurs via the direct topological anomaly of the 
-bounce (a global winding event). The topological winding rate is highly
-suppressed at high temperatures above T_c due to instanton melting.
+The module evaluates the DIGA suppression and the algebraic conversion from a
+specified phase velocity to a baryon asymmetry.  It does not supply a
+theta(t) solution, CP-violating source, washout network, or entropy history.
+Consequently no baryogenesis value is treated as an NVG prediction.
 """
+
+from __future__ import annotations
 
 import math
+from typing import Any
 
-def calculate_baryon_asymmetry():
-    print("==========================================================================")
-    print("  NVG: SPONTANEOUS BARYOGENESIS VIA VACUUM PHASE EVOLUTION")
-    print("==========================================================================")
-    
-    T_b_MeV = 432.2
-    T_c_MeV = 157.0
-    alpha_s = 0.3  # Strong coupling near T_c
-    
-    # In spontaneous baryogenesis, mu_B = theta_dot
-    # The topological winding rate above T_c is suppressed by the standard
-    # QCD dilute instanton gas approximation (DIGA) factor (T_c / T)^n.
-    # For N_f = 3 QCD, the susceptibility falls as T^(-14) asymptotically.
-    # We use this exact DIGA suppression:
-    instanton_suppression = (T_c_MeV / T_b_MeV)**14
-    
-    # Topological winding rate:
-    theta_dot = alpha_s**4 * T_b_MeV * instanton_suppression * 0.158
-    
-    mu_B = theta_dot  # Effective chemical potential
-    
-    # Baryon number density n_B = mu_B * T^2 / 6
-    # Photon number density n_gamma = 2 * zeta(3) / pi^2 * T^3
-    zeta_3 = 1.20205
-    n_gamma_T3 = 2.0 * zeta_3 / (math.pi**2)
-    
-    eta_pred = (mu_B / T_b_MeV) / (6.0 * n_gamma_T3)
-    
-    eta_obs = 6.1e-10
-    eta_obs_err = 0.3e-10
-    
-    print(f"Bounce Temperature (T_bounce) : {T_b_MeV:.2f} MeV")
-    print(f"QCD Critical Temp (T_c)       : {T_c_MeV:.2f} MeV")
-    print(f"Instanton Suppression (DIGA)  : {instanton_suppression:.2e}")
-    print(f"Topological Winding Rate dθ/dt: {theta_dot:.4e} MeV")
-    print(f"Effective Chemical Pot. mu_B  : {mu_B:.4e} MeV")
-    print("-" * 74)
-    print(f"Predicted Baryon Asymmetry η  : {eta_pred:.4e}")
-    print(f"Observed Baryon Asymmetry η    : {eta_obs:.4e} +/- {eta_obs_err:.4e}")
-    
-    dev_sigma = (eta_pred - eta_obs) / eta_obs_err
-    print(f"Deviation from Observation    : {dev_sigma:+.2f} sigma")
-    
-    is_ok = abs(dev_sigma) < 1.0
-    print(f"Status                        : {'✅ PASSED (Rigorous Spontaneous Baryogenesis)' if is_ok else '❌ FAILED'}")
-    print("==========================================================================")
-    assert is_ok, "Baryon asymmetry fails to match observations."
-    return is_ok
+
+# Declared physics/literature inputs used by the sensitivity calculation.
+T_B_MEV = 432.2
+T_C_MEV = 157.0
+ALPHA_S = 0.3
+ETA_OBS = 6.1e-10
+ETA_OBS_ERR = 0.3e-10
+ZETA_3 = 1.20205
+
+
+def baryon_asymmetry_coefficient(T_b_MeV: float, *, zeta_3: float = ZETA_3) -> float:
+    """Return eta per MeV of an externally specified theta-dot source."""
+
+    if T_b_MeV <= 0.0 or zeta_3 <= 0.0:
+        raise ValueError("temperature and zeta(3) must be positive")
+    n_gamma_over_T3 = 2.0 * zeta_3 / math.pi**2
+    return 1.0 / (T_b_MeV * 6.0 * n_gamma_over_T3)
+
+
+def calculate_baryon_asymmetry(
+    *,
+    T_b_MeV: float = T_B_MEV,
+    T_c_MeV: float = T_C_MEV,
+    alpha_s: float = ALPHA_S,
+) -> dict[str, Any]:
+    """Compute suppression and source coefficient without inventing theta dynamics."""
+
+    if T_b_MeV <= 0.0 or T_c_MeV <= 0.0 or alpha_s <= 0.0:
+        raise ValueError("temperatures and alpha_s must be positive")
+    suppression = (T_c_MeV / T_b_MeV) ** 14
+    theta_dot_required = ETA_OBS / baryon_asymmetry_coefficient(T_b_MeV)
+    # DIGA supplies a suppression factor, not a normalization chosen to match
+    # eta_obs.  Retain the unspecialized dimensional scale for sensitivity.
+    theta_dot_suppressed = alpha_s**4 * T_b_MeV * suppression
+    eta_proxy = theta_dot_suppressed * baryon_asymmetry_coefficient(T_b_MeV)
+    return {
+        "T_b_MeV": float(T_b_MeV),
+        "T_c_MeV": float(T_c_MeV),
+        "alpha_s": float(alpha_s),
+        "diga_suppression": float(suppression),
+        "theta_dot_suppressed_MeV": float(theta_dot_suppressed),
+        "eta_proxy": float(eta_proxy),
+        "eta_coefficient_per_MeV": float(baryon_asymmetry_coefficient(T_b_MeV)),
+        "theta_dot_required_for_eta_obs_MeV": float(theta_dot_required),
+        "eta_observed": ETA_OBS,
+        "eta_observed_error": ETA_OBS_ERR,
+        "evidence_status": "RETIRED_MISSING_BARYOGENESIS_SOURCE",
+        "observed_likelihood": None,
+        "missing_components": [
+            "dynamical theta(t) solution and its initial conditions",
+            "CP-violating baryon-number source and washout network",
+            "reheating/entropy history converting n_B/s to the quoted eta",
+        ],
+    }
+
+
+def main() -> dict[str, Any]:
+    state = calculate_baryon_asymmetry()
+    deviation = (state["eta_proxy"] - ETA_OBS) / ETA_OBS_ERR
+    print("=" * 74)
+    print("  NVG BARYOGENESIS SOURCE-TERM AUDIT")
+    print("=" * 74)
+    print(f"Bounce temperature T_b                 : {state['T_b_MeV']:.2f} MeV")
+    print(f"QCD crossover T_c                      : {state['T_c_MeV']:.2f} MeV")
+    print(f"DIGA suppression (T_c/T_b)^14          : {state['diga_suppression']:.3e}")
+    print(f"Algebraic eta/theta-dot coefficient    : {state['eta_coefficient_per_MeV']:.3e} MeV^-1")
+    print(f"theta-dot required for eta_obs         : {state['theta_dot_required_for_eta_obs_MeV']:.3e} MeV")
+    print(f"Illustrative DIGA theta-dot source     : {state['theta_dot_suppressed_MeV']:.3e} MeV")
+    print(f"Resulting source-only eta proxy        : {state['eta_proxy']:.3e}")
+    print(f"Proxy-minus-observation deviation      : {deviation:+.2f} sigma (not a fit)")
+    print("Evidence status                        : RETIRED_MISSING_BARYOGENESIS_SOURCE")
+    print("No theta dynamics, CP/washout solver, or entropy likelihood is present.")
+    print("=" * 74)
+    return state
+
 
 if __name__ == "__main__":
-    calculate_baryon_asymmetry()
+    main()

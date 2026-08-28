@@ -1,131 +1,111 @@
 #!/usr/bin/env python3
-"""
-NVG Cosmology: JWST Early SMBH Seeding Simulation
---------------------------------------------------
-This script models the growth of early black hole seeds in the high-redshift
-universe. It compares standard Pop III stellar seeds (M_seed = 100 M_sun)
-against the VMF/NVG cyclic cosmology primordial seeds (Cycle N=10, M_seed ≈ 4e5 M_sun)
-starting from redshift z=20. The final masses are compared against JWST
-observations of UHZ1, GN-z11, and J2236+0032 under standard sub-Eddington accretion.
+"""Conditional early-SMBH seed growth calculation.
+
+JWST target masses/redshifts are declared literature inputs.  Growth is
+recomputed with the explicit constant-duty Eddington model and the primordial
+seed mass comes from the canonical PBH ladder.  No seed-occupation or survey
+selection likelihood is present, so this remains a conditional forward model.
 """
 
 from __future__ import annotations
-import math
-import numpy as np
 
-# Cosmology Parameters (Planck 2018)
+import math
+import os
+import sys
+from typing import Any
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from nvg_pbh_mass_spectrum import get_pbh_mass
+
 H_0_km_s_Mpc = 67.4
 Omega_m = 0.315
 Omega_L = 0.685
-
-# Unit conversions
-# 1 km/s/Mpc = 1.022689e-12 yr^-1 = 1.022689e-3 Gyr^-1
 km_s_Mpc_to_Gyr = 1.022689e-3
-H_0_Gyr = H_0_km_s_Mpc * km_s_Mpc_to_Gyr  # ~0.0689 Gyr^-1
+H_0_Gyr = H_0_km_s_Mpc * km_s_Mpc_to_Gyr
 
-# Black Hole Accretion Parameters
-tau_Salpeter_Gyr = 0.045       # Salpeter timescale (45 Myr = 0.045 Gyr)
-eta = 0.1                      # Radiative efficiency
-f_Edd = 0.10                   # Average Eddington ratio (10% duty cycle)
-
-# Seeding parameters at z_start = 20
+tau_Salpeter_Gyr = 0.045
+eta = 0.1
+f_Edd = 0.10
 z_start = 20.0
-M_seed_popIII = 100.0          # Solar masses (Pop III stellar remnant)
-# Under the corrected Tolman law (x2/cycle, nvg_tolman_law_derivation.py) the
-# same seed mass sits at rung N ~ 20 of the denser 2^N ladder. The SPECIFIC rung
-# (~4e5 M_sun) is selected as the seed that can grow into the JWST objects —
-# a choice within the discrete ladder, not derived for these particular sources.
-M_seed_nvg = 0.38 * (4**10)    # Solar masses (Cycle N=10 VMF primordial seed ~3.98e5 M_sun)
+M_seed_popIII = 100.0
+M_seed_nvg = get_pbh_mass(10)
 
-# JWST Observational Targets
 JWST_TARGETS = [
-    {
-        "name": "GN-z11",
-        "redshift": 10.60,
-        "observed_mass": 1.6e6,
-        "ref": "Maiolino et al. (2023)"
-    },
-    {
-        "name": "UHZ1",
-        "redshift": 10.10,
-        "observed_mass": 4.0e7, # Estimated 1e7 - 1e8 M_sun
-        "ref": "Goulding et al. (2023)"
-    },
-    {
-        "name": "J2236+0032",
-        "redshift": 6.30,
-        "observed_mass": 1.4e9,
-        "ref": "Onoue et al. (2023)"
-    }
+    {"name": "GN-z11", "redshift": 10.60, "observed_mass": 1.6e6, "ref": "Maiolino et al. (2023)"},
+    {"name": "UHZ1", "redshift": 10.10, "observed_mass": 4.0e7, "ref": "Goulding et al. (2023)"},
+    {"name": "J2236+0032", "redshift": 6.30, "observed_mass": 1.4e9, "ref": "Onoue et al. (2023)"},
 ]
 
+
 def cosmic_age_Gyr(z: float) -> float:
-    """Calculates cosmic age in Gyr for flat Lambda-CDM at redshift z."""
-    # Exact analytic solution for Friedmann equation in flat Lambda-CDM
+    if z < -1.0:
+        raise ValueError("redshift must be >= -1")
     factor = 2.0 / (3.0 * H_0_Gyr * math.sqrt(Omega_L))
-    x = Omega_L / (Omega_m * (1.0 + z)**3)
-    arg = math.sqrt(x) + math.sqrt(1.0 + x)
-    return factor * math.log(arg)
+    x = Omega_L / (Omega_m * (1.0 + z) ** 3)
+    return factor * math.log(math.sqrt(x) + math.sqrt(1.0 + x))
+
 
 def grow_black_hole(M_start: float, t_start: float, t_end: float) -> float:
-    """Calculates black hole growth via Eddington-limited accretion."""
+    if M_start < 0.0:
+        raise ValueError("seed mass must be non-negative")
     dt = t_end - t_start
-    if dt <= 0:
+    if dt <= 0.0:
         return M_start
-    # Growth rate lambda = f_Edd * (1 - eta) / (eta * tau_Salpeter)
     growth_rate = f_Edd * (1.0 - eta) / (eta * tau_Salpeter_Gyr)
     return M_start * math.exp(growth_rate * dt)
 
-def main():
-    print("=" * 80)
-    print("      NVG PBH HIERARCHY vs. JWST EARLY SMBH SEEDING PUZZLE")
-    print("=" * 80)
-    
+
+def compute_seed_growth() -> dict[str, Any]:
     t_start = cosmic_age_Gyr(z_start)
-    print(f"Simulation Start Redshift (z_start)   : {z_start:.1f}")
-    print(f"Age of Universe at z_start            : {t_start * 1000.0:.1f} Myr")
-    print(f"Pop III Stellar Seed Mass             : {M_seed_popIII:.1f} M_sun")
-    print(f"NVG Primordial Seed Mass (Cycle N=10) : {M_seed_nvg:.1f} M_sun")
-    print(f"Average Eddington Ratio (f_Edd)       : {f_Edd * 100.0:.1f}%")
-    print("-" * 80)
-    
-    print(f"  {'Target':<12} | {'Redshift':<8} | {'Age (Myr)':<9} | {'Pop III (M_sun)':<16} | {'NVG (M_sun)':<16} | {'Observed (M_sun)':<16}")
-    print("  " + "-" * 88)
-    
+    rows = []
     for target in JWST_TARGETS:
-        z = target["redshift"]
-        t_end = cosmic_age_Gyr(z)
-        t_end_Myr = t_end * 1000.0
-        
-        M_final_popIII = grow_black_hole(M_seed_popIII, t_start, t_end)
-        M_final_nvg = grow_black_hole(M_seed_nvg, t_start, t_end)
-        
-        print(f"  {target['name']:<12} | {z:<8.2f} | {t_end_Myr:<9.1f} | {M_final_popIII:<16.2e} | {M_final_nvg:<16.2e} | {target['observed_mass']:<16.2e}")
-        
-    print("-" * 80)
-    print("ANALYSIS & INTERPRETATION:")
-    print("- Under standard sub-Eddington accretion (f_Edd = 10% average):")
-    print("  - Pop III stellar seeds (100 M_sun) fail to explain JWST observations by up to")
-    print("    3 orders of magnitude (e.g. reaching only ~3e4 M_sun at z=10.1 vs. 4e7 M_sun observed).")
-    print("  - An NVG primordial seed on the N=10 rung (4e5 M_sun) reaches the observed")
-    print("    masses at sub-Eddington rates, so IF such a seed exists the JWST early-SMBH")
-    print("    puzzle is resolved. The open question is whether the N=10 PBH abundance is")
-    print("    right — the ladder is predicted, the occupation of this rung is not.")
-    print("- To match GN-z11's mass of 1.6e6 M_sun starting from the NVG seed, an Eddington ratio")
-    print(f"  of just ~{f_Edd * (math.log(1.6e6/M_seed_nvg) / math.log(grow_black_hole(M_seed_nvg, t_start, cosmic_age_Gyr(10.6))/M_seed_nvg)) * 100.0:.2f}% is required.")
+        t_end = cosmic_age_Gyr(target["redshift"])
+        pop_mass = grow_black_hole(M_seed_popIII, t_start, t_end)
+        nvg_mass = grow_black_hole(M_seed_nvg, t_start, t_end)
+        rows.append(
+            {
+                **target,
+                "age_Myr": t_end * 1000.0,
+                "popIII_final_mass": pop_mass,
+                "nvg_final_mass": nvg_mass,
+                "nvg_to_observed": nvg_mass / target["observed_mass"],
+            }
+        )
+    return {
+        "start_age_Myr": t_start * 1000.0,
+        "rows": rows,
+        "evidence_status": "CONDITIONAL_FORWARD_MODEL",
+        "observed_likelihood": None,
+        "canonical_producer": "verification/nvg_pbh_mass_spectrum.py:get_pbh_mass",
+        "limitation": "No seed occupation, duty-cycle distribution, or JWST selection likelihood is present.",
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_seed_growth()
     print("=" * 80)
-    
-    # Assertions to ensure physical consistency and mathematical correctness
-    # Test GN-z11 values
-    t_gn = cosmic_age_Gyr(10.6)
-    M_gn_popIII = grow_black_hole(M_seed_popIII, t_start, t_gn)
-    M_gn_nvg = grow_black_hole(M_seed_nvg, t_start, t_gn)
-    
-    assert M_gn_popIII < 1e5, "Pop III seed grown mass is unexpectedly large at z=10.6!"
-    assert M_gn_nvg > 1e7, "NVG seed grown mass is unexpectedly small at z=10.6!"
-    assert M_gn_nvg > 1.6e6, "NVG seed failed to explain GN-z11 mass!"
-    
-    print("JWST early SMBH seeding simulation verified successfully.")
+    print("      NVG PBH-LADDER VS JWST SEED-GROWTH FORWARD MODEL")
+    print("=" * 80)
+    print(f"Start redshift / age                      : z={z_start:.1f}, {state['start_age_Myr']:.1f} Myr")
+    print(f"Pop-III seed mass                          : {M_seed_popIII:.1f} M_sun (declared scenario)")
+    print(f"Canonical ladder seed (N=10)              : {M_seed_nvg:.1f} M_sun")
+    print(f"Average Eddington ratio                   : {f_Edd * 100.0:.1f}% (declared scenario)")
+    print(f"{'Target':<14} | {'z':<7} | {'Age Myr':<10} | {'PopIII final':<15} | {'Ladder final':<15} | {'Declared obs':<15}")
+    print("-" * 100)
+    for row in state["rows"]:
+        print(
+            f"{row['name']:<14} | {row['redshift']:<7.2f} | {row['age_Myr']:<10.1f} | "
+            f"{row['popIII_final_mass']:<15.2e} | {row['nvg_final_mass']:<15.2e} | {row['observed_mass']:<15.2e}"
+        )
+    print("-" * 100)
+    print("Evidence status: CONDITIONAL_FORWARD_MODEL")
+    print("Target comparisons are descriptive; no seed-abundance or survey likelihood is evaluated.")
+    print("=" * 80)
+    return state
+
 
 if __name__ == "__main__":
     main()

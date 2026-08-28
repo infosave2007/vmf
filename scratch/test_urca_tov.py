@@ -1,7 +1,6 @@
 import math
 import numpy as np
 from scipy.integrate import solve_ivp
-from scipy.interpolate import interp1d
 from scipy.optimize import brentq
 
 # Constants
@@ -154,6 +153,26 @@ def vector_factor(n_b, alpha_v, nu_v):
 def vector_energy_density(n_b, c_omega0, alpha_v, nu_v):
     return 0.5 * c_omega0 * vector_factor(n_b, alpha_v, nu_v) * n_b * n_b
 
+
+def interpolate_in_domain(value, x_values, y_values):
+    """Interpolate only inside a finite, explicitly tabulated domain."""
+    x_values = np.asarray(x_values, dtype=float)
+    y_values = np.asarray(y_values, dtype=float)
+    if x_values.ndim != 1 or y_values.shape != x_values.shape or len(x_values) < 2:
+        raise ValueError("interpolation table must contain matching one-dimensional arrays")
+    if not (np.isfinite(value) and np.all(np.isfinite(x_values)) and np.all(np.isfinite(y_values))):
+        raise ValueError("interpolation inputs must be finite")
+    order = np.argsort(x_values)
+    x_sorted = x_values[order]
+    y_sorted = y_values[order]
+    x_unique, unique_idx = np.unique(x_sorted, return_index=True)
+    y_unique = y_sorted[unique_idx]
+    if len(x_unique) < 2:
+        raise ValueError("interpolation table must span at least two distinct x values")
+    if value < x_unique[0] or value > x_unique[-1]:
+        raise ValueError(f"interpolation value {value:g} outside [{x_unique[0]:g}, {x_unique[-1]:g}]")
+    return float(np.interp(value, x_unique, y_unique))
+
 def calibrate_c_omega0(k1, k2, c_s, c_rho):
     state_n0 = beta_equilibrium_state(n_0, k1, k2, c_s, c_rho)
     if state_n0 is None:
@@ -243,16 +262,30 @@ def main():
         has_negative_pressure = above_n0.sum() > 0 and np.any(pressure_g[above_n0] <= 0)
         
         eps_g = eps[good]
-        eps_of_p = interp1d(pressure_g, eps_g, bounds_error=False, fill_value=(eps_g[0], eps_g[-1]))
+
+        def eps_of_p(pressure):
+            return interpolate_in_domain(pressure, pressure_g, eps_g)
         
         p_grid = np.logspace(-0.5, 2.5, 10)
         masses = []
         densities = []
         for pc in p_grid:
-            m, r = solve_tov(eps_of_p, pc)
-            nc = np.interp(pc, pressure_g, narr_g)
+            if pc < np.min(pressure_g) or pc > np.max(pressure_g):
+                continue
+            try:
+                m, r = solve_tov(eps_of_p, pc)
+                nc = interpolate_in_domain(pc, pressure_g, narr_g)
+            except ValueError:
+                # The exploratory table has no supported continuation beyond
+                # its measured pressure domain; record no solution instead of
+                # filling an endpoint with a copied value.
+                continue
             masses.append(m)
             densities.append(nc / n_0)
+
+        if not masses:
+            print(f"alpha_v = {alpha_v:.3f} | no in-domain TOV pressures; skipped")
+            continue
             
         m_sorted_idx = np.argsort(masses)
         masses_s = np.array(masses)[m_sorted_idx]

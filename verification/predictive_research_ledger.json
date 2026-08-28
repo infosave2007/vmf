@@ -1,0 +1,718 @@
+{
+  "audit": "P4-S1",
+  "claim_count": 12,
+  "claims": [
+    {
+      "boundary_status": "GRID_SENSITIVITY_ONLY",
+      "domain": "NS/selection",
+      "evidence_weight": 0.0,
+      "id": "ns_canonical_selection",
+      "source": {
+        "path": "verification/nvg_ns_predictive_audit_p1s7_results.json",
+        "role": "P1-S7/P1-S9 final NS artifact",
+        "sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0"
+      },
+      "source_artifact_status": "CONDITIONAL_IN_SAMPLE",
+      "status": "conditional_in_sample",
+      "values": {
+        "Lambda_1.4": 519.4223807918132,
+        "M_max_msun": 2.047950740578197,
+        "R_1.4_km": 12.550001000000044,
+        "converged_rows": 87,
+        "declared_rows": 450,
+        "screening_only_rows": 330,
+        "survivor_count": 83,
+        "unresolved_candidate_rows": 33
+      }
+    },
+    {
+      "blocked": {
+        "Q": "blocked",
+        "inverse_mass": "blocked",
+        "phase1_wider_envelope": "BLOCKED_NO_HARTLE_REVALIDATION"
+      },
+      "branch_id": 1,
+      "domain": "NS/Hartle",
+      "evidence_weight": 0.0,
+      "gap_crossed": false,
+      "id": "ns_hartle_j0737a",
+      "payload_sha256": "6339d335ada77335441ff00a0e1982dfedba82867c9d0bc04cff44ba54003080",
+      "raw_bands": {
+        "I_A_g_cm2": [
+          1.4844304942443514e+45,
+          1.486877680292856e+45
+        ],
+        "Lambda_A": [
+          680.4807422769521,
+          685.2349877316642
+        ],
+        "R_A_km": [
+          12.46633897439881,
+          12.467460225413246
+        ]
+      },
+      "scope": "canonical zero-jump EOS; first-order Hartle plus same-background Hinderer; pressure-ordered branch 1",
+      "source": {
+        "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+        "role": "P3-S5 final forecast artifact",
+        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+      },
+      "source_artifact_status": "derived_conditional_branch_scoped",
+      "status": "derived_conditional",
+      "supported_display": {
+        "I_A_g_cm2": {
+          "digits": 3,
+          "lower": 1.484e+45,
+          "upper": 1.487e+45
+        },
+        "Lambda_A": {
+          "digits": 0,
+          "lower": 680.0,
+          "upper": 686.0
+        },
+        "R_A_km": {
+          "digits": 3,
+          "lower": 12.466,
+          "upper": 12.468
+        }
+      },
+      "values": {
+        "I_A_g_cm2": 1.4856539538408488e+45,
+        "Ibar_A": 14.303017715186515,
+        "Lambda_A": 682.3319386687238,
+        "R_A_km": 12.466899931727045,
+        "central_pressure_mev_fm3": 46.752078078168736,
+        "compactness": 0.15848675058116762,
+        "mass_msun": 1.3381
+      }
+    },
+    {
+      "blocker": "Hartle second-order quadrupole equations and matching are unavailable.",
+      "domain": "NS/Hartle",
+      "evidence_weight": 0.0,
+      "id": "ns_quadrupole_Q",
+      "source": {
+        "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+        "role": "P3-S5 final forecast artifact",
+        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+      },
+      "status": "blocked"
+    },
+    {
+      "blocker": "No direct I_A measurement and no inverse-mass likelihood are available.",
+      "domain": "NS/Hartle",
+      "evidence_weight": 0.0,
+      "id": "ns_inverse_mass",
+      "source": {
+        "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+        "role": "P3-S5 final forecast artifact",
+        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+      },
+      "status": "blocked"
+    },
+    {
+      "blocker": "The maintained beta-equilibrated EOS derives M_Omega_0 from its fixed sigma-term calibration and exposes no M_Omega_0 argument in build_eos, beta_equilibrium_state, or the calibrated vector sector; therefore the 859 +/- 8 MeV anchor cannot be propagated without inventing a physical dependency and recalibration.",
+      "domain": "NS/microphysics",
+      "evidence_weight": 0.0,
+      "id": "M_Omega",
+      "source": {
+        "path": "verification/nvg_ns_predictive_audit_p1s7_results.json",
+        "role": "P1-S7/P1-S9 final NS artifact",
+        "sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0"
+      },
+      "status": "BLOCKED_NO_PHYSICAL_DEPENDENCY",
+      "values": {
+        "declared_sigma_mev": 8.0,
+        "declared_value_mev": 859.0
+      }
+    },
+    {
+      "domain": "cooling/g-modes",
+      "evidence_weight": 0.0,
+      "id": "barotropic_null",
+      "physical_frequency_status": "BLOCKED_MISSING_GAMMA1_COMPOSITION_DERIVATIVES",
+      "source": {
+        "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+        "role": "P3-S6 final cooling/g-mode artifact",
+        "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+      },
+      "status": "DERIVED_NULL_CONTROL_BAROTROPIC_NEUTRAL_BUOYANCY",
+      "values": {
+        "grid_points": 241,
+        "max_abs_N2_km2": 3.283728511497663e-18,
+        "max_abs_discriminant": 2.220446049250313e-16
+      }
+    },
+    {
+      "blockers": {
+        "Cas_A_fit": "BLOCKED_NO_THERMAL_SOLVER_OR_SPECTRAL_LIKELIHOOD",
+        "NVG_confirmation": "BLOCKED_NO_CLOSED_MICROPHYSICAL_CHAIN_OR_INDEPENDENT_LIKELIHOOD",
+        "cooling_curves": "BLOCKED_MISSING_COMPOSITION_HEAT_CAPACITY_EMISSIVITY_PAIRING_CONDUCTIVITY_ENVELOPE",
+        "g_mode_frequency": "BLOCKED_MISSING_GAMMA1_COMPOSITION_DERIVATIVES_AND_MODE_LIKELIHOOD",
+        "hyperon_Urca_cooling": "BLOCKED_MISSING_INTERACTIONS_WEAK_MATRIX_ELEMENTS_AND_STABLE_TOV_BRANCH"
+      },
+      "domain": "cooling/g-modes",
+      "evidence_weight": 0.0,
+      "id": "cooling_and_gmode",
+      "payload_sha256": "db3a90557f0d0101173b02c779ddf3cd79fc86f08ea61c0351ece8e9e0e046e0",
+      "source": {
+        "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+        "role": "P3-S6 final cooling/g-mode artifact",
+        "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+      },
+      "status": "blocked"
+    },
+    {
+      "claim_statuses": {
+        "NVG_hyperon_prediction": "BLOCKED",
+        "phase_transition": "BLOCKED",
+        "physical_hyperon_fractions": "BLOCKED"
+      },
+      "domain": "hyperon/Urca",
+      "evidence_weight": 0.0,
+      "id": "hyperon_fractions_and_phase",
+      "reference_model_status": "DERIVED_ZERO_INTERACTION_FREE_GAS_REFERENCE_ONLY",
+      "source": {
+        "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+        "role": "P2-S2 final composition artifact",
+        "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+      },
+      "status": "BLOCKED_MISSING_TRACEABLE_COUPLINGS_PHASE_AND_NVG_DEPENDENCY"
+    },
+    {
+      "cooling_status": "BLOCKED_NO_COOLING_CURVE_AUTHORIZED_IN_P2-S2",
+      "domain": "hyperon/Urca",
+      "evidence_weight": 0.0,
+      "id": "hyperon_urca",
+      "source": {
+        "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+        "role": "P2-S2 final composition artifact",
+        "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+      },
+      "status": "BLOCKED_MISSING_WEAK_MATRIX_ELEMENTS_TEMPERATURE_AND_SUPERFLUID_GAPS"
+    },
+    {
+      "display_A90_interval": [
+        0.03,
+        0.04
+      ],
+      "domain": "GW echo",
+      "evidence_weight": 0.0,
+      "id": "echo",
+      "observational_status": "BLOCKED_MISSING_STRAIN_POSTERIOR_NOISE_PRODUCTS",
+      "q_payload_integrity": {
+        "algorithm": "sha256-canonical-json-v1",
+        "amplitude_points": 15,
+        "artifact_q_sha256": "80e20bd2713a9e777d7c2111509a7a82a54ba7367642533789e42a17edab05a0",
+        "live_q_sha256": "80e20bd2713a9e777d7c2111509a7a82a54ba7367642533789e42a17edab05a0",
+        "matches_live": true,
+        "scope": "all selected events and all configured efficiency amplitudes; q-row mutations fail closed",
+        "shape": [
+          259,
+          15
+        ],
+        "source": "echo.synthetic_calibration(load_catalog(load_config()))",
+        "status": "PASS_RECOMPUTED_LIVE_FULL_MATRIX"
+      },
+      "raw_A90_union": [
+        0.03319408380348728,
+        0.03356685238591077
+      ],
+      "selected_event_count": 259,
+      "source": {
+        "path": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+        "role": "P2-S8 final echo artifact",
+        "sha256": "2bb2214a933356f69e12ef81d6af12b8c0fb27490be9465fd314711f63ec885e"
+      },
+      "source_artifact_status": "SENSITIVITY_ONLY_CONDITIONAL_SYNTHETIC_NULL",
+      "status": "synthetic_sensitivity",
+      "supported_decimal_places": 2,
+      "time_slide_status": "BLOCKED_NO_EMPIRICAL_TIME_SLIDE_BANK"
+    },
+    {
+      "critical_boundary_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "desi_overlay_status": "unknown_provenance_sensitivity_overlay",
+      "domain": "S8",
+      "evidence_weight": 0.0,
+      "global_statement_status": "BLOCKED_NO_SOURCED_JOINT_LIKELIHOOD",
+      "id": "s8",
+      "maintained_omega_m": 0.315,
+      "maintained_one_sigma_overlap_count": 0,
+      "normalization_changes_one_sigma_overlap": true,
+      "normalization_conventions": [
+        {
+          "formula": "S8=s8_planck*growth*sqrt(Omega_m/0.315)",
+          "name": "omega_m_0.315",
+          "reference_omega_m": 0.315
+        },
+        {
+          "formula": "S8=s8_planck*growth*sqrt(Omega_m/0.300)",
+          "name": "omega_m_0.300",
+          "reference_omega_m": 0.3
+        },
+        {
+          "formula": "S8=s8_planck*growth",
+          "name": "none",
+          "reference_omega_m": null
+        }
+      ],
+      "normalization_one_sigma_counts_by_omega": {
+        "0.3": {
+          "none": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.315": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 45,
+            "total": 10201,
+            "two_sigma_overlap": 157
+          }
+        },
+        "0.305": {
+          "none": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 2,
+            "total": 10201,
+            "two_sigma_overlap": 122
+          }
+        },
+        "0.3075": {
+          "none": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 93
+          }
+        },
+        "0.31": {
+          "none": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 21
+          },
+          "omega_m_0.300": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 65
+          }
+        },
+        "0.3125": {
+          "none": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 17
+          },
+          "omega_m_0.300": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 45
+          }
+        },
+        "0.315": {
+          "none": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 15
+          },
+          "omega_m_0.300": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 15
+          }
+        }
+      },
+      "normalization_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "payload_sha256": "419777c3ebff39e38036d20fbef3a5b9dd00e9a064409b9e2d45b85ebdf26267",
+      "resolution_crossings": [
+        0.3,
+        0.3,
+        0.305
+      ],
+      "resolution_is_grid_dependent": true,
+      "resolution_probe_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "source": {
+        "path": "verification/nvg_s8_no_go_map.json",
+        "role": "P1-S2 final S8 artifact",
+        "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570"
+      },
+      "source_artifact_status": "SCOPED_NO_GO_MAINTAINED_OMEGA_M; EXPANDED_OMEGA_M_SENSITIVITY_OVERLAP",
+      "status": "conditional_sensitivity"
+    },
+    {
+      "domain": "PBH/PTA",
+      "evidence_weight": 0.0,
+      "expanded_scan": {
+        "boundary_cycle": 18,
+        "boundary_fraction_dm": 1.0,
+        "boundary_max_amplitude_strain": 1.602551782944375e-12,
+        "first_reachable_rung": 17
+      },
+      "external_exclusions_used": false,
+      "id": "pbh",
+      "max_row_integrity": {
+        "expanded_max_row": {
+          "amplitude_strain": 1.602551782944375e-12,
+          "binary_pair_fraction": 1.0,
+          "cycle": 18,
+          "deficit_factor": 0.0014976115128027066,
+          "duty_cycle": 1.0,
+          "fraction_dm": 1.0,
+          "mass_msun": 26113401159.68,
+          "merger_rate_ratio": 1.0,
+          "number_density_mpc3": 1.2637189540423845,
+          "target_scale": 1.0
+        },
+        "scan_maxima_copied_from_frozen_artifact": false,
+        "seed_max_row": {
+          "amplitude_strain": 4.385006141203416e-18,
+          "binary_pair_fraction": 1.0,
+          "cycle": 11,
+          "deficit_factor": 547.319643967784,
+          "duty_cycle": 1.0,
+          "fraction_dm": 4.8298046060606066e-09,
+          "mass_msun": 1593835.52,
+          "merger_rate_ratio": 1.0,
+          "number_density_mpc3": 0.0001,
+          "target_scale": 1.0
+        },
+        "status": "PASS_LIVE_RECOMPUTED_COMPLETE_ROWS"
+      },
+      "pta_benchmark_is_internal": true,
+      "seed_band": {
+        "all_rate_requirements_outside_box": true,
+        "minimum_amplitude_strain": 4.385006141203416e-18,
+        "minimum_cycle": 11,
+        "minimum_required_rate_product": 299558.79267302185
+      },
+      "source": {
+        "path": "verification/P1-S3-pbh-nanograv-audit.json",
+        "role": "P1-S3 tracked PBH artifact; byte-identical promotion of final control",
+        "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
+      },
+      "source_artifact_status": "sensitivity",
+      "status": "algebraic_sensitivity",
+      "target_leakage": {
+        "benchmark_used_only_for_algebraic_required_factor": true,
+        "parameters_optimized_against_target": false,
+        "scan_maxima_copied_from_frozen_artifact": false,
+        "scan_maxima_live_recomputed": true,
+        "status": "PASS_NO_TARGET_FIT_AND_LIVE_MAX_ROW_RECOMPUTATION"
+      }
+    }
+  ],
+  "evidence_policy": {
+    "conditional_synthetic_sensitivity_blocked_zero_weight": true,
+    "independent_evidence_weight": 0.0,
+    "registry_presence_is_not_evidence": true
+  },
+  "inventory": {
+    "counts": {
+      "durable_artifacts": 27,
+      "manifests": 4,
+      "producers": 9,
+      "source_inputs": 3,
+      "tests": 13
+    },
+    "durable_artifacts": [
+      "verification/nvg_ns_predictive_audit_p1s7_results.json",
+      "verification/nvg_ns_predictive_audit_results.json",
+      "verification/nvg_ns_predictive_audit_p1s5_results.json",
+      "verification/fig_ns_predictive_audit.png",
+      "verification/fig_ns_predictive_audit_p1s5.png",
+      "verification/fig_ns_predictive_audit_p1s7.png",
+      "verification/nvg_s8_no_go_map.json",
+      "verification/fig_s8_no_go_map.png",
+      "verification/P1-S3-pbh-nanograv-audit.json",
+      "verification/P1-S3-pbh-nanograv-boundary.png",
+      "verification/nvg_hartle_slow_rotation_p2s1_results.json",
+      "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+      "verification/fig_hartle_slow_rotation_p2s1.png",
+      "verification/fig_hartle_slow_rotation_p2s5.png",
+      "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+      "verification/fig_p2_s2_beta_hyperon_urca_audit.png",
+      "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "verification/fig_echo_hierarchical_upper_limit_p2s3.png",
+      "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+      "verification/nvg_ns_frozen_forecasts_p3s1.csv",
+      "verification/fig_ns_frozen_forecasts_p3s1.png",
+      "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+      "verification/fig_p3_s2_cooling_gmode_dependency_audit.png",
+      "verification/nvg_prospective_falsification_reach_p3s3_results.json",
+      "verification/p3_s3_prospective_reach.csv",
+      "verification/fig_p3_s3_prospective_reach.png",
+      "verification/predictive_research_ledger.json"
+    ],
+    "immutable_controls_excluded": true,
+    "manifests": [
+      "verification/data/p2_s3_hierarchical_echo/provenance_manifest.json",
+      "verification/artifact_manifest.json",
+      "verification/data/provenance.json",
+      "verification/registry.json"
+    ],
+    "predictive_producers": [
+      "verification/nvg_ns_predictive_audit.py",
+      "verification/nvg_s8_no_go.py",
+      "verification/nvg_pbh_nanograv_audit.py",
+      "verification/nvg_hartle_slow_rotation.py",
+      "verification/nvg_beta_hyperon_urca_audit.py",
+      "verification/nvg_echo_hierarchical_upper_limit.py",
+      "verification/nvg_ns_frozen_forecasts.py",
+      "verification/nvg_cooling_gmode_dependency_audit.py",
+      "verification/nvg_prospective_falsification_reach.py"
+    ],
+    "predictive_tests": [
+      "verification/test_p1_s1_ns_predictive_audit.py",
+      "verification/test_p1_s2_s8_no_go.py",
+      "verification/test_p1_s3_pbh_nanograv_audit.py",
+      "verification/test_p1_s5_ns_repair.py",
+      "verification/test_p1_s7_ns_repair.py",
+      "verification/test_p1_s9_ns_provenance.py",
+      "verification/test_p2_beta_hyperon_urca_audit.py",
+      "verification/test_p2_echo_hierarchical_upper_limit.py",
+      "verification/test_p2_hartle_slow_rotation.py",
+      "verification/test_p3_cooling_gmode_dependency_audit.py",
+      "verification/test_p3_ns_frozen_forecasts.py",
+      "verification/test_p3_prospective_falsification_reach.py",
+      "verification/test_p4_predictive_research_integration.py"
+    ],
+    "source_inputs": [
+      "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
+      "verification/data/gwtc_events.csv",
+      "verification/data/p2_s3_hierarchical_echo/analysis_config.json"
+    ]
+  },
+  "ledger_integrity": {
+    "algorithm": "sha256-canonical-json-v1",
+    "canonicalization": "json_sort_keys_compact_utf8",
+    "covered": "complete ledger except ledger_integrity",
+    "payload_sha256": "dbb0565e8f116455c6ce565a7a7f5648c9088b650bd38a5d399c236558712cc7",
+    "status": "PASS_COMPLETE_LEDGER_DIGEST"
+  },
+  "provenance": {
+    "beta_producer": {
+      "path": "verification/nvg_beta_hyperon_urca_audit.py",
+      "role": "P2-S2 composition producer",
+      "sha256": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9"
+    },
+    "beta_result": {
+      "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+      "role": "P2-S2 final composition artifact",
+      "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+    },
+    "beta_test": {
+      "path": "verification/test_p2_beta_hyperon_urca_audit.py",
+      "role": "P2-S2 focused test",
+      "sha256": "0547d070a9cd5fdbb685592eb8edf8f071a7b57d46de094b7670e0b178800d37"
+    },
+    "cooling_producer": {
+      "path": "verification/nvg_cooling_gmode_dependency_audit.py",
+      "role": "P3-S6 cooling/g-mode producer",
+      "sha256": "0a387086fab91b14fbbec87ebacb889ae0cfdf6b040f4b62b90ef0a4ecfd5cb6"
+    },
+    "cooling_result": {
+      "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+      "role": "P3-S6 final cooling/g-mode artifact",
+      "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+    },
+    "cooling_test": {
+      "path": "verification/test_p3_cooling_gmode_dependency_audit.py",
+      "role": "P3 cooling/g-mode focused test",
+      "sha256": "6ae1ac50348f3d342554f832b1bf6b5c0ef1fda8e396a8f95d865c71c0554c0a"
+    },
+    "echo_config": {
+      "path": "verification/data/p2_s3_hierarchical_echo/analysis_config.json",
+      "role": "pinned echo analysis configuration",
+      "sha256": "ded246a1b7284a4e60678582e7a04a2b54e30079fa80b9d0f4d7cfab2b838392"
+    },
+    "echo_manifest": {
+      "path": "verification/data/p2_s3_hierarchical_echo/provenance_manifest.json",
+      "role": "pinned echo provenance manifest",
+      "sha256": "4f6b130a63a5bf93f15995a149de60eb263ce5ae151828b0fe2a7b77d8acea6f"
+    },
+    "echo_producer": {
+      "path": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "role": "P2-S8 echo producer",
+      "sha256": "a0046da3587a11fd7b669f1f03b030a709eb63b427c6819b3a96b074c082ecc7"
+    },
+    "echo_result": {
+      "path": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "role": "P2-S8 final echo artifact",
+      "sha256": "2bb2214a933356f69e12ef81d6af12b8c0fb27490be9465fd314711f63ec885e"
+    },
+    "echo_test": {
+      "path": "verification/test_p2_echo_hierarchical_upper_limit.py",
+      "role": "P2 echo focused test",
+      "sha256": "b0852341bb790edb04edde3d29347ecaab60c84dad270f8c9472e7ac63f7e3bb"
+    },
+    "forecast_csv": {
+      "path": "verification/nvg_ns_frozen_forecasts_p3s1.csv",
+      "role": "P3-S5 forecast table",
+      "sha256": "ed351602fed79edc3d38ac22542547d57a0b7a25fd4a121b9b1c42816d0ddd45"
+    },
+    "forecast_producer": {
+      "path": "verification/nvg_ns_frozen_forecasts.py",
+      "role": "P3-S5 forecast producer",
+      "sha256": "5ebdd13c82d56b83c72397afe45b765689f379e75808157ec045f03e9514a215"
+    },
+    "forecast_result": {
+      "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+      "role": "P3-S5 final forecast artifact",
+      "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+    },
+    "forecast_test": {
+      "path": "verification/test_p3_ns_frozen_forecasts.py",
+      "role": "P3 forecast focused test",
+      "sha256": "8f0c0317923395bed49012118a7d408ef22279badae89ff46536b3b7c6938a71"
+    },
+    "gwtc_catalog": {
+      "path": "verification/data/gwtc_events.csv",
+      "role": "public GWTC catalog selection input",
+      "sha256": "5c9876917eff320145d02f60328e6e1b6eef8d040e9711f4e94d85b3601c2ec3"
+    },
+    "hartle_producer": {
+      "path": "verification/nvg_hartle_slow_rotation.py",
+      "role": "P2-S5 Hartle producer",
+      "sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746"
+    },
+    "hartle_result": {
+      "path": "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+      "role": "P2-S5 final Hartle artifact",
+      "sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c"
+    },
+    "hartle_test": {
+      "path": "verification/test_p2_hartle_slow_rotation.py",
+      "role": "P2 Hartle focused test",
+      "sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132"
+    },
+    "j0737_input": {
+      "path": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
+      "role": "pinned J0737A timing input",
+      "sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff"
+    },
+    "p1_ns_producer": {
+      "path": "verification/nvg_ns_predictive_audit.py",
+      "role": "P1 final NS audit producer",
+      "sha256": "dd49edeca30ed196558a963d59d790b45def51535b28d81506e0056680959724"
+    },
+    "p1_ns_result": {
+      "path": "verification/nvg_ns_predictive_audit_p1s7_results.json",
+      "role": "P1-S7/P1-S9 final NS artifact",
+      "sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0"
+    },
+    "p1_ns_test": {
+      "path": "verification/test_p1_s9_ns_provenance.py",
+      "role": "P1 final NS provenance test",
+      "sha256": "341fad93d97a04bb6baa3ad2f770b3da4363f01ee136532e22922363fa65062b"
+    },
+    "pbh_figure": {
+      "path": "verification/P1-S3-pbh-nanograv-boundary.png",
+      "role": "P1-S3 tracked PBH boundary figure; byte-identical promotion of final control",
+      "sha256": "b38461668a090eef2542badbcb4bb8d5735a5791571015c1fdc544673a5b42e0"
+    },
+    "pbh_producer": {
+      "path": "verification/nvg_pbh_nanograv_audit.py",
+      "role": "P1 PBH audit producer",
+      "sha256": "ee2ffb270be570833cb1cf4cf8bd2e93aa570b5e504a397b91ab14125650ab64"
+    },
+    "pbh_result": {
+      "path": "verification/P1-S3-pbh-nanograv-audit.json",
+      "role": "P1-S3 tracked PBH artifact; byte-identical promotion of final control",
+      "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
+    },
+    "reach_csv": {
+      "path": "verification/p3_s3_prospective_reach.csv",
+      "role": "P3-S7 reach table",
+      "sha256": "7aa74dc2e8a9dacdc2de8096838bcaec2046a0f4a2a37de4368144789bc712b5"
+    },
+    "reach_producer": {
+      "path": "verification/nvg_prospective_falsification_reach.py",
+      "role": "P3-S7 reach producer",
+      "sha256": "bac0efb275211e51dd587d6b3a7d7cc9e374eaa1b37b57cc727b0c1b5c2671f1"
+    },
+    "reach_result": {
+      "path": "verification/nvg_prospective_falsification_reach_p3s3_results.json",
+      "role": "P3-S7 final prospective artifact",
+      "sha256": "85fb559c4c34ecc727c98c12d7495a8d8d055421b5f95a97a1dda62936fb2d4b"
+    },
+    "reach_test": {
+      "path": "verification/test_p3_prospective_falsification_reach.py",
+      "role": "P3 reach focused test",
+      "sha256": "82f112408d22500cd104b535d1d85123b655fba16194d13c9f21baf96e9cb9f2"
+    },
+    "s8_canonical_producer": {
+      "path": "verification/nvg_black_hole_entropy.py",
+      "role": "maintained S8 producer",
+      "sha256": "32ce8f9f70dfe337343bb9c6cc3a8f34856e6dd8ad60633130ff1fbc46e6f398"
+    },
+    "s8_producer": {
+      "path": "verification/nvg_s8_no_go.py",
+      "role": "P1 S8 map producer",
+      "sha256": "9abf0926e9f913646a7254ae6ceeebb4a9c6b8189e2ce1b9076335ca16720c51"
+    },
+    "s8_result": {
+      "path": "verification/nvg_s8_no_go_map.json",
+      "role": "P1-S2 final S8 artifact",
+      "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570"
+    }
+  },
+  "schema_version": "P4-S1-predictive-research-ledger-v1",
+  "scope": "P3-S8-authorized predictive integration; registry presence is not empirical evidence",
+  "status": "FINAL_P4_S1_MACHINE_LEDGER"
+}

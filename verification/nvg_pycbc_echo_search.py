@@ -5,7 +5,9 @@ using the pure NVG parameter-free echo template.
 
 Requires: pip install pycbc lalsuite gwosc
 """
-import os
+from __future__ import annotations
+
+from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -18,6 +20,9 @@ try:
     PYCBC_AVAILABLE = True
 except ImportError:
     PYCBC_AVAILABLE = False
+
+
+OUTPUT_PATH = Path(__file__).resolve().parent / "nvg_gw150914_echo_snr.png"
 
 def generate_nvg_template_pycbc(duration_sec=1.0, sample_rate=4096, mass_solar=65.0):
     """Generates the NVG echo template and returns a PyCBC TimeSeries."""
@@ -49,7 +54,11 @@ def generate_nvg_template_pycbc(duration_sec=1.0, sample_rate=4096, mass_solar=6
         
     return TimeSeries(waveform, delta_t=1.0/sample_rate)
 
-def run_search():
+def run_search(output_path=None):
+    output_path = OUTPUT_PATH if output_path is None else Path(output_path)
+    if not output_path.is_absolute():
+        output_path = Path(__file__).resolve().parent.parent / output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     if not PYCBC_AVAILABLE:
         print("PyCBC is not installed.")
         print("To run this script, please execute in your terminal:")
@@ -110,9 +119,9 @@ def run_search():
         
     plt.legend()
     plt.tight_layout()
-    plt.savefig('nvg_gw150914_echo_snr.png', dpi=300)
+    plt.savefig(output_path, dpi=300)
     
-    print("Search complete! Plot saved to 'nvg_gw150914_echo_snr.png'")
+    print(f"Search complete! Plot saved to '{output_path}'")
     print("Look for peaks aligning with the red dotted lines (multiples of 22ms).")
 
 if __name__ == '__main__':

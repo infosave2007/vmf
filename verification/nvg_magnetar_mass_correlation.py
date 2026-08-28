@@ -94,18 +94,29 @@ class UnifiedEOS:
         self.p_arr = np.array(self.p_arr)
         
     def get_eps(self, P: float) -> float:
-        if P <= self.p_arr[0]:
-            return 0.0
-        if P >= self.p_arr[-1]:
-            return self.eps_arr[-1]
+        if not np.isfinite(P) or P < self.p_arr[0] or P > self.p_arr[-1]:
+            raise ValueError(
+                f"pressure {P!r} outside EOS domain [{self.p_arr[0]}, {self.p_arr[-1]}]"
+            )
         return np.interp(P, self.p_arr, self.eps_arr)
 
 # ── 2. TOV Solver ────────────────────────────────────────────────────
 def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
+    if not np.isfinite(P_center) or not (eos.p_arr[0] < P_center <= eos.p_arr[-1]):
+        raise ValueError("central pressure outside EOS domain")
+
+    def table_energy(pressure: float) -> float:
+        # The toy EOS has no crust.  Once integration reaches the validated
+        # lower table boundary, continue through vacuum with epsilon=0 rather
+        # than extrapolating or clamping the EOS.
+        if pressure <= eos.p_arr[0]:
+            return 0.0
+        return eos.get_eps(pressure)
+
     def rk4_step(r, m, p, dr):
         if p <= 0:
             return m, 0, 0
-        eps = eos.get_eps(p)
+        eps = table_energy(p)
         
         def dp_dr(r_val, m_val, p_val, eps_val):
             if r_val < 1e-10:
@@ -125,11 +136,11 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
             return dm_dr, dp_dr
 
         k1_m, k1_p = dp_dr(r, m, p, eps)
-        eps_mid = eos.get_eps(p + 0.5 * dr * k1_p)
+        eps_mid = table_energy(p + 0.5 * dr * k1_p)
         k2_m, k2_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k1_m, p + 0.5*dr*k1_p, eps_mid)
-        eps_mid = eos.get_eps(p + 0.5 * dr * k2_p)
+        eps_mid = table_energy(p + 0.5 * dr * k2_p)
         k3_m, k3_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k2_m, p + 0.5*dr*k2_p, eps_mid)
-        eps_end = eos.get_eps(p + dr * k3_p)
+        eps_end = table_energy(p + dr * k3_p)
         k4_m, k4_p = dp_dr(r + dr, m + dr*k3_m, p + dr*k3_p, eps_end)
         
         m_new = m + (dr/6.0) * (k1_m + 2*k2_m + 2*k3_m + k4_m)
@@ -140,10 +151,29 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
     m = 0.0
     p = P_center
     dr = 0.05
-    while p > 1e-4 and r < 100.0:
+    while p > eos.p_arr[0] and r < 100.0:
         m, p = rk4_step(r, m, p, dr)
         r += dr
     return m, r
+
+
+def mass_from_density(nc_over_n0: float, n_c_arr: np.ndarray, m_arr: np.ndarray) -> float:
+    """Map a central density only inside the executed TOV lookup domain."""
+
+    n_values = np.asarray(n_c_arr, dtype=float)
+    m_values = np.asarray(m_arr, dtype=float)
+    if len(n_values) < 2 or len(n_values) != len(m_values):
+        raise ValueError("central-density lookup is empty or mismatched")
+    if not np.all(np.isfinite(n_values)) or not np.all(np.isfinite(m_values)):
+        raise ValueError("central-density lookup contains non-finite values")
+    if np.any(np.diff(n_values) <= 0.0):
+        raise ValueError("central-density lookup must be strictly increasing")
+    if not np.isfinite(nc_over_n0) or not (n_values[0] <= nc_over_n0 <= n_values[-1]):
+        raise ValueError(
+            f"central density {nc_over_n0!r} outside lookup domain "
+            f"[{n_values[0]}, {n_values[-1]}]"
+        )
+    return float(np.interp(nc_over_n0, n_values, m_values))
 
 def build_tov_lookup():
     eos = UnifiedEOS(2.0, 350.0)
@@ -270,27 +300,23 @@ def main():
     n_c_arr, m_arr = build_tov_lookup()
     M_max = np.max(m_arr)
     print(f"   TOV Grid complete. Max physical mass: {M_max:.2f} M_sun")
-    
-    def get_mass_from_density(nc_over_n0: float) -> float:
-        if nc_over_n0 <= n_c_arr[0]:
-            return 1.10
-        if nc_over_n0 >= n_c_arr[-1]:
-            return M_max
-        return np.interp(nc_over_n0, n_c_arr, m_arr)
 
     sample, note = build_sample()
     # Filter out long-period outlier
     magnetars = [o for o in sample if o.family == "magnetar" and o.name != "1E 161348-5055"]
-    print(f"2. Loaded McGill magnetar population: {len(magnetars)} sources (outlier removed).")
+    print(f"2. Magnetar population input: {len(magnetars)} sources (outlier removed); source={note}")
+    if "NON-EVIDENCE" in note:
+        print("   WARNING: fallback rows are illustrative only; population inference is withheld.")
     
-    # Fixed parameters to avoid circular reasoning
-    B_seed_surf = 30000.0  # G, FIXED from independent massive OB star observations
+    # This benchmark is an explicit model assumption; no source metadata for the
+    # 30 kG value is committed, so it is not counted as an independent input.
+    B_seed_surf = 30000.0  # G
     tau_d = 1.0e4          # yr, decay timescale
     gamma = 0.5            # decay exponent
     flux_gain = (1.0e11 / 1.2e6)**2 # flux conservation gain ~6.94e9
     B_seed_NS = B_seed_surf * flux_gain # ~2.08e14 G
     
-    print(f"3. Using FIXED progenitor surface field: {B_seed_surf/1e3:.1f} kG")
+    print(f"3. Using assumed progenitor surface field: {B_seed_surf/1e3:.1f} kG (unverified input)")
     print(f"   NS fossil seed field                : {B_seed_NS:.2e} G")
     print(f"   Field decay model                   : B_birth = B_dip * (1 + t/10k yr)^0.5")
     print()
@@ -309,7 +335,12 @@ def main():
         else:
             rho_c_ratio = 0.0
             
-        m_ns = get_mass_from_density(rho_c_ratio)
+        try:
+            m_ns = mass_from_density(rho_c_ratio, n_c_arr, m_arr)
+            mass_status = "supported"
+        except ValueError as exc:
+            m_ns = None
+            mass_status = f"unsupported ({exc})"
         
         reconstructed_data.append({
             "name": obj.name,
@@ -317,17 +348,22 @@ def main():
             "tau_yr": tau_yr,
             "B_birth": B_birth,
             "gamma_req": gamma_req,
-            "mass": m_ns
+            "mass": m_ns,
+            "mass_status": mass_status,
         })
         
-        print(f"  {obj.name:<20} | {obj.b_dip_g:10.2e} | {tau_yr/1000.0:10.1f} | {B_birth:11.2e} | {gamma_req:10.2f} | {m_ns:15.3f} M_sun")
+        mass_text = f"{m_ns:15.3f} M_sun" if m_ns is not None else "unsupported lookup"
+        print(f"  {obj.name:<20} | {obj.b_dip_g:10.2e} | {tau_yr/1000.0:10.1f} | {B_birth:11.2e} | {gamma_req:10.2f} | {mass_text} [{mass_status}]")
         
     # Extract data arrays
-    names = np.array([d["name"] for d in reconstructed_data])
-    masses = np.array([d["mass"] for d in reconstructed_data])
-    b_births = np.array([d["B_birth"] for d in reconstructed_data])
-    b_dips = np.array([d["b_dip"] for d in reconstructed_data])
-    ages = np.array([d["tau_yr"] for d in reconstructed_data])
+    supported_data = [d for d in reconstructed_data if d["mass"] is not None]
+    if len(supported_data) < 4:
+        raise ValueError("fewer than four magnetar rows have supported EOS masses")
+    names = np.array([d["name"] for d in supported_data])
+    masses = np.array([d["mass"] for d in supported_data])
+    b_births = np.array([d["B_birth"] for d in supported_data])
+    b_dips = np.array([d["b_dip"] for d in supported_data])
+    ages = np.array([d["tau_yr"] for d in supported_data])
     
     # ── Subgroup Partition ────────────────────────────────────────────
     # Young magnetars: age < 10,000 years
@@ -366,8 +402,8 @@ def main():
                 print(f"    - {name:<22}: Cook's D = {cd:.4f}, Leverage h = {h_val:.4f}")
         print()
         
-    # ── Anchor & Outlier Robustness Analysis ──────────────────────────
-    print("--- Outlier & Anchor Robustness Analysis (Young Subgroup) ---")
+    # ── Outlier robustness analysis ───────────────────────────────────
+    print("--- Outlier robustness analysis (Young Subgroup) ---")
     young_names = names[young_mask]
     young_masses = masses[young_mask]
     young_b_births = b_births[young_mask]
@@ -381,59 +417,9 @@ def main():
     print(f"    Pearson R (Mass vs. Birth B)        : {r_clean:.4f} (p = {p_clean:.4f})")
     print(f"    Pearson R (Mass vs. log10(Birth B)) : {r_clean_log:.4f} (p = {p_clean_log:.4f})")
     
-    # 2. Anchored analysis (3 anchors: SGR 1806-20, 1E 1048.1-5937, SGR 1900+14)
-    anchor_masses = young_masses.copy()
-    for i, name in enumerate(young_names):
-        if name == "SGR 1806-20":
-            anchor_masses[i] = 2.10
-        elif name == "1E 1048.1-5937":
-            anchor_masses[i] = 1.60
-        elif name == "SGR 1900+14":
-            anchor_masses[i] = 1.45
-            
-    r_anc, p_anc = stats.pearsonr(anchor_masses, young_log_B)
-    
-    # Bootstrap CI for Anchored (3 anchors)
-    boot_corrs_anc = []
-    np.random.seed(42)
-    for _ in range(10000):
-        idx = np.random.choice(len(anchor_masses), size=len(anchor_masses), replace=True)
-        m_b = anchor_masses[idx]
-        b_b = young_log_B[idx]
-        if np.std(m_b) > 0 and np.std(b_b) > 0:
-            r, _ = stats.pearsonr(m_b, b_b)
-            boot_corrs_anc.append(r)
-    ci_low_anc, ci_high_anc = np.percentile(boot_corrs_anc, [2.5, 97.5])
-    
-    # 3. Sensitivity analysis (2 anchors: 1E 1048.1-5937, SGR 1900+14; SGR 1806-20 reconstructed)
-    anchor_masses_2 = young_masses.copy()
-    for i, name in enumerate(young_names):
-        if name == "1E 1048.1-5937":
-            anchor_masses_2[i] = 1.60
-        elif name == "SGR 1900+14":
-            anchor_masses_2[i] = 1.45
-            
-    r_anc_2, p_anc_2 = stats.pearsonr(anchor_masses_2, young_log_B)
-    
-    # Bootstrap CI for Anchored (2 anchors)
-    boot_corrs_anc_2 = []
-    np.random.seed(42)
-    for _ in range(10000):
-        idx = np.random.choice(len(anchor_masses_2), size=len(anchor_masses_2), replace=True)
-        m_b = anchor_masses_2[idx]
-        b_b = young_log_B[idx]
-        if np.std(m_b) > 0 and np.std(b_b) > 0:
-            r, _ = stats.pearsonr(m_b, b_b)
-            boot_corrs_anc_2.append(r)
-    ci_low_anc_2, ci_high_anc_2 = np.percentile(boot_corrs_anc_2, [2.5, 97.5])
-    
-    print(f"  With 3 Independent Mass Anchors (N={len(young_masses)}):")
-    print(f"    Pearson R (Mass vs. log10(Birth B)) : {r_anc:.4f} (p = {p_anc:.4f})")
-    print(f"    Bootstrap 95% CI (3 Anchors)        : [{ci_low_anc:.4f}, {ci_high_anc:.4f}]  <-- DOES NOT CROSS ZERO")
-    
-    print(f"  With 2 Independent Mass Anchors (N={len(young_masses)}, SGR 1806-20 Reconstructed):")
-    print(f"    Pearson R (Mass vs. log10(Birth B)) : {r_anc_2:.4f} (p = {p_anc_2:.4f})")
-    print(f"    Bootstrap 95% CI (2 Anchors)        : [{ci_low_anc_2:.4f}, {ci_high_anc_2:.4f}]  <-- DOES NOT CROSS ZERO")
+    print("  No post-hoc mass anchors are applied; all inferential statistics use")
+    print("  masses reconstructed from the executed EOS lookup. Anchor-based")
+    print("  sensitivity claims are excluded because they are not independent.")
     print()
     
     # ── Figure Generation ─────────────────────────────────────────────
@@ -446,17 +432,6 @@ def main():
     sizes = 40 + cooks * 400
     
     ax1.scatter(young_masses, young_log_B, s=sizes, color="#3498db", alpha=0.7, edgecolor="black", label="Reconstructed")
-    
-    # Mark anchors
-    idx_1e1048 = [i for i, name in enumerate(young_names) if name == "1E 1048.1-5937"][0]
-    idx_sgr1900 = [i for i, name in enumerate(young_names) if name == "SGR 1900+14"][0]
-    idx_sgr1806 = [i for i, name in enumerate(young_names) if name == "SGR 1806-20"][0]
-    
-    ax1.scatter([anchor_masses_2[idx_1e1048], anchor_masses_2[idx_sgr1900]], 
-                [young_log_B[idx_1e1048], young_log_B[idx_sgr1900]], 
-                s=120, color="#e74c3c", marker="*", edgecolor="black", label="Primary Anchors (2)")
-    ax1.scatter([anchor_masses[idx_sgr1806]], [young_log_B[idx_sgr1806]], 
-                s=100, color="#f39c12", marker="D", edgecolor="black", label="SGR 1806-20 Anchor")
     
     # Regression line for standard
     slope, intercept, r_val, p_val, std_err = stats.linregress(young_masses, young_log_B)
@@ -485,33 +460,21 @@ def main():
             boot_corrs_std.append(r_s)
             
     ax2.hist(boot_corrs_std, bins=50, density=True, color="#3498db", alpha=0.3, label="Standard Bootstrap")
-    ax2.hist(boot_corrs_anc_2, bins=50, density=True, color="#27ae60", alpha=0.3, label="2-Anchors Bootstrap")
-    ax2.hist(boot_corrs_anc, bins=50, density=True, color="#e74c3c", alpha=0.3, label="3-Anchors Bootstrap")
     
     # Add density curves
     kde_std = stats.gaussian_kde(boot_corrs_std)
-    kde_anc_2 = stats.gaussian_kde(boot_corrs_anc_2)
-    kde_anc = stats.gaussian_kde(boot_corrs_anc)
     r_grid = np.linspace(-0.4, 1.0, 500)
     ax2.plot(r_grid, kde_std(r_grid), color="#2980b9", lw=1.5)
-    ax2.plot(r_grid, kde_anc_2(r_grid), color="#219a52", lw=1.5)
-    ax2.plot(r_grid, kde_anc(r_grid), color="#c0392b", lw=1.5)
     
     # CIs
     ci_std = [young_audit["ci_low"], young_audit["ci_high"]]
     ax2.axvline(ci_std[0], color="#2980b9", linestyle="--", lw=1.2)
     ax2.axvline(ci_std[1], color="#2980b9", linestyle="--", lw=1.2)
-    ax2.axvline(ci_low_anc_2, color="#219a52", linestyle="--", lw=1.2)
-    ax2.axvline(ci_high_anc_2, color="#219a52", linestyle="--", lw=1.2)
-    ax2.axvline(ci_low_anc, color="#c0392b", linestyle="--", lw=1.2)
-    ax2.axvline(ci_high_anc, color="#c0392b", linestyle="--", lw=1.2)
     
     # Zero line
     ax2.axvline(0, color="grey", linestyle="-", lw=1, alpha=0.7)
     
     ax2.text(ci_std[0]-0.01, 1, f"Std CI: [{ci_std[0]:.2f}, {ci_std[1]:.2f}]", color="#2980b9", rotation=90, ha="right", fontsize=8)
-    ax2.text(ci_low_anc_2+0.01, 1.5, f"2-Anc CI: [{ci_low_anc_2:.2f}, {ci_high_anc_2:.2f}]", color="#219a52", rotation=90, ha="left", fontsize=8)
-    ax2.text(ci_low_anc+0.01, 0.5, f"3-Anc CI: [{ci_low_anc:.2f}, {ci_high_anc:.2f}]", color="#c0392b", rotation=90, ha="left", fontsize=8)
     
     ax2.set_xlabel("Pearson Correlation Coefficient ($R$)", fontsize=10)
     ax2.set_ylabel("Probability Density", fontsize=10)
@@ -528,26 +491,9 @@ def main():
     print("   Diagnostics figure saved to article/figures/fig_magnetar_young_diagnostics.{png,pdf}")
     print()
 
-    print("  PHYSICAL INTERPRETATION:")
-    print("  1. The reconstructed magnetar masses span a highly realistic physical")
-    print("     neutron star range (1.10 - 2.30 M_sun), centered around 1.39 M_sun.")
-    print("     Because B_seed_surf = 30 kG is FIXED from independent massive OB observations,")
-    print("     this range is a genuine physical prediction, not a circular post-hoc fit.")
-    print("  2. When controlling for field decay using characteristic age, a strong positive")
-    print("     correlation holds for BOTH subgroups (R ~ 0.61 for Full, R ~ 0.67 for Young).")
-    print("     The correlation holds particularly strongly in the young population where decay")
-    print("     physics uncertainties are minimized.")
-    print("  3. The age-controlled partial correlation confirms that this relation is not an")
-    print("     artifact of age-confounding: the correlation between mass and field remains")
-    print("     highly significant (p < 0.05) even after removing age influence.")
-    print("  4. Bayesian posterior analysis shows P(R > 0) > 97.8% (flat and weak normal priors),")
-    print("     confirming that the correlation is highly robust despite the small sample size.")
-    print("  5. Anchor analysis using 3 independent mass constraints shows that the bootstrap 95%")
-    print("     confidence interval narrows and no longer crosses zero ([0.013, 0.836]).")
-    print("  6. Sensitivity analysis with 2 anchors (excluding SGR 1806-20 mass fixing) confirms")
-    print("     that the correlation remains robust and the bootstrap CI is strictly positive")
-    print("     ([0.035, 0.868]), indicating that the positive correlation is not driven solely")
-    print("     by the most influential data point.")
+    print("  INTERPRETATION: values above are descriptive outputs of a toy EOS/decay model.")
+    print("  The catalog source note is retained; no mass anchors or independent significance")
+    print("  claims are applied, and a fallback sample is non-evidence for population inference.")
     print("=" * 80)
     
     # Save audit report to text file
@@ -557,8 +503,12 @@ def main():
     L = [
         "NVG Magnetar Mass-Field Correlation Analysis Output (Audited)",
         "===========================================================",
-        f"Fixed progenitor surface field: {B_seed_surf:.1f} G",
+        "Generated by: verification/nvg_magnetar_mass_correlation.py",
+        f"Assumed progenitor surface field (unverified): {B_seed_surf:.1f} G",
         f"NS fossil seed field: {B_seed_NS:.2e} G",
+        f"Catalog source: {note}",
+        "Evidence status: descriptive model output; not an independent population prediction",
+        f"EOS lookup status: {len(supported_data)}/{len(reconstructed_data)} rows in domain; out-of-domain rows excluded (no endpoint substitution)",
         ""
     ]
     for title, audit in audit_results.items():
@@ -571,14 +521,14 @@ def main():
         L.append(f"Bayesian P(R > 0) (N(0,1) prior): {audit['p_bayes_weak']:.4f}")
         L.append("")
         
-    L.append("--- Outlier & Anchor Robustness ---")
+    L.append("--- Outlier robustness (no post-hoc anchors) ---")
     L.append(f"Young subgroup excluding SGR 1806-20: R = {r_clean:.4f} (p = {p_clean:.4f})")
-    L.append(f"Young subgroup with 3 independent mass anchors: R = {r_anc:.4f} (p = {p_anc:.4f}), CI = [{ci_low_anc:.4f}, {ci_high_anc:.4f}]")
-    L.append(f"Young subgroup with 2 independent mass anchors (SGR 1806-20 reconstructed): R = {r_anc_2:.4f} (p = {p_anc_2:.4f}), CI = [{ci_low_anc_2:.4f}, {ci_high_anc_2:.4f}]")
+    L.append("Post-hoc mass-anchor analyses: excluded (not independent evidence)")
     L.append("")
     
     for d in reconstructed_data:
-        L.append(f"{d['name']}: B_dip={d['b_dip']:.2e} G, Age={d['tau_yr']/1e3:.1f} kyr, B_birth={d['B_birth']:.2e} G, Mass={d['mass']:.3f} M_sun")
+        mass_text = f"{d['mass']:.3f} M_sun" if d["mass"] is not None else "UNSUPPORTED_EOS_DOMAIN"
+        L.append(f"{d['name']}: B_dip={d['b_dip']:.2e} G, Age={d['tau_yr']/1e3:.1f} kyr, B_birth={d['B_birth']:.2e} G, Mass={mass_text}")
         
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(L) + "\n")

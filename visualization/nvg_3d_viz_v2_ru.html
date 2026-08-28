@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NVG — Циклическая Вселенная и Регулярная Чёрная Дыра (канон 2026)</title>
+<meta name="nvg-source-script" content="verification/run_nvg_suite.py">
+<meta name="nvg-source-artifact" content="verification/fig_iloveq_universal_report.json">
+<meta name="nvg-status" content="CONDITIONAL_IN_SAMPLE">
+<meta name="nvg-comparison-status" content="CONDITIONAL_IN_SAMPLE">
+<meta name="nvg-global-status" content="WITHHELD_NO_HELD_OUT_PRODUCER">
+<script id="nvg-provenance" type="application/json">{"source_script":"verification/run_nvg_suite.py","source_artifact":"verification/fig_iloveq_universal_report.json","status":"CONDITIONAL_IN_SAMPLE","independent":false,"held_out_observations":[],"global_significance":"WITHHELD_NO_HELD_OUT_PRODUCER","values":{"M_max":2.047950740578197,"R_1.4":12.550001000000044,"Lambda_1.4":519.4223807918132}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -55,6 +61,10 @@ select.btn{appearance:none;padding:8px 12px}
 <div id="flash"></div>
 <div id="era-label"></div>
 
+<div data-nvg-status="CONDITIONAL_IN_SAMPLE" data-nvg-global-status="WITHHELD_NO_HELD_OUT_PRODUCER" style="position:fixed;top:0;left:0;right:0;z-index:20;padding:6px 12px;background:#5a2a00;color:#ffe7c2;text-align:center;font:600 0.8rem/1.3 sans-serif;letter-spacing:.02em">
+  Условное внутривыборочное runtime-сравнение — независимое наблюдательное свидетельство и глобальное p не вычислялись.
+</div>
+
 <!-- ═══ LEFT HUD ═══ -->
 <div id="hud-left">
   <div class="panel" id="panel-universe">
@@ -99,19 +109,20 @@ select.btn{appearance:none;padding:8px 12px}
     <div class="discovery"><span class="disc-tag">Масштаб Хэйворда</span>l = √(3c²/8πGρ<sub>c</sub>) = 1.128 км — без сингулярностей</div>
     <div class="discovery"><span class="disc-tag">Отскок</span>H² = (8πG/3)·ρ(1−ρ/ρ<sub>c</sub>) · T<sub>b</sub>=432 МэВ · N<sub>e</sub>≈53</div>
   </div>
-  <div class="panel" style="border-color:rgba(90,255,154,0.22)">
-    <div class="panel-title" style="color:#5aff9a">Статус проверок · 2026-07</div>
-    <div class="discovery"><span class="disc-tag" style="color:#5aff9a">Глобально</span><span class="ok">3 эффективных теста: χ² = 2.76/3, p = 0.43</span> · фальсификаторы: 8/8 живы</div>
-    <div class="discovery"><span class="disc-tag" style="color:#5aff9a">Нейтронные звёзды</span>M<sub>max</sub>=2.07 · R<sub>1.4</sub>=12.49 км · <span class="ok">Λ̃=313 (GW170817: +0.05σ)</span> · <span class="warn">NICER J0614: +2.2σ</span></div>
-    <div class="discovery"><span class="disc-tag" style="color:#5aff9a">Эхо ГВ O1–O4</span><span class="warn">нуль: 241 событие, p=0.77</span> — эхо громче ρ≈3/детектор исключено; предсказание амплитуды нет → теория жива</div>
-    <div class="discovery"><span class="disc-tag" style="color:#5aff9a">Испарение ЧД</span><span class="ok">выключено: T<sub>max</sub>=36 нК &lt; T<sub>CMB</sub></span> · ниже M<sub>crit</sub> — голые ядра: окно ТМ 10¹⁰–10¹⁷ г</div>
+  <div class="panel" id="panel-status" data-nvg-source="verification/run_nvg_suite.py" data-nvg-status="CONDITIONAL_IN_SAMPLE" data-nvg-global-status="WITHHELD_NO_HELD_OUT_PRODUCER" style="border-color:rgba(255,184,77,0.28)">
+    <div class="panel-title" style="color:#ffb84d">Статус вычислений · runtime</div>
+    <div class="discovery"><span class="disc-tag" style="color:#ffb84d">Глобально</span><span class="warn" id="v-global-status">WITHHELD_NO_HELD_OUT_PRODUCER · независимое p не вычислялось</span></div>
+    <div class="discovery"><span class="disc-tag" style="color:#ffb84d">Нейтронные звёзды</span>M<sub>max</sub>=<span id="v-canonical-mmax">runtime</span> · R<sub>1.4</sub>=<span id="v-canonical-r14">runtime</span> км · <span class="warn">Λ<sub>1.4</sub>=<span id="v-canonical-lambda14">runtime</span></span> · <span class="warn" id="v-canonical-status">CONDITIONAL_IN_SAMPLE</span></div>
+    <div class="discovery"><span class="disc-tag" style="color:#ffb84d">Источник</span><span id="v-canonical-source">verification/run_nvg_suite.py</span> · held_out_observations=[] · независимое подтверждение отсутствует</div>
+    <div class="discovery"><span class="disc-tag" style="color:#5aff9a">Эхо ГВ O1–O4</span><span class="warn">Иллюстративный режим</span> — runtime-поиск strain-likelihood здесь не публикуется.</div>
+    <div class="discovery" data-nvg-source="verification/nvg_hayward_evaporation.py"><span class="disc-tag" style="color:#5aff9a">Испарение ЧД</span><span class="warn">FORWARD_ONLY</span> — модельная температурная граница; независимое наблюдательное подтверждение отсутствует.</div>
   </div>
   <div class="panel" style="border-color:rgba(154,167,255,0.25)">
     <div class="panel-title" style="color:#9aa7ff">Решающие данные впереди</div>
-    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">HADES 2026–27</span>ρ-полюс 770 (форк A) против 735 МэВ (форк B) — данные уже сняты</div>
-    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">DESI DR3</span>NVG: w = −1 тождественно · DR2 против на 4.5σ — бинарный тест</div>
-    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">µHz-горб</span>Ω<sub>GW</sub>≈2×10⁻⁹ @ 25 мкГц, log-2 гребёнка (контраст 65%)</div>
-    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">Аксион θ-seesaw</span>m<sub>θ</sub> = 53 мкэВ (MADMAX) · Σm<sub>ν</sub> = 59 мэВ</div>
+    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">HADES 2026–27</span>Будущий анализ формы линии; runtime-данные и likelihood отсутствуют.</div>
+    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">DESI</span>Динамическая тёмная энергия — открытая проблема; текущий runtime не публикует бинарный результат.</div>
+    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">Первичные ГВ</span>µHz-канал остаётся форвардом без детекторного likelihood.</div>
+    <div class="discovery"><span class="disc-tag" style="color:#9aa7ff">Нейтринный сектор</span>θ-seesaw — модельный форвард; независимое измерение не заявляется.</div>
   </div>
 </div>
 
@@ -122,7 +133,7 @@ select.btn{appearance:none;padding:8px 12px}
 </div>
 
 <div id="waveform-box">
-  <div class="cap">ШАБЛОН ЭХА: f = 251 Гц·(65/M) · τ = 3.6 мс · зубья k·Δt · R<sup>k</sup>=0.95<sup>k</sup> — O1–O4: НЕ ОБНАРУЖЕНО (241 соб., p=0.77)</div>
+  <div class="cap">ШАБЛОН ЭХА — анимационная иллюстрация; runtime-результат и наблюдательное p не публикуются</div>
   <canvas id="wave-canvas" width="720" height="130"></canvas>
 </div>
 
@@ -142,6 +153,16 @@ select.btn{appearance:none;padding:8px 12px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
+// Machine-readable status is embedded from the canonical runtime ledger; the
+// HUD renders these values instead of carrying an independent result table.
+const NVG_PROVENANCE=JSON.parse(document.getElementById('nvg-provenance').textContent);
+const NVG_RUNTIME_VALUES=NVG_PROVENANCE.values;
+document.getElementById('v-canonical-mmax').textContent=Number(NVG_RUNTIME_VALUES.M_max).toFixed(3);
+document.getElementById('v-canonical-r14').textContent=Number(NVG_RUNTIME_VALUES['R_1.4']).toFixed(3);
+document.getElementById('v-canonical-lambda14').textContent=Number(NVG_RUNTIME_VALUES['Lambda_1.4']).toFixed(1);
+document.getElementById('v-canonical-status').textContent=NVG_PROVENANCE.status;
+document.getElementById('v-global-status').textContent=NVG_PROVENANCE.global_significance+' · независимое p не вычислялось';
+document.getElementById('v-canonical-source').textContent=NVG_PROVENANCE.source_script;
 // ═════════════════════════════════════════════════════════════════
 //  ФИЗИКА ИЗ ЯКОРЕЙ — все числа вычисляются, не захардкожены
 //  (формулы = verification/nvg_hayward_evaporation.py, nvg_gw_echoes.py)

@@ -1,340 +1,207 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Observables G–K
+"""Computed observables G--K with explicit model/input provenance.
 
-G. Moment of Inertia I_1.338 (double pulsar PSR J0737-3039)
-H. Gravitational Redshift z_surf from NS surface
-I. Post-merger GW peak frequency f_peak
-J. Proton Fraction Y_p(n_B) and Direct Urca threshold
-K. Sound Horizon r_s at recombination
+The radius-dependent quantities consume the maintained TOV/tidal solver at
+runtime.  No presentation-table values are used as computed results.  Where
+this entry point has no independent likelihood, it reports an assumption or
+model output rather than an observational confirmation.
 """
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
 
 import numpy as np
-import math
 
-print("=" * 72)
-print("  NVG VERIFICATION: OBSERVABLES G–K")
-print("=" * 72)
 
-# ── VMF EOS parameters ──
-M_Omega_0 = 859.0   # MeV
-M_N = 939.0          # MeV
-n_0 = 0.16           # fm^-3
-hbar_c = 197.327     # MeV·fm
-kappa_1 = 0.25
-kappa_2 = 0.80
+# This grid is part of the canonical NS calculation contract.  The same
+# pressure centres are used by ``nvg_tidal_deformability`` and the tracked
+# I--Love report generator; keeping it named here makes accidental sibling
+# re-gridding visible to callers and semantic tests.
+CANONICAL_PRESSURE_GRID = np.logspace(-1.0, 3.4, 120)
+CANONICAL_CHAIN_SOURCE = "nvg_tidal_deformability.EOS + solve_tov_tidal"
 
-# Known NS results from VMF TOV solver
-R_14 = 12.55   # km, canonical radius at 1.4 M_sun
-M_max = 2.05   # M_sun (canonical)
-G_over_c2 = 1.4766  # km / M_sun
 
-def M_Omega_star(n_B):
-    x = n_B / n_0
-    return M_Omega_0 * (1.0 + kappa_2 * x)**(-kappa_1 / kappa_2)
+def compute_eos_chain() -> dict:
+    """Run the canonical TOV/tidal chain and return its stable branch.
 
-# ═══════════════════════════════════════════════════════════════════════
-# G. MOMENT OF INERTIA (PSR J0737-3039A)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  G. MOMENT OF INERTIA I (PSR J0737-3039A)")
-print("=" * 72)
+    The transition point and its in-sample provenance come from the shared
+    canonical EOS constructor.  This entry point is a consumer only: it does
+    not define a second EOS table or a second pressure grid.
+    """
+    verification_dir = Path(__file__).resolve().parent
+    if str(verification_dir) not in sys.path:
+        sys.path.insert(0, str(verification_dir))
+    from nvg_tidal_deformability import EOS, solve_tov_tidal
 
-# Pulsar A mass
-M_A = 1.338  # M_sun (precisely measured)
-# For M_A ~ 1.338, radius is close to R_1.4
-R_A = R_14 * (1.338 / 1.4)**(-0.1)  # slight scaling
+    eos = EOS()
+    rows = []
+    for pressure in CANONICAL_PRESSURE_GRID:
+        mass, radius, k2, tidal_lambda = solve_tov_tidal(eos, float(pressure))
+        if mass > 0.5 and radius > 5.0 and k2 > 0.0 and tidal_lambda > 0.0:
+            rows.append((float(mass), float(radius), float(k2), float(tidal_lambda)))
+    if not rows:
+        raise RuntimeError("EOS chain produced no valid TOV states")
+    max_index = int(np.argmax([row[0] for row in rows]))
+    rows = sorted(rows[: max_index + 1], key=lambda row: row[0])
+    masses = np.array([row[0] for row in rows])
+    if masses[-1] < 1.4:
+        raise RuntimeError("EOS chain does not reach the 1.4 M_sun reference")
+    return {
+        "rows": rows,
+        "masses": masses,
+        "radii": np.array([row[1] for row in rows]),
+        "lambdas": np.array([row[3] for row in rows]),
+        "m_max": float(masses[-1]),
+        "pressure_grid": CANONICAL_PRESSURE_GRID.copy(),
+        "source": CANONICAL_CHAIN_SOURCE,
+        "canonical_selection": eos.canonical_selection,
+        "selection_provenance": eos.canonical_provenance,
+    }
 
-# Compactness
-C_A = G_over_c2 * M_A / R_A
 
-# Lattimer-Schutz universal relation (2005):
-# I ≈ (0.237 ± 0.008) M R² [1 + 4.2 (M/R km^-1) + 90 (M/R km^-1)^4]
-# in units of M_sun km²
+def radius_at(chain: dict, mass: float) -> float:
+    if mass < float(chain["masses"][0]) or mass > float(chain["masses"][-1]):
+        raise ValueError(f"mass {mass} outside computed EOS branch")
+    return float(np.interp(mass, chain["masses"], chain["radii"]))
 
-xi = G_over_c2 * M_A / R_A  # dimensionless compactness
-I_approx = 0.237 * M_A * R_A**2 * (1.0 + 4.2 * xi + 90.0 * xi**4)
 
-# Convert to CGS: 1 M_sun km² = 1.989e33 * (1e5)^2 = 1.989e43 g cm²
-I_cgs = I_approx * 1.989e43
+def compute_results() -> dict:
+    chain = compute_eos_chain()
+    G_over_c2 = 1.4766  # km/M_sun
 
-print(f"  Pulsar A mass: M_A = {M_A} M_sun")
-print(f"  VMF radius at M_A: R ≈ {R_A:.2f} km")
-print(f"  Compactness: C = {C_A:.4f}")
-print(f"  Moment of Inertia: I ≈ {I_approx:.2f} M_sun km²")
-print(f"                      I ≈ {I_cgs:.3e} g cm²")
-print(f"""
-  OBSERVATIONAL STATUS:
-  The spin-orbit coupling in PSR J0737-3039 will allow direct
-  measurement of I_A within the next 2-5 years (Lyne et al.).
-  Current indirect estimates: I ~ (1.1-1.5) × 10^45 g cm².
-  
-  VMF prediction: I ≈ {I_cgs:.2e} g cm²
-  
-  This is WITHIN the expected range. A precise measurement will
-  provide a direct test of the VMF EOS stiffness at n_B ~ 2n_0.
+    # G. Universal moment-of-inertia estimate using the computed radius.
+    M_A = 1.338  # measured pulsar mass (observational input)
+    R_A = radius_at(chain, M_A)
+    compactness = G_over_c2 * M_A / R_A
+    I_approx = 0.237 * M_A * R_A**2 * (
+        1.0 + 4.2 * compactness + 90.0 * compactness**4
+    )
+    I_cgs = I_approx * 1.989e43
 
-  STATUS: ✅ COMPUTED — awaiting precision measurement.
-""")
+    # H. Surface redshift from the same computed radius branch.
+    redshift_rows = []
+    for mass in [1.4, 1.8, 2.0, chain["m_max"]]:
+        radius = radius_at(chain, float(mass))
+        compactness = G_over_c2 * mass / radius
+        if 2.0 * compactness >= 1.0:
+            raise RuntimeError("computed EOS branch is inside its Schwarzschild radius")
+        redshift_rows.append(
+            {
+                "mass_msun": float(mass),
+                "radius_km": radius,
+                "z": (1.0 - 2.0 * compactness) ** -0.5 - 1.0,
+            }
+        )
 
-# ═══════════════════════════════════════════════════════════════════════
-# H. GRAVITATIONAL REDSHIFT FROM NS SURFACE
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  H. GRAVITATIONAL REDSHIFT z_surf")
-print("=" * 72)
+    # I. Empirical post-merger relation, using R_1.6 from that branch.
+    R_14 = radius_at(chain, 1.4)
+    R_16 = radius_at(chain, 1.6)
+    f_peak = 6.67 - 0.334 * R_16
+    f_peak_alt = 1.0 + 0.22 * (14.0 - R_14)
 
-masses = [1.4, 1.8, 2.0, M_max]
-# Approximate R(M) from VMF TOV (monotonically decreasing for stable branch)
-def R_of_M(M):
-    # Parametric fit to the CANONICAL VMF M-R curve (nvg_tidal_deformability.py):
-    # gently rising to a broad maximum ~12.65 km near 1.6 M_sun, then falling.
-    # Anchors: R(1.0)=12.15, R(1.4)=12.53, R(1.6)=12.65, R(2.0)=12.27, M_max=2.05.
-    if M <= 1.6:
-        return 12.15 + (12.65 - 12.15) * (M - 1.0) / 0.6
-    else:
-        return 12.65 - 0.95 * (M - 1.6)
+    # J. This simplified symmetry-energy calculation is a declared model
+    # assumption, not a calibrated Cas A/Vela fit or independent evidence.
+    n_0 = 0.16
+    hbar_c = 197.327
+    S_0, L_sym = 32.0, 70.0  # illustrative VMF assumptions
+    gamma_sym = L_sym / (3.0 * S_0)
 
-print(f"{'M (M_sun)':>10} | {'R (km)':>8} | {'C = GM/Rc²':>10} | {'z_surf':>8} | {'1+z':>6}")
-print("-" * 52)
+    def proton_fraction(n_b: float) -> float:
+        e_sym = S_0 * (n_b / n_0) ** gamma_sym
+        y_p = 0.04
+        for _ in range(100):
+            mu_e = 4.0 * e_sym * (1.0 - 2.0 * y_p)
+            n_e = max(mu_e, 0.0) ** 3 / (3.0 * np.pi**2 * hbar_c**3)
+            y_new = min(0.5, max(0.001, n_e / n_b))
+            if abs(y_new - y_p) < 1.0e-12:
+                break
+            y_p = 0.5 * y_p + 0.5 * y_new
+        return float(y_p)
 
-for M in masses:
-    R = R_of_M(M)
-    C = G_over_c2 * M / R
-    z_surf = (1.0 - 2.0 * C)**(-0.5) - 1.0
-    print(f"{M:10.2f} | {R:8.2f} | {C:10.4f} | {z_surf:8.4f} | {1+z_surf:6.3f}")
+    density_grid = np.array([0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0])
+    yp_rows = [{"n_over_n0": float(x), "y_p": proton_fraction(x * n_0)} for x in density_grid]
+    du_threshold = 0.111
+    du_onset = next((row["n_over_n0"] for row in yp_rows if row["y_p"] > du_threshold), None)
 
-print(f"""
-  OBSERVATIONAL DATA:
-  Direct measurements of z_surf are currently absent; the early claim of z ≈ 0.35
-  for EXO 0748-676 (Cottam et al. 2002) was subsequently not confirmed by other studies.
-  
-  For a 1.4 M_sun NS at the canonical R_1.4 = 12.55 km, z_surf ≈ 0.221.
-  
-  The gravitational redshift is testable with next-generation X-ray missions
-  (STROBE-X, eXTP) which will measure z_surf to <1% precision.
+    # K. Planck values are observational baseline inputs.  The tiny correction
+    # is a consistency estimate, not a new cosmological evidence claim.
+    rho_bounce = 7.0e16
+    rho_rec = 1.0e-21
+    delta_h_over_h = rho_rec / rho_bounce
+    r_s_standard = 147.09  # Planck 2018 baseline input, Mpc
+    r_s_nvg = r_s_standard * (1.0 + delta_h_over_h)
 
-  STATUS: ✅ COMPUTED — testable with future STROBE-X/eXTP observations.
-""")
+    return {
+        "canonical_chain": {
+            "source": chain["source"],
+            "pressure_grid_points": int(len(chain["pressure_grid"])),
+            "selection_provenance": chain["selection_provenance"],
+        },
+        "eos": {"m_max": chain["m_max"], "r_14": R_14, "r_16": R_16},
+        "moment_of_inertia": {
+            "mass_msun": M_A,
+            "radius_km": R_A,
+            "I_cgs": I_cgs,
+            "status": "COMPUTED_MODEL_ESTIMATE",
+        },
+        "redshift": {"rows": redshift_rows, "status": "COMPUTED_MODEL_OUTPUT"},
+        "postmerger": {
+            "r_16_km": R_16,
+            "f_peak_khz": f_peak,
+            "f_peak_alt_khz": f_peak_alt,
+            "status": "COMPUTED_MODEL_RELATION",
+        },
+        "direct_urca": {
+            "rows": yp_rows,
+            "onset_n0": du_onset,
+            "status": "ASSUMPTION_SENSITIVITY_NOT_INDEPENDENT_EVIDENCE",
+        },
+        "sound_horizon": {
+            "standard_mpc": r_s_standard,
+            "nvg_mpc": r_s_nvg,
+            "relative_difference": abs(r_s_nvg - r_s_standard) / r_s_standard,
+            "status": "BASELINE_CONSISTENCY_CHECK",
+        },
+    }
 
-# ═══════════════════════════════════════════════════════════════════════
-# I. POST-MERGER GW PEAK FREQUENCY
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  I. POST-MERGER GW PEAK FREQUENCY f_peak")
-print("=" * 72)
 
-# Empirical universal relation (Bauswein & Janka 2012, Read et al. 2013):
-# f_peak ≈ a + b / R_1.6
-# where R_1.6 is the radius at 1.6 M_sun (in km), f in kHz
-# Approximate: f_peak ≈ (6.67 - 0.334 * R_1.6) kHz (Bauswein+ 2019)
+RESULTS = compute_results()
 
-R_16 = R_of_M(1.6)
-f_peak = 6.67 - 0.334 * R_16  # kHz
 
-# Alternative relation: f_peak ≈ 1.0 + 0.082 * (14.0 - R_1.4) (simplified)
-f_peak_alt = 1.0 + 0.22 * (14.0 - R_14)  # kHz, rough
+def main() -> None:
+    print("=" * 72)
+    print("  NVG VERIFICATION: OBSERVABLES G–K (COMPUTED CHAIN)")
+    print("=" * 72)
+    eos = RESULTS["eos"]
+    print(f"EOS chain: M_max={eos['m_max']:.3f} M_sun, R_1.4={eos['r_14']:.3f} km")
+    chain_meta = RESULTS["canonical_chain"]
+    print(
+        f"   source={chain_meta['source']}; pressure_grid_points="
+        f"{chain_meta['pressure_grid_points']}; status=CONDITIONAL_IN_SAMPLE"
+    )
 
-print(f"  VMF prediction for R_1.6 = {R_16:.2f} km:")
-print(f"  Post-merger peak frequency f_peak ≈ {f_peak:.2f} kHz")
-print(f"  (Alternative estimate from R_1.4: f_peak ≈ {f_peak_alt:.2f} kHz)")
-print(f"""
-  CONTEXT:
-  After two neutron stars merge, the remnant oscillates violently
-  before collapsing to a black hole. The dominant GW frequency
-  of this oscillation is f_peak, which is tightly correlated
-  with the NS radius (and hence the EOS).
+    moi = RESULTS["moment_of_inertia"]
+    print(f"G. I_1.338={moi['I_cgs']:.3e} g cm² ({moi['status']})")
+    print("   No precision measurement is included here; this is a model estimate.")
 
-  GW170817 post-merger signal was NOT detected (below sensitivity).
-  LIGO O5 / Einstein Telescope should detect post-merger signals.
+    print("H. Surface redshift from computed EOS branch:")
+    for row in RESULTS["redshift"]["rows"]:
+        print(f"   M={row['mass_msun']:.3f} M_sun, R={row['radius_km']:.3f} km, z={row['z']:.4f}")
 
-  VMF PREDICTION: f_peak ≈ {f_peak:.1f}–{f_peak_alt:.1f} kHz
-  
-  If detected, this provides an INDEPENDENT measurement of R_1.6,
-  directly testing the VMF EOS at densities ~ 3-4 n_0.
+    pm = RESULTS["postmerger"]
+    print(f"I. f_peak={pm['f_peak_khz']:.3f} kHz (R_1.6={pm['r_16_km']:.3f} km)")
+    print("   Empirical relation output; no detected post-merger datum is fitted.")
 
-  STATUS: ✅ COMPUTED — awaiting LIGO O5 / ET detection.
-""")
+    du = RESULTS["direct_urca"]
+    print(f"J. Direct-Urca sensitivity onset={du['onset_n0']!r} n_0; status={du['status']}")
 
-# ═══════════════════════════════════════════════════════════════════════
-# J. PROTON FRACTION AND DIRECT URCA THRESHOLD
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  J. PROTON FRACTION Y_p(n_B) — DIRECT URCA THRESHOLD")
-print("=" * 72)
+    sound = RESULTS["sound_horizon"]
+    print(f"K. r_s baseline={sound['standard_mpc']:.2f} Mpc, model estimate={sound['nvg_mpc']:.2f} Mpc")
+    print(f"   status={sound['status']}, Δr_s/r_s={sound['relative_difference']:.2e}")
+    print("Summary statuses are derived from RESULTS; unsupported observational claims are omitted.")
 
-# In beta-equilibrium: mu_n = mu_p + mu_e
-# The proton fraction depends on the symmetry energy E_sym(n_B).
-# In VMF, the symmetry energy has a stiff density dependence
-# due to the saturated vector interaction.
 
-# Symmetry energy parametrization (VMF-derived):
-# E_sym(n_B) ≈ S_0 * (n_B/n_0)^gamma_sym
-S_0 = 32.0   # MeV (symmetry energy at saturation)
-L_sym = 70.0  # MeV (slope parameter — VMF gives stiff value)
-gamma_sym = L_sym / (3.0 * S_0)  # ≈ 0.73
-
-def E_sym(n_B):
-    x = n_B / n_0
-    return S_0 * x**gamma_sym
-
-# Proton fraction in beta-equilibrium (parabolic approximation):
-# Y_p ≈ 1/2 * [1 - (1 + (4 E_sym / (hbar_c * (3 pi^2 n_B)^(1/3)))^3 )^(-1)]
-# Simplified: for ultrarelativistic electrons,
-# mu_e ≈ 4 * E_sym * (1 - 2 Y_p)
-# Y_p ≈ (4 E_sym)^3 / (3 pi^2 * (hbar_c)^3 * n_B) * (1-2Y_p)^3
-# Iterative solution:
-
-def proton_fraction(n_B):
-    """Compute Y_p in beta-equilibrium."""
-    esym = E_sym(n_B)
-    # Start with estimate
-    yp = 0.04
-    for _ in range(50):
-        mu_e = 4.0 * esym * (1.0 - 2.0 * yp)
-        # Electron density: n_e = mu_e^3 / (3 pi^2 hbar_c^3)
-        n_e = mu_e**3 / (3.0 * np.pi**2 * hbar_c**3)
-        # Charge neutrality: n_p = n_e
-        yp_new = n_e / n_B
-        yp = 0.5 * yp + 0.5 * yp_new  # damped iteration
-        if yp > 0.5:
-            yp = 0.5
-        if yp < 0.001:
-            yp = 0.001
-    return yp
-
-# Direct Urca threshold: Y_p > 1/(1 + (1 + (m_e/mu_e)^(1/3))^3) ≈ 11.1% for npe matter
-# More precisely: Y_p > 14.8% (with muons) or > 11.1% (without muons)
-Y_p_threshold = 0.111  # without muons
-Y_p_threshold_mu = 0.148  # with muons
-
-print(f"  Direct Urca threshold: Y_p > {Y_p_threshold*100:.1f}% (npe)")
-print(f"                         Y_p > {Y_p_threshold_mu*100:.1f}% (npeμ)")
-print()
-
-densities = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0]
-print(f"{'n_B/n_0':>8} | {'E_sym (MeV)':>12} | {'Y_p (%)':>8} | {'Direct Urca?':>14}")
-print("-" * 50)
-
-durca_onset = None
-for x in densities:
-    nB = x * n_0
-    esym = E_sym(nB)
-    yp = proton_fraction(nB)
-    durca = "✅ YES" if yp > Y_p_threshold else "❌ no"
-    if yp > Y_p_threshold and durca_onset is None:
-        durca_onset = x
-    print(f"{x:8.1f} | {esym:12.1f} | {yp*100:8.2f} | {durca:>14}")
-
-print(f"""
-  RESULT:
-  The VMF symmetry energy (L = {L_sym:.0f} MeV, stiff) drives the proton
-  fraction above the Direct Urca threshold at n_B ≈ {durca_onset:.1f} n_0.
-
-  This means: neutron stars with central density > {durca_onset:.1f} n_0
-  (corresponding to M > ~1.5 M_sun) will cool RAPIDLY via:
-    n → p + e⁻ + ν̄_e   (Direct Urca, L_ν ∝ T⁶)
-
-  OBSERVATIONAL TEST:
-  Young, massive pulsars should show anomalously low surface temperatures
-  compared to standard Modified Urca cooling.
-  
-  Cassiopeia A: T_eff ~ 2×10⁶ K at age ~340 yr — shows evidence of
-  rapid cooling, consistent with VMF Direct Urca prediction.
-
-  STATUS: ✅ COMPUTED — consistent with Cas A rapid cooling observation.
-""")
-
-# ═══════════════════════════════════════════════════════════════════════
-# K. SOUND HORIZON AT RECOMBINATION
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  K. SOUND HORIZON r_s AT RECOMBINATION")
-print("=" * 72)
-
-# In NVG cyclic cosmology, the bounce occurs at extremely high density
-# (rho_c ~ 7e16 g/cm³). By the time of BBN (T ~ 1 MeV, t ~ 1 s),
-# the NVG correction to H is delta_H/H ~ 10^{-13}.
-# At recombination (T ~ 0.26 eV, t ~ 380,000 yr), it's even smaller.
-
-# Standard calculation of r_s:
-# r_s = integral_0^{t_rec} c_s dt / a(t)
-# where c_s = c / sqrt(3(1 + R_b)), R_b = 3 rho_b / (4 rho_gamma)
-
-# Using standard values:
-Omega_b_h2 = 0.02237   # Planck 2018
-Omega_m_h2 = 0.1430
-h = 0.674
-T_CMB = 2.7255  # K
-z_rec = 1089.92  # Planck
-
-# Sound horizon (standard LCDM):
-# r_s ≈ 147.09 ± 0.26 Mpc (Planck 2018)
-r_s_standard = 147.09  # Mpc
-
-# NVG correction to Hubble rate at recombination
-# From nvg_bounce_derivation.py: delta_H/H ~ (rho_bounce/rho_rec)
-rho_bounce = 7e16   # g/cm³
-T_rec_MeV = 0.26e-3  # MeV
-# rho_rad at recombination: rho ~ (pi^2/30) g_* T^4
-# In CGS at T ~ 0.3 eV:
-rho_rec = 1e-21  # g/cm³ (approximate)
-delta_H_over_H = rho_bounce**(-1) * rho_rec  # negligibly small
-# More precisely, the VMF scalar field contribution at recombination
-# is exponentially suppressed: W = W_0 + delta_W, delta_W ~ exp(-m_W * t)
-# For m_W ~ 859 MeV, the decay time is ~ 10^{-24} s
-# At t_rec ~ 10^{13} s, this is suppressed by exp(-10^{37}) ≈ 0
-
-r_s_NVG = r_s_standard * (1.0 + delta_H_over_H)  # essentially identical
-
-print(f"  Standard ΛCDM: r_s = {r_s_standard} ± 0.26 Mpc")
-print(f"  NVG prediction: r_s = {r_s_NVG:.4f} Mpc")
-print(f"  Difference: Δr_s/r_s = {abs(r_s_NVG - r_s_standard)/r_s_standard:.2e}")
-print(f"""
-  EXPLANATION:
-  The VMF scalar field W has a mass scale m_W = 859 MeV.
-  Its Compton time is τ_W = ħ/m_W ≈ 7.7 × 10⁻²⁵ s.
-  
-  By recombination (t_rec ≈ 1.2 × 10¹³ s), any deviation of W
-  from its vacuum value W_0 has decayed by a factor of
-  exp(-t_rec / τ_W) ≈ exp(-10³⁷) ≈ 0.
-  
-  Therefore: the sound horizon in NVG is IDENTICAL to ΛCDM
-  to extraordinary precision. NVG does NOT modify pre-recombination
-  physics in any detectable way.
-  
-  This is a CONSISTENCY CHECK, not a new prediction.
-  But it is crucial: it means NVG is fully compatible with the
-  precision CMB measurements that are the crown jewel of modern
-  cosmology.
-
-  STATUS: ✅ CONSISTENT — r_s unchanged from ΛCDM.
-""")
-
-# ═══════════════════════════════════════════════════════════════════════
-# SUMMARY
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  SUMMARY: OBSERVABLES G–K")
-print("=" * 72)
-print("""
-┌──────┬──────────────────────────────────────────┬──────────────────┐
-│  #   │  Observable                               │  Status          │
-├──────┼──────────────────────────────────────────┼──────────────────┤
-│  G   │  Moment of Inertia I_1.338               │  ✅ COMPUTED     │
-│      │  I ≈ 1.3 × 10⁴⁵ g cm²                   │  Awaiting meas.  │
-├──────┼──────────────────────────────────────────┼──────────────────┤
-│  H   │  Gravitational Redshift z_surf           │  ✅ COMPUTED     │
-│      │  z(1.4 M_sun) ≈ 0.22                    │  Testable (X-ray)│
-├──────┼──────────────────────────────────────────┼──────────────────┤
-│  I   │  Post-merger GW frequency f_peak         │  ✅ COMPUTED     │
-│      │  f_peak ≈ 2.4 kHz                        │  Awaiting LIGO O5│
-├──────┼──────────────────────────────────────────┼──────────────────┤
-│  J   │  Proton fraction → Direct Urca onset     │  ✅ COMPUTED     │
-│      │  Y_p > 11% at ~2.0 n_0                  │  Cas A consistent│
-├──────┼──────────────────────────────────────────┼──────────────────┤
-│  K   │  Sound horizon r_s at recombination      │  ✅ CONSISTENT   │
-│      │  Identical to ΛCDM (Δr_s/r_s ~ 0)       │  Planck compat.  │
-└──────┴──────────────────────────────────────────┴──────────────────┘
-""")
-print("=" * 72)
+if __name__ == "__main__":
+    main()

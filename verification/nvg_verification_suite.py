@@ -1,183 +1,244 @@
 #!/usr/bin/env python3
-"""
-NVG Verification Suite
+"""NVG verification checks with runtime-derived report values.
 
-This script automatically executes all currently testable mathematical
-and astrophysical constraints for the Null-Vector Gravity (NVG) theory,
-as defined in the Verification Matrix.
+The suite keeps lightweight consistency checks for the framework and delegates
+the neutron-star and echo observables to the maintained TOV/echo implementations.
+It intentionally reports the result of each criterion; a process exit or a row
+label is not treated as proof of the whole theory.
 """
+
+from __future__ import annotations
 
 import math
-from scipy.integrate import solve_ivp
+import os
+import sys
+from typing import Any
+
 import numpy as np
 
-# ── Constants ──
-M_N = 939.0      # MeV
-n_0 = 0.16       # fm^-3
-hbar_c = 197.3   # MeV fm
+
+# Allow this script to be run from either the repository root or verification/.
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+
+# ── Constants ──────────────────────────────────────────────────────────
+M_N = 939.0  # MeV
+n_0 = 0.16  # fm^-3
+hbar_c = 197.3  # MeV fm
 G_cgs = 6.674e-8
 c_cgs = 2.998e10
 M_sun = 1.989e33
 MeV_fm3_to_gcm3 = 1.7827e12
 
-# NVG Parameters
+# NVG inputs used by the simple checks.
 kappa_1 = 0.25
 kappa_2 = 0.80
 M_Omega_0 = 859.0
 
-# Colors for output
-class c:
-    OK = '\033[92m'
-    WARN = '\033[93m'
-    FAIL = '\033[91m'
-    END = '\033[0m'
 
-def print_result(name, passed, details=""):
-    status = f"{c.OK}[PASS]{c.END}" if passed else f"{c.FAIL}[FAIL]{c.END}"
+class c:
+    OK = "\033[92m"
+    WARN = "\033[93m"
+    FAIL = "\033[91m"
+    END = "\033[0m"
+
+
+def print_result(name: str, criterion_ok: bool, details: str = "") -> None:
+    status = f"{c.OK}[CHECKED]{c.END}" if criterion_ok else f"{c.FAIL}[CHECK_FAILED]{c.END}"
     print(f"{status} {name:<40} {details}")
 
 
-print("====================================================================")
-print(" NVG AUTOMATED VERIFICATION SUITE")
-print("====================================================================\n")
+def eps_P_cs2(n_B: float) -> tuple[float, float, float]:
+    """Return the pedagogical EOS proxy used for the causality smoke check."""
 
-# ---------------------------------------------------------
-# TEST 1: Lattice QCD Anchor
-# ---------------------------------------------------------
-# Check if current phenomenological values yield the anchor
-sigma_piN = 44.0  # +/- 5 MeV
-sigma_sN = 30.0   # +/- 10 MeV
-sigma_heavy = 6.0
-derived_anchor = M_N - (sigma_piN + sigma_sN + sigma_heavy)
-passed_1 = (851 <= derived_anchor <= 867)
-print_result("Test 1: Lattice QCD Anchor", passed_1, f"Derived: {derived_anchor} MeV (Target: 851-867)")
-
-
-# ---------------------------------------------------------
-# TEST 2 & 3: NS EOS Causality, Mass, and Radius
-# ---------------------------------------------------------
-# We use a simplified proxy of the EOS from nvg_full_ns_eos.py
-def eps_P_cs2(n_B):
     x = n_B / n_0
-    M_Omega = M_Omega_0 * (1 + kappa_2 * x)**(-kappa_1 / kappa_2)
-    M_cur = M_N - M_Omega_0
-    M_star = M_cur + M_Omega
-    
-    # Free gas approximation for demonstration in the test suite
-    k_F = (1.5 * math.pi**2 * n_B)**(1/3.0)
-    E_F = math.sqrt(k_F**2 + (M_star/hbar_c)**2) * hbar_c
-    eps = n_B * E_F  # Rough approximation
-    
-    # At high density, NVG forces phase transition to QGP P = eps/3
+    m_omega = M_Omega_0 * (1.0 + kappa_2 * x) ** (-kappa_1 / kappa_2)
+    m_cur = M_N - M_Omega_0
+    m_star = m_cur + m_omega
+    k_f = (1.5 * math.pi**2 * n_B) ** (1.0 / 3.0)
+    e_f = math.sqrt(k_f**2 + (m_star / hbar_c) ** 2) * hbar_c
+    eps = n_B * e_f
     if x > 2.0:
-        P = eps / 3.0
-        cs2 = 1.0 / 3.0
+        pressure, cs2 = eps / 3.0, 1.0 / 3.0
     else:
-        P = 0.15 * eps  # Soft hadronic proxy
-        cs2 = 0.15
-        
-    return eps, P, cs2
-
-passed_causality = True
-for n in [1.0, 2.0, 5.0, 10.0]:
-    _, _, cs2 = eps_P_cs2(n * n_0)
-    if cs2 > 1.0:
-        passed_causality = False
-
-print_result("Test 2: Causality (c_s^2 <= 1)", passed_causality, "Max c_s^2 = 0.33 (Conformal limit)")
-
-# We rely on the full integration from nvg_full_ns_eos.py for Mass/Radius
-# (Hardcoding the previously calculated exact results for the suite)
-calc_M_max = 2.27
-calc_R_14 = 12.1
-passed_mass = calc_M_max >= 2.01
-passed_radius = (11.5 <= calc_R_14 <= 13.0)
-print_result("Test 3: NS Max Mass >= 2 M_sun", passed_mass, f"M_max = {calc_M_max} M_sun")
-print_result("Test 4: NS Radius R_1.4 in [11.5, 13] km", passed_radius, f"R_1.4 = {calc_R_14} km")
+        pressure, cs2 = 0.15 * eps, 0.15
+    return eps, pressure, cs2
 
 
-# ---------------------------------------------------------
-# TEST 5: Hadronic Mass Drop (FAIR/HADES)
-# ---------------------------------------------------------
-M_rho_vac = 775.3
-M_rho_cur = 80.0
-M_omega_vac = M_rho_vac - M_rho_cur
-M_omega_med = M_omega_vac * (1 + kappa_2 * 2.0)**(-kappa_1 / kappa_2)
-M_rho_med = M_rho_cur + M_omega_med
-drop_pct = (1.0 - M_rho_med / M_rho_vac) * 100.0
-passed_hades = (20.0 <= drop_pct <= 28.0)
-print_result("Test 5: Rho-meson mass drop at 2n_0", passed_hades, f"Drop = {drop_pct:.1f}% (Expected ~24%)")
+def canonical_ns_observables() -> dict[str, Any]:
+    """Run the maintained canonical EOS/TOV chain and return its stable branch.
+
+    No displayed NS number is supplied here as a prior result: every value is
+    obtained from ``nvg_tidal_deformability.EOS`` and its TOV+Hinderer solver.
+    """
+
+    import nvg_tidal_deformability as td
+
+    eos = td.EOS(p_match=1.5, Gamma=1.35)
+    pressure_centers = np.geomspace(20.0, 3000.0, 30)
+    rows = []
+    for pressure_center in pressure_centers:
+        mass, radius, k2, lam = td.solve_tov_tidal(eos, float(pressure_center))
+        if mass > 0.0 and radius > 0.0 and k2 > 0.0 and lam > 0.0:
+            rows.append((float(mass), float(radius), float(k2), float(lam)))
+    if not rows:
+        raise RuntimeError("canonical EOS produced no valid TOV solutions")
+
+    # Keep the first (stable) branch through the computed mass maximum.
+    mass_values = np.asarray([row[0] for row in rows])
+    max_index = int(np.argmax(mass_values))
+    stable = rows[: max_index + 1]
+    masses = np.asarray([row[0] for row in stable])
+    radii = np.asarray([row[1] for row in stable])
+    lambdas = np.asarray([row[3] for row in stable])
+    if masses.max() < 1.4:
+        raise RuntimeError("canonical EOS branch does not reach 1.4 solar masses")
+
+    def at_mass(target: float, values: np.ndarray) -> float:
+        if target < masses.min() or target > masses.max():
+            raise RuntimeError(f"canonical EOS branch does not reach {target} solar masses")
+        return float(np.interp(target, masses, values))
+
+    return {
+        "M_max": float(mass_values[max_index]),
+        "R_1.4": at_mass(1.4, radii),
+        "Lambda_1.4": at_mass(1.4, lambdas),
+        "stable_rows": len(stable),
+        "solver": "nvg_tidal_deformability.EOS + solve_tov_tidal",
+    }
 
 
-# ---------------------------------------------------------
-# TEST 6: Weak-Field GR Compatibility (Cassini)
-# ---------------------------------------------------------
-# In empty space (n_B = 0), M_Omega = M_Omega_0. The vacuum modulation tensor is 0.
-gamma_NVG = 1.0
-gamma_GR = 1.0
-cassini_limit = 2.3e-5
-passed_ppn = abs(gamma_NVG - gamma_GR) < cassini_limit
-print_result("Test 6: PPN Gamma Cassini Limit", passed_ppn, f"|gamma - 1| = {abs(gamma_NVG - gamma_GR)}")
+def canonical_echo_observable() -> dict[str, Any]:
+    """Call the maintained Kerr echo implementation for the test event."""
+
+    import nvg_gw_echo_prediction as echo
+
+    mass_msun = 65.0
+    spin = 0.67  # LIGO event input, not an NVG fit parameter.
+    delay_s = float(echo.calculate_kerr_echo_delay(mass_msun, spin))
+    r_0_cgs, r_g_cgs = echo.get_bh_parameters(mass_msun)
+    return {
+        "mass_msun": mass_msun,
+        "spin": spin,
+        "delay_s": delay_s,
+        "r_0_km": r_0_cgs / 1e5,
+        "r_g_km": r_g_cgs / 1e5,
+        "solver": "nvg_gw_echo_prediction.calculate_kerr_echo_delay",
+    }
 
 
-# ---------------------------------------------------------
-# TEST 7: BBN Precision Compatibility
-# ---------------------------------------------------------
-# z_BBN ~ 3.6e9, rho_BBN ~ 1.3e5 g/cm^3
-rho_BBN = 1.3e5
-eps_max = M_Omega_0**4 / hbar_c**3
-rho_c = eps_max * MeV_fm3_to_gcm3
-delta_H_H = rho_BBN / (2 * rho_c)
-passed_bbn = delta_H_H < 0.1
-print_result("Test 7: BBN Expansion Rate Shift", passed_bbn, f"dH/H = {delta_H_H:.2e} (Limit < 0.1)")
+def compute_suite_state() -> dict[str, Any]:
+    """Execute criterion rows and return structured state for CLI rendering."""
+
+    sigma_pi_n = 44.0  # phenomenological/lattice input
+    sigma_s_n = 30.0
+    sigma_heavy = 6.0
+    derived_anchor = M_N - (sigma_pi_n + sigma_s_n + sigma_heavy)
+
+    eos = canonical_ns_observables()
+
+    cs2_values = [eps_P_cs2(n * n_0)[2] for n in (1.0, 2.0, 5.0, 10.0)]
+    max_cs2 = max(cs2_values)
+
+    m_rho_vac = 775.3
+    m_rho_cur = 80.0
+    m_omega_vac = m_rho_vac - m_rho_cur
+    m_omega_med = m_omega_vac * (1.0 + kappa_2 * 2.0) ** (-kappa_1 / kappa_2)
+    m_rho_med = m_rho_cur + m_omega_med
+    drop_pct = (1.0 - m_rho_med / m_rho_vac) * 100.0
+
+    gamma_nvg = 1.0
+    gamma_gr = 1.0
+    cassini_limit = 2.3e-5
+
+    rho_bbn = 1.3e5
+    eps_max = M_Omega_0**4 / hbar_c**3
+    rho_c = eps_max * MeV_fm3_to_gcm3
+    delta_h_h = rho_bbn / (2.0 * rho_c)
+
+    h_c = math.sqrt(8.0 * math.pi * G_cgs * rho_c / 3.0)
+    r_c = c_cgs / h_c
+    h_0 = 67.4 * 1e5 / 3.086e24
+    r_h_0 = c_cgs / h_0
+    n_e = math.log(r_h_0 / r_c)
+
+    echo = canonical_echo_observable()
+
+    m_1 = (4.0 / 3.0) * math.pi * r_c**3 * rho_c
+    t_1_us = math.pi * G_cgs * m_1 / c_cgs**3 * 1e6
+
+    t_c_k = 1.825e12
+    xi_room_um = (1.254 * (t_c_k / 300.0)) * 1e-9
+    tau_room_fs = (1.05457e-34 / (1.38065e-23 * 300.0)) * 1e15
+
+    checks = [
+        {"name": "Test 1: Lattice QCD Anchor", "criterion_ok": 851 <= derived_anchor <= 867,
+         "details": f"Derived: {derived_anchor:.1f} MeV (declared input interval 851–867)"},
+        {"name": "Test 2: Causality (c_s^2 <= 1)", "criterion_ok": max_cs2 <= 1.0,
+         "details": f"Max c_s^2 = {max_cs2:.3f} (proxy check)"},
+        {"name": "Test 3: NS Max Mass >= 2 M_sun", "criterion_ok": eos["M_max"] >= 2.01,
+         "details": f"M_max = {eos['M_max']:.3f} M_sun (canonical TOV)"},
+        {"name": "Test 4: NS Radius R_1.4 in [11.5, 13] km",
+         "criterion_ok": 11.5 <= eos["R_1.4"] <= 13.0,
+         "details": f"R_1.4 = {eos['R_1.4']:.3f} km (canonical TOV)"},
+        {"name": "Test 5: Rho-meson mass drop at 2n_0", "criterion_ok": 20.0 <= drop_pct <= 28.0,
+         "details": f"Drop = {drop_pct:.1f}% (proxy calculation)"},
+        {"name": "Test 6: PPN Gamma Cassini Limit",
+         "criterion_ok": abs(gamma_nvg - gamma_gr) < cassini_limit,
+         "details": f"|gamma - 1| = {abs(gamma_nvg - gamma_gr):.2e}"},
+        {"name": "Test 7: BBN Expansion Rate Shift", "criterion_ok": delta_h_h < 0.1,
+         "details": f"dH/H = {delta_h_h:.2e} (bound check)"},
+        {"name": "Test 8: Genesis CMB Cutoff Mapping", "criterion_ok": 50 <= n_e <= 60,
+         "details": f"N_e = {n_e:.1f} (mapping calculation)"},
+        {"name": "Test 9: GW Echoes Delay Time",
+         "criterion_ok": abs(echo["r_0_km"] - 6.25) < 0.1 and echo["delay_s"] > 0.0,
+         "details": f"Delta t (Kerr) = {echo['delay_s']:.5f} s; r_0 = {echo['r_0_km']:.2f} km"},
+        {"name": "Test 10: Tolman Cycles Thermodynamics", "criterion_ok": 5.0 <= t_1_us <= 7.0,
+         "details": f"Genesis lifetime = {t_1_us:.2f} us (computed M_1 = {m_1 / M_sun:.2f} M_sun)"},
+        {"name": "Test 11: Biological theta-Coherence Scale",
+         "criterion_ok": 5.0 <= xi_room_um <= 10.0 and 20.0 <= tau_room_fs <= 30.0,
+         "details": f"xi_room = {xi_room_um:.2f} um, tau_room = {tau_room_fs:.1f} fs"},
+    ]
+    return {
+        "checks": checks,
+        "eos": eos,
+        "echo": echo,
+        "derived_anchor": derived_anchor,
+        "max_cs2": max_cs2,
+        "drop_pct": drop_pct,
+        "delta_h_h": delta_h_h,
+        "n_e": n_e,
+        "t_1_us": t_1_us,
+        "xi_room_um": xi_room_um,
+        "tau_room_fs": tau_room_fs,
+        "evidence_status": "PROCESS_CHECKS_ONLY",
+        "observed_likelihood": None,
+        "limitation": "A green process check is not independent scientific evidence.",
+    }
 
 
-# ---------------------------------------------------------
-# TEST 8: CMB Quadrupole Suppression (Genesis Size)
-# ---------------------------------------------------------
-H_c = math.sqrt(8 * math.pi * G_cgs * rho_c / 3)
-r_c = c_cgs / H_c
-H_0 = 67.4 * 1e5 / 3.086e24
-R_H_0 = c_cgs / H_0
-N_e = math.log(R_H_0 / r_c)
-passed_cmb = (50 <= N_e <= 60)
-print_result("Test 8: Genesis CMB Cutoff Mapping", passed_cmb, f"N_e = {N_e:.1f} (Inflation target ~53)")
+def main() -> dict[str, Any]:
+    state = compute_suite_state()
+    print("====================================================================")
+    print(" NVG AUTOMATED VERIFICATION SUITE")
+    print("====================================================================\n")
+    for check in state["checks"]:
+        print_result(check["name"], check["criterion_ok"], check["details"])
 
-# ---------------------------------------------------------
-# TEST 9: Gravitational Wave Echoes (GW150914)
-# ---------------------------------------------------------
-M_bh = 65.0 * M_sun
-r_0_bh = (3.0 * M_bh / (4.0 * math.pi * rho_c))**(1/3.0)
-R_g = 2.0 * G_cgs * M_bh / c_cgs**2
-delta_t_expected = 0.00512
-r_0_km = r_0_bh / 1e5
-passed_echo = abs(r_0_km - 6.25) < 0.1
-print_result("Test 9: GW Echoes Delay Time", passed_echo, f"Delta t (Kerr) = {delta_t_expected:.5f} s (r_0 = {r_0_km:.2f} km)")
+    all_criteria_ok = all(check["criterion_ok"] for check in state["checks"])
+    print("\n====================================================================")
+    if all_criteria_ok:
+        print(f" {c.OK}ALL DECLARED CRITERION CHECKS COMPLETED.{c.END}")
+    else:
+        print(f" {c.FAIL}SOME DECLARED CRITERION CHECKS FAILED.{c.END}")
+    print(" Criterion rows are process checks, not a proof of the complete NVG framework.")
+    print(" Canonical NS and echo rows above are runtime outputs from their maintained solvers.")
+    print(" Evidence status: PROCESS_CHECKS_ONLY")
+    print("====================================================================")
+    return state
 
-# ---------------------------------------------------------
-# TEST 10: Tolman Cycles Thermodynamics
-# ---------------------------------------------------------
-M_1 = (4.0/3.0) * math.pi * r_c**3 * rho_c
-T_1_s = math.pi * G_cgs * M_1 / c_cgs**3
-T_1_us = T_1_s * 1e6
-passed_tolman = (5.0 <= T_1_us <= 7.0)
-print_result("Test 10: Tolman Cycles Thermodynamics", passed_tolman, f"Genesis lifetime = {T_1_us:.1f} us (M_1 = {M_1/M_sun:.2f} M_sun)")
 
-# ---------------------------------------------------------
-# TEST 11: Biological θ-Coherence Scale
-# ---------------------------------------------------------
-# T = 300 K, xi_0 = 1.254 fm, T_c = 157.3 MeV = 1.825e12 K
-T_c_K = 1.825e12
-xi_room_um = (1.254 * (T_c_K / 300.0)) * 1e-9  # fm to microns (1e-15 m / 1e-6 m = 1e-9)
-tau_room_fs = (1.05457e-34 / (1.38065e-23 * 300.0)) * 1e15  # fs
-passed_bio = (5.0 <= xi_room_um <= 10.0) and (20.0 <= tau_room_fs <= 30.0)
-print_result("Test 11: Biological θ-Coherence Scale", passed_bio, f"xi_room = {xi_room_um:.2f} um, tau_room = {tau_room_fs:.1f} fs")
-
-print("\n====================================================================")
-if all([passed_1, passed_causality, passed_mass, passed_radius, passed_hades, passed_ppn, passed_bbn, passed_cmb, passed_echo, passed_tolman, passed_bio]):
-    print(f" {c.OK}ALL IN-SILICO TESTS PASSED.{c.END}")
-    print(" The NVG/VMF framework is mathematically consistent with current")
-    print(" astrophysical and cosmological bounds.")
-else:
-    print(f" {c.FAIL}SOME TESTS FAILED.{c.END} Review model parameters.")
-print("====================================================================")
+if __name__ == "__main__":
+    main()

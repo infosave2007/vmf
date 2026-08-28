@@ -5,9 +5,9 @@ NVG Cross-Check: Tidal Deformability vs GW170817
 Calculates Love number k_2, dimensionless tidal deformability Λ, and the
 binary tidal deformability Λ_tilde for direct comparison with GW170817.
 
-Method: TOV + Hinderer (2008) y-equation, using the same NVG EOS and
-unit conventions as nvg_full_ns_eos.py (which is verified to produce
-M_max ~ 2.27 M_sun).
+Method: TOV + Hinderer (2008) y-equation, using the maintained canonical
+hybrid EOS and the unit conventions shared with the other NS verification
+entry points.
 
 References:
   Hinderer (2008) ApJ 677, 1216
@@ -17,6 +17,14 @@ References:
 from __future__ import annotations
 import math
 import numpy as np
+
+try:
+    from nvg_ns_canonical import canonical_selection
+except ImportError:  # pragma: no cover - package/direct-script compatibility
+    from verification.nvg_ns_canonical import canonical_selection
+
+
+CANONICAL_SELECTION = canonical_selection()
 
 # ── Constants ────────────────────────────────────────────────────────
 hbar_c = 197.3269804    # MeV·fm
@@ -64,27 +72,66 @@ class EOS:
         sys.path.append(os.path.dirname(os.path.abspath(__file__)))
         import nvg_eos_beta_css_softening as soft
         baseline = soft.build_baseline_arrays()
-        # Canonical transition (see nvg_ns_parameter_scan.py): crossover at 2.0 n_0,
-        # zero latent heat. The old (1.8, 0.4) point is falsified by PSR J0740+6620.
-        hybrid = soft.build_css_hybrid_eos(baseline, n_trans_ratio=2.0, delta_eps_ratio=0.0, cs2_q=1.0/3.0)
+        if baseline is None:
+            raise RuntimeError("canonical NS baseline EOS could not be built")
+        # Reuse the shared scan-selected point and carry its in-sample
+        # provenance through this sibling entry point.
+        selection = canonical_selection()
+        hybrid = soft.build_css_hybrid_eos(baseline, **selection["parameters"])
+        if hybrid is None:
+            raise RuntimeError("canonical NS transition could not build a valid EOS")
         self.p_arr = hybrid["p_sorted"]
         self.eps_arr = hybrid["e_sorted"]
+        self.table_pressure_min = float(self.p_arr[0])
+        self.pressure_min = 0.0
+        self.pressure_max = float(self.p_arr[-1])
+        if (not np.isfinite(p_match) or p_match < self.table_pressure_min
+                or p_match > self.pressure_max):
+            raise ValueError("p_match must lie inside the canonical EOS table domain")
+        if not np.isfinite(Gamma) or Gamma <= 0.0:
+            raise ValueError("Gamma must be a positive finite value")
         self.p_match = p_match
         self.Gamma = Gamma
         self.eps_match = float(np.interp(p_match, self.p_arr, self.eps_arr))
+        if not np.isfinite(self.eps_match) or self.eps_match <= 0.0:
+            raise RuntimeError("canonical EOS matching energy is not physical")
+        self.canonical_selection = selection
+        self.canonical_provenance = selection["provenance"]
 
     def get_eps(self, P: float) -> float:
-        if P <= 0.0: return 0.0
+        P = float(P)
+        if not np.isfinite(P):
+            raise ValueError("pressure must be finite")
+        if P < 0.0:
+            raise ValueError("pressure must be non-negative")
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P > p_max:
+            raise ValueError(
+                f"pressure {P:g} exceeds canonical EOS domain maximum {p_max:g}"
+            )
+        if P == 0.0: return 0.0
         if P < self.p_match:
             return self.eps_match * (P / self.p_match) ** (1.0 / self.Gamma)
-        if P >= self.p_arr[-1]: return self.eps_arr[-1]
+        if P < self.table_pressure_min:
+            raise ValueError("pressure lies below the canonical EOS table domain")
         return float(np.interp(P, self.p_arr, self.eps_arr))
 
     def get_dedp(self, P: float) -> float:
         """dε/dP = 1/c_s² via finite difference."""
+        P = float(P)
+        if not np.isfinite(P):
+            raise ValueError("pressure must be finite")
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P < 0.0 or P > p_max:
+            raise ValueError("pressure is outside the canonical EOS domain")
         dP = max(P * 1e-4, 1e-8)
+        if P <= dP:
+            return (self.get_eps(P + dP) - self.get_eps(P)) / dP
+        p_max = self.pressure_max if hasattr(self, "pressure_max") else float(self.p_arr[-1])
+        if P + dP > p_max:
+            return (self.get_eps(P) - self.get_eps(P - dP)) / dP
         e1 = self.get_eps(P + dP)
-        e2 = self.get_eps(max(P - dP, 0.0))
+        e2 = self.get_eps(P - dP)
         return (e1 - e2) / (2.0 * dP)
 
 
@@ -98,6 +145,11 @@ def solve_tov_tidal(eos: EOS, P_center: float) -> tuple[float, float, float, flo
     Units: m in M_sun via (m_km / 1.4766), r in km, P in MeV/fm³.
     All geometric factors use κ = 1.3234e-6 km⁻² per MeV/fm³.
     """
+    P_center = float(P_center)
+    if not np.isfinite(P_center) or P_center <= 0.0:
+        raise ValueError("central pressure must be a positive finite value")
+    eos.get_eps(P_center)
+
     dr = 0.05  # km
     r = 1e-6   # km
     m = 0.0    # km (geometric mass)
@@ -213,6 +265,7 @@ def main():
     print("=" * 80)
     print("  NVG CROSS-CHECK: TIDAL DEFORMABILITY vs GW170817")
     print("=" * 80)
+    print("  Comparison status: CONDITIONAL_IN_SAMPLE (transition selected on J0740/GW170817/NICER)")
 
     eos = EOS(p_match=1.5, Gamma=1.35)
 
@@ -292,21 +345,20 @@ def main():
     # LIGO constraint
     L_lo, L_med, L_hi = 70, 300, 720
     print(f"\n  LIGO/Virgo 90% CI (low-spin): Λ̃ = {L_med} [{L_lo}, {L_hi}]")
-    # For the minimal hybrid EOS on the stable branch, the 1.4 M_sun star remains hadronic
-    # and exhibits large tidal deformability due to vector stiffness. An optimized model with
-    # lower transition density (e.g. n_trans ~ 1.2-1.3) or a stiffer conformal phase ensures
-    # Lambda_1.4 falls inside the GW170817 range. To verify correctness of the TOV integration:
+    # The CSS transition is a scan-selected in-sample input.  This comparison
+    # reports the resulting runtime values conditionally; it does not establish
+    # an independent fit or confirmation of the EOS.
     ok_sym = L_lo <= Lt_sym <= L_hi
     ok_asym = L_lo <= Lt_asym <= L_hi
-    print(f"  NVG symmetric:  Λ̃ = {Lt_sym:.0f}  →  ({'✅ PASS' if ok_sym else '⚠️ TENSION'} satisfies GW170817)")
-    print(f"  NVG asymmetric: Λ̃ = {Lt_asym:.0f}  →  ({'✅ PASS' if ok_asym else '⚠️ TENSION'} satisfies GW170817)")
+    print(f"  NVG symmetric:  Λ̃ = {Lt_sym:.0f}  →  ({'within' if ok_sym else 'outside'} GW170817 bounds; conditional/in-sample)")
+    print(f"  NVG asymmetric: Λ̃ = {Lt_asym:.0f}  →  ({'within' if ok_asym else 'outside'} GW170817 bounds; conditional/in-sample)")
 
     # ── R_1.4 vs NICER ───────────────────────────────────────────────
     if 1.4 in interp:
         R14 = interp[1.4][0]
         print(f"\n  R_1.4 = {R14:.2f} km  (NICER: 12.45 ± 0.65 km)")
         ok_R = 11.0 <= R14 <= 14.0
-        print(f"  Status: {'✅ COMPATIBLE' if ok_R else '⚠️  TENSION'}")
+        print(f"  Status: {'within' if ok_R else 'outside'} stated NICER interval (conditional/in-sample)")
 
     # ── Double Pulsar I ──────────────────────────────────────────────
     if 1.338 in interp:
@@ -317,10 +369,10 @@ def main():
         M_cm = 1.338 * M_sun_g * G_cgs / c_cgs**2
         I_cgs = I_bar * M_cm**3 / (G_cgs / c_cgs**2)
         print(f"\n  Double Pulsar J0737-3039A (M=1.338 M_sun):")
-        print(f"  I (NVG) = {I_cgs:.3e} g cm²")
-        print(f"  I (obs) = 1.15 (+0.38/-0.24) × 10^45 g cm²")
+        print(f"  I from Lambda transform (no independent I solve) = {I_cgs:.3e} g cm²")
+        print(f"  Observed interval (context only; no validation): 1.15 (+0.38/-0.24) × 10^45 g cm²")
         ok_I = 0.91e45 <= I_cgs <= 1.53e45
-        print(f"  Status: {'✅ COMPATIBLE' if ok_I else '⚠️  TENSION'}")
+        print(f"  Transform overlap (descriptive only; not validation): {'yes' if ok_I else 'no'}")
 
     # ── Summary ──────────────────────────────────────────────────────
     print("\n" + "=" * 80)
@@ -336,7 +388,7 @@ def main():
 
     assert M_max > 2.0, f"M_max = {M_max:.2f} < 2.0!"
     assert ok_sym or ok_asym, f"Λ̃ outside GW170817 90% CI!"
-    print("All tidal deformability cross-checks PASSED.")
+    print("Runtime tidal calculation complete; all displayed comparisons are conditional/in-sample.")
 
 
 if __name__ == "__main__":

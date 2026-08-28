@@ -3,8 +3,8 @@
 NVG Publication Figure: Speed of Sound c_s^2(n_B) with Bayesian Contours
 ------------------------------------------------------------------------
 Generates a publication-quality plot of the squared speed of sound c_s^2
-as a function of baryon density n_B/n_0, comparing the VMF EOS prediction
-against 90% CI Bayesian contours from joint NICER+LIGO inference.
+as a function of baryon density n_B/n_0, comparing the VMF EOS model against
+declared 90% CI digitized contours from joint NICER+LIGO inference.
 
 Bayesian bands are digitized from:
   - Legred et al. (2021) Phys. Rev. D 104, 063003 (Fig. 5)
@@ -60,16 +60,11 @@ def get_bayesian_contours():
     return n_points, median, lower, upper
 
 
-def main():
-    print("=" * 80)
-    print("     NVG PUBLICATION FIGURE: c_s^2(n_B) WITH BAYESIAN CONTOURS")
-    print("=" * 80)
-
+def compute_comparison(*, save_plot: bool = True):
     # Phase transition parameters (same as nvg_full_ns_eos.py)
     n_trans = 2.0
     delta_eps = 350.0
 
-    print(f"Loading Unified VMF EOS (Onset: {n_trans} n_0, Latent Heat: {delta_eps} MeV/fm³)...")
     eos = UnifiedEOS(n_trans, delta_eps)
 
     # Calculate density grid
@@ -81,30 +76,28 @@ def main():
     deps = np.diff(eps_arr)
     dp = np.diff(p_arr)
 
-    cs2 = np.zeros_like(deps)
+    cs2 = np.full_like(deps, np.nan)
     valid = deps > 0.0
-    cs2[valid] = dp[valid] / deps[valid]
+    with np.errstate(divide="ignore", invalid="ignore"):
+        cs2[valid] = dp[valid] / deps[valid]
 
     # Baryon density at midpoints (in units of n_0)
     n_mid_n0 = ((n_grid[:-1] + n_grid[1:]) / 2.0) / n_0
-
-    # Clip negative cs2 values
-    cs2 = np.clip(cs2, 0.0, 1.2)
 
     # Get Bayesian contours
     n_bayes, med_bayes, lo_bayes, hi_bayes = get_bayesian_contours()
 
     # Identify key features of the VMF curve
-    max_cs2 = np.max(cs2)
-    max_idx = np.argmax(cs2)
+    finite_cs2 = np.isfinite(cs2)
+    if not np.any(finite_cs2):
+        raise RuntimeError("canonical EOS produced no finite dP/dε samples")
+    max_cs2 = np.nanmax(cs2)
+    max_idx = np.nanargmax(cs2)
     max_density = n_mid_n0[max_idx]
 
     high_density_mask = n_mid_n0 > 5.0
-    asymptotic_cs2 = np.mean(cs2[high_density_mask]) if np.any(high_density_mask) else 0.0
-
-    print(f"VMF Maximum c_s^2 = {max_cs2:.4f} at {max_density:.2f} n_0")
-    print(f"VMF Asymptotic c_s^2 = {asymptotic_cs2:.4f}")
-    print(f"Conformal limit 1/3 = {1.0/3.0:.4f}")
+    asymptotic_mask = high_density_mask & finite_cs2
+    asymptotic_cs2 = np.mean(cs2[asymptotic_mask]) if np.any(asymptotic_mask) else 0.0
 
     # ── Publication-Quality Figure ──────────────────────────────────────
     plt.rcParams.update({
@@ -129,17 +122,17 @@ def main():
     # 1. Bayesian 90% CI band (NICER+LIGO)
     ax.fill_between(n_bayes, lo_bayes, hi_bayes,
                     color='#4ECDC4', alpha=0.22,
-                    label=r'NICER+LIGO 90% CI (Legred+ 2021)')
+            label=r'NICER+LIGO 90% CI (digitized literature input)')
     # Bayesian median
     ax.plot(n_bayes, med_bayes,
             color='#4ECDC4', linewidth=1.5, linestyle='--', alpha=0.8,
-            label=r'NICER+LIGO median')
+            label=r'NICER+LIGO median (digitized literature input)')
 
     # 2. VMF EOS curve (main result)
     mask_plot = n_mid_n0 < 8.0
     ax.plot(n_mid_n0[mask_plot], cs2[mask_plot],
             color='#FF6B6B', linewidth=2.8, zorder=5,
-            label=r'VMF EOS ($M_\Omega = 859$ MeV)')
+            label=r'VMF EOS model ($M_\Omega = 859$ MeV)')
 
     # 3. Reference lines
     ax.axhline(1.0 / 3.0, color='#555555', linestyle=':', linewidth=1.2, alpha=0.7)
@@ -183,16 +176,35 @@ def main():
     plt.tight_layout()
 
     plot_path = os.path.join(os.path.dirname(__file__), "fig_speed_of_sound_bayesian.png")
-    plt.savefig(plot_path, dpi=300, bbox_inches='tight', facecolor='white')
+    if save_plot:
+        plt.savefig(plot_path, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
-    print(f"Saved: {plot_path}")
+    return {
+        "max_cs2": float(max_cs2),
+        "max_density_n0": float(max_density),
+        "asymptotic_cs2": float(asymptotic_cs2),
+        "valid_derivative_samples": int(np.count_nonzero(finite_cs2)),
+        "evidence_status": "CONDITIONAL_LITERATURE_COMPARISON",
+        "observed_likelihood": None,
+        "canonical_producer": "verification/nvg_full_ns_eos.py:UnifiedEOS",
+        "contour_provenance": "Legred et al. (2021) Fig. 5; digitized display inputs",
+        "limitation": "Posterior samples and a joint NICER+LIGO likelihood are not bundled.",
+        "plot_path": plot_path if save_plot else None,
+    }
 
-    # Assertions
-    assert max_cs2 < 1.0, "EOS violates causality!"
-    assert abs(asymptotic_cs2 - 1.0 / 3.0) < 0.05, "Quark phase doesn't approach conformal limit!"
 
-    print("Speed of sound Bayesian comparison PASSED.")
+def main():
+    state = compute_comparison(save_plot=True)
     print("=" * 80)
+    print("     NVG SPEED OF SOUND MODEL WITH DIGITIZED LITERATURE CONTOURS")
+    print("=" * 80)
+    print(f"Runtime VMF maximum c_s^2             : {state['max_cs2']:.4f} at {state['max_density_n0']:.2f} n_0")
+    print(f"Runtime VMF high-density c_s^2        : {state['asymptotic_cs2']:.4f}")
+    print(f"Saved: {state['plot_path']}")
+    print("Evidence status                       : CONDITIONAL_LITERATURE_COMPARISON")
+    print("Digitized contours are display inputs; no posterior likelihood is evaluated.")
+    print("=" * 80)
+    return state
 
 
 if __name__ == "__main__":

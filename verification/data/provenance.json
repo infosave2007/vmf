@@ -1,0 +1,105 @@
+{
+  "entries": {
+    "gwtc_events.csv": {
+      "config": "latest version per commonName; min network SNR 8; p_astro >= 0.5; final mass >= 5 Msun; selection metadata only",
+      "kind": "input",
+      "producer": null,
+      "sha256": "5c9876917eff320145d02f60328e6e1b6eef8d040e9711f4e94d85b3601c2ec3",
+      "source": "GWOSC event catalog export",
+      "source_url": "https://gwosc.org/eventapi/html/",
+      "status": "verified_public",
+      "trust_status": "verified_public",
+      "version": "GWTC-2.1-confident and local catalog rows"
+    },
+    "hades_templates_20MeV.csv": {
+      "config": "emit_templates(np.arange(200, 821, 20), path)",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "sha256": "93e89bbb3e0f92774d1added70a30fbb60a8f452542634d86269d8462275fd82",
+      "source": null,
+      "source_url": null,
+      "status": "generated_unverified",
+      "trust_status": "unknown_provenance",
+      "version": null
+    },
+    "hades_templates_40MeV.csv": {
+      "config": "emit_templates(np.arange(200, 841, 40), path)",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "sha256": "0cbad36b31b419d8a365535728674dbb5bbe10bda230b102afb0c52d14ca64ac",
+      "source": null,
+      "source_url": null,
+      "status": "generated_unverified",
+      "trust_status": "unknown_provenance",
+      "version": null
+    },
+    "nvg_gw_template.txt": {
+      "config": "module default frequency grid and comb constants",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_gw_spectrum_template.py",
+      "sha256": "7345502f5c1eb7482dec152b745ed63c1dec88f9b7cf0b0b3ee8e44468cd5d7f",
+      "source": "repository-generated template; no independent reference recorded",
+      "source_url": null,
+      "status": "generated_unverified",
+      "trust_status": "generated_unverified",
+      "version": null
+    },
+    "nvg_hartle_p2s1_j0737a_mass.json": {
+      "config": "target_mass_only; held-out timing target for conditional EOS evaluation",
+      "kind": "input",
+      "producer": null,
+      "sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+      "source": "Kramer et al. (2006), arXiv:astro-ph/0609417",
+      "source_url": "https://arxiv.org/abs/astro-ph/0609417",
+      "status": "verified_primary_source",
+      "trust_status": "verified_primary_source",
+      "version": "released timing value 1.3381 +/- 0.0007 M_sun"
+    },
+    "nvg_residual_stack_results.csv": {
+      "config": "O1-O4 residual stack defaults; per-event Fisher/rho90 sensitivity table",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_echo_residual_stack.py",
+      "sha256": "84f8d80f689f14d7790638402a0237832fad8fc78b246f9b8bfc59e2bf0824e1",
+      "source": "output of nvg_echo_residual_stack.py; not an observational input",
+      "source_url": null,
+      "status": "generated_unverified",
+      "trust_status": "generated_unverified",
+      "version": null
+    },
+    "p2_s3_hierarchical_echo/analysis_config.json": {
+      "config": "P2-S6 deterministic echo calibration and complete numerical uncertainty ladder",
+      "kind": "input",
+      "producer": null,
+      "sha256": "ded246a1b7284a4e60678582e7a04a2b54e30079fa80b9d0f4d7cfab2b838392",
+      "source": "repository-declared configuration",
+      "source_url": null,
+      "status": "declared_local_configuration",
+      "trust_status": "declared_local_configuration",
+      "version": "P2-S3-hierarchical-echo-config-v1"
+    },
+    "planck2018_te_full.txt": {
+      "config": null,
+      "kind": "input",
+      "producer": null,
+      "sha256": "8b2c97d8865ebfdfb2b23c3e6883a39820734b804ba6e353533657b3a2f71425",
+      "source": null,
+      "source_url": null,
+      "status": "unknown_provenance",
+      "trust_status": "unknown_provenance",
+      "version": null
+    },
+    "planck2018_tt_full.txt": {
+      "config": null,
+      "kind": "input",
+      "producer": null,
+      "sha256": "ccf3113604020536f6f13ccf51680a7316ad0f32da558eee7f625e613bdd5522",
+      "source": null,
+      "source_url": null,
+      "status": "unknown_provenance",
+      "trust_status": "unknown_provenance",
+      "version": null
+    }
+  },
+  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
+  "schema_version": 2
+}

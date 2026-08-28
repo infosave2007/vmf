@@ -1,44 +1,61 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: spin limits of fork-B stars (Kepler bound, r-modes).
+"""Quarantined alternate fork-B spin/r-mode calibration route.
 
-The fork-B canonical EOS (R_1.4 = 12.49 km, M_max >= 2.0 M_sun) must be
-compatible with the observed spin distribution of neutron stars. This
-script computes:
+This entry point retains an older 12.49-km-style fork-B calibration for
+descriptive context only. It is dated and carries zero evidence weight; it is
+not the maintained canonical EOS route and no current promoted result or
+independent test is claimed. The script computes:
 
   (1) the Kepler (mass-shedding) frequency
           nu_K ~ (1/2 pi) sqrt(GM/R^3)
-      (with the Lattimer-Prakash GR correction factor) for the canonical
-      1.4 M_sun fork-B star and for the maximum-mass configuration, and
+      (with the Lattimer-Prakash GR correction factor) for the alternate
+      1.4 M_sun fork-B star and for the alternate maximum-mass configuration, and
       confronts it with the fastest known pulsar J1748-2446ad (716 Hz);
 
   (2) the r-mode instability window: the gravitational-radiation growth
       time of the l=m=2 r-mode vs the viscosity damping times
       (shear: neutron-neutron scattering; bulk: modified Urca), using
       standard literature scalings. The window edges T_-, T_+ are solved
-      for a canonical fork-B star at the observed spins of J0737A
+      for the alternate fork-B star at the observed spins of J0737A
       (44 Hz), SAX J1808.4-3658 (401 Hz) and J1748-2446ad (716 Hz);
 
   (3) the NVG content: fork B contains a quark core above ~4 rho_c.
       Color-superconducting quark matter adds bulk-viscosity damping
-      that closes the low-T edge of the window -> the prediction is
-      that accreting millisecond pulsars hosting fork-B cores sit
-      OUTSIDE the instability window at their measured temperatures.
+      that may close the low-T edge of the window (alternate-model hypothesis).
 
-Status verdicts are printed per check; no observational spin is allowed
-to exceed nu_K of the corresponding fork-B configuration.
+Numeric checks are printed with their quarantine status; no observational spin
+is used as independent evidence for the alternate route.
 """
 
 import math
+
+
+MODEL_IDENTITY = {
+    "model_id": "fork_b_alternate_spin_12p49",
+    "status": "QUARANTINED_ALTERNATE_CALIBRATION",
+    "as_of": "2026-08-27",
+    "canonical": False,
+    "independent": False,
+    "evidence_weight": 0.0,
+    "anchor_radius_km": 12.49,
+    "source": "verification/nvg_spin_limits_rmodes.py",
+    "reason": (
+        "legacy fork-B spin/r-mode constants are not connected to the current "
+        "canonical TOV transition record"
+    ),
+}
 
 # physical constants (CGS)
 G = 6.67430e-8        # cm^3 g^-1 s^-2
 MSUN = 1.98892e33     # g
 
-# fork-B configurations from nvg_moment_of_inertia_j0737.py
-# (canonical 1.4 M_sun; M_max configuration of the same EOS)
-CANONICAL = (1.40, 12.53)      # M/M_sun, R/km
-M_MAX = (2.29, 11.55)          # M/M_sun, R/km  (approximate TOV apex)
+# Alternate fork-B configurations retained for dated, zero-weight context.
+# They are deliberately not the maintained canonical TOV route.
+ALTERNATE_CONFIG = (1.40, 12.53)  # M/M_sun, R/km
+ALTERNATE_M_MAX = (2.29, 11.55)   # M/M_sun, R/km (approximate TOV apex)
+# Backward-compatible aliases; both remain quarantined by MODEL_IDENTITY.
+CANONICAL = ALTERNATE_CONFIG
+M_MAX = ALTERNATE_M_MAX
 
 # observed sources: name, spin Hz, estimated core temperature K
 OBSERVED = [("PSR J0737-3039A", 44.1, 1.0e6),
@@ -48,10 +65,11 @@ OBSERVED = [("PSR J0737-3039A", 44.1, 1.0e6),
 # r-mode constants (l = m = 2).
 # Shear (n-n scattering) and bulk (modified Urca) damping times are
 # CALIBRATED to reproduce the standard Newtonian instability-window
-# edges of Lindblom-Owen-Morsink (1998) for a canonical star at the
+# edges of Lindblom-Owen-Morsink (1998) for the alternate star at the
 # Kepler limit: T_- = 1.4e8 K, T_+ = 2.0e10 K. The absolute position
 # of the mU window is model-dependent (the known "bulk-viscosity
-# crisis" of LMXB spins); extra quark-core damping is the NVG answer.
+# crisis" of LMXB spins); extra quark-core damping is an alternate-model
+# hypothesis, not an evaluated current result.
 TAU_S_0 = 2398.0      # s, shear normalization: tau_S = tau0 (T/1e9)^2
 TAU_B_0 = 3.0e9       # s, bulk normalization:  tau_B = tau0 (T/1e9)^-6
 TAU_GR_KEPLER = 47.0  # s, |tau_GR| at the Kepler limit (Lindblom+98)
@@ -115,28 +133,37 @@ def window_edges(nu_hz: float, m_msun: float, r_km: float):
 
 def main():
     print("=" * 72)
-    print(" NVG FORK-B SPIN LIMITS: KEPLER BOUND AND R-MODE WINDOW")
+    print(" NVG ALTERNATE FORK-B SPIN CONTEXT (QUARANTINED)")
     print("=" * 72)
+    print(
+        " status=" + MODEL_IDENTITY["status"]
+        + "; as_of=" + MODEL_IDENTITY["as_of"]
+        + "; independent=False; evidence_weight=0.0"
+    )
+    print(" This route is descriptive historical context, not a current evidence surface.")
 
     # (1) Kepler bound
     print("[1] Kepler (mass-shedding) frequencies:")
-    for label, (m, r) in [("canonical 1.4 M_sun", CANONICAL),
-                          ("M_max configuration", M_MAX)]:
+    for label, (m, r) in [("alternate 1.4 M_sun", ALTERNATE_CONFIG),
+                          ("alternate M_max configuration", ALTERNATE_M_MAX)]:
         n_newt, n_gr = nu_kepler_hz(m, r)
         print(f"    {label} (M={m:.2f} M_sun, R={r:.2f} km): "
               f"nu_K = {n_gr:.0f} Hz (Newtonian {n_newt:.0f} Hz)")
     nu_fast = max(nu for _, nu, _ in OBSERVED)
-    _, nu_k_max = nu_kepler_hz(*M_MAX)
+    _, nu_k_max = nu_kepler_hz(*ALTERNATE_M_MAX)
     print(f"    fastest observed pulsar: {nu_fast:.0f} Hz "
           f"({nu_fast/nu_k_max*100:.0f}% of the M_max Kepler limit)")
-    verdict = "PASS" if nu_fast < nu_k_max else "FAIL"
-    print(f"    -> all observed spins below the fork-B Kepler bound: {verdict}")
+    verdict = "BELOW_ALTERNATE_BOUND" if nu_fast < nu_k_max else "ABOVE_ALTERNATE_BOUND"
+    print(
+        "    -> observed spins vs alternate Kepler bound (descriptive only): "
+        f"{verdict}"
+    )
     print("-" * 72)
 
     # (2) r-mode window
-    print("[2] r-mode instability window (canonical fork-B star,")
+    print("[2] r-mode instability window (alternate fork-B calibration,")
     print("    GW driving vs shear + modified-Urca bulk viscosity):")
-    m_c, r_c = CANONICAL
+    m_c, r_c = ALTERNATE_CONFIG
     _, nu_kc = nu_kepler_hz(m_c, r_c)
     for name, nu, t_obs in OBSERVED:
         edges = window_edges(nu, m_c, r_c)
@@ -160,16 +187,15 @@ def main():
     # (3) NVG content
     print("[3] NVG content: fork B carries a quark core above ~4 rho_c.")
     print("    Color-superconducting quark matter supplies additional bulk")
-    print("    viscosity (Alford-Schmitt-Stiff) that closes the low-T edge")
-    print("    of the window. Prediction: no persistent r-mode emission from")
-    print("    accreting millisecond pulsars with fork-B cores; any LIGO")
-    print("    continuous-wave detection of an r-mode at the predicted")
-    print("    amplitude falsifies the quark-core closure.")
+    print("    viscosity (Alford-Schmitt-Stiff) that may close the low-T edge")
+    print("    of the window. Alternate-model hypothesis (not evidence): no")
+    print("    persistent r-mode emission from accreting millisecond pulsars")
+    print("    with fork-B cores. No hypothesis-rejection or independent")
+    print("    significance claim is made by this quarantined route.")
     print("=" * 72)
-    print("STATUS: Kepler check PASS (716 Hz << 1.6 kHz); mature pulsars")
-    print("sit below the cold (shear) edge of the mU window; the window")
-    print("at high spin covers hot young phases -> r-modes as the birth-")
-    print("spin limiter, consistent with the observed 716 Hz ceiling.")
+    print("STATUS: QUARANTINED_ALTERNATE_CALIBRATION (zero independent evidence weight)")
+    print("Numeric outputs above are retained for reproducibility only; they are")
+    print("not promoted to the canonical model or a current observational claim.")
     print("=" * 72)
 
 

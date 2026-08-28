@@ -1,11 +1,27 @@
+from __future__ import annotations
+
 import csv
+from pathlib import Path
 import numpy as np
 
-def calculate_stats(csv_file='gwtc3_nvg_results.csv'):
+HERE = Path(__file__).resolve().parent
+REPOSITORY_ROOT = HERE.parent
+DEFAULT_INPUT = HERE / "gwtc3_nvg_results.csv"
+
+
+def resolve_input_path(value: str | Path | None = None) -> Path:
+    """Resolve a GWTC result path relative to the repository, not caller cwd."""
+
+    path = DEFAULT_INPUT if value is None else Path(value)
+    return path if path.is_absolute() else REPOSITORY_ROOT / path
+
+
+def calculate_stats(csv_file=None):
+    csv_file = resolve_input_path(csv_file)
     snrs = []
     top_candidates = []
     
-    with open(csv_file, 'r') as f:
+    with csv_file.open('r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             snr = float(row['Max_Echo_SNR'])

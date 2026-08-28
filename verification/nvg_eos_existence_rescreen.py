@@ -51,6 +51,28 @@ GRID_AV = (1.0, 4.0)
 GRID_NV = (2.0,)
 
 
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Interpolate p(eps) only within a finite, sorted physical domain."""
+    pressure = float(pressure)
+    pressure_grid = np.asarray(pressure_grid, dtype=float)
+    energy_grid = np.asarray(energy_grid, dtype=float)
+    if pressure_grid.ndim != 1 or energy_grid.ndim != 1:
+        raise ValueError("EOS grids must be one-dimensional")
+    if pressure_grid.size < 2 or pressure_grid.size != energy_grid.size:
+        raise ValueError("EOS grids must contain at least two paired points")
+    if (not np.isfinite(pressure) or not np.isfinite(pressure_grid).all()
+            or not np.isfinite(energy_grid).all()):
+        raise ValueError("pressure and EOS grids must be finite")
+    if np.any(np.diff(pressure_grid) <= 0.0):
+        raise ValueError("pressure grid must be strictly increasing")
+    if pressure < pressure_grid[0] or pressure > pressure_grid[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} lies outside the candidate EOS domain "
+            f"[{pressure_grid[0]:g}, {pressure_grid[-1]:g}]"
+        )
+    return float(np.interp(pressure, pressure_grid, energy_grid))
+
+
 def melting_mass(n_b, k1, k2):
     return base.M_base(n_b, k1, k2)
 
@@ -152,12 +174,17 @@ def crude_tov(d):
     p_arr, e_arr = d["p"], d["eps"]
     good = p_arr > 0.05
     p_s, e_s = p_arr[good], e_arr[good]
+    if p_s.size < 2:
+        return None, None
     idx = np.argsort(p_s)
     p_s, e_s = p_s[idx], e_s[idx]
+    if np.any(np.diff(p_s) <= 0.0):
+        return None, None
+    p_min, p_max = float(p_s[0]), float(p_s[-1])
     conv = 1.3234e-6                        # MeV/fm^3 -> km^-2 (G=c=1)
 
     def eps_of_p(p):
-        return np.interp(p, p_s, e_s)
+        return pressure_to_energy_checked(p, p_s, e_s)
 
     def rhs(r, y):
         m, p = y
@@ -172,6 +199,9 @@ def crude_tov(d):
 
     results = []
     for pc in np.geomspace(30, 1500, 26):
+        # Unsupported central pressures are not extrapolated from an endpoint.
+        if pc < p_min or pc > p_max:
+            continue
         sol = solve_ivp(rhs, [1e-6, 30.0], [0.0, pc], max_step=0.02,
                         events=lambda r, y: y[1] - p_s[0] * 1.01,
                         rtol=1e-6, atol=1e-9)

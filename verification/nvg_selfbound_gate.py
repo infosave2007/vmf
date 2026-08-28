@@ -135,9 +135,10 @@ def dense_branch_p0(d):
         n_p0 = nh[j - 1] + f * (nh[j] - nh[j - 1])
         return epA0, n_p0
     if (ph > 0).all():
-        # branch never reaches p = 0: extrapolate mu at p -> 0
-        epA0 = float(np.interp(0.0, ph, muh))     # mu(p=0) = eps/A at p=0
-        return epA0, float(np.interp(0.0, ph, nh))
+        # A branch that is positive everywhere has no resolved P=0 point.
+        # Do not treat np.interp's below-domain endpoint clamp as an implied
+        # zero-pressure state; the self-bound gate must fail closed.
+        return None, None
     return None, None
 
 

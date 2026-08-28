@@ -1,161 +1,89 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Advanced Observables III 
-(Lorentz Invariance, Multi-Meson Shifts, Kerr QNMs, NS Cooling Population)
+"""Runtime forward calculations for the third advanced-observables set.
 
-1. Lorentz-Invariance of W-Sector (Birefringence & Dispersion limits)
-2. Multi-Meson In-Medium Mass Shifts (rho, omega, phi, K*, J/psi)
-3. Kerr-Hayward Observables (QNM shifts)
-4. Population-level NS Cooling (Envelope uncertainties)
+Only algebraic/formal checks and model templates are available for these
+rows.  No detector likelihood is fabricated, and the old population-level
+cooling conclusion is explicitly retired because no independent mass/age/
+luminosity sample is present in the repository.
 """
+
+from __future__ import annotations
+
+import math
+from typing import Any
+
 import numpy as np
 
-print("=" * 72)
-print("  NVG: ADVANCED OBSERVABLES III")
-print("=" * 72)
+EVIDENCE_STATUS = {
+    "lorentz": "FORMAL_CONFORMAL_IDENTITY_NO_GRB_LIKELIHOOD",
+    "meson": "FORWARD_ONLY_NO_IN_MEDIUM_DATA_LIKELIHOOD",
+    "qnm": "SENSITIVITY_ONLY_NO_RINGDOWN_SOLVER_OR_DATA",
+    "cooling": "RETIRED_NO_INDEPENDENT_COOLING_POPULATION_OR_LIKELIHOOD",
+}
 
-# ═══════════════════════════════════════════════════════════════════════
-# 1. LORENTZ INVARIANCE & VACUUM POLARIZATION OF W-SECTOR
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  1. W-SECTOR LORENTZ INVARIANCE (BIREFRINGENCE & DISPERSION)")
-print("=" * 72)
 
-# VMF predicts that W-field couples conformally to F_mu F^mu.
-# Unlike axion-like particles (F_mu \tilde{F}^mu), conformal coupling 
-# preserves parity and does NOT induce vacuum birefringence.
-# Dispersion is only induced if the W-field has a spatial gradient.
-# In cosmological vacuum, grad(W) = 0.
+def lorentz_limit(energies_ev: np.ndarray | None = None) -> dict[str, np.ndarray]:
+    """Evaluate the conformal-sector prediction in a homogeneous vacuum."""
 
-E_gamma = np.array([1e6, 1e9, 1e12])  # Photon energies in eV (1 MeV to 1 TeV)
-# Standard Model + GR limits for dispersion delta_c / c
-GR_limit = 1e-20
+    energies = np.asarray(energies_ev if energies_ev is not None else [1e6, 1e9, 1e12], dtype=float)
+    if np.any(~np.isfinite(energies)) or np.any(energies <= 0.0):
+        raise ValueError("photon energies must be finite and positive")
+    return {"energies_ev": energies, "birefringence": np.zeros_like(energies), "dispersion": np.zeros_like(energies)}
 
-print(f"  {'Photon Energy':>15} | {'Birefringence (d_theta)':>25} | {'Dispersion (dc/c)':>20}")
-print("-" * 65)
-for E in E_gamma:
-    # VMF coupling is perfectly Lorentz scalar
-    birefringence = 0.0  # Exact zero
-    # Dispersion strictly zero in homogeneous vacuum
-    dispersion = 0.0     # Exact zero
-    print(f"  {E:15.1e} eV | {birefringence:25.1f} | {dispersion:20.1f}")
 
-print("""
-  OBSERVATIONAL IMPACT (Gamma-Ray Bursts):
-  Because the W-field coupling is purely a conformal conformal rescaling 
-  (e^{-2 alpha W/M}), it generates ZERO birefringence and ZERO vacuum 
-  dispersion for propagating photons. This trivially satisfies the most 
-  stringent astrophysical bounds from GRB 041219A and GRB 090510.
-  STATUS: ✅ LORENTZ INVARIANCE STRICTLY PRESERVED
-""")
+def meson_forward_table(n_ratio: float = 2.0) -> list[dict[str, float | str]]:
+    """Use the maintained FAIR/HADES mass-mapping producer for templates."""
 
-# ═══════════════════════════════════════════════════════════════════════
-# 2. MULTI-MESON IN-MEDIUM MASS SHIFTS
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  2. MULTI-MESON IN-MEDIUM PHENOMENOLOGY (2n_0)")
-print("=" * 72)
+    if not np.isfinite(n_ratio) or n_ratio < 0.0:
+        raise ValueError("density ratio must be finite and non-negative")
+    from nvg_fair_hades_link import HADRONS, in_medium_mass, n_0
 
-# Base VMF coupling drops the chiral condensate dynamically.
-# Different mesons have different dependencies on the chiral condensate.
-# rho/omega ~ 100% coupled
-# phi (ss_bar) ~ partially coupled
-# K* (qs_bar) ~ partially coupled
-# J/psi (cc_bar) ~ extremely weakly coupled (dominated by gluon condensate)
+    rows = []
+    for name, (vacuum, current) in HADRONS.items():
+        medium = float(in_medium_mass(vacuum, current, float(n_ratio) * n_0))
+        rows.append({"name": name, "vacuum_mev": float(vacuum), "medium_mev": medium,
+                     "shift_fraction": 1.0 - medium / float(vacuum)})
+    return rows
 
-mesons = [
-    ("rho (775)", 775, 1.0),
-    ("omega (782)", 782, 1.0),
-    ("K* (892)", 892, 0.4),
-    ("phi (1020)", 1020, 0.15),
-    ("J/psi (3096)", 3096, 0.02)
-]
 
-n_ratio = 2.0  # 2x nuclear saturation density (FAIR/NICA regime)
-mass_drop_max = 0.232  # 23.2% drop at 2n_0 for fully coupled light quarks
+def qnm_sensitivity(l_over_rs: float = 1.0e-35) -> dict[str, float]:
+    """Return the leading core-size scaling, explicitly not a ringdown fit."""
 
-print(f"  {'Meson':>15} | {'Vac Mass (MeV)':>15} | {'In-Medium (MeV)':>15} | {'Shift (%)':>10}")
-print("-" * 65)
+    if not np.isfinite(l_over_rs) or l_over_rs < 0.0:
+        raise ValueError("l_over_rs must be finite and non-negative")
+    return {"l_over_rs": float(l_over_rs), "fractional_shift": float(l_over_rs) ** 3}
 
-for name, m_vac, coupling in mesons:
-    shift_fraction = mass_drop_max * coupling
-    m_med = m_vac * (1.0 - shift_fraction)
-    print(f"  {name:15s} | {m_vac:15.1f} | {m_med:15.1f} | {-shift_fraction*100:9.1f}%")
 
-print("""
-  OBSERVATIONAL IMPACT (CBM / FAIR / NICA):
-  The VMF framework predicts a clear hierarchy of mass shifts based on 
-  the quark content. Light mesons (rho, omega) shift drastically (~23%), 
-  strangeness-bearing mesons (K*, phi) shift moderately, and heavy 
-  charmonium (J/psi) is almost unaffected (-0.5%).
-  This distinct spectrum provides a strict multi-channel falsification test.
-  STATUS: ✅ MULTI-MESON HIERARCHY COMPUTED
-""")
+def compute_observables() -> dict[str, Any]:
+    lorentz = lorentz_limit()
+    mesons = meson_forward_table()
+    return {
+        "lorentz": {**lorentz, "status": EVIDENCE_STATUS["lorentz"],
+                    "missing": "independent GRB polarization/time-of-flight likelihood"},
+        "meson": {"rows": mesons, "status": EVIDENCE_STATUS["meson"],
+                  "missing": "acceptance-corrected CBM/HADES line-shape data and likelihood"},
+        "qnm": {**qnm_sensitivity(), "status": EVIDENCE_STATUS["qnm"],
+                "missing": "perturbation solver on the specified regular metric and independent ringdown data"},
+        "cooling": {"rows": [], "status": EVIDENCE_STATUS["cooling"],
+                    "missing": "mass-, age-, envelope- and luminosity-linked pulsar catalog plus cooling likelihood"},
+    }
 
-# ═══════════════════════════════════════════════════════════════════════
-# 3. KERR-HAYWARD QUASI-NORMAL MODES (QNM)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  3. KERR-HAYWARD QUASI-NORMAL MODES (QNM)")
-print("=" * 72)
 
-# Fundamental ringdown mode for a Kerr BH (a=0.7)
-# omega_QNM = omega_R + i omega_I
-# Hayward core length scale l/Rs ~ 1e-35. The impact on the ringdown 
-# (which forms near the light ring) is suppressed by (l/Rs)^3.
-l_rs_ratio = 1e-35
-delta_QNM_fraction = l_rs_ratio**3
+def main() -> dict[str, Any]:
+    state = compute_observables()
+    print("=" * 72)
+    print("  NVG: ADVANCED OBSERVABLES III (FORWARD / EVIDENCE-STATUS LEDGER)")
+    print("=" * 72)
+    l = state["lorentz"]
+    print(f"Conformal W-sector: {len(l['energies_ev'])} energies, birefringence=0, dispersion=0")
+    print(f"  status={l['status']}")
+    print(f"Meson templates at 2 n0: {len(state['meson']['rows'])} runtime rows; status={state['meson']['status']}")
+    print(f"QNM core-size sensitivity: delta={state['qnm']['fractional_shift']:.3e}; status={state['qnm']['status']}")
+    print(f"Cooling population: {state['cooling']['status']}")
+    print("No independent GRB, CBM/HADES, ringdown or cooling-population confirmation is claimed.")
+    print("=" * 72)
+    return state
 
-print(f"  Core-to-Horizon Ratio (l/Rs) : {l_rs_ratio:.1e}")
-print(f"  Predicted QNM Frequency Shift: ~ {delta_QNM_fraction:.1e}")
-print("""
-  OBSERVATIONAL IMPACT (LIGO/LISA Ringdown):
-  The regular Hayward core in the NVG model is so compact (Planckian/QCD 
-  scale) that the fractional shift in the Quasi-Normal Mode ringdown 
-  frequencies is ~ 10^-105. 
-  Therefore, the VMF model rigorously predicts that the standard Kerr 
-  ringdown spectrum will be perfectly obeyed in all GW detectors.
-  STATUS: ✅ KERR QNM SIGNATURES PERFECTLY PROTECTED
-""")
 
-# ═══════════════════════════════════════════════════════════════════════
-# 4. POPULATION-LEVEL NS COOLING (ENVELOPE UNCERTAINTIES)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  4. POPULATION-LEVEL NS COOLING & ENVELOPE STATISTICS")
-print("=" * 72)
-
-# VMF symmetry energy triggers Direct Urca (Y_p > 11%) abruptly at M > 1.45 M_sun.
-# We simulate a population of young neutron stars (Age = 1000 yrs).
-# Envelope composition (Carbon vs Iron) adds noise to surface luminosity.
-
-masses = np.array([1.2, 1.35, 1.4, 1.45, 1.5, 1.8, 2.0])
-
-print(f"  {'NS Mass (M_sun)':>15} | {'Core Process':>15} | {'L_surf (erg/s) Spread':>25}")
-print("-" * 65)
-
-for M in masses:
-    if M < 1.45:
-        process = "Modified Urca"
-        L_base = 1e33
-    else:
-        process = "Direct Urca"
-        L_base = 1e31  # 2 orders of magnitude colder due to fast neutrino emission
-        
-    # Envelope uncertainty (Carbon envelope makes it appear brighter than Iron)
-    L_min = L_base * 0.5
-    L_max = L_base * 5.0
-    
-    print(f"  {M:15.2f} | {process:15s} | {L_min:.1e} -- {L_max:.1e}")
-
-print("""
-  OBSERVATIONAL IMPACT (Chandra/XMM-Newton):
-  Despite uncertainties in the atmospheric envelope composition (which 
-  spread the observed luminosity by an order of magnitude), the VMF 
-  model enforces a strictly bimodal population. 
-  Stars above 1.45 M_sun (like Vela) MUST be globally colder (L ~ 10^31 erg/s) 
-  than stars below 1.45 M_sun (L ~ 10^33 erg/s). The discovery of an old, 
-  heavy (>1.5 M_sun) star that remains bright would falsify the EOS.
-  STATUS: ✅ POPULATION COOLING DICHOTOMY ESTABLISHED
-""")
-print("=" * 72)
+if __name__ == "__main__":
+    main()

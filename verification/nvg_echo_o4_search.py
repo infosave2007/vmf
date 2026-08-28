@@ -33,10 +33,6 @@ MIN_SNR = 7.0
 GPS_O4_START = 1.30e9
 MIN_PASTRO = 0.5
 
-# committed O1-O3 result (nvg_echo_population_stack.py, commit ef42f66): 52 events
-O1O3_CHI2, O1O3_DOF, O1O3_N = 112.40, 104, 52
-
-
 def chi2_sf(x, k):
     a, xx = k / 2.0, x / 2.0
     if xx <= 0:
@@ -97,6 +93,7 @@ def main():
     print("  " + "-" * 90)
 
     results = []
+    skipped: dict[str, int] = {}
     snrs = {}
     for snr, name, gps in events:
         dets = {}
@@ -110,14 +107,18 @@ def main():
         if "H1" not in dets or "L1" not in dets:
             print(f"  {name:<20} skipped (only {sorted(dets) or 'no'} detector open strain)",
                   flush=True)
+            skipped["detector_data"] = skipped.get("detector_data", 0) + 1
             continue
         try:
-            r = ts.analyse_strains(dets, gps, masses.get(name, 60.0), name)
+            r = ts.analyse_strains(dets, gps, ts.require_mass(masses.get(name), name), name)
         except Exception as exc:
             print(f"  {name:<20} skipped ({type(exc).__name__})", flush=True)
+            skipped[type(exc).__name__] = skipped.get(type(exc).__name__, 0) + 1
             continue
         if r is None or r["p"] != r["p"]:
-            print(f"  {name:<20} skipped (no background)", flush=True); continue
+            print(f"  {name:<20} skipped (no background)", flush=True)
+            skipped["no_background"] = skipped.get("no_background", 0) + 1
+            continue
         results.append(r)
         snrs[r["name"]] = snr
         coh = "yes" if r["S0"] > 1.15 * max(r["h1"], r["l1"]) else "1det"
@@ -126,6 +127,7 @@ def main():
               flush=True)
 
     print("-" * 96)
+    print(f"  Sample ledger: used={len(results)}, skipped={sum(skipped.values())}, reasons={skipped or 'none'}")
     if not results:
         print("  No O4 events with dual-detector open strain returned a background.")
         print("=" * 96); return
@@ -144,12 +146,8 @@ def main():
     print(f"  O4 stack: Fisher chi^2={chi2:.2f} (dof {dof}) -> p={p_o4:.3g} "
           f"({ts.p_to_sigma(p_o4):.2f} sigma)")
 
-    # combine with committed O1-O3 stack (independent events -> Fisher chi^2 adds)
-    chi2_all = chi2 + O1O3_CHI2
-    dof_all = dof + O1O3_DOF
-    p_all = chi2_sf(chi2_all, dof_all)
-    print(f"  O1-O4 combined ({len(results)+O1O3_N} events): Fisher chi^2={chi2_all:.1f} "
-          f"(dof {dof_all}) -> p={p_all:.3g} ({ts.p_to_sigma(p_all):.2f} sigma)")
+    print("  O1-O3 combination: not reported; no independent re-execution of the historical")
+    print("  stack is available in this entry point, so no static result is combined.")
 
     # main-signal-leakage diagnostic: rank-correlate event loudness with -log(p).
     # If low p tracks high SNR, the coherent on-source excess is the PRIMARY signal

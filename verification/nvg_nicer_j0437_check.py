@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""
-NVG Verification against NICER 2024 observations of PSR J0437-4715
-------------------------------------------------------------------
-Compares the NVG Equation of State (EOS) prediction for neutron star radius
-against the 2024 NICER measurements of the nearby millisecond pulsar PSR J0437-4715:
-  Observed: M = 1.418 ± 0.037 M_sun, R = 11.36 ± 0.8 km
+"""Conditional/in-sample comparison with the NICER J0437-4715 input.
+
+The transition parameters of the canonical EOS were selected using J0740,
+GW170817, and NICER constraints.  This entry point therefore reports a
+descriptive runtime comparison only: it carries zero independent evidence
+weight and must not be read as an independent NICER evidence test.
 """
 
 import os
@@ -14,12 +14,26 @@ import math
 
 # Add local path to import EOS solving classes
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from nvg_tidal_deformability_gw170817 import EOS, solve_tov_tidal
+from nvg_tidal_deformability import EOS, solve_tov_tidal
+
+
+COMPARISON_METADATA = {
+    "status": "CONDITIONAL_IN_SAMPLE",
+    "kind": "derived_runtime_comparison",
+    "independent": False,
+    "evidence_weight": 0.0,
+    "selected_on": ["J0740", "GW170817", "NICER"],
+    "source": "nvg_tidal_deformability.EOS + solve_tov_tidal",
+}
 
 def run_nicer_check():
     print("==========================================================================")
-    print("  NVG COMPATIBILITY CHECK WITH NICER 2024 (PSR J0437-4715)")
+    print("  NVG CONDITIONAL/IN-SAMPLE COMPARISON WITH NICER 2024 (PSR J0437-4715)")
     print("==========================================================================")
+    print(
+        "  status=CONDITIONAL_IN_SAMPLE; independent=False; evidence_weight=0.0 "
+        "(selection inputs reused; no independent evidence)"
+    )
     
     # Observed NICER 2024 values
     M_obs = 1.418
@@ -54,9 +68,9 @@ def run_nicer_check():
             R_nvg = R
             M_nvg = M
             
-    print(f"\nNVG/VMF Model Predictions (interpolated at M_obs):")
+    print("\nRuntime canonical EOS output (conditional/in-sample; no independent evidence):")
     print(f"  Calculated Mass: {M_nvg:.4f} M_sun (diff: {best_diff:.4f})")
-    print(f"  Predicted Radius: {R_nvg:.2f} km")
+    print(f"  Radius output: {R_nvg:.2f} km")
     
     # Вычисление отклонения (Z-score)
     z_score = (R_nvg - R_obs) / R_err
@@ -67,18 +81,37 @@ def run_nicer_check():
     
     # p-value для двустороннего Z-теста
     p_val = 2 * (1 - 0.5 * (1 + math.erf(abs(z_score) / math.sqrt(2.0))))
-    print(f"  p-value: {p_val:.4f} ({p_val*100:.1f}%)")
+    print(
+        f"  descriptive normal-approximation statistic: {p_val:.4f} "
+        "(not an independent p-value/evidence claim)"
+    )
     
     is_ok = abs(z_score) <= 1.5
-    print(f"  Status: {'✅ COMPATIBLE (within 1.5σ)' if is_ok else '⚠️ TENSION'}")
+    print(
+        "  Status: "
+        + (
+            "COMPATIBLE (conditional/in-sample; zero independent evidence weight)"
+            if is_ok
+            else "TENSION (conditional/in-sample; zero independent evidence weight)"
+        )
+    )
     
     print("\nPhysics Context (honest reading):")
-    print(f"The canonical NVG EOS predicts R = {R_nvg:.2f} km at {M_nvg:.3f} M_sun, i.e.")
+    print(f"The conditional canonical EOS output is R = {R_nvg:.2f} km at {M_nvg:.3f} M_sun, i.e.")
     print(f"{z_score:+.1f} sigma above the J0437 central value {R_obs} km — outside the 68% CI")
-    print("but inside 95%. This is currently the TIGHTEST tension of the canonical model:")
+    print("but inside 95%. This is a descriptive conditional comparison, not independent evidence:")
     print("a future J0437 radius confirmed below ~12.0 km at high precision would stress")
-    print("the canonical parameterization (see nvg_ns_parameter_scan.py).")
+    print("the canonical parameterization (see nvg_ns_parameter_scan.py); no independent claim is made.")
     print("==========================================================================")
+
+    return {
+        "metadata": COMPARISON_METADATA,
+        "observed": {"mass_msun": M_obs, "mass_sigma": M_err, "radius_km": R_obs, "radius_sigma": R_err},
+        "runtime": {"mass_msun": M_nvg, "radius_km": R_nvg},
+        "z_score": z_score,
+        "descriptive_statistic": p_val,
+        "status": "COMPATIBLE" if is_ok else "TENSION",
+    }
 
 if __name__ == "__main__":
     run_nicer_check()

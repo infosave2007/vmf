@@ -4,8 +4,8 @@ NVG Verification: Direct Urca Cooling Threshold from VMF
 -------------------------------------------------------
 Calculates the proton fraction x_p as a function of baryon density n_B under VMF
 using self-consistent beta-equilibrium, checks it against the Lattimer threshold
-x_p >= 1/(1 + (1 + x_e^(1/3))^3), and integrates the TOV equations to show that the
-cooling threshold opens exactly for neutron stars above M_DU ≈ 1.45 M_sun.
+x_p >= 1/(1 + (1 + x_e^(1/3))^3), and maps only the mass range covered by the
+tabulated EOS.  The table does not supply an independent mass threshold claim.
 """
 
 import math
@@ -38,11 +38,9 @@ k1 = 0.25
 k2 = 0.80
 c_s = 300.0           # Scalar coupling MeV*fm^3
 c_rho = 90.0  # MeV*fm^3, standard isovector RMF value, cf. Typel et al. (2010) DD2
-# HONESTY NOTE: alpha_v here is TUNED so that the direct-Urca threshold opens at
-# 1.45 M_sun (and differs from the canonical EOS value alpha_v = 4.0 — an
-# internal inconsistency). The 'predicted 1.45' therefore matches the observed
-# dichotomy BY CONSTRUCTION and must not be counted as an independent success.
-alpha_v = 0.05        # Vector saturation parameter (tuned for 1.45 M_sun central density ~4.0 n0)
+# This illustrative chain uses a vector-saturation value distinct from the
+# canonical EOS.  It is not an independently calibrated stellar-mass result.
+alpha_v = 0.05        # Vector saturation parameter of this illustrative chain
 nu_v = 2.0            # Vector saturation power
 
 def M_Omega(n_b):
@@ -208,12 +206,19 @@ def build_eos(c_omega0):
 def solve_tov(eps_of_p, p_c):
     conv = MeV_fm3_to_geo
     r0 = 1.0e-3
+    # ``eps_of_p`` is a strict interpolator.  Its lower endpoint is the
+    # lowest pressure represented by the density derivative table; below it
+    # the toy chain has no EOS and we stop at vacuum rather than extrapolate.
+    p_min = float(np.asarray(getattr(eps_of_p, "x", [0.0]))[0])
+    p_max = float(np.asarray(getattr(eps_of_p, "x", [np.inf]))[-1])
+    if not np.isfinite(p_c) or not (p_min < p_c <= p_max):
+        raise ValueError(f"central pressure {p_c!r} outside EOS domain ({p_min}, {p_max}]")
     e_c = float(eps_of_p(p_c))
     
     # We run integration in physical units, but convert internally to geometric units
     def rhs(radius, state):
         mass, pressure = state
-        if pressure <= 0.0:
+        if pressure <= p_min:
             return [0.0, 0.0]
         energy = float(eps_of_p(pressure))
         
@@ -236,7 +241,7 @@ def solve_tov(eps_of_p, p_c):
         return [dmdr, dpdr]
 
     def stop(radius, state):
-        return state[1]
+        return state[1] - p_min
 
     stop.terminal = True
     stop.direction = -1
@@ -262,7 +267,7 @@ def solve_tov(eps_of_p, p_c):
 
 def main():
     print("==========================================================================")
-    print("  NVG COSMOLOGY: DIRECT URCA NEUTRON STAR COOLING THRESHOLD (VMF DERIVED)")
+    print("  NVG: DIRECT URCA PROTON-FRACTION SCAN (VMF ILLUSTRATIVE CHAIN)")
     print("==========================================================================")
     
     # Calibrate vector parameter
@@ -275,7 +280,21 @@ def main():
     eps_g = eps[good]
     pressure_g = pressure[good]
     
-    eps_of_p = interp1d(pressure_g, eps_g, bounds_error=False, fill_value=(eps_g[0], eps_g[-1]))
+    if len(pressure_g) < 2 or not np.all(np.isfinite(pressure_g)) or not np.all(np.isfinite(eps_g)):
+        raise ValueError("insufficient finite EOS points for pressure interpolation")
+    if not (float(np.min(pressure_g)) < float(np.max(pressure_g))):
+        raise ValueError("EOS pressure domain is empty")
+    # The derivative-based toy chain is not monotone at its highest-density
+    # tail.  Sort and deduplicate pressure before interpolation so the strict
+    # domain is explicit; no endpoint-filled state is returned.
+    order = np.argsort(pressure_g)
+    pressure_g = pressure_g[order]
+    eps_g = eps_g[order]
+    narr_g = narr_g[order]
+    pressure_g, unique_idx = np.unique(pressure_g, return_index=True)
+    eps_g = eps_g[unique_idx]
+    narr_g = narr_g[unique_idx]
+    eps_of_p = interp1d(pressure_g, eps_g, bounds_error=True)
     
     # Direct Urca opens when the proton fraction satisfies the Lattimer threshold:
     # x_p >= 1 / (1 + (1 + x_e^(1/3))^3)
@@ -303,7 +322,12 @@ def main():
     # Solve TOV for central densities
     # Find stellar masses corresponding to central densities
     print("Integrating TOV equations to map central density to stellar mass...")
+    p_min = float(np.min(pressure_g))
     p_grid = np.logspace(-0.5, 2.5, 12)
+    p_grid = p_grid[p_grid > p_min]
+    p_grid = p_grid[p_grid <= float(np.max(pressure_g))]
+    if len(p_grid) < 2:
+        raise ValueError("EOS pressure domain does not cover the TOV scan")
     masses = []
     central_densities = []
     
@@ -314,28 +338,33 @@ def main():
         central_densities.append(nc / n_0)
         print(f"  Pc = {pc:6.1f} MeV/fm3 | Central density = {nc/n_0:5.2f} n_0 | Mass = {m:6.3f} M_sun")
         
-    # Interpolate mass for M = 1.45 M_sun
+    # Interpolate mass for M = 1.45 M_sun only if this valid EOS scan reaches
+    # that mass.  Otherwise report the threshold as unsupported by this table.
     m_sorted_idx = np.argsort(masses)
     masses_s = np.array(masses)[m_sorted_idx]
     densities_s = np.array(central_densities)[m_sorted_idx]
     
-    nc_at_145 = np.interp(1.45, masses_s, densities_s)
-    
-    state_at_threshold = beta_equilibrium_state(nc_at_145 * n_0)
-    xp_at_threshold = state_at_threshold["y_p"]
-    xe_at_threshold = state_at_threshold["n_e"] / state_at_threshold["n_p"]
-    xdu_at_threshold = 1.0 / (1.0 + (1.0 + xe_at_threshold**(1.0/3.0))**3)
-    
-    print(f"Central density for M = 1.45 M_sun: {nc_at_145:.2f} n_0")
-    print(f"Proton fraction at 1.45 M_sun      : {xp_at_threshold*100:.2f}% (Lattimer threshold: {xdu_at_threshold*100:.2f}%)")
+    if masses_s[0] <= 1.45 <= masses_s[-1]:
+        nc_at_145 = float(np.interp(1.45, masses_s, densities_s))
+        state_at_threshold = beta_equilibrium_state(nc_at_145 * n_0)
+        xp_at_threshold = state_at_threshold["y_p"]
+        xe_at_threshold = state_at_threshold["n_e"] / state_at_threshold["n_p"]
+        xdu_at_threshold = 1.0 / (1.0 + (1.0 + xe_at_threshold**(1.0/3.0))**3)
+        print(f"Central density for M = 1.45 M_sun: {nc_at_145:.2f} n_0")
+        print(f"Proton fraction at 1.45 M_sun      : {xp_at_threshold*100:.2f}% (Lattimer threshold: {xdu_at_threshold*100:.2f}%)")
+    else:
+        nc_at_145 = None
+        print(
+            f"Mass threshold M = 1.45 M_sun is unsupported by the valid EOS scan "
+            f"([{masses_s[0]:.3f}, {masses_s[-1]:.3f}] M_sun)."
+        )
     print("-" * 92)
-    
-    # Assertions
-    assert xp_values[3.0] < x_du_values[3.0], "Direct Urca opened too early (below 1.45 M_sun)!"
-    assert xp_values[4.0] >= x_du_values[4.0], "Direct Urca failed to open at 1.45 M_sun!"
-    assert abs(nc_at_145 - 4.05) < 0.2, f"Central density at 1.45 M_sun deviates significantly from 4.0 n_0! Got: {nc_at_145:.2f}"
-    
-    print("Status: ✅ Direct Urca cooling threshold derived and verified successfully.")
+
+    du_open = [ratio for ratio in ratios if xp_values[ratio] >= x_du_values[ratio]]
+    print(
+        "Status: descriptive proton-fraction scan; Direct Urca is open at "
+        f"densities {du_open} n_0 and no stellar-mass threshold is inferred."
+    )
     print("==========================================================================")
 
 if __name__ == "__main__":

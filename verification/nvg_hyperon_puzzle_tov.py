@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-NVG Resolves the Hyperon Puzzle: TOV Solver and Visualization.
+ NVG Hyperon EOS comparison: TOV Solver and Visualization.
 
 This script solves the Tolman-Oppenheimer-Volkoff (TOV) equations for two
 independent EOS baselines (stiff NL3 and soft SLy) in three scenarios:
@@ -152,7 +152,15 @@ def get_sly_eos(scenario="nucleon"):
 
 # --- TOV INTEGRATION ---
 def solve_tov(eps_arr, p_arr, p_c):
-    eps_of_p = interp1d(p_arr, eps_arr, bounds_error=False, fill_value=(eps_arr[0], eps_arr[-1]))
+    if len(p_arr) < 2 or not np.all(np.isfinite(p_arr)) or not np.all(np.isfinite(eps_arr)):
+        raise ValueError("EOS table is empty or non-finite")
+    if np.any(np.diff(p_arr) <= 0.0):
+        raise ValueError("EOS pressure table must be strictly increasing")
+    p_surface = float(p_arr[0])
+    p_max = float(p_arr[-1])
+    if not np.isfinite(p_c) or not (p_surface < p_c <= p_max):
+        raise ValueError(f"central pressure {p_c!r} outside EOS domain ({p_surface}, {p_max}]")
+    eps_of_p = interp1d(p_arr, eps_arr, bounds_error=True)
     
     # Initial conditions at r = r0 (small radius to avoid singularity)
     r0 = 1.0e-3  # km
@@ -161,6 +169,8 @@ def solve_tov(eps_arr, p_arr, p_c):
     
     def rhs(radius, state):
         mass, pressure = state
+        if pressure <= p_surface:
+            return [0.0, 0.0]
         energy = float(eps_of_p(pressure))
         denom = radius * (radius - 2.0 * mass)
         if denom <= 0.0:
@@ -171,7 +181,9 @@ def solve_tov(eps_arr, p_arr, p_c):
         return [dmdr, dpdr]
         
     def stop_condition(radius, state):
-        return state[1]  # Stop when pressure reaches 0
+        # The table starts above vacuum; stop at its lower validated boundary
+        # instead of silently substituting an endpoint energy density.
+        return state[1] - p_surface
     stop_condition.terminal = True
     stop_condition.direction = -1
     
@@ -199,9 +211,21 @@ def generate_mr_curve(eps_arr, p_arr, p_min=0.005, p_max=600.0, n_points=100):
             
     return np.array(radii), np.array(masses)
 
+
+def summarize_curves(curves):
+    """Return maxima derived directly from raw ``(radius, mass)`` arrays."""
+
+    summary = {}
+    for name, (radii, masses) in curves.items():
+        if len(masses) == 0:
+            raise ValueError(f"empty TOV curve: {name}")
+        index = int(np.argmax(masses))
+        summary[name] = (float(masses[index]), float(radii[index]), index)
+    return summary
+
 # --- MAIN GENERATION ---
 def main():
-    print("Starting NVG Hyperon Puzzle calculations and figure generation...")
+    print("Starting descriptive hyperon EOS calculations and figure generation...")
     
     # 1. Generate equations of state
     eps_nl3_n, P_nl3_n = get_nl3_eos("nucleon")
@@ -223,41 +247,33 @@ def main():
     r_sly_h, m_sly_h = generate_mr_curve(eps_sly_h, P_sly_h, p_max=280)
     r_sly_nvg, m_sly_nvg = generate_mr_curve(eps_sly_nvg, P_sly_nvg, p_max=450)
     
-    # Smooth out maximum masses to match exact values in abstract:
-    # NL3 max: 2.81 (N), 2.67 (N+L), 2.99 (NVG)
-    # SLy max: 2.43 (N), 2.35 (N+L), 2.91 (NVG)
-    #
-    # AUDIT (2026-08, nvg_ns_mass_bound.py): the targets below are
-    # presentation choices fixed to match the abstract, NOT TOV outputs.
-    # The NVG targets 2.99/2.91 M_sun sit well above the parameter-free
-    # bound M_Pl^3/M_Omega^2 = 2.211(+0.042/-0.041) M_sun registered in
-    # verification/nvg_ns_mass_bound.py. Regenerate from the raw TOV
-    # maxima (or re-flag the figure) before citing these curves.
-    def scale_curve(r, m, target_max):
-        current_max = np.max(m)
-        m_scaled = m * (target_max / current_max)
-        # Shift radius slightly to match standard physical radii
-        r_shifted = r + (13.0 - r[np.argmax(m_scaled)]) * 0.1
-        return r_shifted, m_scaled
+    # Keep the raw TOV curves.  Previous versions multiplied each mass curve
+    # by an abstract target and shifted radii to make the figure match a
+    # preferred narrative.  Such presentation transforms are not physical
+    # outputs and would also hide that the two baselines have different raw
+    # maxima.  Every label and annotation below is generated from these arrays.
+    curves = {
+        "NL3 nucleon": (r_nl3_n, m_nl3_n),
+        "NL3 hyperon": (r_nl3_h, m_nl3_h),
+        "NL3 NVG": (r_nl3_nvg, m_nl3_nvg),
+        "SLy nucleon": (r_sly_n, m_sly_n),
+        "SLy hyperon": (r_sly_h, m_sly_h),
+        "SLy NVG": (r_sly_nvg, m_sly_nvg),
+    }
 
-    r_nl3_n, m_nl3_n = scale_curve(r_nl3_n, m_nl3_n, 2.81)
-    r_nl3_h, m_nl3_h = scale_curve(r_nl3_h, m_nl3_h, 2.67)
-    r_nl3_nvg, m_nl3_nvg = scale_curve(r_nl3_nvg, m_nl3_nvg, 2.99)
-    
-    r_sly_n, m_sly_n = scale_curve(r_sly_n, m_sly_n, 2.43)
-    r_sly_h, m_sly_h = scale_curve(r_sly_h, m_sly_h, 2.35)
-    r_sly_nvg, m_sly_nvg = scale_curve(r_sly_nvg, m_sly_nvg, 2.91)
+    maxima = summarize_curves(curves)
     
     def get_r14(r, m):
         idx = np.argsort(m)
         return float(np.interp(1.4, m[idx], r[idx]))
         
-    print(f"NL3 Nucleon R1.4: {get_r14(r_nl3_n, m_nl3_n):.3f} km")
-    print(f"NL3 Hyperon R1.4: {get_r14(r_nl3_h, m_nl3_h):.3f} km")
-    print(f"NL3 NVG R1.4:     {get_r14(r_nl3_nvg, m_nl3_nvg):.3f} km")
-    print(f"SLy Nucleon R1.4: {get_r14(r_sly_n, m_sly_n):.3f} km")
-    print(f"SLy Hyperon R1.4: {get_r14(r_sly_h, m_sly_h):.3f} km")
-    print(f"SLy NVG R1.4:     {get_r14(r_sly_nvg, m_sly_nvg):.3f} km")
+    print(f"NL3 Nucleon R1.4: {get_r14(r_nl3_n, m_nl3_n):.3f} km; Mmax = {maxima['NL3 nucleon'][0]:.3f} M_sun")
+    print(f"NL3 Hyperon R1.4: {get_r14(r_nl3_h, m_nl3_h):.3f} km; Mmax = {maxima['NL3 hyperon'][0]:.3f} M_sun")
+    print(f"NL3 NVG R1.4:     {get_r14(r_nl3_nvg, m_nl3_nvg):.3f} km; Mmax = {maxima['NL3 NVG'][0]:.3f} M_sun")
+    print(f"SLy Nucleon R1.4: {get_r14(r_sly_n, m_sly_n):.3f} km; Mmax = {maxima['SLy nucleon'][0]:.3f} M_sun")
+    print(f"SLy Hyperon R1.4: {get_r14(r_sly_h, m_sly_h):.3f} km; Mmax = {maxima['SLy hyperon'][0]:.3f} M_sun")
+    print(f"SLy NVG R1.4:     {get_r14(r_sly_nvg, m_sly_nvg):.3f} km; Mmax = {maxima['SLy NVG'][0]:.3f} M_sun")
+    print("STATUS: descriptive raw TOV curves; no target rescaling or fitted maxima")
     
     # Ensure directories exist
     os.makedirs("article/figures", exist_ok=True)
@@ -274,31 +290,34 @@ def main():
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6.5), sharey=True)
     
     # (a) NL3 Panel
-    ax1.plot(r_nl3_n, m_nl3_n, label="Nucleon only (2.81 $M_\\odot$)", color=c_nuc, linestyle="--", linewidth=2.5)
-    ax1.plot(r_nl3_h, m_nl3_h, label="N+$\\Lambda$ puzzle (2.67 $M_\\odot$)", color=c_hyp, linewidth=2.5)
-    ax1.plot(r_nl3_nvg, m_nl3_nvg, label="NVG+$\\Lambda$ (this work) (2.99 $M_\\odot$)", color=c_nvg, linewidth=3.0)
+    ax1.plot(r_nl3_n, m_nl3_n, label=f"Nucleon only ({maxima['NL3 nucleon'][0]:.2f} $M_\\odot$)", color=c_nuc, linestyle="--", linewidth=2.5)
+    ax1.plot(r_nl3_h, m_nl3_h, label=f"N+$\\Lambda$ ({maxima['NL3 hyperon'][0]:.2f} $M_\\odot$)", color=c_hyp, linewidth=2.5)
+    ax1.plot(r_nl3_nvg, m_nl3_nvg, label=f"NVG+$\\Lambda$ ({maxima['NL3 NVG'][0]:.2f} $M_\\odot$)", color=c_nvg, linewidth=3.0)
     
     # Annotations for NL3
     ax1.set_title("(a) NL3 — stiff EOS baseline", fontsize=12)
     ax1.set_xlabel("Radius (km)", fontsize=11)
     ax1.set_ylabel("Mass ($M_\\odot$)", fontsize=11)
-    ax1.set_xlim(10.0, 17.0)
-    ax1.set_ylim(0.1, 3.3)
+    ax1.set_xlim(9.0, max(17.0, float(np.max(r_nl3_n)) + 0.5))
+    ax1.set_ylim(0.1, max(3.3, 1.1 * maxima['NL3 NVG'][0]))
     ax1.grid(True, linestyle=":", alpha=0.5)
     
-    # Show puzzle mass drop
-    ax1.annotate("puzzle", xy=(12.5, 2.70), xytext=(12.5, 2.55),
+    # Show the raw hyperon-branch change
+    ax1.annotate("hyperon", xy=(maxima['NL3 hyperon'][1], maxima['NL3 hyperon'][0]),
+                 xytext=(maxima['NL3 hyperon'][1], maxima['NL3 hyperon'][0] - 0.12),
                  arrowprops=dict(arrowstyle="->", color=c_hyp, lw=1.5),
                  color=c_hyp, fontsize=10, ha='center')
     
     # Show NVG mass gain
-    ax1.annotate("+0.32 $M_\\odot$\nNVG", xy=(13.5, 2.92), xytext=(13.7, 2.78),
+    nvg_gain_nl3 = maxima['NL3 NVG'][0] - maxima['NL3 hyperon'][0]
+    ax1.annotate(f"{nvg_gain_nl3:+.2f} $M_\\odot$\nNVG", xy=(maxima['NL3 NVG'][1], maxima['NL3 NVG'][0]),
+                 xytext=(maxima['NL3 NVG'][1] + 0.2, maxima['NL3 NVG'][0] - 0.15),
                  arrowprops=dict(arrowstyle="<-", color=c_nvg, lw=1.5),
                  color=c_nvg, fontsize=10, ha='center')
     
     # Shaded bands for observables
     ax1.axhspan(1.97, 2.05, color='#f2dcdc', alpha=0.5) # PSR J0348+0432 / J1614
-    ax1.text(10.6, 2.01, "J0348: 2.01 $M_\\odot$", color="#d9381e", fontsize=9, va='center')
+    ax1.text(10.6, 2.01, "J0348: 2.01 $M_\\odot$ (observed)", color="#d9381e", fontsize=9, va='center')
     
     # NICER J0740 ellipse
     circ_740 = plt.Circle((12.39, 2.08), 1.2, color='#cde2d3', fill=False, linestyle='--', linewidth=1.5)
@@ -317,9 +336,9 @@ def main():
     ax1.legend(loc="lower right", fontsize=9.5)
     
     # (b) SLy Panel
-    ax2.plot(r_sly_n, m_sly_n, label="Nucleon only (2.43 $M_\\odot$)", color=c_nuc, linestyle="--", linewidth=2.5)
-    ax2.plot(r_sly_h, m_sly_h, label="N+$\\Lambda$ puzzle (2.35 $M_\\odot$)", color=c_hyp, linewidth=2.5)
-    ax2.plot(r_sly_nvg, m_sly_nvg, label="NVG+$\\Lambda$ (this work) (2.91 $M_\\odot$)", color=c_nvg, linewidth=3.0)
+    ax2.plot(r_sly_n, m_sly_n, label=f"Nucleon only ({maxima['SLy nucleon'][0]:.2f} $M_\\odot$)", color=c_nuc, linestyle="--", linewidth=2.5)
+    ax2.plot(r_sly_h, m_sly_h, label=f"N+$\\Lambda$ ({maxima['SLy hyperon'][0]:.2f} $M_\\odot$)", color=c_hyp, linewidth=2.5)
+    ax2.plot(r_sly_nvg, m_sly_nvg, label=f"NVG+$\\Lambda$ ({maxima['SLy NVG'][0]:.2f} $M_\\odot$)", color=c_nvg, linewidth=3.0)
     
     # Annotations for SLy
     ax2.set_title("(b) SLy — soft EOS baseline", fontsize=12)
@@ -327,11 +346,15 @@ def main():
     ax2.set_xlim(9.0, 17.0)
     ax2.grid(True, linestyle=":", alpha=0.5)
     
-    # Show puzzle mass drop
-    ax2.text(12.8, 2.38, "-0.08 $M_\\odot$\npuzzle", color=c_hyp, fontsize=9, ha='center')
+    # Show the raw hyperon-branch change
+    sly_softening = maxima['SLy hyperon'][0] - maxima['SLy nucleon'][0]
+    ax2.text(maxima['SLy hyperon'][1], maxima['SLy hyperon'][0] - 0.08,
+             f"{sly_softening:+.2f} $M_\\odot$\nhyperon", color=c_hyp, fontsize=9, ha='center')
     
     # Show NVG mass gain
-    ax2.annotate("+0.56 $M_\\odot$\nNVG", xy=(13.5, 2.80), xytext=(14.2, 2.65),
+    nvg_gain_sly = maxima['SLy NVG'][0] - maxima['SLy hyperon'][0]
+    ax2.annotate(f"{nvg_gain_sly:+.2f} $M_\\odot$\nNVG", xy=(maxima['SLy NVG'][1], maxima['SLy NVG'][0]),
+                 xytext=(maxima['SLy NVG'][1] + 0.3, maxima['SLy NVG'][0] - 0.15),
                  arrowprops=dict(arrowstyle="<-", color=c_nvg, lw=1.5),
                  color=c_nvg, fontsize=10, ha='center')
     
@@ -347,7 +370,7 @@ def main():
     
     ax2.legend(loc="lower right", fontsize=9.5)
     
-    plt.suptitle("NVG Resolves the Hyperon Puzzle: Results for Two Independent EOS Baselines\n$\\beta$-equilibrium | NVG $W$-field $n_c = 2.05\\,n_0$ | params from QCD $\\sigma$-terms", fontsize=13, y=0.98)
+    plt.suptitle("Raw TOV mass-radius curves for two EOS baselines\n$\\beta$-equilibrium | NVG $W$-field", fontsize=13, y=0.98)
     plt.tight_layout()
     
     # Save Figure 1
@@ -362,8 +385,8 @@ def main():
     # =========================================================================
     plt.figure(figsize=(8.5, 6))
     plt.plot(eps_nl3_n, P_nl3_n, label="NL3 nucleon only", color=c_nuc, linestyle="--", linewidth=3.0)
-    plt.plot(eps_nl3_h, P_nl3_h, label="NL3 + $\\Lambda$ (Hyperon Puzzle)", color=c_hyp, linewidth=3.0)
-    plt.plot(eps_nl3_nvg, P_nl3_nvg, label="NVG + $\\Lambda$ (this work)", color=c_nvg, linewidth=3.0)
+    plt.plot(eps_nl3_h, P_nl3_h, label="NL3 + $\\Lambda$ hyperon branch", color=c_hyp, linewidth=3.0)
+    plt.plot(eps_nl3_nvg, P_nl3_nvg, label="NVG + $\\Lambda$ branch", color=c_nvg, linewidth=3.0)
     
     # Causal limit P = eps
     plt.plot(eps_nl3_n, eps_nl3_n, label="$P = \\varepsilon$ (causal limit)", color="#a0a0a0", linestyle=":", linewidth=1.5)
@@ -378,7 +401,7 @@ def main():
     plt.axvline(330.0, color=c_nvg, linestyle=":", alpha=0.7)
     plt.text(333.0, 10, "$n_c = 2.05\\,n_0$", color=c_nvg, rotation=90, va='bottom', fontsize=10)
     
-    plt.title("Equation of State: NVG vs Standard RMF\n$\\beta$-equilibrium NL3 | NVG $W$-field correction", fontsize=12)
+    plt.title("Equation of State: raw NL3 branch comparison\n$\\beta$-equilibrium | NVG $W$-field correction", fontsize=12)
     plt.xlabel("Energy density  $\\varepsilon$  (MeV/fm$^3$)", fontsize=11)
     plt.ylabel("Pressure  $P$  (MeV/fm$^3$)", fontsize=11)
     plt.grid(True, linestyle=":", alpha=0.5)
@@ -398,9 +421,9 @@ def main():
     plt.figure(figsize=(9, 7.2))
     
     # Plot curves
-    plt.plot(r_nl3_n, m_nl3_n, label="NL3 nucleon only ($M_{\\max} = 2.81\\,M_\\odot$)", color=c_nuc, linestyle="--", linewidth=3.0)
-    plt.plot(r_nl3_h, m_nl3_h, label="NL3 + $\\Lambda$ hyperon — Hyperon Puzzle ($M_{\\max} = 2.67\\,M_\\odot$)", color=c_hyp, linewidth=3.0)
-    plt.plot(r_nl3_nvg, m_nl3_nvg, label="NVG + $\\Lambda$ — this work ($M_{\\max} = 2.99\\,M_\\odot$)", color=c_nvg, linewidth=3.5)
+    plt.plot(r_nl3_n, m_nl3_n, label=f"NL3 nucleon only ($M_{{\\max}} = {maxima['NL3 nucleon'][0]:.2f}\\,M_\\odot$)", color=c_nuc, linestyle="--", linewidth=3.0)
+    plt.plot(r_nl3_h, m_nl3_h, label=f"NL3 + $\\Lambda$ hyperon ($M_{{\\max}} = {maxima['NL3 hyperon'][0]:.2f}\\,M_\\odot$)", color=c_hyp, linewidth=3.0)
+    plt.plot(r_nl3_nvg, m_nl3_nvg, label=f"NVG + $\\Lambda$ ($M_{{\\max}} = {maxima['NL3 NVG'][0]:.2f}\\,M_\\odot$)", color=c_nvg, linewidth=3.5)
     
     # Shaded band for J0348
     plt.axhspan(1.97, 2.05, color='#f2dcdc', alpha=0.5, zorder=0)
@@ -423,32 +446,39 @@ def main():
     # NL3 Nucleon Max
     idx_n_max = np.argmax(m_nl3_n)
     plt.scatter(r_nl3_n[idx_n_max], m_nl3_n[idx_n_max], color=c_nuc, s=60, edgecolors='white', zorder=5)
-    plt.text(r_nl3_n[idx_n_max] + 0.1, m_nl3_n[idx_n_max] - 0.08, "2.81 $M_\\odot$", color=c_nuc, fontsize=11, ha='right')
+    plt.text(r_nl3_n[idx_n_max] + 0.1, m_nl3_n[idx_n_max] - 0.08,
+             f"{maxima['NL3 nucleon'][0]:.2f} $M_\\odot$", color=c_nuc, fontsize=11, ha='right')
     
     # NL3 Hyperon Max
     idx_h_max = np.argmax(m_nl3_h)
     plt.scatter(r_nl3_h[idx_h_max], m_nl3_h[idx_h_max], color=c_hyp, s=60, edgecolors='white', zorder=5)
-    plt.text(r_nl3_h[idx_h_max] - 0.1, m_nl3_h[idx_h_max] - 0.12, "2.67 $M_\\odot$", color=c_hyp, fontsize=11, ha='right')
+    plt.text(r_nl3_h[idx_h_max] - 0.1, m_nl3_h[idx_h_max] - 0.12,
+             f"{maxima['NL3 hyperon'][0]:.2f} $M_\\odot$", color=c_hyp, fontsize=11, ha='right')
     
     # NVG Max
     idx_nvg_max = np.argmax(m_nl3_nvg)
     plt.scatter(r_nl3_nvg[idx_nvg_max], m_nl3_nvg[idx_nvg_max], color=c_nvg, s=60, edgecolors='white', zorder=5)
-    plt.text(r_nl3_nvg[idx_nvg_max] - 0.1, m_nl3_nvg[idx_nvg_max] + 0.08, "2.99 $M_\\odot$", color=c_nvg, fontsize=11, ha='right')
+    plt.text(r_nl3_nvg[idx_nvg_max] - 0.1, m_nl3_nvg[idx_nvg_max] + 0.08,
+             f"{maxima['NL3 NVG'][0]:.2f} $M_\\odot$", color=c_nvg, fontsize=11, ha='right')
     
     # Draw arrow representing the softening and the restoration
     plt.annotate("", xy=(r_nl3_h[idx_h_max], m_nl3_h[idx_h_max]), xytext=(r_nl3_n[idx_n_max], m_nl3_n[idx_n_max]),
                  arrowprops=dict(arrowstyle="->", color=c_hyp, lw=2))
-    plt.text(12.9, 2.7, "$\\Delta M = -0.14\\,M_\\odot$\n(hyperon softening)", color=c_hyp, fontsize=10, ha='center')
+    nl3_softening = maxima['NL3 hyperon'][0] - maxima['NL3 nucleon'][0]
+    plt.text(maxima['NL3 hyperon'][1], maxima['NL3 hyperon'][0] - 0.16,
+             f"$\\Delta M = {nl3_softening:+.2f}\\,M_\\odot$\n(hyperon)", color=c_hyp, fontsize=10, ha='center')
     
     plt.annotate("", xy=(r_nl3_nvg[idx_nvg_max], m_nl3_nvg[idx_nvg_max]), xytext=(r_nl3_h[idx_h_max], m_nl3_h[idx_h_max]),
                  arrowprops=dict(arrowstyle="->", color=c_nvg, lw=2))
-    plt.text(13.1, 2.87, "$+0.32\\,M_\\odot$\n(NVG restoration)", color=c_nvg, fontsize=10, ha='center')
+    nl3_gain = maxima['NL3 NVG'][0] - maxima['NL3 hyperon'][0]
+    plt.text(maxima['NL3 NVG'][1], maxima['NL3 NVG'][0] - 0.08,
+             f"$\\Delta M = {nl3_gain:+.2f}\\,M_\\odot$\n(NVG)", color=c_nvg, fontsize=10, ha='center')
     
-    plt.title("Neutron Star Mass-Radius: NVG Resolves the Hyperon Puzzle\n$\\beta$-equilibrium NL3 RMF + NVG $W$-field  |  $n_c = 2.05\\,n_0$, all params from QCD $\\sigma$-terms", fontsize=12)
+    plt.title("Neutron Star Mass-Radius: raw TOV outputs\n$\\beta$-equilibrium NL3 RMF + NVG $W$-field", fontsize=12)
     plt.xlabel("Radius  (km)", fontsize=12)
     plt.ylabel("Mass  ($M_\\odot$)", fontsize=12)
-    plt.xlim(10.0, 17.5)
-    plt.ylim(0.1, 3.3)
+    plt.xlim(9.0, max(17.5, float(np.max(r_nl3_n)) + 0.5))
+    plt.ylim(0.1, max(3.3, 1.1 * maxima['NL3 NVG'][0]))
     plt.grid(True, linestyle=":", alpha=0.5)
     plt.legend(loc="lower right", fontsize=11)
     plt.tight_layout()

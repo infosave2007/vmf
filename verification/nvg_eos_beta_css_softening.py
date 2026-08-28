@@ -201,12 +201,7 @@ def evaluate_hybrid_model(baseline, n_trans_ratio, delta_eps_ratio, cs2_q):
 
 
 def fast_tov_scan(p_sorted, e_sorted):
-    eps_of_p = interp1d(
-        p_sorted,
-        e_sorted,
-        bounds_error=False,
-        fill_value=(float(e_sorted[0]), float(e_sorted[-1])),
-    )
+    eps_of_p = pressure_to_energy_interpolator(p_sorted, e_sorted)
     p_grid = np.geomspace(max(p_sorted[1], 1.0e-4), p_sorted[-1] * 0.85, 10)
     masses = []
     radii = []
@@ -221,6 +216,20 @@ def fast_tov_scan(p_sorted, e_sorted):
     if len(masses) < 4:
         return None, None
     return np.array(masses), np.array(radii)
+
+
+def pressure_to_energy_interpolator(p_sorted, e_sorted):
+    """Build a strict P->epsilon interpolator for the validated CSS table."""
+
+    p_values = np.asarray(p_sorted, dtype=float)
+    e_values = np.asarray(e_sorted, dtype=float)
+    if len(p_values) < 2 or len(p_values) != len(e_values):
+        raise ValueError("EOS interpolation requires at least two paired points")
+    if not np.all(np.isfinite(p_values)) or not np.all(np.isfinite(e_values)):
+        raise ValueError("EOS interpolation inputs must be finite")
+    if np.any(np.diff(p_values) <= 0.0):
+        raise ValueError("EOS pressure grid must be strictly increasing")
+    return interp1d(p_values, e_values, bounds_error=True)
 
 
 def main():

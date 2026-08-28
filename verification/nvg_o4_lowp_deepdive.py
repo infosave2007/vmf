@@ -88,21 +88,35 @@ def main():
     print("  " + "-" * 80)
 
     rows = []
+    skipped: dict[str, int] = {}
     for name in EVENTS:
-        gps, mass = gps_of.get(name), masses.get(name, 60.0)
+        gps = gps_of.get(name)
+        try:
+            mass = ts.require_mass(masses.get(name), name)
+        except (KeyError, ValueError, TypeError) as exc:
+            print(f"  {name:<20} skipped (missing catalog mass: {exc})", flush=True)
+            skipped["missing_mass"] = skipped.get("missing_mass", 0) + 1
+            continue
+        if gps is None:
+            print(f"  {name:<20} skipped (missing catalog GPS)", flush=True)
+            skipped["missing_gps"] = skipped.get("missing_gps", 0) + 1
+            continue
         ts.echo_comb = _ORIG_COMB
         full = analyse(name, gps, mass)
         ts.echo_comb = comb_skip_first
         skip = analyse(name, gps, mass)
         ts.echo_comb = _ORIG_COMB
         if full is None or skip is None:
-            print(f"  {name:<20} skipped (data)", flush=True); continue
+            print(f"  {name:<20} skipped (data)", flush=True)
+            skipped["detector_data"] = skipped.get("detector_data", 0) + 1
+            continue
         interp = "LEAKAGE (tooth1 only)" if (full["p"] < 0.05 <= skip["p"]) else \
                  ("survives -> echo?" if skip["p"] < 0.05 else "null both")
         print(f"  {name:<20}{mass:>6.1f}{full['p']:>9.3f}{skip['p']:>17.3f}{interp:>22}", flush=True)
         rows.append((name, full["p"], skip["p"]))
 
     print("-" * 90)
+    print(f"  Sample ledger: used={len(rows)}, skipped={sum(skipped.values())}, reasons={skipped or 'none'}")
     if rows:
         leak = sum(1 for _, f, s in rows if f < 0.05 <= s)
         surv = [n for n, f, s in rows if s < 0.05]

@@ -1,0 +1,67 @@
+{
+  "schema_version": "P2-S6-hierarchical-echo-data-manifest-v2",
+  "manifest_sha256": "d8d313d60d0793de945d900e2f3bf0f505599d6d1eedc04a2a12b89254938769",
+  "manifest_bytes_sha256": "1477c199f6b03bca58083aafdef69633d96ac3ef9977260eed72f238b6e27bbd",
+  "manifest_role": "input/code provenance and dependency boundary; generated synthetic calibration is not observational evidence",
+  "retrieval_or_release_date": "2026-08-28",
+  "inputs": {
+    "gwtc_events.csv": {
+      "path": "verification/data/gwtc_events.csv",
+      "kind": "catalog_selection_metadata",
+      "trust_status": "verified_public",
+      "primary_source": "Gravitational Wave Open Science Center event catalog/API",
+      "source_url": "https://gwosc.org/eventapi/html/",
+      "identifier": "GWTC public event catalog export; row reference and jsonurl fields retained",
+      "release_version": "GWTC-2.1-confident and local catalog rows (inherited canonical manifest)",
+      "retrieval_or_pin": "local canonical input; inherited verification/data/provenance.json",
+      "sha256": "5c9876917eff320145d02f60328e6e1b6eef8d040e9711f4e94d85b3601c2ec3",
+      "configuration": "latest version per commonName; min network SNR 8; p_astro 0.5; final mass >=5 Msun"
+    },
+    "analysis_config.json": {
+      "path": "verification/data/p2_s3_hierarchical_echo/analysis_config.json",
+      "kind": "analysis_configuration",
+      "trust_status": "declared_local_configuration",
+      "sha256": "ded246a1b7284a4e60678582e7a04a2b54e30079fa80b9d0f4d7cfab2b838392"
+    }
+  },
+  "code_provenance": {
+    "producer": {
+      "path": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "kind": "P2-S6 producer source",
+      "sha256": "a0046da3587a11fd7b669f1f03b030a709eb63b427c6819b3a96b074c082ecc7"
+    },
+    "focused_test": {
+      "path": "verification/test_p2_echo_hierarchical_upper_limit.py",
+      "kind": "P2-S6 focused test source",
+      "sha256": "b0852341bb790edb04edde3d29347ecaab60c84dad270f8c9472e7ac63f7e3bb"
+    },
+    "producer_source_sha256": "a0046da3587a11fd7b669f1f03b030a709eb63b427c6819b3a96b074c082ecc7",
+    "test_source_sha256": "b0852341bb790edb04edde3d29347ecaab60c84dad270f8c9472e7ac63f7e3bb"
+  },
+  "required_observational_products": {
+    "strain": {
+      "status": "MISSING_BLOCKED",
+      "expected_location": "verification/data/p2_s3_hierarchical_echo/strain/",
+      "required_for": "event-level matched-filter likelihood and empirical time slides"
+    },
+    "posterior_samples": {
+      "status": "MISSING_BLOCKED",
+      "expected_location": "verification/data/p2_s3_hierarchical_echo/posterior/",
+      "required_for": "event nuisance marginalization and source-frame/remnant uncertainty"
+    },
+    "noise_psd_or_time_slides": {
+      "status": "MISSING_BLOCKED",
+      "expected_location": "verification/data/p2_s3_hierarchical_echo/noise/",
+      "required_for": "empirical background and detector-specific selection function"
+    }
+  },
+  "synthetic_calibration": {
+    "status": "SENSITIVITY_ONLY",
+    "generator": "verification/nvg_echo_hierarchical_upper_limit.py",
+    "background": "analytic central-chi-square max-statistic null; no strain or event residuals",
+    "injections": "controlled deterministic non-central-chi-square recovery with log-normal nuisance quadrature",
+    "rng_seed": 20260828,
+    "seed_probes": [20260828, 20260829, 20260830, 20261001],
+    "not_observational": true
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "description": "Repository-relative generated reports, figures, tables, and predictive-program artifacts. Producers/statuses are explicit; hashes authenticate current bytes and do not assert independent empirical provenance.",
+  "entries": {
+    "NVG_FINAL_REPORT.md": {
+      "canonical_path": "NVG_FINAL_REPORT.md",
+      "command": "python verification/run_nvg_suite.py",
+      "kind": "generated_artifact",
+      "producer": "verification/run_nvg_suite.py",
+      "status": "computed_model_output"
+    },
+    "NVG_MELTING_REPORT.md": {
+      "canonical_path": "NVG_MELTING_REPORT.md",
+      "command": "python verification/nvg_melting_master_report.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_melting_master_report.py",
+      "status": "historical_report"
+    },
+    "verification/NVG_NEW_DIRECTIONS_RU.md": {
+      "canonical_path": "verification/NVG_NEW_DIRECTIONS_RU.md",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "ignored_not_tracked_stale_snapshot_no_current_producer"
+    },
+    "verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md": {
+      "canonical_path": "verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md",
+      "command": "python verification/nvg_observational_data_fit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_observational_data_fit.py",
+      "status": "ignored_not_tracked_computed_comparison_unverified_inputs"
+    },
+    "verification/data/hades_templates_20MeV.csv": {
+      "canonical_path": "verification/data/hades_templates_20MeV.csv",
+      "command": "python verification/nvg_hades_lineshape_feasibility.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "status": "generated_unverified"
+    },
+    "verification/data/hades_templates_40MeV.csv": {
+      "canonical_path": "verification/data/hades_templates_40MeV.csv",
+      "command": "python verification/nvg_hades_lineshape_feasibility.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "status": "generated_unverified"
+    },
+    "verification/data/nvg_gw_template.txt": {
+      "canonical_path": "verification/data/nvg_gw_template.txt",
+      "command": "python verification/nvg_gw_spectrum_template.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_gw_spectrum_template.py",
+      "sha256": "7345502f5c1eb7482dec152b745ed63c1dec88f9b7cf0b0b3ee8e44468cd5d7f",
+      "status": "generated_unverified"
+    },
+    "verification/data/nvg_residual_stack_results.csv": {
+      "canonical_path": "verification/data/nvg_residual_stack_results.csv",
+      "command": "python verification/nvg_echo_residual_stack.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_echo_residual_stack.py",
+      "status": "generated_unverified"
+    },
+    "verification/fig_antimatter_topology.png": {
+      "canonical_path": "verification/fig_antimatter_topology.png",
+      "command": "python verification/nvg_antimatter_topology.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_antimatter_topology.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_arrow_of_time.png": {
+      "canonical_path": "verification/fig_arrow_of_time.png",
+      "command": "python verification/nvg_arrow_of_time.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_arrow_of_time.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_bell_inequality.png": {
+      "canonical_path": "verification/fig_bell_inequality.png",
+      "command": "python verification/nvg_bell_inequality.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_bell_inequality.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_cas_a_cooling.png": {
+      "canonical_path": "verification/fig_cas_a_cooling.png",
+      "command": "python verification/nvg_cas_a_cooling_curve.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_cas_a_cooling_curve.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_cmb_lowl_refit.png": {
+      "canonical_path": "verification/fig_cmb_lowl_refit.png",
+      "command": "python verification/nvg_cmb_lowl_refit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_cmb_lowl_refit.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_dm_no_wimp.png": {
+      "canonical_path": "verification/fig_dm_no_wimp.png",
+      "command": "python verification/nvg_dm_direct_detection.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_dm_direct_detection.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_double_slit_madelung.png": {
+      "canonical_path": "verification/fig_double_slit_madelung.png",
+      "command": "python verification/nvg_double_slit_madelung.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_double_slit_madelung.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_echo_hierarchical_upper_limit_p2s3.png": {
+      "canonical_path": "verification/fig_echo_hierarchical_upper_limit_p2s3.png",
+      "command": "python verification/nvg_echo_hierarchical_upper_limit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "sha256": "e7c8be75117fd888618994c21eb8ea92e31644dace69a56c5916bf8b080cb463",
+      "status": "synthetic_conditional_sensitivity"
+    },
+    "verification/fig_fine_structure.png": {
+      "canonical_path": "verification/fig_fine_structure.png",
+      "command": "python verification/nvg_fine_structure.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_fine_structure.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_gw_comb_amplitude.png": {
+      "canonical_path": "verification/fig_gw_comb_amplitude.png",
+      "command": "python verification/nvg_gw_comb_amplitude.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_gw_comb_amplitude.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_hartle_slow_rotation_p2s1.png": {
+      "canonical_path": "verification/fig_hartle_slow_rotation_p2s1.png",
+      "command": "python verification/nvg_hartle_slow_rotation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "sha256": "866ab1220ce3434201c26d74304677c96289bc6fb64f5f480a4eb277892d6863",
+      "status": "historical_superseded"
+    },
+    "verification/fig_hartle_slow_rotation_p2s5.png": {
+      "canonical_path": "verification/fig_hartle_slow_rotation_p2s5.png",
+      "command": "python verification/nvg_hartle_slow_rotation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "sha256": "1bfdbe2514084f268dbac094a6a4eb7be28f265baf1a6d7b22e9c04cb9887ca6",
+      "status": "derived_conditional_final"
+    },
+    "verification/fig_heisenberg_proof.png": {
+      "canonical_path": "verification/fig_heisenberg_proof.png",
+      "command": "python verification/nvg_heisenberg_proof.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_heisenberg_proof.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_hyperon_eos_compare.png": {
+      "canonical_path": "verification/fig_hyperon_eos_compare.png",
+      "command": "python verification/nvg_hyperon_puzzle_tov.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_hyperon_mr_baselines.png": {
+      "canonical_path": "verification/fig_hyperon_mr_baselines.png",
+      "command": "python verification/nvg_hyperon_puzzle_tov.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_hyperon_mr_nl3.png": {
+      "canonical_path": "verification/fig_hyperon_mr_nl3.png",
+      "command": "python verification/nvg_hyperon_puzzle_tov.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_iloveq_universal.png": {
+      "canonical_path": "verification/fig_iloveq_universal.png",
+      "command": "python verification/nvg_iloveq_plot.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_iloveq_plot.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_iloveq_universal_report.json": {
+      "canonical_path": "verification/fig_iloveq_universal_report.json",
+      "command": "python verification/nvg_iloveq_plot.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_iloveq_plot.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_neutrino_seesaw.png": {
+      "canonical_path": "verification/fig_neutrino_seesaw.png",
+      "command": "python verification/nvg_neutrino_seesaw.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_neutrino_seesaw.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_ns_frozen_forecasts_p3s1.png": {
+      "canonical_path": "verification/fig_ns_frozen_forecasts_p3s1.png",
+      "command": "python verification/nvg_ns_frozen_forecasts.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "sha256": "1c4ffaf610727be0cb8689ab8e49109eafb63e1d925fd41edc065882c5548edd",
+      "status": "forward_only_conditional_forecast"
+    },
+    "verification/fig_ns_predictive_audit.png": {
+      "canonical_path": "verification/fig_ns_predictive_audit.png",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "20c6ba4efb73a380b58eee0c178e41126bf39eb96093b337660eed5c527ce7d9",
+      "status": "historical_superseded"
+    },
+    "verification/fig_ns_predictive_audit_p1s5.png": {
+      "canonical_path": "verification/fig_ns_predictive_audit_p1s5.png",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "36580e5978b093918d5e312160de0677ed997b8afbf97620173043f646084cf2",
+      "status": "historical_superseded"
+    },
+    "verification/fig_ns_predictive_audit_p1s7.png": {
+      "canonical_path": "verification/fig_ns_predictive_audit_p1s7.png",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "daae1942fb3ca51613149b3ba2ff2b71ccb6a529513d8ce2b8065cea89bc128a",
+      "status": "conditional_in_sample_final"
+    },
+    "verification/fig_p2_s2_beta_hyperon_urca_audit.png": {
+      "canonical_path": "verification/fig_p2_s2_beta_hyperon_urca_audit.png",
+      "command": "python verification/nvg_beta_hyperon_urca_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_beta_hyperon_urca_audit.py",
+      "sha256": "89151c78a2e782281174d88a9bd8a10b195103cf3158c39d096513b2387c6360",
+      "status": "blocked_physical_dependencies"
+    },
+    "verification/fig_p3_s2_cooling_gmode_dependency_audit.png": {
+      "canonical_path": "verification/fig_p3_s2_cooling_gmode_dependency_audit.png",
+      "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
+      "sha256": "93ae61e0cbce857ab9f2a78a80fa87ada6bb64ead43ab1c0cd15b8989f8bcd4b",
+      "status": "blocked_physical_dependencies_with_null_control"
+    },
+    "verification/fig_p3_s3_prospective_reach.png": {
+      "canonical_path": "verification/fig_p3_s3_prospective_reach.png",
+      "command": "python verification/nvg_prospective_falsification_reach.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "sha256": "450c6a19ca6d8aea7783a257dabb5e72388728d9783611175edbbc10815607ef",
+      "status": "prospective_sensitivity_final"
+    },
+    "verification/fig_qcd_phase_diagram.png": {
+      "canonical_path": "verification/fig_qcd_phase_diagram.png",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "unknown_provenance"
+    },
+    "verification/fig_quantum_gravity.png": {
+      "canonical_path": "verification/fig_quantum_gravity.png",
+      "command": "python verification/nvg_quantum_gravity.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_quantum_gravity.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_recondensation_dynamics.png": {
+      "canonical_path": "verification/fig_recondensation_dynamics.png",
+      "command": "python verification/nvg_recondensation_dynamics.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_recondensation_dynamics.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_rhic_bell_test.png": {
+      "canonical_path": "verification/fig_rhic_bell_test.png",
+      "command": "python verification/nvg_rhic_bell_test.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_rhic_bell_test.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_s8_no_go_map.png": {
+      "canonical_path": "verification/fig_s8_no_go_map.png",
+      "command": "python verification/nvg_s8_no_go.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_s8_no_go.py",
+      "sha256": "6ed9dcfe78af35e403b039edd9b6b00600d367da66b834fba6d49e42645b524d",
+      "status": "scoped_sensitivity_final"
+    },
+    "verification/fig_speed_of_sound.png": {
+      "canonical_path": "verification/fig_speed_of_sound.png",
+      "command": "python verification/nvg_speed_of_sound_curve.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_speed_of_sound_curve.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_speed_of_sound_bayesian.png": {
+      "canonical_path": "verification/fig_speed_of_sound_bayesian.png",
+      "command": "python verification/nvg_speed_of_sound_bayesian.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_speed_of_sound_bayesian.py",
+      "status": "computed_model_output"
+    },
+    "verification/fig_strong_cp_potential.png": {
+      "canonical_path": "verification/fig_strong_cp_potential.png",
+      "command": "python verification/nvg_strong_cp_solution.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_strong_cp_solution.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/fig_talbot_isomorphism.png": {
+      "canonical_path": "verification/fig_talbot_isomorphism.png",
+      "command": "python verification/nvg_talbot_isomorphism.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_talbot_isomorphism.py",
+      "status": "historical_snapshot"
+    },
+    "verification/fig_wavefunction_collapse.png": {
+      "canonical_path": "verification/fig_wavefunction_collapse.png",
+      "command": "python verification/nvg_wavefunction_collapse.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_wavefunction_collapse.py",
+      "status": "synthetic_demonstration"
+    },
+    "verification/gwtc3_nvg_results.csv": {
+      "canonical_path": "verification/gwtc3_nvg_results.csv",
+      "command": "python verification/nvg_gwtc3_mass_scan.py --output verification/gwtc3_nvg_results.csv",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_gwtc3_mass_scan.py",
+      "status": "generated_unverified"
+    },
+    "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json": {
+      "canonical_path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+      "command": "python verification/nvg_beta_hyperon_urca_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_beta_hyperon_urca_audit.py",
+      "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0",
+      "status": "blocked_physical_dependencies"
+    },
+    "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json": {
+      "canonical_path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+      "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
+      "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089",
+      "status": "blocked_physical_dependencies_with_null_control"
+    },
+    "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
+      "canonical_path": "verification/nvg_dark_photon_kinetic_mixing_output.txt",
+      "command": "python verification/nvg_dark_photon_kinetic_mixing.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_dark_photon_kinetic_mixing.py",
+      "status": "historical_snapshot"
+    },
+    "verification/nvg_dark_photon_observables_output.txt": {
+      "canonical_path": "verification/nvg_dark_photon_observables_output.txt",
+      "command": "python verification/nvg_dark_photon_observables.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_dark_photon_observables.py",
+      "status": "computed_model_output"
+    },
+    "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json": {
+      "canonical_path": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "command": "python verification/nvg_echo_hierarchical_upper_limit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "sha256": "2bb2214a933356f69e12ef81d6af12b8c0fb27490be9465fd314711f63ec885e",
+      "status": "synthetic_conditional_sensitivity"
+    },
+    "verification/nvg_echo_template.png": {
+      "canonical_path": "verification/nvg_echo_template.png",
+      "command": "python verification/nvg_echo_waveform_generator.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_echo_waveform_generator.py",
+      "status": "generated_unverified"
+    },
+    "verification/nvg_em_response_derivation_output.txt": {
+      "canonical_path": "verification/nvg_em_response_derivation_output.txt",
+      "command": "python verification/nvg_em_response_derivation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_em_response_derivation.py",
+      "status": "historical_snapshot"
+    },
+    "verification/nvg_em_response_higher_order_output.txt": {
+      "canonical_path": "verification/nvg_em_response_higher_order_output.txt",
+      "command": "python verification/nvg_em_response_higher_order.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_em_response_higher_order.py",
+      "status": "historical_snapshot"
+    },
+    "verification/nvg_gw150914_echo_snr.png": {
+      "canonical_path": "verification/nvg_gw150914_echo_snr.png",
+      "command": "python verification/nvg_pycbc_echo_search.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_pycbc_echo_search.py",
+      "status": "generated_unverified"
+    },
+    "verification/nvg_gwtc3_snr_distribution.png": {
+      "canonical_path": "verification/nvg_gwtc3_snr_distribution.png",
+      "command": "python verification/nvg_gwtc3_plot_results.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_gwtc3_plot_results.py",
+      "status": "generated_unverified"
+    },
+    "verification/nvg_hartle_slow_rotation_p2s1_results.json": {
+      "canonical_path": "verification/nvg_hartle_slow_rotation_p2s1_results.json",
+      "command": "python verification/nvg_hartle_slow_rotation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "sha256": "35070c3ffc9e965b374ca7d42e3299089ee264e6b6c617dc04afc1d73374f47d",
+      "status": "historical_superseded"
+    },
+    "verification/nvg_hartle_slow_rotation_p2s5_results.json": {
+      "canonical_path": "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+      "command": "python verification/nvg_hartle_slow_rotation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c",
+      "status": "derived_conditional_final"
+    },
+    "verification/nvg_magnetar_mass_correlation_output.txt": {
+      "canonical_path": "verification/nvg_magnetar_mass_correlation_output.txt",
+      "command": "python verification/nvg_magnetar_mass_correlation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_magnetar_mass_correlation.py",
+      "status": "computed_model_output"
+    },
+    "verification/nvg_ns_frozen_forecasts_p3s1.csv": {
+      "canonical_path": "verification/nvg_ns_frozen_forecasts_p3s1.csv",
+      "command": "python verification/nvg_ns_frozen_forecasts.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "sha256": "ed351602fed79edc3d38ac22542547d57a0b7a25fd4a121b9b1c42816d0ddd45",
+      "status": "forward_only_conditional_forecast"
+    },
+    "verification/nvg_ns_frozen_forecasts_p3s1_results.json": {
+      "canonical_path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+      "command": "python verification/nvg_ns_frozen_forecasts.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c",
+      "status": "forward_only_conditional_forecast"
+    },
+    "verification/nvg_ns_predictive_audit_p1s5_results.json": {
+      "canonical_path": "verification/nvg_ns_predictive_audit_p1s5_results.json",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "cac788f100f71790132e6af7db64d8d5061b445d53589059acc3a670b88d7fdf",
+      "status": "historical_superseded"
+    },
+    "verification/nvg_ns_predictive_audit_p1s7_results.json": {
+      "canonical_path": "verification/nvg_ns_predictive_audit_p1s7_results.json",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0",
+      "status": "conditional_in_sample_final"
+    },
+    "verification/nvg_ns_predictive_audit_results.json": {
+      "canonical_path": "verification/nvg_ns_predictive_audit_results.json",
+      "command": "python verification/nvg_ns_predictive_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "sha256": "1dd9a833e1fc66eca89c51b29fbd9fa7b306ae5cbf596641bac382eee143b3b5",
+      "status": "historical_superseded"
+    },
+    "verification/P1-S3-pbh-nanograv-audit.json": {
+      "canonical_path": "verification/P1-S3-pbh-nanograv-audit.json",
+      "command": "python verification/nvg_pbh_nanograv_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_pbh_nanograv_audit.py",
+      "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7",
+      "status": "calibrated_sensitivity_final"
+    },
+    "verification/P1-S3-pbh-nanograv-boundary.png": {
+      "canonical_path": "verification/P1-S3-pbh-nanograv-boundary.png",
+      "command": "python verification/nvg_pbh_nanograv_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_pbh_nanograv_audit.py",
+      "sha256": "b38461668a090eef2542badbcb4bb8d5735a5791571015c1fdc544673a5b42e0",
+      "status": "calibrated_sensitivity_final"
+    },
+    "verification/nvg_prospective_falsification_reach_p3s3_results.json": {
+      "canonical_path": "verification/nvg_prospective_falsification_reach_p3s3_results.json",
+      "command": "python verification/nvg_prospective_falsification_reach.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "sha256": "85fb559c4c34ecc727c98c12d7495a8d8d055421b5f95a97a1dda62936fb2d4b",
+      "status": "prospective_sensitivity_final"
+    },
+    "verification/nvg_s8_no_go_map.json": {
+      "canonical_path": "verification/nvg_s8_no_go_map.json",
+      "command": "python verification/nvg_s8_no_go.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_s8_no_go.py",
+      "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570",
+      "status": "scoped_sensitivity_final"
+    },
+    "verification/nvg_vacuum_w_field_derivation_output.txt": {
+      "canonical_path": "verification/nvg_vacuum_w_field_derivation_output.txt",
+      "command": "python verification/nvg_vacuum_w_field_derivation.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_vacuum_w_field_derivation.py",
+      "status": "historical_snapshot"
+    },
+    "verification/p3_s3_prospective_reach.csv": {
+      "canonical_path": "verification/p3_s3_prospective_reach.csv",
+      "command": "python verification/nvg_prospective_falsification_reach.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "sha256": "7aa74dc2e8a9dacdc2de8096838bcaec2046a0f4a2a37de4368144789bc712b5",
+      "status": "prospective_sensitivity_final"
+    },
+    "verification/predictive_research_ledger.json": {
+      "canonical_path": "verification/predictive_research_ledger.json",
+      "command": "python verification/nvg_predictive_research_ledger.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_predictive_research_ledger.py",
+      "sha256": "35de35b7ed83bd5aef93fc26e41c6c09d226638adc2c04dbd95db2bec89aea4d",
+      "status": "integrated_machine_ledger"
+    },
+    "visualization/nvg_3d_viz.html": {
+      "canonical_path": "visualization/nvg_3d_viz.html",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "ILLUSTRATIVE_NON_EVIDENCE"
+    },
+    "visualization/nvg_3d_viz_v2.html": {
+      "canonical_path": "visualization/nvg_3d_viz_v2.html",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "ILLUSTRATIVE_NON_EVIDENCE"
+    },
+    "visualization/nvg_3d_viz_v2_ru.html": {
+      "canonical_path": "visualization/nvg_3d_viz_v2_ru.html",
+      "command": "python verification/run_nvg_suite.py",
+      "kind": "generated_artifact",
+      "producer": "verification/run_nvg_suite.py",
+      "status": "CONDITIONAL_IN_SAMPLE"
+    },
+    "visualization/nvg_ns_merger_3d.html": {
+      "canonical_path": "visualization/nvg_ns_merger_3d.html",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "ILLUSTRATIVE_NON_EVIDENCE"
+    },
+    "visualization/nvg_wave_particle_3d.html": {
+      "canonical_path": "visualization/nvg_wave_particle_3d.html",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "status": "ILLUSTRATIVE_NON_EVIDENCE"
+    }
+  },
+  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
+  "schema_version": 1
+}

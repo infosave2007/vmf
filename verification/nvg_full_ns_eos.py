@@ -6,10 +6,10 @@ Simplified pedagogical version of the NS chain: pure-neutron-matter core
 (no beta equilibrium, NO crust — despite what an earlier docstring claimed)
 with a CSS softening at the canonical crossover (n_trans = 2 n_0,
 delta_eps = 0; see nvg_ns_parameter_scan.py). The quantitative canonical
-numbers come from nvg_tidal_deformability.py (beta-equilibrated chain):
-M_max = 2.05 M_sun, R_1.4 = 12.55 km. This script only demonstrates that
-the TOV machinery produces a qualitatively similar M-R curve for the
-simplified EOS; treat its outputs as illustrative, not canonical.
+beta-equilibrated chain is maintained by the canonical tidal entry point;
+this script only demonstrates that the TOV machinery produces a qualitatively
+similar M-R curve for the simplified EOS. Treat its outputs as illustrative,
+not canonical.
 """
 
 from __future__ import annotations
@@ -122,10 +122,10 @@ class UnifiedEOS:
         
     def get_eps(self, P: float) -> float:
         """Interpolate energy density for a given pressure."""
-        if P <= self.p_arr[0]:
-            return 0.0
-        if P >= self.p_arr[-1]:
-            return self.eps_arr[-1]
+        if not np.isfinite(P) or P < self.p_arr[0] or P > self.p_arr[-1]:
+            raise ValueError(
+                f"pressure {P!r} outside EOS domain [{self.p_arr[0]}, {self.p_arr[-1]}]"
+            )
         return np.interp(P, self.p_arr, self.eps_arr)
 
 
@@ -136,6 +136,16 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
     Solves TOV equations for a central pressure.
     Returns (Mass in M_sun, Radius in km).
     """
+    if not np.isfinite(P_center) or not (eos.p_arr[0] < P_center <= eos.p_arr[-1]):
+        raise ValueError("central pressure outside EOS domain")
+
+    def table_energy(pressure: float) -> float:
+        # This pedagogical chain has no crust.  At/below the validated table
+        # boundary, use vacuum energy rather than endpoint extrapolation.
+        if pressure <= eos.p_arr[0]:
+            return 0.0
+        return eos.get_eps(pressure)
+
     # TOV equations use geometric units G = c = 1
     # Convert MeV/fm^3 to geometric units (km^-2)
     # G/c^4 = 1.323e-42 N^-1. 1 MeV/fm^3 = 1.6e32 J/m^3 = 1.6e32 N/m^2
@@ -150,7 +160,7 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
         if p <= 0:
             return m, 0, 0
             
-        eps = eos.get_eps(p)
+        eps = table_energy(p)
         
         def dp_dr(r_val, m_val, p_val, eps_val):
             if r_val < 1e-10:
@@ -181,13 +191,13 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
 
         k1_m, k1_p = dp_dr(r, m, p, eps)
         
-        eps_mid = eos.get_eps(p + 0.5 * dr * k1_p)
+        eps_mid = table_energy(p + 0.5 * dr * k1_p)
         k2_m, k2_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k1_m, p + 0.5*dr*k1_p, eps_mid)
         
-        eps_mid = eos.get_eps(p + 0.5 * dr * k2_p)
+        eps_mid = table_energy(p + 0.5 * dr * k2_p)
         k3_m, k3_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k2_m, p + 0.5*dr*k2_p, eps_mid)
         
-        eps_end = eos.get_eps(p + dr * k3_p)
+        eps_end = table_energy(p + dr * k3_p)
         k4_m, k4_p = dp_dr(r + dr, m + dr*k3_m, p + dr*k3_p, eps_end)
         
         m_new = m + (dr/6.0) * (k1_m + 2*k2_m + 2*k3_m + k4_m)
@@ -200,7 +210,7 @@ def solve_tov(eos: UnifiedEOS, P_center: float) -> tuple[float, float]:
     p = P_center
     dr = 0.05  # km
     
-    while p > 1e-4 and r < 100.0:
+    while p > eos.p_arr[0] and r < 100.0:
         m_new, p_new, eps = rk4_step(r, m, p, dr)
         m = m_new
         p = p_new
@@ -214,9 +224,9 @@ def main():
     print("=" * 80)
     print("NVG FULL NS EOS: CRUST MATCHING & PHASE TRANSITION")
     print("=" * 80)
-    print("Executing Research Program Points 1 & 2:")
-    print("1. Crust matching (low density BPS approx)")
-    print("2. High-density softening (First-order phase transition to conformal matter)")
+    print("Executing the simplified EOS/TOV demonstration:")
+    print("1. Low-density table boundary (no crust model included)")
+    print("2. High-density softening (first-order phase transition to conformal matter)")
     print()
     
     # Canonical transition parameters (nvg_ns_parameter_scan.py):
@@ -278,8 +288,8 @@ def main():
     print("This simplified pure-neutron-matter chain with the canonical 2 n_0 crossover")
     print(f"produces M_max = {M_max:.2f} M_sun and R_1.4 = {R_14:.2f} km (computed above —")
     print("no crust is included, so low-mass radii are not trustworthy). The canonical")
-    print("quantitative numbers of the framework come from nvg_tidal_deformability.py:")
-    print("M_max = 2.05 M_sun, R_1.4 = 12.55 km, Lambda_1.4 = 519.")
+    print("beta-equilibrated results are maintained by the canonical tidal entry point;")
+    print("this simplified chain is not evidence for those separate values.")
     
 if __name__ == "__main__":
     main()

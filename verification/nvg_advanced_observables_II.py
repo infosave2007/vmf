@@ -1,160 +1,129 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Advanced Observables II (CMB, EHT Shadows, PBH Spectrum)
+"""Runtime forward calculations for CMB, EHT and the PBH ladder.
 
-1. Full Primordial Power Spectrum P(k) with Genesis Cutoff
-2. EHT Shadow Null Test (Photon Ring vs Regular Core)
-3. PBH Multi-Mass Spectrum Across Cycles
+The former version printed fixed values as if they were Planck/EHT/JWST
+measurements.  These functions deliberately separate a theory/forward curve
+from an observational likelihood.  The PBH ladder is computed from the
+declared cyclic relation; its abundance is not inferred here.
 """
+
+from __future__ import annotations
+
+import math
+from typing import Any
+
 import numpy as np
 
-print("=" * 72)
-print("  NVG: ADVANCED OBSERVABLES II")
-print("=" * 72)
-
-# ═══════════════════════════════════════════════════════════════════════
-# 1. CMB PRIMORDIAL POWER SPECTRUM P(k)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  1. PRIMORDIAL POWER SPECTRUM P(k) WITH GENESIS CUTOFF")
-print("=" * 72)
-
-# Wavenumber k in Mpc^-1
-k_modes = np.logspace(-5, 0, 50)
-# Standard LCDM assumes P(k) ~ k^(n_s - 1)
-n_s = 0.965
-A_s = 2.1e-9
-
-# Genesis Cutoff
-# Instanton size r_c ~ 1.13 km, stretched by N_e ~ 53.2 e-folds
-# This corresponds to a physical horizon scale today where modes larger than
-# the stretched instanton simply do not exist.
-k_cutoff = 3.2e-4  # Mpc^-1 (approximate scale corresponding to l=2,3 suppression)
-
-print(f"  {'k (Mpc^-1)':>12} | {'LCDM P(k) / A_s':>18} | {'VMF P(k) / A_s':>18}")
-print("-" * 55)
-
-for k in [1e-5, 5e-5, 1e-4, 3.2e-4, 1e-3, 1e-2, 1e-1]:
-    # LCDM is nearly scale invariant
-    P_lcdm = (k / 0.05)**(n_s - 1)
-    
-    # VMF applies a strict physical cutoff (e.g., exponential suppression below k_cutoff)
-    # as the universe had a finite initial bounding box (the instanton).
-    suppression = 1.0 - np.exp(-(k / k_cutoff)**2)
-    P_vmf = P_lcdm * suppression
-    
-    print(f"  {k:12.1e} | {P_lcdm:18.3f} | {P_vmf:18.3f}")
-
-print("""
-  OBSERVATIONAL IMPACT (Planck / WMAP):
-  For k > 10^-3 (corresponding to multipoles l > 10), the VMF spectrum is 
-  computationally indistinguishable from standard Lambda-CDM (ratio = 1.000).
-  However, for k < 3e-4, the spectrum drops precipitously due to the finite 
-  size of the Genesis instanton. This provides a deterministic physical mechanism
-  for the observed low-l anomalies (quadrupole/octupole suppression), replacing 
-  the 'cosmic variance' excuse.
-  STATUS: ✅ FULL P(k) SPECTRUM GENERATED
-""")
+EVIDENCE_STATUS = {
+    "cmb_spectrum": "FORWARD_ONLY_NO_CMB_LIKELIHOOD",
+    "eht_shadow": "FORMAL_EXTERIOR_NULL_NO_EHT_LIKELIHOOD",
+    "pbh_ladder": "DERIVED_THEORY_LADDER_NO_ABUNDANCE_CALCULATION",
+}
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# 2. EHT SHADOW NULL TEST (PHOTON RING VS CORE)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  2. EHT NULL TEST: PHOTON RING VS REGULAR CORE")
-print("=" * 72)
+def primordial_power(k: np.ndarray | float, *, amplitude: float = 2.1e-9,
+                     spectral_index: float = 0.965, cutoff: float | None = None) -> np.ndarray:
+    """Return a primordial spectrum with an optional IR cutoff."""
 
-# Black hole parameters (e.g., M87*)
-M_bh = 6.5e9  # M_sun
-G = 6.6743e-8
-c = 2.9979e10
-M_sun = 1.9884e33
-
-# Event horizon Rs = 2GM/c^2
-# Photon ring (shadow) for Schwarzschild is r_ph = 1.5 Rs = 3GM/c^2
-# Shadow apparent radius b = sqrt(27) GM/c^2 ~ 2.598 Rs
-
-Rs = 2.0  # units of GM/c^2
-r_ph_std = 3.0
-b_std = np.sqrt(27.0) / 2.0 * Rs
-
-# Hayward regular core modification
-# f(r) = 1 - 2Mr^2 / (r^3 + 2l^2 M)
-# The length scale 'l' is tied to the QCD density core (rho_c ~ 10^15 g/cm3)
-# For macroscopic black holes, l/Rs ~ 10^-35 or smaller.
-l_ratio = 1e-35
-
-# Effective photon potential maximum shift
-# V_eff ~ (1 - 2Mr^2/(r^3 + 2l^2 M))/r^2
-r_ph_vmf = 3.0 * (1.0 - 4.0/27.0 * l_ratio**2) # First order expansion
-
-print(f"  Observable             | Standard GR | VMF / Hayward | Delta")
-print("-" * 65)
-print(f"  Event Horizon (Rs)     | {Rs:11.5f} | {Rs:13.5f} | ~ 10^-35")
-print(f"  Photon Sphere (r_ph)   | {r_ph_std:11.5f} | {r_ph_vmf:13.5f} | ~ 10^-70")
-print(f"  Shadow Radius (b)      | {b_std:11.5f} | {b_std:13.5f} | ~ 10^-70")
-
-print("""
-  OBSERVATIONAL IMPACT (Event Horizon Telescope):
-  Because the VMF density saturation scale (QCD vacuum) is strictly localized 
-  at the central core, the exterior geometry at the photon ring (r = 3GM/c^2) 
-  is shielded. Deviations from standard GR are of order 10^-70 for supermassive 
-  black holes. 
-  
-  Therefore, VMF rigorously predicts that EHT shadow images of M87* and Sgr A* 
-  must perfectly match Kerr/Schwarzschild predictions. Any observed macroscopic 
-  deviation at the horizon scale would falsify this model.
-  STATUS: ✅ EHT EXTERIOR NULL TEST PASSED
-""")
+    kval = np.asarray(k, dtype=float)
+    if np.any(~np.isfinite(kval)) or np.any(kval <= 0.0):
+        raise ValueError("wavenumbers must be finite and positive")
+    out = float(amplitude) * (kval / 0.05) ** (float(spectral_index) - 1.0)
+    if cutoff is not None:
+        if not np.isfinite(cutoff) or cutoff <= 0.0:
+            raise ValueError("cutoff must be positive and finite")
+        out = out * (1.0 - np.exp(-(kval / float(cutoff)) ** 2))
+    return out
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# 3. PBH MULTI-MASS FUNCTION ACROSS CYCLES
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  3. PBH MULTI-MASS SPECTRUM (DARK MATTER & SMBH SEEDS)")
-print("=" * 72)
+def hayward_shadow_shift(l_over_rs: float = 1.0e-35) -> dict[str, float]:
+    """Compute the leading exterior null scaling (no image likelihood)."""
 
-# Tolman cycles generate PBHs. In each cycle, some matter collapses into PBHs
-# during the highly dense pre-bounce phase.
-# Earlier cycles created smaller PBHs (because the universe was smaller).
-# Cycle count N = 1 to 76.
+    if not np.isfinite(l_over_rs) or l_over_rs < 0.0:
+        raise ValueError("l_over_rs must be finite and non-negative")
+    standard_photon_radius = 3.0
+    fractional_shift = -(4.0 / 27.0) * float(l_over_rs) ** 2
+    return {
+        "l_over_rs": float(l_over_rs),
+        "photon_radius_gr": standard_photon_radius,
+        "photon_radius_fractional_shift": fractional_shift,
+        "shadow_radius_fractional_shift": fractional_shift,
+    }
 
-# PBH mass from cycle N roughly scales with the horizon mass at the bounce
-# M_pbh(N) ~ M_0 * f^(N/2)  where f = 4.0 is the entropy multiplier.
-M_0_pbh = 1e-22  # M_sun (First cycle PBH mass, highly microscopic)
-f_growth = 4.0
 
-def pbh_mass(cycle):
-    return M_0_pbh * (f_growth)**(cycle/1.5)
+def pbh_mass(cycle: int | float, *, base_mass: float | None = None,
+             growth: float | None = None) -> float:
+    """Evaluate the canonical discrete PBH ladder (or an explicit sensitivity).
 
-print(f"  {'Cycle N':>8} | {'PBH Mass (M_sun)':>20} | {'Astrophysical Role':>30}")
-print("-" * 65)
+    With the default arguments this delegates to the maintained
+    ``nvg_pbh_mass_spectrum.get_pbh_mass`` producer.  Optional base/growth
+    values are retained only for a transparent theory-level sensitivity and
+    never acquire abundance or observational meaning.
+    """
 
-milestones = [
-    (10, "Hawking evaporated (Planck relics)"),
-    (22, "Evaporating today (Gamma-ray background)"),
-    (30, "Asteroid DM Window (~10^-12 M_sun)"),
-    (40, "Sub-lunar DM Window (~10^-8 M_sun)"),
-    (60, "LIGO detectable (~10 M_sun)"),
-    (73, "Early SMBH seeds (~10^5 M_sun)")
-]
+    if not np.isfinite(cycle):
+        raise ValueError("ladder cycle must be finite")
+    if base_mass is None and growth is None:
+        if float(cycle).is_integer():
+            from nvg_pbh_mass_spectrum import get_pbh_mass
 
-for cycle, role in milestones:
-    m = pbh_mass(cycle)
-    print(f"  {cycle:8d} | {m:20.2e} | {role:>30}")
+            return float(get_pbh_mass(int(cycle)))
+        base_mass, growth = 0.38, 4.0
+    else:
+        base_mass = 0.38 if base_mass is None else base_mass
+        growth = 4.0 if growth is None else growth
+    if not np.isfinite(base_mass) or not np.isfinite(growth):
+        raise ValueError("ladder inputs must be finite")
+    if base_mass <= 0.0 or growth <= 0.0:
+        raise ValueError("ladder base and growth must be positive")
+    return float(base_mass * growth ** float(cycle))
 
-print("""
-  OBSERVATIONAL IMPACT (Microlensing & JWST):
-  The cyclic accumulation naturally generates a broad multi-mass spectrum:
-  1. Cycles 40-55 pile up directly into the "Asteroid Mass Window" 
-     (10^-16 to 10^-10 M_sun), which is the ONLY remaining mass band where 
-     PBHs can constitute 100% of Dark Matter without violating LIGO, EROS, 
-     or CMB distortion bounds.
-  2. The extreme right tail (Cycles 70-75) produces highly rare, supermassive 
-     PBHs (10^4 - 10^6 M_sun). These serve as the missing seeds required to 
-     explain the impossibly early Supermassive Black Holes observed by JWST at z>10.
-  
-  STATUS: ✅ MULTI-MASS FUNCTION COMPUTED
-""")
-print("=" * 72)
+
+def compute_observables() -> dict[str, Any]:
+    k_values = np.array([1e-5, 5e-5, 1e-4, 3.2e-4, 1e-3, 1e-2, 1e-1], dtype=float)
+    cutoff = 3.2e-4
+    lcdm = primordial_power(k_values)
+    vmf = primordial_power(k_values, cutoff=cutoff)
+    ladder_cycles = (-28, -25, -21, -15, 0, 10)
+    ladder = [{"cycle": int(c), "mass_msun": pbh_mass(c)} for c in ladder_cycles]
+    return {
+        "cmb_spectrum": {
+            "k_mpc": k_values,
+            "lcdm": lcdm,
+            "cutoff": cutoff,
+            "cutoff_spectrum": vmf,
+            "status": EVIDENCE_STATUS["cmb_spectrum"],
+            "missing": "Boltzmann/Planck likelihood with nuisance and cosmic-variance treatment",
+        },
+        "eht_shadow": {
+            **hayward_shadow_shift(),
+            "status": EVIDENCE_STATUS["eht_shadow"],
+            "missing": "resolved EHT image likelihood and a parameterized radiative-transfer model",
+        },
+        "pbh_ladder": {
+            "rows": ladder,
+            "status": EVIDENCE_STATUS["pbh_ladder"],
+            "missing": "formation abundance and lensing/accretion likelihood",
+        },
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_observables()
+    print("=" * 72)
+    print("  NVG: ADVANCED OBSERVABLES II (FORWARD / EVIDENCE-STATUS LEDGER)")
+    print("=" * 72)
+    cmb = state["cmb_spectrum"]
+    print(f"CMB cutoff curve: k_c={cmb['cutoff']:.3g} Mpc^-1; status={cmb['status']}")
+    eht = state["eht_shadow"]
+    print(f"EHT exterior null scaling: delta_shadow={eht['shadow_radius_fractional_shift']:.3e}; status={eht['status']}")
+    for row in state["pbh_ladder"]["rows"]:
+        print(f"PBH ladder N={row['cycle']:>3}: {row['mass_msun']:.4e} M_sun")
+    print(f"PBH status={state['pbh_ladder']['status']}; no abundance/DM fraction is inferred.")
+    print("No independent Planck, EHT or JWST confirmation is claimed by this entry point.")
+    print("=" * 72)
+    return state
+
+
+if __name__ == "__main__":
+    main()

@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """
-NVG fork B: the full neutron-star chain
-========================================
-Completes the fork-B program (melting = scalar field, nonlinear sigma):
+NVG fork B: quarantined alternate neutron-star calibration
+===========================================================
+This entry point is retained as a dated exploratory fork only.  Its fitted
+four-condition route is not the maintained canonical EOS chain and carries no
+independent evidence weight.  It must not be read as a current prediction.
+
+The exploratory route (melting = scalar field, nonlinear sigma) performs:
 
   0. quartic tuning: 4-condition calibration (E/A = -16, p = 0,
      m*/M = 0.65, K = 240) with polynomial-smoothed derivatives;
@@ -11,16 +15,13 @@ Completes the fork-B program (melting = scalar field, nonlinear sigma):
   1. hadronic beta-equilibrated table;
   2. npLambda extension (quark-counting couplings) -> hyperon threshold
      and the existence/strange gates on the consistent EOS;
-  3. CSS quark core attached (c_s^2 = 1/3), small scan over
-     (n_tr, delta_eps); crust and tidal deformability via the
-     established machinery of nvg_tidal_deformability.py;
-     joint chi^2 against J0740, NICER J0030/J0437 and GW170817;
-  4. the new fork-B canonical numbers: M_max, R_1.4, Lambda_1.4,
-     R_1.6 -> f_peak (Bauswein-type relation), z_surf(1.4).
+  3. CSS quark core attached (c_s^2 = 1/3), with the fitted exploratory
+     (n_tr, delta_eps) route and crust/tidal diagnostics;
+  4. descriptive outputs for this alternate route only.
 
-All quoted radii carry the crust model of the tidal script; the
-previous canonical numbers (12.55 km etc.) are superseded by this chain
-pending review.
+The reported four-pull score is a calibration diagnostic, not an independent
+test.  The maintained canonical values and provenance live in
+``NVG_FINAL_REPORT.md`` and ``nvg_ns_canonical.py``.
 """
 
 from __future__ import annotations
@@ -30,6 +31,12 @@ from scipy.optimize import fsolve, brentq
 
 import nvg_eos_beta_saturated_vector as base
 import nvg_tidal_deformability as td
+
+
+# Public machine-readable quarantine marker for callers and report tests.
+FORK_STATUS = "QUARANTINED_ALTERNATE_CALIBRATION"
+ALTERNATE_DATE = "2026-08-27"
+EVIDENCE_WEIGHT = 0
 
 N0, M_NUC = base.n_0, base.M_N
 E_BIND, J_SYM, K_T, MST = 16.0, 32.0, 240.0, 0.65
@@ -213,6 +220,12 @@ def star_family(p_arr, e_arr):
             rows.append(td.solve_tov_tidal(eos, pc))
         except Exception:
             pass
+    if not rows:
+        # This exploratory fork is allowed to fail closed; an empty stellar
+        # sequence is not evidence and must never become a fabricated result.
+        return {"m_max": float("nan"), "r14": float("nan"),
+                "l14": float("nan"), "r16": float("nan"),
+                "l136": float("nan")}
     ms = np.array([r[0] for r in rows])
     rs = np.array([r[1] for r in rows])
     ls = np.array([r[3] for r in rows])
@@ -227,7 +240,7 @@ def star_family(p_arr, e_arr):
 
 def main():
     print("=" * 78)
-    print("  NVG FORK B: FULL NEUTRON-STAR CHAIN")
+    print("  NVG FORK B: QUARANTINED ALTERNATE CALIBRATION")
     print("=" * 78)
 
     global A_RHO
@@ -329,7 +342,8 @@ def main():
     e_all = np.concatenate([dl["eps"][:i_tr + 1], e_ext])
     fam = star_family(p_all, e_all)
     if not np.isfinite(fam["r14"]):
-        print("     Error: r14 not finite")
+        print("     No valid stellar rows in this exploratory route; failing closed.")
+        print(f"     STATUS: {FORK_STATUS} (dated {ALTERNATE_DATE}); evidence_weight={EVIDENCE_WEIGHT}.")
         return
         
     chi2 = (((fam["m_max"] - 2.08) / 0.07) ** 2 +
@@ -338,7 +352,7 @@ def main():
             ((fam["l136"] - 300.0) / 255.0) ** 2)
     z = (1.0 - 2.0 * 1.4766 * 1.4 / fam["r14"]) ** -0.5 - 1.0
     f_peak = 8.16 - 0.46 * fam["r16"]
-    print(f"\n  3. FORK-B CANONICAL CANDIDATE: n_tr = {ntr} n_0, "
+    print(f"\n  3. FORK-B EXPLORATORY ALTERNATE: n_tr = {ntr} n_0, "
           f"delta_eps = {de_frac} eps_tr, cs2_q = {cs2q:.2f}")
     print(f"     M_max = {fam['m_max']:.2f} M_sun   (J0740: 2.08 +- 0.07)")
     print(f"     R_1.4 = {fam['r14']:.2f} km       (J0030 12.2 +- 0.5; "
@@ -349,10 +363,10 @@ def main():
           f"(Bauswein-type)")
     print(f"     z_surf(1.4) = {z:.3f};  joint chi^2 = {chi2:.2f} (4 pulls)")
     print(f"""
-  STATUS: fork-B full chain complete. The macroscopic core parameters 
-  are EMPIRICALLY CALIBRATED to match observations (ntr=1.6, dE=0.25). 
-  They are not zero-parameter predictions. The strange gate is closed 
-  on the consistent EOS — no self-bound phase of any flavor.
+  STATUS: {FORK_STATUS} (dated {ALTERNATE_DATE}); evidence_weight={EVIDENCE_WEIGHT}.
+  This four-pull route is an exploratory, empirically calibrated alternate
+  and is not the maintained canonical chain or an independent confirmation.
+  The strange gate is descriptive only; no self-bound phase is claimed.
 """)
     print("=" * 78)
 

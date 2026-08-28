@@ -1,14 +1,30 @@
+from __future__ import annotations
+
 import csv
 import matplotlib.pyplot as plt
-import os
+from pathlib import Path
 
-def plot_results(csv_file='gwtc3_nvg_results.csv'):
-    if not os.path.exists(csv_file):
+HERE = Path(__file__).resolve().parent
+REPOSITORY_ROOT = HERE.parent
+DEFAULT_INPUT = HERE / "gwtc3_nvg_results.csv"
+DEFAULT_OUTPUT = HERE / "nvg_gwtc3_snr_distribution.png"
+
+
+def resolve_path(value: str | Path | None, default: Path) -> Path:
+    """Resolve relative inputs/outputs against the repository root."""
+
+    path = default if value is None else Path(value)
+    return path if path.is_absolute() else REPOSITORY_ROOT / path
+
+def plot_results(csv_file=None, plot_file=None):
+    csv_file = resolve_path(csv_file, DEFAULT_INPUT)
+    plot_file = resolve_path(plot_file, DEFAULT_OUTPUT)
+    if not csv_file.exists():
         print(f"Error: {csv_file} not found. Run mass scan first.")
         return
         
     data = []
-    with open(csv_file, 'r') as f:
+    with csv_file.open('r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             data.append({
@@ -50,7 +66,7 @@ def plot_results(csv_file='gwtc3_nvg_results.csv'):
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     
-    plot_file = 'nvg_gwtc3_snr_distribution.png'
+    plot_file.parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(plot_file, dpi=300)
     print(f"\nPlot saved to {plot_file}")
 

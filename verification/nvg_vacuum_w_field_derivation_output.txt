@@ -1,3 +1,7 @@
+# Provenance: deterministic snapshot of verification/nvg_vacuum_w_field_derivation.py
+# Snapshot status: NON_EVIDENCE_MODEL_DERIVATION (no observational likelihood)
+# Reproduce: python verification/nvg_vacuum_w_field_derivation.py
+# SEC/Bounce labels below are model outputs, not empirical confirmations.
 ================================================================================
    IN-MEDIUM VACUUM CONDENSATE W-FIELD PHASE TRANSITION NUMERICAL MODEL
 ================================================================================

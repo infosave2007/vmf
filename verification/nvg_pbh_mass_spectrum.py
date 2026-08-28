@@ -1,56 +1,64 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Primordial Black Hole Mass Spectrum
-------------------------------------------------------
-Calculates the discrete PBH mass spectrum M_N = 0.38 * 4^N M_sun derived from
-the VMF cyclic cosmology, verifying the mass hierarchy at different cycles N.
+"""Canonical discrete PBH mass ladder.
+
+The ladder is a theory-level mapping from cycle index to mass.  It contains no
+formation abundance, lensing selection, JWST occupation model, or merger-rate
+likelihood.  Downstream consumers must therefore treat it as a model input and
+not as an observed population.
 """
 
-import numpy as np
+from __future__ import annotations
+
+from typing import Any
+
+
+MASS_ANCHOR_MSUN = 0.38
+LADDER_BASE = 4.0
+
 
 def get_pbh_mass(n_cycle: int) -> float:
-    # PBH mass spectrum: M_N = 0.38 * 4^N M_sun
-    return 0.38 * (4.0 ** n_cycle)
+    """Return the runtime mass (solar masses) for an integer ladder index."""
 
-def main():
-    print("==========================================================================")
-    print("  NVG COSMOLOGY: PRIMORDIAL BLACK HOLE DISCRETE MASS SPECTRUM")
-    print("==========================================================================")
-    
-    # Selected representative cycles
-    # N = -21: Peak asteroid mass dark matter
-    # N = 10: Early SMBH seeds at z > 6 (JWST)
-    # N = 0: Stellar mass PBH
+    if not isinstance(n_cycle, int):
+        raise TypeError("n_cycle must be an integer")
+    return MASS_ANCHOR_MSUN * LADDER_BASE ** n_cycle
+
+
+def mass_ladder(cycles: list[int] | tuple[int, ...]) -> list[dict[str, Any]]:
+    """Build a machine-readable ladder with explicit evidence semantics."""
+
+    return [
+        {
+            "cycle": int(cycle),
+            "mass_msun": float(get_pbh_mass(int(cycle))),
+            "evidence_status": "THEORY_LADDER_ONLY",
+        }
+        for cycle in cycles
+    ]
+
+
+def main() -> dict[str, Any]:
     cycles = [-28, -25, -21, -15, 0, 10]
-    
-    print(f"{'Cycle N':<10} | {'PBH Mass (M_sun)':<20} | {'Interpretation':<35}")
-    print("-" * 74)
-    
-    for N in cycles:
-        mass = get_pbh_mass(N)
-        if N == -21:
-            desc = "Asteroid-mass DM Peak (Unconstrained)"
-        elif N == 10:
-            desc = "Early SMBH seeds at z > 6 (JWST)"
-        elif N == 0:
-            desc = "Stellar-mass PBH (LIGO band)"
-        elif N < -21:
-            desc = "Sub-asteroid PBH (Hawking radiation)"
-        else:
-            desc = "Intermediate PBH seed"
-            
-        print(f"N = {N:<7d} | {mass:<20.4e} | {desc:<35}")
-        
-    print("-" * 74)
-    # Assertions
-    m_21 = get_pbh_mass(-21)
-    m_10 = get_pbh_mass(10)
-    
-    assert abs(m_21 - 8.64e-14) < 1e-15, "Asteroid peak mass mismatch!"
-    assert abs(m_10 - 3.98e5) < 1e3, "JWST seed mass mismatch!"
-    
-    print("Status: ✅ PBH mass spectrum hierarchy verified successfully.")
-    print("==========================================================================")
+    rows = mass_ladder(cycles)
+    print("=" * 78)
+    print("  NVG DISCRETE PBH MASS LADDER (THEORY INPUT)")
+    print("=" * 78)
+    print(f"{'Cycle':<10} | {'Mass (M_sun)':<20} | {'Evidence status':<24}")
+    print("-" * 78)
+    for row in rows:
+        print(f"N = {row['cycle']:<7d} | {row['mass_msun']:<20.4e} | {row['evidence_status']:<24}")
+    print("-" * 78)
+    print("The ladder is computed from M_N = 0.38 * 4^N at runtime.")
+    print("No abundance, lensing, JWST occupation, or merger likelihood is supplied.")
+    print("Evidence status: THEORY_LADDER_ONLY")
+    print("=" * 78)
+    return {
+        "rows": rows,
+        "evidence_status": "THEORY_LADDER_ONLY",
+        "observed_likelihood": None,
+        "limitation": "No formation-abundance, lensing/JWST occupation, or merger-rate likelihood is present.",
+    }
+
 
 if __name__ == "__main__":
     main()

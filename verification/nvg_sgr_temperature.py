@@ -1,107 +1,89 @@
 #!/usr/bin/env python3
+"""SGR 1935 thermal-emission consistency calculation.
+
+The XMM-Newton temperature/luminosity values are declared observational inputs.
+The heating level, spot size, envelope relation and two core temperatures are
+illustrative model inputs, so the derived spot temperature is a consistency
+calculation rather than an independently predicted fit.  No thermal-evolution
+solver or likelihood is available in this repository.
 """
-NVG Verification: Surface Temperature & Luminosity of SGR 1935+2154
------------------------------------------------------------------
-Compares the quiescent thermal luminosity and blackbody temperature of the 
-magnetar SGR 1935+2154 (observed by XMM-Newton) against VMF cooling models.
-Shows that for a light magnetar (M ≈ 1.10 M_sun), the central density is below 
-the Direct Urca threshold, meaning it cools via the slow Modified Urca process, 
-sustaining its high observed temperature (T_s ≈ 0.45 keV) and luminosity (L_x ≈ 1e34 erg/s) 
-via a localized hot spot of radius R_spot ≈ 1.5 km (area fraction f_spot ≈ 1.5%).
-"""
+
+from __future__ import annotations
 
 import math
+from typing import Any
 
-def calculate_sgr_thermal():
-    print("==========================================================================")
-    print("  NVG/VMF CALCULATION: SGR 1935+2154 THERMAL EMISSION & COOLING")
-    print("==========================================================================")
-    
-    # 1. Observational parameters (XMM-Newton)
-    T_obs_keV = 0.45       # keV (Quiescent blackbody temperature)
-    T_obs_K = T_obs_keV * 1e3 * 11604.5
-    L_obs_erg_s = 1.0e34   # erg/s, typical quiescent thermal luminosity range (5e33 - 3.6e34)
-    
-    # Magnetar parameters
-    M_sgr = 1.10           # M_sun (light magnetar)
-    M_heavy = 1.60         # M_sun (heavy magnetar)
-    age_yr = 3600.0        # yr (characteristic spin-down age)
-    
-    # 2. VMF Threshold Logic:
-    # Direct Urca threshold is M_DU ≈ 1.45 M_sun.
-    # SGR 1935+2154 (1.10 M_sun) is BELOW threshold => Modified Urca (slow) cooling.
-    # A heavy magnetar (1.60 M_sun) is ABOVE threshold => Direct Urca (rapid) cooling.
-    
-    # Standard cooling timescales and core temperatures at t ≈ 3600 yr:
-    T_core_murca = 1.2e8   # K
-    T_core_durca = 1.5e7   # K (rapid neutrino emission)
-    
-    # Envelope relation (Gundmundsson et al. 1983): T_surf ∝ T_core^0.55
-    T_surf_murca_passive = 1.0e6 * (T_core_murca / 1e8)**0.55
-    T_surf_durca_passive = 1.0e6 * (T_core_durca / 1e8)**0.55
-    
-    # Magnetars have active magnetic field decay heating concentrated in a polar hot spot:
-    # L_heat ≈ 2e34 erg/s.
-    # The blackbody emission comes from a polar cap hot spot with radius R_spot ≈ 1.5 km (area fraction f_spot ≈ 1.56%).
-    R_ns = 12.0e5    # cm (radius 12 km)
-    R_spot = 1.5e5   # cm (radius 1.5 km)
-    f_spot = (R_spot / R_ns)**2  # Area fraction ≈ 0.0156
-    
-    sigma_SB = 5.6704e-5  # erg cm^-2 s^-1 K^-4
-    
-    # Calculate spot temperature for light magnetar (Modified Urca):
-    # T_spot = (T_passive^4 + T_heat_spot^4)^0.25
-    # T_heat_spot = (L_heat / (f_spot * 4 * pi * R_ns^2 * sigma_SB))^(0.25)
-    # HONESTY NOTE: with L_heat set to ~the observed luminosity and R_spot to a
-    # typical polar-cap size, the spot temperature follows from Stefan-Boltzmann
-    # essentially by construction (L, A and T are not independent). This section
-    # is a CONSISTENCY ILLUSTRATION, not a prediction of T_spot. The VMF-specific
-    # content is qualitative: M = 1.10 M_sun < 1.45 (no Direct Urca heat sink)
-    # keeps the hot spot alive, while a heavy magnetar would be cold.
-    L_heat = 1.1e34  # erg/s
-    T_heat_spot = (L_heat / (f_spot * 4.0 * math.pi * R_ns**2 * sigma_SB))**0.25
-    
-    T_surf_sgr_K = (T_surf_murca_passive**4 + T_heat_spot**4)**0.25
-    # For heavy magnetar, Direct Urca acts as a massive heat sink, cooling the hot spot rapidly:
-    T_surf_heavy_K = (T_surf_durca_passive**4 + T_heat_spot**4 * 0.10)**0.25
-    
-    T_surf_sgr_keV = T_surf_sgr_K / (1e3 * 11604.5)
-    T_surf_heavy_keV = T_surf_heavy_K / (1e3 * 11604.5)
-    
-    # Thermal luminosity from the hot spot
-    L_thermal_sgr = f_spot * 4.0 * math.pi * R_ns**2 * sigma_SB * T_surf_sgr_K**4
-    L_thermal_heavy = f_spot * 4.0 * math.pi * R_ns**2 * sigma_SB * T_surf_heavy_K**4
-    
-    print(f"SGR 1935+2154 Mass (VMF prediction)     : {M_sgr:.2f} M_sun (Light Magnetar)")
-    print(f"Comparison Heavy Magnetar Mass          : {M_heavy:.2f} M_sun (Heavy Magnetar)")
-    print(f"Estimated Age                            : {age_yr:.0f} years")
-    print(f"Direct Urca Threshold                    : 1.45 M_sun")
-    print(f"SGR 1935+2154 Cooling Regime             : Modified Urca (Slow cooling, below threshold)")
-    print(f"Heavy Magnetar Cooling Regime            : Direct Urca (Rapid cooling, above threshold)")
-    print(f"Hot Spot Area Fraction (f_spot)         : {f_spot*100:.3f}% (R_spot = {R_spot/1e5:.1f} km)")
-    print("-" * 74)
-    print(f"SGR 1935+2154 predicted T_spot           : {T_surf_sgr_keV:.3f} keV ({T_surf_sgr_K:.2e} K)")
-    print(f"SGR 1935+2154 predicted L_thermal        : {L_thermal_sgr:.2e} erg/s")
-    print(f"Heavy Magnetar predicted T_spot          : {T_surf_heavy_keV:.3f} keV ({T_surf_heavy_K:.2e} K)")
-    print(f"Heavy Magnetar predicted L_thermal       : {L_thermal_heavy:.2e} erg/s")
-    print("-" * 74)
-    print(f"XMM-Newton Observed Quiescent T_spot     : {T_obs_keV:.2f} keV")
-    print(f"XMM-Newton Observed Quiescent Luminosity : {L_obs_erg_s:.1e} erg/s")
-    
-    # Validation
-    dev_T = abs(T_surf_sgr_keV - T_obs_keV) / 0.05  # 0.05 keV observational uncertainty
-    print(f"Temperature deviation for SGR 1935+2154  : {dev_T:.2f} sigma")
-    
-    is_ok = dev_T < 1.0 and T_surf_heavy_keV < 0.30
-    print(f"Status                                   : {'✅ PASSED (Fits SGR 1935+2154 and explains cooling division)' if is_ok else '❌ FAILED'}")
-    print("\nPhysics Context:")
-    print("Under the VMF theory, SGR 1935+2154 must be a light magnetar to avoid Direct Urca")
-    print("cooling. This slow cooling keeps the core hot, allowing magnetic decay heating")
-    print("to maintain the surface temperature of the polar cap hot spot at ~0.45 keV.")
-    print("Heavy magnetars (like SGR 1806-20) undergo fast Direct Urca cooling, which drains")
-    print("the core temperature and rapidly cools the hot spot, predicting a much colder quiescent cap.")
-    print("==========================================================================")
-    return is_ok
+
+T_OBS_KEV = 0.45
+L_OBS_ERG_S = 1.0e34
+M_SGR = 1.10
+M_HEAVY = 1.60
+AGE_YR = 3600.0
+M_DU_THRESHOLD = 1.45
+T_CORE_MURCA = 1.2e8
+T_CORE_DURCA = 1.5e7
+R_NS_CM = 12.0e5
+R_SPOT_CM = 1.5e5
+SIGMA_SB = 5.6704e-5
+
+
+def compute_sgr_thermal() -> dict[str, Any]:
+    """Compute passive/envelope and spot-heating quantities at runtime."""
+
+    t_obs_K = T_OBS_KEV * 1e3 * 11604.5
+    f_spot = (R_SPOT_CM / R_NS_CM) ** 2
+    t_passive_murca = 1.0e6 * (T_CORE_MURCA / 1e8) ** 0.55
+    t_passive_durca = 1.0e6 * (T_CORE_DURCA / 1e8) ** 0.55
+    # Explicit consistency input: the adopted heating power is of the same
+    # order as the quoted luminosity, not a fit performed by this script.
+    l_heat = 1.1e34
+    t_heat = (l_heat / (f_spot * 4.0 * math.pi * R_NS_CM**2 * SIGMA_SB)) ** 0.25
+    t_light = (t_passive_murca**4 + t_heat**4) ** 0.25
+    t_heavy = (t_passive_durca**4 + 0.10 * t_heat**4) ** 0.25
+    l_light = f_spot * 4.0 * math.pi * R_NS_CM**2 * SIGMA_SB * t_light**4
+    l_heavy = f_spot * 4.0 * math.pi * R_NS_CM**2 * SIGMA_SB * t_heavy**4
+    return {
+        "T_obs_keV": T_OBS_KEV,
+        "T_obs_K": t_obs_K,
+        "L_obs_erg_s": L_OBS_ERG_S,
+        "M_sgr": M_SGR,
+        "M_heavy": M_HEAVY,
+        "M_DU_threshold": M_DU_THRESHOLD,
+        "age_yr": AGE_YR,
+        "f_spot": f_spot,
+        "T_light_keV": t_light / (1e3 * 11604.5),
+        "T_heavy_keV": t_heavy / (1e3 * 11604.5),
+        "L_light_erg_s": l_light,
+        "L_heavy_erg_s": l_heavy,
+        "temperature_offset_sigma": (t_light / (1e3 * 11604.5) - T_OBS_KEV) / 0.05,
+        "evidence_status": "CALIBRATED_CONSISTENCY_ONLY",
+        "observed_likelihood": None,
+        "limitation": "No magnetar thermal-evolution solver or XMM spectral likelihood is present.",
+    }
+
+
+def calculate_sgr_thermal() -> dict[str, Any]:
+    """Compatibility entry point used by the historical CLI."""
+
+    state = compute_sgr_thermal()
+    print("=" * 74)
+    print("  NVG/VMF SGR 1935 THERMAL CONSISTENCY CALCULATION")
+    print("=" * 74)
+    print(f"Declared XMM temperature                 : {state['T_obs_keV']:.2f} keV")
+    print(f"Declared XMM luminosity                   : {state['L_obs_erg_s']:.2e} erg/s")
+    print(f"Model masses (threshold input)            : {state['M_sgr']:.2f}, {state['M_heavy']:.2f} M_sun")
+    print(f"Direct-Urca threshold input               : {state['M_DU_threshold']:.2f} M_sun")
+    print(f"Spot area fraction                        : {state['f_spot'] * 100.0:.3f}%")
+    print(f"Runtime light-model temperature           : {state['T_light_keV']:.3f} keV")
+    print(f"Runtime heavy-model temperature           : {state['T_heavy_keV']:.3f} keV")
+    print(f"Runtime light-model luminosity             : {state['L_light_erg_s']:.2e} erg/s")
+    print(f"Runtime heavy-model luminosity             : {state['L_heavy_erg_s']:.2e} erg/s")
+    print(f"Offset from declared temperature          : {state['temperature_offset_sigma']:+.2f} sigma (descriptive)")
+    print("Evidence status                           : CALIBRATED_CONSISTENCY_ONLY")
+    print("No independent thermal likelihood is available; no observational result is claimed.")
+    print("=" * 74)
+    return state
+
 
 if __name__ == "__main__":
     calculate_sgr_thermal()

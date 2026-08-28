@@ -1,0 +1,445 @@
+{
+  "analytic_scaling": {
+    "all_pass": true,
+    "checks": {
+      "abundance_exponent": {
+        "expected": "1/2",
+        "expected_ratio": 2.0,
+        "observed_ratio": 2.0,
+        "relative_error": 0.0
+      },
+      "mass_exponent_after_number_density": {
+        "expected": "1/3",
+        "expected_ratio": 2.5198420997897464,
+        "observed_ratio": 2.5198420997897464,
+        "relative_error": 0.0
+      },
+      "merger_efficiency_exponent": {
+        "expected": "1/2",
+        "expected_ratio": 2.0,
+        "observed_ratio": 2.0,
+        "relative_error": 0.0
+      }
+    }
+  },
+  "benchmark": {
+    "amplitude_strain": 2.4e-15,
+    "frequency_label": "f=1/yr",
+    "observed_likelihood": null,
+    "provenance_status": "INTERNAL_BENCHMARK_TRACEABLE_NO_INDEPENDENT_LIKELIHOOD",
+    "source_label": "maintained NANOGrav 15-year benchmark constant",
+    "source_path": "verification/nvg_pbh_two_population.py",
+    "source_symbol": "A_NANOGRAV",
+    "target_calibration_used": false
+  },
+  "canonical_producers": {
+    "identity_checks": {
+      "ladder_base": 4.0,
+      "mass_anchor_msun": 0.38,
+      "two_population_jwst_seed_density_range_mpc3": [
+        1e-05,
+        0.0001
+      ],
+      "two_population_mass_msun": 400000.0
+    },
+    "mass_ladder": "verification/nvg_pbh_mass_spectrum.py:get_pbh_mass",
+    "population_a_profile": "verification/nvg_pbh_dark_matter.py:compute_spectrum",
+    "two_population": "verification/nvg_pbh_two_population.py"
+  },
+  "convergence": {
+    "abundance_converged": true,
+    "abundance_grid": [
+      {
+        "abundance_grid_points": 9,
+        "max_amplitude_strain": 6.309652265244304e-14,
+        "max_cycle": 11
+      },
+      {
+        "abundance_grid_points": 33,
+        "max_amplitude_strain": 6.309652265244304e-14,
+        "max_cycle": 11
+      },
+      {
+        "abundance_grid_points": 129,
+        "max_amplitude_strain": 6.309652265244304e-14,
+        "max_cycle": 11
+      }
+    ],
+    "abundance_relative_errors_vs_129": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "boundary_expansion": [
+      {
+        "max_amplitude_strain": 6.309652265244304e-14,
+        "max_at_mass_boundary": true,
+        "max_cycle_in_scan": 11,
+        "max_row_cycle": 11
+      },
+      {
+        "max_amplitude_strain": 1.5899327412996335e-13,
+        "max_at_mass_boundary": true,
+        "max_cycle_in_scan": 13,
+        "max_row_cycle": 13
+      },
+      {
+        "max_amplitude_strain": 4.0063794573609374e-13,
+        "max_at_mass_boundary": true,
+        "max_cycle_in_scan": 15,
+        "max_row_cycle": 15
+      },
+      {
+        "max_amplitude_strain": 1.602551782944375e-12,
+        "max_at_mass_boundary": true,
+        "max_cycle_in_scan": 18,
+        "max_row_cycle": 18
+      }
+    ],
+    "boundary_maximum_is_explicit": true,
+    "resolution_status": "CONVERGED_ENDPOINT_INCLUSIVE_GRIDS"
+  },
+  "internal_budget_expanded_boundary": {
+    "abundance_grid_points": 33,
+    "cycles": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "external_exclusion_applied": false,
+    "max_amplitude_strain": 1.602551782944375e-12,
+    "max_at_abundance_boundary": true,
+    "max_at_mass_boundary": true,
+    "max_deficit_factor": 0.0014976115128027066,
+    "max_row": {
+      "amplitude_strain": 1.602551782944375e-12,
+      "binary_pair_fraction": 1.0,
+      "cycle": 18,
+      "deficit_factor": 0.0014976115128027066,
+      "duty_cycle": 1.0,
+      "fraction_dm": 1.0,
+      "mass_msun": 26113401159.68,
+      "merger_rate_ratio": 1.0,
+      "number_density_mpc3": 1.2637189540423845,
+      "target_scale": 1.0
+    },
+    "per_cycle_all_dm": [
+      {
+        "all_dm_amplitude_strain": 9.937079633122708e-15,
+        "all_dm_deficit_factor": 0.24151965050176463,
+        "cycle": 7,
+        "mass_msun": 6225.92,
+        "required_fraction_at_unit_rate": 0.058331741578494536
+      },
+      {
+        "all_dm_amplitude_strain": 1.5774130663110756e-14,
+        "all_dm_deficit_factor": 0.15214784581521307,
+        "cycle": 8,
+        "mass_msun": 24903.68,
+        "required_fraction_at_unit_rate": 0.02314896698620985
+      },
+      {
+        "all_dm_amplitude_strain": 2.503987160850585e-14,
+        "all_dm_deficit_factor": 0.09584713681937325,
+        "cycle": 9,
+        "mass_msun": 99614.72,
+        "required_fraction_at_unit_rate": 0.009186673636471656
+      },
+      {
+        "all_dm_amplitude_strain": 3.974831853249084e-14,
+        "all_dm_deficit_factor": 0.06037991262544115,
+        "cycle": 10,
+        "mass_msun": 398458.88,
+        "required_fraction_at_unit_rate": 0.0036457338486559077
+      },
+      {
+        "all_dm_amplitude_strain": 6.309652265244304e-14,
+        "all_dm_deficit_factor": 0.03803696145380326,
+        "cycle": 11,
+        "mass_msun": 1593835.52,
+        "required_fraction_at_unit_rate": 0.001446810436638115
+      },
+      {
+        "all_dm_amplitude_strain": 1.0015948643402341e-13,
+        "all_dm_deficit_factor": 0.02396178420484331,
+        "cycle": 12,
+        "mass_msun": 6375342.08,
+        "required_fraction_at_unit_rate": 0.0005741671022794783
+      },
+      {
+        "all_dm_amplitude_strain": 1.5899327412996335e-13,
+        "all_dm_deficit_factor": 0.015094978156360288,
+        "cycle": 13,
+        "mass_msun": 25501368.32,
+        "required_fraction_at_unit_rate": 0.00022785836554099423
+      },
+      {
+        "all_dm_amplitude_strain": 2.523860906097722e-13,
+        "all_dm_deficit_factor": 0.009509240363450813,
+        "cycle": 14,
+        "mass_msun": 102005473.28,
+        "required_fraction_at_unit_rate": 9.042565228988216e-05
+      },
+      {
+        "all_dm_amplitude_strain": 4.0063794573609374e-13,
+        "all_dm_deficit_factor": 0.005990446051210826,
+        "cycle": 15,
+        "mass_msun": 408021893.12,
+        "required_fraction_at_unit_rate": 3.588544389246738e-05
+      },
+      {
+        "all_dm_amplitude_strain": 6.359730965198536e-13,
+        "all_dm_deficit_factor": 0.0037737445390900706,
+        "cycle": 16,
+        "mass_msun": 1632087572.48,
+        "required_fraction_at_unit_rate": 1.4241147846312129e-05
+      },
+      {
+        "all_dm_amplitude_strain": 1.009544362439089e-12,
+        "all_dm_deficit_factor": 0.002377310090862703,
+        "cycle": 17,
+        "mass_msun": 6528350289.92,
+        "required_fraction_at_unit_rate": 5.651603268117632e-06
+      },
+      {
+        "all_dm_amplitude_strain": 1.602551782944375e-12,
+        "all_dm_deficit_factor": 0.0014976115128027066,
+        "cycle": 18,
+        "mass_msun": 26113401159.68,
+        "required_fraction_at_unit_rate": 2.242840243279211e-06
+      }
+    ],
+    "rate_grid_points": 3,
+    "rows_evaluated": 10692,
+    "status": "INTERNAL_BUDGET_ENVELOPE_NO_LIKELIHOOD"
+  },
+  "internal_budget_seed_band": {
+    "abundance_grid_points": 33,
+    "cycles": [
+      9,
+      10,
+      11
+    ],
+    "external_exclusion_applied": false,
+    "max_amplitude_strain": 6.309652265244304e-14,
+    "max_at_abundance_boundary": true,
+    "max_at_mass_boundary": true,
+    "max_deficit_factor": 0.03803696145380326,
+    "max_row": {
+      "amplitude_strain": 6.309652265244304e-14,
+      "binary_pair_fraction": 1.0,
+      "cycle": 11,
+      "deficit_factor": 0.03803696145380326,
+      "duty_cycle": 1.0,
+      "fraction_dm": 1.0,
+      "mass_msun": 1593835.52,
+      "merger_rate_ratio": 1.0,
+      "number_density_mpc3": 20704.77134303043,
+      "target_scale": 1.0
+    },
+    "per_cycle_all_dm": [
+      {
+        "all_dm_amplitude_strain": 2.503987160850585e-14,
+        "all_dm_deficit_factor": 0.09584713681937325,
+        "cycle": 9,
+        "mass_msun": 99614.72,
+        "required_fraction_at_unit_rate": 0.009186673636471656
+      },
+      {
+        "all_dm_amplitude_strain": 3.974831853249084e-14,
+        "all_dm_deficit_factor": 0.06037991262544115,
+        "cycle": 10,
+        "mass_msun": 398458.88,
+        "required_fraction_at_unit_rate": 0.0036457338486559077
+      },
+      {
+        "all_dm_amplitude_strain": 6.309652265244304e-14,
+        "all_dm_deficit_factor": 0.03803696145380326,
+        "cycle": 11,
+        "mass_msun": 1593835.52,
+        "required_fraction_at_unit_rate": 0.001446810436638115
+      }
+    ],
+    "rate_grid_points": 3,
+    "rows_evaluated": 2673,
+    "status": "INTERNAL_BUDGET_ENVELOPE_NO_LIKELIHOOD"
+  },
+  "jwst_calibrated_expanded_boundary": {
+    "budget_fraction_max": 7.913151866569698e-05,
+    "cycles": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "density_grid_points": 17,
+    "density_range_mpc3": [
+      1e-05,
+      0.0001
+    ],
+    "external_exclusion_applied": false,
+    "max_amplitude_strain": 1.425564336421544e-14,
+    "max_deficit_factor": 0.16835437999413536,
+    "max_row": {
+      "amplitude_strain": 1.425564336421544e-14,
+      "binary_pair_fraction": 1.0,
+      "cycle": 18,
+      "deficit_factor": 0.16835437999413536,
+      "duty_cycle": 1.0,
+      "fraction_dm": 7.913151866569698e-05,
+      "mass_msun": 26113401159.68,
+      "merger_rate_ratio": 1.0,
+      "number_density_mpc3": 0.0001,
+      "target_scale": 1.0
+    },
+    "min_row": {
+      "amplitude_strain": 0.0,
+      "binary_pair_fraction": 0.0,
+      "cycle": 7,
+      "deficit_factor": null,
+      "duty_cycle": 0.0,
+      "fraction_dm": 1.8866424242424244e-12,
+      "mass_msun": 6225.92,
+      "merger_rate_ratio": 0.0,
+      "number_density_mpc3": 1e-05,
+      "target_scale": 1.0
+    },
+    "rate_grid_points": 3,
+    "rows_evaluated": 5508,
+    "status": "CALIBRATED_ABUNDANCE_SENSITIVITY_NO_LIKELIHOOD"
+  },
+  "jwst_calibrated_seed_band": {
+    "budget_fraction_max": 4.8298046060606066e-09,
+    "cycles": [
+      9,
+      10,
+      11
+    ],
+    "density_grid_points": 17,
+    "density_range_mpc3": [
+      1e-05,
+      0.0001
+    ],
+    "external_exclusion_applied": false,
+    "max_amplitude_strain": 4.385006141203416e-18,
+    "max_deficit_factor": 547.319643967784,
+    "max_row": {
+      "amplitude_strain": 4.385006141203416e-18,
+      "binary_pair_fraction": 1.0,
+      "cycle": 11,
+      "deficit_factor": 547.319643967784,
+      "duty_cycle": 1.0,
+      "fraction_dm": 4.8298046060606066e-09,
+      "mass_msun": 1593835.52,
+      "merger_rate_ratio": 1.0,
+      "number_density_mpc3": 0.0001,
+      "target_scale": 1.0
+    },
+    "min_row": {
+      "amplitude_strain": 0.0,
+      "binary_pair_fraction": 0.0,
+      "cycle": 9,
+      "deficit_factor": null,
+      "duty_cycle": 0.0,
+      "fraction_dm": 3.018627878787879e-11,
+      "mass_msun": 99614.72,
+      "merger_rate_ratio": 0.0,
+      "number_density_mpc3": 1e-05,
+      "target_scale": 1.0
+    },
+    "rate_grid_points": 3,
+    "rows_evaluated": 1377,
+    "status": "CALIBRATED_ABUNDANCE_SENSITIVITY_NO_LIKELIHOOD"
+  },
+  "population_a_profile": {
+    "evidence_status": "CALIBRATED_GRID_NO_LIKELIHOOD",
+    "mass_ladder_producer": "verification/nvg_pbh_mass_spectrum.py:get_pbh_mass",
+    "observed_likelihood": null,
+    "producer": "verification/nvg_pbh_dark_matter.py:compute_spectrum",
+    "profile_fraction_sum": 1.0000000000000002,
+    "profile_mass_range_msun": [
+      3.2959746043559335e-19,
+      6375342.08
+    ],
+    "profile_peak_cycle": -21,
+    "profile_width_cycles": 1.3,
+    "used_as_external_exclusion": false
+  },
+  "scan_contract": {
+    "dm_budget_definition": "f_A + f_B <= 1; internal envelope sets f_B=1 and f_A=0",
+    "expanded_cycles": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "external_constraints_reported_only": [
+      "verification/nvg_pbh_two_population.py:F_PBH_CMB_BOUND"
+    ],
+    "external_exclusions_used": false,
+    "rate_factor_names": [
+      "binary_pair_fraction",
+      "duty_cycle",
+      "merger_rate_ratio"
+    ],
+    "rate_factor_range": [
+      0.0,
+      1.0
+    ],
+    "seed_cycles": [
+      9,
+      10,
+      11
+    ]
+  },
+  "schema_version": 1,
+  "semantic_interpretation": {
+    "boundary_warning": true,
+    "claim_boundary": "No global PBH-NANOGrav exclusion: expanded mass boundary and all-DM envelope are sensitivity-only.",
+    "internal_budget_no_go": false,
+    "internal_budget_status": "NO_INTERNAL_BUDGET_NO_GO",
+    "no_external_observational_exclusion": true,
+    "seed_band_deficit": true,
+    "seed_band_deficit_status": "CALIBRATED_ABUNDANCE_DEFICIT_NOT_INTERNAL_NO_GO"
+  },
+  "status": "CONDITIONAL_JWST_BAND_DEFICIT_NO_INTERNAL_BUDGET_NO_GO",
+  "target_scale_sensitivity": [
+    {
+      "deficit_factor": 437.8557151742272,
+      "max_predicted_amplitude_strain": 4.385006141203416e-18,
+      "target_amplitude_strain": 1.92e-15,
+      "target_scale": 0.8
+    },
+    {
+      "deficit_factor": 656.7835727613408,
+      "max_predicted_amplitude_strain": 4.385006141203416e-18,
+      "target_amplitude_strain": 2.88e-15,
+      "target_scale": 1.2
+    }
+  ]
+}

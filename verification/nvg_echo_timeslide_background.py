@@ -21,6 +21,8 @@ Requires pycbc (installed) + network to GWOSC.
 """
 from __future__ import annotations
 import csv
+import hashlib
+import json
 import math
 import os
 import sys
@@ -37,6 +39,7 @@ except Exception as exc:  # pragma: no cover
     sys.exit(1)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+PROVENANCE_PATH = os.path.join(HERE, "data", "provenance.json")
 
 EVENTS = [
     "GW150914", "GW170104", "GW170814", "GW170823",
@@ -53,9 +56,20 @@ SLIDE_MIN = 0.10        # s, minimum |lag| so slid L1 on-source maps to off-sour
 
 def load_masses() -> dict:
     path = os.path.join(HERE, "data", "gwtc_events.csv")
+    if not os.path.exists(path) or not os.path.exists(PROVENANCE_PATH):
+        raise RuntimeError("GWTC catalog or provenance manifest is missing")
+    with open(PROVENANCE_PATH, encoding="utf-8") as fh:
+        manifest = json.load(fh)
+    entry = manifest.get("entries", {}).get("gwtc_events.csv", {})
+    if entry.get("trust_status") != "verified_public":
+        raise RuntimeError("GWTC catalog is not marked verified_public in provenance manifest")
+    expected_hash = entry.get("sha256")
+    with open(path, "rb") as fh:
+        digest = hashlib.sha256(fh.read()).hexdigest()
+    if expected_hash and digest != expected_hash:
+        raise RuntimeError("GWTC catalog hash does not match provenance manifest")
+
     out = {}
-    if not os.path.exists(path):
-        return out
     with open(path, newline="") as fh:
         for row in csv.DictReader(fh):
             name = row.get("commonName") or ""
@@ -66,6 +80,13 @@ def load_masses() -> dict:
                 except (KeyError, ValueError, TypeError):
                     continue
     return out
+
+
+def require_mass(mass_final: float | None, event_name: str) -> float:
+    """Require a catalog-derived remnant mass; never substitute a toy default."""
+    if mass_final is None or not math.isfinite(float(mass_final)) or float(mass_final) <= 0.0:
+        raise ValueError(f"missing valid catalog remnant mass for {event_name}")
+    return float(mass_final)
 
 
 def echo_comb(mass_final, sr, duration, dt_echo):
@@ -136,13 +157,14 @@ def analyse(name, masses):
             continue
     if "H1" not in dets:
         return None
-    return analyse_strains(dets, m.time, masses.get(name, 60.0), name)
+    return analyse_strains(dets, m.time, require_mass(masses.get(name), name), name)
 
 
 def analyse_strains(dets, t0, mass_final, name):
     """Coherent time-slide search on conditioned {det: (strain, psd)} dicts.
 
     Reused by both the O1-O3 (catalog) and O4 (direct GWOSC fetch) drivers."""
+    mass_final = require_mass(mass_final, name)
     dt0 = 0.022 * (mass_final / 65.0)
     # shared merger-relative grid, taken from H1 at the central delay
     s, psd_h = dets["H1"]
@@ -220,14 +242,20 @@ def main():
     print("  " + "-" * 92)
 
     results = []
+    skipped: dict[str, int] = {}
+
+    def skip(reason: str) -> None:
+        skipped[reason] = skipped.get(reason, 0) + 1
     for name in EVENTS:
         try:
             r = analyse(name, masses)
         except Exception as exc:
             print(f"  {name:<18} skipped ({type(exc).__name__})")
+            skip(type(exc).__name__)
             continue
         if r is None:
             print(f"  {name:<18} skipped (no data)")
+            skip("no_data")
             continue
         results.append(r)
         # coherent if network exceeds the larger single-detector peak by a real margin
@@ -239,6 +267,7 @@ def main():
 
     print("-" * 96)
     valid = [r for r in results if r["p"] == r["p"]]
+    print(f"  Sample ledger: used={len(results)}, skipped={sum(skipped.values())}, reasons={skipped or 'none'}")
     if not valid:
         print("  No dual-detector events with a time-slide background.")
         print("=" * 96); return

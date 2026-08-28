@@ -1,0 +1,19 @@
+{
+  "schema": "P2-S1-J0737A-timing-input-v1",
+  "object": "PSR J0737-3039A",
+  "mass_msun": 1.3381,
+  "mass_sigma_msun": 0.0007,
+  "units": "solar masses",
+  "primary_source": {
+    "citation": "Kramer et al. (2006), Tests of general relativity from timing the double pulsar",
+    "identifier": "arXiv:astro-ph/0609417",
+    "url": "https://arxiv.org/abs/astro-ph/0609417",
+    "release_date": "2006-10-06"
+  },
+  "retrieved_utc": "2026-08-28",
+  "configuration": {
+    "use": "target_mass_only",
+    "independent_evidence": false,
+    "mass_role": "held-out timing target for conditional EOS evaluation"
+  }
+}

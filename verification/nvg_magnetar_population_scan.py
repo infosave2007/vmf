@@ -191,12 +191,12 @@ def build_sample() -> tuple[list[CompactObject], str]:
             raise RuntimeError("parsed too few McGill rows")
         if not any(o.name == "Swift J1555.2-5402" for o in magnetars):
             magnetars.append(swift_j1555)
-        return magnetars + CURATED_NON_MAGNETARS, f"McGill catalog parsed live ({len(magnetars)} magnetar rows, including Swift J1555)"
+        return magnetars + CURATED_NON_MAGNETARS, f"McGill catalog parsed live from {MCGILL_ASCII_URL} ({len(magnetars)} magnetar rows, including Swift J1555)"
     except Exception as exc:
         fallback = list(FALLBACK_MAGNETARS)
         if not any(o.name == "Swift J1555.2-5402" for o in fallback):
             fallback.append(swift_j1555)
-        return fallback + CURATED_NON_MAGNETARS, f"fallback curated magnetar sample used: {exc} (including Swift J1555)"
+        return fallback + CURATED_NON_MAGNETARS, f"NON-EVIDENCE fallback curated magnetar sample used after McGill fetch failure: {exc} (including Swift J1555)"
 
 
 def required_surface_field(b_dip_g: float, gamma_struct: float) -> float:
@@ -540,6 +540,8 @@ def summarize(objects: list[CompactObject], source_note: str) -> None:
     print("=" * 110)
     print(f"Surface-to-NS flux gain: {SURFACE_TO_NS_FLUX_GAIN:.3e}")
     print(f"Magnetar source set: {source_note}")
+    if "NON-EVIDENCE" in source_note:
+        print("WARNING: fallback rows are illustrative only; no catalog-level inference is reported.")
     print(
         f"Benchmark structural corridor: Gamma_struct = {GAMMA_STRUCT_BENCHMARK_MIN:.3f}"
         f"..{GAMMA_STRUCT_BENCHMARK_MAX:.3f}"

@@ -2,9 +2,9 @@
 """
 NVG Publication Figure: Cas A Cooling Curve T_s(t) with Chandra Data
 ---------------------------------------------------------------------
-Generates a publication-quality cooling curve for Cassiopeia A, comparing
-the VMF cooling model (Modified Urca, M = 1.4 M_sun) with real Chandra
-ACIS-S temperature measurements spanning 2000-2019.
+Generates a publication-quality cooling curve for Cassiopeia A, comparing an
+illustrative VMF cooling slope (Modified Urca, M = 1.4 M_sun) with the declared
+Chandra ACIS-S temperature measurements spanning 2000-2019.
 
 The key insight: Heinke & Ho (2010) and subsequent papers report the EFFECTIVE
 temperature from carbon-atmosphere spectral fits (not blackbody). The observed
@@ -79,7 +79,7 @@ def cooling_model_modified_urca(t_yr_arr, T_s0_MK, dTdt_Kyr):
     For a 60-year window this is an excellent approximation
     since the neutrino-dominated cooling is nearly power-law.
     
-    Matches the VMF prediction: dT_s/dt ≈ -3650 K/yr at age 330 yr.
+    Uses an explicit illustrative slope input; no thermal solver is implied.
     """
     t_ref = 330.0  # reference age
     T_s_K = T_s0_MK * 1e6 + dTdt_Kyr * (t_yr_arr - t_ref)
@@ -97,35 +97,56 @@ def cooling_model_direct_urca(t_yr_arr, T_s0_MK, dTdt_Kyr):
     return T_s_K / 1e6  # return in MK
 
 
+def compute_cas_a_state():
+    """Recompute the declared Chandra slope and model sensitivity inputs."""
+
+    ages, temps_MK, errs_MK = get_chandra_data()
+    weights = 1.0 / errs_MK**2
+    coeffs = np.polyfit(ages, temps_MK * 1e6, 1, w=weights)
+    return {
+        "ages_yr": ages,
+        "temps_MK": temps_MK,
+        "errors_MK": errs_MK,
+        "fit_coeffs_K": coeffs,
+        "slope_observed_K_per_yr": float(coeffs[0]),
+        "slope_model_K_per_yr": -3650.0,
+        "slope_direct_urca_K_per_yr": -25000.0,
+        "temperature_normalization_MK": 2.010,
+        "evidence_status": "CALIBRATED_MODEL_COMPARISON",
+        "observed_likelihood": None,
+        "limitation": "No independent NS thermal-evolution solver or Chandra spectral likelihood is present.",
+    }
+
+
 def main():
     print("=" * 80)
     print("     NVG PUBLICATION FIGURE: CAS A COOLING CURVE WITH CHANDRA DATA")
     print("=" * 80)
 
     # ── Chandra data ───────────────────────────────────────────────────
-    ages, temps_MK, errs_MK = get_chandra_data()
-
-    # Observed slope from weighted linear fit
-    weights = 1.0 / errs_MK**2
-    coeffs = np.polyfit(ages, temps_MK * 1e6, 1, w=weights)  # [slope, intercept]
-    slope_obs = coeffs[0]  # K/yr
+    state = compute_cas_a_state()
+    ages = state["ages_yr"]
+    temps_MK = state["temps_MK"]
+    errs_MK = state["errors_MK"]
+    coeffs = state["fit_coeffs_K"]
+    slope_obs = state["slope_observed_K_per_yr"]
 
     print(f"Chandra data: {len(ages)} points, ages {ages.min():.0f}–{ages.max():.0f} yr")
     print(f"Observed (Chandra) slope: dT_s/dt = {slope_obs:.0f} K/yr")
 
-    # ── VMF model parameters ───────────────────────────────────────────
-    # VMF prediction: Modified Urca cooling at 1.4 M_sun
-    #   dT_s/dt ≈ -3650 K/yr (from NVG cooling calculation)
-    #   T_s^inf at 330 yr ≈ 2.01 MK (calibrated to match Chandra midpoint)
-    T_s0_vmf_MK = 2.010  # MK at age 330 yr
-    dTdt_vmf = -3650.0    # K/yr (VMF Modified Urca prediction)
+    # ── VMF illustrative parameters ───────────────────────────────────
+    # No maintained neutron-star thermal solver is available here.  These
+    # values define a sensitivity curve and are explicitly not fitted by this
+    # script (the temperature normalization is a calibration input).
+    T_s0_vmf_MK = state["temperature_normalization_MK"]
+    dTdt_vmf = state["slope_model_K_per_yr"]
 
     # Direct Urca comparison (M = 1.8 M_sun, above 1.45 threshold)
     T_s0_du_MK = 2.010
-    dTdt_du = -25000.0    # K/yr (much faster cooling)
+    dTdt_du = state["slope_direct_urca_K_per_yr"]
 
-    print(f"VMF prediction (Modified Urca): dT_s/dt = {dTdt_vmf:.0f} K/yr")
-    print(f"VMF prediction (Direct Urca):   dT_s/dt = {dTdt_du:.0f} K/yr")
+    print(f"VMF sensitivity (Modified Urca): dT_s/dt = {dTdt_vmf:.0f} K/yr")
+    print(f"VMF sensitivity (Direct Urca):   dT_s/dt = {dTdt_du:.0f} K/yr")
     print(f"Slope deviation (MU):           {abs(dTdt_vmf - slope_obs):.0f} K/yr")
 
     # ── Generate model curves ──────────────────────────────────────────
@@ -153,12 +174,12 @@ def main():
     # 1. VMF Modified Urca curve (1.4 M_sun)
     ax.plot(t_model, Ts_mu,
             color='#2196F3', linewidth=2.8, zorder=4,
-            label=r'VMF: $1.4\,M_\odot$ (Modified Urca, $\dot{T}_s \approx -3650$ K/yr)')
+            label=r'VMF sensitivity: $1.4\,M_\odot$ (Modified Urca slope input)')
 
     # 2. VMF Direct Urca curve (1.8 M_sun)
     ax.plot(t_model, Ts_du,
             color='#FF5722', linewidth=2.0, linestyle='--', alpha=0.6, zorder=3,
-            label=r'VMF: $1.8\,M_\odot$ (Direct Urca, $\dot{T}_s \approx -25000$ K/yr)')
+            label=r'VMF sensitivity: $1.8\,M_\odot$ (Direct Urca slope input)')
 
     # 3. Chandra data with error bars
     ax.errorbar(ages, temps_MK,
@@ -186,7 +207,7 @@ def main():
     ax.fill_between([295, 365], 1.60, 1.70,
                     color='#FF5722', alpha=0.05)
     ax.text(0.03, 0.12,
-            r'VMF prediction: Direct Urca threshold at $M_{\rm DU} = 1.45\,M_\odot$',
+            r'VMF model input: Direct Urca threshold at $M_{\rm DU} = 1.45\,M_\odot$',
             transform=ax.transAxes, fontsize=9.5, color='#FF5722',
             style='italic', alpha=0.8)
 
@@ -210,7 +231,7 @@ def main():
     # Result box
     delta_slope = abs(dTdt_vmf - slope_obs)
     sigma_dev = delta_slope / 800.0  # ~800 K/yr observational uncertainty (1σ)
-    textstr = (r'VMF vs Chandra:' + '\n'
+    textstr = (r'VMF sensitivity vs Chandra:' + '\n'
                + r'$|\Delta \dot{T}_s| \approx %.0f$ K/yr ($%.1f\sigma$)' % (delta_slope, sigma_dev)
                + '\n' + r'NVG: $-3650$ vs obs: $%.0f$ K/yr' % slope_obs)
     box_color = '#E8F5E9' if sigma_dev < 1.5 else '#FFF3E0'
@@ -225,13 +246,24 @@ def main():
     plt.close()
     print(f"Saved: {plot_path}")
 
-    # ── Assertions ─────────────────────────────────────────────────────
-    # The VMF slope (-3650) should be within ~2σ of the observed slope
-    assert abs(dTdt_vmf - slope_obs) < 2000, \
-        f"Slope mismatch too large: VMF={dTdt_vmf:.0f}, obs={slope_obs:.0f}"
-
-    print("Cas A cooling curve verification PASSED.")
+    print("Evidence status: CALIBRATED_MODEL_COMPARISON")
+    print("The Chandra slope is recomputed from the declared points; no thermal likelihood is available.")
     print("=" * 80)
+    return {
+        "n_points": int(len(ages)),
+        "slope_observed_K_per_yr": float(slope_obs),
+        "slope_model_K_per_yr": float(dTdt_vmf),
+        "slope_difference_K_per_yr": float(dTdt_vmf - slope_obs),
+        "evidence_status": state["evidence_status"],
+        "observed_likelihood": state["observed_likelihood"],
+        "data_sources": [
+            "Heinke & Ho (2010), ApJ Lett. 719 L167",
+            "Posselt et al. (2013), ApJ 779 186",
+            "Posselt & Pavlov (2018), ApJ 864 135",
+            "Ho et al. (2021), Phys. Rev. C 104 055806",
+        ],
+        "limitation": state["limitation"],
+    }
 
 
 if __name__ == "__main__":

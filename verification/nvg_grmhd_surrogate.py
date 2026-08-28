@@ -6,6 +6,13 @@ for a Binary Neutron Star merger with VMF Mass Melting physics.
 """
 import numpy as np
 import os
+import sys
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+from nvg_joint_ns_inference import compute_nvg_predictions
 
 print("=" * 72)
 print("  NVG: GRMHD SURROGATE MODEL (GW INSPIRAL & POST-MERGER)")
@@ -17,8 +24,12 @@ M2 = 1.4
 M_tot = M1 + M2
 M_chirp = ((M1 * M2)**0.6) / (M_tot**0.2)
 
-# VMF specific parameters
-Lambda_14 = 177.0  # Tidal deformability
+# VMF specific parameters.  Lambda is loaded from the canonical TOV/Hinderer
+# producer; this surrogate does not carry an independent EOS or a static result.
+_PREDICTIONS, _METADATA = compute_nvg_predictions()
+Lambda_14 = float(_PREDICTIONS["Lambda_1.4"])
+CANONICAL_SELECTION_PROVENANCE = _METADATA["selection_provenance"]
+CANONICAL_SELECTION_PARAMETERS = _METADATA["canonical_selection"]["parameters"]
 f_peak = 2730.0    # Post-merger peak frequency (Hz)
 melt_threshold = 1.45 # M_sun equivalent density threshold
 
@@ -71,9 +82,11 @@ print(f"  Max Inspiral Frequency: {frequency[time < 0][-1]:.1f} Hz")
 print(f"  Post-Merger Peak Freq : {f_peak:.1f} Hz")
 print(f"  Max Mass Melting      : {np.max(melting_fraction)*100:.1f} %")
 print("\n  OBSERVATIONAL IMPACT:")
-print("  By mathematically collapsing the 3D grid into an Effective One-Body (EOB)")
-print("  surrogate, we can generate exact GW strain templates in milliseconds.")
-print("  The unique NVG signature is the rapid (2 ms) chirp anomaly immediately ")
-print("  post-merger, driven by the 23% in-medium mass melting at 2n_0 density.")
-print("  STATUS: ✅ GRMHD SURROGATE WAVEFORM GENERATED")
+print("  By collapsing the 3D grid into an Effective One-Body (EOB) surrogate,")
+print("  this script generates an illustrative strain template in milliseconds.")
+print(f"  Canonical Lambda_1.4 input = {Lambda_14:.1f} (runtime TOV/Hinderer output).")
+print(f"  Canonical transition parameters = {CANONICAL_SELECTION_PARAMETERS}")
+print("  The post-merger frequency/melting values are illustrative surrogate inputs,")
+print("  not independently calibrated observations or an exact GRMHD result.")
+print("  STATUS: CONDITIONAL_IN_SAMPLE SURROGATE OUTPUT")
 print("=" * 72)

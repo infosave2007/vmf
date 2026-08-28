@@ -258,11 +258,14 @@ def solve_tov(eps_of_p, p_c):
 
 
 def tov_scan(p_sorted, e_sorted):
+    if len(p_sorted) < 2 or not np.all(np.isfinite(p_sorted)) or not np.all(np.isfinite(e_sorted)):
+        return None, None
+    if p_sorted[0] >= p_sorted[-1]:
+        return None, None
     eps_of_p = interp1d(
         p_sorted,
         e_sorted,
-        bounds_error=False,
-        fill_value=(float(e_sorted[0]), float(e_sorted[-1])),
+        bounds_error=True,
     )
     p_grid = np.logspace(np.log10(max(p_sorted[1], 1.0e-4)), np.log10(p_sorted[-1] * 0.9), 18)
     masses = []
@@ -270,7 +273,7 @@ def tov_scan(p_sorted, e_sorted):
     for p_c in p_grid:
         try:
             mass, radius = solve_tov(eps_of_p, p_c)
-        except Exception:
+        except (ValueError, RuntimeError, FloatingPointError):
             continue
         if 0.0 < mass < 5.0 and 5.0 < radius < 25.0:
             masses.append(mass)

@@ -44,6 +44,41 @@ def core(n_B, g):
     pv = ev*(1 + nu_v*alpha_v*x**nu_v)/(1 + alpha_v*x**nu_v)
     return ek + vp + ev, pk + pv
 
+
+def _checked_interp(value, x_grid, y_grid, quantity, *, vacuum_value=None):
+    """Interpolate only within a validated table, with optional vacuum tail."""
+    try:
+        value = float(value)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"{quantity} must be a finite scalar") from exc
+    x_grid = np.asarray(x_grid, dtype=float)
+    y_grid = np.asarray(y_grid, dtype=float)
+    if (not np.isfinite(value) or x_grid.ndim != 1 or y_grid.ndim != 1 or
+            x_grid.size < 2 or x_grid.size != y_grid.size or
+            not np.isfinite(x_grid).all() or not np.isfinite(y_grid).all() or
+            np.any(np.diff(x_grid) <= 0.0)):
+        raise ValueError(f"{quantity} lookup has an invalid EOS domain")
+    if value < x_grid[0]:
+        if vacuum_value is not None and value >= 0.0:
+            return float(vacuum_value)  # explicit vacuum continuation
+        raise ValueError(
+            f"{quantity} {value:g} is outside EOS domain "
+            f"[{x_grid[0]:g}, {x_grid[-1]:g}]"
+        )
+    if value > x_grid[-1]:
+        raise ValueError(
+            f"{quantity} {value:g} is outside EOS domain "
+            f"[{x_grid[0]:g}, {x_grid[-1]:g}]"
+        )
+    return float(np.interp(value, x_grid, y_grid))
+
+
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Checked pressure lookup with an explicit 0 <= P < P_min vacuum tail."""
+    return _checked_interp(
+        pressure, pressure_grid, energy_grid, "pressure", vacuum_value=0.0
+    )
+
 class EOS:
     """Tabulated eps(P) and c_s^2(P) in geometric (km^-2) units."""
     def __init__(self, g, n_trans=2.0):
@@ -63,19 +98,32 @@ class EOS:
         de = np.gradient(self.e); dp = np.gradient(self.p)
         self.cs2 = np.clip(dp/np.where(de == 0, 1e-30, de), 1e-6, 1.0)
     def eps(self, P):
-        if P <= self.p[0]: return 0.0
-        if P >= self.p[-1]: return self.e[-1]
-        return float(np.interp(P, self.p, self.e))
+        return pressure_to_energy_checked(P, self.p, self.e)
     def cs2_of_P(self, P):
-        return float(np.interp(P, self.p, self.cs2))
+        return _checked_interp(P, self.p, self.cs2, "pressure")
     def P_of_eps(self, eps):
-        return float(np.interp(eps, self.e, self.p))
+        return _checked_interp(eps, self.e, self.p, "energy", vacuum_value=0.0)
 
 # ── TOV + tidal (Hinderer 2008 / Postnikov 2010), geometric km units ─────────
 def structure(eos, P_c, dr=0.01, rmax=40.0):
     """TOV from central pressure P_c (km^-2). Returns (M[Msun], R[km])."""
-    if P_c <= eos.p[0]: return 0.0, 0.0
+    try:
+        P_c = float(P_c)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("central pressure must be a finite scalar") from exc
+    if not np.isfinite(P_c) or P_c < eos.p[0] or P_c > eos.p[-1]:
+        raise ValueError(
+            f"central pressure {P_c:g} is outside EOS domain "
+            f"[{eos.p[0]:g}, {eos.p[-1]:g}]"
+        )
+    if P_c == eos.p[0]:
+        return 0.0, 0.0
+
     def rhs(r, m, P):
+        if not np.isfinite(P):
+            raise ValueError("non-finite pressure during TOV integration")
+        if P <= 0.0:
+            return 0.0, 0.0  # explicit vacuum continuation at the surface
         eps = eos.eps(P)
         dm = 4*math.pi*r**2*eps
         den = r*(r - 2*m)
@@ -101,9 +149,16 @@ def mr_lambda(g, n_eps=18):
     M = []; R = []
     for nc in np.linspace(1.5, 9.0, n_eps)*n_0:
         ec, _ = core(nc, g)
-        Pc = eos.P_of_eps(ec*K_GEO)
-        m, r = structure(eos, Pc)
+        try:
+            Pc = eos.P_of_eps(ec*K_GEO)
+            m, r = structure(eos, Pc)
+        except ValueError:
+            # A candidate whose sampled energy/pressure leaves the table is
+            # unsupported; do not replace it with a favorable endpoint fill.
+            return None
         M.append(m); R.append(r)
+    if not M:
+        return None
     M = np.array(M); R = np.array(R)
     i = int(np.argmax(M)); bm, br = M[:i+1], R[:i+1]
     Mmax = float(bm.max()); o = np.argsort(bm)
@@ -112,11 +167,18 @@ def mr_lambda(g, n_eps=18):
     return Mmax, R14, R20
 
 def fit_form(ffn, lo, hi, target, tol=0.02):
-    Mlo = mr_lambda(ffn(lo))[0]; Mhi = mr_lambda(ffn(hi))[0]
+    low = mr_lambda(ffn(lo)); high = mr_lambda(ffn(hi))
+    if low is None or high is None:
+        return None
+    Mlo, Mhi = low[0], high[0]
     if not (min(Mlo, Mhi)-0.15 <= target <= max(Mlo, Mhi)+0.15): return None
     a, b, Ma = lo, hi, Mlo
     for _ in range(26):
-        mid = 0.5*(a+b); Mm = mr_lambda(ffn(mid))[0]
+        mid = 0.5*(a+b)
+        result = mr_lambda(ffn(mid))
+        if result is None:
+            return None
+        Mm = result[0]
         if abs(Mm-target) < tol: return mid
         if (Ma-target)*(Mm-target) < 0: b = mid
         else: a, Ma = mid, Mm
@@ -135,31 +197,58 @@ def report():
     print("="*78)
     xs = [1, 2, 4, 6]
 
-    Mm0, R14_0, R20_0 = mr_lambda(g_author)
+    baseline = mr_lambda(g_author)
+    if baseline is None:
+        print("\n[baseline] unsupported candidate: no finite EOS branch")
+        return
+    Mm0, R14_0, R20_0 = baseline
     print(f"\n[baseline] author g(x)=(1+0.8x)^-0.3125")
     print(f"   M_max={Mm0:.3f}  R_1.4={R14_0:.1f}km  R_2.0={R20_0:.1f}km  (crustless: R_1.4 not trustworthy)")
 
     # A. cosmological law + effective rho_c required by NS
     print("\n" + "-"*78)
     print("A. Cosmological law sqrt(1 - rho/rho_c) at NS density, and the effective rho_c NS needs")
-    Mc, _, _ = mr_lambda(g_cosmo)
-    print(f"   real rho_c=7.09e4:  melt@6n0={1-g_cosmo(6):.4f}  M_max={Mc:.3f}  -> inert at NS density")
+    cosmological = mr_lambda(g_cosmo)
+    if cosmological is None:
+        print("   real rho_c=7.09e4: unsupported EOS branch")
+        Mc = None
+    else:
+        Mc = cosmological[0]
+        print(f"   real rho_c=7.09e4:  melt@6n0={1-g_cosmo(6):.4f}  M_max={Mc:.3f}  -> inert at NS density")
     xc = fit_form(g_sqrt, 3.0, 200.0, Mm0)
-    if xc:
+    if xc is not None:
         rho_c_eff = M_N*n_0*xc
         print(f"   effective rho_c required by NS M_max: rho_c_NS = {rho_c_eff:.0f} MeV/fm^3  (x_c={xc:.1f} n0)")
         print(f"   ratio rho_c(cosmo)/rho_c(NS) = {RHO_C/rho_c_eff:.0f}x  <- the two-scale problem, quantified")
+    else:
+        print("   effective rho_c fit: unsupported candidate range (no endpoint fill used)")
 
     # B/C. form identifiability at matched M_max; which observable discriminates
     print("\n" + "-"*78)
     print(f"B/C. Tune different melting FORMS to the SAME M_max={Mm0:.2f}; compare g(x) + observables")
-    forms = [("author (1+0.8x)^-.3125", g_author),
-             ("sqrt(1-x/xc)", g_sqrt(fit_form(g_sqrt, 3.0, 80.0, Mm0) or 4.2)),
-             ("logistic 1/(1+(x/x0)^2)", g_logi(fit_form(g_logi, 1.0, 30.0, Mm0) or 3.0))]
+    forms = [("author (1+0.8x)^-.3125", g_author)]
+    sqrt_xc = fit_form(g_sqrt, 3.0, 80.0, Mm0)
+    if sqrt_xc is None:
+        print("   sqrt form: unsupported candidate range; omitted from matched-form comparison")
+    else:
+        forms.append(("sqrt(1-x/xc)", g_sqrt(sqrt_xc)))
+    logi_x0 = fit_form(g_logi, 1.0, 30.0, Mm0)
+    if logi_x0 is None:
+        print("   logistic form: unsupported candidate range; omitted from matched-form comparison")
+    else:
+        forms.append(("logistic 1/(1+(x/x0)^2)", g_logi(logi_x0)))
+    if len(forms) < 2:
+        print("\n   No supported alternate melting form spans the requested candidate range;")
+        print("   matched-M_max identifiability and R_2.0 spreads are unresolved.")
+        return
     print(f"\n   {'form':26} {'M_max':>6} {'R2.0':>6}   " + " ".join(f'g({x}n0)' for x in xs))
     rows = []
     for name, g in forms:
-        Mm, R14, R20 = mr_lambda(g); gv = [g(x) for x in xs]
+        result = mr_lambda(g)
+        if result is None:
+            print(f"   {name:26} unsupported candidate (row omitted)")
+            continue
+        Mm, R14, R20 = result; gv = [g(x) for x in xs]
         rows.append((name, gv, R20))
         print(f"   {name:26} {Mm:6.3f} {R20:6.1f}   " + " ".join(f"{v:6.2f}" for v in gv))
     G = np.array([r[1] for r in rows]); R20s = np.array([r[2] for r in rows])

@@ -1,0 +1,2367 @@
+{
+  "adversarial_mutations": {
+    "checks": {
+      "complete_payload_catches_blocker_mutation": true,
+      "complete_payload_catches_numeric_mutation": true,
+      "echo_q_all_flat_high": true,
+      "echo_q_all_low": true,
+      "echo_q_step_all_rows": true,
+      "echo_q_step_first_row": true,
+      "pbh_expanded_max_amplitude": true,
+      "pbh_expanded_max_fraction": true,
+      "pbh_seed_max_amplitude": true,
+      "pbh_seed_max_deficit": true
+    },
+    "echo_q_shape": [
+      259,
+      15
+    ],
+    "payload_digest_scope": "complete JSON payload and canonical flattened CSV rows",
+    "pbh_rows_checked": [
+      "jwst_calibrated_seed_band.max_row",
+      "internal_budget_expanded_boundary.max_row"
+    ],
+    "status": "PASS_FAIL_CLOSED_FORMER_ADVERSARIAL_PROBES"
+  },
+  "echo": {
+    "asymptotic_scaling": {
+      "diagnostic_status": "SENSITIVITY_ONLY",
+      "expected_relation": "A90 proportional to exposure^(-1/2) as A approaches zero at fixed nuisance/quadrature",
+      "expected_small_amplitude_exponent": -0.5,
+      "finite_prefix_endpoint_exponent": -0.2118026913041315,
+      "finite_prefix_is_not_asymptotic_claim": true,
+      "noncentrality_identity": "lambda_i=(A*rho_i*eta_i)^2",
+      "variable": "exposure = sum_i rho_i^2"
+    },
+    "convergence": {
+      "numerical_union_axes": {
+        "amplitude_efficiency_grid": "PASS_AMPLITUDE_GRID_MONOTONE",
+        "monotonicity": "PASS_MONOTONE_CALIBRATION",
+        "posterior_grid": "PASS_NUMERICAL_GRID",
+        "quadrature": "PASS_QUADRATURE_CONVERGED",
+        "seed": "PASS_SEED_INVARIANT"
+      },
+      "posterior_grid": {
+        "max_relative_step": 0.0011598186213796174,
+        "rows": [
+          {
+            "grid_points": 801,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.03328860494141574
+          },
+          {
+            "grid_points": 1001,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.033258068001086924
+          },
+          {
+            "grid_points": 1601,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.033219568884572004
+          },
+          {
+            "grid_points": 3201,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.033198355519377575
+          },
+          {
+            "grid_points": 6401,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.03319533419558442
+          },
+          {
+            "grid_points": 10001,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.03319432705042468
+          },
+          {
+            "grid_points": 20001,
+            "monotone": true,
+            "upper90": 0.03,
+            "upper90_raw": 0.03319408380348728
+          }
+        ],
+        "status": "PASS_NUMERICAL_GRID"
+      },
+      "status": "PASS_FROZEN_P2_NUMERICAL_UNION"
+    },
+    "deterministic_likelihood": {
+      "amplitude_definition": "common non-negative echo matched-filter amplitude divided by each event's catalog merger network SNR",
+      "event_likelihood": "product_i [q_i(A)^y_i (1-q_i(A))^(1-y_i)]",
+      "observations": "all y_i=0 synthetic null; no event statistic",
+      "prefix_order": "final artifact's selected-event order (network SNR descending; event name tie break)",
+      "reference_network_snr": 20.0
+    },
+    "dominant_uncertainty": "No real event products; catalog selection and the complete P2-S8 raw A90 union are sensitivity inputs.",
+    "exposure_curve": [
+      {
+        "a90_display": null,
+        "a90_raw": 0.049327406696197465,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 3.8771341663211203,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 6177.959999999999,
+        "exposure_normalized_to_reference_snr": 15.444899999999997,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 1
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.04648857501907475,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 4.1650650026531455,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 8026.959999999999,
+        "exposure_normalized_to_reference_snr": 20.0674,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 2
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.04393937978467283,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 4.54668770098254,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 10707.359999999999,
+        "exposure_normalized_to_reference_snr": 26.768399999999996,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 4
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.04154966047999715,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 5.035618297078306,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 14688.269999999999,
+        "exposure_normalized_to_reference_snr": 36.720675,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 8
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.03969271176404624,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 5.566359057726562,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 19666.219999999998,
+        "exposure_normalized_to_reference_snr": 49.165549999999996,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 16
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.038241809141952084,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 6.092927171401635,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 25384.88,
+        "exposure_normalized_to_reference_snr": 63.4622,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 32
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.03673101881552902,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 6.655165979040932,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 32828.56,
+        "exposure_normalized_to_reference_snr": 82.0714,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 64
+      },
+      {
+        "a90_display": null,
+        "a90_raw": 0.03510866426390162,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 7.215113249301561,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": null,
+        "exposure_network_snr2": 42233.56,
+        "exposure_normalized_to_reference_snr": 105.5839,
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 128
+      },
+      {
+        "a90_display": 0.03,
+        "a90_raw": 0.033258068001086924,
+        "a90_status": "sensitivity",
+        "asymptotic_scaled_a90": 7.766812809748134,
+        "catalog_prefix_rule": "final-producer-selected order; fixed prefix, no target optimization",
+        "display_precision_decimal_places": 2,
+        "exposure_network_snr2": 54537.049999999996,
+        "exposure_normalized_to_reference_snr": 136.342625,
+        "numerical_union_raw": [
+          0.03319408380348728,
+          0.03356685238591077
+        ],
+        "numerical_union_scope": "full selected-event artifact only; subset rows have no newly recomputed union",
+        "scope": "catalog-conditioned deterministic synthetic-null y_i=0; not observational",
+        "selected_event_count": 259
+      }
+    ],
+    "falsifier": "A future event-level strain/posterior/PSD likelihood with a non-null event statistic can displace the synthetic-null projection.",
+    "minimal_prospective_requirement": "Provide keyed strain, posterior samples, detector PSDs, and an empirical time-slide bank; rerun the same hierarchical likelihood with an independently preregistered statistic.",
+    "numerical_union": {
+      "axis_order": [
+        "quadrature",
+        "seed",
+        "posterior_grid",
+        "amplitude_efficiency_grid",
+        "monotonicity"
+      ],
+      "displayed_interval": [
+        0.03,
+        0.04
+      ],
+      "raw_interval": [
+        0.03319408380348728,
+        0.03356685238591077
+      ],
+      "source_scope": "P2-S8 full-set quadrature/seed/posterior/amplitude/monotonicity union",
+      "supported_decimal_places": 2
+    },
+    "observational_blocks": {
+      "missing": [
+        "strain",
+        "posterior_samples",
+        "noise_psd_or_time_slides"
+      ],
+      "observational_likelihood": "BLOCKED_NO_EVENT_LEVEL_STRAIN_POSTERIOR_NOISE",
+      "scope": "synthetic/catalog-conditioned sensitivity only; real strain/posterior/PSD and empirical slides remain blocked",
+      "status": "BLOCKED_MISSING_STRAIN_POSTERIOR_NOISE_PRODUCTS",
+      "time_slide_independence": {
+        "limitation": "nvg_echo_timeslide_background.py can generate L1-vs-H1 slides only after detector strain is fetched; no local strain or retained slide bank is available",
+        "status": "BLOCKED_NO_EMPIRICAL_TIME_SLIDE_BANK",
+        "synthetic_background_is_independent": true
+      }
+    },
+    "producer_identity": {
+      "artifact": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "assertion_status": "PASS",
+      "focused_test": "verification/test_p2_echo_hierarchical_upper_limit.py",
+      "live_assertion": "echo.assert_result_provenance + load_config + load_catalog",
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py"
+    },
+    "q_payload_integrity": {
+      "algorithm": "sha256-canonical-json-v1",
+      "amplitude_points": 15,
+      "artifact_q_sha256": "80e20bd2713a9e777d7c2111509a7a82a54ba7367642533789e42a17edab05a0",
+      "live_q_sha256": "80e20bd2713a9e777d7c2111509a7a82a54ba7367642533789e42a17edab05a0",
+      "matches_live": true,
+      "scope": "all selected events and all configured efficiency amplitudes; q-row mutations fail closed",
+      "shape": [
+        259,
+        15
+      ],
+      "source": "echo.synthetic_calibration(load_catalog(load_config()))",
+      "status": "PASS_RECOMPUTED_LIVE_FULL_MATRIX"
+    },
+    "scope": "conditional on the P2 deterministic synthetic detector model and catalog selection; not observational and never an observed echo upper limit",
+    "selected_event_count": 259,
+    "selected_event_count_scope": "391-row public catalog conditioned to 259 selected rows; no population-rate inference",
+    "source_artifact_provenance": {
+      "configuration": {
+        "path": "verification/data/p2_s3_hierarchical_echo/analysis_config.json",
+        "role": "pinned P2 echo configuration",
+        "sha256": "ded246a1b7284a4e60678582e7a04a2b54e30079fa80b9d0f4d7cfab2b838392"
+      },
+      "focused_test": {
+        "path": "verification/test_p2_echo_hierarchical_upper_limit.py",
+        "role": "live P2 echo focused test",
+        "sha256": "b0852341bb790edb04edde3d29347ecaab60c84dad270f8c9472e7ac63f7e3bb"
+      },
+      "manifest": {
+        "path": "verification/data/p2_s3_hierarchical_echo/provenance_manifest.json",
+        "role": "pinned P2 echo provenance manifest",
+        "sha256": "4f6b130a63a5bf93f15995a149de60eb263ce5ae151828b0fe2a7b77d8acea6f"
+      },
+      "producer": {
+        "path": "verification/nvg_echo_hierarchical_upper_limit.py",
+        "role": "live P2 echo producer",
+        "sha256": "a0046da3587a11fd7b669f1f03b030a709eb63b427c6819b3a96b074c082ecc7"
+      },
+      "result": {
+        "path": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+        "role": "P2-S8 final structured echo artifact",
+        "sha256": "2bb2214a933356f69e12ef81d6af12b8c0fb27490be9465fd314711f63ec885e"
+      }
+    },
+    "status": "sensitivity"
+  },
+  "ns_hartle_pending_merge": {
+    "dominant_uncertainty": "P3-S1 is not available to this step by contract.",
+    "falsifier": "A P3-S1 re-gate failure or unresolved branch/interpolation identity blocks any NS/Hartle target merge.",
+    "merge_rule": "Phase 3 gate merges P3-S1 only after its own terminal provenance/convergence proof; P3-S3 has no cross-worker dependency and performs no import.",
+    "minimal_prospective_requirement": "P3-S1 final report/artifact with branch IDs, convergence, and source-to-artifact identity; merge in P3-S4/P4 gate.",
+    "phase_3_artifact": "P3-S1 frozen NS/Hartle forecast table",
+    "producer": "verification/nvg_hartle_slow_rotation.py (P3-S1 target not imported)",
+    "scope": "pending merge only; no NS/Hartle value appears in this ledger",
+    "status": "blocked"
+  },
+  "payload_integrity": {
+    "algorithm": "sha256-canonical-json-v1",
+    "canonical_sha256": "419777c3ebff39e38036d20fbef3a5b9dd00e9a064409b9e2d45b85ebdf26267",
+    "covered_scope": "all JSON fields except payload_integrity; flattened CSV rows included by csv_rows_sha256",
+    "csv_rows_sha256": "c477b56f92017c2f46c3db571040d26bcff63b311f5109d2cfd91cf97d28477e",
+    "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
+  },
+  "pbh": {
+    "analytic_scaling": {
+      "all_pass": true,
+      "checks": {
+        "abundance_exponent": {
+          "expected": "1/2",
+          "expected_ratio": 2.0,
+          "observed_ratio": 2.0,
+          "relative_error": 0.0
+        },
+        "mass_exponent_after_number_density": {
+          "expected": "1/3",
+          "expected_ratio": 2.5198420997897464,
+          "observed_ratio": 2.5198420997897464,
+          "relative_error": 0.0
+        },
+        "merger_efficiency_exponent": {
+          "expected": "1/2",
+          "expected_ratio": 2.0,
+          "observed_ratio": 2.0,
+          "relative_error": 0.0
+        }
+      }
+    },
+    "benchmark": {
+      "amplitude_strain": 2.4e-15,
+      "observed_likelihood": null,
+      "source": "verification/nvg_pbh_two_population.py",
+      "target_role": "benchmark requirement only; never fit or selection criterion"
+    },
+    "convergence": {
+      "abundance_converged": true,
+      "abundance_grid": [
+        {
+          "abundance_grid_points": 9,
+          "max_amplitude_strain": 6.309652265244304e-14,
+          "max_cycle": 11
+        },
+        {
+          "abundance_grid_points": 33,
+          "max_amplitude_strain": 6.309652265244304e-14,
+          "max_cycle": 11
+        },
+        {
+          "abundance_grid_points": 129,
+          "max_amplitude_strain": 6.309652265244304e-14,
+          "max_cycle": 11
+        }
+      ],
+      "abundance_relative_errors_vs_129": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boundary_expansion": [
+        {
+          "max_amplitude_strain": 6.309652265244304e-14,
+          "max_at_mass_boundary": true,
+          "max_cycle_in_scan": 11,
+          "max_row_cycle": 11
+        },
+        {
+          "max_amplitude_strain": 1.5899327412996335e-13,
+          "max_at_mass_boundary": true,
+          "max_cycle_in_scan": 13,
+          "max_row_cycle": 13
+        },
+        {
+          "max_amplitude_strain": 4.0063794573609374e-13,
+          "max_at_mass_boundary": true,
+          "max_cycle_in_scan": 15,
+          "max_row_cycle": 15
+        },
+        {
+          "max_amplitude_strain": 1.602551782944375e-12,
+          "max_at_mass_boundary": true,
+          "max_cycle_in_scan": 18,
+          "max_row_cycle": 18
+        }
+      ],
+      "boundary_maximum_is_explicit": true,
+      "resolution_status": "CONVERGED_ENDPOINT_INCLUSIVE_GRIDS"
+    },
+    "declared_boxes": {
+      "dm_fraction": [
+        0.0,
+        1.0
+      ],
+      "expanded_rungs": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "external_exclusions_used": false,
+      "jwst_seed_density_mpc3": [
+        1e-05,
+        0.0001
+      ],
+      "jwst_seed_rungs": [
+        9,
+        10,
+        11
+      ],
+      "rate_factor_box": [
+        0.0,
+        1.0
+      ],
+      "rate_factor_names": [
+        "binary_pair_fraction",
+        "duty_cycle",
+        "merger_rate_ratio"
+      ]
+    },
+    "dominant_uncertainty": "JWST occupation/duty cycle and PBH binary-merger efficiency are absent; the PTA number is an internal benchmark, and expanded maxima sit on scan boundaries.",
+    "expanded_jwst_upper_density_scan": {
+      "first_reachable_row": {
+        "coordinate_scan_boundary": false,
+        "cycle": 17,
+        "density_at_jwst_scan_boundary": true,
+        "fraction_dm": 1.9782879666424245e-05,
+        "individual_rate_factors_identifiable": false,
+        "inside_declared_jwst_rung_band": false,
+        "inside_dm_budget": true,
+        "inside_jwst_seed_density_band": true,
+        "mass_msun": 6528350289.92,
+        "number_density_mpc3": 0.0001,
+        "rate_at_upper_declared_boundary": true,
+        "rate_factor_box": [
+          0.0,
+          1.0
+        ],
+        "required_factor_if_other_two_rates_are_unit": 0.28568152682592557,
+        "required_rate_inside_declared_box": true,
+        "required_rate_product": 0.28568152682592557,
+        "rung_at_expanded_scan_boundary": false,
+        "scan_coordinate": "JWST upper density, rate product=1 envelope",
+        "solution_reachable_at_unit_rate": true,
+        "solution_scan_boundary": true,
+        "status": "sensitivity",
+        "unit_rate_amplitude_strain": 4.490246288592299e-15
+      },
+      "first_reachable_rung": 17,
+      "rows": [
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 7,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 1.8866424242424244e-11,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 6225.92,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 3091828150.8440847,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 3091828150.8440847,
+          "rung_at_expanded_scan_boundary": true,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.316219954078494e-20
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 8,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 7.546569696969698e-11,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 24903.68,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 306748203.6971744,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 306748203.6971744,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3703144191260673e-19
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 9,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 3.018627878787879e-10,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 99614.72,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 30433276.327390637,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 30433276.327390637,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.350477100895823e-19
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 10,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 1.2074511515151516e-09,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 398458.88,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 3019363.428558675,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 3019363.428558675,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3811903853051185e-18
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 11,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 4.8298046060606066e-09,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 1593835.52,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 299558.79267302185,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 299558.79267302185,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.385006141203416e-18
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 12,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 1.9319218424242426e-08,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 6375342.08,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 29719.99641346741,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 29719.99641346741,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3921526722866636e-17
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 13,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 7.72768736969697e-08,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 25501368.32,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 2948.5970982018302,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 2948.5970982018302,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.41980923297638e-17
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 14,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 3.091074947878788e-07,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 102005473.28,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 292.5378834697478,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 292.5378834697478,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.4032019651850934e-16
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 15,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 1.2364299791515153e-06,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 408021893.12,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 29.023433997526755,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 29.023433997526755,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.454888551317325e-16
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 16,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 4.945719916606061e-06,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 1632087572.48,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": false,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 2.8794893537127235,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 2.8794893537127235,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.4143389545524418e-15
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 17,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 1.9782879666424245e-05,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 6528350289.92,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": true,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 0.28568152682592557,
+          "required_rate_inside_declared_box": true,
+          "required_rate_product": 0.28568152682592557,
+          "rung_at_expanded_scan_boundary": false,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": true,
+          "solution_scan_boundary": true,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.490246288592299e-15
+        },
+        {
+          "coordinate_scan_boundary": false,
+          "cycle": 18,
+          "density_at_jwst_scan_boundary": true,
+          "fraction_dm": 7.913151866569698e-05,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 26113401159.68,
+          "number_density_mpc3": 0.0001,
+          "rate_at_upper_declared_boundary": true,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 0.028343197263209722,
+          "required_rate_inside_declared_box": true,
+          "required_rate_product": 0.028343197263209722,
+          "rung_at_expanded_scan_boundary": true,
+          "scan_coordinate": "JWST upper density, rate product=1 envelope",
+          "solution_reachable_at_unit_rate": true,
+          "solution_scan_boundary": true,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.425564336421544e-14
+        }
+      ],
+      "status": "SENSITIVITY_ONLY_RUNG_BOUNDARY_SCAN"
+    },
+    "falsifier": "A sourced JWST occupation/abundance and PBH binary-rate likelihood that reaches the PTA benchmark within the declared rung, density, DM, and rate boxes would falsify the seed-band deficit.",
+    "frozen_expanded_envelope_boundary": {
+      "at_upper_abundance_boundary": true,
+      "at_upper_cycle_boundary": true,
+      "at_upper_rate_boundaries": true,
+      "binary_pair_fraction": 1.0,
+      "cycle": 18,
+      "duty_cycle": 1.0,
+      "fraction_dm": 1.0,
+      "max_amplitude_strain": 1.602551782944375e-12,
+      "merger_rate_ratio": 1.0
+    },
+    "live_scan_configuration": {
+      "abundance_grid_points": 33,
+      "density_grid_points": 17,
+      "rate_grid_points": 3
+    },
+    "max_row_integrity": {
+      "complete_row_fields_checked": [
+        "cycle",
+        "mass_msun",
+        "fraction_dm",
+        "number_density_mpc3",
+        "binary_pair_fraction",
+        "duty_cycle",
+        "merger_rate_ratio",
+        "target_scale",
+        "amplitude_strain",
+        "deficit_factor"
+      ],
+      "expanded_max_row_live_recomputed": {
+        "amplitude_strain": 1.602551782944375e-12,
+        "binary_pair_fraction": 1.0,
+        "cycle": 18,
+        "deficit_factor": 0.0014976115128027066,
+        "duty_cycle": 1.0,
+        "fraction_dm": 1.0,
+        "mass_msun": 26113401159.68,
+        "merger_rate_ratio": 1.0,
+        "number_density_mpc3": 1.2637189540423845,
+        "target_scale": 1.0
+      },
+      "expanded_max_row_source": "pbh._scan_internal_budget",
+      "scan_maxima_copied_from_frozen_artifact": false,
+      "seed_max_row_live_recomputed": {
+        "amplitude_strain": 4.385006141203416e-18,
+        "binary_pair_fraction": 1.0,
+        "cycle": 11,
+        "deficit_factor": 547.319643967784,
+        "duty_cycle": 1.0,
+        "fraction_dm": 4.8298046060606066e-09,
+        "mass_msun": 1593835.52,
+        "merger_rate_ratio": 1.0,
+        "number_density_mpc3": 0.0001,
+        "target_scale": 1.0
+      },
+      "seed_max_row_source": "pbh._scan_jwst_calibrated",
+      "status": "PASS_LIVE_RECOMPUTED_COMPLETE_ROWS"
+    },
+    "minimal_prospective_requirement": "Supply an independently sourced seed occupation and merger-rate model; demonstrate a rate product in [0,1] for rungs 9--11 and a fraction f_PBH consistent with the DM budget, with no target-tuned abundance.",
+    "producer_identity": {
+      "artifact": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "assertion_status": "PASS",
+      "audit_producer": "verification/nvg_pbh_nanograv_audit.py",
+      "live_assertion": "benchmark_metadata + canonical_mass + amplitude_strain + final rung rows",
+      "mass_ladder": "verification/nvg_pbh_mass_spectrum.py:get_pbh_mass",
+      "two_population": "verification/nvg_pbh_two_population.py"
+    },
+    "scope": "calibrated abundance/rate sensitivity only; no external CMB exclusion or global PBH--PTA likelihood",
+    "seed_band_requirements": {
+      "all_rate_requirements_outside_box": true,
+      "minimum_required_rate_product": 299558.79267302185,
+      "minimum_row": {
+        "coordinate_scan_boundary": true,
+        "cycle": 11,
+        "fraction_dm": 4.8298046060606066e-09,
+        "individual_rate_factors_identifiable": false,
+        "inside_declared_jwst_rung_band": true,
+        "inside_dm_budget": true,
+        "inside_jwst_seed_density_band": true,
+        "mass_msun": 1593835.52,
+        "number_density_mpc3": 0.0001,
+        "rate_factor_box": [
+          0.0,
+          1.0
+        ],
+        "required_factor_if_other_two_rates_are_unit": 299558.79267302185,
+        "required_rate_inside_declared_box": false,
+        "required_rate_product": 299558.79267302185,
+        "solution_scan_boundary": false,
+        "status": "sensitivity",
+        "unit_rate_amplitude_strain": 4.385006141203416e-18
+      },
+      "rows": [
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 9,
+          "fraction_dm": 3.018627878787879e-11,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 99614.72,
+          "number_density_mpc3": 1e-05,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 304332763.2739063,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 304332763.2739063,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3757416547236958e-19
+        },
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 9,
+          "fraction_dm": 3.018627878787879e-10,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 99614.72,
+          "number_density_mpc3": 0.0001,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 30433276.327390637,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 30433276.327390637,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.350477100895823e-19
+        },
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 10,
+          "fraction_dm": 1.2074511515151516e-10,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 398458.88,
+          "number_density_mpc3": 1e-05,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 30193634.285586745,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 30193634.285586745,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.367707499889733e-19
+        },
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 10,
+          "fraction_dm": 1.2074511515151516e-09,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 398458.88,
+          "number_density_mpc3": 0.0001,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 3019363.428558675,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 3019363.428558675,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3811903853051185e-18
+        },
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 11,
+          "fraction_dm": 4.829804606060607e-10,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 1593835.52,
+          "number_density_mpc3": 1e-05,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 2995587.9267302174,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 2995587.9267302174,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 1.3866606960028714e-18
+        },
+        {
+          "coordinate_scan_boundary": true,
+          "cycle": 11,
+          "fraction_dm": 4.8298046060606066e-09,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 1593835.52,
+          "number_density_mpc3": 0.0001,
+          "rate_factor_box": [
+            0.0,
+            1.0
+          ],
+          "required_factor_if_other_two_rates_are_unit": 299558.79267302185,
+          "required_rate_inside_declared_box": false,
+          "required_rate_product": 299558.79267302185,
+          "solution_scan_boundary": false,
+          "status": "sensitivity",
+          "unit_rate_amplitude_strain": 4.385006141203416e-18
+        }
+      ],
+      "scope": "all three declared JWST rungs and both density endpoints; rate product is an algebraic requirement, not a fit",
+      "seed_band_max_row_from_frozen_artifact": {
+        "amplitude_strain": 4.385006141203416e-18,
+        "cycle": 11,
+        "deficit_factor": 547.319643967784,
+        "inside_dm_budget": true,
+        "number_density_mpc3": 0.0001,
+        "source": "live_recomputed_pbh_scan; compatibility alias only"
+      },
+      "seed_band_max_row_live_recomputed": {
+        "amplitude_strain": 4.385006141203416e-18,
+        "cycle": 11,
+        "deficit_factor": 547.319643967784,
+        "inside_dm_budget": true,
+        "number_density_mpc3": 0.0001
+      }
+    },
+    "source_artifact_provenance": {
+      "audit_producer": {
+        "path": "verification/nvg_pbh_nanograv_audit.py",
+        "role": "live P1 PBH audit producer",
+        "sha256": "ee2ffb270be570833cb1cf4cf8bd2e93aa570b5e504a397b91ab14125650ab64"
+      },
+      "mass_ladder": {
+        "path": "verification/nvg_pbh_mass_spectrum.py",
+        "role": "live PBH mass ladder producer",
+        "sha256": "dd38b78347bd63b3deb8d5bbebb370800c938b543039fe558ead556b9a12ca4c"
+      },
+      "population_profile": {
+        "path": "verification/nvg_pbh_dark_matter.py",
+        "role": "live PBH profile producer",
+        "sha256": "6b78079d5430d9a1e8a65d8aa69707cb5cfc119a9218d0d222a331bc42f48d16"
+      },
+      "result": {
+        "path": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+        "role": "P1-S3 final structured PBH artifact",
+        "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
+      },
+      "two_population": {
+        "path": "verification/nvg_pbh_two_population.py",
+        "role": "live PBH two-population constants",
+        "sha256": "50e3700c830cbd32e7f55f6134b8d1dcc03df5ee9dbc6ad615fc3b067fc1beb0"
+      }
+    },
+    "status": "sensitivity",
+    "target_leakage": {
+      "benchmark_used_only_for_algebraic_required_factor": true,
+      "parameters_optimized_against_target": false,
+      "scan_maxima_copied_from_frozen_artifact": false,
+      "scan_maxima_live_recomputed": true,
+      "status": "PASS_NO_TARGET_FIT_AND_LIVE_MAX_ROW_RECOMPUTATION"
+    },
+    "unit_rate_abundance_requirements": {
+      "first_rung_with_required_density_inside_dm_budget": 7,
+      "first_rung_with_required_density_inside_jwst_band": 17,
+      "rows": [
+        {
+          "cycle": 7,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 6225.92,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.05833174157849454,
+          "required_number_density_at_unit_rate_mpc3": 309182.8150844084,
+          "rung_at_expanded_scan_boundary": true,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 8,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 24903.68,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.023148966986209846,
+          "required_number_density_at_unit_rate_mpc3": 30674.820369717447,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 9,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 99614.72,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.009186673636471658,
+          "required_number_density_at_unit_rate_mpc3": 3043.327632739064,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 10,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 398458.88,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.0036457338486559085,
+          "required_number_density_at_unit_rate_mpc3": 301.9363428558675,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 11,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": true,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 1593835.52,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.001446810436638115,
+          "required_number_density_at_unit_rate_mpc3": 29.955879267302183,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 12,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 6375342.08,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.0005741671022794783,
+          "required_number_density_at_unit_rate_mpc3": 2.971999641346741,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 13,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 25501368.32,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 0.00022785836554099417,
+          "required_number_density_at_unit_rate_mpc3": 0.294859709820183,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 14,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 102005473.28,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 9.042565228988216e-05,
+          "required_number_density_at_unit_rate_mpc3": 0.02925378834697478,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 15,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 408021893.12,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 3.588544389246739e-05,
+          "required_number_density_at_unit_rate_mpc3": 0.002902343399752676,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 16,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 1632087572.48,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 1.4241147846312133e-05,
+          "required_number_density_at_unit_rate_mpc3": 0.0002879489353712724,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 17,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": true,
+          "mass_msun": 6528350289.92,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 5.651603268117633e-06,
+          "required_number_density_at_unit_rate_mpc3": 2.856815268259255e-05,
+          "rung_at_expanded_scan_boundary": false,
+          "solution_scan_boundary": true,
+          "status": "sensitivity"
+        },
+        {
+          "cycle": 18,
+          "density_at_jwst_scan_boundary": false,
+          "individual_rate_factors_identifiable": false,
+          "inside_declared_jwst_rung_band": false,
+          "inside_dm_budget": true,
+          "inside_jwst_seed_density_band": false,
+          "mass_msun": 26113401159.68,
+          "rate_at_upper_declared_boundary": true,
+          "rate_product_at_required_density": 1.0,
+          "required_fraction_dm_at_unit_rate": 2.242840243279211e-06,
+          "required_number_density_at_unit_rate_mpc3": 2.834319726320972e-06,
+          "rung_at_expanded_scan_boundary": true,
+          "solution_scan_boundary": false,
+          "status": "sensitivity"
+        }
+      ],
+      "scope": "expanded rung sensitivity; unit rate is the upper declared rate product"
+    }
+  },
+  "producer_identity": {
+    "echo": {
+      "artifact": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "assertion_status": "PASS",
+      "focused_test": "verification/test_p2_echo_hierarchical_upper_limit.py",
+      "live_assertion": "echo.assert_result_provenance + load_config + load_catalog",
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py"
+    },
+    "pbh": {
+      "artifact": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "assertion_status": "PASS",
+      "audit_producer": "verification/nvg_pbh_nanograv_audit.py",
+      "live_assertion": "benchmark_metadata + canonical_mass + amplitude_strain + final rung rows",
+      "mass_ladder": "verification/nvg_pbh_mass_spectrum.py:get_pbh_mass",
+      "two_population": "verification/nvg_pbh_two_population.py"
+    },
+    "s8": {
+      "artifact": "verification/nvg_s8_no_go_map.json",
+      "assertion_status": "PASS",
+      "canonical_producer": "verification/nvg_black_hole_entropy.py::compute_s8_test",
+      "live_assertion": "compute_s8_test + point_record + maintained zero-overlap rows",
+      "maintained_map_producer": "verification/nvg_s8_no_go.py"
+    }
+  },
+  "s8": {
+    "boundary_expansion": {
+      "critical_boundary_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "display_precision": {
+        "note": "grid coordinates are sensitivity diagnostics, not a continuous threshold",
+        "omega_m_decimal_places": 3,
+        "raw_coordinates_retained": true
+      },
+      "interpretation": "first grid cell with a maintained one-sigma S8 plus legacy-overlay overlap; not a fitted or optimized boundary",
+      "nearest_boundary_is_continuous_inference": false,
+      "nearest_grid_boundary": {
+        "background_ok_count": 507,
+        "best_overlap_row": {
+          "background_ok": true,
+          "desi_overlay_2sigma": true,
+          "desi_overlay_chi2": 1.2291959549577214,
+          "distance_to_declared_lensing": 0.0153303660034243,
+          "early_matter_fraction": 0.9999998933699008,
+          "growth_ratio_gamma055": 0.9746061658708989,
+          "lensing_1sigma": true,
+          "omega_m": 0.3,
+          "s8": 0.7913303660034243,
+          "w0": -0.7000000000000001,
+          "wa": -0.6666666666666667
+        },
+        "boundary_status": "crossing_grid_cell",
+        "omega_m": 0.3,
+        "one_sigma_overlay_overlap": 4,
+        "total": 625,
+        "two_sigma_overlay_overlap": 8,
+        "w0_range": [
+          -1.5,
+          -0.3
+        ],
+        "w0wa_resolution": 25,
+        "wa_range": [
+          -2.5,
+          1.5
+        ]
+      },
+      "nearest_omega_departure_from_maintained": 0.015000000000000013,
+      "omega_grid": [
+        0.28,
+        0.29,
+        0.3,
+        0.305,
+        0.31,
+        0.32,
+        0.33,
+        0.34,
+        0.35,
+        0.36
+      ],
+      "rows": [
+        {
+          "background_ok_count": 506,
+          "best_overlap_row": {
+            "background_ok": true,
+            "desi_overlay_2sigma": true,
+            "desi_overlay_chi2": 0.31637177343549044,
+            "distance_to_declared_lensing": 0.0019251489888679751,
+            "early_matter_fraction": 0.9999999411051238,
+            "growth_ratio_gamma055": 0.9868153418796958,
+            "lensing_1sigma": true,
+            "omega_m": 0.28,
+            "s8": 0.774074851011132,
+            "w0": -0.7500000000000001,
+            "wa": -0.6666666666666667
+          },
+          "boundary_status": "crossing_grid_cell",
+          "omega_m": 0.28,
+          "one_sigma_overlay_overlap": 8,
+          "total": 625,
+          "two_sigma_overlay_overlap": 8,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 506,
+          "best_overlap_row": {
+            "background_ok": true,
+            "desi_overlay_2sigma": true,
+            "desi_overlay_chi2": 0.31637177343549044,
+            "distance_to_declared_lensing": 0.011857709351694945,
+            "early_matter_fraction": 0.9999999439257594,
+            "growth_ratio_gamma055": 0.9869172517249469,
+            "lensing_1sigma": true,
+            "omega_m": 0.29,
+            "s8": 0.787857709351695,
+            "w0": -0.7500000000000001,
+            "wa": -0.6666666666666667
+          },
+          "boundary_status": "crossing_grid_cell",
+          "omega_m": 0.29,
+          "one_sigma_overlay_overlap": 8,
+          "total": 625,
+          "two_sigma_overlay_overlap": 8,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 507,
+          "best_overlap_row": {
+            "background_ok": true,
+            "desi_overlay_2sigma": true,
+            "desi_overlay_chi2": 1.2291959549577214,
+            "distance_to_declared_lensing": 0.0153303660034243,
+            "early_matter_fraction": 0.9999998933699008,
+            "growth_ratio_gamma055": 0.9746061658708989,
+            "lensing_1sigma": true,
+            "omega_m": 0.3,
+            "s8": 0.7913303660034243,
+            "w0": -0.7000000000000001,
+            "wa": -0.6666666666666667
+          },
+          "boundary_status": "crossing_grid_cell",
+          "omega_m": 0.3,
+          "one_sigma_overlay_overlap": 4,
+          "total": 625,
+          "two_sigma_overlay_overlap": 8,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 507,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.305,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 8,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 508,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.31,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 4,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 509,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.32,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 0,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 510,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.33,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 0,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 510,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.34,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 0,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 510,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.35,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 0,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        },
+        {
+          "background_ok_count": 511,
+          "best_overlap_row": null,
+          "boundary_status": "no_crossing_at_grid_cell",
+          "omega_m": 0.36,
+          "one_sigma_overlay_overlap": 0,
+          "total": 625,
+          "two_sigma_overlay_overlap": 0,
+          "w0_range": [
+            -1.5,
+            -0.3
+          ],
+          "w0wa_resolution": 25,
+          "wa_range": [
+            -2.5,
+            1.5
+          ]
+        }
+      ],
+      "w0_range": [
+        -1.5,
+        -0.3
+      ],
+      "w0wa_resolution": 25,
+      "wa_range": [
+        -2.5,
+        1.5
+      ]
+    },
+    "convergence": {
+      "canonical": {
+        "canonical_identity_abs_error": 6.814041331182352e-08,
+        "canonical_identity_pass": true,
+        "canonical_sigma8_ratio": 1.023163259201153,
+        "canonical_source": "verification/nvg_black_hole_entropy.py::compute_s8_test",
+        "converged": true,
+        "growth_ratio": [
+          1.0231653716579447,
+          1.0231637343901059,
+          1.0231633273415663,
+          1.02316322583924
+        ],
+        "map_sigma8_ratio_at_canonical_point": 1.0231633273415663,
+        "max_minus_min": 2.1458187047240784e-06,
+        "relative_spread": 2.0972398641125815e-06,
+        "resolutions": [
+          250,
+          500,
+          1000,
+          2000
+        ]
+      },
+      "map_resolution": {
+        "domain": "maintained_omega_m_slice",
+        "one_sigma_overlap_stable_zero": true,
+        "rows": [
+          {
+            "background_ok": 80,
+            "one_sigma_overlay_overlap": 0,
+            "resolution": 9,
+            "total": 81,
+            "two_sigma_overlay_overlap": 0
+          },
+          {
+            "background_ok": 287,
+            "one_sigma_overlay_overlap": 0,
+            "resolution": 17,
+            "total": 289,
+            "two_sigma_overlay_overlap": 0
+          },
+          {
+            "background_ok": 622,
+            "one_sigma_overlay_overlap": 0,
+            "resolution": 25,
+            "total": 625,
+            "two_sigma_overlay_overlap": 4
+          }
+        ]
+      },
+      "status": "PASS_INHERITED_CANONICAL_AND_MAINTAINED_MAP_CONTROLS"
+    },
+    "dominant_uncertainty": "Unknown-provenance legacy overlay, growth-index approximation, and fixed Omega_m slice; the nearest crossing shifts with w0/wa grid resolution.",
+    "falsifier": "A sourced, independent S8/lensing likelihood at the maintained Omega_m slice that admits the claimed overlap would falsify the scoped no-go; a revised Omega_m prior would falsify its global interpretation.",
+    "global_statement_status": "BLOCKED_NO_SOURCED_JOINT_LIKELIHOOD",
+    "legacy_overlay_scope": {
+      "chi2_limit": 4.0,
+      "observed_likelihood": false,
+      "provenance_status": "unknown_provenance_sensitivity_overlay",
+      "source": "verification/nvg_desi_s8_joint_map.py (retired/unknown-provenance overlay)",
+      "target_semantics": "declared scalar one-sigma lensing band plus inherited chi2 overlay; no DESI likelihood reconstructed"
+    },
+    "live_maintained_point": {
+      "direction": "away from weak-lensing value",
+      "initial_tension_sigma": 3.29411764705882,
+      "remaining_tension_sigma": 4.427754803256424,
+      "s8_lensing": 0.776,
+      "s8_nvg": 0.8512718316553592,
+      "s8_planck": 0.832,
+      "shift_pct": 2.316325920115303,
+      "sigma8_ratio": 1.023163259201153,
+      "status": "WORSENS: calculated shift increases the lensing distance (input-dependent w0/wa; not an independent prediction)",
+      "w_0": -0.83,
+      "w_a": -1.05
+    },
+    "maintained_slice": {
+      "global_statement_status": "BLOCKED_NO_SOURCED_JOINT_LIKELIHOOD",
+      "inherited_resolution_rows": [
+        {
+          "one_sigma_overlay_overlap": 0,
+          "resolution": 9,
+          "two_sigma_overlay_overlap": 0
+        },
+        {
+          "one_sigma_overlay_overlap": 0,
+          "resolution": 17,
+          "two_sigma_overlay_overlap": 0
+        },
+        {
+          "one_sigma_overlay_overlap": 0,
+          "resolution": 25,
+          "two_sigma_overlay_overlap": 4
+        }
+      ],
+      "no_go_status": "conditional",
+      "omega_m": 0.315,
+      "one_sigma_overlap_count": 0,
+      "scope": "declared scalar S8/lensing target on the maintained Omega_m=0.315 slice",
+      "scoped_scalar_no_go": true
+    },
+    "minimal_prospective_requirement": "Supply independently sourced S8/lensing and (w0,wa,Omega_m) likelihood products, then preregister the domain and evaluate a joint likelihood without the legacy overlay shortcut.",
+    "normalization_probe": {
+      "critical_boundary_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "normalization_changes_one_sigma_overlap": true,
+      "normalization_conventions": [
+        {
+          "formula": "S8=s8_planck*growth*sqrt(Omega_m/0.315)",
+          "name": "omega_m_0.315",
+          "reference_omega_m": 0.315
+        },
+        {
+          "formula": "S8=s8_planck*growth*sqrt(Omega_m/0.300)",
+          "name": "omega_m_0.300",
+          "reference_omega_m": 0.3
+        },
+        {
+          "formula": "S8=s8_planck*growth",
+          "name": "none",
+          "reference_omega_m": null
+        }
+      ],
+      "one_sigma_counts_by_omega": {
+        "0.3": {
+          "none": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.315": {
+            "background_ok": 8374,
+            "one_sigma_overlap": 45,
+            "total": 10201,
+            "two_sigma_overlap": 157
+          }
+        },
+        "0.305": {
+          "none": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8379,
+            "one_sigma_overlap": 2,
+            "total": 10201,
+            "two_sigma_overlap": 122
+          }
+        },
+        "0.3075": {
+          "none": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 28
+          },
+          "omega_m_0.300": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8381,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 93
+          }
+        },
+        "0.31": {
+          "none": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 21
+          },
+          "omega_m_0.300": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8384,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 65
+          }
+        },
+        "0.3125": {
+          "none": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 17
+          },
+          "omega_m_0.300": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8386,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 45
+          }
+        },
+        "0.315": {
+          "none": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 15
+          },
+          "omega_m_0.300": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 0
+          },
+          "omega_m_0.315": {
+            "background_ok": 8389,
+            "one_sigma_overlap": 0,
+            "total": 10201,
+            "two_sigma_overlap": 15
+          }
+        }
+      },
+      "resolution": 101,
+      "rows": [
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8374,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 28
+            },
+            "omega_m_0.300": {
+              "background_ok": 8374,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 28
+            },
+            "omega_m_0.315": {
+              "background_ok": 8374,
+              "one_sigma_overlap": 45,
+              "total": 10201,
+              "two_sigma_overlap": 157
+            }
+          },
+          "omega_m": 0.3
+        },
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8379,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 28
+            },
+            "omega_m_0.300": {
+              "background_ok": 8379,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 0
+            },
+            "omega_m_0.315": {
+              "background_ok": 8379,
+              "one_sigma_overlap": 2,
+              "total": 10201,
+              "two_sigma_overlap": 122
+            }
+          },
+          "omega_m": 0.305
+        },
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8381,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 28
+            },
+            "omega_m_0.300": {
+              "background_ok": 8381,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 0
+            },
+            "omega_m_0.315": {
+              "background_ok": 8381,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 93
+            }
+          },
+          "omega_m": 0.3075
+        },
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8384,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 21
+            },
+            "omega_m_0.300": {
+              "background_ok": 8384,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 0
+            },
+            "omega_m_0.315": {
+              "background_ok": 8384,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 65
+            }
+          },
+          "omega_m": 0.31
+        },
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8386,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 17
+            },
+            "omega_m_0.300": {
+              "background_ok": 8386,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 0
+            },
+            "omega_m_0.315": {
+              "background_ok": 8386,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 45
+            }
+          },
+          "omega_m": 0.3125
+        },
+        {
+          "counts": {
+            "none": {
+              "background_ok": 8389,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 15
+            },
+            "omega_m_0.300": {
+              "background_ok": 8389,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 0
+            },
+            "omega_m_0.315": {
+              "background_ok": 8389,
+              "one_sigma_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlap": 15
+            }
+          },
+          "omega_m": 0.315
+        }
+      ],
+      "scope": "same broad CPL/legacy-overlay grid; normalization convention only; non-observational sensitivity",
+      "status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
+      "w0_range": [
+        -1.5,
+        -0.3
+      ],
+      "wa_range": [
+        -2.5,
+        1.5
+      ]
+    },
+    "producer_identity": {
+      "artifact": "verification/nvg_s8_no_go_map.json",
+      "assertion_status": "PASS",
+      "canonical_producer": "verification/nvg_black_hole_entropy.py::compute_s8_test",
+      "live_assertion": "compute_s8_test + point_record + maintained zero-overlap rows",
+      "maintained_map_producer": "verification/nvg_s8_no_go.py"
+    },
+    "resolution_probe": {
+      "boundary_resolution_dependent": true,
+      "interpretation": "crossing coordinate is a resolution-dependent grid candidate; it is not an invariant critical Omega_m",
+      "nearest_crossing_omegas": [
+        0.3,
+        0.3,
+        0.305
+      ],
+      "rows": [
+        {
+          "nearest_probe_with_overlap": {
+            "background_ok_count": 507,
+            "best_overlap_row": {
+              "background_ok": true,
+              "desi_overlay_2sigma": true,
+              "desi_overlay_chi2": 1.2291959549577214,
+              "distance_to_declared_lensing": 0.0153303660034243,
+              "early_matter_fraction": 0.9999998933699008,
+              "growth_ratio_gamma055": 0.9746061658708989,
+              "lensing_1sigma": true,
+              "omega_m": 0.3,
+              "s8": 0.7913303660034243,
+              "w0": -0.7000000000000001,
+              "wa": -0.6666666666666667
+            },
+            "boundary_status": "crossing_grid_cell",
+            "omega_m": 0.3,
+            "one_sigma_overlay_overlap": 4,
+            "total": 625,
+            "two_sigma_overlay_overlap": 8,
+            "w0_range": [
+              -1.5,
+              -0.3
+            ],
+            "w0wa_resolution": 25,
+            "wa_range": [
+              -2.5,
+              1.5
+            ]
+          },
+          "probes": [
+            {
+              "background_ok_count": 507,
+              "best_overlap_row": {
+                "background_ok": true,
+                "desi_overlay_2sigma": true,
+                "desi_overlay_chi2": 1.2291959549577214,
+                "distance_to_declared_lensing": 0.0153303660034243,
+                "early_matter_fraction": 0.9999998933699008,
+                "growth_ratio_gamma055": 0.9746061658708989,
+                "lensing_1sigma": true,
+                "omega_m": 0.3,
+                "s8": 0.7913303660034243,
+                "w0": -0.7000000000000001,
+                "wa": -0.6666666666666667
+              },
+              "boundary_status": "crossing_grid_cell",
+              "omega_m": 0.3,
+              "one_sigma_overlay_overlap": 4,
+              "total": 625,
+              "two_sigma_overlay_overlap": 8,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 25,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 507,
+              "best_overlap_row": null,
+              "boundary_status": "no_crossing_at_grid_cell",
+              "omega_m": 0.305,
+              "one_sigma_overlay_overlap": 0,
+              "total": 625,
+              "two_sigma_overlay_overlap": 8,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 25,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 508,
+              "best_overlap_row": null,
+              "boundary_status": "no_crossing_at_grid_cell",
+              "omega_m": 0.31,
+              "one_sigma_overlay_overlap": 0,
+              "total": 625,
+              "two_sigma_overlay_overlap": 4,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 25,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            }
+          ],
+          "w0wa_resolution": 25
+        },
+        {
+          "nearest_probe_with_overlap": {
+            "background_ok_count": 2128,
+            "best_overlap_row": {
+              "background_ok": true,
+              "desi_overlay_2sigma": true,
+              "desi_overlay_chi2": 0.7978615734848415,
+              "distance_to_declared_lensing": 0.0166488168044443,
+              "early_matter_fraction": 0.9999998245746372,
+              "growth_ratio_gamma055": 0.9762299760205854,
+              "lensing_1sigma": true,
+              "omega_m": 0.3,
+              "s8": 0.7926488168044443,
+              "w0": -0.732,
+              "wa": -0.5800000000000001
+            },
+            "boundary_status": "crossing_grid_cell",
+            "omega_m": 0.3,
+            "one_sigma_overlay_overlap": 13,
+            "total": 2601,
+            "two_sigma_overlay_overlap": 37,
+            "w0_range": [
+              -1.5,
+              -0.3
+            ],
+            "w0wa_resolution": 51,
+            "wa_range": [
+              -2.5,
+              1.5
+            ]
+          },
+          "probes": [
+            {
+              "background_ok_count": 2128,
+              "best_overlap_row": {
+                "background_ok": true,
+                "desi_overlay_2sigma": true,
+                "desi_overlay_chi2": 0.7978615734848415,
+                "distance_to_declared_lensing": 0.0166488168044443,
+                "early_matter_fraction": 0.9999998245746372,
+                "growth_ratio_gamma055": 0.9762299760205854,
+                "lensing_1sigma": true,
+                "omega_m": 0.3,
+                "s8": 0.7926488168044443,
+                "w0": -0.732,
+                "wa": -0.5800000000000001
+              },
+              "boundary_status": "crossing_grid_cell",
+              "omega_m": 0.3,
+              "one_sigma_overlay_overlap": 13,
+              "total": 2601,
+              "two_sigma_overlay_overlap": 37,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 51,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 2129,
+              "best_overlap_row": null,
+              "boundary_status": "no_crossing_at_grid_cell",
+              "omega_m": 0.305,
+              "one_sigma_overlay_overlap": 0,
+              "total": 2601,
+              "two_sigma_overlay_overlap": 31,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 51,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 2130,
+              "best_overlap_row": null,
+              "boundary_status": "no_crossing_at_grid_cell",
+              "omega_m": 0.31,
+              "one_sigma_overlay_overlap": 0,
+              "total": 2601,
+              "two_sigma_overlay_overlap": 14,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 51,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            }
+          ],
+          "w0wa_resolution": 51
+        },
+        {
+          "nearest_probe_with_overlap": {
+            "background_ok_count": 8379,
+            "best_overlap_row": {
+              "background_ok": true,
+              "desi_overlay_2sigma": true,
+              "desi_overlay_chi2": 3.957719492345533,
+              "distance_to_declared_lensing": 0.015622470773320685,
+              "early_matter_fraction": 0.9999996316961189,
+              "growth_ratio_gamma055": 0.9669413761134992,
+              "lensing_1sigma": true,
+              "omega_m": 0.305,
+              "s8": 0.7916224707733207,
+              "w0": -0.708,
+              "wa": -0.54
+            },
+            "boundary_status": "crossing_grid_cell",
+            "omega_m": 0.305,
+            "one_sigma_overlay_overlap": 2,
+            "total": 10201,
+            "two_sigma_overlay_overlap": 122,
+            "w0_range": [
+              -1.5,
+              -0.3
+            ],
+            "w0wa_resolution": 101,
+            "wa_range": [
+              -2.5,
+              1.5
+            ]
+          },
+          "probes": [
+            {
+              "background_ok_count": 8374,
+              "best_overlap_row": {
+                "background_ok": true,
+                "desi_overlay_2sigma": true,
+                "desi_overlay_chi2": 0.7576662535111319,
+                "distance_to_declared_lensing": 0.016624370266729804,
+                "early_matter_fraction": 0.9999998658203711,
+                "growth_ratio_gamma055": 0.9761998675508308,
+                "lensing_1sigma": true,
+                "omega_m": 0.3,
+                "s8": 0.7926243702667298,
+                "w0": -0.72,
+                "wa": -0.6199999999999999
+              },
+              "boundary_status": "crossing_grid_cell",
+              "omega_m": 0.3,
+              "one_sigma_overlay_overlap": 45,
+              "total": 10201,
+              "two_sigma_overlay_overlap": 157,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 101,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 8379,
+              "best_overlap_row": {
+                "background_ok": true,
+                "desi_overlay_2sigma": true,
+                "desi_overlay_chi2": 3.957719492345533,
+                "distance_to_declared_lensing": 0.015622470773320685,
+                "early_matter_fraction": 0.9999996316961189,
+                "growth_ratio_gamma055": 0.9669413761134992,
+                "lensing_1sigma": true,
+                "omega_m": 0.305,
+                "s8": 0.7916224707733207,
+                "w0": -0.708,
+                "wa": -0.54
+              },
+              "boundary_status": "crossing_grid_cell",
+              "omega_m": 0.305,
+              "one_sigma_overlay_overlap": 2,
+              "total": 10201,
+              "two_sigma_overlay_overlap": 122,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 101,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            },
+            {
+              "background_ok_count": 8384,
+              "best_overlap_row": null,
+              "boundary_status": "no_crossing_at_grid_cell",
+              "omega_m": 0.31,
+              "one_sigma_overlay_overlap": 0,
+              "total": 10201,
+              "two_sigma_overlay_overlap": 65,
+              "w0_range": [
+                -1.5,
+                -0.3
+              ],
+              "w0wa_resolution": 101,
+              "wa_range": [
+                -2.5,
+                1.5
+              ]
+            }
+          ],
+          "w0wa_resolution": 101
+        }
+      ],
+      "status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT"
+    },
+    "scope": "critical boundary is a sensitivity-only grid discovery candidate; no global observational no-go is claimed",
+    "source_artifact_provenance": {
+      "canonical_producer": {
+        "path": "verification/nvg_black_hole_entropy.py",
+        "role": "live maintained S8 producer",
+        "sha256": "32ce8f9f70dfe337343bb9c6cc3a8f34856e6dd8ad60633130ff1fbc46e6f398"
+      },
+      "legacy_overlay_source": {
+        "path": "verification/nvg_desi_s8_joint_map.py",
+        "role": "retired/unknown-provenance overlay source",
+        "sha256": "a38c5fadf8e1ed2a966ea5a532d9d5000b9618542eb0a684b6d149570ba4feb3"
+      },
+      "maintained_map_producer": {
+        "path": "verification/nvg_s8_no_go.py",
+        "role": "live P1 S8 map producer",
+        "sha256": "9abf0926e9f913646a7254ae6ceeebb4a9c6b8189e2ce1b9076335ca16720c51"
+      },
+      "result": {
+        "path": "verification/nvg_s8_no_go_map.json",
+        "role": "P1-S2 final structured S8 artifact",
+        "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570"
+      }
+    },
+    "status": "sensitivity"
+  },
+  "schema_version": "P3-S3-prospective-falsification-reach-v1",
+  "scope": "Prospective critical-boundary ledger; no new observation, fit, or cross-worker NS import",
+  "source_artifact_provenance": {
+    "echo_result": {
+      "path": "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+      "role": "read-only P2 final artifact",
+      "sha256": "2bb2214a933356f69e12ef81d6af12b8c0fb27490be9465fd314711f63ec885e"
+    },
+    "p3_focused_test": {
+      "path": "verification/test_p3_prospective_falsification_reach.py",
+      "role": "live P3-S7 focused test",
+      "sha256": "82f112408d22500cd104b535d1d85123b655fba16194d13c9f21baf96e9cb9f2"
+    },
+    "p3_producer": {
+      "path": "verification/nvg_prospective_falsification_reach.py",
+      "role": "live P3-S7 producer",
+      "sha256": "bac0efb275211e51dd587d6b3a7d7cc9e374eaa1b37b57cc727b0c1b5c2671f1"
+    },
+    "pbh_result": {
+      "path": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "role": "read-only P1 final artifact",
+      "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
+    },
+    "s8_result": {
+      "path": "verification/nvg_s8_no_go_map.json",
+      "role": "read-only P1 final artifact",
+      "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570"
+    }
+  },
+  "status": "COMPLETE_WITH_PROSPECTIVE_SENSITIVITY_AND_PENDING_NS_MERGE",
+  "target_leakage_controls": {
+    "checks": {
+      "echo_no_observational_likelihood": true,
+      "echo_synthetic_null_only": true,
+      "pbh_benchmark_not_likelihood": true,
+      "pbh_external_exclusions_not_applied": true,
+      "pbh_target_calibration_false": true,
+      "s8_overlay_not_observed": true
+    },
+    "echo_parameter_selection": "fixed catalog-prefix counts; no target-dependent event selection",
+    "ns_hartle": "not imported; pending P3-S1 merge",
+    "pbh_parameter_selection": "benchmark enters only inverse requirement algebra; no target-calibrated scan maximum",
+    "s8_parameter_selection": "fixed endpoint-inclusive CPL/Omega_m grids; no fitted threshold or optimizer",
+    "status": "PASS_NO_TARGET_FIT_OR_OBSERVATION_RELABELLING"
+  }
+}

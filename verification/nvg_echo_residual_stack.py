@@ -229,19 +229,22 @@ def main():
           f"{'S0':>8}{'p':>7}{'rho90':>7}")
     print("  " + "-" * 94)
     results = []
+    skipped: dict[str, int] = {}
     for ev in events:
         name = ev["name"]
         try:
             dets = fetch_dets(ev)
         except Exception as exc:
             print(f"  {name:<22} skipped (fetch {type(exc).__name__})", flush=True)
+            skipped[f"fetch:{type(exc).__name__}"] = skipped.get(f"fetch:{type(exc).__name__}", 0) + 1
             continue
         if "H1" not in dets or "L1" not in dets:
             print(f"  {name:<22} skipped (needs H1+L1, have {sorted(dets) or 'none'})",
                   flush=True)
+            skipped["detector_data"] = skipped.get("detector_data", 0) + 1
             continue
-        mf = masses.get(name, 60.0)
         try:
+            mf = ts.require_mass(masses.get(name), name)
             resid, subs = {}, {}
             for det, (strain, psd) in dets.items():
                 r, s_before, s_after = subtract_imr(strain, psd, ev)
@@ -257,9 +260,11 @@ def main():
             s_inj = net_s0(inj, ev["gps"], mf)
         except Exception as exc:
             print(f"  {name:<22} skipped (analysis {type(exc).__name__}: {exc})", flush=True)
+            skipped[f"analysis:{type(exc).__name__}"] = skipped.get(f"analysis:{type(exc).__name__}", 0) + 1
             continue
         if r is None or r["p"] != r["p"]:
             print(f"  {name:<22} skipped (no background)", flush=True)
+            skipped["no_background"] = skipped.get("no_background", 0) + 1
             continue
         rho90 = INJ_SNR * math.sqrt(r["bkg_p90"] / s_inj) if s_inj > 0 else float("nan")
         row = {"name": name, "snr": ev["snr"], "mass_final": mf,
@@ -278,6 +283,7 @@ def main():
     fh.close()
 
     print("-" * 100)
+    print(f"  Sample ledger: used={len(results)}, skipped={sum(skipped.values())}, reasons={skipped or 'none'}")
     if len(results) < 5:
         print("  too few events for a stack"); return
     ps = np.clip(np.array([r["p"] for r in results]), 1e-6, 1.0)

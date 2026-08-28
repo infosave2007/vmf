@@ -1,0 +1,5813 @@
+{
+  "artifact_manifest": "verification/artifact_manifest.json",
+  "coverage": {
+    "excluded_roots": [
+      "Lunacy/",
+      ".code/",
+      "vacuum_neural_networks/"
+    ],
+    "maintained_script_roots": [
+      "verification/",
+      "scratch/",
+      "generator_project/",
+      "biophysics_ciss_ros/",
+      "topological_info/",
+      "papers/",
+      "visualization/"
+    ],
+    "note": "All physical verification Python files are covered; outside verification only tracked executable surfaces are included.",
+    "tracked_outside_verification": true
+  },
+  "data_provenance": "verification/data/provenance.json",
+  "description": "Maintained computational surface registry. Evidence weights describe reproducible computational ownership, not independent empirical significance.",
+  "entries": {
+    "NVG_FINAL_REPORT.md": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/run_nvg_suite.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "NVG_MELTING_REPORT.md": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_melting_master_report.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "biophysics_ciss_ros/ciss_rpm_figure.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "biophysics_ciss_ros/ciss_rpm_model.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "biophysics_ciss_ros/pemf_recovery_device.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "biophysics_ciss_ros/protocol_figure.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "generator_project/calc_theta_haloscope_design.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "generator_project/calc_theta_haloscope_v2.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "papers/bounded_T_nogo/make_exclusion_figure.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "scratch/check_coupled_de.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/check_de_zscore.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/check_diagnostics.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/check_echo_calc.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/check_w_lagrangian.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/explore_dark_photon_observables.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/format_dna_tex.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "scratch/make_plot_test.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_de_4.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_de_5.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_de_6.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_de_beta.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_tidal_pure.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/test_urca_tov.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "scratch/verify_de.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "topological_info/winding_bit.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/HADES_PREREGISTRATION.md": {
+      "consumers": [
+        "verification/nvg_hades_lineshape_feasibility.py"
+      ],
+      "deprecation": null,
+      "description": "Preregistered HADES selector and feasibility boundary; no event likelihood.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/LESSONS.md": {
+      "consumers": [],
+      "deprecation": "Historical audit notes outside the semantic front door.",
+      "description": "Historical audit notes; not a computational evidence artifact.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/NVG_MCRIT_CHANDRASEKHAR_NOTE.md": {
+      "consumers": [],
+      "deprecation": "Historical note outside the semantic front door.",
+      "description": "Historical critical-mass note; runtime values come from named producers.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/artifact_manifest.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "manifest",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p11_s2_artifact_provenance.py",
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/data/gwtc_events.csv": {
+      "consumers": [
+        "verification/nvg_echo_timeslide_background.py",
+        "verification/nvg_gwtc3_mass_scan.py"
+      ],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/data/hades_templates_20MeV.csv": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/data/hades_templates_40MeV.csv": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hades_lineshape_feasibility.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/data/nvg_gw_template.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Deterministic generated-unverified GW spectrum template; NON_EVIDENCE only.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_gw_spectrum_template.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p11_s2_artifact_provenance.py",
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "verification/data/nvg_hartle_p2s1_j0737a_mass.json": {
+      "consumers": [
+        "verification/nvg_hartle_slow_rotation.py",
+        "verification/nvg_ns_frozen_forecasts.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Pinned primary-source J0737A timing target input; held-out conditional target, not independent evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p2_hartle_slow_rotation.py",
+        "verification/test_p3_ns_frozen_forecasts.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/data/nvg_residual_stack_results.csv": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_echo_residual_stack.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/data/p2_s3_hierarchical_echo/analysis_config.json": {
+      "consumers": [
+        "verification/nvg_echo_hierarchical_upper_limit.py",
+        "verification/nvg_prospective_falsification_reach.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": "Declared local configuration; not observational data.",
+      "description": "Pinned local echo sensitivity configuration; synthetic calibration only.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p2_echo_hierarchical_upper_limit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/data/p2_s3_hierarchical_echo/provenance_manifest.json": {
+      "consumers": [
+        "verification/nvg_echo_hierarchical_upper_limit.py",
+        "verification/nvg_prospective_falsification_reach.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Pinned echo input/code provenance manifest and observational-product boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "manifest",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p2_echo_hierarchical_upper_limit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/data/planck2018_te_full.txt": {
+      "consumers": [
+        "verification/nvg_cmb_lowl_refit.py",
+        "verification/nvg_cmb_te_check.py"
+      ],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/data/planck2018_tt_full.txt": {
+      "consumers": [
+        "verification/nvg_cmb_lowl_refit.py"
+      ],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/data/provenance.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "manifest",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p11_s2_artifact_provenance.py",
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/debug_tov.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/fig_antimatter_topology.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_antimatter_topology.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_arrow_of_time.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_arrow_of_time.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_bell_inequality.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_bell_inequality.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_cas_a_cooling.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_cas_a_cooling_curve.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_cmb_lowl_refit.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_cmb_lowl_refit.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_dm_no_wimp.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_dm_direct_detection.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_double_slit_madelung.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_double_slit_madelung.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_echo_hierarchical_upper_limit_p2s3.png": {
+      "consumers": [],
+      "deprecation": "Synthetic/catalog-conditioned sensitivity; not observational evidence.",
+      "description": "Predictive-program generated artifact (synthetic_conditional_sensitivity); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_fine_structure.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_fine_structure.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_gw_comb_amplitude.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_gw_comb_amplitude.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_hartle_slow_rotation_p2s1.png": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_hartle_slow_rotation_p2s5.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (derived_conditional_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_heisenberg_proof.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_heisenberg_proof.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_hyperon_eos_compare.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_hyperon_mr_baselines.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_hyperon_mr_nl3.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hyperon_puzzle_tov.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_iloveq_universal.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_iloveq_plot.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_iloveq_universal_report.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_iloveq_plot.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_neutrino_seesaw.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_neutrino_seesaw.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_ns_frozen_forecasts_p3s1.png": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (forward_only_conditional_forecast); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_ns_predictive_audit.png": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_ns_predictive_audit_p1s5.png": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_ns_predictive_audit_p1s7.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (conditional_in_sample_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_p2_s2_beta_hyperon_urca_audit.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (blocked_physical_dependencies); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_beta_hyperon_urca_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_p3_s2_cooling_gmode_dependency_audit.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (blocked_physical_dependencies_with_null_control); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_p3_s3_prospective_reach.png": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (prospective_sensitivity_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_qcd_phase_diagram.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/fig_quantum_gravity.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_quantum_gravity.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_recondensation_dynamics.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_recondensation_dynamics.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_rhic_bell_test.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_rhic_bell_test.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_s8_no_go_map.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (scoped_sensitivity_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_s8_no_go.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/fig_speed_of_sound.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_speed_of_sound_curve.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_speed_of_sound_bayesian.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_speed_of_sound_bayesian.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/fig_strong_cp_potential.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_strong_cp_solution.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/fig_talbot_isomorphism.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_talbot_isomorphism.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/fig_wavefunction_collapse.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_wavefunction_collapse.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/gwtc3_nvg_results.csv": {
+      "consumers": [
+        "verification/nvg_gwtc3_plot_results.py",
+        "verification/nvg_gwtc3_statistics.py"
+      ],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_gwtc3_mass_scan.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_1e161348_fallback_torque.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_adm_bl_cogenesis.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_advanced_calculations.py": {
+      "consumers": [
+        "verification/nvg_new_directions_verification.py",
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_advanced_observables_I.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_advanced_observables_II.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_advanced_observables_III.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_anchor_identities.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_antimatter_topology.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_antimatter_topology.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_arrow_of_time.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_arrow_of_time.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_axion_mass.py": {
+      "consumers": [
+        "verification/nvg_de_axion_crosscheck.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_baryogenesis_bsm_closure.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_baryogenesis_figs.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_baryon_asymmetry.py": {
+      "consumers": [
+        "verification/nvg_baryogenesis_bsm_closure.py",
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_bbn_reionization.py": {
+      "consumers": [
+        "verification/nvg_gravitational_waves_tests.py",
+        "verification/nvg_iloveq_gw_echoes.py",
+        "verification/test_p8_s3_model_identity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_bell_contextual.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_bell_from_action.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_bell_inequality.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_bell_inequality.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_beta_hyperon_urca_audit.py": {
+      "consumers": [
+        "verification/nvg_cooling_gmode_dependency_audit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-2 zero-interaction composition reference with explicit physical hyperon/Urca blockers.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
+        "verification/fig_p2_s2_beta_hyperon_urca_audit.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p2_beta_hyperon_urca_audit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (blocked_physical_dependencies); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_beta_hyperon_urca_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_bh_regular_core.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_black_hole_entropy.py": {
+      "consumers": [
+        "verification/nvg_s8_tension_check.py",
+        "verification/test_p2_s1_scientific_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_black_hole_interior.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_bounce_derivation.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_bounce_schrodinger_bridge.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_cas_a_cooling_curve.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_cas_a_cooling.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_chime_frb_check.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_cmb_birefringence.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cmb_lowl_refit.py": {
+      "consumers": [
+        "verification/nvg_cutoff_shape_derivation.py",
+        "verification/nvg_melting_beta_cmb_chi2.py",
+        "verification/nvg_melting_beta_horizon_chain.py",
+        "verification/nvg_observational_data_fit.py"
+      ],
+      "deprecation": null,
+      "description": "Descriptive CMB low-l lite-likelihood comparison over vendored unknown-provenance arrays; not the Planck likelihood.",
+      "evidence_weight": 1.0,
+      "inputs": [
+        "verification/data/planck2018_te_full.txt",
+        "verification/data/planck2018_tt_full.txt"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_cmb_lowl_refit.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p2_s2_model_chain.py"
+      ]
+    },
+    "verification/nvg_cmb_smbh_cyclic.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cmb_te_check.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [
+        "verification/data/planck2018_te_full.txt"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cmb_temperature.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_condensate_modulation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cooling_dark_matter.py": {
+      "consumers": [
+        "verification/nvg_cmb_smbh_cyclic.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cooling_gmode_dependency_audit.py": {
+      "consumers": [
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-3 barotropic null and cooling/g-mode dependency audit; physical claims remain blocked.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
+        "verification/fig_p3_s2_cooling_gmode_dependency_audit.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p3_cooling_gmode_dependency_audit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (blocked_physical_dependencies_with_null_control); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_cosmology_tensions.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_joint_ns_inference.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cutoff_shape_derivation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cyclic_bounce.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cyclic_cosmology.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cyclic_lifetimes.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dark_energy_desi.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_dark_energy_w0wa.py": {
+      "consumers": [
+        "verification/nvg_dark_energy_desi.py"
+      ],
+      "deprecation": null,
+      "description": "Formula-level dark-energy forward producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dark_photon_kinetic_mixing.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Conditional dark-photon benchmark; no complete observed-event or transport likelihood.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_dark_photon_kinetic_mixing_output.txt"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Historical NON_EVIDENCE snapshot of the conditional dark-photon benchmark.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_dark_photon_kinetic_mixing.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "verification/nvg_dark_photon_observables.py": {
+      "consumers": [
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dark_photon_observables_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_dark_photon_observables.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_de_axion_crosscheck.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_desi_dr3_forecast.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_desi_s8_joint_map.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_detector_forward_model.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_fair_hades_link.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_direct_urca.py": {
+      "consumers": [
+        "verification/test_p4_s3_runner_bounds_outputs.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dm_budget_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dm_direct_detection.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_dm_no_wimp.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_dna_chirality.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_double_slit_madelung.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_double_slit_madelung.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_ds_core_oscillations.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_dual_hierarchy_identity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_hierarchical_upper_limit.py": {
+      "consumers": [
+        "verification/nvg_prospective_falsification_reach.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": "Synthetic detector/injection calibration; not an observational upper limit.",
+      "description": "Phase-2 deterministic catalog-conditioned echo sensitivity; real-data likelihood remains blocked.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json",
+        "verification/fig_echo_hierarchical_upper_limit_p2s3.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p2_echo_hierarchical_upper_limit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_echo_hierarchical_upper_limit_p2s3_results.json": {
+      "consumers": [],
+      "deprecation": "Synthetic/catalog-conditioned sensitivity; not observational evidence.",
+      "description": "Predictive-program generated artifact (synthetic_conditional_sensitivity); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_echo_hierarchical_upper_limit.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_echo_o4_observers.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_o4_search.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_population_stack.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_residual_search.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_residual_stack.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/data/nvg_residual_stack_results.csv"
+      ],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_stacked_search.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_template.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_echo_waveform_generator.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_echo_timeslide_background.py": {
+      "consumers": [
+        "verification/nvg_echo_o4_search.py",
+        "verification/nvg_echo_population_stack.py",
+        "verification/nvg_echo_residual_search.py",
+        "verification/nvg_echo_residual_stack.py",
+        "verification/nvg_echo_stacked_search.py",
+        "verification/nvg_o4_lowp_deepdive.py",
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Guarded GWTC catalog/provenance loader for echo searches.",
+      "evidence_weight": 1.0,
+      "inputs": [
+        "verification/data/gwtc_events.csv"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p11_s2_artifact_provenance.py"
+      ]
+    },
+    "verification/nvg_echo_upper_limit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_echo_waveform_generator.py": {
+      "consumers": [
+        "verification/test_p11_s2_artifact_provenance.py"
+      ],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_echo_template.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_em_extensions_proofs.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_em_maxwell_decoherence.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_em_priority2_formal.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_em_response_derivation.py": {
+      "consumers": [
+        "verification/nvg_dark_photon_kinetic_mixing.py",
+        "verification/nvg_dark_photon_observables.py",
+        "verification/nvg_em_response_higher_order.py",
+        "verification/nvg_new_predictions.py"
+      ],
+      "deprecation": null,
+      "description": "Formula-level electromagnetic response producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_em_response_derivation_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_em_response_derivation.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_em_response_higher_order.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_em_response_higher_order_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_em_response_higher_order.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_entropy_analytic.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_entropy_universality.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_eos_beta_checked.py": {
+      "consumers": [
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_beta_css_softening.py": {
+      "consumers": [
+        "verification/nvg_melting_freeform_beta.py",
+        "verification/nvg_ns_parameter_scan.py",
+        "verification/nvg_tidal_deformability.py",
+        "verification/nvg_tidal_deformability_gw170817.py",
+        "verification/test_p4_s3_runner_bounds_outputs.py",
+        "verification/test_p6_s4_ns_parameter_scan.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical CSS-softened EOS branch producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_eos_beta_saturated_vector.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p6_s4_ns_parameter_scan.py"
+      ]
+    },
+    "verification/nvg_eos_beta_lambda_hyperon.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_beta_saturated_vector.py": {
+      "consumers": [
+        "verification/nvg_eos_beta_css_softening.py",
+        "verification/nvg_eos_beta_lambda_hyperon.py",
+        "verification/nvg_eos_existence_rescreen.py",
+        "verification/nvg_eos_fork_a.py",
+        "verification/nvg_eos_fork_b.py",
+        "verification/nvg_eos_fork_b_nl.py",
+        "verification/nvg_eos_symmetric_rebuild.py",
+        "verification/nvg_fork_b_full_chain.py",
+        "verification/nvg_melting_freeform_beta.py",
+        "verification/nvg_melting_tail_sensitivity.py",
+        "verification/nvg_selfbound_gate.py",
+        "verification/nvg_strange_gate.py",
+        "verification/nvg_two_condensate_resolution.py",
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical saturated-vector EOS producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ]
+    },
+    "verification/nvg_eos_existence_rescreen.py": {
+      "consumers": [
+        "verification/test_p6_s2_residual_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_fork_a.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_fork_b.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_fork_b_nl.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_proof_checked.py": {
+      "consumers": [
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_eos_symmetric_rebuild.py": {
+      "consumers": [
+        "verification/nvg_eos_fork_a.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_etab_inheritance.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_fair_hades_link.py": {
+      "consumers": [
+        "verification/nvg_advanced_observables_I.py",
+        "verification/nvg_advanced_observables_III.py",
+        "verification/nvg_detector_forward_model.py",
+        "verification/nvg_hades_dielectron_sim.py",
+        "verification/nvg_hades_lineshape_feasibility.py",
+        "verification/nvg_hadrons_magnetic_fields.py",
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Shared in-medium rho-mass producer for HADES forward routes.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p10_s2_direct_status.py"
+      ]
+    },
+    "verification/nvg_falsifier_dashboard.py": {
+      "consumers": [
+        "verification/test_p4_s3_runner_bounds_outputs.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_fine_structure.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_fine_structure.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_fork_b_full_chain.py": {
+      "consumers": [
+        "verification/test_p6_s1_public_reports.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_full_ns_eos.py": {
+      "consumers": [
+        "verification/debug_tov.py",
+        "verification/nvg_speed_of_sound_bayesian.py",
+        "verification/nvg_speed_of_sound_curve.py",
+        "verification/test_p4_s3_runner_bounds_outputs.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical broader UnifiedEOS/TOV implementation.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p6_s3_ns_g_modes_compatibility.py",
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ]
+    },
+    "verification/nvg_g2_crunch_thermalization.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_g2_mechanism.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_g2_misner_sharp.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_g2_press_schechter.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_g2_shock_closure.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_genesis_observable.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_global_significance.py": {
+      "consumers": [
+        "verification/test_p4_s1_ns_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_joint_ns_inference.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_glueball_mass.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_graphene_autogen_calc.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_graphene_modulation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_gravitational_waves_tests.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_grmhd_surrogate.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_gw150914_echo_snr.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_pycbc_echo_search.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_gw_comb_amplitude.py": {
+      "consumers": [
+        "verification/nvg_recondensation_dynamics.py"
+      ],
+      "deprecation": null,
+      "description": "Runtime GW-comb amplitude/figure consumer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_gw_comb_amplitude.png"
+      ],
+      "producer": "verification/nvg_primordial_gw_comb.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s3_public_artifacts.py"
+      ]
+    },
+    "verification/nvg_gw_echo_prediction.py": {
+      "consumers": [
+        "verification/nvg_new_directions_verification.py",
+        "verification/nvg_verification_suite.py"
+      ],
+      "deprecation": null,
+      "description": "Mass-only forward echo-delay producer; no detector likelihood.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_gw_echo_waveforms.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_gw_echoes.py": {
+      "consumers": [
+        "verification/nvg_cmb_smbh_cyclic.py",
+        "verification/nvg_iloveq_gw_echoes.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_gw_spectrum_template.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Deterministic generated-unverified GW spectrum template producer; output is NON_EVIDENCE.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/data/nvg_gw_template.txt"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_gwtc3_mass_scan.py": {
+      "consumers": [
+        "verification/nvg_gwtc3_plot_results.py",
+        "verification/nvg_gwtc3_statistics.py",
+        "verification/test_p11_s2_artifact_provenance.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/gwtc_events.csv"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/gwtc3_nvg_results.csv"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_gwtc3_plot_results.py": {
+      "consumers": [
+        "verification/test_p11_s2_artifact_provenance.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/gwtc3_nvg_results.csv"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_gwtc3_snr_distribution.png"
+      ],
+      "producer": "verification/nvg_gwtc3_mass_scan.py",
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_gwtc3_snr_distribution.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_gwtc3_plot_results.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_gwtc3_statistics.py": {
+      "consumers": [
+        "verification/test_p11_s2_artifact_provenance.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/gwtc3_nvg_results.csv"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_gwtc3_mass_scan.py",
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_gwtc_ladder_test.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hades_dielectron_sim.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_fair_hades_link.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_hades_lineshape_feasibility.py": {
+      "consumers": [
+        "verification/nvg_advanced_observables_I.py",
+        "verification/nvg_eos_fork_a.py",
+        "verification/nvg_eos_fork_b.py",
+        "verification/nvg_eos_fork_b_nl.py"
+      ],
+      "deprecation": "Synthetic template generator; no HADES event likelihood is present.",
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_fair_hades_link.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/data/hades_templates_20MeV.csv",
+        "verification/data/hades_templates_40MeV.csv"
+      ],
+      "producer": "verification/nvg_fair_hades_link.py",
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_hadron_mass_fractions.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hadrons_magnetic_fields.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hartle_slow_rotation.py": {
+      "consumers": [
+        "verification/nvg_ns_frozen_forecasts.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-2 first-order Hartle observables on pressure-ordered branches; conditional only.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_hartle_slow_rotation_p2s1_results.json",
+        "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+        "verification/fig_hartle_slow_rotation_p2s1.png",
+        "verification/fig_hartle_slow_rotation_p2s5.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p2_hartle_slow_rotation.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_hartle_slow_rotation_p2s1_results.json": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_hartle_slow_rotation_p2s5_results.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (derived_conditional_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_hayward_evaporation.py": {
+      "consumers": [
+        "verification/nvg_pbh_dark_matter.py",
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Runtime Hayward horizon and Hawking-temperature solver.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s2_direct_status.py"
+      ]
+    },
+    "verification/nvg_heisenberg_proof.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_heisenberg_proof.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_higgs_mass_shift.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_homochirality_figs.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_hubble_tension.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hyperon_puzzle.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hyperon_puzzle_solution.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_hyperon_puzzle_tov.py": {
+      "consumers": [
+        "verification/nvg_hyperon_puzzle.py",
+        "verification/test_p2_s1_scientific_integrity.py",
+        "verification/test_p4_s3_runner_bounds_outputs.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_hyperon_eos_compare.png",
+        "verification/fig_hyperon_mr_baselines.png",
+        "verification/fig_hyperon_mr_nl3.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_iloveq_gw_echoes.py": {
+      "consumers": [
+        "verification/test_p6_s2_residual_integrity.py",
+        "verification/test_p8_s3_model_identity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_iloveq_plot.py": {
+      "consumers": [
+        "verification/test_p11_s2_artifact_provenance.py",
+        "verification/test_p4_s2_s8_iloveq_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_iloveq_universal.png",
+        "verification/fig_iloveq_universal_report.json"
+      ],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_joint_ns_inference.py": {
+      "consumers": [
+        "verification/nvg_advanced_observables_I.py",
+        "verification/nvg_cosmology_tensions.py",
+        "verification/nvg_global_significance.py",
+        "verification/nvg_grmhd_surrogate.py",
+        "verification/nvg_hadrons_magnetic_fields.py",
+        "verification/nvg_ns_mass_bound.py",
+        "verification/nvg_ns_nicer_joint_audit.py",
+        "verification/run_nvg_suite.py",
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p2_s1_scientific_integrity.py",
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p6_s1_public_reports.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical conditional NS comparison and runtime ledger consumer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p8_s3_model_identity.py"
+      ]
+    },
+    "verification/nvg_katrin_mbeta.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_ligo_o4_echo_candidates.py": {
+      "consumers": [
+        "verification/nvg_echo_o4_observers.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_litebird_prediction.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_magnetar_closure.py": {
+      "consumers": [
+        "verification/nvg_dm_direct_detection.py",
+        "verification/nvg_magnetar_eos.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical magnetar closure/input producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_magnetar_eos.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_magnetar_closure.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_magnetar_mass_correlation.py": {
+      "consumers": [
+        "verification/test_p4_s3_runner_bounds_outputs.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_magnetar_mass_correlation_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_magnetar_mass_correlation.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_magnetar_population_scan.py": {
+      "consumers": [
+        "verification/nvg_magnetar_mass_correlation.py",
+        "verification/test_p2_s3_integrity.py",
+        "visualization/nvg_magnetar_figures.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_magnetar_vortex_coupling.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_math_expansion.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_mcrit_analysis.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_mcrit_chandrasekhar.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_mcrit_family.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_mcrit_gwtc_check.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_beta_besii.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_beta_bounce.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_beta_cmb_chi2.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_beta_horizon_chain.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_exponent.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_freeform_beta.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_ginzburg.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_identifiability.py": {
+      "consumers": [
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_melting_master_report.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "NVG_MELTING_REPORT.md"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_melting_tail_sensitivity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_moment_of_inertia_j0737.py": {
+      "consumers": [
+        "verification/test_p8_s3_model_identity.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": "Explicitly quarantined alternate route; do not use as canonical evidence.",
+      "role": "retired",
+      "status": "quarantined",
+      "tests": []
+    },
+    "verification/nvg_nanograv_background.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_neutrino_mass.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_neutrino_seesaw.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_neutrino_seesaw.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_neutrinoless_dbeta.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_new_directions_verification.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_new_predictions.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_nicer_j0437_check.py": {
+      "consumers": [
+        "verification/test_p8_s3_model_identity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_ns_canonical.py": {
+      "consumers": [
+        "verification/nvg_joint_ns_inference.py",
+        "verification/nvg_tidal_deformability.py",
+        "verification/nvg_tidal_deformability_gw170817.py"
+      ],
+      "deprecation": null,
+      "description": "Shared canonical NS selection metadata helper.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_ns_parameter_scan.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_s1_ns_integrity.py"
+      ]
+    },
+    "verification/nvg_ns_frozen_forecasts.py": {
+      "consumers": [
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": "Conditional model forecast; no independent evidence weight.",
+      "description": "Phase-3 exact-target Hartle/Hinderer forecast on branch 1; frozen conditional and prospective bands.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+        "verification/nvg_ns_frozen_forecasts_p3s1.csv",
+        "verification/fig_ns_frozen_forecasts_p3s1.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p3_ns_frozen_forecasts.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_frozen_forecasts_p3s1.csv": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (forward_only_conditional_forecast); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_frozen_forecasts_p3s1_results.json": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (forward_only_conditional_forecast); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_g_modes.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p6_s3_ns_g_modes_compatibility.py"
+      ],
+      "deprecation": null,
+      "description": "WKB g-mode forecast with assumed composition; no independent detector likelihood.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "verification/nvg_ns_mass_bound.py": {
+      "consumers": [
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_ns_nicer_joint_audit.py": {
+      "consumers": [
+        "verification/test_p4_s1_ns_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_joint_ns_inference.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_ns_parameter_scan.py": {
+      "consumers": [
+        "verification/nvg_ns_canonical.py",
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p6_s4_ns_parameter_scan.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical NS transition selection with explicit in-sample provenance.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_eos_beta_css_softening.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p6_s4_ns_parameter_scan.py"
+      ]
+    },
+    "verification/nvg_ns_predictive_audit.py": {
+      "consumers": [
+        "verification/nvg_cooling_gmode_dependency_audit.py",
+        "verification/nvg_ns_frozen_forecasts.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-1 NS predictive audit; conditional in-sample selection and fail-closed convergence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_ns_predictive_audit_results.json",
+        "verification/nvg_ns_predictive_audit_p1s5_results.json",
+        "verification/nvg_ns_predictive_audit_p1s7_results.json",
+        "verification/fig_ns_predictive_audit.png",
+        "verification/fig_ns_predictive_audit_p1s5.png",
+        "verification/fig_ns_predictive_audit_p1s7.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p1_s1_ns_predictive_audit.py",
+        "verification/test_p1_s5_ns_repair.py",
+        "verification/test_p1_s7_ns_repair.py",
+        "verification/test_p1_s9_ns_provenance.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_predictive_audit_p1s5_results.json": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_predictive_audit_p1s7_results.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (conditional_in_sample_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_predictive_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Superseded predictive snapshot; retained for provenance only and excluded from P3-S8 claims.",
+      "description": "Predictive-program generated artifact (historical_superseded); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_ns_predictive_audit.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_ns_redshift.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_o4_fetch.py": {
+      "consumers": [
+        "verification/nvg_echo_o4_search.py",
+        "verification/nvg_echo_residual_search.py",
+        "verification/nvg_echo_residual_stack.py",
+        "verification/nvg_o4_lowp_deepdive.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_o4_lowp_deepdive.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_echo_timeslide_background.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_observational_data_fit.py": {
+      "consumers": [
+        "verification/test_p2_s3_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_cmb_lowl_refit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_pbh_continuity_test.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_mass_spectrum.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_pbh_dark_matter.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_mass_spectrum.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_pbh_jwst_seeds.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_mass_spectrum.py",
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_pbh_mass_spectrum.py": {
+      "consumers": [
+        "verification/nvg_advanced_observables_II.py",
+        "verification/nvg_cmb_smbh_cyclic.py",
+        "verification/nvg_cooling_dark_matter.py",
+        "verification/nvg_pbh_continuity_test.py",
+        "verification/nvg_pbh_dark_matter.py",
+        "verification/nvg_pbh_jwst_seeds.py",
+        "verification/nvg_pbh_two_population.py",
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical discrete PBH mass ladder producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p10_s2_direct_status.py"
+      ]
+    },
+    "verification/nvg_pbh_nanograv_audit.py": {
+      "consumers": [
+        "verification/nvg_prospective_falsification_reach.py",
+        "verification/nvg_predictive_research_ledger.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-1 PBH/NANOGrav abundance and rate scan; algebraic sensitivity only.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/P1-S3-pbh-nanograv-audit.json",
+        "verification/P1-S3-pbh-nanograv-boundary.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p1_s3_pbh_nanograv_audit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/P1-S3-pbh-nanograv-audit.json": {
+      "consumers": [],
+      "deprecation": "Calibrated JWST/rate sensitivity only; no independent observational evidence.",
+      "description": "Tracked byte-identical promotion of the final P1 PBH/NANOGrav audit artifact.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_nanograv_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p1_s3_pbh_nanograv_audit.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/P1-S3-pbh-nanograv-boundary.png": {
+      "consumers": [],
+      "deprecation": "Calibrated JWST/rate sensitivity only; no independent observational evidence.",
+      "description": "Tracked byte-identical promotion of the final P1 PBH boundary sensitivity figure.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_nanograv_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_pbh_two_population.py": {
+      "consumers": [
+        "verification/nvg_advanced_calculations.py",
+        "verification/nvg_nanograv_background.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_pbh_mass_spectrum.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_perihelion_shift.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_phantom_horizon_theorem.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_postmerger_fpeak.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_predictive_research_ledger.py": {
+      "consumers": [
+        "verification/run_verification.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-4 fail-closed machine ledger over P3-S8-authorized statuses and values.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/predictive_research_ledger.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_primordial_gw_comb.py": {
+      "consumers": [
+        "verification/nvg_gw_comb_amplitude.py"
+      ],
+      "deprecation": null,
+      "description": "Formula-level primordial GW-comb producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_prospective_falsification_reach.py": {
+      "consumers": [
+        "verification/nvg_predictive_research_ledger.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": "Prospective sensitivity; no current observation or global exclusion.",
+      "description": "Phase-3 prospective echo/S8/PBH reach ledger; sensitivity and boundary outcomes only.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_prospective_falsification_reach_p3s3_results.json",
+        "verification/p3_s3_prospective_reach.csv",
+        "verification/fig_p3_s3_prospective_reach.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p3_prospective_falsification_reach.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_prospective_falsification_reach_p3s3_results.json": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (prospective_sensitivity_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_pulsar_population_test.py": {
+      "consumers": [
+        "verification/nvg_new_directions_verification.py",
+        "verification/test_p10_s1_legacy_semantics.py"
+      ],
+      "deprecation": "Retired ATNF cooling-population claim: no mass/age/luminosity likelihood is present.",
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "retired",
+      "status": "retired",
+      "tests": []
+    },
+    "verification/nvg_pycbc_echo_search.py": {
+      "consumers": [
+        "verification/test_p11_s2_artifact_provenance.py"
+      ],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_gw150914_echo_snr.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_quantum_gravity.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_quantum_gravity.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_recondensation_dynamics.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Runtime forward recondensation dynamics consumer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_recondensation_dynamics.png"
+      ],
+      "producer": "verification/nvg_gw_comb_amplitude.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s1_legacy_semantics.py",
+        "verification/test_p10_s3_public_artifacts.py"
+      ]
+    },
+    "verification/nvg_relic_dark_matter.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_rhic_bell_test.py": {
+      "consumers": [],
+      "deprecation": "Synthetic future-protocol demonstration; no detector event sample is present.",
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [
+        "verification/fig_rhic_bell_test.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_s8_no_go.py": {
+      "consumers": [
+        "verification/nvg_prospective_falsification_reach.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ],
+      "deprecation": null,
+      "description": "Phase-1 S8 map; fixed-Omega_m conditional sensitivity with withdrawn grid threshold.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_s8_no_go_map.json",
+        "verification/fig_s8_no_go_map.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p1_s2_s8_no_go.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_s8_no_go_map.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (scoped_sensitivity_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_s8_no_go.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_s8_tension_check.py": {
+      "consumers": [
+        "verification/test_p4_s2_s8_iloveq_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_s8_tension_figs.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_seebeck_modulation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_selfbound_gate.py": {
+      "consumers": [
+        "verification/test_p6_s2_residual_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_sensitivity_analysis.py": {
+      "consumers": [
+        "verification/test_p8_s2_sibling_eos_bounds.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_sgr_frb_rate.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Forecast maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": []
+    },
+    "verification/nvg_sgr_temperature.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_sigma_mnu_corner.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_speed_of_sound_bayesian.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_speed_of_sound_bayesian.png"
+      ],
+      "producer": "verification/nvg_full_ns_eos.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_speed_of_sound_curve.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_speed_of_sound.png"
+      ],
+      "producer": "verification/nvg_full_ns_eos.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_spin_limits_rmodes.py": {
+      "consumers": [
+        "verification/test_p8_s3_model_identity.py"
+      ],
+      "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
+      "description": "Retired maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": "Explicitly quarantined alternate route; do not use as canonical evidence.",
+      "role": "retired",
+      "status": "quarantined",
+      "tests": []
+    },
+    "verification/nvg_starquake_qpo.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_strange_gate.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_strong_cp_solution.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_strong_cp_potential.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_talbot_isomorphism.py": {
+      "consumers": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "description": "Historical maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_talbot_isomorphism.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_theta_fifth_force.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_theta_sector_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_theta_superradiance.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_tidal_deformability.py": {
+      "consumers": [
+        "verification/nvg_bbn_reionization.py",
+        "verification/nvg_fork_b_full_chain.py",
+        "verification/nvg_iloveq_gw_echoes.py",
+        "verification/nvg_iloveq_plot.py",
+        "verification/nvg_joint_ns_inference.py",
+        "verification/nvg_melting_freeform_beta.py",
+        "verification/nvg_melting_tail_sensitivity.py",
+        "verification/nvg_nicer_j0437_check.py",
+        "verification/nvg_ns_g_modes.py",
+        "verification/nvg_ns_parameter_scan.py",
+        "verification/nvg_two_condensate_resolution.py",
+        "verification/nvg_verification_suite.py",
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p6_s2_residual_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical TOV plus Hinderer tidal-deformability producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": "verification/nvg_ns_canonical.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p8_s3_model_identity.py"
+      ]
+    },
+    "verification/nvg_tidal_deformability_gw170817.py": {
+      "consumers": [
+        "verification/nvg_ns_redshift.py",
+        "verification/nvg_observational_data_fit.py",
+        "verification/nvg_postmerger_fpeak.py",
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p6_s2_residual_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_tidal_heating_null.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_tolman_law_derivation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_two_condensate_resolution.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_unified_field_equations.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_vacuum_w_field_derivation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Formula-level vacuum-W field derivation producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p10_s3_public_artifacts.py"
+      ]
+    },
+    "verification/nvg_vacuum_w_field_derivation_output.txt": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Registry-owned data/artifact manifest entry.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_vacuum_w_field_derivation.py",
+      "quarantine": null,
+      "role": "historical",
+      "status": "historical",
+      "tests": []
+    },
+    "verification/nvg_verification_suite.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py",
+        "verification/test_p2_s1_scientific_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_vieta_search.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_wavefunction_collapse.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/fig_wavefunction_collapse.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "verification/nvg_wd_cooling.py": {
+      "consumers": [
+        "verification/test_p10_s2_direct_status.py"
+      ],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_weak_field_ppn.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/p3_s3_prospective_reach.csv": {
+      "consumers": [],
+      "deprecation": "Conditional/prospective sensitivity; zero independent evidence weight.",
+      "description": "Predictive-program generated artifact (prospective_sensitivity_final); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_prospective_falsification_reach.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/predictive_research_ledger.json": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Predictive-program generated artifact (integrated_machine_ledger); registry presence is not empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_predictive_research_ledger.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/registry.json": {
+      "consumers": [
+        "verification/registry.py",
+        "verification/run_verification.py",
+        "verification/test_repository_organization.py"
+      ],
+      "deprecation": null,
+      "description": "Machine-readable authority for maintained scripts, tests, data and artifacts.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "manifest",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "maintained",
+      "tests": [
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/registry.py": {
+      "consumers": [
+        "verification/run_verification.py",
+        "verification/test_repository_organization.py"
+      ],
+      "deprecation": null,
+      "description": "Utility maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": [
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/run_all_checks.py": {
+      "consumers": [
+        "verification/test_p4_s3_runner_bounds_outputs.py",
+        "verification/test_p6_s1_public_reports.py"
+      ],
+      "deprecation": null,
+      "description": "Process-only smoke harness; not scientific verification.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/run_nvg_suite.py": {
+      "consumers": [
+        "verification/test_p2_s1_scientific_integrity.py",
+        "verification/test_p4_s1_ns_integrity.py",
+        "verification/test_p8_s1_visualization_integrity.py"
+      ],
+      "deprecation": null,
+      "description": "Canonical runtime EOS/TOV/Hinderer ledger producer.",
+      "evidence_weight": 1.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "NVG_FINAL_REPORT.md"
+      ],
+      "producer": "verification/nvg_joint_ns_inference.py",
+      "quarantine": null,
+      "role": "canonical",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p11_s2_artifact_provenance.py",
+        "verification/test_p2_s1_scientific_integrity.py",
+        "verification/test_p4_s1_ns_integrity.py"
+      ]
+    },
+    "verification/run_verification.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Canonical scientific verification front door (registry, ledger, semantic pytest).",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": [
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/test_p10_s1_legacy_semantics.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p10_s2_direct_status.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p10_s3_public_artifacts.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p11_s2_artifact_provenance.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p13_s1_final_consistency.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase 13 public-boundary and producer consistency contracts.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "verification/test_p1_s1_ns_predictive_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 NS predictive audit semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p1_s2_s8_no_go.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 S8 sign/no-go semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p1_s3_pbh_nanograv_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 PBH/NANOGrav scan semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p1_s5_ns_repair.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 NS row-convergence repair semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p1_s7_ns_repair.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 NS zero-limit repair semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p1_s9_ns_provenance.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-1 adaptive ODE provenance semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_beta_hyperon_urca_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-2 composition/hyperon/Urca semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_echo_hierarchical_upper_limit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-2 hierarchical echo provenance/calibration semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_hartle_slow_rotation.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-2 Hartle branch/observable semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_s1_scientific_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_s2_model_chain.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p2_s3_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p3_cooling_gmode_dependency_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-3 cooling/g-mode null and blocker semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p3_ns_frozen_forecasts.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-3 frozen NS/Hartle forecast semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p3_prospective_falsification_reach.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-3 prospective reach and boundary semantic tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p4_predictive_research_integration.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Phase-4 predictive registry, manifest, provenance and machine-ledger integration tests.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p4_s1_ns_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p4_s2_s8_iloveq_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p4_s3_runner_bounds_outputs.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p6_s1_public_reports.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p6_s2_residual_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p6_s3_ns_g_modes_compatibility.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p6_s4_ns_parameter_scan.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p8_s1_visualization_integrity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p8_s2_sibling_eos_bounds.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_p8_s3_model_identity.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_repository_organization.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_repository_organization.py"
+      ]
+    },
+    "verification/test_single_tov.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Validation maintained computational surface.",
+      "evidence_weight": 0.5,
+      "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "visualization/nvg_3d_viz.html": {
+      "consumers": [],
+      "deprecation": "Animation-only illustrative surface; no observational evidence.",
+      "description": "Illustrative animation dashboard; static values are not runtime evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "visualization/nvg_3d_viz_v2.html": {
+      "consumers": [],
+      "deprecation": "Animation-only illustrative surface; no observational evidence.",
+      "description": "Illustrative animation dashboard; static values are not runtime evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "visualization/nvg_3d_viz_v2_ru.html": {
+      "consumers": [],
+      "deprecation": "Dashboard values are conditional/in-sample runtime bookkeeping, not independent evidence.",
+      "description": "Conditional/in-sample canonical NS dashboard; no independent evidence or global significance.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/run_nvg_suite.py",
+      "quarantine": null,
+      "role": "forecast",
+      "status": "forward_only",
+      "tests": [
+        "verification/test_p8_s1_visualization_integrity.py",
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "visualization/nvg_magnetar_figures.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "visualization/nvg_ns_merger_3d.html": {
+      "consumers": [],
+      "deprecation": "Animation-only illustrative surface; no observational evidence.",
+      "description": "Illustrative animation surrogate; no scientific measurement or runtime result.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p8_s1_visualization_integrity.py",
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    },
+    "visualization/nvg_vacuum_w_field_figures.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "visualization/nvg_wave_collapse_figures.py": {
+      "consumers": [],
+      "deprecation": "Synthetic/illustrative route; outputs are not observational evidence.",
+      "description": "Synthetic maintained computational surface.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": []
+    },
+    "visualization/nvg_wave_particle_3d.html": {
+      "consumers": [],
+      "deprecation": "Animation-only illustrative surface; no observational evidence.",
+      "description": "Illustrative wave-particle animation; static values are not runtime evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "synthetic",
+      "status": "synthetic",
+      "tests": [
+        "verification/test_p13_s1_final_consistency.py"
+      ]
+    }
+  },
+  "front_door": {
+    "canonical_producer": "verification/run_nvg_suite.py",
+    "command": "python verification/run_verification.py",
+    "path": "verification/run_verification.py",
+    "process_smoke_command": "python verification/run_all_checks.py",
+    "process_smoke_note": "Process return codes are not scientific evidence and are never run by the front door.",
+    "semantic_test_command": "python -m pytest -q verification"
+  },
+  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
+  "kinds": [
+    "script",
+    "test",
+    "data",
+    "artifact",
+    "manifest"
+  ],
+  "predictive_ledger": {
+    "command": "python verification/nvg_predictive_research_ledger.py",
+    "independent_evidence_weight": 0.0,
+    "path": "verification/predictive_research_ledger.json",
+    "producer": "verification/nvg_predictive_research_ledger.py",
+    "status": "maintained"
+  },
+  "roles": [
+    "canonical",
+    "validation",
+    "forecast",
+    "synthetic",
+    "retired",
+    "utility",
+    "historical"
+  ],
+  "schema_version": 1,
+  "statuses": [
+    "maintained",
+    "forward_only",
+    "synthetic",
+    "retired",
+    "quarantined",
+    "utility",
+    "historical"
+  ]
+}

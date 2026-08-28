@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 import argparse
-import os
+from pathlib import Path
 import sys
 import csv
-import traceback
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -14,6 +15,23 @@ try:
     PYCBC_AVAILABLE = True
 except ImportError:
     PYCBC_AVAILABLE = False
+
+
+HERE = Path(__file__).resolve().parent
+REPOSITORY_ROOT = HERE.parent
+DEFAULT_OUTPUT = HERE / "gwtc3_nvg_results.csv"
+
+
+def resolve_output_path(value: str | Path | None = None) -> Path:
+    """Resolve output paths independently of the caller's working directory.
+
+    Relative paths are repository-root relative so direct execution from a
+    temporary directory cannot recreate a stale root-level duplicate. Absolute
+    paths remain available for explicit experiments and tests.
+    """
+
+    path = DEFAULT_OUTPUT if value is None else Path(value)
+    return path if path.is_absolute() else REPOSITORY_ROOT / path
 
 def generate_nvg_template_pycbc(duration_sec=1.0, sample_rate=4096, mass_solar=65.0):
     """Generates the NVG echo template and returns a PyCBC TimeSeries."""
@@ -50,6 +68,8 @@ def generate_nvg_template_pycbc(duration_sec=1.0, sample_rate=4096, mass_solar=6
 
 def process_event(merger_name, catalog_name, output_csv):
     """Processes a single event, computes max SNR, and saves to CSV."""
+    output_csv = resolve_output_path(output_csv)
+    output_csv.parent.mkdir(parents=True, exist_ok=True)
     cat = Catalog(catalog_name)
     merger = cat[merger_name]
     
@@ -111,8 +131,8 @@ def process_event(merger_name, catalog_name, output_csv):
         print(f"[{merger_name}] Max Echo SNR: {max_snr:.2f}")
         
         # Save to CSV
-        file_exists = os.path.isfile(output_csv)
-        with open(output_csv, 'a', newline='') as csvfile:
+        file_exists = output_csv.is_file()
+        with output_csv.open('a', newline='') as csvfile:
             writer = csv.writer(csvfile)
             if not file_exists:
                 writer.writerow(['Event', 'Catalog', 'Detector', 'Total_Mass', 'Max_Echo_SNR'])
@@ -128,8 +148,14 @@ def process_event(merger_name, catalog_name, output_csv):
 def main():
     parser = argparse.ArgumentParser(description="Scan GWTC catalogs for NVG Echoes")
     parser.add_argument('--test-mode', action='store_true', help='Only run on 3 events for testing')
-    parser.add_argument('--output', type=str, default='gwtc3_nvg_results.csv', help='Output CSV file')
+    parser.add_argument(
+        '--output',
+        type=str,
+        default=str(DEFAULT_OUTPUT),
+        help='Output CSV file (relative paths are repository-root relative)',
+    )
     args = parser.parse_args()
+    output_csv = resolve_output_path(args.output)
     
     if not PYCBC_AVAILABLE:
         print("PyCBC is not installed. Please install it.")
@@ -139,13 +165,13 @@ def main():
     
     # Load already processed events to allow resuming
     processed_events = set()
-    if os.path.exists(args.output):
-        with open(args.output, 'r') as csvfile:
+    if output_csv.exists():
+        with output_csv.open('r') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 processed_events.add(row['Event'])
                 
-    print(f"Found {len(processed_events)} already processed events in {args.output}")
+    print(f"Found {len(processed_events)} already processed events in {output_csv}")
     
     processed_count = 0
     max_to_process = 3 if args.test_mode else 9999
@@ -167,7 +193,7 @@ def main():
                 print(f"Skipping {merger_name} (already processed)")
                 continue
                 
-            success = process_event(merger_name, cat_name, args.output)
+            success = process_event(merger_name, cat_name, output_csv)
             if success:
                 processed_count += 1
                 processed_events.add(merger_name)

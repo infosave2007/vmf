@@ -62,7 +62,13 @@ def main():
           f"(log-2 fingerprint)")
 
     fs = [10 ** (-7.0 + 4.0 * i / 400.0) for i in range(401)]   # 0.1-1000 microHz
-    lines = ["# f[Hz]  Omega_total  Omega_last_bounce  Omega_comb_tail",
+    # Keep the machine-readable status on every regeneration.  This file is a
+    # deterministic, generated-unverified spectrum template; it is not an
+    # observational result or an independent evidence product.
+    lines = [
+             "# Provenance: verification/nvg_gw_spectrum_template.py",
+             "# Status: NON_EVIDENCE (generated_unverified; synthetic template)",
+             "# f[Hz]  Omega_total  Omega_last_bounce  Omega_comb_tail",
              f"# NVG derived template: f* = {F_PEAK:.2e} Hz, Omega* = {OMEGA_PEAK:.2e},",
              f"# comb spacing 2^(-1/3) = {SPACING:.4f}, dilution 2^(4/3) = {DILUTION:.4f}"]
     o_max, f_max = 0.0, 0.0

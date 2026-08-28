@@ -13,6 +13,27 @@ C. CMB Low-multipole (l=2,3) Suppression due to Genesis Instanton Cutoff.
 import numpy as np
 import math
 import scipy.integrate as integrate
+import os
+import sys
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+
+
+def canonical_tidal_outputs():
+    """Return the maintained runtime EOS/TOV outputs and their provenance."""
+
+    from nvg_joint_ns_inference import compute_nvg_predictions
+
+    predictions, metadata = compute_nvg_predictions()
+    return {
+        "R_1.4": float(predictions["R_1.4"]),
+        "Lambda_1.4": float(predictions["Lambda_1.4"]),
+        "solver": "nvg_tidal_deformability.EOS + solve_tov_tidal",
+        "selection_parameters": metadata["canonical_selection"]["parameters"],
+        "selection_provenance": metadata["selection_provenance"],
+    }
 
 print("=" * 72)
 print("  NVG VERIFICATION: ADDITIONAL FORMAL OBSERVABLES (A, B, C)")
@@ -25,53 +46,34 @@ print("\n" + "=" * 72)
 print("  A. TIDAL DEFORMABILITY (Λ) FROM VMF EOS")
 print("=" * 72)
 
-# Using a parameterized approximation of the VMF EOS near 1.4 M_sun
-# From nvg_full_ns_eos.py, we know the EOS stiffness.
-# For a typical VMF EOS yielding R_1.4 ~ 12.1 km and M_max ~ 2.2 M_sun,
-# the tidal deformability can be estimated using the universal relation
-# between compactness C = G M / (R c^2) and Λ.
-# 
-# Universal relation (Yagi-Yunes 2017):
-# ln(Λ) ≈ a_0 + a_1 C + a_2 C^2 + a_3 C^3 + a_4 C^4
-# where a_i are phenomenological coefficients.
-
-# Constants
+# The result is produced by the canonical TOV/Hinderer solver.  This script is
+# a presentation sibling, not a second EOS or an independent comparison.
+canonical = canonical_tidal_outputs()
 G_c2 = 1.4766  # km/M_sun
 M_ns = 1.4     # M_sun
-R_14 = 12.1    # km (from VMF TOV solver)
+R_14 = canonical["R_1.4"]
 
 # Compactness
 C = G_c2 * M_ns / R_14
 
-# Yagi-Yunes coefficients for ln(Λ) vs C
-a0 = 6.40
-a1 = -114.0
-a2 = 400.0
-a3 = -1000.0 # Approximate for demonstration; exact calculation requires integrating the perturbation equation.
-
 print(f"  VMF predictions for 1.4 M_sun Neutron Star:")
-print(f"  Radius R_1.4 = {R_14:.2f} km")
+print(f"  Radius R_1.4 = {R_14:.2f} km (runtime canonical chain)")
 print(f"  Compactness C = {C:.4f}")
 
-# Instead of the full Yagi-Yunes empirical fit which is complex, we use the leading order scaling:
-# Λ ∝ (R/M)^5
-# Rather than using a crude scaling relation which overestimates the vector stiffness
-# (e.g. giving Λ_1.4 ≈ 470), the rigorous method requires solving the Hinderer y-equation
-# perturbation (Hinderer 2008) alongside the TOV integration using the self-consistent VMF EOS.
-# This integration (implemented in nvg_tidal_deformability.py) yields:
-Lambda_14 = 176.5
+Lambda_14 = canonical["Lambda_1.4"]
 
-print(f"  Rigorous Tidal Deformability Λ_1.4 ≈ {Lambda_14:.1f}")
+print(f"  Runtime TOV/Hinderer Lambda_1.4 = {Lambda_14:.1f}")
+print(f"  Canonical transition parameters = {canonical['selection_parameters']}")
+print("  Status: CONDITIONAL_IN_SAMPLE (canonical transition selected on J0740/GW170817/NICER)")
 
 print("""
   GW170817 constraint (LIGO/Virgo): Λ_1.4 = 190 +390/-120 (at 90% confidence)
   meaning Λ_1.4 ∈ [70, 580].
 
-  RESULT: 
-  The VMF EOS predicts Λ_1.4 ≈ 177, which falls comfortably within the
-  observational constraints of GW170817 and matches the center of the posterior.
-  This confirms that the VMF EOS is not "too stiff" at intermediate densities,
-  resolving a common issue with purely vector-repulsive models.
+  RESULT:
+  The displayed Lambda value is a runtime output of the canonical chain.
+  It is conditional on the in-sample transition selection and is not an
+  independent confirmation or a global significance result.
 """)
 
 # ═══════════════════════════════════════════════════════════════════════

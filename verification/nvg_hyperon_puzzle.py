@@ -1,125 +1,118 @@
 #!/usr/bin/env python3
+"""Hyperon-threshold audit using runtime equations and raw TOV baselines.
+
+The earlier unsupported hyperon conclusion came from approximate thresholds
+and a static target mass.  This entry point now exposes the calculated
+threshold proxy and reuses :mod:`nvg_hyperon_puzzle_tov` for raw baseline
+curves.  It does not claim a complete hyperonic beta-equilibrium likelihood.
 """
-NVG Hyperon Puzzle Resolution & Microscopic Phase Transition
 
-This script investigates Point 3 of the 'Not Claimed' list: the microscopic nature
-of the phase transition. It calculates whether hyperons (specifically Lambda) 
-appear before the transition to quark matter.
+from __future__ import annotations
 
-The 'Hyperon Puzzle' in standard astrophysics: 
-Hyperons should appear at ~2-3 n_0, softening the EOS and making M_max < 2.0 M_sun (violating observations).
-
-In NVG:
-The Lambda mass drops because the vacuum melts. However, does it drop fast enough 
-to appear before the first-order transition to conformal QGP at ~2.0 n_0?
-"""
+import os
+import sys
+from typing import Any
 
 import numpy as np
 
-# NVG Core parameters
-n_0 = 0.16  # fm^-3
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+
+n_0 = 0.16
 M_N_vac = 939.0
 M_Omega_N = 859.0
 M_cur_N = 80.0
-
-# Lambda Hyperon parameters
 M_Lambda_vac = 1115.7
-M_cur_Lambda = 200.0  # approximate current mass contribution (u, d, s)
+M_cur_Lambda = 200.0
 M_Omega_Lambda = M_Lambda_vac - M_cur_Lambda
-
-# Vector repulsion parameters
 C_v_n0 = 100.0
 alpha_v = 4.0
 nu_v = 2.0
-
-# Vacuum melting parameters
 kappa_1 = 0.25
 kappa_2 = 0.80
 
+EVIDENCE_STATUS = "DERIVED_THRESHOLD_PROXY_NO_COMPLETE_HYPERON_LIKELIHOOD"
+
+
 def vacuum_melt_factor(n_B: float) -> float:
-    x = max(n_B / n_0, 0.0)
-    if x == 0:
-        return 1.0
-    return (1.0 + kappa_2 * x) ** (-kappa_1 / kappa_2)
+    if not np.isfinite(n_B) or n_B < 0.0:
+        raise ValueError("density must be finite and non-negative")
+    x = n_B / n_0
+    return float((1.0 + kappa_2 * x) ** (-kappa_1 / kappa_2))
+
 
 def vector_potential(n_B: float) -> float:
-    x = max(n_B / n_0, 0.0)
-    if x == 0:
-        return 0.0
-    # Saturation of vector field
-    return C_v_n0 * (x ** nu_v) / (1.0 + (x ** nu_v) / alpha_v)
-
-def nvg_core_thermodynamics(n_B: float):
+    if not np.isfinite(n_B) or n_B < 0.0:
+        raise ValueError("density must be finite and non-negative")
     x = n_B / n_0
-    
-    # 1. Vacuum mass melting
+    return float(C_v_n0 * x ** nu_v / (1.0 + x ** nu_v / alpha_v)) if x else 0.0
+
+
+def nvg_core_thermodynamics(n_B: float) -> float:
+    x = n_B / n_0
     melt = vacuum_melt_factor(n_B)
-    M_star = M_cur_N + M_Omega_N * melt
-    
-    # 2. Vector repulsion energy per baryon
-    V_v = vector_potential(n_B)
-    
-    # 3. Fermi gas of nucleons (simplified zero-temp)
-    # k_F = (1.5 * pi^2 * n_B)^(1/3)
-    k_F = (1.5 * np.pi**2 * n_B)**(1/3)
-    
-    # Energy density
-    eps_kin = (3.0 / 4.0) * n_B * np.sqrt(k_F**2 + M_star**2)  # Ultra-relativistic approx at high n
-    eps_vec = V_v * n_B
-    eps_tot = eps_kin + eps_vec
-    
-    # Nucleon Chemical Potential: mu_N = d(eps)/dn
-    # Simplified approx: mu_N ~ E_F + V_v
-    E_F = np.sqrt(k_F**2 + M_star**2)
-    mu_N = E_F + V_v
-    
-    return mu_N
+    m_star = M_cur_N + M_Omega_N * melt
+    k_f = (1.5 * np.pi ** 2 * n_B) ** (1.0 / 3.0)
+    e_f = np.sqrt(k_f ** 2 + m_star ** 2)
+    return float(e_f + vector_potential(n_B))
+
 
 def lambda_effective_mass(n_B: float) -> float:
-    melt = vacuum_melt_factor(n_B)
-    return M_cur_Lambda + M_Omega_Lambda * melt
+    return float(M_cur_Lambda + M_Omega_Lambda * vacuum_melt_factor(n_B))
 
-def main():
-    print("================================================================================")
-    print("NVG RESOLUTION OF THE HYPERON PUZZLE & PHASE TRANSITION NATURE")
-    print("================================================================================")
-    
-    n_grid = np.linspace(0.5, 3.5, 31) * n_0
-    
-    hyperon_onset_n = None
-    
-    print(f"{'Density (n/n0)':<15} {'Nucleon μ_N (MeV)':<20} {'Lambda M* (MeV)':<20} {'Condition'}")
-    print("-" * 75)
-    
-    for n in n_grid:
-        x = n / n_0
-        mu_N = nvg_core_thermodynamics(n)
-        M_star_L = lambda_effective_mass(n)
-        
-        condition = "μ_N < M*_Λ (No Hyperons)"
-        if mu_N >= M_star_L:
-            condition = "μ_N >= M*_Λ (HYPERONS APPEAR!)"
-            if hyperon_onset_n is None:
-                hyperon_onset_n = x
-                
-        print(f"{x:<15.2f} {mu_N:<20.1f} {M_star_L:<20.1f} {condition}")
-        
-    print("\nCONCLUSION:")
-    
-    n_trans = 2.0  # NVG conformal QGP phase transition density
-    
-    if hyperon_onset_n is not None and hyperon_onset_n < n_trans:
-        print(f"Hyperons appear at {hyperon_onset_n:.2f} n_0.")
-        print(f"Since this is BEFORE the QGP phase transition at {n_trans} n_0,")
-        print("the NVG model predicts a HYPERONIC CORE before transitioning to QGP.")
-    else:
-        onset_str = f"{hyperon_onset_n:.2f} n_0" if hyperon_onset_n else "Never"
-        print(f"Hyperons appear at {onset_str}.")
-        print(f"Since the phase transition to Conformal Quark Matter (QGP) occurs at {n_trans} n_0,")
-        print("the NVG vector repulsion drives the nucleon chemical potential high enough to trigger")
-        print("the transition to QGP *BEFORE* hyperons can form!")
-        print("\nRESULT: NVG naturally solves the 'Hyperon Puzzle' by bypassing the hyperonic")
-        print("phase entirely. The phase transition is strictly from Hadronic Matter to QGP.")
-        
+
+def compute_thresholds(n_min: float = 0.5, n_max: float = 3.5, points: int = 121) -> dict[str, Any]:
+    grid = np.linspace(float(n_min), float(n_max), int(points)) * n_0
+    mu = np.asarray([nvg_core_thermodynamics(n) for n in grid])
+    mass = np.asarray([lambda_effective_mass(n) for n in grid])
+    crossing = np.flatnonzero(mu >= mass)
+    onset = float(grid[crossing[0]] / n_0) if crossing.size else None
+    return {
+        "density_ratio": grid / n_0,
+        "mu_nucleon": mu,
+        "lambda_mass": mass,
+        "lambda_onset_n0": onset,
+        "transition_n0": 2.0,
+        "status": EVIDENCE_STATUS,
+        "missing": "beta-equilibrated multi-species hyperon EOS, phase construction and independent likelihood",
+    }
+
+
+def raw_tov_summary() -> dict[str, Any]:
+    """Run a small raw NL3 hyperon curve from the maintained TOV producer."""
+
+    import nvg_hyperon_puzzle_tov as tov
+
+    eps, pressure = tov.get_nl3_eos("hyperon")
+    radii, masses = tov.generate_mr_curve(eps, pressure, p_max=320.0, n_points=24)
+    if masses.size == 0:
+        return {"m_max": None, "r14": None, "status": "NO_RAW_TOV_SOLUTIONS"}
+    imax = int(np.argmax(masses))
+    stable_m = masses[: imax + 1]
+    stable_r = radii[: imax + 1]
+    r14 = float(np.interp(1.4, np.sort(stable_m), stable_r[np.argsort(stable_m)])) if stable_m.max() >= 1.4 else None
+    return {"m_max": float(masses[imax]), "r14": r14,
+            "status": "DERIVED_RAW_TOV_NO_TARGET_RESCALING",
+            "solver": "nvg_hyperon_puzzle_tov.generate_mr_curve"}
+
+
+def main() -> dict[str, Any]:
+    thresholds = compute_thresholds()
+    raw = raw_tov_summary()
+    onset = thresholds["lambda_onset_n0"]
+    onset_text = f"{onset:.3f} n0" if onset is not None else "not reached on scanned grid"
+    print("=" * 80)
+    print("  NVG HYPERON THRESHOLD AUDIT (RUNTIME / RAW TOV)")
+    print("=" * 80)
+    print(f"Lambda threshold proxy: {onset_text}; transition={thresholds['transition_n0']:.1f} n0")
+    print(f"Raw NL3+Lambda TOV: M_max={raw['m_max']}, R_1.4={raw['r14']}; status={raw['status']}")
+    print(f"Evidence status: {thresholds['status']}")
+    print(f"Missing: {thresholds['missing']}")
+    print("No independent hyperon-resolution claim is emitted by this proxy calculation.")
+    print("=" * 80)
+    return {"thresholds": thresholds, "tov": raw}
+
+
 if __name__ == "__main__":
     main()

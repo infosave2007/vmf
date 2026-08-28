@@ -1,87 +1,86 @@
 #!/usr/bin/env python3
+"""Runtime Tolman-cycle horizon-chain calculation.
+
+The QCD-anchor density, instanton radius, entropy ratio and derived cycle index
+are recomputed from explicit constants.  The current Hubble value and the
+per-cycle entropy factor are calibration inputs; no independent cyclic
+microphysics or cosmological likelihood is present.
 """
-NVG Verification: Cyclic Cosmology Parameters
----------------------------------------------
-Verifies the Tolman cyclic cosmology parameters for the VMF model,
-showing that the Genesis instanton scale r_c = 1.13 km and the current cycle
-number n ≈ 77 matches the current cosmological observations.
-"""
+
+from __future__ import annotations
 
 import math
+from typing import Any
 
-# Constants
-G = 6.674e-8         # cm^3 / (g s^2)
-c = 2.998e10         # cm/s
-M_sun = 1.989e33     # g
-yr_to_s = 3.154e7    # seconds in a year
-l_p = 1.616e-33      # cm, Planck length
 
-# NVG QCD Anchor
-M_Omega_0 = 859.0 # MeV
-hbar_c = 197.327 # MeV fm
-eps_max = M_Omega_0**4 / hbar_c**3  # MeV/fm^3
+G = 6.674e-8
+c = 2.998e10
+M_sun = 1.989e33
+yr_to_s = 3.154e7
+l_p = 1.616e-33
+M_Omega_0 = 859.0
+hbar_c = 197.327
+eps_max = M_Omega_0**4 / hbar_c**3
 MeV_fm3_to_gcm3 = 1.7827e12
-rho_c = eps_max * MeV_fm3_to_gcm3   # ~1.263e17 g/cm^3
+rho_c = eps_max * MeV_fm3_to_gcm3
 
-def main():
-    print("==========================================================================")
-    print("  NVG COSMOLOGY: CYCLIC COSMOLOGY & TOLMAN ENTROPY SCALING")
-    print("==========================================================================")
-    
-    # 1. Genesis Instanton Scale
+
+def compute_cyclic_state(
+    *,
+    H0_km_s_Mpc: float = 72.8,
+    entropy_factor: float = 4.0,
+    cycle_index: int = 77,
+) -> dict[str, Any]:
+    """Compute the horizon-chain quantities from declared calibration inputs."""
+
+    if H0_km_s_Mpc <= 0.0 or entropy_factor <= 1.0 or cycle_index < 1:
+        raise ValueError("H0/entropy factor must be positive and cycle_index >= 1")
     H_c = math.sqrt(8.0 * math.pi * G * rho_c / 3.0)
-    r_c = c / H_c # in cm
-    r_c_km = r_c / 1e5
-    
-    # 2. Total Mass of Genesis Cycle
-    V_inst = (4.0 / 3.0) * math.pi * r_c**3
-    M_genesis = V_inst * rho_c
-    
-    # 3. Holographic Entropy Scaling
-    # The holographic entropy of the Genesis cycle is determined by the horizon area in Planck units:
-    # S_genesis = pi * r_c**2 / l_p**2
+    r_c = c / H_c
+    M_genesis = (4.0 / 3.0) * math.pi * r_c**3 * rho_c
     S_genesis = math.pi * r_c**2 / l_p**2
-    s_0_log = math.log10(S_genesis)
-    
-    # Today's holographic entropy is determined by the observable universe horizon R_H0 today:
-    # We use today's Hubble constant H_0 = 72.8 km/s/Mpc (taken from local distance-ladder
-    # measurements; calibrated anchor, see nvg_hubble_tension.py) to compute R_H0 = c / H_0
-    H0_cgs = (72.8 * 1e5) / (3.086e24)  # s^-1 (converted from km/s/Mpc)
+    H0_cgs = H0_km_s_Mpc * 1e5 / 3.086e24
     R_H0 = c / H0_cgs
     S_current = math.pi * R_H0**2 / l_p**2
-    s_current_log = math.log10(S_current)
-    
-    # Entropy growth per cycle (factor of 4 due to W-field phase topology):
-    # S_n = S_genesis * 4^(n-1)
-    # n - 1 = (log10(S_n) - log10(S_genesis)) / log10(4)
-    n_derived = 1.0 + (s_current_log - s_0_log) / math.log10(4.0)
-    
-    # In Tolman cycles, the turnaround mass scales as M_n = M_genesis * 2^(n-1)
-    # For cycle n=77, the turnaround mass is:
-    n_cycle = 77
-    M_turnaround = M_genesis * (2.0 ** (n_cycle - 1))
-    
-    # The turnaround lifetime of the 77th cycle:
-    T_lifetime_s = math.pi * G * M_turnaround / c**3
-    T_lifetime_yr = T_lifetime_s / yr_to_s
-    
-    print(f"QCD Anchor M_Omega_0             : {M_Omega_0} MeV")
-    print(f"Instanton Density rho_c          : {rho_c:.4e} g/cm^3")
-    print(f"Genesis Instanton Radius r_c     : {r_c_km:.4f} km (target: 1.13 km)")
-    print(f"Genesis Mass M_1                 : {M_genesis:.4e} g ({M_genesis/M_sun:.4e} M_sun)")
-    print(f"Genesis Log10(S_1)               : {s_0_log:.4f} (derived dynamically)")
-    print(f"Current Log10(S_current)         : {s_current_log:.4f} (derived dynamically)")
-    print(f"Derived Current Cycle Index n    : {n_derived:.2f} (predicted: ~77)")
-    print(f"77th Cycle Turnaround Mass       : {M_turnaround:.4e} g")
-    print(f"77th Cycle Turnaround Lifetime   : {T_lifetime_yr:.2e} years")
-    print("-" * 74)
-    
-    # Assertions
-    assert abs(r_c_km - 1.13) < 0.05, "Genesis instanton radius deviation too large!"
-    assert abs(n_derived - 77.0) < 1.0, "Derived cycle number deviates from 77!"
-    
-    print("Status: ✅ Cyclic cosmology parameters verified successfully.")
-    print("==========================================================================")
+    n_derived = 1.0 + (math.log10(S_current) - math.log10(S_genesis)) / math.log10(entropy_factor)
+    M_turnaround = M_genesis * (2.0 ** (cycle_index - 1))
+    lifetime_yr = math.pi * G * M_turnaround / c**3 / yr_to_s
+    return {
+        "rho_c_g_cm3": float(rho_c),
+        "r_c_km": float(r_c / 1e5),
+        "M_genesis_g": float(M_genesis),
+        "S_genesis_log10": float(math.log10(S_genesis)),
+        "S_current_log10": float(math.log10(S_current)),
+        "n_derived": float(n_derived),
+        "cycle_index": int(cycle_index),
+        "M_turnaround_g": float(M_turnaround),
+        "lifetime_yr": float(lifetime_yr),
+        "H0_km_s_Mpc": float(H0_km_s_Mpc),
+        "entropy_factor": float(entropy_factor),
+        "evidence_status": "CALIBRATED_HORIZON_CHAIN",
+        "observed_likelihood": None,
+        "limitation": "The per-cycle growth factor and entropy law are calibration inputs; no microphysical solver/likelihood is present.",
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_cyclic_state()
+    print("=" * 78)
+    print("  NVG CYCLIC-COSMOLOGY HORIZON-CHAIN CALCULATION")
+    print("=" * 78)
+    print(f"QCD-anchor density                         : {state['rho_c_g_cm3']:.4e} g/cm^3")
+    print(f"Runtime instanton radius                   : {state['r_c_km']:.4f} km")
+    print(f"Genesis mass                               : {state['M_genesis_g']:.4e} g")
+    print(f"Genesis log10 entropy                      : {state['S_genesis_log10']:.4f}")
+    print(f"Current-horizon log10 entropy              : {state['S_current_log10']:.4f}")
+    print(f"Derived cycle index                        : {state['n_derived']:.2f} (H0/entropy inputs)")
+    print(f"Turnaround mass at cycle {state['cycle_index']}             : {state['M_turnaround_g']:.4e} g")
+    print(f"Turnaround lifetime                        : {state['lifetime_yr']:.2e} yr")
+    print("Evidence status                            : CALIBRATED_HORIZON_CHAIN")
+    print("No independent cyclic-cosmology likelihood or microphysical growth solver is evaluated.")
+    print("=" * 78)
+    return state
+
 
 if __name__ == "__main__":
     main()

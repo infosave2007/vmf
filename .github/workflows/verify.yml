@@ -25,6 +25,6 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Run verification suite
+    - name: Run canonical scientific verification front door
       run: |
-        python verification/run_nvg_suite.py
+        python verification/run_verification.py

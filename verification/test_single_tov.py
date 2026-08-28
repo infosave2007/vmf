@@ -9,7 +9,21 @@ M_sun_km = 1.4766
 eps_arr = np.logspace(-3.0, 3.5, 500)
 p_arr = 0.0005 * (eps_arr ** 2.1)
 
-eps_of_p = interp1d(p_arr, eps_arr, bounds_error=False, fill_value=(eps_arr[0], eps_arr[-1]))
+# Pressure-to-energy lookup is only defined on the tabulated physical domain.
+# Endpoint fills would silently turn unsupported pressures into valid-looking
+# TOV states, so callers must fail closed instead.
+_eps_interp = interp1d(p_arr, eps_arr, bounds_error=True)
+
+
+def eps_of_p(pressure):
+    """Return tabulated energy only for a finite in-domain pressure."""
+    pressure = float(pressure)
+    if not np.isfinite(pressure) or pressure < p_arr[0] or pressure > p_arr[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} lies outside the EOS domain "
+            f"[{p_arr[0]:g}, {p_arr[-1]:g}]"
+        )
+    return float(_eps_interp(pressure))
 
 p_c = 10.0
 r0 = 1.0e-3
@@ -18,6 +32,10 @@ m0 = 4.0 * np.pi * r0**3 * e_c * conv_MeV_fm3_to_geo / 3.0
 
 def rhs(radius, state):
     mass, pressure = state
+    # Runge--Kutta stages can probe just below the event surface.  The
+    # physical TOV branch terminates at p=0, so do not evaluate the EOS there.
+    if not np.isfinite(pressure) or pressure <= 0.0:
+        return [0.0, 0.0]
     energy = float(eps_of_p(pressure))
     denom = radius * (radius - 2.0 * mass)
     if denom <= 0.0:

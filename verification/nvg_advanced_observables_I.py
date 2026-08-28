@@ -1,179 +1,136 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Advanced Observables I (Dileptons, NS Curves, Cosmology)
+"""Runtime-backed advanced observables (I).
 
-1. Forward-model for dilepton spectra (Breit-Wigner for HADES/CBM)
-2. Neutron Star Observables: z_surf and post-merger f_peak curves
-3. Cosmological Sensitivity & Tolman Cycle Recurrence
+This entry point used to print a hand-written neutron-star table, a tuned rho
+mass and a synthetic cosmological ``proof``.  It now keeps the useful forward
+calculations, but obtains the neutron-star numbers from the maintained TOV
+producer and refuses to turn an unmeasured line shape or post-merger frequency
+into evidence.
 """
+
+from __future__ import annotations
+
+import math
+import os
+import sys
+from typing import Any
+
 import numpy as np
 
-print("=" * 72)
-print("  NVG: ADVANCED OBSERVABLES I")
-print("=" * 72)
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
 
-# ═══════════════════════════════════════════════════════════════════════
-# 1. DILEPTON SPECTRAL FUNCTION (BREIT-WIGNER)
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  1. FORWARD-MODEL: DILEPTON SPECTRAL FUNCTION (HADES/CBM)")
-print("=" * 72)
-
-# Breit-Wigner distribution for rho-meson decay to e+e-
-# A(M) = (2M / pi) * (M * Gamma(M)) / ((M^2 - M_rho^2)^2 + M^2 Gamma(M)^2)
-def breit_wigner(M, M_res, Gamma_res):
-    # Simplified mass-dependent width: Gamma(M) = Gamma_res * (M_res/M) * (p/p_res)^3
-    # For a quick phenomenological plot, we use constant width approximation
-    numerator = M * Gamma_res
-    denominator = (M**2 - M_res**2)**2 + (M_res * Gamma_res)**2
-    return (2.0 * M / np.pi) * (numerator / denominator)
-
-M_rho_vac = 775.3  # MeV
-Gamma_rho_vac = 149.1  # MeV
-
-# In-medium parameters at 2n_0 (from previous VMF scripts)
-M_rho_med = 595.8  # MeV
-# Collisional broadening typically increases width by ~50-100% in dense medium
-Gamma_rho_med = Gamma_rho_vac * 1.5 
-
-mass_range = np.linspace(200, 1200, 20)
-print(f"  {'Mass (MeV)':>10} | {'Vacuum A(M)':>14} | {'Medium 2n_0 A(M)':>16}")
-print("-" * 50)
-for m in mass_range:
-    A_vac = breit_wigner(m, M_rho_vac, Gamma_rho_vac)
-    A_med = breit_wigner(m, M_rho_med, Gamma_rho_med)
-    print(f"  {m:10.1f} | {A_vac:14.2e} | {A_med:16.2e}")
-
-print("""
-  OBSERVATIONAL IMPACT (FAIR/HADES/NICA):
-  The standard vacuum ρ-meson peak at ~775 MeV is dramatically shifted
-  to ~595 MeV in a 2n₀ medium, accompanied by collisional broadening.
-  This generates a massive excess of dilepton pairs in the 400-600 MeV
-  invariant mass window, which is the exact anomaly observed by HADES.
-  STATUS: ✅ QUANTITATIVE TEMPLATE GENERATED
-""")
+EVIDENCE_STATUS = {
+    "hades_dilepton": "FORWARD_ONLY_NO_HADES_LIKELIHOOD",
+    "ns_redshift": "DERIVED_RUNTIME_CONDITIONAL_IN_SAMPLE",
+    "postmerger_f_peak": "RETIRED_NO_POSTMERGER_SOLVER_OR_DATA",
+    "tolman_cycles": "SENSITIVITY_ONLY_NO_ENTROPY_DYNAMICS_SOLVER",
+}
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# 2. NS OBSERVABLES: GRAVITATIONAL REDSHIFT AND F_PEAK
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  2. NS UNIFIED OBSERVABLES: z_surf AND f_peak")
-print("=" * 72)
+def breit_wigner(mass: np.ndarray | float, pole: float, width: float) -> np.ndarray:
+    """Relativistic Breit--Wigner template used only as a forward model."""
 
-# VMF EOS M-R curve approximation (from TOV solver output)
-# M (M_sun), R (km)
-ns_population = [
-    (1.10, 11.95),
-    (1.338, 11.98),
-    (1.40, 12.00),
-    (1.80, 11.85),
-    (2.01, 11.50),
-    (2.30, 10.90)  # M_max
-]
-
-# Gravitational redshift: z_surf = (1 - 2GM/Rc^2)^(-1/2) - 1
-G = 6.6743e-8
-c = 2.9979e10
-M_sun = 1.9884e33
-
-def calc_z_surf(M_sol, R_km):
-    M_g = M_sol * M_sun
-    R_cm = R_km * 1e5
-    Rs = 2 * G * M_g / c**2
-    return (1.0 - Rs/R_cm)**(-0.5) - 1.0
-
-# Post-merger peak frequency f_peak empirical relation (Bauswein et al.)
-# f_peak (kHz) roughly scales with sqrt(M/R^3) but has tight EOS-dependent fits.
-# For 1.35 + 1.35 M_sun merger, f_peak ~ a * (R_1.6)^-1 + b
-# We use a phenomenological fit mapped to VMF stiffness.
-def calc_f_peak(R_14_km):
-    # Empirical fit for equal mass 1.35 M_sun merger
-    return 19.5 / R_14_km + 1.1
-
-print(f"  {'M (M_sun)':>9} | {'R (km)':>8} | {'z_surf':>8}")
-print("-" * 35)
-for M, R in ns_population:
-    z = calc_z_surf(M, R)
-    print(f"  {M:9.3f} | {R:8.2f} | {z:8.3f}")
-
-R_14 = 12.00
-f_peak_135 = calc_f_peak(R_14)
-
-print(f"""
-  PREDICTIONS:
-  1. STROBE-X / eXTP: For a canonical 1.4 M_sun NS, the VMF EOS 
-     rigidly predicts z_surf = {calc_z_surf(1.4, 12.0):.3f}.
-  2. LIGO O5 Post-Merger: For a standard binary (1.35+1.35 M_sun),
-     the peak frequency of the hypermassive remnant is f_peak ≈ {f_peak_135:.2f} kHz.
-  
-  STATUS: ✅ CURVES COMPUTED FOR POPULATION
-""")
+    m = np.asarray(mass, dtype=float)
+    numerator = m * float(width)
+    denominator = (m * m - float(pole) ** 2) ** 2 + (float(pole) * float(width)) ** 2
+    return (2.0 * m / np.pi) * numerator / np.maximum(denominator, 1e-300)
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# 3. COSMOLOGICAL SENSITIVITY & TOLMAN CYCLES
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  3. COSMOLOGICAL SENSITIVITY: M_Omega_0 AND CYCLES")
-print("=" * 72)
+def _hades_template_summary(pole: float, width: float = 350.0) -> dict[str, float]:
+    """Compute a detector-style shape summary without fitting HADES data."""
 
-# The total number of cycles N_c depends on the entropy growth per cycle f.
-# In VMF, f ~ 1.35 due to holographic bottleneck constraints.
-# Entropy of universe S_U ~ (R_H / l_P)^2 ~ 10^122
-# Instanton entropy S_0 ~ (l_hayward / l_P)^2 ~ 10^76 (where l_hayward depends on M_Omega_0)
+    try:
+        import nvg_hades_lineshape_feasibility as hades
+    except ImportError:
+        mass_grid = np.linspace(200.0, 800.0, 121)
+        raw = breit_wigner(mass_grid, pole, width) * mass_grid ** 1.5 * np.exp(-mass_grid / 80.0)
+        solver = "local Breit-Wigner thermal forward template"
+    else:
+        # The shared feasibility code supplies thermal and resolution folding;
+        # replacing its pole with this run's raw model output avoids the old
+        # post-hoc peak mapping.
+        mass_grid = np.linspace(200.0, 800.0, 121)
+        raw = hades.template(mass_grid, float(pole), 20.0)
+        solver = "nvg_hades_lineshape_feasibility.template"
+    integrate = np.trapezoid if hasattr(np, "trapezoid") else np.trapz
+    norm = float(integrate(raw, mass_grid))
+    if not np.isfinite(norm) or norm <= 0.0:
+        raise RuntimeError("non-positive HADES forward-template integral")
+    centroid = float(integrate(mass_grid * raw, mass_grid) / norm)
+    return {"pole_mev": float(pole), "centroid_mev": centroid, "normalization": norm, "solver": solver}
 
-def calculate_cycles(M_omega_MeV):
-    # l_hayward ~ M_Omega^4 / (hbar c)^3 ... actually the core scale is fixed by QCD
-    # Let's use the explicit relationship: S_0 scales as M_omega_0^-8 roughly, 
-    # but based on earlier derivations S_0 ~ 1.5e76 at 859 MeV.
-    
-    # Base parameters
-    S_0_base = 1.5e76
-    M_base = 859.0
-    
-    # Scaling: higher QCD mass = smaller core = lower entropy
-    # S_0 \propto r_0^2, and r_0 \propto M_Omega_0^{-4} (hypothetically) => S_0 \propto M_Omega_0^{-8}
-    S_0 = S_0_base * (M_base / M_omega_MeV)**8
-    
-    S_current = 1e122
-    # If the universe doubles in size each cycle (a -> 2a), the holographic 
-    # bounce area increases by 4, so S grows by a factor of 4.
-    f_entropy_growth = 4.0 
-    
-    # (S_current / S_0) = f_entropy_growth ^ N_cycles
-    # N_cycles = ln(S_current / S_0) / ln(f_entropy_growth)
-    N_cycles = np.log(S_current / S_0) / np.log(f_entropy_growth)
-    
-    # E-folds N_e = ln(R_H / r_0) ≈ 53.08 at 859 MeV (repo-wide anchor, calibrated to
-    # local H_0 = 72.8 km/s/Mpc; keep consistent with nvg_genesis_observable.py)
-    # r_0 \propto M_Omega_0^{-4}, so higher mass = smaller core = more e-folds needed
-    N_e_base = 53.08
-    N_e = N_e_base + 4.0 * np.log(M_omega_MeV / M_base)
-    
-    return N_cycles, N_e
 
-masses_to_test = [851.0, 859.0, 867.0]
+def calculate_cycles(m_omega_mev: float) -> dict[str, float]:
+    """Evaluate the documented scaling sensitivity; it is not a prediction."""
 
-print(f"  QCD Lattice Bounds for M_Omega_0: 851 - 867 MeV")
-print(f"  {'M_Ω,0 (MeV)':>12} | {'S_0 (k_B)':>12} | {'N_cycles':>10} | {'N_e (e-folds)':>15}")
-print("-" * 60)
-for M_w in masses_to_test:
-    N_c, N_e = calculate_cycles(M_w)
-    S_0_approx = 1.5e76 * (859.0 / M_w)**8
-    print(f"  {M_w:12.1f} | {S_0_approx:12.2e} | {N_c:10.1f} | {N_e:15.2f}")
+    if not np.isfinite(m_omega_mev) or m_omega_mev <= 0.0:
+        raise ValueError("m_omega_mev must be positive and finite")
+    s0 = 1.5e76 * (859.0 / float(m_omega_mev)) ** 8
+    n_cycles = math.log(1.0e122 / s0) / math.log(4.0)
+    n_e = 53.08 + 4.0 * math.log(float(m_omega_mev) / 859.0)
+    return {"s0": s0, "n_cycles": n_cycles, "n_e": n_e}
 
-print("""
-  SENSITIVITY ANALYSIS:
-  The number of Tolman cycles (75-78) and Genesis e-folds (53.0-53.3) 
-  are incredibly robust against the full 1-sigma uncertainty of lattice 
-  QCD sigma-terms. 
-  
-  Unlike inflation, where N_e can be arbitrarily chosen between 40-70, 
-  VMF locks N_e rigidly to ~53.2. If future lattice QCD refines M_Ω,0, 
-  these cosmological parameters will shift deterministically without 
-  any wiggle room.
-  
-  STATUS: ✅ COSMOLOGICAL ROBUSTNESS PROVEN
-""")
-print("=" * 72)
+
+def compute_observables() -> dict[str, Any]:
+    """Compute all defensible rows and record unavailable mappings explicitly."""
+
+    from nvg_fair_hades_link import HADRONS, in_medium_mass, n_0
+    from nvg_joint_ns_inference import compute_nvg_predictions
+
+    predictions = compute_nvg_predictions()[0]
+    rho_vac, rho_cur = HADRONS["Rho (rho)"]
+    rho_med = float(in_medium_mass(rho_vac, rho_cur, 2.0 * n_0))
+    hades = _hades_template_summary(rho_med)
+    mass = float(predictions["M_max"])
+    radius = float(predictions["R_1.4"])
+    compactness = mass * 1.4766 / radius
+    z_surface = (1.0 - 2.0 * compactness) ** -0.5 - 1.0 if 0.0 < compactness < 0.5 else float("nan")
+
+    return {
+        "hades": {
+            **hades,
+            "status": EVIDENCE_STATUS["hades_dilepton"],
+            "independent_data": False,
+        },
+        "ns_redshift": {
+            "mass_msun": mass,
+            "radius_km": radius,
+            "z_surface": float(z_surface),
+            "status": EVIDENCE_STATUS["ns_redshift"],
+            "solver": "nvg_joint_ns_inference.compute_nvg_predictions",
+        },
+        "postmerger_f_peak": {
+            "value_khz": None,
+            "status": EVIDENCE_STATUS["postmerger_f_peak"],
+            "missing": "relativistic post-merger simulation plus an independent detector likelihood",
+        },
+        "tolman_cycles": {
+            "values": {str(m_omega): calculate_cycles(m_omega) for m_omega in (851.0, 859.0, 867.0)},
+            "status": EVIDENCE_STATUS["tolman_cycles"],
+            "missing": "entropy-production/turnaround dynamics solver and independent cycle observations",
+        },
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_observables()
+    print("=" * 72)
+    print("  NVG: ADVANCED OBSERVABLES I (RUNTIME / EVIDENCE-STATUS LEDGER)")
+    print("=" * 72)
+    h = state["hades"]
+    print(f"HADES forward rho template: pole={h['pole_mev']:.1f} MeV, centroid={h['centroid_mev']:.1f} MeV")
+    print(f"  status={h['status']} (no observed HADES likelihood)")
+    ns = state["ns_redshift"]
+    print(f"Canonical NS: M_max={ns['mass_msun']:.3f} M_sun, R_1.4={ns['radius_km']:.3f} km, z={ns['z_surface']:.3f}")
+    print(f"  status={ns['status']}")
+    print(f"Post-merger f_peak: {state['postmerger_f_peak']['status']}")
+    print(f"Tolman sensitivity: {state['tolman_cycles']['status']}")
+    print("No independent observational confirmation is claimed by this entry point.")
+    print("=" * 72)
+    return state
+
+
+if __name__ == "__main__":
+    main()

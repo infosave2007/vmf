@@ -17,6 +17,36 @@ C_rho_n0 = 150.0
 n_trans = 2.0
 delta_eps = 350.0
 
+
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Interpolate a tabulated EOS without silently clamping its domain.
+
+    The table starts at a small positive pressure.  The only continuation
+    allowed below that table is the explicit vacuum state (0 <= P < P_min,
+    epsilon = 0); negative/non-finite pressures and pressures above the
+    tabulated maximum are unsupported and fail closed.
+    """
+    try:
+        pressure = float(pressure)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("pressure must be a finite scalar") from exc
+    p_grid = np.asarray(pressure_grid, dtype=float)
+    e_grid = np.asarray(energy_grid, dtype=float)
+    if (not np.isfinite(pressure) or pressure < 0.0 or
+            p_grid.ndim != 1 or e_grid.ndim != 1 or
+            p_grid.size < 2 or p_grid.size != e_grid.size or
+            not np.isfinite(p_grid).all() or not np.isfinite(e_grid).all() or
+            np.any(np.diff(p_grid) <= 0.0)):
+        raise ValueError("pressure lookup has an invalid EOS domain")
+    if pressure < p_grid[0]:
+        return 0.0  # explicit vacuum continuation, not an interpolation fill
+    if pressure > p_grid[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} is outside EOS domain "
+            f"[{p_grid[0]:g}, {p_grid[-1]:g}]"
+        )
+    return float(np.interp(pressure, p_grid, e_grid))
+
 def get_nvg_core_eos(n_B_fm3, M_Omega_0):
     if n_B_fm3 <= 0.0:
         return 0.0, 0.0
@@ -101,15 +131,29 @@ class UnifiedEOS:
         self.p_arr = np.array(self.p_arr)
         
     def get_eps(self, P):
-        if P <= self.p_arr[0]:
-            return 0.0
-        if P >= self.p_arr[-1]:
-            return self.eps_arr[-1]
-        return np.interp(P, self.p_arr, self.eps_arr)
+        return pressure_to_energy_checked(P, self.p_arr, self.eps_arr)
 
 def solve_tov(eos, P_center):
+    try:
+        P_center = float(P_center)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("central pressure must be a finite scalar") from exc
+    if (not np.isfinite(P_center) or P_center < eos.p_arr[0] or
+            P_center > eos.p_arr[-1]):
+        raise ValueError(
+            f"central pressure {P_center:g} is outside EOS domain "
+            f"[{eos.p_arr[0]:g}, {eos.p_arr[-1]:g}]"
+        )
+
     def rk4_step(r, m, p, dr):
         if p <= 0: return m, 0
+        def eps_at_pressure(pressure):
+            if not np.isfinite(pressure):
+                raise ValueError("non-finite pressure during TOV integration")
+            if pressure <= 0.0:
+                return 0.0  # explicit vacuum continuation at the surface
+            return eos.get_eps(pressure)
+
         eps = eos.get_eps(p)
         def dp_dr(r_val, m_val, p_val, eps_val):
             if r_val < 1e-10: return 0.0, 0.0
@@ -123,11 +167,11 @@ def solve_tov(eos, P_center):
             return dm_dr_k / 1.4766, dp_dr_k / k
 
         k1_m, k1_p = dp_dr(r, m, p, eps)
-        eps_mid = eos.get_eps(p + 0.5 * dr * k1_p)
+        eps_mid = eps_at_pressure(p + 0.5 * dr * k1_p)
         k2_m, k2_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k1_m, p + 0.5*dr*k1_p, eps_mid)
-        eps_mid = eos.get_eps(p + 0.5 * dr * k2_p)
+        eps_mid = eps_at_pressure(p + 0.5 * dr * k2_p)
         k3_m, k3_p = dp_dr(r + 0.5*dr, m + 0.5*dr*k2_m, p + 0.5*dr*k2_p, eps_mid)
-        eps_end = eos.get_eps(p + dr * k3_p)
+        eps_end = eps_at_pressure(p + dr * k3_p)
         k4_m, k4_p = dp_dr(r + dr, m + dr*k3_m, p + dr*k3_p, eps_end)
         
         return m + (dr/6.0) * (k1_m + 2*k2_m + 2*k3_m + k4_m), p + (dr/6.0) * (k1_p + 2*k2_p + 2*k3_p + k4_p)

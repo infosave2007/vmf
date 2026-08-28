@@ -1,0 +1,1020 @@
+{
+  "boundary_checks": {
+    "centre": "PASS",
+    "independent_identities": "PASS",
+    "positivity_regular": "PASS",
+    "surface": "PASS",
+    "vacuum": "PASS"
+  },
+  "canonical_provenance": {
+    "constraints": [
+      {
+        "criterion": "M_max >= 2.01 M_sun",
+        "name": "PSR J0740+6620 maximum mass",
+        "source": "J0740"
+      },
+      {
+        "criterion": "70 <= Lambda_tilde <= 720",
+        "name": "GW170817 binary tidal deformability",
+        "source": "GW170817"
+      },
+      {
+        "criterion": "11.2 <= R_1.4 <= 13.2 km",
+        "name": "NICER J0030+0451 radius",
+        "source": "NICER"
+      }
+    ],
+    "held_out_observations": [],
+    "independent": false,
+    "kind": "in_sample_selection",
+    "observations_used_for_selection": [
+      "J0740",
+      "GW170817",
+      "NICER"
+    ],
+    "selected_by": "verification/nvg_ns_parameter_scan.py",
+    "selection_method": "best_margin_survivor_on_explicit_grid",
+    "selection_note": "J0740/GW170817/NICER constraints are selection inputs; all downstream comparisons are conditional/in-sample and carry no independent evidence weight.",
+    "status": "CONDITIONAL_IN_SAMPLE"
+  },
+  "canonical_regression": {
+    "computed": {
+      "Lambda14": 519.4223807918132,
+      "M_max_msun": 2.047950740578197,
+      "R14_km": 12.550001000000044
+    },
+    "delta": {
+      "Lambda14": 0.0,
+      "M_max_msun": 0.0,
+      "R14_km": 0.0
+    },
+    "frozen": {
+      "Lambda14": 519.4223807918132,
+      "M_max_msun": 2.047950740578197,
+      "R14_km": 12.550001000000044
+    },
+    "sequence_rows": 36,
+    "solver": "verification/nvg_tidal_deformability.EOS + solve_tov_tidal (read-only regression)",
+    "status": "PASS",
+    "tolerance": {
+      "Lambda14": 2e-06,
+      "M_max_msun": 2e-06,
+      "R14_km": 2e-06
+    }
+  },
+  "canonical_selection": {
+    "parameters": {
+      "cs2_q": 0.3333333333333333,
+      "delta_eps_ratio": 0.0,
+      "n_trans_ratio": 2.0
+    },
+    "provenance": {
+      "constraints": [
+        {
+          "criterion": "M_max >= 2.01 M_sun",
+          "name": "PSR J0740+6620 maximum mass",
+          "source": "J0740"
+        },
+        {
+          "criterion": "70 <= Lambda_tilde <= 720",
+          "name": "GW170817 binary tidal deformability",
+          "source": "GW170817"
+        },
+        {
+          "criterion": "11.2 <= R_1.4 <= 13.2 km",
+          "name": "NICER J0030+0451 radius",
+          "source": "NICER"
+        }
+      ],
+      "held_out_observations": [],
+      "independent": false,
+      "kind": "in_sample_selection",
+      "observations_used_for_selection": [
+        "J0740",
+        "GW170817",
+        "NICER"
+      ],
+      "selected_by": "verification/nvg_ns_parameter_scan.py",
+      "selection_method": "best_margin_survivor_on_explicit_grid",
+      "selection_note": "J0740/GW170817/NICER constraints are selection inputs; all downstream comparisons are conditional/in-sample and carry no independent evidence weight.",
+      "status": "CONDITIONAL_IN_SAMPLE"
+    },
+    "selected_point": {
+      "cs2_q": 0.3333333333333333,
+      "delta_eps_ratio": 0.0,
+      "n_trans_ratio": 2.0
+    }
+  },
+  "classification": {
+    "I(M)": "derived_conditional",
+    "J0737A_conditional_I": "derived_conditional",
+    "J0737A_inverse_mass": "blocked",
+    "compactness": "derived_conditional",
+    "constant_density_benchmark": "validated",
+    "dimensionless_Ibar": "derived_conditional",
+    "empirical_confirmation": "not_claimed",
+    "quadrupole_Q": "blocked"
+  },
+  "constant_density_benchmark": {
+    "compactness": 0.05,
+    "equation_provenance": {
+      "citation": "Hartle (1967), ApJ 150, 1005-1029",
+      "doi": "10.1086/149400",
+      "equation": "(r^4 j d(bar_omega)/dr)' + 4 r^3 j' bar_omega = 0",
+      "exterior": "bar_omega = Omega*(1 - 2 I/r^3)",
+      "j": "exp(-nu/2)*sqrt(1-2m/r), with g_tt=-exp(nu)",
+      "url": "https://articles.adsabs.harvard.edu/pdf/1967ApJ...150.1005H"
+    },
+    "inertia_over_MR2": 0.41822622339973153,
+    "radius_km": 10.0,
+    "relative_difference": 0.00017659219632397538,
+    "status": "validated",
+    "threshold": 0.02,
+    "weak_field_series": 0.41815238095238105
+  },
+  "convergence": {
+    "background": {
+      "max_relative_spread_vs_finest": 2.5640150594694603e-09,
+      "rows": [
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16395049541103604,
+          "inertia_bar": 13.565565670714172,
+          "inertia_cgs_g_cm2": 1.5743957580385834e+45,
+          "inertia_geom_km3": 116.91715226215094,
+          "mass_msun": 1.3885150011737448,
+          "radius_km": 12.505489816257917
+        },
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16395049548254,
+          "inertia_bar": 13.56556567039368,
+          "inertia_cgs_g_cm2": 1.5743957582714502e+45,
+          "inertia_geom_km3": 116.917152279444,
+          "mass_msun": 1.3885150012531375,
+          "radius_km": 12.505489811518919
+        },
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16395049573252476,
+          "inertia_bar": 13.565565671227697,
+          "inertia_cgs_g_cm2": 1.5743957552495052e+45,
+          "inertia_geom_km3": 116.91715205502952,
+          "mass_msun": 1.3885150003362954,
+          "radius_km": 12.505489784193653
+        }
+      ],
+      "status": "PASS",
+      "threshold": 0.005
+    },
+    "central_pressure": {
+      "max_relative_spread_vs_finest": 5.647352547994775e-05,
+      "rows": [
+        {
+          "compactness": 0.16520199847705797,
+          "grid_points": 12,
+          "inertia_bar": 13.40651991562111,
+          "inertia_cgs_g_cm2": 1.594866879473096e+45,
+          "inertia_geom_km3": 118.43737054876372,
+          "mass_msun": 1.4,
+          "radius_km": 12.513407943349323
+        },
+        {
+          "compactness": 0.1651976984870328,
+          "grid_points": 24,
+          "inertia_bar": 13.405768526811453,
+          "inertia_cgs_g_cm2": 1.5947774927318928e+45,
+          "inertia_geom_km3": 118.43073254610265,
+          "mass_msun": 1.4,
+          "radius_km": 12.513733659323758
+        },
+        {
+          "compactness": 0.16519764736990403,
+          "grid_points": 48,
+          "inertia_bar": 13.40576284493151,
+          "inertia_cgs_g_cm2": 1.594776816803897e+45,
+          "inertia_geom_km3": 118.43068235060639,
+          "mass_msun": 1.4,
+          "radius_km": 12.513737531449937
+        }
+      ],
+      "status": "PASS",
+      "target_mass_msun": 1.4,
+      "threshold": 0.005
+    },
+    "matching_radius": {
+      "matching_parameter": "surface pressure event (equivalent radius ladder)",
+      "max_relative_spread_vs_finest": 0.00499349091548262,
+      "rows": [
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.1643963954188253,
+          "inertia_bar": 13.565625309549675,
+          "inertia_cgs_g_cm2": 1.5743721945729674e+45,
+          "inertia_geom_km3": 116.9154024014293,
+          "mass_msun": 1.3885060392110018,
+          "radius_km": 12.471490097307726,
+          "surface_pressure": 0.0002
+        },
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16395049573252476,
+          "inertia_bar": 13.565565671227697,
+          "inertia_cgs_g_cm2": 1.5743957552495052e+45,
+          "inertia_geom_km3": 116.91715205502952,
+          "mass_msun": 1.3885150003362954,
+          "radius_km": 12.505489784193653,
+          "surface_pressure": 0.0001
+        },
+        {
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16357707312353792,
+          "inertia_bar": 13.565536013396095,
+          "inertia_cgs_g_cm2": 1.5744077301829517e+45,
+          "inertia_geom_km3": 116.91804133277935,
+          "mass_msun": 1.3885195325872806,
+          "radius_km": 12.534078906461081,
+          "surface_pressure": 5e-05
+        }
+      ],
+      "status": "PASS",
+      "threshold": 0.01
+    },
+    "ode_tolerances": {
+      "max_relative_spread_vs_finest": 1.0407019734502525e-06,
+      "rows": [
+        {
+          "atol": 1e-08,
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.16395055985516158,
+          "inertia_bar": 13.565566493095591,
+          "inertia_cgs_g_cm2": 1.5743941175328185e+45,
+          "inertia_geom_km3": 116.91703043556359,
+          "mass_msun": 1.3885144908418245,
+          "radius_km": 12.505480304479057,
+          "rtol": 1e-06
+        },
+        {
+          "atol": 1e-10,
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.1639504928693951,
+          "inertia_bar": 13.565565668231262,
+          "inertia_cgs_g_cm2": 1.574395778166913e+45,
+          "inertia_geom_km3": 116.91715375691294,
+          "mass_msun": 1.3885150071757522,
+          "radius_km": 12.505490064180497,
+          "rtol": 1e-08
+        },
+        {
+          "atol": 1e-12,
+          "central_pressure": 50.11872336272722,
+          "compactness": 0.1639504956616549,
+          "inertia_bar": 13.565565671135278,
+          "inertia_cgs_g_cm2": 1.574395756009589e+45,
+          "inertia_geom_km3": 116.91715211147452,
+          "mass_msun": 1.3885150005628968,
+          "radius_km": 12.505489791640182,
+          "rtol": 1e-10
+        }
+      ],
+      "status": "PASS",
+      "threshold": 0.0005
+    },
+    "representative_central_pressure": 50.11872336272722,
+    "status": "PASS"
+  },
+  "equation_provenance": {
+    "background": {
+      "equations": "Tolman-Oppenheimer-Volkoff equations in G=c=1",
+      "source": "Hartle (1967), Sec. II; canonical EOS pressure/energy table"
+    },
+    "frame_dragging": {
+      "citation": "Hartle (1967), ApJ 150, 1005-1029",
+      "doi": "10.1086/149400",
+      "equation": "(r^4 j d(bar_omega)/dr)' + 4 r^3 j' bar_omega = 0",
+      "exterior": "bar_omega = Omega*(1 - 2 I/r^3)",
+      "j": "exp(-nu/2)*sqrt(1-2m/r), with g_tt=-exp(nu)",
+      "url": "https://articles.adsabs.harvard.edu/pdf/1967ApJ...150.1005H"
+    },
+    "j0737a_mass": {
+      "citation": "Kramer et al. (2006), Tests of general relativity from timing the double pulsar",
+      "identifier": "arXiv:astro-ph/0609417",
+      "release_date": "2006-10-06",
+      "url": "https://arxiv.org/abs/astro-ph/0609417",
+      "value": "M_A = 1.3381(7) M_sun"
+    },
+    "status": "PRIMARY_SOURCE_EQUATIONS"
+  },
+  "frozen_dependency_boundary": {
+    "M_Omega_propagation": "not used; Phase-1 dependency remains blocked",
+    "background": "canonical zero-jump NS sequence only",
+    "phase_transition_detection": "not claimed",
+    "status": "PASS"
+  },
+  "j0737a": {
+    "interpretation": "Conditional EOS evaluation at the primary timing mass; this is a forecast for the future I_A measurement, not empirical confirmation or a new mass fit.",
+    "mass_msun": 1.3381,
+    "mass_prediction": {
+      "inverse_parameter": "M_A(I_A)",
+      "reason": "No direct I_A observable is available for an independent inverse mass prediction",
+      "status": "blocked"
+    },
+    "mass_sigma_msun": 0.0007,
+    "predicted_compactness": 0.15850543858833904,
+    "predicted_inertia_bar": 14.308302112551841,
+    "predicted_inertia_cgs_g_cm2": 1.486202844011846e+45,
+    "predicted_inertia_geom_km3": 110.36780512051936,
+    "predicted_radius_km": 12.465430067239087,
+    "source": {
+      "citation": "Kramer et al. (2006), Tests of general relativity from timing the double pulsar",
+      "identifier": "arXiv:astro-ph/0609417",
+      "release_date": "2006-10-06",
+      "url": "https://arxiv.org/abs/astro-ph/0609417"
+    },
+    "status": "derived_conditional"
+  },
+  "model_identity": {
+    "canonical": true,
+    "evidence_weight": 0.0,
+    "independent_evidence": false,
+    "model_id": "canonical_zero_jump_hartle_p2s1",
+    "quadrupole_reason": "The repository supplies no complete second-order Hartle equations, gauge choice, centre data, or vacuum matching conditions; a universal-relation table cannot replace those dependencies.",
+    "quadrupole_status": "BLOCKED",
+    "status": "CONDITIONAL_IN_SAMPLE_BACKGROUND"
+  },
+  "observable_status": "derived_conditional",
+  "observational_input": {
+    "configuration": {
+      "independent_evidence": false,
+      "mass_role": "held-out timing target for conditional EOS evaluation",
+      "use": "target_mass_only"
+    },
+    "local_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+    "mass_msun": 1.3381,
+    "mass_sigma_msun": 0.0007,
+    "object": "PSR J0737-3039A",
+    "primary_source": {
+      "citation": "Kramer et al. (2006), Tests of general relativity from timing the double pulsar",
+      "identifier": "arXiv:astro-ph/0609417",
+      "release_date": "2006-10-06",
+      "url": "https://arxiv.org/abs/astro-ph/0609417"
+    },
+    "retrieved_utc": "2026-08-28",
+    "schema": "P2-S1-J0737A-timing-input-v1",
+    "units": "solar masses"
+  },
+  "schema_version": "P2-S1-hartle-slow-rotation-v1",
+  "second_order_quadrupole": {
+    "reason": "The repository supplies no complete second-order Hartle equations, gauge choice, centre data, or vacuum matching conditions; a universal-relation table cannot replace those dependencies.",
+    "required_dependencies": [
+      "Hartle second-order m_0/m_2/h_0/h_2 equations",
+      "gauge and centre boundary conditions",
+      "vacuum quadrupole matching and spin convention"
+    ],
+    "status": "blocked",
+    "substitute_used": false
+  },
+  "sequence": [
+    {
+      "central_pressure": 0.5011872336272722,
+      "compactness": 0.012669997504862508,
+      "inertia_bar": 939.8019967378434,
+      "inertia_cgs_g_cm2": 4.222597285699131e+44,
+      "inertia_geom_km3": 31.357684195547204,
+      "mass_msun": 0.21802502357002929,
+      "radius_km": 25.40929859535902
+    },
+    {
+      "central_pressure": 0.5695810810737687,
+      "compactness": 0.01297742632021995,
+      "inertia_bar": 883.7011667074056,
+      "inertia_cgs_g_cm2": 3.984034533333368e+44,
+      "inertia_geom_km3": 29.586078962236982,
+      "mass_msun": 0.21827188403915648,
+      "radius_km": 24.835453195372555
+    },
+    {
+      "central_pressure": 0.6473082037010399,
+      "compactness": 0.013293422015555317,
+      "inertia_bar": 830.9925607729356,
+      "inertia_cgs_g_cm2": 3.757603554613493e+44,
+      "inertia_geom_km3": 27.904566224369795,
+      "mass_msun": 0.21848913696901984,
+      "radius_km": 24.26922573216582
+    },
+    {
+      "central_pressure": 0.7356422544596414,
+      "compactness": 0.01361824646842522,
+      "inertia_bar": 781.4720464958418,
+      "inertia_cgs_g_cm2": 3.5428312855522867e+44,
+      "inertia_geom_km3": 26.309632932958998,
+      "mass_msun": 0.21867757522346143,
+      "radius_km": 23.710784521606797
+    },
+    {
+      "central_pressure": 0.8360306936514642,
+      "compactness": 0.013952163767884593,
+      "inertia_bar": 734.947837170842,
+      "inertia_cgs_g_cm2": 3.3392455469192108e+44,
+      "inertia_geom_km3": 24.797772609362873,
+      "mass_msun": 0.21883789145544888,
+      "radius_km": 23.160280792210713
+    },
+    {
+      "central_pressure": 0.9501185073181437,
+      "compactness": 0.014295440107402625,
+      "inertia_bar": 691.2396809780635,
+      "inertia_cgs_g_cm2": 3.1463777112361466e+44,
+      "inertia_geom_km3": 23.365505150822397,
+      "mass_msun": 0.21897068339595965,
+      "radius_km": 22.617849375273348
+    },
+    {
+      "central_pressure": 1.0797751623277096,
+      "compactness": 0.014648343660355972,
+      "inertia_bar": 650.1781190668977,
+      "inertia_cgs_g_cm2": 2.9637649811176287e+44,
+      "inertia_geom_km3": 22.00939374978097,
+      "mass_msun": 0.21907645899752837,
+      "radius_km": 22.08360937293092
+    },
+    {
+      "central_pressure": 1.2271252398511898,
+      "compactness": 0.0150111444367321,
+      "inertia_bar": 611.6038043762761,
+      "inertia_cgs_g_cm2": 2.790952315203483e+44,
+      "inertia_geom_km3": 20.72605919616886,
+      "mass_msun": 0.21915564142531735,
+      "radius_km": 21.557664806473067
+    },
+    {
+      "central_pressure": 1.3945832491957453,
+      "compactness": 0.015384114119623258,
+      "inertia_bar": 575.3668741389237,
+      "inertia_cgs_g_cm2": 2.627494036019415e+44,
+      "inertia_geom_km3": 19.512191817633628,
+      "mass_msun": 0.2192085738905368,
+      "radius_km": 21.04010524687224
+    },
+    {
+      "central_pressure": 1.5848931924611136,
+      "compactness": 0.01578105362617029,
+      "inertia_bar": 540.304959102476,
+      "inertia_cgs_g_cm2": 2.4696402530218275e+44,
+      "inertia_geom_km3": 18.339944326006865,
+      "mass_msun": 0.2192755230765856,
+      "radius_km": 20.517149554447148
+    },
+    {
+      "central_pressure": 1.8011735283341332,
+      "compactness": 0.016290522612673535,
+      "inertia_bar": 501.3740365192387,
+      "inertia_cgs_g_cm2": 2.3106453660845025e+44,
+      "inertia_geom_km3": 17.159222813639886,
+      "mass_msun": 0.21987831170059718,
+      "radius_km": 19.930135010187858
+    },
+    {
+      "central_pressure": 2.0469682718075206,
+      "compactness": 0.016741662193148016,
+      "inertia_bar": 470.27083212704434,
+      "inertia_cgs_g_cm2": 2.1814378307055993e+44,
+      "inertia_geom_km3": 16.19970694793833,
+      "mass_msun": 0.22035530354195768,
+      "radius_km": 19.435145534308056
+    },
+    {
+      "central_pressure": 2.326305067153626,
+      "compactness": 0.017101044543156314,
+      "inertia_bar": 446.39941877877493,
+      "inertia_cgs_g_cm2": 2.0684161035689314e+44,
+      "inertia_geom_km3": 15.360389488328837,
+      "mass_msun": 0.22027405079470222,
+      "radius_km": 19.019695702367027
+    },
+    {
+      "central_pressure": 2.6437611857490997,
+      "compactness": 0.01737710689550339,
+      "inertia_bar": 427.73876228418334,
+      "inertia_cgs_g_cm2": 1.9634330366623038e+44,
+      "inertia_geom_km3": 14.580768407936612,
+      "mass_msun": 0.21958587669303503,
+      "radius_km": 18.65906145797135
+    },
+    {
+      "central_pressure": 3.0045385302046923,
+      "compactness": 0.017736084756910842,
+      "inertia_bar": 405.26153814946446,
+      "inertia_cgs_g_cm2": 1.8390932875378933e+44,
+      "inertia_geom_km3": 13.657401503116734,
+      "mass_msun": 0.21874998510652335,
+      "radius_km": 18.21181125571885
+    },
+    {
+      "central_pressure": 3.414548873833601,
+      "compactness": 0.01836340304913158,
+      "inertia_bar": 373.483342291518,
+      "inertia_cgs_g_cm2": 1.699577186572973e+44,
+      "inertia_geom_km3": 12.621332577228692,
+      "mass_msun": 0.21895177012140782,
+      "radius_km": 17.60589706037956
+    },
+    {
+      "central_pressure": 3.8805107322101815,
+      "compactness": 0.019384064871306474,
+      "inertia_bar": 333.29718961432707,
+      "inertia_cgs_g_cm2": 1.5667056036802183e+44,
+      "inertia_geom_km3": 11.634606907455613,
+      "mass_msun": 0.22133180386246218,
+      "radius_km": 16.860165489184325
+    },
+    {
+      "central_pressure": 4.410059454176737,
+      "compactness": 0.020920080721569468,
+      "inertia_bar": 288.14974622718756,
+      "inertia_cgs_g_cm2": 1.4617105851827997e+44,
+      "inertia_geom_km3": 10.854897072634703,
+      "mass_msun": 0.22702462066926526,
+      "radius_km": 16.024056471952647
+    },
+    {
+      "central_pressure": 5.011872336272722,
+      "compactness": 0.02307771729798879,
+      "inertia_bar": 242.68365025064182,
+      "inertia_cgs_g_cm2": 1.4014289291442048e+44,
+      "inertia_geom_km3": 10.407235833604211,
+      "mass_msun": 0.23704752671628815,
+      "radius_km": 15.167201046343326
+    },
+    {
+      "central_pressure": 5.695810810737687,
+      "compactness": 0.02593422468001848,
+      "inertia_bar": 200.83780682400933,
+      "inertia_cgs_g_cm2": 1.3966264622498674e+44,
+      "inertia_geom_km3": 10.371571944759726,
+      "mass_msun": 0.2521952140366778,
+      "radius_km": 14.359074066843975
+    },
+    {
+      "central_pressure": 6.473082037010399,
+      "compactness": 0.029532986986623593,
+      "inertia_bar": 164.73614314546245,
+      "inertia_cgs_g_cm2": 1.4534401422198229e+44,
+      "inertia_geom_km3": 10.793479437695032,
+      "mass_msun": 0.2730201247563929,
+      "radius_km": 13.6505500238728
+    },
+    {
+      "central_pressure": 7.35642254459641,
+      "compactness": 0.03388775455089159,
+      "inertia_bar": 134.81126335024896,
+      "inertia_cgs_g_cm2": 1.5762369411616078e+44,
+      "inertia_geom_km3": 11.705388147171467,
+      "mass_msun": 0.2998865694739855,
+      "radius_km": 13.067035994382122
+    },
+    {
+      "central_pressure": 8.36030693651464,
+      "compactness": 0.038991126340065435,
+      "inertia_bar": 110.51962692397916,
+      "inertia_cgs_g_cm2": 1.7699721973702131e+44,
+      "inertia_geom_km3": 13.144097209555337,
+      "mass_msun": 0.33304346778531735,
+      "radius_km": 12.612407762801094
+    },
+    {
+      "central_pressure": 9.501185073181434,
+      "compactness": 0.04482230192379409,
+      "inertia_bar": 90.97216408618972,
+      "inertia_cgs_g_cm2": 2.041365998912151e+44,
+      "inertia_geom_km3": 15.159511075851153,
+      "mass_msun": 0.37267422654471377,
+      "radius_km": 12.277164252998803
+    },
+    {
+      "central_pressure": 10.797751623277094,
+      "compactness": 0.05135189904738237,
+      "inertia_bar": 75.27543258160192,
+      "inertia_cgs_g_cm2": 2.3991060330631817e+44,
+      "inertia_geom_km3": 17.81614590413669,
+      "mass_msun": 0.4189131269322639,
+      "radius_km": 12.045652345932316
+    },
+    {
+      "central_pressure": 12.271252398511898,
+      "compactness": 0.05854395106013213,
+      "inertia_bar": 62.65769679717445,
+      "inertia_cgs_g_cm2": 2.853459277022225e+44,
+      "inertia_geom_km3": 21.19024591257052,
+      "mass_msun": 0.4718359120669909,
+      "radius_km": 11.90068137086452
+    },
+    {
+      "central_pressure": 13.94583249195745,
+      "compactness": 0.06635607561999987,
+      "inertia_bar": 52.4907004165558,
+      "inertia_cgs_g_cm2": 3.4155321566248776e+44,
+      "inertia_geom_km3": 25.36428919942486,
+      "mass_msun": 0.5314355204578438,
+      "radius_km": 11.82586043818927
+    },
+    {
+      "central_pressure": 15.848931924611133,
+      "compactness": 0.07473881017162348,
+      "inertia_bar": 44.27430432480857,
+      "inertia_cgs_g_cm2": 4.096291028104782e+44,
+      "inertia_geom_km3": 30.41971368365898,
+      "mass_msun": 0.597592210591887,
+      "radius_km": 11.806511986660018
+    },
+    {
+      "central_pressure": 18.01173528334132,
+      "compactness": 0.08363481821286924,
+      "inertia_bar": 37.613078700043566,
+      "inertia_cgs_g_cm2": 4.905393067842901e+44,
+      "inertia_geom_km3": 36.42823510482507,
+      "mass_msun": 0.6700443538656461,
+      "radius_km": 11.829851658190988
+    },
+    {
+      "central_pressure": 20.469682718075198,
+      "compactness": 0.09297840104209953,
+      "inertia_bar": 32.194612141524395,
+      "inertia_cgs_g_cm2": 5.849879297798081e+44,
+      "inertia_geom_km3": 43.442141220447915,
+      "mass_msun": 0.748364442595206,
+      "radius_km": 11.884856305882634
+    },
+    {
+      "central_pressure": 23.263050671536252,
+      "compactness": 0.1026955529412926,
+      "inertia_bar": 27.771751951075522,
+      "inertia_cgs_g_cm2": 6.932810508837426e+44,
+      "inertia_geom_km3": 51.48416195405686,
+      "mass_msun": 0.8319436782299402,
+      "radius_km": 11.962037304347442
+    },
+    {
+      "central_pressure": 26.437611857490985,
+      "compactness": 0.11270465592451194,
+      "inertia_bar": 24.14860594028421,
+      "inertia_cgs_g_cm2": 8.15196707311925e+44,
+      "inertia_geom_km3": 60.537813993561755,
+      "mass_msun": 0.9199877104071752,
+      "radius_km": 12.05321858306465
+    },
+    {
+      "central_pressure": 30.045385302046917,
+      "compactness": 0.1229178177333908,
+      "inertia_bar": 21.169609913598364,
+      "inertia_cgs_g_cm2": 9.498764143739649e+44,
+      "inertia_geom_km3": 70.53934488996836,
+      "mass_msun": 1.0115250866194927,
+      "radius_km": 12.151354217352
+    },
+    {
+      "central_pressure": 34.145488738336006,
+      "compactness": 0.13324277221865571,
+      "inertia_bar": 18.71098578619634,
+      "inertia_cgs_g_cm2": 1.0957547040810446e+45,
+      "inertia_geom_km3": 81.37250048146535,
+      "mass_msun": 1.105428863573996,
+      "radius_km": 12.25039251866318
+    },
+    {
+      "central_pressure": 38.80510732210182,
+      "compactness": 0.14358520775975245,
+      "inertia_bar": 16.674049719091318,
+      "inertia_cgs_g_cm2": 1.250541487992013e+45,
+      "inertia_geom_km3": 92.86721513010824,
+      "mass_msun": 1.200450469912433,
+      "radius_km": 12.345179503717386
+    },
+    {
+      "central_pressure": 44.100594541767364,
+      "compactness": 0.1538513339770581,
+      "inertia_bar": 14.979956581039618,
+      "inertia_cgs_g_cm2": 1.4112675449469908e+45,
+      "inertia_geom_km3": 104.80298971381984,
+      "mass_msun": 1.295263641901166,
+      "radius_km": 12.431392333045752
+    },
+    {
+      "central_pressure": 50.11872336272722,
+      "compactness": 0.16395049573252476,
+      "inertia_bar": 13.565565671227697,
+      "inertia_cgs_g_cm2": 1.5743957552495052e+45,
+      "inertia_geom_km3": 116.91715205502952,
+      "mass_msun": 1.3885150003362954,
+      "radius_km": 12.505489784193653
+    },
+    {
+      "central_pressure": 56.95810810737684,
+      "compactness": 0.17379761712720573,
+      "inertia_bar": 12.380184918250896,
+      "inertia_cgs_g_cm2": 1.7359923339406682e+45,
+      "inertia_geom_km3": 128.91757297804773,
+      "mass_msun": 1.4788772642918835,
+      "radius_km": 12.564672660932379
+    },
+    {
+      "central_pressure": 64.73082037010398,
+      "compactness": 0.18331531678521998,
+      "inertia_bar": 11.383005398591573,
+      "inertia_cgs_g_cm2": 1.8919430245628375e+45,
+      "inertia_geom_km3": 140.49872120444743,
+      "mass_msun": 1.5651006762809296,
+      "radius_km": 12.606844311346437
+    },
+    {
+      "central_pressure": 73.5642254459641,
+      "compactness": 0.19243555352954891,
+      "inertia_bar": 10.541078602855274,
+      "inertia_cgs_g_cm2": 2.0381929330202145e+45,
+      "inertia_geom_km3": 151.35947379993158,
+      "mass_msun": 1.6460587122263481,
+      "radius_km": 12.630567740177003
+    },
+    {
+      "central_pressure": 83.60306936514644,
+      "compactness": 0.2011007267875655,
+      "inertia_bar": 9.827720680445083,
+      "inertia_cgs_g_cm2": 2.1709850099159245e+45,
+      "inertia_geom_km3": 161.2208262548983,
+      "mass_msun": 1.7207848820080336,
+      "radius_km": 12.635016279464647
+    },
+    {
+      "central_pressure": 95.01185073181433,
+      "compactness": 0.20926422268967337,
+      "inertia_bar": 9.221252479862637,
+      "inertia_cgs_g_cm2": 2.2870727611226607e+45,
+      "inertia_geom_km3": 169.84168871232626,
+      "mass_msun": 1.7884985728255733,
+      "radius_km": 12.61991638461075
+    },
+    {
+      "central_pressure": 107.97751623277094,
+      "compactness": 0.21689042448735948,
+      "inertia_bar": 8.704003616139154,
+      "inertia_cgs_g_cm2": 2.3838871576805927e+45,
+      "inertia_geom_km3": 177.03128096429845,
+      "mass_msun": 1.8486191697892866,
+      "radius_km": 12.58548445632254
+    },
+    {
+      "central_pressure": 122.71252398511903,
+      "compactness": 0.22395427316741115,
+      "inertia_bar": 8.26152408509256,
+      "inertia_cgs_g_cm2": 2.4596445592737344e+45,
+      "inertia_geom_km3": 182.65714702232498,
+      "mass_msun": 1.9007688297632632,
+      "radius_km": 12.532358567368695
+    },
+    {
+      "central_pressure": 139.4583249195745,
+      "compactness": 0.23044047345136473,
+      "inertia_bar": 7.881959045232572,
+      "inertia_cgs_g_cm2": 2.513390700454032e+45,
+      "inertia_geom_km3": 186.64842160484065,
+      "mass_msun": 1.9447652474610533,
+      "radius_km": 12.461527792369601
+    },
+    {
+      "central_pressure": 158.48931924611142,
+      "compactness": 0.2363424439007681,
+      "inertia_bar": 7.55555193592934,
+      "inertia_cgs_g_cm2": 2.544983691591303e+45,
+      "inertia_geom_km3": 188.99456776050283,
+      "mass_msun": 1.9806063997402998,
+      "radius_km": 12.374262369413628
+    },
+    {
+      "central_pressure": 180.1173528334133,
+      "compactness": 0.24166114893766485,
+      "inertia_bar": 7.274248587606974,
+      "inertia_cgs_g_cm2": 2.5550249852782866e+45,
+      "inertia_geom_km3": 189.74025032279118,
+      "mass_msun": 2.008449483567006,
+      "radius_km": 12.272045053464597
+    },
+    {
+      "central_pressure": 204.6968271807522,
+      "compactness": 0.24640384040463534,
+      "inertia_bar": 7.03138098913745,
+      "inertia_cgs_g_cm2": 2.5447519669253986e+45,
+      "inertia_geom_km3": 188.97735951542973,
+      "mass_msun": 2.028586439094408,
+      "radius_km": 12.156509943383387
+    },
+    {
+      "central_pressure": 220.0,
+      "compactness": 0.24882752954066994,
+      "inertia_bar": 6.909310298813054,
+      "inertia_cgs_g_cm2": 2.5306500843110966e+45,
+      "inertia_geom_km3": 187.93013111152868,
+      "mass_msun": 2.036687395622935,
+      "radius_km": 12.08617315748128
+    },
+    {
+      "central_pressure": 226.25,
+      "compactness": 0.24972151027208547,
+      "inertia_bar": 6.864508617447212,
+      "inertia_cgs_g_cm2": 2.52365544665006e+45,
+      "inertia_geom_km3": 187.41069810857596,
+      "mass_msun": 2.039226395108941,
+      "radius_km": 12.057918806181645
+    },
+    {
+      "central_pressure": 232.5,
+      "compactness": 0.25056575512986046,
+      "inertia_bar": 6.822270081859207,
+      "inertia_cgs_g_cm2": 2.516070427958517e+45,
+      "inertia_geom_km3": 186.84742246409937,
+      "mass_msun": 2.0413769351802222,
+      "radius_km": 12.029964673045203
+    },
+    {
+      "central_pressure": 232.63050671536263,
+      "compactness": 0.25058287928080786,
+      "inertia_bar": 6.821413859458541,
+      "inertia_cgs_g_cm2": 2.5159062861263048e+45,
+      "inertia_geom_km3": 186.83523302857063,
+      "mass_msun": 2.0414179484907224,
+      "radius_km": 12.02938425559176
+    },
+    {
+      "central_pressure": 238.75,
+      "compactness": 0.2513637328318844,
+      "inertia_bar": 6.7823838376510555,
+      "inertia_cgs_g_cm2": 2.507967452353242e+45,
+      "inertia_geom_km3": 186.24568250908408,
+      "mass_msun": 2.0431727407506166,
+      "radius_km": 12.002323624825138
+    },
+    {
+      "central_pressure": 245.0,
+      "compactness": 0.25211859998377745,
+      "inertia_bar": 6.744661575109257,
+      "inertia_cgs_g_cm2": 2.4994111256286105e+45,
+      "inertia_geom_km3": 185.61027597336349,
+      "mass_msun": 2.0446442414585384,
+      "radius_km": 11.97500575971762
+    },
+    {
+      "central_pressure": 251.25,
+      "compactness": 0.2528332399983375,
+      "inertia_bar": 6.708934591793019,
+      "inertia_cgs_g_cm2": 2.490459118715162e+45,
+      "inertia_geom_km3": 184.94548559266823,
+      "mass_msun": 2.0458189400497395,
+      "radius_km": 11.948018571044333
+    },
+    {
+      "central_pressure": 257.5,
+      "compactness": 0.2535102863170103,
+      "inertia_bar": 6.675051310740116,
+      "inertia_cgs_g_cm2": 2.4811629795867998e+45,
+      "inertia_geom_km3": 184.2551394021558,
+      "mass_msun": 2.046721742971854,
+      "radius_km": 11.921367647753131
+    },
+    {
+      "central_pressure": 263.75,
+      "compactness": 0.25415215356149434,
+      "inertia_bar": 6.642875157986526,
+      "inertia_cgs_g_cm2": 2.4715688082456208e+45,
+      "inertia_geom_km3": 183.54266086186598,
+      "mass_msun": 2.0473752401270136,
+      "radius_km": 11.895056709956501
+    },
+    {
+      "central_pressure": 264.37611857490987,
+      "compactness": 0.254214603567655,
+      "inertia_bar": 6.639740993949644,
+      "inertia_cgs_g_cm2": 2.4705928813594303e+45,
+      "inertia_geom_km3": 183.47018696718806,
+      "mass_msun": 2.047427776731779,
+      "radius_km": 11.892439744585959
+    },
+    {
+      "central_pressure": 270.0,
+      "compactness": 0.2547610571540726,
+      "inertia_bar": 6.612282753130911,
+      "inertia_cgs_g_cm2": 2.4617178723521037e+45,
+      "inertia_geom_km3": 182.81111457440528,
+      "mass_msun": 2.0477999555768482,
+      "radius_km": 11.869088031676965
+    },
+    {
+      "central_pressure": 276.25,
+      "compactness": 0.25533903490287985,
+      "inertia_bar": 6.583162352439078,
+      "inertia_cgs_g_cm2": 2.4516471352328466e+45,
+      "inertia_geom_km3": 182.0632454956476,
+      "mass_msun": 2.0480145643451704,
+      "radius_km": 11.843462582453627
+    },
+    {
+      "central_pressure": 282.5,
+      "compactness": 0.2558879628612979,
+      "inertia_bar": 6.555412509361381,
+      "inertia_cgs_g_cm2": 2.4413897295581536e+45,
+      "inertia_geom_km3": 181.30151411079123,
+      "mass_msun": 2.0480360853615833,
+      "radius_km": 11.818180307622052
+    }
+  ],
+  "sequence_summary": {
+    "mass_max_msun": 2.0480360853615833,
+    "raw_rows": 81,
+    "retired_static_i_love_overlay": {
+      "reason": "Existing I-Love-Q arrays are transform/retired overlays, not producers",
+      "status": "not_used"
+    },
+    "sensitivity_without_refit": true,
+    "stable_rows": 61,
+    "targets": [
+      {
+        "compactness": 0.14353655195639617,
+        "inertia_bar": 16.6830395540543,
+        "inertia_cgs_g_cm2": 1.249807688683824e+45,
+        "inertia_geom_km3": 92.81272201742843,
+        "mass_msun": 1.2,
+        "radius_km": 12.344730146076502
+      },
+      {
+        "compactness": 0.15850543858833904,
+        "inertia_bar": 14.308302112551841,
+        "inertia_cgs_g_cm2": 1.486202844011846e+45,
+        "inertia_geom_km3": 110.36780512051936,
+        "mass_msun": 1.3381,
+        "radius_km": 12.465430067239087
+      },
+      {
+        "compactness": 0.16520722722024064,
+        "inertia_bar": 13.407089190435702,
+        "inertia_cgs_g_cm2": 1.5949346015630064e+45,
+        "inertia_geom_km3": 118.44239969969806,
+        "mass_msun": 1.4,
+        "radius_km": 12.513011898953586
+      },
+      {
+        "compactness": 0.1872510666163972,
+        "inertia_bar": 11.009306015046068,
+        "inertia_cgs_g_cm2": 1.954988315120276e+45,
+        "inertia_geom_km3": 145.18056552337433,
+        "mass_msun": 1.6,
+        "radius_km": 12.617070987584512
+      },
+      {
+        "compactness": 0.21071993965801267,
+        "inertia_bar": 9.118870124875652,
+        "inertia_cgs_g_cm2": 2.3055939300345262e+45,
+        "inertia_geom_km3": 171.2171003994356,
+        "mass_msun": 1.8,
+        "radius_km": 12.613329352284358
+      },
+      {
+        "compactness": 0.24003775190520335,
+        "inertia_bar": 7.358048163899448,
+        "inertia_cgs_g_cm2": 2.5519777744690346e+45,
+        "inertia_geom_km3": 189.5139595643582,
+        "mass_msun": 2.0,
+        "radius_km": 12.303064732777072
+      }
+    ]
+  },
+  "source_provenance": {
+    "canonical_sources_sha256": {
+      "verification/nvg_eos_beta_css_softening.py": "9cfb9f4bf7755d4c274355cfd8eb643571a48fb379141fc985bbdf4aaf74aecb",
+      "verification/nvg_ns_canonical.py": "effdfe34e2f7e3231262e8312ad243bcdd5bb88f10476361b1ab8db38a2c1f13",
+      "verification/nvg_tidal_deformability.py": "87358d15eea30b6219fdfc2e6d31682eca63607d31cd515628b328fdffdf619c"
+    },
+    "configuration": {
+      "central_seed_radius_km": 1e-05,
+      "density_jump": "zero-jump canonical EOS; no interface jump applied",
+      "ode_backend": "scipy.integrate.solve_ivp",
+      "ode_default_atol": 1e-11,
+      "ode_default_max_step_km": 0.05,
+      "ode_default_rtol": 1e-09,
+      "ode_method": "DOP853",
+      "surface_pressure": 0.0001,
+      "units": {
+        "inertia": "km^3 internally; g cm^2 at output",
+        "mass": "M_sun for TOV state; km for geometric mass",
+        "pressure_energy": "MeV/fm^3 and km^-2 internally",
+        "radius": "km"
+      }
+    },
+    "input_path": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
+    "input_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+    "producer": "verification/nvg_hartle_slow_rotation.py",
+    "source_sha256": "88bfa68372d984e3ae4ccdd68d3e95658a72463f8792136f06cc46158025ac44"
+  },
+  "source_to_artifact_provenance": {
+    "input_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+    "source_sha256": "88bfa68372d984e3ae4ccdd68d3e95658a72463f8792136f06cc46158025ac44",
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "P2-S3-hierarchical-echo-config-v1",
+  "catalog_selection": {
+    "min_network_matched_filter_snr": 8.0,
+    "min_p_astro": 0.5,
+    "min_final_mass_source_msun": 5.0,
+    "duplicate_policy": "one_latest_catalog_version_per_commonName",
+    "catalog_conditioning": "condition_on_catalog_selection; no population-rate inference",
+    "gps_cut_o1_o3": 1300000000.0
+  },
+  "population_parameter": {
+    "name": "echo_amplitude_ratio",
+    "definition": "common non-negative echo matched-filter amplitude divided by each event's catalog merger network SNR",
+    "prior_family": "uniform",
+    "prior_min": 0.0,
+    "prior_max": 2.0,
+    "posterior_grid_points": 1001
+  },
+  "synthetic_detector_model": {
+    "description": "two-detector Gaussian matched-filter projections with seven delay trials; signal is injected only into the zero-delay trial",
+    "reference_network_snr": 20.0,
+    "event_log_nuisance_sigma": 0.15,
+    "n_delay_trials": 7,
+    "n_background": 4000,
+    "background_quantile": 0.95,
+    "injection_amplitude_grid": [0.0, 0.01, 0.02, 0.04, 0.06, 0.08, 0.10, 0.15, 0.20, 0.30, 0.50, 0.75, 1.0, 1.5, 2.0]
+  },
+  "calibration": {
+    "rng_seed": 20260828,
+    "seed_probe_values": [20260828, 20260829, 20260830, 20261001],
+    "calibration_method": "controlled_deterministic_gauss_hermite_noncentral_chi_square",
+    "quadrature_nodes": 64,
+    "quadrature_resolution_nodes": [8, 16, 32, 64],
+    "posterior_grid_resolution_points": [801, 1001, 1601, 3201, 6401, 10001, 20001],
+    "amplitude_efficiency_grid_resolution_points": [101, 201, 401, 1001],
+    "uncertainty_axes": ["quadrature", "seed", "posterior_grid", "amplitude_efficiency_grid", "monotonicity"],
+    "precision_rule": {
+      "name": "shared_endpoint_round_half_even",
+      "max_decimal_places": 12,
+      "description": "Largest d for which round-half-even(lower,d) equals round-half-even(upper,d) for the complete numerical union; fail closed when no shared precision exists."
+    },
+    "reported_upper90_decimal_places": 2,
+    "coverage_truth_amplitudes": [0.0, 0.03, 0.06, 0.10],
+    "coverage_trials": 80
+  }
+}

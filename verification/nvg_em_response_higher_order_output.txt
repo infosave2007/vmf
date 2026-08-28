@@ -1,3 +1,8 @@
+# Provenance: deterministic snapshot of verification/nvg_em_response_higher_order.py
+# Snapshot status: NON_EVIDENCE_MODEL_OUTPUT (formula/model calculation only)
+# Reproduce: python verification/nvg_em_response_higher_order.py
+# Standard-QCD constants and V2 targets are declared inputs; no observed-event
+# likelihood or independent amplification measurement is represented.
 NVG EM-response: standard-QCD upper bound on lambda
 ==============================================================================
 

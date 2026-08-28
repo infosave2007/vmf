@@ -25,7 +25,7 @@ Downstream, computed here:
      rho-meson mass under two universality mappings:
        linear:  m_rho* = M_rho,cur + (M_rho - M_rho,cur)(1 - f)
        sqrt:    m_rho* = M_rho * (m*/M_N)^{1/2}
-     with the propagated integrated-dielectron-peak estimate for HADES.
+     with a folded dielectron forward template for HADES (no data fit).
      The mapping exponent is an assumption to be FIXED BY DATA
      (NA60 dilepton spectra already bound large shifts) — in fork B the
      meson sector tests the mapping, not a free kappa parameter.
@@ -43,6 +43,45 @@ E_BIND, J_SYM = 16.0, 32.0
 MU_2FL = 930.0
 M_CUR = 80.0                 # current-quark share of the nucleon
 M_RHO, M_RHO_CUR = 775.3, 80.0
+
+
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Interpolate EOS energy only on its domain; vacuum tail is explicit."""
+    try:
+        pressure = float(pressure)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("pressure must be a finite scalar") from exc
+    p_grid = np.asarray(pressure_grid, dtype=float)
+    e_grid = np.asarray(energy_grid, dtype=float)
+    if (not np.isfinite(pressure) or pressure < 0.0 or
+            p_grid.ndim != 1 or e_grid.ndim != 1 or p_grid.size < 2 or
+            p_grid.size != e_grid.size or not np.isfinite(p_grid).all() or
+            not np.isfinite(e_grid).all() or np.any(np.diff(p_grid) <= 0.0)):
+        raise ValueError("pressure lookup has an invalid EOS domain")
+    if pressure < p_grid[0]:
+        return 0.0  # explicit vacuum continuation, not np.interp clamping
+    if pressure > p_grid[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} is outside EOS domain "
+            f"[{p_grid[0]:g}, {p_grid[-1]:g}]"
+        )
+    return float(np.interp(pressure, p_grid, e_grid))
+
+
+def hades_shape_summary(pole_mev: float) -> dict[str, float | str]:
+    """Fold a solved rho pole through the preregistered HADES template."""
+
+    import nvg_hades_lineshape_feasibility as hades
+
+    masses = np.linspace(hades.M_LO, hades.M_HI, 121)
+    shape = hades.template(masses, float(pole_mev), 20.0)
+    integrate = np.trapezoid if hasattr(np, "trapezoid") else np.trapz
+    norm = float(integrate(shape, masses))
+    if not np.isfinite(norm) or norm <= 0.0:
+        raise RuntimeError("HADES template has non-positive normalization")
+    centroid = float(integrate(masses * shape, masses) / norm)
+    return {"pole_mev": float(pole_mev), "centroid_mev": centroid,
+            "status": "FORWARD_ONLY_NO_HADES_LIKELIHOOD"}
 
 
 def sym_state(n_b, c_s):
@@ -124,8 +163,8 @@ def main():
     caus = bool((cs2[p > 1.0] <= 1.05).all())
     print(f"\n  2. Beta-equilibrated EOS: p(n_0) = {p[i0]:+.2f}, "
           f"p(2n_0) = {p[i2]:.1f} MeV/fm^3")
-    print(f"     existence gate: {'PASS (no self-bound u,d phase)' if exist else 'FAIL'}")
-    print(f"     causality:      {'PASS' if caus else 'FAIL'}")
+    print(f"     existence_gate={'ok (no self-bound u,d phase)' if exist else 'fail'}")
+    print(f"     causality_gate={'ok' if caus else 'fail'}")
     print(f"     eps/A monotone above n_0: "
           f"{'yes' if (np.diff(epA[n > N0]) > 0).all() else 'no'}")
 
@@ -137,11 +176,21 @@ def main():
     p_s, e_s = p_s[idx], e_s[idx]
     conv = 1.3234e-6
 
+    if p_s.size < 2 or not np.isfinite(p_s).all() or not np.isfinite(e_s).all():
+        print("     TOV unsupported: EOS pressure/energy table is not finite")
+        return
+    pc_hi = min(1200.0, float(p_s[-1]))
+    if pc_hi < 20.0:
+        print(f"     TOV unsupported: central-pressure range [20, {pc_hi:.3g}] is empty")
+        return
+
     def rhs(r, y):
         m, pp = y
-        if pp <= p_s[0]:
+        if not np.isfinite(pp):
+            raise ValueError("non-finite pressure during TOV integration")
+        if pp <= 0.0:
             return [0.0, 0.0]
-        ee = np.interp(pp, p_s, e_s) * conv
+        ee = pressure_to_energy_checked(pp, p_s, e_s) * conv
         pk = pp * conv
         dm = 4 * math.pi * r ** 2 * ee
         dp = -(ee + pk) * (m + 4 * math.pi * r ** 3 * pk) / (
@@ -149,13 +198,16 @@ def main():
         return [dm, dp]
 
     res = []
-    for pc in np.geomspace(20, 1200, 24):
+    for pc in np.geomspace(20, pc_hi, 24):
         sol = solve_ivp(rhs, [1e-6, 30], [0.0, pc], max_step=0.02,
                         events=lambda r, y: y[1] - p_s[0] * 1.01,
                         rtol=1e-6, atol=1e-9)
         if sol.t_events[0].size:
             res.append((float(sol.y_events[0][0][0]) / 1.4766,
                         float(sol.t_events[0][0])))
+    if not res:
+        print("     TOV unsupported: no resolved central-pressure solution")
+        return
     ms = np.array([m for m, _ in res])
     rs = np.array([r for _, r in res])
     im = int(np.argmax(ms))
@@ -166,7 +218,9 @@ def main():
     print(f"     (softening for GW170817 now belongs to the CSS transition,")
     print(f"      to be re-attached in the full chain)")
 
-    # melt fraction and HADES mapping
+    # Expose raw scalar-field output and use the independent line-shape
+    # calculation.  No post-hoc instantaneous-to-integrated peak anchor is
+    # applied.
     st2 = base.beta_equilibrium_state(2 * N0, 0.0, 0.8, c_s, c_rho)
     m_star2 = st2["m_dirac"]
     f2 = (M_NUC - m_star2) / (M_NUC - M_CUR)
@@ -178,19 +232,19 @@ def main():
           f"({100*(rho_lin2/M_RHO-1):+.0f}%)")
     print(f"                         sqrt mapping   {rho_sqrt2:.0f} MeV "
           f"({100*(rho_sqrt2/M_RHO-1):+.0f}%)")
-    # integrated-peak scaling from the published simulator anchor:
-    # instantaneous -20.1% at 2n_0 <-> integrated peak 712 (shift -63 MeV)
     for label, rho2 in (("linear", rho_lin2), ("sqrt", rho_sqrt2)):
         inst = 100 * (1 - rho2 / M_RHO)
-        peak = 775.0 - 63.0 * (inst / 20.1)
-        print(f"     integrated HADES peak, {label:>6}: ~{peak:.0f} MeV")
+        line_shape = hades_shape_summary(rho2)
+        print(f"     {label:>6}: raw pole={line_shape['pole_mev']:.1f} MeV "
+              f"(instantaneous shift {inst:+.1f}%); folded centroid="
+              f"{line_shape['centroid_mev']:.1f} MeV; status={line_shape['status']}")
     print(f"""
   STATUS: fork B gives a consistent one-sector nucleon EOS with standard
   saturation; the melt fraction is now an OUTPUT. The meson mapping
-  exponent is the remaining assumption — the linear mapping produces
-  shifts already in tension with NA60 dilepton constraints, favoring the
-  milder sqrt-type mapping; HADES/NA60 data select the exponent. Full
-  chain (crust, CSS transition, tidal, joint fit) is the follow-up.
+  exponent remains an assumption and the folded spectra are forward
+  templates only. HADES/NA60 data and a likelihood are required to select
+  an architecture. Full chain (crust, CSS transition, tidal, joint fit)
+  is the follow-up.
 """)
     print("=" * 78)
 

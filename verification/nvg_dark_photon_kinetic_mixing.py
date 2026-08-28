@@ -22,14 +22,15 @@ amplification through the photon self-energy shift
     delta Z = eps^2(rho) * f(m_A', plasma) approx eps^2(rho)
 when m_A' >> plasma frequency of the NS interior.
 
-This single density-suppression structure has two crucial consequences:
+This single density-suppression structure motivates two benchmark checks:
 
-  (i) Every standard astrophysical / cosmological / laboratory bound on
-      eps applies to environments with very small S(rho) and is therefore
-      either trivially satisfied or shifted by orders of magnitude.
- (ii) Only one regime *can* be sensitive: dense proto-neutron-star matter
-      in core-collapse supernovae (SN1987A). Even there, kinematic
-      suppression for m_A' > T_core ~ 30 MeV controls the bound.
+  (i) Published bound values can be compared with the density-suppressed
+      benchmark in environments with small S(rho).
+ (ii) A dense proto-neutron-star regime is potentially sensitive, but a
+      complete source/transport likelihood is outside this script.
+
+The table is therefore a conditional benchmark, not a global recast of all
+astrophysical, cosmological, and laboratory constraints.
 
 The script computes:
 
@@ -151,11 +152,12 @@ ENVIRONMENTS: list[Env] = [
 #
 # The natural A' mass scale in NVG is set by the chiral symmetry breaking
 # scale, m_A' ~ Lambda_chi = 4 pi f_pi ~ 1.16 GeV. We use this as the
-# benchmark; the bound analysis is essentially the same for any m_A' in
-# the GeV range, because all standard bounds shut off above m_A' ~ 200 MeV.
+# benchmark; several representative low-energy bounds become kinematically
+# unavailable above m_A' ~ 200 MeV, but this script does not recast all bounds.
 # -------------------------------------------------------------------------
 M_A_PRIME_BENCH = 1.16    # GeV, ~ Lambda_chi
 LAMBDA_V2_BENCH = 0.9     # required EFT coupling at 2 n_0
+EVIDENCE_STATUS = "CONDITIONAL_BENCHMARK_NO_COMPLETE_LIKELIHOOD"
 
 def eps0_from_lambda(lam: float, nB_over_n0: float = 2.0) -> float:
     S = S_factor(nB_over_n0)
@@ -206,6 +208,9 @@ def report() -> str:
     L.append("=" * 78)
     L.append("")
     L.append("Model:")
+    L.append(f"  Evidence status: {EVIDENCE_STATUS}")
+    L.append("  This environment table is a conditional benchmark; no complete")
+    L.append("  observed-event, source/transport, or global exclusion likelihood is implemented.")
     L.append("  L = -1/4 F^2 - 1/4 F'^2 - (eps/2) F F' - 1/2 m_A'^2 A'^2,")
     L.append("  eps(rho) = eps_0 * S(rho),   S(rho) = 1 - (sigma(rho)/sigma_0)^2.")
     L.append("")
@@ -254,25 +259,14 @@ def report() -> str:
     L.append(f"  Borderline:                   {n_borderline}")
     L.append(f"  Excluded:                     {n_excluded}")
     L.append("")
-    if n_excluded == 0:
-        L.append("  >>> NVG dark-photon ansatz (eps_0 ~ 1, m_A' ~ 1.16 GeV)")
-        L.append("      is consistent with ALL standard astrophysical, ")
-        L.append("      cosmological, and laboratory bounds on kinetic ")
-        L.append("      mixing, by virtue of TWO independent suppressions:")
-        L.append("        (i) density activation S(rho) ~ 0 in stars / labs;")
-        L.append("       (ii) kinematic blockade for m_A' > T_environment.")
-        L.append("")
-        L.append("      Only environment where the mechanism can operate")
-        L.append("      is a dense NS / proto-NS core. Falsification therefore")
-        L.append("      requires either")
-        L.append("        (a) a NS merger EM counterpart with anomalous")
-        L.append("            magnetic-field amplification signature, or")
-        L.append("        (b) a heavy dark-photon search in dense-matter")
-        L.append("            laboratory analogues (heavy-ion collisions")
-        L.append("            at FAIR/CBM where mu_B reaches ~ n_0).")
+    L.append("  >>> Conditional benchmark summary only: the table compares")
+    L.append("      density-suppressed eps_eff with representative published bounds.")
+    if n_excluded:
+        L.append(f"      {n_excluded} environment(s) are marked EXCLUDED by this benchmark;")
     else:
-        L.append(f"  >>> ANSATZ EXCLUDED in {n_excluded} environment(s); ")
-        L.append("      see table above. Need to revisit m_A' or eps_0.")
+        L.append("      no environment is marked EXCLUDED by this benchmark.")
+    L.append("      No complete event/transport likelihood is available, so no")
+    L.append("      global astrophysical, cosmological, or laboratory exclusion is claimed.")
     L.append("")
     L.append("-" * 78)
     L.append("Predictions distinguishing density-suppressed mixing from")

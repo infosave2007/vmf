@@ -1,0 +1,198 @@
+{
+  "canonical_selection": {
+    "parameters": {
+      "cs2_q": 0.3333333333333333,
+      "delta_eps_ratio": 0.0,
+      "n_trans_ratio": 2.0
+    },
+    "provenance": {
+      "constraints": [
+        {
+          "criterion": "M_max >= 2.01 M_sun",
+          "name": "PSR J0740+6620 maximum mass",
+          "source": "J0740"
+        },
+        {
+          "criterion": "70 <= Lambda_tilde <= 720",
+          "name": "GW170817 binary tidal deformability",
+          "source": "GW170817"
+        },
+        {
+          "criterion": "11.2 <= R_1.4 <= 13.2 km",
+          "name": "NICER J0030+0451 radius",
+          "source": "NICER"
+        }
+      ],
+      "held_out_observations": [],
+      "independent": false,
+      "kind": "in_sample_selection",
+      "observations_used_for_selection": [
+        "J0740",
+        "GW170817",
+        "NICER"
+      ],
+      "selected_by": "verification/nvg_ns_parameter_scan.py",
+      "selection_method": "best_margin_survivor_on_explicit_grid",
+      "selection_note": "J0740/GW170817/NICER constraints are selection inputs; all downstream comparisons are conditional/in-sample and carry no independent evidence weight.",
+      "status": "CONDITIONAL_IN_SAMPLE"
+    },
+    "selected_point": {
+      "cs2_q": 0.3333333333333333,
+      "delta_eps_ratio": 0.0,
+      "n_trans_ratio": 2.0
+    }
+  },
+  "figure": "verification/fig_iloveq_universal.png",
+  "sequence": [
+    {
+      "I_bar_radius_estimate": 21.741606141456305,
+      "I_bar_transform": 21.533497315198478,
+      "I_relative_deviation": 0.009664422978377189,
+      "Lambda": 2855.0811086588888,
+      "M": 1.0,
+      "Q_bar_transform": 42.899839274592615,
+      "Q_relative_deviation": 0.0,
+      "R": 12.18245828390829,
+      "k2": 0.11096224382071984
+    },
+    {
+      "I_bar_radius_estimate": 18.68322390748477,
+      "I_bar_transform": 18.818586661822646,
+      "I_relative_deviation": 0.0071930350971833295,
+      "Lambda": 1811.5793582645183,
+      "M": 1.1,
+      "Q_bar_transform": 30.346400193369423,
+      "Q_relative_deviation": 0.0,
+      "R": 12.271399269709546,
+      "k2": 0.10901000059643647
+    },
+    {
+      "I_bar_radius_estimate": 16.291851310481317,
+      "I_bar_transform": 16.72289784033485,
+      "I_relative_deviation": 0.025775827489292427,
+      "Lambda": 1202.32591985489,
+      "M": 1.2,
+      "Q_bar_transform": 22.521919713747298,
+      "Q_relative_deviation": 0.0,
+      "R": 12.351056752589908,
+      "k2": 0.10955013787024846
+    },
+    {
+      "I_bar_radius_estimate": 14.492965592010362,
+      "I_bar_transform": 14.827673050474635,
+      "I_relative_deviation": 0.02257316150180143,
+      "Lambda": 781.8566384082814,
+      "M": 1.3,
+      "Q_bar_transform": 16.704950204921627,
+      "Q_relative_deviation": 0.0,
+      "R": 12.479853756428733,
+      "k2": 0.1001700166437509
+    },
+    {
+      "I_bar_radius_estimate": 13.870320678218304,
+      "I_bar_transform": 14.230396504271496,
+      "I_relative_deviation": 0.025303288347946547,
+      "Lambda": 672.6792797807228,
+      "M": 1.338,
+      "Q_bar_transform": 15.100925695769783,
+      "Q_relative_deviation": 0.0,
+      "R": 12.510285058107371,
+      "k2": 0.09850424136893694
+    },
+    {
+      "I_bar_radius_estimate": 12.93690440146381,
+      "I_bar_transform": 13.274719652643734,
+      "I_relative_deviation": 0.025448013970874796,
+      "Lambda": 519.4223807918132,
+      "M": 1.4,
+      "Q_bar_transform": 12.749091385752688,
+      "Q_relative_deviation": 0.0,
+      "R": 12.550001000000044,
+      "k2": 0.09414165833118668
+    },
+    {
+      "I_bar_radius_estimate": 11.623646897100137,
+      "I_bar_transform": 12.046440194839073,
+      "I_relative_deviation": 0.035096949048904,
+      "Lambda": 358.4388910776059,
+      "M": 1.5,
+      "Q_bar_transform": 10.094596953413227,
+      "Q_relative_deviation": 0.0,
+      "R": 12.594385171797734,
+      "k2": 0.09013301887188872
+    },
+    {
+      "I_bar_radius_estimate": 10.550142806020148,
+      "I_bar_transform": 11.139085877017417,
+      "I_relative_deviation": 0.05287175963086869,
+      "Lambda": 263.2477764603866,
+      "M": 1.6,
+      "Q_bar_transform": 8.383826871488546,
+      "Q_relative_deviation": 0.0,
+      "R": 12.650001000000046,
+      "k2": 0.08958132115783095
+    },
+    {
+      "I_bar_radius_estimate": 9.582857209238748,
+      "I_bar_transform": 10.026258447702592,
+      "I_relative_deviation": 0.044223998491226255,
+      "Lambda": 171.1807301672194,
+      "M": 1.7,
+      "Q_bar_transform": 6.556789741682517,
+      "Q_relative_deviation": 0.0,
+      "R": 12.650001000000046,
+      "k2": 0.07874741476517305
+    },
+    {
+      "I_bar_radius_estimate": 8.722428550142395,
+      "I_bar_transform": 9.136879271003245,
+      "I_relative_deviation": 0.04536020544521687,
+      "Lambda": 115.06263742885623,
+      "M": 1.8,
+      "Q_bar_transform": 5.297999942599749,
+      "Q_relative_deviation": 0.0,
+      "R": 12.609268692636581,
+      "k2": 0.07160854401696905
+    },
+    {
+      "I_bar_radius_estimate": 7.948275693088626,
+      "I_bar_transform": 8.241031711125702,
+      "I_relative_deviation": 0.035524195064295654,
+      "Lambda": 72.29748546376669,
+      "M": 1.9,
+      "Q_bar_transform": 4.199119702444859,
+      "Q_relative_deviation": 0.0,
+      "R": 12.523480116942817,
+      "k2": 0.06107407873493215
+    },
+    {
+      "I_bar_radius_estimate": 7.145391680396581,
+      "I_bar_transform": 7.341360850663211,
+      "I_relative_deviation": 0.02669384794631452,
+      "Lambda": 41.39712168166362,
+      "M": 2.0,
+      "Q_bar_transform": 3.2554990080477606,
+      "Q_relative_deviation": 0.0,
+      "R": 12.271524246193694,
+      "k2": 0.05003180807957886
+    }
+  ],
+  "source": "nvg_tidal_deformability.EOS + solve_tov_tidal; Yagi-Yunes transforms",
+  "source_script": "verification/nvg_iloveq_plot.py",
+  "status": "TRANSFORM_ONLY_NO_INDEPENDENT_IQ_SOLVE",
+  "summary": {
+    "deviation_metric": "max_absolute_relative_per_point",
+    "independent_i_solve": false,
+    "independent_q_solve": false,
+    "lambda_14": 519.4223807918132,
+    "max_deviation": 0.05287175963086869,
+    "max_deviation_semantics": "maximum absolute per-point relative deviation; descriptive only; no tolerance or acceptance gate",
+    "max_i_relative_deviation": 0.05287175963086869,
+    "max_q_relative_deviation": 0.0,
+    "max_relative_deviation": 0.05287175963086869,
+    "sequence_count": 12,
+    "source": "nvg_tidal_deformability.EOS + solve_tov_tidal; Yagi-Yunes transforms",
+    "status": "TRANSFORM_ONLY_NO_INDEPENDENT_IQ_SOLVE",
+    "tolerance_gate": null
+  }
+}

@@ -1,3 +1,7 @@
+# Provenance: deterministic snapshot of verification/nvg_em_response_derivation.py
+# Snapshot status: NON_EVIDENCE_MODEL_OUTPUT (formula/model calculation only)
+# Reproduce: python verification/nvg_em_response_derivation.py
+# No independent photon-polarisation or magnetar event likelihood is present.
 NVG EM-response companion derivation
 ==============================================================================
 

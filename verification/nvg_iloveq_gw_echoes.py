@@ -1,190 +1,126 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Advanced Astrophysical Predictions (AA–BB)
+"""I--Love transform and echo-template calculations.
 
-AA. Universal I-Love-Q Relations for VMF EOS
-BB. Gravitational Wave Echo Template Bank Generation
+The I--Love relation is evaluated from the Lambda produced by the maintained
+TOV/tidal chain.  There is no second, independent moment-of-inertia solve in
+this entry point, so the relation is reported as a transform rather than a
+"proof" of EOS consistency.  Echo delays come from the canonical Hayward
+calculator instead of a copied target value.
 """
+
+from __future__ import annotations
+
+import math
+import sys
+from pathlib import Path
+
 import numpy as np
 
-print("=" * 72)
-print("  NVG: ADVANCED ASTROPHYSICAL PREDICTIONS (AA–BB)")
-print("=" * 72)
 
-# Constants
-G_cgs = 6.674e-8
-c_cgs = 2.998e10
-M_sun_g = 1.989e33
-# Conversion factor from g*cm^2 to dimensionless: 1 / (M^3) in geometric units
-# M_geom = M_g * (G/c^2)
-G_c2 = G_cgs / (c_cgs**2)
+def _chain() -> dict:
+    verification_dir = Path(__file__).resolve().parent
+    if str(verification_dir) not in sys.path:
+        sys.path.insert(0, str(verification_dir))
+    from nvg_bbn_reionization import compute_eos_chain
+
+    chain = compute_eos_chain()
+    if chain.get("source") != "nvg_tidal_deformability.EOS + solve_tov_tidal":
+        raise RuntimeError("I--Love sibling is not connected to the canonical EOS chain")
+    if len(chain.get("pressure_grid", ())) != 120:
+        raise RuntimeError("I--Love sibling must use the canonical 120-point pressure grid")
+    return chain
 
 
-# ═══════════════════════════════════════════════════════════════════════
-# AA. UNIVERSAL I-LOVE-Q RELATIONS
-# ═══════════════════════════════════════════════════════════════════════
-print("\n" + "=" * 72)
-print("  AA. UNIVERSAL I-LOVE-Q RELATIONS (VMF EOS)")
-print("=" * 72)
+def universal_i_from_lambda(lambda_14: float) -> dict:
+    """Return the Yagi--Yunes I-bar transform for a computed Lambda."""
+    if not math.isfinite(lambda_14) or lambda_14 <= 0.0:
+        raise ValueError("Lambda must be a finite positive value")
+    a, b, c, d, e = 1.496, 0.05951, 0.02238, -6.953e-4, 8.345e-6
+    ln_l = math.log(lambda_14)
+    ln_i = a + b * ln_l + c * ln_l**2 + d * ln_l**3 + e * ln_l**4
+    i_bar = math.exp(ln_i)
+    G_cgs, c_cgs, M_sun_g = 6.674e-8, 2.998e10, 1.989e33
+    m_geom = 1.4 * M_sun_g * G_cgs / c_cgs**2
+    i_cgs = i_bar * m_geom**3 / (G_cgs / c_cgs**2)
+    return {"lambda": float(lambda_14), "i_bar": i_bar, "i_cgs": i_cgs}
 
-# From Yagi & Yunes (2013, 2017), NSs exhibit EOS-independent relations
-# between Moment of Inertia (I), Tidal Deformability (Love, \Lambda), 
-# and Quadrupole Moment (Q).
-# 
-# Dimensionless variables:
-# I_bar = I / M^3
-# Lambda = \lambda / M^5 (already dimensionless)
-#
-# Universal fit for I_bar(Lambda):
-# ln(I_bar) = a + b*ln(\Lambda) + c*ln(\Lambda)^2 + d*ln(\Lambda)^3 + e*ln(\Lambda)^4
-# Yagi-Yunes coefficients:
-a_I = 1.496
-b_I = 0.05951
-c_I = 0.02238
-d_I = -6.953e-4
-e_I = 8.345e-6
 
-# VMF EOS predictions (from previous scripts):
-Lambda_14 = 177.0
-I_1338_cgs = 1.116e45  # g cm^2 (for double pulsar J0737-3039A)
+def generate_echo_params(mass_msun: float, a_spin: float = 0.7) -> dict:
+    """Combine canonical Hayward delay with a standard QNM frequency estimate."""
+    verification_dir = Path(__file__).resolve().parent
+    if str(verification_dir) not in sys.path:
+        sys.path.insert(0, str(verification_dir))
+    from nvg_gw_echoes import calculate_echo_delay
 
-# Calculate universal prediction from Lambda_14
-ln_L = np.log(Lambda_14)
-ln_I_univ = a_I + b_I*ln_L + c_I*(ln_L**2) + d_I*(ln_L**3) + e_I*(ln_L**4)
-I_bar_univ = np.exp(ln_I_univ)
+    G_cgs, c_cgs, M_sun_g = 6.674e-8, 2.998e10, 1.989e33
+    if not (0.0 <= a_spin < 1.0):
+        raise ValueError("spin must be in [0, 1)")
+    f_qnm = c_cgs**3 / (2.0 * np.pi * G_cgs * mass_msun * M_sun_g)
+    f_qnm *= 1.0 - 0.63 * (1.0 - a_spin) ** 0.3
+    tau = 2.0 / (np.pi * f_qnm)
+    delay = calculate_echo_delay(float(mass_msun))
+    return {
+        "mass_msun": float(mass_msun),
+        "spin": float(a_spin),
+        "f_qnm_hz": float(f_qnm),
+        "tau_s": float(tau),
+        "delta_t_echo_s": float(delay["delta_t_echo_s"]),
+        "source": "nvg_gw_echoes.calculate_echo_delay",
+    }
 
-M_14_geom = 1.4 * M_sun_g * G_c2  # cm
-I_14_geom_cm3 = I_bar_univ * (M_14_geom**3)
-I_14_predicted = I_14_geom_cm3 / (G_cgs / (c_cgs**2))
 
-print(f"  VMF prediction for M = 1.4 M_sun:")
-print(f"  Tidal deformability:  Λ = {Lambda_14}")
-print(f"")
-print(f"  Yagi-Yunes Universal Relation prediction:")
-print(f"  Dimensionless I_bar = {I_bar_univ:.3f}")
-print(f"  Predicted I_1.4 = {I_14_predicted:.2e} g cm²")
-print(f"")
-print(f"  Comparison with VMF numerical TOV integration:")
-print(f"  VMF TOV I_1.338 ≈ 1.116e45 g cm²")
-print(f"  Extrapolated I_1.4 ≈ {1.116e45 * (1.4/1.338)**1.5:.2e} g cm²")
-print(f"")
+def compute_results() -> dict:
+    chain = _chain()
+    lambda_14 = float(np.interp(1.4, chain["masses"], chain["lambdas"]))
+    i_love = universal_i_from_lambda(lambda_14)
+    i_love.update(
+        {
+            "source": chain["source"],
+            "pressure_grid_points": int(len(chain["pressure_grid"])),
+            "selection_provenance": chain["selection_provenance"],
+        }
+    )
+    echo_rows = [generate_echo_params(mass, spin) for mass in (30.0, 65.0, 150.0) for spin in (0.0, 0.7)]
+    return {
+        "i_love": {
+            **i_love,
+            "status": "TRANSFORM_ONLY_NO_INDEPENDENT_I_COMPARISON",
+        },
+        "echoes": {
+            "rows": echo_rows,
+            "status": "COMPUTED_MODEL_TEMPLATE_NO_DATA_COMPARISON",
+        },
+    }
 
-error_pct = abs(I_14_predicted - 1.116e45 * (1.4/1.338)**1.5) / I_14_predicted * 100
 
-print(f"  Deviation: {error_pct:.2f}%")
-print(f"""
-  OBSERVATIONAL IMPACT:
-  The universal I-Love-Q relations hold to ~1% accuracy for any
-  physically viable hadronic EOS. The VMF EOS yields a deviation
-  of {error_pct:.2f}%, perfectly placing it within the universal curve bounds.
-  
-  This is a highly non-trivial consistency check. It proves that
-  the core density profiles predicted by the VMF model (derived 
-  from QCD vacuum scaling) form stable stellar structures that
-  obey the deep symmetries of General Relativity.
-  
-  STATUS: ✅ CONSISTENT with I-Love-Q universality.
-""")
+RESULTS = compute_results()
 
-# ═══════════════════════════════════════════════════════════════════════
-# BB. GW ECHO TEMPLATE BANK GENERATION
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  BB. GW ECHO TEMPLATE GENERATION (MATCHED FILTERING)")
-print("=" * 72)
 
-# Standard ringdown: h(t) = A * exp(-t/tau) * cos(2 pi f t)
-# Echoes: h_echo(t) = sum_n (-R)^n * h(t - n*Delta_t)
-# For NVG Regular BHs, Delta_t depends on mass and spin.
+def main() -> None:
+    print("=" * 72)
+    print("  NVG: I–LOVE TRANSFORM AND GW ECHO TEMPLATES")
+    print("=" * 72)
+    ilove = RESULTS["i_love"]
+    print(f"AA. Computed EOS Lambda_1.4={ilove['lambda']:.3f}")
+    print(f"    Yagi–Yunes I-bar transform={ilove['i_bar']:.4f}")
+    print(f"    I from Lambda transform (no independent I solve)={ilove['i_cgs']:.3e} g cm²")
+    print(f"    status={ilove['status']}")
+    print(
+        f"    source={ilove['source']}; pressure_grid_points={ilove['pressure_grid_points']}"
+    )
+    print("    canonical selection status=CONDITIONAL_IN_SAMPLE (zero independent evidence weight)")
 
-def generate_echo_params(M_sol, a_spin=0.7):
-    import math
-    # Quasi-normal mode frequency (approximate for l=m=2)
-    # f_QNM ≈ c^3 / (2 pi G M) * (1 - 0.63(1-a)^0.3)
-    f_QNM = (c_cgs**3) / (2 * np.pi * G_cgs * M_sol * M_sun_g)
-    f_QNM_Hz = f_QNM * (1.0 - 0.63 * (1.0 - a_spin)**0.3)
-    
-    # Damping time
-    tau_QNM = 2.0 / (np.pi * f_QNM_Hz)  # rough approx for damping
-    
-    # NVG QCD Anchor parameters to get rho_c
-    M_Omega_0 = 859.0 # MeV
-    hbar_c = 197.327 # MeV fm
-    eps_max = M_Omega_0**4 / hbar_c**3  # MeV/fm^3
-    MeV_fm3_to_gcm3 = 1.7827e12
-    rho_c = eps_max * MeV_fm3_to_gcm3   # ~1.26e17 g/cm^3
+    print("BB. Echo template parameters from canonical delay calculator:")
+    for row in RESULTS["echoes"]["rows"]:
+        print(
+            f"    M={row['mass_msun']:.1f} M_sun, a={row['spin']:.1f}, "
+            f"f_QNM={row['f_qnm_hz']:.1f} Hz, "
+            f"tau={row['tau_s']*1e3:.3f} ms, "
+            f"Δt={row['delta_t_echo_s']*1e3:.3f} ms"
+        )
+    print(f"    status={RESULTS['echoes']['status']}")
+    print("No fixed Lambda/I pair or echo target is used as an acceptance claim.")
 
-    # Calculate regular core radius r_0 as event horizon cutoff scale delta
-    M_cgs = M_sol * M_sun_g
-    r_0 = (3.0 * M_cgs / (4.0 * math.pi * rho_c))**(1/3.0)
-    R_g = 2.0 * G_cgs * M_cgs / c_cgs**2
-    M_geom = R_g / 2.0
-    a = a_spin * M_geom
-    
-    # Kerr horizons in geometric units
-    r_plus = M_geom + math.sqrt(M_geom**2 - a**2) if M_geom > a else M_geom
-    r_minus = M_geom - math.sqrt(M_geom**2 - a**2) if M_geom > a else M_geom
-    
-    R_ph = 1.5 * R_g
-    delta = r_0
-    
-    # Evaluate tortoise coordinate travel time analytically:
-    # dt_echo = 2 * (r_star(R_ph) - r_star(r_plus + delta)) / c
-    term1 = R_ph - r_plus
-    if r_plus > r_minus:
-        term2 = (2.0 * M_geom * r_plus / (r_plus - r_minus)) * math.log((R_ph - r_plus) / delta)
-        term3 = (2.0 * M_geom * r_minus / (r_plus - r_minus)) * math.log((R_ph - r_minus) / (r_plus - r_minus))
-        dt = 2.0 * (term1 + term2 - term3) / c_cgs
-    else:
-        # Schwarzschild limit (a = 0)
-        dt = 2.0 * (term1 + 2.0 * M_geom * math.log((R_ph - r_plus) / delta)) / c_cgs
-    
-    return f_QNM_Hz, tau_QNM, dt
 
-masses = [30.0, 65.0, 150.0]
-spins = [0.0, 0.7]
-
-print(f"  Generating echo templates for LIGO/Virgo/KAGRA searches:\n")
-print(f"  {'Mass (M_sun)':>12} | {'Spin (a)':>8} | {'f_ringdown':>12} | {'τ_damping':>12} | {'Δt_echo':>12}")
-print("  " + "-" * 62)
-
-for M in masses:
-    for a in spins:
-        f_hz, tau_s, dt_s = generate_echo_params(M, a)
-        print(f"  {M:12.1f} | {a:8.2f} | {f_hz:9.0f} Hz | {tau_s*1000:9.1f} ms | {dt_s*1000:9.1f} ms")
-
-print(f"""
-  TEMPLATE BANK LOGIC:
-  The matched filtering SNR for echoes depends crucially on knowing
-  the exact phase shift (usually π) and delay time Δt.
-  
-  Unlike heuristic "exotic compact object" models where Δt is a free
-  parameter, NVG PREDICTS Δt deterministically from the QCD anchor
-  (the Hayward core scale l = M_Ω⁴/(ℏc)³ is fixed).
-  
-  - For GW150914 (M ≈ 65 M_sun, a ≈ 0.7): Δt ≈ 5.1 ms.
-  - This allows LIGO data analysts to search for a specific,
-    narrowly constrained template rather than scanning a blind
-    parameter space (which increases false-alarm rates).
-    
-  STATUS: ✅ COMPUTED — Ready for targeted LIGO/Virgo O5 searches.
-""")
-
-# ═══════════════════════════════════════════════════════════════════════
-# SUMMARY
-# ═══════════════════════════════════════════════════════════════════════
-print("=" * 72)
-print("  SUMMARY: ADVANCED PREDICTIONS (AA–BB)")
-print("=" * 72)
-print("""
-┌──────┬────────────────────────────────────┬────────────────────────┐
-│  #   │  Test                              │  Result                │
-├──────┼────────────────────────────────────┼────────────────────────┤
-│  AA  │  Universal I-Love-Q Relations      │  ✅ CONSISTENT         │
-│      │  (VMF EOS structural stability)    │  Matches < 1% error    │
-├──────┼────────────────────────────────────┼────────────────────────┤
-│  BB  │  GW Echo Template Bank             │  ✅ COMPUTED           │
-│      │  (Deterministic delays from QCD)   │  Ready for LIGO O5     │
-└──────┴────────────────────────────────────┴────────────────────────┘
-""")
-print("=" * 72)
+if __name__ == "__main__":
+    main()

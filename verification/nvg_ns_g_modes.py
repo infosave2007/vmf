@@ -1,156 +1,150 @@
 #!/usr/bin/env python3
-"""
-NVG Verification: Neutron Star g-mode core oscillation periods
---------------------------------------------------------------
-Solves the TOV equations to obtain the mass-density profile of a 1.4 M_sun
-neutron star, computes the Brunt-Vaisala frequency profile N(r) for composition
-g-modes, and calculates the fundamental g-mode period T_g (approx 80-120 ms).
-g-modes are a key target for next-generation detectors like the Einstein Telescope (ET).
+"""Neutron-star composition g-mode forward calculation.
+
+The TOV profile is computed from the canonical EOS.  The composition
+buoyancy parameter is only an assumed sensitivity input; no microphysical
+composition solver or detector likelihood is present, so the result is a
+forecast rather than a confirmed 66-ms observation.
 """
 
 from __future__ import annotations
+
+import math
 import os
 import sys
-import numpy as np
-import math
+from typing import Any
 
-# Add local path to import EOS solving classes
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from nvg_tidal_deformability_gw170817 import EOS, k_conv, M_sun_km
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+
+# The canonical tidal module owns the EOS/TOV chain used by the other NS
+# entry points.  Keep the imported aliases for compatibility with callers.
+from nvg_tidal_deformability import EOS, k_conv, M_sun_km, solve_tov_tidal
+
+EVIDENCE_STATUS = "FORECAST_ASSUMED_COMPOSITION_NO_INDEPENDENT_G_MODE_LIKELIHOOD"
+
 
 def integrate_tov_profiles(eos: EOS, P_center: float) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Integrates the TOV equations and returns radial profiles of r, m, P, and eps."""
-    dr = 0.01  # km
-    r = 1e-6   # km
-    m = 0.0    # geometric mass (km)
-    P = P_center
-    
-    r_profile = []
-    m_profile = []
-    p_profile = []
-    e_profile = []
-    
-    while P > 1e-5 and r < 100.0:
-        eps = eos.get_eps(P)
-        
-        r_profile.append(r)
-        m_profile.append(m)  # geometric mass in km
-        p_profile.append(P)
-        e_profile.append(eps)
-        
-        # RK4 step
-        def tov_derivs(r_val: float, m_val: float, P_val: float) -> tuple[float, float]:
-            if P_val <= 0:
-                return 0.0, 0.0
-            e_val = eos.get_eps(P_val)
-            e_k = e_val * k_conv
-            p_k = P_val * k_conv
-            f = r_val * (r_val - 2.0 * m_val)
-            if f <= 0.0:
-                return 0.0, 0.0
-            dm = 4.0 * math.pi * r_val**2 * e_k
-            dp = -(e_k + p_k) * (m_val + 4.0 * math.pi * r_val**3 * p_k) / f / k_conv
-            return dm, dp
-            
-        dm1, dp1 = tov_derivs(r, m, P)
-        dm2, dp2 = tov_derivs(r + 0.5*dr, m + 0.5*dr*dm1, P + 0.5*dr*dp1)
-        dm3, dp3 = tov_derivs(r + 0.5*dr, m + 0.5*dr*dm2, P + 0.5*dr*dp2)
-        dm4, dp4 = tov_derivs(r + dr, m + dr*dm3, P + dr*dp3)
-        
-        m += (dr / 6.0) * (dm1 + 2*dm2 + 2*dm3 + dm4)
-        P += (dr / 6.0) * (dp1 + 2*dp2 + 2*dp3 + dp4)
-        r += dr
-        
-    return np.array(r_profile), np.array(m_profile), np.array(p_profile), np.array(e_profile)
+    """Integrate mass, pressure and energy profiles for a central pressure."""
 
-def main():
-    print("=" * 80)
-    print("     NVG NEUTRON STAR COMPOSITION g-MODE OSCILLATIONS")
-    print("=" * 80)
-    
-    # 1. Load EOS
+    if not np.isfinite(P_center) or P_center <= 0.0:
+        raise ValueError("central pressure must be positive and finite")
+    eos.get_eps(P_center)
+    dr = 0.01
+    r = 1e-6
+    m = 0.0
+    pressure = float(P_center)
+    radii: list[float] = []
+    masses: list[float] = []
+    pressures: list[float] = []
+    energies: list[float] = []
+
+    def derivs(radius: float, mass: float, p_value: float) -> tuple[float, float]:
+        if p_value <= 0.0:
+            return 0.0, 0.0
+        energy = eos.get_eps(p_value)
+        ek = energy * k_conv
+        pk = p_value * k_conv
+        denom = radius * (radius - 2.0 * mass)
+        if denom <= 0.0:
+            return 0.0, 0.0
+        dm = 4.0 * math.pi * radius ** 2 * ek
+        dp = -(ek + pk) * (mass + 4.0 * math.pi * radius ** 3 * pk) / denom / k_conv
+        return dm, dp
+
+    while pressure > 1e-5 and r < 100.0:
+        radii.append(r)
+        masses.append(m)
+        pressures.append(pressure)
+        energies.append(float(eos.get_eps(pressure)))
+        dm1, dp1 = derivs(r, m, pressure)
+        dm2, dp2 = derivs(r + 0.5 * dr, m + 0.5 * dr * dm1, pressure + 0.5 * dr * dp1)
+        dm3, dp3 = derivs(r + 0.5 * dr, m + 0.5 * dr * dm2, pressure + 0.5 * dr * dp2)
+        dm4, dp4 = derivs(r + dr, m + dr * dm3, pressure + dr * dp3)
+        m += dr * (dm1 + 2.0 * dm2 + 2.0 * dm3 + dm4) / 6.0
+        pressure += dr * (dp1 + 2.0 * dp2 + 2.0 * dp3 + dp4) / 6.0
+        r += dr
+        if not np.isfinite(pressure) or not np.isfinite(m):
+            raise RuntimeError("non-finite TOV profile")
+    return np.asarray(radii), np.asarray(masses), np.asarray(pressures), np.asarray(energies)
+
+
+def trapezoidal_integral(values: np.ndarray, coordinates: np.ndarray) -> float:
+    """Integrate with NumPy's trapezoidal rule across supported versions."""
+
+    integration = getattr(np, "trapezoid", None)
+    if integration is None:
+        integration = np.trapz
+    return float(integration(values, coordinates))
+
+
+def gmode_period_ms(radii: np.ndarray, masses: np.ndarray, pressures: np.ndarray,
+                    energies: np.ndarray, delta_comp: float) -> float:
+    """Compute the WKB l=2 period for one assumed composition parameter."""
+
+    if not np.isfinite(delta_comp) or delta_comp <= 0.0:
+        raise ValueError("delta_comp must be positive and finite")
+    p_k = pressures * k_conv
+    e_k = energies * k_conv
+    denom = radii * (radii - 2.0 * masses)
+    valid = (radii > 0.5) & (pressures > 0.0) & (denom > 0.0)
+    if np.count_nonzero(valid) < 2:
+        raise RuntimeError("insufficient resolved core profile")
+    r_core = radii[valid]
+    g_local = (masses[valid] + 4.0 * np.pi * r_core ** 3 * p_k[valid]) / denom[valid]
+    e_minus_lambda = np.sqrt(np.maximum(1.0 - 2.0 * masses[valid] / r_core, 1e-12))
+    n_geom = g_local * e_minus_lambda * np.sqrt(np.maximum((e_k[valid] + p_k[valid]) / p_k[valid] * delta_comp, 0.0))
+    c_light = 2.99792e5
+    integral = trapezoidal_integral(n_geom / r_core, r_core)
+    return float((2.0 * np.pi ** 2 * np.sqrt(6.0)) / (integral * c_light) * 1000.0)
+
+
+def compute_gmode_state() -> dict[str, Any]:
     eos = EOS(p_match=1.5, Gamma=1.35)
-    
-    # 2. Bisection search to find Pc that yields exactly 1.40 M_sun
-    print("Searching for central pressure of a 1.4 M_sun neutron star...")
-    Pc_min, Pc_max = 5.0, 400.0
-    Pc_fit = 0.0
-    r_prof = m_prof = p_prof = e_prof = None
-    
+    p_lo, p_hi = 5.0, min(400.0, eos.pressure_max)
+    if p_hi <= p_lo:
+        raise RuntimeError("canonical EOS central-pressure bracket is empty")
     for _ in range(25):
-        Pc_mid = (Pc_min + Pc_max) / 2.0
-        r_p, m_p, p_p, e_p = integrate_tov_profiles(eos, Pc_mid)
-        # Final mass in M_sun
-        M_final = m_p[-1] / M_sun_km
-        if M_final < 1.40:
-            Pc_min = Pc_mid
+        p_mid = 0.5 * (p_lo + p_hi)
+        mass, _, _, _ = solve_tov_tidal(eos, p_mid)
+        if mass < 1.4:
+            p_lo = p_mid
         else:
-            Pc_max = Pc_mid
-            
-    Pc_fit = Pc_mid
-    r_prof, m_prof, p_prof, e_prof = integrate_tov_profiles(eos, Pc_fit)
-    M_ns = m_prof[-1] / M_sun_km
-    R_ns = r_prof[-1]
-    
-    print(f"Matched central pressure                 : {Pc_fit:.4f} MeV/fm³")
-    print(f"Neutron star mass                        : {M_ns:.3f} M_sun")
-    print(f"Neutron star radius                      : {R_ns:.3f} km")
-    print("-" * 80)
-    
-    # 3. Calculate buoyancy Brunt-Vaisala frequency profile N(r)
-    # N^2 = g^2 * e^{-2Lambda} * (eps + P) / P * delta_comp
-    # where delta_comp = 1/Gamma_eq - 1/Gamma_th.
-    # For a cold NS core, delta_comp ~ 1.5e-4 to 2.5e-4. Let's use 2.0e-4.
-    delta_comp = 2.0e-4
-    c_light = 2.99792e5  # km/s
-    
-    p_k = p_prof * k_conv
-    e_k = e_prof * k_conv
-    
-    # Gravitational acceleration profile g(r) in geometric units (km^-1)
-    g_local = (m_prof + 4.0 * np.pi * r_prof**3 * p_k) / (r_prof * (r_prof - 2.0 * m_prof))
-    
-    # General relativistic factor e^{-Lambda} = sqrt(1 - 2m/r)
-    e_minus_lambda = np.sqrt(1.0 - 2.0 * m_prof / r_prof)
-    
-    # Brunt-Vaisala frequency N(r) in km^-1
-    N_geom = g_local * e_minus_lambda * np.sqrt((e_prof + p_prof) / p_prof * delta_comp)
-    # Convert N to s^-1 (Hz)
-    N_sec = N_geom * c_light
-    
-    # Integrate WKB fundamental g-mode period: T_g = 2 * pi^2 / \int_0^R (N(r)/r) dr
-    # Avoid division by zero at the center: integrate from r = 0.5 km to R
-    core_mask = r_prof > 0.5
-    r_core = r_prof[core_mask]
-    N_core = N_geom[core_mask]
-    
-    integral = np.trapezoid(N_core / r_core, r_core)
-    
-    # Fundamental l=2 g-mode period
-    T_g_seconds = (2.0 * np.pi**2 * np.sqrt(6.0)) / (integral * c_light)
-    T_g_ms = T_g_seconds * 1000.0
-    
-    print(f"Buoyancy parameter delta_comp            : {delta_comp:.2e}")
-    print(f"Max Brunt-Vaisala frequency in core      : {np.max(N_sec):.2f} rad/s")
-    print(f"Core-averaged Brunt-Vaisala frequency    : {np.mean(N_sec[core_mask]):.2f} rad/s")
-    print(f"Fundamental l=2 g-mode period            : T_g = {T_g_ms:.2f} ms")
-    print("-" * 80)
-    
-    # Print profile table
-    sample_radii = [1.0, 3.0, 5.0, 7.0, 9.0, 10.0]
-    print(f"  {'Radius r (km)':<15} | {'m(r) (M_sun)':<15} | {'g(r) (km⁻¹)':<15} | {'N(r) (rad/s)':<15}")
-    print("  " + "-" * 65)
-    for rad in sample_radii:
-        if rad < R_ns:
-            idx = np.argmin(np.abs(r_prof - rad))
-            print(f"  {r_prof[idx]:<15.2f} | {m_prof[idx]/M_sun_km:<15.3f} | {g_local[idx]:<15.4f} | {N_sec[idx]:<15.2f}")
-            
-    print("-" * 80)
-    
-    # Assertions for correctness
-    assert T_g_ms > 50.0 and T_g_ms < 150.0, "Fundamental g-mode period out of physical bounds!"
-    
-    print("Neutron star g-mode period verification PASSED.")
+            p_hi = p_mid
+    profiles = integrate_tov_profiles(eos, p_mid)
+    mass = profiles[1][-1] / M_sun_km
+    radius = profiles[0][-1]
+    composition_grid = np.array([1.5e-4, 2.0e-4, 2.5e-4])
+    periods = np.array([gmode_period_ms(*profiles, value) for value in composition_grid])
+    return {
+        "central_pressure": float(p_mid),
+        "mass_msun": float(mass),
+        "radius_km": float(radius),
+        "delta_comp": composition_grid,
+        "period_ms": periods,
+        "status": EVIDENCE_STATUS,
+        "solver": "nvg_tidal_deformability.EOS + TOV profile + WKB",
+        "missing": "composition microphysics and independent g-mode detector data/likelihood",
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_gmode_state()
+    print("=" * 80)
+    print("  NVG NEUTRON-STAR COMPOSITION g-MODE (RUNTIME FORECAST)")
+    print("=" * 80)
+    print(f"Canonical profile: M={state['mass_msun']:.3f} M_sun, R={state['radius_km']:.3f} km")
+    for dc, period in zip(state["delta_comp"], state["period_ms"]):
+        print(f"delta_comp={dc:.2e} -> T_g={period:.2f} ms")
+    print(f"Status: {state['status']}")
+    print(f"Missing: {state['missing']}")
+    print("No detector confirmation is inferred from the WKB forecast.")
+    print("=" * 80)
+    return state
+
 
 if __name__ == "__main__":
     main()

@@ -1,3 +1,8 @@
+# Provenance: deterministic snapshot of verification/nvg_dark_photon_kinetic_mixing.py
+# Snapshot status: NON_EVIDENCE_MODEL_OUTPUT (no observed event likelihood)
+# Reproduce: python verification/nvg_dark_photon_kinetic_mixing.py
+# The table is runtime model bookkeeping; ALLOWED/BORDERLINE labels are not
+# astrophysical exclusions or confirmations.
 NVG dark-photon kinetic mixing with density-dependent eps(rho)
 ==============================================================================
 
@@ -45,10 +50,12 @@ Summary
   Borderline:                   1
   Excluded:                     0
 
-  >>> NVG dark-photon ansatz (eps_0 ~ 1, m_A' ~ 1.16 GeV)
-      is consistent with ALL standard astrophysical, 
-      cosmological, and laboratory bounds on kinetic 
-      mixing, by virtue of TWO independent suppressions:
+  >>> Runtime compatibility bookkeeping only (NON-EVIDENCE snapshot).
+      This calculation does not establish consistency with all standard
+      astrophysical, cosmological, or laboratory bounds: no complete
+      observed-event likelihood or transport model is implemented. The
+      density and kinematic suppressions are model assumptions, not tests.
+      The two assumed suppressions are:
         (i) density activation S(rho) ~ 0 in stars / labs;
        (ii) kinematic blockade for m_A' > T_environment.
 

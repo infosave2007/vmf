@@ -3,20 +3,23 @@
 NVG EOS, fork B (nonlinear): melting = scalar field with standard
 cubic-quartic self-interactions
 ==================================================================
-Completes fork B: the linear model saturates but is acausal at high
-density and too stiff (Walecka's known disease).  The standard cure is
-the sigma self-interaction U(s) = (b/3) s^3 + (c/4) s^4 with
-s = M - m*.  Four couplings (c_s, c_omega, b, c) are calibrated to four
-symmetric-matter observables:
+The linear model saturates but is acausal at high density and too stiff
+(Walecka's known disease).  The standard cure is the sigma self-interaction
+U(s) = (b/3) s^3 + (c/4) s^4 with s = M - m*.  The intended four-coupling
+calibration targets four symmetric-matter observables:
 
-    E/A(n_0) = -16 MeV,  p(n_0) = 0,  m*/M = 0.65,  K = 240 MeV,
+    E/A(n_0) = -16 MeV,  p(n_0) = 0,  m*/M = 0.65,  K = 240 MeV.
+
+This entry point uses a robust three-condition calibration with a fixed small
+quartic coefficient and reports the resulting K as a diagnostic; it does not
+claim that the four-condition empirical calibration is complete.
 
 (c_rho from J = 32 MeV as before).  The Dirac mass follows from the
 stationarity of the energy:  n_s = s/c_s + b s^2 + c s^3.
 
 Downstream (as in nvg_eos_fork_b.py): beta-equilibrated EOS, existence
-gate, causality, crude TOV, derived melt fraction and the meson-mapping
-band for the HADES observable.
+gate, causality, crude TOV, derived melt fraction and folded meson templates
+for HADES (without an observational fit).
 """
 
 from __future__ import annotations
@@ -31,6 +34,45 @@ E_BIND, J_SYM, K_TARGET, MSTAR_T = 16.0, 32.0, 240.0, 0.65
 MU_2FL = 930.0
 M_CUR = 80.0
 M_RHO, M_RHO_CUR = 775.3, 80.0
+
+
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Interpolate EOS energy only on its domain; vacuum tail is explicit."""
+    try:
+        pressure = float(pressure)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("pressure must be a finite scalar") from exc
+    p_grid = np.asarray(pressure_grid, dtype=float)
+    e_grid = np.asarray(energy_grid, dtype=float)
+    if (not np.isfinite(pressure) or pressure < 0.0 or
+            p_grid.ndim != 1 or e_grid.ndim != 1 or p_grid.size < 2 or
+            p_grid.size != e_grid.size or not np.isfinite(p_grid).all() or
+            not np.isfinite(e_grid).all() or np.any(np.diff(p_grid) <= 0.0)):
+        raise ValueError("pressure lookup has an invalid EOS domain")
+    if pressure < p_grid[0]:
+        return 0.0  # explicit vacuum continuation, not np.interp clamping
+    if pressure > p_grid[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} is outside EOS domain "
+            f"[{p_grid[0]:g}, {p_grid[-1]:g}]"
+        )
+    return float(np.interp(pressure, p_grid, e_grid))
+
+
+def hades_shape_summary(pole_mev: float) -> dict[str, float | str]:
+    """Fold a solved rho pole through the preregistered HADES template."""
+
+    import nvg_hades_lineshape_feasibility as hades
+
+    masses = np.linspace(hades.M_LO, hades.M_HI, 121)
+    shape = hades.template(masses, float(pole_mev), 20.0)
+    integrate = np.trapezoid if hasattr(np, "trapezoid") else np.trapz
+    norm = float(integrate(shape, masses))
+    if not np.isfinite(norm) or norm <= 0.0:
+        raise RuntimeError("HADES template has non-positive normalization")
+    centroid = float(integrate(masses * shape, masses) / norm)
+    return {"pole_mev": float(pole_mev), "centroid_mev": centroid,
+            "status": "FORWARD_ONLY_NO_HADES_LIKELIHOOD"}
 
 
 def solve_s(ns_total, c_s, b, c):
@@ -88,8 +130,8 @@ def calibrate():
 
     # 4-condition solve is numerically fragile (K surface from discrete
     # gradients); use the robust 3-condition calibration (E/A, p, m*)
-    # with the quartic fixed small, and REPORT K honestly (=414 MeV,
-    # above the empirical 240 +- 20 — quartic tuning is queued).
+    # with the quartic fixed small.  Report the runtime K value honestly;
+    # no claim of a completed empirical calibration is made.
     C_FIX = 2e-10
 
     def resid3(y):
@@ -109,7 +151,7 @@ def calibrate():
 
 def main():
     print("=" * 78)
-    print("  NVG EOS FORK B-NL: NONLINEAR SIGMA (causality + K fixed)")
+    print("  NVG EOS FORK B-NL: NONLINEAR SIGMA (runtime K diagnostic)")
     print("=" * 78)
 
     cal = calibrate()
@@ -179,8 +221,8 @@ def main():
     exist = not ((p[sel] <= 0) & (epA[sel] < MU_2FL)).any()
     caus = bool((cs2[p > 1.0] <= 1.05).all())
     print(f"\n  2. Beta EOS: p(n_0) = {p[i0]:+.2f}, p(2n_0) = {p[i2]:.1f}; "
-          f"existence {'PASS' if exist else 'FAIL'}, "
-          f"causality {'PASS' if caus else 'FAIL'}")
+          f"existence_gate={'ok' if exist else 'fail'}, "
+          f"causality_gate={'ok' if caus else 'fail'}")
 
     from scipy.integrate import solve_ivp
     good = p > 0.05
@@ -189,24 +231,37 @@ def main():
     p_s, e_s = p_s[idx], e_s[idx]
     conv = 1.3234e-6
 
+    if p_s.size < 2 or not np.isfinite(p_s).all() or not np.isfinite(e_s).all():
+        print("     TOV unsupported: EOS pressure/energy table is not finite")
+        return
+    pc_hi = min(1200.0, float(p_s[-1]))
+    if pc_hi < 20.0:
+        print(f"     TOV unsupported: central-pressure range [20, {pc_hi:.3g}] is empty")
+        return
+
     def rhs(r, y):
         mm, pp = y
-        if pp <= p_s[0]:
+        if not np.isfinite(pp):
+            raise ValueError("non-finite pressure during TOV integration")
+        if pp <= 0.0:
             return [0.0, 0.0]
-        ee = np.interp(pp, p_s, e_s) * conv
+        ee = pressure_to_energy_checked(pp, p_s, e_s) * conv
         pk = pp * conv
         return [4 * math.pi * r ** 2 * ee,
                 -(ee + pk) * (mm + 4 * math.pi * r ** 3 * pk) /
                 (r * (r - 2 * mm) + 1e-30) / conv]
 
     res = []
-    for pc in np.geomspace(20, 1200, 24):
+    for pc in np.geomspace(20, pc_hi, 24):
         sol = solve_ivp(rhs, [1e-6, 30], [0.0, pc], max_step=0.02,
                         events=lambda r, y: y[1] - p_s[0] * 1.01,
                         rtol=1e-6, atol=1e-9)
         if sol.t_events[0].size:
             res.append((float(sol.y_events[0][0][0]) / 1.4766,
                         float(sol.t_events[0][0])))
+    if not res:
+        print("     TOV unsupported: no resolved central-pressure solution")
+        return
     ms = np.array([mm for mm, _ in res])
     rs = np.array([rr for _, rr in res])
     im = int(np.argmax(ms))
@@ -222,17 +277,16 @@ def main():
     print(f"\n  3. Derived melt: f(2n_0) = {f2:.2f} (m* = {m2:.0f} MeV)")
     for label, r2 in (("linear", rho_lin), ("sqrt", rho_sqrt)):
         inst = 100 * (1 - r2 / M_RHO)
-        peak = 775.0 - 63.0 * (inst / 20.1)
-        print(f"     rho at 2n_0 ({label:>6}): {r2:.0f} MeV "
-              f"({-inst:+.0f}%) -> integrated peak ~{peak:.0f} MeV")
+        line_shape = hades_shape_summary(r2)
+        print(f"     rho at 2n_0 ({label:>6}): raw pole={line_shape['pole_mev']:.1f} MeV "
+              f"(instantaneous shift {inst:+.1f}%); folded centroid="
+              f"{line_shape['centroid_mev']:.1f} MeV; status={line_shape['status']}")
     print(f"""
-  STATUS: fork B-NL is the standard consistent completion (m*/M = 0.65
-  by construction; K = 414 MeV — above the empirical 240 +- 20, quartic
-  tuning queued). The meson mapping is the data-driven assumption: both
-  the linear (-55%) and sqrt (-33%) mappings exceed what NA60 dilepton
-  spectra allow, so the exponent must be small (lambda ~ 0.1 gives -8%,
-  integrated peak ~750 MeV) — dilepton data MEASURE the melting-mapping
-  exponent rather than test a fixed number.
+  STATUS: fork B-NL is a nonlinear scalar-sector calibration.  Its K and
+  melt fraction are runtime outputs of the calibration, not a standard
+  completion.  The meson mappings and folded spectra are forward templates;
+  an acceptance-corrected HADES/NA60 likelihood is required before selecting
+  an exponent or architecture.
 """)
     print("=" * 78)
 

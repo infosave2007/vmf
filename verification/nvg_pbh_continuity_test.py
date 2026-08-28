@@ -1,56 +1,63 @@
 #!/usr/bin/env python3
+"""Audit the PBH ladder without overstating it as a continuous spectrum.
+
+The maintained model defines discrete rungs ``M_N = 0.38 * 4**N``.  This
+entry point computes those rungs and explicitly reports that occupancy,
+abundance, and subsequent accretion are not supplied; therefore no PBH--SMBH
+continuity or JWST resolution claim follows from this calculation alone.
 """
-NVG Verification: PBH-to-SMBH Continuity Test
----------------------------------------------
-Generates the continuous mass spectrum of Primordial Black Holes (PBH)
-from cycle 1 to cycle 76, proving the link between Dark Matter (asteroid mass)
-and JWST Supermassive Black Hole seeds.
-"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
 import numpy as np
 
-print("=" * 70)
-print(" NVG PBH-to-SMBH CONTINUITY TEST")
-print("=" * 70)
 
-# NVG predicts PBH mass is proportional to the horizon mass at bounce
-# M_pbh(N) = M_Planck * 4^N * efficiency
-# Cycle 0 starts at Planck scale.
-M_0_pbh = 1e-22  # M_sun (First cycle PBH mass)
-f_growth = 4.0
+def ladder(cycles: np.ndarray | list[int]) -> np.ndarray:
+    verification_dir = Path(__file__).resolve().parent
+    if str(verification_dir) not in sys.path:
+        sys.path.insert(0, str(verification_dir))
+    from nvg_pbh_mass_spectrum import get_pbh_mass
 
-cycles = np.arange(1, 77)
-pbh_mass_msun = M_0_pbh * (f_growth)**(cycles / 1.5)
+    return np.asarray([get_pbh_mass(int(cycle)) for cycle in cycles], dtype=float)
 
-print("  PBH Mass Spectrum Across Tolman Cycles:")
-print("  ---------------------------------------")
 
-for c in [1, 10, 22, 30, 40, 50, 60, 70, 73, 75]:
-    mass = pbh_mass_msun[c-1]
-    
-    classification = ""
-    if mass < 1e-18:
-        classification = "Hawking Evaporated (Planck relics)"
-    elif 1e-18 <= mass <= 1e-15:
-        classification = "Evaporating today (Gamma-ray background)"
-    elif 1e-15 <= mass <= 1e-10:
-        classification = "Asteroid Window (DARK MATTER)"
-    elif 1e-10 < mass < 1.0:
-        classification = "Sub-Solar (Microlensing target)"
-    elif 1.0 <= mass < 1e3:
-        classification = "Stellar Mass PBH (LIGO background)"
-    elif 1e3 <= mass < 1e5:
-        classification = "IMBH (Globular cluster seeds)"
-    else:
-        classification = "Supermassive Seeds (JWST Quasars UHZ1)"
-        
-    print(f"  Cycle {c:2d} : M = {mass:8.1e} M_sun  -> {classification}")
+def compute_results() -> dict:
+    cycles = np.arange(-28, 11, dtype=int)
+    masses = ladder(cycles)
+    if not np.all(np.diff(masses) > 0.0):
+        raise RuntimeError("PBH ladder is not strictly increasing")
+    rows = [
+        {"cycle": int(cycle), "mass_msun": float(mass)}
+        for cycle, mass in zip(cycles, masses)
+    ]
+    return {
+        "rows": rows,
+        "min_mass_msun": float(masses[0]),
+        "max_mass_msun": float(masses[-1]),
+        "status": "DISCRETE_LADDER_ONLY_NO_SMBH_CONTINUITY_PROOF",
+    }
 
-print("\n  OBSERVATIONAL IMPACT:")
-print("  The cyclic entropy growth (4^N) creates a continuous, unbroken spectrum.")
-print("  Cycles 30-40 naturally populate the 'Asteroid mass window' (10^-14 M_sun),")
-print("  perfectly evading LIGO and EROS bounds to form Dark Matter.")
-print("  Meanwhile, the most recent cycles (70-75) naturally produce ~10^4 - 10^5 M_sun")
-print("  objects, solving the JWST 'impossible early galaxies' problem without")
-print("  requiring unphysical super-Eddington accretion.")
-print("  STATUS: ✅ PBH-to-SMBH CONTINUITY PROVEN")
-print("======================================================================")
+
+RESULTS = compute_results()
+
+
+def main() -> None:
+    print("=" * 70)
+    print(" NVG PBH MASS LADDER AUDIT")
+    print("=" * 70)
+    print("Computed maintained rungs (selected cycles):")
+    selected = {1, 10, 22, 30, 40, 50, 60, 70, 73, 75}
+    for row in RESULTS["rows"]:
+        if row["cycle"] in selected:
+            print(f"  cycle {row['cycle']:>3d}: M={row['mass_msun']:.6e} M_sun")
+    print(f"Mass range: {RESULTS['min_mass_msun']:.3e} .. {RESULTS['max_mass_msun']:.3e} M_sun")
+    print(f"STATUS: {RESULTS['status']}")
+    print("No abundance, occupancy, accretion, or observational-continuity result is computed.")
+    print("=" * 70)
+
+
+if __name__ == "__main__":
+    main()

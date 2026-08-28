@@ -16,10 +16,8 @@ pinned value, and propagates to the observables:
 
   - existence gate (no self-bound u,d phase), causality, p(2 n_0);
   - crude TOV (M_max, R_1.4; no crust, +-0.4 km);
-  - the pinned instantaneous VMF melt at 2 n_0 and the corresponding
-    integrated dielectron peak (the HADES observable) under the
-    kappa-universality mapping — now essentially parameter-free, since
-    kappa_1 is no longer adjustable.
+  - the pinned instantaneous VMF melt at 2 n_0 and a folded dielectron
+    line-shape template.  No observed HADES likelihood is available here.
 
 The interesting outcome either way: fork A converts the melting from a
 fitted dial into a saturation-derived constant, and the meson shift
@@ -38,6 +36,50 @@ N0, M_NUC = base.n_0, base.M_N
 E_BIND, J_SYM = 16.0, 32.0
 MU_2FL = 930.0
 K2 = 0.8
+
+
+def pressure_to_energy_checked(pressure, pressure_grid, energy_grid):
+    """Interpolate EOS energy only on its domain; vacuum tail is explicit."""
+    try:
+        pressure = float(pressure)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("pressure must be a finite scalar") from exc
+    p_grid = np.asarray(pressure_grid, dtype=float)
+    e_grid = np.asarray(energy_grid, dtype=float)
+    if (not np.isfinite(pressure) or pressure < 0.0 or
+            p_grid.ndim != 1 or e_grid.ndim != 1 or p_grid.size < 2 or
+            p_grid.size != e_grid.size or not np.isfinite(p_grid).all() or
+            not np.isfinite(e_grid).all() or np.any(np.diff(p_grid) <= 0.0)):
+        raise ValueError("pressure lookup has an invalid EOS domain")
+    if pressure < p_grid[0]:
+        return 0.0  # explicit vacuum continuation, not np.interp clamping
+    if pressure > p_grid[-1]:
+        raise ValueError(
+            f"pressure {pressure:g} is outside EOS domain "
+            f"[{p_grid[0]:g}, {p_grid[-1]:g}]"
+        )
+    return float(np.interp(pressure, p_grid, e_grid))
+
+
+def hades_shape_summary(pole_mev: float) -> dict[str, float | str]:
+    """Fold the solved pole through the preregistered HADES template.
+
+    This is a forward line-shape calculation only.  There is no observed
+    HADES likelihood here, and no conversion from an instantaneous shift to a
+    preferred peak is permitted.
+    """
+
+    import nvg_hades_lineshape_feasibility as hades
+
+    masses = np.linspace(hades.M_LO, hades.M_HI, 121)
+    shape = hades.template(masses, float(pole_mev), 20.0)
+    integrate = np.trapezoid if hasattr(np, "trapezoid") else np.trapz
+    norm = float(integrate(shape, masses))
+    if not np.isfinite(norm) or norm <= 0.0:
+        raise RuntimeError("HADES template has non-positive normalization")
+    centroid = float(integrate(masses * shape, masses) / norm)
+    return {"pole_mev": float(pole_mev), "centroid_mev": centroid,
+            "status": "FORWARD_ONLY_NO_HADES_LIKELIHOOD"}
 
 
 def pin_kappa1(c_s, k2=K2):
@@ -130,8 +172,8 @@ def main():
     exist = not ((p[sel] <= 0) & (epA[sel] < MU_2FL)).any()
     caus = bool((cs2[p > 1.0] <= 1.05).all())
     print(f"\n  3. Beta EOS: p(n_0) = {p[i0]:+.2f}, p(2n_0) = {p[i2]:.1f}; "
-          f"existence {'PASS' if exist else 'FAIL'}, "
-          f"causality {'PASS' if caus else 'FAIL'}")
+          f"existence_gate={'ok' if exist else 'fail'}, "
+          f"causality_gate={'ok' if caus else 'fail'}")
 
     # crude TOV
     from scipy.integrate import solve_ivp
@@ -141,24 +183,37 @@ def main():
     p_s, e_s = p_s[idx], e_s[idx]
     conv = 1.3234e-6
 
+    if p_s.size < 2 or not np.isfinite(p_s).all() or not np.isfinite(e_s).all():
+        print("     TOV unsupported: EOS pressure/energy table is not finite")
+        return
+    pc_hi = min(1200.0, float(p_s[-1]))
+    if pc_hi < 20.0:
+        print(f"     TOV unsupported: central-pressure range [20, {pc_hi:.3g}] is empty")
+        return
+
     def rhs(r, y):
         m, pp = y
-        if pp <= p_s[0]:
+        if not np.isfinite(pp):
+            raise ValueError("non-finite pressure during TOV integration")
+        if pp <= 0.0:
             return [0.0, 0.0]
-        ee = np.interp(pp, p_s, e_s) * conv
+        ee = pressure_to_energy_checked(pp, p_s, e_s) * conv
         pk = pp * conv
         return [4 * math.pi * r ** 2 * ee,
                 -(ee + pk) * (m + 4 * math.pi * r ** 3 * pk) /
                 (r * (r - 2 * m) + 1e-30) / conv]
 
     res = []
-    for pc in np.geomspace(20, 1200, 24):
+    for pc in np.geomspace(20, pc_hi, 24):
         sol = solve_ivp(rhs, [1e-6, 30], [0.0, pc], max_step=0.02,
                         events=lambda r, y: y[1] - p_s[0] * 1.01,
                         rtol=1e-6, atol=1e-9)
         if sol.t_events[0].size:
             res.append((float(sol.y_events[0][0][0]) / 1.4766,
                         float(sol.t_events[0][0])))
+    if not res:
+        print("     TOV unsupported: no resolved central-pressure solution")
+        return
     ms = np.array([m for m, _ in res])
     rs = np.array([r for _, r in res])
     im = int(np.argmax(ms))
@@ -167,26 +222,22 @@ def main():
     print(f"     TOV (no crust, +-0.4 km): M_max = {ms.max():.2f}, "
           f"R_1.4 ~ {r14:.2f} km")
 
-    # pinned HADES number
+    # Expose the raw solved pole and fold it through the independent
+    # preregistered line-shape calculation.  The former post-hoc peak anchor
+    # is intentionally absent.
     w2 = (1 + K2 * 2) ** (-k1 / K2)
     inst = 100 * (1 - w2)
-    peak = 775.0 - 63.0 * (inst / 20.1)
-    band_lo = (1 + K2 * 2) ** (-k1_hi / K2)
-    band_hi = (1 + K2 * 2) ** (-k1_lo / K2)
-    peak_lo = 775.0 - 63.0 * (100 * (1 - band_lo) / 20.1)
-    peak_hi = 775.0 - 63.0 * (100 * (1 - band_hi) / 20.1)
+    rho_pole = 80.0 + (775.3 - 80.0) * w2
+    line_shape = hades_shape_summary(rho_pole)
     print(f"\n  4. PINNED melting at 2n_0: {inst:.2f}% instantaneous "
           f"(kappa-universality)")
-    print(f"     integrated dielectron peak: ~{peak:.0f} MeV "
-          f"(c_s band: {min(peak_lo,peak_hi):.0f}-{max(peak_lo,peak_hi):.0f})")
+    print(f"     raw rho pole: {line_shape['pole_mev']:.1f} MeV; "
+          f"folded template centroid: {line_shape['centroid_mev']:.1f} MeV; "
+          f"status={line_shape['status']}")
     print(f"""
-  READING: fork A survives consistency with the melting reduced to a
-  saturation-derived constant. Its meson observable is now pinned: a
-  ~{inst:.0f}% instantaneous shift, i.e. an integrated peak within a few MeV
-  of the no-melting position — HADES would need percent-level peak
-  systematics to see it. Fork A is consistent but observationally quiet;
-  fork B keeps a measurable meson sector at the price of a data-driven
-  mapping exponent. This is the honest trade.
+  READING: fork A's instantaneous melt and rho pole are derived from its
+  saturation solve. The folded line shape is a forward template only;
+  acceptance-corrected HADES data and a likelihood are still required.
 """)
     print("=" * 78)
 
