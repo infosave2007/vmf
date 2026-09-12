@@ -36,6 +36,37 @@ Input provenance and generated-artifact ownership are recorded in the
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20485836-blue.svg)](https://doi.org/10.5281/zenodo.20485836) *Resolution of the Hyperon Puzzle via QCD Vacuum Condensate Melting in the NVG/VMF Framework*
   Historical publication bundle (not current runtime evidence). It describes a proposed hyperonic phase-transition model; the maintained repository does not provide the independent EOS construction/likelihood needed to call this an empirical resolution.
 
+## Density-tail universality and calibration limits
+
+The latest [calculation and derivation (Russian)](NVG_DENSITY_UNIVERSALITY_RU.md)
+move beyond finite droplets to the homogeneous cold-matter model. For a
+regular positive power-law potential `U ~ a W^p`, constant positive couplings
+and the stated minimum/regularity assumptions,
+
+`lim(P/epsilon) = lim(dP/depsilon) = max(1/3, (p-2)/(p+2))`.
+
+An explicit positive deformation preserves the vacuum and calibration
+potential derivatives through order three but changes the formal tail limit
+from `3/5` to `7/9`. The first local distinguishing coefficients are
+`Delta Z = 2.1207879107 MeV` and `0.04849382613 MeV` for the two declared
+calibrated examples. These are within-model mathematical results, not a
+universal law, measurements, a new physical interaction, or a bounce proof.
+
+Reproduce the five-case/35-state calculation and its 13 focused tests
+with `mpmath` installed:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_density_universality_audit.py
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest verification.test_nvg_density_universality_audit -v
+```
+
+The program computes its output afresh and rejects corrupted numerical
+evidence. See the [frozen contract](verification/contracts/density_universality.md)
+for assumptions and the [research directions](NVG_BEYOND_DROPLETS_ADHD_RU.md)
+for the full idea selection. The shared `BulkModel`/`inverse_potential_jet`
+API is included as a dependency; the separate upstream audit CLI is outside
+this focused workflow.
+
 ## Overview
 
 This repository contains the complete theoretical, numerical, and experimental framework for **Null-Vector Gravity (NVG)** and its underlying dense matter model, the **Vacuum Mass Fraction (VMF)**.

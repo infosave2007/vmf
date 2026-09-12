@@ -5766,6 +5766,116 @@
       "tests": [
         "verification/test_p13_s1_final_consistency.py"
       ]
+    },
+    "verification/nvg_density_universality_audit.py": {
+      "consumers": [
+        "verification/test_nvg_density_universality_audit.py"
+      ],
+      "deprecation": "Formal homogeneous density-tail classes and a calibration-null construction with zero independent empirical weight; not an EOS, dynamical, gravitational or empirical completion.",
+      "description": "No-write five-case high-density scaling audit with full cold-Fermi p=4 control, positive W8-to-U16 jet-preserving deformation, independent precision controls and fail-closed evidence validation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "verification/test_nvg_density_universality_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live tail-class, calibration-null, precision, mutation and strict-JSON controls with zero independent empirical weight.",
+      "description": "Cached five-case coverage and asymptotic checks, analytic jet/positivity controls, Fermi negative control, calibration comparisons, corruption rejection and no-write CLI regression.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/density_universality.md": {
+      "consumers": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/test_nvg_density_universality_audit.py"
+      ],
+      "deprecation": "Sealed conditional density-tail and calibration-null contract; no universal law, full EOS, dynamics or independent empirical claim.",
+      "description": "Frozen homogeneous functional, tail assumptions, p>4 and p<=4 limits, jet-preserving positive deformation, numerical protocol and interpretation boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "NVG_DENSITY_UNIVERSALITY_RU.md": {
+      "consumers": [],
+      "deprecation": "Public formal density-tail and calibration-null report with zero independent empirical weight; not an EOS, dynamical, gravitational or finite-nucleus result.",
+      "description": "Russian public summary of the five-case scaling calculation, full-Fermi p=4 control, local fourth-derivative discriminator, virial analogy and flat-GR boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "NVG_BEYOND_DROPLETS_ADHD_RU.md": {
+      "consumers": [],
+      "deprecation": "Public companion preserving the predeclared 30-idea ADHD selection; ideas and scores are not results or empirical evidence.",
+      "description": "Russian companion with all 30 scored divergent ideas, traps, selected R4/R3/M3 focus and one explicit calibration-identifiability provocation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "NVG_DENSITY_UNIVERSALITY_RU.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/source_complete_scaling_saturation_audit.py": {
+      "kind": "script",
+      "role": "utility",
+      "status": "utility",
+      "evidence_weight": 0.0,
+      "description": "Shared BulkModel and inverse_potential_jet implementation used by the density-tail audit.",
+      "producer": null,
+      "consumers": [
+        "verification/nvg_density_universality_audit.py"
+      ],
+      "inputs": [],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ],
+      "deprecation": "Only the shared calculation API is included here. The separate upstream audit CLI requires source_complete_solution_audit.py and is outside this committed surface.",
+      "quarantine": null
     }
   },
   "front_door": {
