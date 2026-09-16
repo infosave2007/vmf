@@ -1,6 +1,22 @@
 {
   "description": "Repository-relative generated reports, figures, tables, and predictive-program artifacts. Producers/statuses are explicit; hashes authenticate current bytes and do not assert independent empirical provenance.",
   "entries": {
+    "verification/bh_cycle_consistency_results.json": {
+      "canonical_path": "verification/bh_cycle_consistency_results.json",
+      "command": "python verification/bh_cycle_consistency_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/bh_cycle_consistency_audit.py",
+      "sha256": "c1022f08e7d87f577aea9c70ed5237d764888fa66443c549455742ecc14cce77",
+      "status": "mathematical_conditional_models_no_empirical_evidence"
+    },
+    "verification/regular_core_geometry_audit_results.json": {
+      "canonical_path": "verification/regular_core_geometry_audit_results.json",
+      "command": "python verification/regular_core_geometry_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/regular_core_geometry_audit.py",
+      "sha256": "8b23eb68fd9d104ecfdd1af30679742080058e033d1e356b279389b9f8072ad7",
+      "status": "mathematical_conditional_models_no_empirical_evidence"
+    },
     "NVG_FINAL_REPORT.md": {
       "canonical_path": "NVG_FINAL_REPORT.md",
       "command": "python verification/run_nvg_suite.py",
@@ -28,6 +44,22 @@
       "kind": "generated_artifact",
       "producer": "verification/nvg_observational_data_fit.py",
       "status": "ignored_not_tracked_computed_comparison_unverified_inputs"
+    },
+    "verification/NVG_GENERATOR_PRACTICAL_AUDIT_RU.md": {
+      "canonical_path": "verification/NVG_GENERATOR_PRACTICAL_AUDIT_RU.md",
+      "command": "python verification/nvg_generator_practical_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_generator_practical_audit.py",
+      "sha256": "b95c54c8de7153360d379a7ce90fb47ce1e3f2270cd4f65bb8a9182b926efdfa",
+      "status": "conventional_model_non_evidence"
+    },
+    "verification/nvg_generator_practical_audit_results.json": {
+      "canonical_path": "verification/nvg_generator_practical_audit_results.json",
+      "command": "python verification/nvg_generator_practical_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_generator_practical_audit.py",
+      "sha256": "11a169d828efc566dbfd79bc9872492dc1d2de9699bd96a4ec0bd7923711796a",
+      "status": "conventional_model_non_evidence"
     },
     "verification/data/hades_templates_20MeV.csv": {
       "canonical_path": "verification/data/hades_templates_20MeV.csv",
@@ -239,7 +271,7 @@
       "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
-      "sha256": "93ae61e0cbce857ab9f2a78a80fa87ada6bb64ead43ab1c0cd15b8989f8bcd4b",
+      "sha256": "7c94cbc2c0aa89466e0fca2e82d0028b82e8b012357b988d170ff3fe4c845cdf",
       "status": "blocked_physical_dependencies_with_null_control"
     },
     "verification/fig_p3_s3_prospective_reach.png": {
@@ -283,7 +315,7 @@
       "command": "python verification/nvg_s8_no_go.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_s8_no_go.py",
-      "sha256": "6ed9dcfe78af35e403b039edd9b6b00600d367da66b834fba6d49e42645b524d",
+      "sha256": "525daf274debc844b638b7c639c9339001056bd772d9a44f206f0af584f64c30",
       "status": "scoped_sensitivity_final"
     },
     "verification/fig_speed_of_sound.png": {
@@ -333,7 +365,7 @@
       "command": "python verification/nvg_beta_hyperon_urca_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_beta_hyperon_urca_audit.py",
-      "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0",
+      "sha256": "68f49c1d1df1e69475b76654957d8cfb599f807ab176f63807744e0a04b905ef",
       "status": "blocked_physical_dependencies"
     },
     "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json": {
@@ -341,7 +373,7 @@
       "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
-      "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089",
+      "sha256": "d22165701a7adb16b405683b0fae6d97f9f0b05a5881eeb0e0bde5f05056b625",
       "status": "blocked_physical_dependencies_with_null_control"
     },
     "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
@@ -516,7 +548,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "35de35b7ed83bd5aef93fc26e41c6c09d226638adc2c04dbd95db2bec89aea4d",
+      "sha256": "ac13accccd7b8eee4262050c7b16aaeff5f293def6c2301d47e7e0034eb3fd57",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
@@ -553,8 +585,128 @@
       "kind": "generated_artifact",
       "producer": null,
       "status": "ILLUSTRATIVE_NON_EVIDENCE"
+    },
+    "verification/NVG_DEEP_PHYSICS_AUDIT_RU.md": {
+      "canonical_path": "verification/NVG_DEEP_PHYSICS_AUDIT_RU.md",
+      "command": null,
+      "kind": "generated_artifact",
+      "producer": null,
+      "sha256": "bae1faa1486c9a04784f3303375308bf4e7ce3e69e43b2f603035d5699dfdf70",
+      "status": "public_synthesis_non_evidence"
+    },
+    "verification/static_w_branch_audit_results.json": {
+      "canonical_path": "verification/static_w_branch_audit_results.json",
+      "command": "python verification/static_w_branch_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/static_w_branch_audit.py",
+      "sha256": "879413de4734037492dc1a1ccd8d83a3482f7f1c2eb251f78cf2dfb214f4d339",
+      "status": "fail_closed_audit_result"
+    },
+    "verification/static_w_branch_audit_repair_1_report.md": {
+      "canonical_path": "verification/static_w_branch_audit_repair_1_report.md",
+      "command": "python verification/static_w_branch_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/static_w_branch_audit.py",
+      "sha256": "5365c713aeacb3b67d482fc88362b36f173dabaeaa2ea77b112c310539490149",
+      "status": "fail_closed_audit_report"
+    },
+    "verification/eos_hvh_closure_audit_results.json": {
+      "canonical_path": "verification/eos_hvh_closure_audit_results.json",
+      "command": "python verification/eos_hvh_closure_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/eos_hvh_closure_audit.py",
+      "sha256": "842e81d93a399fb0103f4fe036a2ca9f4e192561620ead27343fd6fc721221b1",
+      "status": "fail_closed_audit_result"
+    },
+    "verification/eos_hvh_closure_audit_report.md": {
+      "canonical_path": "verification/eos_hvh_closure_audit_report.md",
+      "command": "python verification/eos_hvh_closure_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/eos_hvh_closure_audit.py",
+      "sha256": "12752c55bbcb9cfcc5ec99cef752fd7a70485ea93189c6777e8829588662f529",
+      "status": "fail_closed_audit_report"
+    },
+    "verification/renormalization_covariance_audit_results.json": {
+      "canonical_path": "verification/renormalization_covariance_audit_results.json",
+      "command": "python verification/nvg_renormalization_covariance_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "sha256": "54286a012e59d8cf7369e33b8916cc8ac23f39da0f0dfe0b4b1b49f416b71fc4",
+      "status": "renormalization_audit_result_with_blocks"
+    },
+    "verification/renormalization_covariance_audit_inventory.json": {
+      "canonical_path": "verification/renormalization_covariance_audit_inventory.json",
+      "command": "python verification/nvg_renormalization_covariance_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "sha256": "75b7d7dd583c97f654b08946a4e450c47f589cb51490e76b20fb4e39a17e1349",
+      "status": "renormalization_audit_inventory_with_blocks"
+    },
+    "verification/renormalization_covariance_audit_report.md": {
+      "canonical_path": "verification/renormalization_covariance_audit_report.md",
+      "command": "python verification/nvg_renormalization_covariance_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "sha256": "c21901eccefb53109ac3da0db5d1c307fa913d2d2ecd50fd6f77a17409193da4",
+      "status": "renormalization_audit_report_with_blocks"
+    },
+    "verification/source_complete_solution_audit_results.json": {
+      "canonical_path": "verification/source_complete_solution_audit_results.json",
+      "command": "python verification/source_complete_solution_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_solution_audit.py",
+      "sha256": "e45362e05f136add8193dc1264d6acc99cc406e59f4fecc61103b99dd1754e56",
+      "status": "constructive_eft_no_go_result"
+    },
+    "verification/source_complete_solution_audit_report.md": {
+      "canonical_path": "verification/source_complete_solution_audit_report.md",
+      "command": "python verification/source_complete_solution_audit.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_solution_audit.py",
+      "sha256": "8d59c81ab37e477796eff25a3affeda8f6d75e1a3c1500cbda87999f8e28ec8d",
+      "status": "constructive_eft_no_go_report"
+    },
+    "verification/source_complete_stellar_prediction_results.json": {
+      "canonical_path": "verification/source_complete_stellar_prediction_results.json",
+      "command": "python verification/source_complete_stellar_prediction.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_stellar_prediction.py",
+      "sha256": "cf9f10df734a7a51763b12659a5912577dd5c067683f8af24d02e9cf42f91b26",
+      "status": "mathematical_stellar_result"
+    },
+    "verification/source_complete_stellar_prediction_report.md": {
+      "canonical_path": "verification/source_complete_stellar_prediction_report.md",
+      "command": "python verification/source_complete_stellar_prediction.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_stellar_prediction.py",
+      "sha256": "f2202215f29bb34d68d83eb8e2466c6ce7e2116b1764c269b608044c681be7a2",
+      "status": "mathematical_stellar_report"
+    },
+    "verification/source_complete_resonator_prediction_results.json": {
+      "canonical_path": "verification/source_complete_resonator_prediction_results.json",
+      "command": "python verification/source_complete_resonator_prediction.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_resonator_prediction.py",
+      "sha256": "aee7b03b45525c5df9fb7c9b2bca1e75246b143511b1b2b9249a0f85a9534907",
+      "status": "conditional_resonator_result_physical_power_blocked"
+    },
+    "verification/source_complete_scaling_saturation_results.json": {
+      "canonical_path": "verification/source_complete_scaling_saturation_results.json",
+      "command": "python verification/source_complete_scaling_saturation_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_scaling_saturation_audit.py",
+      "sha256": "fefbba55422a6dc96fd15c3f16d39961233b8d1c464cd19d66950d343ce4905a",
+      "status": "mathematical_identities_and_explicit_calibration_counterexamples_not_empirical_confirmation"
+    },
+    "verification/source_complete_resonator_prediction_report.md": {
+      "canonical_path": "verification/source_complete_resonator_prediction_report.md",
+      "command": "python verification/source_complete_resonator_prediction.py",
+      "kind": "generated_artifact",
+      "producer": "verification/source_complete_resonator_prediction.py",
+      "sha256": "2d127e5d7453978a5dcc444676a686171bcc8284cc38d26fabd7fe9b3e9d5c85",
+      "status": "conditional_resonator_report_physical_power_blocked"
     }
   },
-  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
+  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",
   "schema_version": 1
 }

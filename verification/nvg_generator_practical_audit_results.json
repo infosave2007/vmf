@@ -1,0 +1,387 @@
+{
+  "config": {
+    "auxiliary_w": 0.0,
+    "available_heat_w": null,
+    "cold_k": 300.0,
+    "contact_derate": 0.4,
+    "converter_efficiency": 0.9,
+    "example_requested_net_w": 10.0,
+    "heat_per_module_w": 200.0,
+    "hot_k": 450.0,
+    "seebeck_v_per_k": 0.055,
+    "system_auxiliary_w": 0.0,
+    "zt": 0.9
+  },
+  "conventional_teg": {
+    "auxiliary_scope": "per_module",
+    "auxiliary_w": 0.0,
+    "carnot_efficiency": 0.3333333333333333,
+    "cold_k": 300.0,
+    "contact_derate": 0.4,
+    "converter_efficiency": 0.9,
+    "converter_output_w": 4.44078205532458,
+    "device_efficiency": 0.02467101141846989,
+    "energy_source": "pre-existing waste heat at hot_k; heat sink at cold_k",
+    "gross_electrical_w": 4.934202283693978,
+    "heat_per_module_w": 200.0,
+    "hot_k": 450.0,
+    "independent_evidence_weight": 0.0,
+    "ioffe_factor": 0.18503258563852418,
+    "manufacturer_rating_used": false,
+    "model_scope": "scenario arithmetic; not a manufacturer rating",
+    "net_electrical_w": 4.44078205532458,
+    "open_circuit_voltage_v_model": 8.25,
+    "status": "CONVENTIONAL_MODEL_REQUIRES_MEASURED_MODULE_AND_CONTACTS",
+    "temperature_difference_k": 150.0,
+    "zt": 0.9
+  },
+  "evidence_policy": "No local numerical scenario receives independent-evidence weight without a measured source-to-load balance",
+  "example_module_requirement": {
+    "auxiliary_total_w": 0.0,
+    "feasible": true,
+    "module_topology": "parallel; thermal input sums across modules",
+    "modules": 3,
+    "per_module_net_w": 4.44078205532458,
+    "predicted_net_w": 13.322346165973741,
+    "purpose": "illustrative target sizing, not independent evidence",
+    "requested_net_w": 10.0,
+    "status": "FEASIBLE_IF_HEAT_AND_SINK_ARE_AVAILABLE",
+    "system_auxiliary_w": 0.0,
+    "target_dependent": true,
+    "thermal_input_w": 600.0
+  },
+  "families": [
+    {
+      "classification": "REJECTED_UNSUPPORTED_SOURCE",
+      "dimension_check": "energy_per_cycle_j times frequency_hz has units of W; G is dimensionless but unmeasured",
+      "empirical_status": "no calorimetric source measurement; shared assumptions do not count as evidence",
+      "family": "peltier_vacuum",
+      "independent_evidence_weight": 0.0,
+      "reason": "legacy G is an unmeasured multiplier; no external heat/work boundary",
+      "salvage": "electrically driven TEC calorimetry with hot/cold reservoirs and a no-gain control"
+    },
+    {
+      "classification": "REJECTED_STORED_FIELD_TURNOVER",
+      "dimension_check": "field energy is J and turnover rate is Hz; output cannot exceed measured electrical/mechanical drive",
+      "empirical_status": "coil, switching and recharge losses are not independently metered",
+      "family": "magnetic_parametric",
+      "independent_evidence_weight": 0.0,
+      "reason": "cycling field energy and pump work are not a net source",
+      "salvage": "low-voltage magnetometry and a complete field-energy input/output ledger"
+    },
+    {
+      "classification": "SENSOR_SCALE_ONLY_UNVERIFIED_BOOST",
+      "dimension_check": "voltage times current is W only after charge, chemical and mass flux are measured",
+      "empirical_status": "CISS/polarization multipliers are assumptions, not independent measurements",
+      "family": "hydrovoltaic_ciss",
+      "independent_evidence_weight": 0.0,
+      "reason": "evaporation/chemical input and CISS multipliers are unclosed",
+      "salvage": "sealed evaporation/materials test with chemical, mass and electrical calorimetry"
+    },
+    {
+      "classification": "DETECTOR_OR_NULL_EXPERIMENT_ONLY",
+      "dimension_check": "reported RF power must follow calibrated coupling, Q, bandwidth and temperature units",
+      "empirical_status": "static geometry/calibration tables do not establish a theta signal",
+      "family": "theta_haloscope",
+      "independent_evidence_weight": 0.0,
+      "predicted_signal_vs_noise": "expected receiver signal is below conventional thermal/electronics noise until blinded injection and recovery succeed",
+      "reason": "prospective signal channel, not an energy source",
+      "salvage": "blind haloscope/null experiment with measured Q, loss tangent, Tsys and synthetic-tone recovery"
+    },
+    {
+      "classification": "REJECTED_DIMENSIONAL_FORCE_ANSATZ",
+      "dimension_check": "dimensionless couplings cannot be divided by SI G*m^2 without a consistent natural-unit conversion",
+      "empirical_status": "no force/torque anomaly survives magnetic, species and reversal controls",
+      "family": "antigravity_theta",
+      "independent_evidence_weight": 0.0,
+      "predicted_signal_vs_noise": "corrected force/torque estimate is below conventional magnetic and torsion systematics",
+      "reason": "dimensionally inconsistent force ratio and unsupported coupling; ordinary matter channel is null",
+      "salvage": "species-ratio comagnetometer or torsion null measurement with blind sign reversal"
+    },
+    {
+      "classification": "REJECTED_DRIVE_LIMITED_SYSTEMATIC",
+      "dimension_check": "bit rate, field, torque and power must use measured bandwidth and SI units",
+      "empirical_status": "predicted anomaly is not separated from ordinary magnetic pickup, vibration or thermal drift",
+      "family": "high_speed_magnetic",
+      "independent_evidence_weight": 0.0,
+      "predicted_signal_vs_noise": "conventional field/torque backgrounds exceed the putative signal by many orders until cancellation is demonstrated",
+      "reason": "high-speed magnetic/theta link is bandwidth- and drive-limited; shared motion drives the background",
+      "salvage": "phase detector/comagnetometer with ±source reversal, independent field monitor and preregistered threshold"
+    },
+    {
+      "classification": "CONVENTIONAL_HEAT_ENGINE_MODEL",
+      "dimension_check": "heat flow in W times bounded efficiency gives gross electrical W; all auxiliaries are subtracted",
+      "empirical_status": "manufacturer-rated generator performance and contacts are not supplied",
+      "family": "conventional_seebeck_teg",
+      "independent_evidence_weight": 0.0,
+      "reason": "local arithmetic is unmeasured model output; accept only after measured hot-side heat, cold sink and parasitics",
+      "salvage": "calibrated waste-heat TEG, calorimetry and zero/reversed-gradient controls"
+    }
+  ],
+  "legacy_peltier": {
+    "active_carriers": 4978399999999.999,
+    "active_surface_area_m2": 0.0009956799999999999,
+    "current_rms_a": 3.5496478698597693,
+    "dimensional_basis": "energy_per_cycle_j [J] times frequency_hz [1/s] gives power [W]",
+    "diode_loss_without_gain_w": 1.0767972781969197e-05,
+    "energy_per_cycle_j": 5.9822071010939985e-09,
+    "energy_source": "none_declared; G is not accepted as a source",
+    "frequency_hz": 150000.0,
+    "input_voltage_v": 12.0,
+    "legacy_gain": 450000.0,
+    "legacy_output_dependent_diode_loss_w": 4.845587751886139,
+    "loss_semantics": "no_gain_loss_floor is output-independent; diode terms are retained separately because the legacy expression scales with claimed output",
+    "modeled_losses_w": 39.37359575188614,
+    "modeled_losses_with_legacy_gain_w": 39.37359575188614,
+    "modeled_losses_without_gain_w": 34.52801876797278,
+    "net_with_legacy_gain_w": 364.42538357195883,
+    "net_without_gain_floor_w": -34.52711066893484,
+    "net_without_gain_w": -34.52712143690762,
+    "no_gain_loss_floor_w": 34.528008,
+    "power_with_legacy_gain_w": 403.79897932384495,
+    "power_without_gain_w": 0.0008973310651640998,
+    "status": "ARITHMETIC_ONLY_UNSUPPORTED_SOURCE",
+    "target_dependent": false
+  },
+  "literature_context": {
+    "doi": "10.1038/s41467-021-21391-1",
+    "note": "Primary-literature context only: a research module reported about 6.5--7.0% at a temperature difference near 250 K; this is not a rating or validation of the local TEC1-12706 model.",
+    "title": "Towards tellurium-free thermoelectric modules for power generation from low-grade heat",
+    "url": "https://www.nature.com/articles/s41467-021-21391-1"
+  },
+  "safety": {
+    "mains_or_high_voltage_build": false,
+    "required_controls": [
+      "guarded heat-flow measurement",
+      "cold-sink temperature and auxiliary-power logging",
+      "zero-gradient and reversed-gradient controls"
+    ]
+  },
+  "schema": "nvg-generator-practical-audit/v1",
+  "sensitivity": {
+    "grid_definition": {
+      "auxiliary_w": 0.0,
+      "cold_k": [
+        300.0
+      ],
+      "contact_derate": [
+        0.25,
+        0.4,
+        0.6
+      ],
+      "converter_efficiency": 1.0,
+      "heat_per_module_w": 200.0,
+      "hot_k": [
+        350.0,
+        400.0,
+        450.0
+      ],
+      "system_auxiliary_w": 0.0,
+      "zt": [
+        0.5,
+        0.9,
+        1.2
+      ]
+    },
+    "gross_power_envelope_w": {
+      "max": 8.990897566362053,
+      "min": 0.7710888958791228
+    },
+    "power_basis": "gross_electrical_w_per_module",
+    "requested_target_not_used": true,
+    "rows": [
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 0.7710888958791228,
+        "hot_k": 350.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 1.2337422334065964,
+        "hot_k": 350.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 1.8506133501098945,
+        "hot_k": 350.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 1.2090513329971204,
+        "hot_k": 350.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 1.9344821327953925,
+        "hot_k": 350.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 2.9017231991930887,
+        "hot_k": 350.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 1.4748495358992177,
+        "hot_k": 350.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 2.359759257438748,
+        "hot_k": 350.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 3.5396388861581225,
+        "hot_k": 350.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 1.4226196675295881,
+        "hot_k": 400.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 2.276191468047341,
+        "hot_k": 400.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 3.4142872020710113,
+        "hot_k": 400.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 2.2223501718150573,
+        "hot_k": 400.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 3.555760274904092,
+        "hot_k": 400.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 5.333640412356138,
+        "hot_k": 400.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 2.7048132024161684,
+        "hot_k": 400.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 4.32770112386587,
+        "hot_k": 400.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 6.491551685798804,
+        "hot_k": 400.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 1.9803981212739716,
+        "hot_k": 450.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 3.168636994038355,
+        "hot_k": 450.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 4.752955491057532,
+        "hot_k": 450.0,
+        "zt": 0.5
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 3.0838764273087365,
+        "hot_k": 450.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 4.934202283693978,
+        "hot_k": 450.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 7.401303425540967,
+        "hot_k": 450.0,
+        "zt": 0.9
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.25,
+        "gross_electrical_w": 3.7462073193175223,
+        "hot_k": 450.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.4,
+        "gross_electrical_w": 5.993931710908036,
+        "hot_k": 450.0,
+        "zt": 1.2
+      },
+      {
+        "cold_k": 300.0,
+        "contact_derate": 0.6,
+        "gross_electrical_w": 8.990897566362053,
+        "hot_k": 450.0,
+        "zt": 1.2
+      }
+    ],
+    "selection_rule": "Cartesian parameter grid; no row was fitted to a target output",
+    "target_independent": true
+  },
+  "status": "PASS_CONVENTIONAL_ONLY"
+}

@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "status": "IDENTITIES_VERIFIED_ORIGINAL_NO_BINDING_CALIBRATED_EXAMPLES_NOT_VALIDATED",
+  "evidence_weight": 0,
+  "precision_check": {
+    "dps": [
+      80,
+      120
+    ],
+    "significant_digits_compared": 28,
+    "pass": true
+  },
+  "source_sha256": "3bdaee8267dd11441c963f74371340109981f3f1902b1e7f213ed65fcc50c4e1",
+  "baseline_source_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+  "science": {
+    "original_inputs": {
+      "W0": "859",
+      "lam": "1.05",
+      "MN": "939",
+      "momega": "782.6",
+      "gomega": "10.12",
+      "hbarc": "197.3269804",
+      "n0_fm3": "0.16",
+      "d": 4
+    },
+    "original": {
+      "state_at_n0": {
+        "y": "0.999233898912803150324150408",
+        "P_MeV_fm3": "18.72361682383087549779247807",
+        "binding_MeV": "124.3174696235643114640132178",
+        "mu_MeV": "1180.340074772507283325216206",
+        "K_MeV": "2063.638934039028227115132041",
+        "cs2": "0.1942602981919580774600829664",
+        "C_y_MeV4": "1141567445821.028857302479553"
+      },
+      "Cv_fm2": "6.511098691027133859625855456",
+      "Cs_fm2": "0.03002701595589431031407187483",
+      "Cv_over_Cs": "216.8413504888754572004682493",
+      "global_no_binding_sufficient_condition": true,
+      "proof_scope": "quartic positive scalar potential, linear fermion mass, inverse-square vector energy; all n>0,y>0"
+    },
+    "landmarks": {
+      "field_minimum": {
+        "x": "2.141026310118960528038649012",
+        "y": "0.9989323820179687877374030531",
+        "P_MeV_fm3": "83.49416665291064434755361956",
+        "binding_MeV": "255.7251568932012913679638386",
+        "mu_MeV": "1438.458052240805372534659245",
+        "K_MeV": "4315.374156722416117603977736",
+        "cs2": "0.3333333333333333333333333333",
+        "C_y_MeV4": "1143383577338.1"
+      },
+      "zero_trace_nonvacuum": {
+        "x": "4.310937155624080787680163776",
+        "y": "1.0",
+        "P_MeV_fm3": "330.7671852734459564037265899",
+        "binding_MeV": "499.6395579406873478447650407",
+        "mu_MeV": "1918.186077254249797126353388",
+        "K_MeV": "8473.873477984382713815088884",
+        "cs2": "0.490849927813870691007443929",
+        "C_y_MeV4": "1157979091895.211126905834198"
+      }
+    },
+    "any_scalar_potential_vector_bound": {
+      "gomega_max": "7.382354157564396620369493011",
+      "y_at_ceiling": "0.6339128173079791320255482017",
+      "Cv_max": "0.00008898361903294876593391816794",
+      "original_mu_min_MeV": "1116.065971814338069864461177",
+      "original_y_at_mu_min": "0.7750482803283443628390527059",
+      "mu_target_MeV": "923.0",
+      "finite_curvature_K_at_ceiling_MeV": "2769.0"
+    },
+    "two_target_quartic_calibration": {
+      "training_targets": {
+        "n_fm3": "0.16",
+        "binding_MeV": "-16"
+      },
+      "fitted_lambda": "0.005344835674014354654731258645",
+      "fitted_gomega": "6.611694305849415445443974335",
+      "state": {
+        "y": "0.781077002831806104894653544",
+        "P_MeV_fm3": "0 (target; residual < 1e-55)",
+        "binding_MeV": "-16.0",
+        "mu_MeV": "923.0",
+        "K_MeV": "692.0657386239236391593255292",
+        "cs2": "0.0833111518747951894979325303",
+        "C_y_MeV4": "3385640391.967885416655853487"
+      },
+      "K_was_fitted": false,
+      "held_out_K_comparison": "outside both 220-260 and broader 200-350 MeV reference ranges",
+      "deployed_to_baseline": false
+    },
+    "inverse_potential_examples": [
+      {
+        "chosen_y_not_an_observation": "0.75",
+        "calibration_targets": {
+          "n_fm3": "0.16",
+          "binding_MeV": "-16",
+          "K_MeV": "240"
+        },
+        "gomega": "6.927091340048232744240052103",
+        "local_state": {
+          "y": "0.75",
+          "P_MeV_fm3": "0 (target; residual < 1e-55)",
+          "binding_MeV": "-16.0",
+          "mu_MeV": "923.0",
+          "K_MeV": "240.0",
+          "cs2": "0.02889129649693029974720115565",
+          "C_y_MeV4": "1255417510.906524216665717855"
+        },
+        "a2_a3_a4_MeV4": [
+          "483445950.9767627430595855136",
+          "-1031779560.596330358811913252",
+          "-1382297017.492714461203702718"
+        ],
+        "globally_nonnegative_potential": false,
+        "q_min_MeV4": null,
+        "held_out_isoscalar_only_symmetry_energy_MeV": "15.3394750390514215810436528",
+        "physical_validation": "NOT_ESTABLISHED; isovector interaction, composition and independent calibration missing"
+      },
+      {
+        "chosen_y_not_an_observation": "0.90",
+        "calibration_targets": {
+          "n_fm3": "0.16",
+          "binding_MeV": "-16",
+          "K_MeV": "240"
+        },
+        "gomega": "3.91127774489579164837374874",
+        "local_state": {
+          "y": "0.9",
+          "P_MeV_fm3": "0 (target; residual < 1e-55)",
+          "binding_MeV": "-16.0",
+          "mu_MeV": "923.0",
+          "K_MeV": "240.0",
+          "cs2": "0.02889129649693029974720115565",
+          "C_y_MeV4": "21748227113.11933394869094911"
+        },
+        "a2_a3_a4_MeV4": [
+          "1219953092.988899104281772389",
+          "4374401023.022607076958756607",
+          "22050775328.82661747673780333"
+        ],
+        "globally_nonnegative_potential": true,
+        "q_min_MeV4": "1003006250.702520892121483856",
+        "held_out_isoscalar_only_symmetry_energy_MeV": "13.02891260374174416592465286",
+        "physical_validation": "NOT_ESTABLISHED; isovector interaction, composition and independent calibration missing"
+      }
+    ],
+    "identity_checks": "stationarity, Legendre, scale, field-minimum sound speed, independently differentiated K"
+  }
+}

@@ -68,7 +68,7 @@ class P10S3PublicArtifactTests(unittest.TestCase):
             self.assertNotRegex(text, r"(?i)consistent with ALL standard")
             self.assertNotRegex(text, r"(?i)PREDICTION VERIFIED|verified successfully")
 
-    def test_publication_banner_covers_every_tracked_article_and_private_doc(self):
+    def test_tracked_article_and_private_docs_start_with_headings_without_status_banners(self):
         import subprocess
 
         tracked = [
@@ -77,13 +77,14 @@ class P10S3PublicArtifactTests(unittest.TestCase):
                 ["git", "ls-files", "article/*.md", ".docs/*.md"], cwd=ROOT, text=True
             ).splitlines()
         ]
-        self.assertEqual(len(tracked), 11)
+        self.assertEqual(len(tracked), 12)
         for relative in tracked:
             path = ROOT / relative
-            first = path.read_text(encoding="utf-8").splitlines()[:3]
-            banner = " ".join(first)
-            self.assertRegex(banner, r"(?i)publication status|статус публикации")
-            self.assertIn("PUBLICATION_STATUS.md", banner)
+            lines = path.read_text(encoding="utf-8").splitlines()
+            first_nonempty = next((line for line in lines if line.strip()), "")
+            self.assertRegex(first_nonempty, r"^#\s+\S", relative)
+            opening = "\n".join(lines[:5])
+            self.assertNotRegex(opening, r"(?i)publication status|статус публикации", relative)
 
     def test_publication_status_names_current_and_historical_surfaces(self):
         text = (ROOT / "PUBLICATION_STATUS.md").read_text(encoding="utf-8")

@@ -98,6 +98,28 @@
       "status": "unknown_provenance",
       "trust_status": "unknown_provenance",
       "version": null
+    },
+    "nvg_isospin_jet_benchmarks.json": {
+      "config": "P1 sealed local-jet design grid plus descriptive conditional nuclear source references; calculation_inputs are consumed separately from descriptive_benchmarks",
+      "kind": "input",
+      "producer": null,
+      "sha256": "578ced91f00d9145c904cab2f88c4a1957812464d8c92c9f9b607aa3a650fa99",
+      "source": "P1 sealed calculation/design record with traceable primary-source URLs",
+      "source_url": null,
+      "status": "declared_local_configuration_with_primary_references",
+      "trust_status": "declared_local_configuration",
+      "version": "nuclear-validation-2026-09-10-P1-I-v1"
+    },
+    "finite_static_observables_2026.json": {
+      "config": "cited evaluated finite-system inputs for the conditional static bridge: AME2020/ENSDF binding energies, Angeli-Marinova charge radii with covariance, PREX/CREX PV skins and nucleon charge inputs",
+      "kind": "input",
+      "producer": null,
+      "sha256": "c33c527ceb27c9e536ab91cac9d00b193e54648204e14eed3a7e46eca462b53b",
+      "source": "Cited evaluated compilations (AME2020/ENSDF via IAEA LiveChart; Angeli & Marinova ADNDT 99 (2013) 69; published PREX/CREX values)",
+      "source_url": "https://nds.iaea.org/relnsd/v1/data",
+      "status": "declared_local_configuration_with_primary_references",
+      "trust_status": "declared_local_configuration",
+      "version": "finite-static-2026"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",

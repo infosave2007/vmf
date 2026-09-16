@@ -1,0 +1,359 @@
+{
+  "claim_boundary": {
+    "fixed_spectrum": "CALCULABLE_MODEL_OUTPUT_ZERO_EVIDENCE_WEIGHT",
+    "gain_or_free_energy": "FAIL_CLOSED_NOT_ALLOWED",
+    "numerical_power": "BLOCKED_WITHOUT_MEASURED_OPEN_SYSTEM_INPUTS",
+    "ordinary_resonator": "NOT_ESTABLISHED"
+  },
+  "contract": {
+    "action": "exact local U(1), source-free g_mu=0, same-scalar Higgs vector mass",
+    "power": "blocked unless complete source/volume/inertia/overlap/drive/loss/port records pass",
+    "response": "conditional open-system transfer function; no source-free vacuum drive",
+    "spectrum": "one physical scalar radial mode plus three massive-vector polarizations"
+  },
+  "gates": {
+    "conditional_response": true,
+    "fixed_spectrum": true,
+    "normalized_benchmark": true,
+    "one_plus_three_polarizations": true,
+    "physical_power_gate": false,
+    "upstream_passport_and_digest": true
+  },
+  "normalized_benchmark": {
+    "all_pass": true,
+    "checks": {
+      "independent_pump_equals_loss": true,
+      "resonance_Ebar": true,
+      "resonance_Ppump": true,
+      "resonance_X_abs": true,
+      "resonance_channel_split": true,
+      "zero_drive": true
+    },
+    "device_mapping": false,
+    "equation": "z''+2 zeta_tot z'+z=cos(Omega tau)",
+    "independent_evidence_weight": 0.0,
+    "parameters": {
+      "Mhat": 1.0,
+      "Omega_grid": [
+        0.0,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "kappahat": 1.0,
+      "omegahat": 1.0,
+      "u0hat": 1.0,
+      "zeta_int": 0.25,
+      "zeta_out": 0.25,
+      "zeta_tot": 0.5
+    },
+    "physical_units": false,
+    "rows": [
+      {
+        "Ebar_hat": 0.25,
+        "Omega": 0.0,
+        "Pint_hat": 0.0,
+        "Pout_hat": 0.0,
+        "Ppump_hat": 0.0,
+        "X_abs": 1.0,
+        "loss_sum_hat": 0.0,
+        "power_balance_relative": 0.0
+      },
+      {
+        "Ebar_hat": 0.38461538461538464,
+        "Omega": 0.5,
+        "Pint_hat": 0.07692307692307693,
+        "Pout_hat": 0.07692307692307693,
+        "Ppump_hat": 0.15384615384615385,
+        "X_abs": 1.1094003924504583,
+        "loss_sum_hat": 0.15384615384615385,
+        "power_balance_relative": 0.0
+      },
+      {
+        "Ebar_hat": 0.5,
+        "Omega": 1.0,
+        "Pint_hat": 0.25,
+        "Pout_hat": 0.25,
+        "Ppump_hat": 0.5,
+        "X_abs": 1.0,
+        "loss_sum_hat": 0.5,
+        "power_balance_relative": 0.0
+      },
+      {
+        "Ebar_hat": 0.09615384615384616,
+        "Omega": 2.0,
+        "Pint_hat": 0.07692307692307693,
+        "Pout_hat": 0.07692307692307693,
+        "Ppump_hat": 0.15384615384615385,
+        "X_abs": 0.2773500981126146,
+        "loss_sum_hat": 0.15384615384615385,
+        "power_balance_relative": 0.0
+      }
+    ],
+    "status": "NORMALIZED_IDENTITY_BENCHMARK",
+    "transient": {
+      "dissipated_energy": 8.686038630364093,
+      "duration_tau": 20.0,
+      "input_energy": 9.186074894816212,
+      "pass": true,
+      "residual_relative": 1.032020643152863e-08,
+      "stored_final": 0.500036359254307
+    },
+    "zero_drive": {
+      "Ebar_hat": 0.0,
+      "Omega": 1.0,
+      "Pint_hat": 0.0,
+      "Pout_hat": 0.0,
+      "Ppump_hat": 0.0,
+      "X_abs": 0.0,
+      "drive_amplitude": 0.0
+    }
+  },
+  "response": {
+    "Q_total": null,
+    "amplitude": null,
+    "bandwidth_Hz": null,
+    "channel_power_W": null,
+    "device_mapping": false,
+    "dissipated_power_W": null,
+    "missing_inputs": [
+      "source_interaction",
+      "volume",
+      "mode_inertia",
+      "overlap",
+      "drive_amplitude",
+      "drive_phase",
+      "drive_frequency",
+      "damping_channels",
+      "output_port"
+    ],
+    "output_power_W": null,
+    "passivity": {
+      "pass": false,
+      "reason": "mandatory source/loss/geometry records absent"
+    },
+    "physical_units": false,
+    "pump_power_W": null,
+    "records": {
+      "damping_channels": null,
+      "drive_amplitude": null,
+      "drive_frequency": null,
+      "drive_phase": null,
+      "mode_inertia": null,
+      "output_port": null,
+      "overlap": null,
+      "source_interaction": null,
+      "volume": null
+    },
+    "ringup_time_s": null,
+    "status": "CONDITIONAL_RESPONSE_BLOCKED_NUMERICAL_POWER",
+    "stored_energy_J": null,
+    "transient_work_integral": null
+  },
+  "schema": "source-complete-resonator-prediction.v1",
+  "spectrum": {
+    "conversion_checks": {
+      "consistency": {
+        "h_equals_2pi_hbar_relative": 1.4604714883543263e-10,
+        "hbar_c_equals_hbar_times_c_relative": 2.2318808248554698e-10,
+        "immutable_rows": [
+          {
+            "name": "hbar",
+            "relative_to_contract": 0.0
+          },
+          {
+            "name": "h",
+            "relative_to_contract": 0.0
+          },
+          {
+            "name": "c",
+            "relative_to_contract": 0.0
+          }
+        ]
+      },
+      "pass": true,
+      "records": [
+        {
+          "immutable": true,
+          "name": "hbar",
+          "reference": "prediction contract exact definition",
+          "unit": "MeV*s",
+          "value": 6.582119569e-22
+        },
+        {
+          "immutable": true,
+          "name": "h",
+          "reference": "prediction contract exact definition",
+          "unit": "MeV*s",
+          "value": 4.135667696e-21
+        },
+        {
+          "immutable": true,
+          "name": "c",
+          "reference": "prediction contract exact definition",
+          "unit": "m/s",
+          "value": 299792458.0
+        },
+        {
+          "immutable": true,
+          "name": "hbar_c_submitted",
+          "reference": "validated upstream hbar_c record",
+          "unit": "MeV*fm",
+          "value": 197.3269804
+        }
+      ],
+      "rows": [
+        {
+          "lambda_equals_c_over_f_relative": 1.460471587720246e-10,
+          "mode": "scalar_radial",
+          "omega_equals_2pi_f_relative": 1.4604722433475692e-10,
+          "reduced_times_2pi_relative": 0.0
+        },
+        {
+          "lambda_equals_c_over_f_relative": 1.4604688369422533e-10,
+          "mode": "massive_vector",
+          "omega_equals_2pi_f_relative": 1.4604708162835515e-10,
+          "reduced_times_2pi_relative": 0.0
+        }
+      ]
+    },
+    "dispersion": "omega_i^2 = k^2 + m_i^2 (natural units); omega_SI^2=(c k_SI)^2+(m_i/hbar)^2",
+    "dispersion_checks": {
+      "pass": true,
+      "rows": [
+        {
+          "k_natural": 0.0,
+          "mode": "scalar_radial",
+          "omega_squared_minus_m_squared": 0.0
+        },
+        {
+          "k_natural": 0.0,
+          "mode": "massive_vector",
+          "omega_squared_minus_m_squared": 0.0
+        }
+      ]
+    },
+    "evidence_weight": 0.0,
+    "mass_identities": {
+      "phase": "eaten Goldstone; no physical massless mode",
+      "scalar": "m_sigma^2=2*lambda*W0^2",
+      "vector": "m_A^2=q_phi^2*W0^2=m_omega^2"
+    },
+    "modes": [
+      {
+        "Compton_wavelength_m": 9.960096069243621e-16,
+        "evidence_weight": 0.0,
+        "frequency_Hz": 3.0099354058394172e+23,
+        "mass_MeV": 1244.8092624976728,
+        "mode": "scalar_radial",
+        "omega_rad_s": 1.8911981914767808e+24,
+        "physical_polarizations": 1,
+        "polarization_labels": [
+          "radial"
+        ],
+        "reduced_Compton_fm": 0.15851985227364815,
+        "reduced_Compton_m": 1.585198523090279e-16,
+        "uncertainty_status": "NOT_SUPPLIED"
+      },
+      {
+        "Compton_wavelength_m": 1.5842601383032353e-15,
+        "evidence_weight": 0.0,
+        "frequency_Hz": 1.892318381278378e+23,
+        "mass_MeV": 782.6,
+        "mode": "massive_vector",
+        "omega_rad_s": 1.1889787048017694e+24,
+        "physical_polarizations": 3,
+        "polarization_labels": [
+          "transverse_1",
+          "transverse_2",
+          "longitudinal"
+        ],
+        "reduced_Compton_fm": 0.25214283209813443,
+        "reduced_Compton_m": 2.5214283215440968e-16,
+        "uncertainty_status": "NOT_SUPPLIED"
+      }
+    ],
+    "parameters": {
+      "W0_MeV": 859.0,
+      "c_m_s": 299792458.0,
+      "h_MeV_s": 4.135667696e-21,
+      "hbar_MeV_s": 6.582119569e-22,
+      "hbar_c_MeV_fm": 197.3269804,
+      "lambda": 1.05,
+      "m_A_MeV": 782.6,
+      "m_omega_MeV": 782.6,
+      "m_sigma_MeV": 1244.8092624976728,
+      "q_phi": 0.911059371362049
+    },
+    "physical_mode_count": 4,
+    "polarization_accounting": {
+      "A0": "Gauss constraint; no oscillator",
+      "goldstone": "eaten; no physical extra mode",
+      "massive_vector": 3,
+      "scalar_radial": 1
+    },
+    "polarization_modes": [
+      {
+        "mass_MeV": 1244.8092624976728,
+        "mode": "scalar_radial",
+        "polarization": "radial"
+      },
+      {
+        "mass_MeV": 782.6,
+        "mode": "massive_vector",
+        "polarization": "transverse_1"
+      },
+      {
+        "mass_MeV": 782.6,
+        "mode": "massive_vector",
+        "polarization": "transverse_2"
+      },
+      {
+        "mass_MeV": 782.6,
+        "mode": "massive_vector",
+        "polarization": "longitudinal"
+      }
+    ],
+    "status": "PASS_FIXED_VACUUM_SPECTRUM",
+    "uncertainty_status": "NOT_SUPPLIED",
+    "upstream": {
+      "action_expected_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+      "action_path": "verification/contracts/source_complete_action.md",
+      "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+      "contract_expected_sha256": "ebcc4e0cae1bf981f3fb2dd0bf6567a177dffa75aa25a160f82c2f86cbe87cef",
+      "contract_path": "verification/contracts/observable_predictions.md",
+      "contract_sha256": "ebcc4e0cae1bf981f3fb2dd0bf6567a177dffa75aa25a160f82c2f86cbe87cef",
+      "errors": [],
+      "pass": true,
+      "producer_expected_sha256": "f18babdc64f0d2ee640b4ff6d802037b5da7a57a52b90f446812710f24d77578",
+      "producer_path": "verification/source_complete_resonator_prediction.py",
+      "producer_sha256": "f18babdc64f0d2ee640b4ff6d802037b5da7a57a52b90f446812710f24d77578",
+      "source_expected_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+      "source_path": "verification/source_complete_solution_audit.py",
+      "source_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+      "test_expected_sha256": "87126a069b0a8fc2178d0332ebec86c794eaaac7f34e6209b702f4ec37b8cebd",
+      "test_path": "verification/test_source_complete_resonator_prediction.py",
+      "test_sha256": "87126a069b0a8fc2178d0332ebec86c794eaaac7f34e6209b702f4ec37b8cebd"
+    }
+  },
+  "status": "PASS_FIXED_SPECTRUM_CONDITIONAL_RESPONSE_BLOCKED_NUMERICAL_POWER",
+  "upstream": {
+    "action_expected_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "contract_expected_sha256": "ebcc4e0cae1bf981f3fb2dd0bf6567a177dffa75aa25a160f82c2f86cbe87cef",
+    "contract_path": "verification/contracts/observable_predictions.md",
+    "contract_sha256": "ebcc4e0cae1bf981f3fb2dd0bf6567a177dffa75aa25a160f82c2f86cbe87cef",
+    "errors": [],
+    "pass": true,
+    "producer_expected_sha256": "f18babdc64f0d2ee640b4ff6d802037b5da7a57a52b90f446812710f24d77578",
+    "producer_path": "verification/source_complete_resonator_prediction.py",
+    "producer_sha256": "f18babdc64f0d2ee640b4ff6d802037b5da7a57a52b90f446812710f24d77578",
+    "source_expected_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+    "source_path": "verification/source_complete_solution_audit.py",
+    "source_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+    "test_expected_sha256": "87126a069b0a8fc2178d0332ebec86c794eaaac7f34e6209b702f4ec37b8cebd",
+    "test_path": "verification/test_source_complete_resonator_prediction.py",
+    "test_sha256": "87126a069b0a8fc2178d0332ebec86c794eaaac7f34e6209b702f4ec37b8cebd"
+  }
+}

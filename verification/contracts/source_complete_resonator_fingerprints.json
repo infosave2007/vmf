@@ -1,0 +1,11 @@
+{
+  "schema": "source_complete_resonator_fingerprints.v1",
+  "producer_path": "verification/source_complete_resonator_prediction.py",
+  "producer_sha256": "f18babdc64f0d2ee640b4ff6d802037b5da7a57a52b90f446812710f24d77578",
+  "test_path": "verification/test_source_complete_resonator_prediction.py",
+  "test_sha256": "87126a069b0a8fc2178d0332ebec86c794eaaac7f34e6209b702f4ec37b8cebd",
+  "upstream_path": "verification/source_complete_solution_audit.py",
+  "upstream_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8",
+  "contract_path": "verification/contracts/observable_predictions.md",
+  "purpose": "Reproducible source identity, not empirical confirmation"
+}

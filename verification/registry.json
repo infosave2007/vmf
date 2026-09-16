@@ -21,6 +21,754 @@
   "data_provenance": "verification/data/provenance.json",
   "description": "Maintained computational surface registry. Evidence weights describe reproducible computational ownership, not independent empirical significance.",
   "entries": {
+    "verification/nvg_density_universality_audit.py": {
+      "consumers": [
+        "verification/test_nvg_density_universality_audit.py"
+      ],
+      "deprecation": "Formal homogeneous density-tail classes and a calibration-null construction with zero independent empirical weight; not an EOS, dynamical, gravitational or empirical completion.",
+      "description": "No-write five-case high-density scaling audit with full cold-Fermi p=4 control, positive W8-to-U16 jet-preserving deformation, independent precision controls and fail-closed evidence validation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "verification/test_nvg_density_universality_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live tail-class, calibration-null, precision, mutation and strict-JSON controls with zero independent empirical weight.",
+      "description": "Cached five-case coverage and asymptotic checks, analytic jet/positivity controls, Fermi negative control, calibration comparisons, corruption rejection and no-write CLI regression.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/density_universality.md": {
+      "consumers": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/test_nvg_density_universality_audit.py"
+      ],
+      "deprecation": "Sealed conditional density-tail and calibration-null contract; no universal law, full EOS, dynamics or independent empirical claim.",
+      "description": "Frozen homogeneous functional, tail assumptions, p>4 and p<=4 limits, jet-preserving positive deformation, numerical protocol and interpretation boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "NVG_DENSITY_UNIVERSALITY_RU.md": {
+      "consumers": [],
+      "deprecation": "Public formal density-tail and calibration-null report with zero independent empirical weight; not an EOS, dynamical, gravitational or finite-nucleus result.",
+      "description": "Russian public summary of the five-case scaling calculation, full-Fermi p=4 control, local fourth-derivative discriminator, virial analogy and flat-GR boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_density_universality_audit.py",
+        "verification/contracts/density_universality.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_density_universality_audit.py"
+      ]
+    },
+    "NVG_BEYOND_DROPLETS_ADHD_RU.md": {
+      "consumers": [],
+      "deprecation": "Public companion preserving the predeclared 30-idea ADHD selection; ideas and scores are not results or empirical evidence.",
+      "description": "Russian companion with all 30 scored divergent ideas, traps, selected R4/R3/M3 focus and one explicit calibration-identifiability provocation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "NVG_DENSITY_UNIVERSALITY_RU.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cycle_invariant_audit.py": {
+      "consumers": [
+        "verification/test_nvg_cycle_invariant_audit.py"
+      ],
+      "deprecation": "Exact supplied-matrix predicates and finite numerical cycle controls only; no all-mode, nonlinear, empirical or exact-ODE stability claim.",
+      "description": "Positive cycle invariants with exact-versus-numerical boundary predicates, raw determinant and live scalar/tensor transfer controls.",
+      "evidence_weight": 0,
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "inputs": [
+        "verification/nvg_regular_scalar_perturbation_audit.py",
+        "verification/nvg_cyclic_tensor_audit.py"
+      ],
+      "kind": "script",
+      "tests": [
+        "verification/test_nvg_cycle_invariant_audit.py"
+      ]
+    },
+    "verification/test_nvg_cycle_invariant_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Rotation, identity, Jordan, dyadic precision, mutation, no-write CLI and live cycle-invariant regression tests.",
+      "evidence_weight": 0,
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "inputs": [
+        "verification/nvg_cycle_invariant_audit.py"
+      ],
+      "kind": "test",
+      "tests": []
+    },
+    "verification/nvg_effective_response_audit.py": {
+      "consumers": [
+        "verification/test_nvg_effective_response_audit.py",
+        "verification/nvg_kinetic_spectral_audit.py"
+      ],
+      "deprecation": "Stationary conservative ideal-fluid response after Gauss elimination; low-frequency expansion is not a full kinetic, gravitational, cyclic or empirically confirmed NVG model.",
+      "description": "Gyroscopic Schur effective inertia, real-mode longitudinal action reconstruction, acoustic and dispersion bridges with explicit source-status gates.",
+      "evidence_weight": 0,
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "inputs": [
+        "verification/nvg_longitudinal_fluid_audit.py"
+      ],
+      "kind": "script",
+      "tests": [
+        "verification/test_nvg_effective_response_audit.py"
+      ]
+    },
+    "verification/test_nvg_effective_response_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Effective response, symbolic and live acoustic matching, wrong-sign and saddle controls, upstream-failure and absent-comparison regression tests.",
+      "evidence_weight": 0,
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "inputs": [
+        "verification/nvg_effective_response_audit.py",
+        "verification/nvg_longitudinal_fluid_audit.py"
+      ],
+      "kind": "test",
+      "tests": []
+    },
+    "verification/nvg_regular_scalar_perturbation_audit.py": {
+      "consumers": ["verification/test_nvg_regular_scalar_perturbation_audit.py", "verification/nvg_cycle_invariant_audit.py"],
+      "deprecation": "Explicit epsilon gravity with canonical massless scalar matter only; flat sign bounds and finite closed-mode transfer are not full NVG, nonlinear, quantum or empirical completion.",
+      "description": "Flat epsilon-dependent scalar sign bounds, curved ADM constraint elimination and physical canonical-scalar cycle transfer with separate instantaneous and Floquet diagnostics.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_regular_cyclic_action_audit.py", "verification/covariant_bounce_completion_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_regular_scalar_perturbation_audit.py"]
+    },
+    "verification/test_nvg_regular_scalar_perturbation_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Action, curvature, kinetic/gradient, precision, mutation and finite-cycle regression controls for the scalar epsilon-gravity audit.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_regular_scalar_perturbation_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_cyclic_tensor_audit.py": {
+      "consumers": ["verification/test_nvg_cyclic_tensor_audit.py", "verification/nvg_cycle_invariant_audit.py"],
+      "deprecation": "Closed constant-w controls of an added gravitational model with no tensor anisotropic stress; finite harmonic scans are not all-mode or nonlinear stability and do not validate cosmic history.",
+      "description": "Lorentzian curved tensor action and physical S3 harmonics, independent full-cycle Hamiltonian transfer and unnormalized Floquet amplification diagnostics.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_regular_cyclic_action_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_cyclic_tensor_audit.py"]
+    },
+    "verification/test_nvg_cyclic_tensor_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Static oscillator, harmonic/sign, canonical basis, convergence, determinant, Floquet and invalid-evidence controls for cyclic tensor modes.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_cyclic_tensor_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_spatial_binding_audit.py": {
+      "consumers": ["verification/test_nvg_spatial_binding_audit.py"],
+      "deprecation": "Fixed inverse-designed matter potential in static normal Thomas-Fermi closure; band-constrained surface bounds are not an unrestricted ground-state or finite-nucleus certificate.",
+      "description": "Nonlocal Gauss saddle, exact constrained surface-energy bounds, coupled planar interface and independently refined nonuniform trial diagnostics.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_binding_feasibility_audit.py", "verification/contracts/source_complete_action.md"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_spatial_binding_audit.py"]
+    },
+    "verification/test_nvg_spatial_binding_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent Gauss energy identities, exact tension integral, derivative bounds, high precision, interface refinement and wrong-saddle or global-overclaim negative controls.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_spatial_binding_audit.py", "verification/nvg_binding_feasibility_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_bounce_potential_audit.py": {
+      "consumers": ["verification/test_nvg_bounce_potential_audit.py"],
+      "deprecation": "Homogeneous conditional extension with added cuscuton gravity; formal closed cycles do not cross the original action's zero-gradient boundary as certified regular solutions.",
+      "description": "Potential-independent matter bounds, off-equilibrium conservation, curved-FLRW derivation, original-EOS formal cycle and action-boundary or naive-regularization obstruction.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_binding_feasibility_audit.py", "verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_bounce_potential_audit.py"]
+    },
+    "verification/test_nvg_bounce_potential_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent curved-action and conservation identities, potential bounds, formal-cycle refinement, cusp regularity and sign or false-continuation controls.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_bounce_potential_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_regular_cyclic_action_audit.py": {
+      "consumers": ["verification/test_nvg_regular_cyclic_action_audit.py", "verification/nvg_regular_scalar_perturbation_audit.py", "verification/nvg_cyclic_tensor_audit.py"],
+      "deprecation": "Explicit new gravitational potential, not the original NVG action or empirical evidence. Regular homogeneous cycles and constant-w controls do not certify perturbations, measured local gravity or cosmic history.",
+      "description": "Smooth epsilon deformation of the original cuscuton potential and field map, nonzero-gradient closed-cycle controls, preserved flat bounce shape and explicit gravity/critical-density rescaling.",
+      "evidence_weight": 0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_regular_cyclic_action_audit.py"]
+    },
+    "verification/test_nvg_regular_cyclic_action_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent action and vacuum-limit identities, refined cycle quadrature versus ODE, full-cycle gradient positivity and old-law or singular-parameter rejection.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_regular_cyclic_action_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_euler_ward_precision.py": {
+      "consumers": ["verification/source_complete_solution_audit.py", "verification/test_nvg_euler_ward_precision.py", "verification/test_source_complete_solution_audit.py"],
+      "deprecation": "Manufactured classical field jet and numerical identity control; high precision is not physical parameter accuracy or empirical confirmation.",
+      "description": "Pinned analytic Euler/Ward backend with independent nested high-precision differentiation, exact binary input conversion and 80/120-digit verification.",
+      "evidence_weight": 0,
+      "inputs": ["verification/contracts/source_complete_action.md", "verification/source_complete_solution_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_euler_ward_precision.py", "verification/test_source_complete_solution_audit.py"]
+    },
+    "verification/test_nvg_euler_ward_precision.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent field derivatives, Ward cancellation, preserved input fingerprint, precision isolation and strict malformed or wrong-sign negative controls.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_euler_ward_precision.py", "verification/source_complete_solution_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_binding_feasibility_audit.py": {
+      "consumers": ["verification/test_nvg_binding_feasibility_audit.py", "verification/nvg_spatial_binding_audit.py", "verification/test_nvg_spatial_binding_audit.py", "verification/nvg_bounce_potential_audit.py"],
+      "deprecation": "Explicit inverse design with changed vector coupling and scalar potential; target saturation inputs are calibration, not predictions. Global certificate covers homogeneous bulk coexistence, not finite nuclei or gravity.",
+      "description": "Potential-independent vector obstruction, fixed Legendre-envelope binding construction, local fluid positivity, threshold regularity and unfitted scalar-mass and formal asymptotic consequences.",
+      "evidence_weight": 0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_binding_feasibility_audit.py"]
+    },
+    "verification/test_nvg_binding_feasibility_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent quadratures and stationary solves, exact common-tangent and curvature identities, 80/120-digit checks and unbounded or wrong-sign counterexamples for the explicitly engineered extension.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_binding_feasibility_audit.py", "verification/source_complete_scaling_saturation_audit.py", "verification/nvg_collisionless_response_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_longitudinal_fluid_audit.py": {
+      "consumers": ["verification/test_nvg_longitudinal_fluid_audit.py", "verification/test_nvg_response_bridge.py", "verification/nvg_effective_response_audit.py", "verification/test_nvg_effective_response_audit.py"],
+      "deprecation": "Frozen isentropic fluid closure only; all-wave-number mathematical positivity does not establish arbitrarily short-scale hydrodynamic validity, collisionless dynamics or NVG plus cuscuton stability.",
+      "description": "Quadratic-action, Gauss and Hamiltonian derivation of coupled scalar/vector/fluid modes; analytic all-density positivity, independent spectra and precision checks with unchanged source parameters.",
+      "evidence_weight": 0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py", "verification/nvg_matter_branch_certificate.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_longitudinal_fluid_audit.py", "verification/test_nvg_response_bridge.py", "verification/test_nvg_effective_response_audit.py"]
+    },
+    "verification/test_nvg_longitudinal_fluid_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent longitudinal action/Hamiltonian/dispersion limits, global sufficient certificates, finite-wave-number instability counterexample and strict failure controls.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_longitudinal_fluid_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_collisionless_response_audit.py": {
+      "consumers": [
+        "verification/test_nvg_collisionless_response_audit.py",
+        "verification/test_nvg_response_bridge.py",
+        "verification/test_nvg_binding_feasibility_audit.py",
+        "verification/nvg_kinetic_spectral_audit.py",
+        "verification/nvg_spectral_structure_audit.py"
+      ],
+      "deprecation": "Normal isotropic zero-temperature mean-field Vlasov long-wave response; not full finite-wave-number quantum dynamics, empirical nuclear validation or gravitational perturbation stability.",
+      "description": "Source-specific scalar/vector mixing and current feedback, static susceptibility and Landau identities, conditional subluminal zero-sound branch and precision/mutation checks.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_matter_branch_certificate.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_collisionless_response_audit.py",
+        "verification/test_nvg_response_bridge.py"
+      ]
+    },
+    "verification/test_nvg_collisionless_response_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent Vlasov moments and current integrals, thermodynamic static limit, zero-sound existence/absence and wrong-current/hydrodynamic-substitution negative controls.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_collisionless_response_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_response_bridge.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Cross-implementation scalar/vector static-response bridge, independent equilibrium derivatives, exact thermodynamic self-binding obstruction identities and labelled phase-branch counterexample.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_longitudinal_fluid_audit.py", "verification/nvg_collisionless_response_audit.py", "verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_bounce_global_structure_audit.py": {
+      "consumers": ["verification/test_nvg_bounce_global_structure_audit.py"],
+      "deprecation": "Conditional homogeneous quasiparticle theorem with externally assumed cuscuton gravity; not full quantum NVG, perturbation stability, black-hole completion or empirical evidence.",
+      "description": "Off-equilibrium constraint propagation, density/field/curvature certificates and finite-time continuation/causal-completeness support for the declared FLRW model.",
+      "evidence_weight": 0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_bounce_global_structure_audit.py"]
+    },
+    "verification/test_nvg_bounce_global_structure_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent moving-field Fermi integrals, curvature certificates, wrong-force/rate controls, precision and strict failure checks.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_bounce_global_structure_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_bounce_tracking_audit.py": {
+      "consumers": ["verification/test_nvg_bounce_tracking_audit.py"],
+      "deprecation": "Quasistatic trial defects and formal forced correction only; no full trajectory, arbitrary-initial-state tracking guarantee or prediction of rho_c.",
+      "description": "Fixed-physical-GN kinetic-completed trial constraint, independent implicit derivatives, uniform-in-density-fraction defect bounds and 80/120-digit comparison.",
+      "evidence_weight": 0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_bounce_tracking_audit.py"]
+    },
+    "verification/test_nvg_bounce_tracking_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Tracking chain rule and kinetic/sign mutations, gap quadrature, independent branch derivatives, finite guards and fail-closed audit aggregation.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_bounce_tracking_audit.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_matter_branch_certificate.py": {
+      "consumers": ["verification/test_nvg_matter_branch_certificate.py"],
+      "deprecation": "Global sufficient stationary-EOS certificate; not a full dynamical/collective-mode stability result or an empirical nuclear-matter validation.",
+      "description": "Analytic unique-minimum, scalar-curvature and thermodynamic sound bounds for unchanged source-complete parameters, with independent integral sanity checks.",
+      "evidence_weight": 0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_nvg_matter_branch_certificate.py"]
+    },
+    "verification/test_nvg_matter_branch_certificate.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Exact stationary-branch certificates, inconclusive threshold controls, independent quadratures/derivatives, precision checks and CLI validation.",
+      "evidence_weight": 0,
+      "inputs": ["verification/nvg_matter_branch_certificate.py"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/covariant_bounce_completion_audit.py": {
+      "consumers": [
+        "verification/test_covariant_bounce_completion_audit.py",
+        "verification/nvg_regular_scalar_perturbation_audit.py"
+      ],
+      "deprecation": "Explicit reconstructed cuscuton extension; no derivation from NVG, observational confirmation or full NVG perturbation-stability claim.",
+      "description": "Covariant-to-homogeneous action reconstruction, timelike branch and vacuum endpoint checks, and canonical massless-scalar linear perturbation/transfer benchmark.",
+      "evidence_weight": 0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_covariant_bounce_completion_audit.py"
+      ]
+    },
+    "verification/test_covariant_bounce_completion_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent derivatives, action/sign mutation controls, physical GR limit, perturbation positivity and finite-interval canonical transfer checks for a declared additional model.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/covariant_bounce_completion_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/bounce_action_derivation_audit.py": {
+      "consumers": [
+        "verification/test_bounce_action_derivation_audit.py"
+      ],
+      "deprecation": "Mathematical homogeneous-sector audit only; reconstructed gravity is not derived from NVG or empirical evidence.",
+      "description": "Lapse and charge reduction, dynamical flat no-bounce theorem, closed initial-data witnesses, and explicit reconstruction of an additional bounce Hamiltonian.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_bounce_action_derivation_audit.py"
+      ]
+    },
+    "verification/test_bounce_action_derivation_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent variation identities, finite-value guards, sign and functional negative controls, and explicitly scoped closed-bounce witnesses.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/bounce_action_derivation_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/bh_cycle_consistency_audit.py": {
+      "consumers": [
+        "verification/test_bh_cycle_consistency_audit.py"
+      ],
+      "deprecation": "Scoped mathematical/conditional model checks; no empirical confirmation or physical unification.",
+      "description": "Live aggregate of repaired quasiparticle thermodynamics, geometry stress, conserved bounce backgrounds and scoped source-branch obstruction.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_black_hole_interior.py",
+        "verification/regular_core_geometry_audit.py",
+        "verification/nvg_cyclic_bounce.py",
+        "verification/nvg_cyclic_cosmology.py",
+        "verification/source_complete_scaling_saturation_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/bh_cycle_consistency_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_bh_cycle_consistency_audit.py"
+      ]
+    },
+    "verification/regular_core_geometry_audit.py": {
+      "consumers": [
+        "verification/test_regular_core_geometry_audit.py",
+        "verification/bh_cycle_consistency_audit.py",
+        "verification/nvg_bh_regular_core.py"
+      ],
+      "deprecation": "Scoped mathematical/conditional model checks; no empirical confirmation or physical unification.",
+      "description": "Exact Hayward stress/curvature identities, anisotropy, energy conditions and horizon/temperature extrema.",
+      "evidence_weight": 0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/regular_core_geometry_audit_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_regular_core_geometry_audit.py"
+      ]
+    },
+    "verification/test_bh_cycle_consistency_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Fresh regeneration, physical-negative controls, finite witnesses and fail-closed writes.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/bh_cycle_consistency_audit.py",
+        "verification/bh_cycle_consistency_results.json",
+        "verification/nvg_bh_regular_core.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_regular_core_geometry_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent geometry derivatives, quadratures, boundaries and typed result mutations.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/regular_core_geometry_audit.py",
+        "verification/regular_core_geometry_audit_results.json",
+        "verification/nvg_hayward_evaporation.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_black_hole_interior_consistency.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent quasiparticle integrals and derivatives, unclipped instability, kink and explicit geometry assumption.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_black_hole_interior.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_bounce_background_consistency.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent bounce equations and IVP, map conservation, invalid-domain and cycle-provenance controls.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_cyclic_bounce.py",
+        "verification/nvg_cyclic_cosmology.py",
+        "verification/nvg_cyclic_lifetimes.py",
+        "verification/nvg_bounce_derivation.py",
+        "verification/nvg_hayward_evaporation.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/bh_cycle_consistency_results.json": {
+      "consumers": [],
+      "deprecation": "Scoped mathematical/conditional model checks; no empirical confirmation or physical unification.",
+      "description": "Regenerated scoped BH/cycle consistency output with explicit unresolved physical completion.",
+      "evidence_weight": 0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/bh_cycle_consistency_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/regular_core_geometry_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Scoped mathematical/conditional model checks; no empirical confirmation or physical unification.",
+      "description": "Regenerated exact regular-metric geometry checks, not a derived matter action.",
+      "evidence_weight": 0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/regular_core_geometry_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
     "NVG_FINAL_REPORT.md": {
       "consumers": [],
       "deprecation": null,
@@ -386,6 +1134,22 @@
       "role": "validation",
       "status": "maintained",
       "tests": []
+    },
+    "verification/NVG_GENERATOR_PRACTICAL_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Generated model report; registry presence is not empirical evidence.",
+      "description": "Russian conventional waste-heat TEG audit report; utility/non-evidence artifact.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_generator_practical_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_generator_practical_audit.py"
+      ]
     },
     "verification/LESSONS.md": {
       "consumers": [],
@@ -1484,17 +2248,21 @@
     },
     "verification/nvg_bh_regular_core.py": {
       "consumers": [],
-      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
-      "description": "Historical maintained computational surface.",
-      "evidence_weight": 0.0,
-      "inputs": [],
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Explicit assumed-density Hayward geometry wrapper, no collapse or singularity-resolution inference.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/regular_core_geometry_audit.py"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": null,
       "quarantine": null,
-      "role": "historical",
-      "status": "historical",
-      "tests": []
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_bh_cycle_consistency_audit.py"
+      ]
     },
     "verification/nvg_black_hole_entropy.py": {
       "consumers": [
@@ -1514,10 +2282,13 @@
       "tests": []
     },
     "verification/nvg_black_hole_interior.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
+      "consumers": [
+        "verification/test_black_hole_interior_consistency.py",
+        "verification/bh_cycle_consistency_audit.py"
+      ],
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Repaired density-dependent mass ansatz with thermodynamic derivatives; calculated instabilities are retained.",
+      "evidence_weight": 0,
       "inputs": [],
       "kind": "script",
       "outputs": [],
@@ -1525,21 +2296,27 @@
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
-      "tests": []
+      "tests": [
+        "verification/test_black_hole_interior_consistency.py"
+      ]
     },
     "verification/nvg_bounce_derivation.py": {
       "consumers": [],
-      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
-      "description": "Historical maintained computational surface.",
-      "evidence_weight": 0.0,
-      "inputs": [],
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Conservation-identity derivation wrapper replacing unsupported print-only Einstein-Cartan proof.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_cyclic_bounce.py"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": null,
       "quarantine": null,
-      "role": "historical",
-      "status": "historical",
-      "tests": []
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_bounce_background_consistency.py"
+      ]
     },
     "verification/nvg_bounce_schrodinger_bridge.py": {
       "consumers": [],
@@ -1771,10 +2548,14 @@
       "tests": []
     },
     "verification/nvg_cyclic_bounce.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
+      "consumers": [
+        "verification/test_bounce_background_consistency.py",
+        "verification/bh_cycle_consistency_audit.py",
+        "verification/nvg_bounce_derivation.py"
+      ],
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Exact and independently integrated conditional quadratic-map bounce; no NVG action derivation.",
+      "evidence_weight": 0,
       "inputs": [],
       "kind": "script",
       "outputs": [],
@@ -1782,15 +2563,20 @@
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
-      "tests": []
+      "tests": [
+        "verification/test_bounce_background_consistency.py"
+      ]
     },
     "verification/nvg_cyclic_cosmology.py": {
       "consumers": [
+        "verification/test_bounce_background_consistency.py",
+        "verification/bh_cycle_consistency_audit.py",
+        "verification/nvg_cyclic_lifetimes.py",
         "verification/test_p10_s2_direct_status.py"
       ],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Conditional cycle assignment with consistent input entropy/mass growth and area-proxy provenance.",
+      "evidence_weight": 0,
       "inputs": [],
       "kind": "script",
       "outputs": [],
@@ -1798,21 +2584,28 @@
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
-      "tests": []
+      "tests": [
+        "verification/test_bounce_background_consistency.py",
+        "verification/test_p10_s2_direct_status.py"
+      ]
     },
     "verification/nvg_cyclic_lifetimes.py": {
       "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
-      "inputs": [],
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Conditional lifetime wrapper sharing the horizon-chain producer; not a measured remaining lifetime.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_cyclic_cosmology.py"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": null,
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
-      "tests": []
+      "tests": [
+        "verification/test_bounce_background_consistency.py"
+      ]
     },
     "verification/nvg_dark_energy_desi.py": {
       "consumers": [],
@@ -2771,6 +3564,43 @@
       "status": "maintained",
       "tests": []
     },
+    "verification/nvg_generator_practical_audit.py": {
+      "consumers": [
+        "verification/test_generator_practical_audit.py"
+      ],
+      "deprecation": "Utility-only audit; local arithmetic is not independent empirical evidence.",
+      "description": "Conventional waste-heat TEG and legacy NVG generator audit producer; rejects speculative energy sources and carries zero evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/NVG_GENERATOR_PRACTICAL_AUDIT_RU.md",
+        "verification/nvg_generator_practical_audit_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": [
+        "verification/test_generator_practical_audit.py"
+      ]
+    },
+    "verification/nvg_generator_practical_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Generated model output; registry presence is not empirical evidence.",
+      "description": "Deterministic conventional TEG/legacy-generator audit JSON; utility/non-evidence artifact.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_generator_practical_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_generator_practical_audit.py"
+      ]
+    },
     "verification/nvg_genesis_observable.py": {
       "consumers": [],
       "deprecation": null,
@@ -3189,17 +4019,18 @@
         "verification/nvg_pbh_dark_matter.py",
         "verification/test_p10_s2_direct_status.py"
       ],
-      "deprecation": null,
-      "description": "Runtime Hayward horizon and Hawking-temperature solver.",
-      "evidence_weight": 1.0,
+      "deprecation": "Mathematical/conditional model only; no observational confirmation or derived NVG collapse/cycle.",
+      "description": "Conditional Hayward horizons including extremal boundary and exact temperature; fixed-anchor falsifier protocols.",
+      "evidence_weight": 0,
       "inputs": [],
       "kind": "script",
       "outputs": [],
       "producer": null,
       "quarantine": null,
-      "role": "canonical",
+      "role": "validation",
       "status": "maintained",
       "tests": [
+        "verification/test_regular_core_geometry_audit.py",
         "verification/test_p10_s2_direct_status.py"
       ]
     },
@@ -5249,6 +6080,24 @@
         "verification/test_p13_s1_final_consistency.py"
       ]
     },
+    "verification/test_generator_practical_audit.py": {
+      "consumers": [],
+      "deprecation": "Semantic checks only; passing tests are not empirical evidence.",
+      "description": "Zero-weight semantic tests for the conventional TEG and legacy-generator audit; utility/non-evidence checks.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_generator_practical_audit.py",
+        "verification/NVG_GENERATOR_PRACTICAL_AUDIT_RU.md",
+        "verification/nvg_generator_practical_audit_results.json"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
     "verification/test_p1_s1_ns_predictive_audit.py": {
       "consumers": [],
       "deprecation": null,
@@ -5767,35 +6616,212 @@
         "verification/test_p13_s1_final_consistency.py"
       ]
     },
-    "verification/nvg_density_universality_audit.py": {
-      "consumers": [
-        "verification/test_nvg_density_universality_audit.py"
-      ],
-      "deprecation": "Formal homogeneous density-tail classes and a calibration-null construction with zero independent empirical weight; not an EOS, dynamical, gravitational or empirical completion.",
-      "description": "No-write five-case high-density scaling audit with full cold-Fermi p=4 control, positive W8-to-U16 jet-preserving deformation, independent precision controls and fail-closed evidence validation.",
+    "verification/NVG_DEEP_PHYSICS_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Public diagnostic synthesis; zero independent-evidence weight.",
+      "description": "Russian public synthesis of the four Phase-1--3 deep-physics audits.",
       "evidence_weight": 0.0,
       "inputs": [
-        "verification/source_complete_scaling_saturation_audit.py",
-        "verification/contracts/density_universality.md"
+        "verification/static_w_branch_audit_results.json",
+        "verification/eos_hvh_closure_audit_results.json",
+        "verification/renormalization_covariance_audit_results.json",
+        "verification/renormalization_covariance_audit_inventory.json",
+        "verification/renormalization_covariance_audit_report.md",
+        "verification/source_complete_solution_audit_results.json"
       ],
-      "kind": "script",
+      "kind": "artifact",
       "outputs": [],
       "producer": null,
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
+      "tests": []
+    },
+    "verification/static_w_branch_audit.py": {
+      "consumers": [
+        "verification/test_static_w_branch_audit.py"
+      ],
+      "deprecation": "Independent fail-closed diagnostic; no empirical evidence weight.",
+      "description": "Executable W-field ensemble/sign/threshold audit with fixed-charge repair.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/static_w_branch_audit_results.json",
+        "verification/static_w_branch_audit_repair_1_report.md"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
       "tests": [
-        "verification/test_nvg_density_universality_audit.py"
+        "verification/test_static_w_branch_audit.py"
       ]
     },
-    "verification/test_nvg_density_universality_audit.py": {
+    "verification/eos_hvh_closure_audit.py": {
+      "consumers": [
+        "verification/test_eos_hvh_closure_audit.py"
+      ],
+      "deprecation": "Independent fail-closed diagnostic; absent maintained stress/chemical API is retained.",
+      "description": "Executable thermodynamic/HVH closure reconstruction and maintained-API inventory.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/eos_hvh_closure_audit_results.json",
+        "verification/eos_hvh_closure_audit_report.md"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_eos_hvh_closure_audit.py"
+      ]
+    },
+    "verification/nvg_renormalization_covariance_audit.py": {
+      "consumers": [
+        "verification/test_renormalization_covariance_audit.py"
+      ],
+      "deprecation": "Independent provenance/RG diagnostic; missing operator and heavy-flavour convention metadata remain blocked.",
+      "description": "Executable renormalization covariance and hadron-mass provenance audit with sequential c/b/t matching references.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "script",
+      "outputs": [
+        "verification/renormalization_covariance_audit_results.json",
+        "verification/renormalization_covariance_audit_inventory.json",
+        "verification/renormalization_covariance_audit_report.md"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_renormalization_covariance_audit.py"
+      ]
+    },
+    "verification/static_w_branch_audit_results.json": {
       "consumers": [],
-      "deprecation": "Focused live tail-class, calibration-null, precision, mutation and strict-JSON controls with zero independent empirical weight.",
-      "description": "Cached five-case coverage and asymptotic checks, analytic jet/positivity controls, Fermi negative control, calibration comparisons, corruption rejection and no-write CLI regression.",
+      "deprecation": "Fail-closed calculated audit output; not empirical evidence.",
+      "description": "Machine-readable W-field branch, ensemble, and threshold audit result.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/static_w_branch_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_static_w_branch_audit.py"
+      ]
+    },
+    "verification/static_w_branch_audit_repair_1_report.md": {
+      "consumers": [],
+      "deprecation": "Fail-closed calculated audit report; not empirical evidence.",
+      "description": "Generated W-field audit report exposing incompatible contract boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/static_w_branch_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_static_w_branch_audit.py"
+      ]
+    },
+    "verification/eos_hvh_closure_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Fail-closed calculated audit output; not a maintained EOS certification.",
+      "description": "Machine-readable EOS/HVH closure reconstruction and API inventory result.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/eos_hvh_closure_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_eos_hvh_closure_audit.py"
+      ]
+    },
+    "verification/eos_hvh_closure_audit_report.md": {
+      "consumers": [],
+      "deprecation": "Fail-closed calculated audit report; not a maintained EOS certification.",
+      "description": "Generated Russian/English EOS/HVH closure audit report.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/eos_hvh_closure_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_eos_hvh_closure_audit.py"
+      ]
+    },
+    "verification/renormalization_covariance_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Calculated provenance/RG audit output; blocked metadata and opaque heavy-flavour convention are explicit.",
+      "description": "Machine-readable renormalization covariance result with sequential heavy-flavour references and fail-closed blocks.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_renormalization_covariance_audit.py"
+      ]
+    },
+    "verification/renormalization_covariance_audit_inventory.json": {
+      "consumers": [],
+      "deprecation": "Calculated input inventory; missing metadata is explicit and not evidence.",
+      "description": "Machine-readable renormalization/provenance inventory for maintained surfaces.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_renormalization_covariance_audit.py"
+      ]
+    },
+    "verification/renormalization_covariance_audit_report.md": {
+      "consumers": [],
+      "deprecation": "Calculated provenance/RG audit report; blocked metadata and non-comparable heavy convention are explicit.",
+      "description": "Generated renormalization covariance report with source, sequential heavy-flavour, and conversion boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_renormalization_covariance_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_renormalization_covariance_audit.py"
+      ]
+    },
+    "verification/test_static_w_branch_audit.py": {
+      "consumers": [],
+      "deprecation": "Semantic checks for a zero-weight fail-closed diagnostic.",
+      "description": "Semantic tests for the executable W-field branch audit.",
       "evidence_weight": 0.0,
       "inputs": [
-        "verification/nvg_density_universality_audit.py",
-        "verification/contracts/density_universality.md"
+        "verification/static_w_branch_audit.py",
+        "verification/static_w_branch_audit_results.json",
+        "verification/static_w_branch_audit_repair_1_report.md"
       ],
       "kind": "test",
       "outputs": [],
@@ -5805,13 +6831,128 @@
       "status": "maintained",
       "tests": []
     },
-    "verification/contracts/density_universality.md": {
-      "consumers": [
-        "verification/nvg_density_universality_audit.py",
-        "verification/test_nvg_density_universality_audit.py"
+    "verification/test_eos_hvh_closure_audit.py": {
+      "consumers": [],
+      "deprecation": "Semantic checks for a zero-weight fail-closed diagnostic.",
+      "description": "Semantic tests for the executable EOS/HVH closure audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/eos_hvh_closure_audit.py",
+        "verification/eos_hvh_closure_audit_results.json",
+        "verification/eos_hvh_closure_audit_report.md"
       ],
-      "deprecation": "Sealed conditional density-tail and calibration-null contract; no universal law, full EOS, dynamics or independent empirical claim.",
-      "description": "Frozen homogeneous functional, tail assumptions, p>4 and p<=4 limits, jet-preserving positive deformation, numerical protocol and interpretation boundaries.",
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_renormalization_covariance_audit.py": {
+      "consumers": [],
+      "deprecation": "Semantic checks for a zero-weight provenance/RG diagnostic.",
+      "description": "Semantic tests for the executable renormalization covariance audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_renormalization_covariance_audit.py",
+        "verification/renormalization_covariance_audit_results.json",
+        "verification/renormalization_covariance_audit_inventory.json",
+        "verification/renormalization_covariance_audit_report.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/source_complete_solution_audit.py": {
+      "consumers": [
+        "verification/nvg_euler_ward_precision.py",
+        "verification/test_source_complete_solution_audit.py",
+        "verification/source_complete_stellar_prediction.py",
+        "verification/source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Constructive equilibrium EFT audit with explicit density-melting no-go; zero independent-evidence weight.",
+      "description": "Executable source-complete local-U(1) W/Gauss/HVH/stress closure audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/nvg_euler_ward_precision.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/source_complete_solution_audit_results.json",
+        "verification/source_complete_solution_audit_report.md"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_solution_audit.py"
+      ]
+    },
+    "verification/source_complete_solution_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Calculated source-complete EFT result; no empirical confirmation or cheap-energy claim.",
+      "description": "Machine-readable source-complete equilibrium closure and density-melting no-go result.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_solution_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_solution_audit.py"
+      ]
+    },
+    "verification/source_complete_solution_audit_report.md": {
+      "consumers": [],
+      "deprecation": "Calculated source-complete EFT report; no empirical confirmation or cheap-energy claim.",
+      "description": "Generated source-complete closure report with gauge, stress, passport, and no-go boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_solution_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_solution_audit.py"
+      ]
+    },
+    "verification/test_source_complete_solution_audit.py": {
+      "consumers": [],
+      "deprecation": "Semantic checks for the zero-weight source-complete EFT diagnostic.",
+      "description": "Semantic tests for source-complete gauge, stress, HVH, passport, and no-go controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py",
+        "verification/source_complete_solution_audit_results.json",
+        "verification/source_complete_solution_audit_report.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/source_complete_action.md": {
+      "consumers": [
+        "verification/source_complete_solution_audit.py",
+        "verification/source_complete_stellar_prediction.py",
+        "verification/source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Byte-preserved mathematical action snapshot; historical workflow metadata is not current execution authority or empirical evidence.",
+      "description": "Portable source-complete local-U(1) equilibrium action and claim boundary.",
       "evidence_weight": 0.0,
       "inputs": [],
       "kind": "data",
@@ -5821,17 +6962,427 @@
       "role": "validation",
       "status": "maintained",
       "tests": [
-        "verification/test_nvg_density_universality_audit.py"
+        "verification/test_source_complete_solution_audit.py",
+        "verification/test_source_complete_stellar_prediction.py",
+        "verification/test_source_complete_resonator_prediction.py"
       ]
     },
-    "NVG_DENSITY_UNIVERSALITY_RU.md": {
-      "consumers": [],
-      "deprecation": "Public formal density-tail and calibration-null report with zero independent empirical weight; not an EOS, dynamical, gravitational or finite-nucleus result.",
-      "description": "Russian public summary of the five-case scaling calculation, full-Fermi p=4 control, local fourth-derivative discriminator, virial analogy and flat-GR boundary.",
+    "verification/contracts/observable_predictions.md": {
+      "consumers": [
+        "verification/source_complete_stellar_prediction.py",
+        "verification/source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Byte-preserved mathematical contract snapshot; historical workflow metadata is not current execution authority or empirical evidence.",
+      "description": "Portable one-component stellar and conditional resonator equations, tolerances, and claim ceilings.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_stellar_prediction.py",
+        "verification/test_source_complete_resonator_prediction.py"
+      ]
+    },
+    "verification/contracts/source_complete_resonator_fingerprints.json": {
+      "consumers": [
+        "verification/source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Integrity metadata authenticates source/artifact identity, not empirical confirmation.",
+      "description": "Maintained source and artifact fingerprints for the conditional resonator audit.",
       "evidence_weight": 0.0,
       "inputs": [
-        "verification/nvg_density_universality_audit.py",
-        "verification/contracts/density_universality.md"
+        "verification/source_complete_resonator_prediction.py",
+        "verification/test_source_complete_resonator_prediction.py"
+      ],
+      "kind": "manifest",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ]
+    },
+    "verification/source_complete_stellar_prediction.py": {
+      "consumers": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ],
+      "deprecation": "Mathematical one-component sequence only; beta equilibrium, charge neutrality, leptons, crust, and high-density completion are absent.",
+      "description": "Source-complete TOV/tidal producer with independent numerical checks and zero observational evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md",
+        "verification/contracts/observable_predictions.md"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/source_complete_stellar_prediction_results.json",
+        "verification/source_complete_stellar_prediction_report.md"
+      ],
+      "producer": "verification/source_complete_solution_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ]
+    },
+    "verification/test_source_complete_stellar_prediction.py": {
+      "consumers": [],
+      "deprecation": "Numerical and schema acceptance does not establish a physical neutron-star model.",
+      "description": "Semantic, independent-integrator, and mutation controls for the mathematical stellar sequence.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_stellar_prediction.py",
+        "verification/source_complete_stellar_prediction_results.json",
+        "verification/source_complete_stellar_prediction_report.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/source_complete_stellar_prediction_results.json": {
+      "consumers": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ],
+      "deprecation": "Mathematical one-component output; physical neutron-star and observational claims remain blocked.",
+      "description": "Regenerated mathematical stellar sequence with independent fresh-process reproduction; fixed parameters fail nuclear saturation.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_stellar_prediction.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ]
+    },
+    "verification/source_complete_stellar_prediction_report.md": {
+      "consumers": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ],
+      "deprecation": "Mathematical one-component output; physical neutron-star and observational claims remain blocked.",
+      "description": "Regenerated mathematical stellar report with independent fresh-process reproduction; fixed parameters fail nuclear saturation.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_stellar_prediction.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_stellar_prediction.py"
+      ]
+    },
+    "verification/source_complete_resonator_prediction.py": {
+      "consumers": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "EFT vacuum spectrum and conditional passive response only; missing measured device inputs block numerical physical power.",
+      "description": "Source-complete vacuum gaps, passive response contract, and dimensionless verification benchmark.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md",
+        "verification/contracts/observable_predictions.md",
+        "verification/contracts/source_complete_resonator_fingerprints.json"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/source_complete_resonator_prediction_results.json",
+        "verification/source_complete_resonator_prediction_report.md"
+      ],
+      "producer": "verification/source_complete_solution_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ]
+    },
+    "verification/test_source_complete_resonator_prediction.py": {
+      "consumers": [],
+      "deprecation": "Mathematical passivity and metadata controls supply no device or empirical evidence.",
+      "description": "Semantic, passivity, passport, provenance, and mutation tests for the conditional resonator contract.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_resonator_prediction.py",
+        "verification/source_complete_resonator_prediction_results.json",
+        "verification/source_complete_resonator_prediction_report.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/source_complete_resonator_prediction_results.json": {
+      "consumers": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Calculated EFT spectrum and conditional response; numerical device power remains blocked.",
+      "description": "Regenerated source-complete vacuum spectrum, conditional passive response, and normalized identity controls.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_resonator_prediction.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ]
+    },
+    "verification/source_complete_scaling_saturation_audit.py": {
+      "consumers": [
+        "verification/nvg_bounce_potential_audit.py",
+        "verification/nvg_binding_feasibility_audit.py",
+        "verification/test_nvg_binding_feasibility_audit.py",
+        "verification/test_source_complete_scaling_saturation_audit.py",
+        "verification/bh_cycle_consistency_audit.py"
+      ],
+      "deprecation": "Model-class identities and explicitly fitted research examples only; original parameters and physical neutron-star claims are not repaired by calibration.",
+      "description": "Independent scale identity, all-density quartic no-binding theorem, vector ceiling, inverse calibration and potential-jet checks.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/source_complete_scaling_saturation_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_scaling_saturation_audit.py"
+      ]
+    },
+    "verification/test_source_complete_scaling_saturation_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent quadratures and derivatives, positive/negative controls, calibration provenance and read-only default CLI.",
+      "evidence_weight": 0.0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py", "verification/source_complete_scaling_saturation_results.json"],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/source_complete_scaling_saturation_results.json": {
+      "consumers": ["verification/test_source_complete_scaling_saturation_audit.py"],
+      "deprecation": "No independent empirical evidence; fitted nuclear targets and rejected potential examples are explicitly labelled.",
+      "description": "Recomputed mathematical identities and necessary constraints, with separate two-target quartic and chosen-field three-target examples.",
+      "evidence_weight": 0.0,
+      "inputs": ["verification/source_complete_scaling_saturation_audit.py"],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_scaling_saturation_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_source_complete_scaling_saturation_audit.py"]
+    },
+    "verification/source_complete_resonator_prediction_report.md": {
+      "consumers": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ],
+      "deprecation": "Calculated EFT spectrum and conditional response; numerical device power remains blocked.",
+      "description": "Generated source-complete vacuum and conditional passive-response report with explicit physical-power blockers.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/source_complete_resonator_prediction.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_source_complete_resonator_prediction.py"
+      ]
+    },
+    "verification/nvg_kinetic_spectral_audit.py": {
+      "consumers": [
+        "verification/test_nvg_kinetic_spectral_audit.py",
+        "verification/nvg_spectral_structure_audit.py"
+      ],
+      "deprecation": "Long-wavelength zero-temperature Hartree/Landau density response only; effective spectral moments are not a full microscopic relativistic sum-rule, gravitational or empirical completion.",
+      "description": "Causal driven density response with current feedback, continuum and log-gap delta-pole residue, independent spectral quadratures, EOS/inertia moment bridge and fail-closed precision/mutation controls.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_collisionless_response_audit.py",
+        "verification/nvg_effective_response_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_kinetic_spectral_audit.py"
+      ]
+    },
+    "verification/test_nvg_kinetic_spectral_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Retarded sign and angular/source checks, continuum plus pole spectral sums, 80/110 precision controls, live acoustic/inertia bridge and malformed or mutated payload rejection.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_kinetic_spectral_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_spectral_structure_audit.py": {
+      "consumers": [
+        "verification/test_nvg_spectral_structure_audit.py"
+      ],
+      "deprecation": "Stationary collisionless long-wave F_l>=2=0 effective model; shape inversion is synthetic and non-unique with higher harmonics; no empirical, finite-k, stress-source or cosmological completion.",
+      "description": "Higher spectral moments, Jacobi/resolvent passivity, centroid and kinetic shear identities, pole-residue sensitivity, equilibrium density drift and explicit inversion-degeneracy controls without parameter fitting.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_collisionless_response_audit.py",
+        "verification/nvg_kinetic_spectral_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_spectral_structure_audit.py"
+      ]
+    },
+    "verification/test_nvg_spectral_structure_audit.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Independent higher-moment derivations and quadratures, matrix and precision controls, log-gap derivatives, missing-pole and wrong-sign adversaries, higher-harmonic non-identifiability and strict no-write output.",
+      "evidence_weight": 0,
+      "inputs": [
+        "verification/nvg_spectral_structure_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_isospin_jet_audit.py": {
+      "consumers": [
+        "verification/test_nvg_isospin_jet_audit.py"
+      ],
+      "deprecation": "Constant-rho local homogeneous jet extension; no finite-nucleus, transport, neutron-star or empirical completion.",
+      "description": "Live two-species nuclear isospin-jet identities, direct quadrature/re-equilibration checks, conditional references and explicit degeneracy/global guards.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/data/nvg_isospin_jet_benchmarks.json",
+        "verification/contracts/nuclear_isospin_jet.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_isospin_jet_audit.py"
+      ]
+    },
+    "verification/test_nvg_isospin_jet_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live tests for the zero-weight local isospin-jet diagnostic.",
+      "description": "Quadrature, re-equilibration, parity, J-shift, precision, provenance-contamination, degeneracy and invalid-domain controls for the local jet.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_isospin_jet_audit.py",
+        "verification/data/nvg_isospin_jet_benchmarks.json",
+        "verification/contracts/nuclear_isospin_jet.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/data/nvg_isospin_jet_benchmarks.json": {
+      "consumers": [
+        "verification/nvg_isospin_jet_audit.py",
+        "verification/test_nvg_isospin_jet_audit.py"
+      ],
+      "deprecation": "Declared design grid plus descriptive literature references; no saved answers and no joint likelihood.",
+      "description": "Frozen local-jet inputs and traceable conditional nuclear source benchmarks kept separate from model construction.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_isospin_jet_audit.py"
+      ]
+    },
+    "verification/contracts/nuclear_isospin_jet.md": {
+      "consumers": [
+        "verification/nvg_isospin_jet_audit.py",
+        "verification/test_nvg_isospin_jet_audit.py"
+      ],
+      "deprecation": "Sealed local conditional contract; it does not authorize a new fundamental action or empirical claim.",
+      "description": "P1 local isospin-jet equations, input roles, degeneracy guard and interpretation boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_isospin_jet_audit.py"
+      ]
+    },
+    "NVG_NUCLEAR_VALIDATION_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional nuclear local-jet report; zero independent-evidence weight.",
+      "description": "Russian public report of the live constant-rho local isospin-jet calculation and its physical validation boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_isospin_jet_audit.py",
+        "verification/data/nvg_isospin_jet_benchmarks.json",
+        "verification/contracts/nuclear_isospin_jet.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -5840,16 +7391,244 @@
       "role": "validation",
       "status": "maintained",
       "tests": [
-        "verification/test_nvg_density_universality_audit.py"
+        "verification/test_nvg_isospin_jet_audit.py"
       ]
     },
-    "NVG_BEYOND_DROPLETS_ADHD_RU.md": {
-      "consumers": [],
-      "deprecation": "Public companion preserving the predeclared 30-idea ADHD selection; ideas and scores are not results or empirical evidence.",
-      "description": "Russian companion with all 30 scored divergent ideas, traps, selected R4/R3/M3 focus and one explicit calibration-identifiability provocation.",
+    "verification/nvg_nuclear_closure_audit.py": {
+      "consumers": [
+        "verification/test_nvg_nuclear_closure_audit.py"
+      ],
+      "deprecation": "Inverse-designed homogeneous zero-temperature W8 support and canonical static local-TF finite-q certificates only; not empirical validation, RPA, dynamics, finite nuclei, all-density EOS convexity, gravity or universe closure.",
+      "description": "No-write directed-interval global-support and exact quadratic finite-q audit for the sealed y*=0.90/0.93 inverse W8 designs, with y*=0.75 negative control.",
       "evidence_weight": 0.0,
       "inputs": [
-        "NVG_DENSITY_UNIVERSALITY_RU.md"
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/contracts/nuclear_closure.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nuclear_closure_audit.py"
+      ]
+    },
+    "verification/test_nvg_nuclear_closure_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused mathematical proof-integrity tests with zero independent empirical weight.",
+      "description": "Cached 80/110 calculation, interval coverage, exact tangency, finite-q, negative-control, corrupt-proof and strict-JSON/no-write regression tests.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nuclear_closure_audit.py",
+        "verification/contracts/nuclear_closure.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/nuclear_closure.md": {
+      "consumers": [
+        "verification/nvg_nuclear_closure_audit.py",
+        "verification/test_nvg_nuclear_closure_audit.py"
+      ],
+      "deprecation": "Sealed conditional mathematical contract; it does not turn inverse-fit targets into predictions or authorize broader physical claims.",
+      "description": "P1 W8 global-support and canonical static finite-q proof obligations, status semantics and interpretation boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nuclear_closure_audit.py"
+      ]
+    },
+    "NVG_NUCLEAR_CLOSURE_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional mathematical report with zero independent empirical weight; not a finite-nucleus, RPA, dynamical, gravitational or universe-closure result.",
+      "description": "Russian report of the directed W8 bulk-support and canonical static finite-q calculations, negative control and explicit physical limits.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nuclear_closure_audit.py",
+        "verification/contracts/nuclear_closure.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nuclear_closure_audit.py"
+      ]
+    },
+    "verification/nvg_finite_droplet_audit.py": {
+      "consumers": [
+        "verification/test_nvg_finite_droplet_audit.py"
+      ],
+      "deprecation": "Finite-N zero-temperature spherical W8 Thomas-Fermi numerical continuation with nonlocal Gauss energy; not empirical validation, full stability, real-nucleus phenomenology or universal-theory completion.",
+      "description": "No-write finite-N radial BVP audit for the sealed y*=0.90/0.93 inverse W8 designs, including fixed-N virial and finite-boundary Gauss diagnostics.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/contracts/finite_droplet.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_finite_droplet_audit.py"
+      ]
+    },
+    "verification/test_nvg_finite_droplet_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live numerical stationarity, Gauss-boundary, virial, refinement and no-write regression tests with zero independent empirical weight.",
+      "description": "Cached four-case finite-N calculation tests, branch/seed coverage, identity checks, mutation controls and strict-JSON CLI behavior.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/contracts/finite_droplet.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/finite_droplet.md": {
+      "consumers": [
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/test_nvg_finite_droplet_audit.py"
+      ],
+      "deprecation": "Sealed conditional finite-N numerical contract; no empirical or full finite-nucleus claim.",
+      "description": "Finite-N spherical W8 equations, nonlocal Gauss energy identity, fixed-N virial oracle, protocol and status semantics.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_finite_droplet_audit.py"
+      ]
+    },
+    "NVG_FINITE_DROPLET_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional finite-N W8 report with zero independent empirical weight; not a real-nucleus, full-stability, gravitational or universal-theory result.",
+      "description": "Russian public report of the live spherical finite-N W8 calculation, branch classifications, Gauss boundary term, virial refinement and physical limits.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/contracts/finite_droplet.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_finite_droplet_audit.py"
+      ]
+    },
+    "verification/nvg_droplet_stability_audit.py": {
+      "consumers": [
+        "verification/test_nvg_droplet_stability_audit.py"
+      ],
+      "deprecation": "Bounded finite-basis static W8 droplet stability audit with zero independent empirical weight; not full stability, a frequency calculation or a universal-theory result.",
+      "description": "No-write constrained Hessian producer for accepted y*=0.90/0.93,N=208 backgrounds, ell=0..6, explicit translation projection, fixed-N/rank/error controls and independent Gauss/energy checks.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/contracts/droplet_stability.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_stability_audit.py"
+      ]
+    },
+    "verification/test_nvg_droplet_stability_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live static-Hessian, translation, Gauss positivity, synthetic-control and strict-JSON tests with zero independent empirical weight.",
+      "description": "Protocol coverage and fail-closed mutation tests for finite-basis droplet stability; includes projection, fixed-N, rank, residual, background and independent energy-difference controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/contracts/droplet_stability.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/droplet_stability.md": {
+      "consumers": [
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/test_nvg_droplet_stability_audit.py"
+      ],
+      "deprecation": "Sealed bounded static finite-droplet stability contract; no full stability or independent empirical claim.",
+      "description": "Constrained Hessian, positive Gauss elimination, moving-edge displacement basis, fixed-N and G-orthogonal translation projection, rank/residual/background gates and interpretation labels.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_stability_audit.py"
+      ]
+    },
+    "NVG_DROPLET_STABILITY_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional finite-basis static W8 stability report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
+      "description": "Russian public summary of constrained ell=0..6 finite-droplet curvatures, raw/internal translation spectra, fixed-N/rank/error/background controls, independent energy checks and numerical limits.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/contracts/droplet_stability.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_stability_audit.py"
+      ]
+    },
+    "NVG_DROPLET_RESEARCH_ADHD_RU.md": {
+      "consumers": [],
+      "deprecation": "Parent-owned ADHD research directions for bounded droplet follow-up; registry presence is not empirical evidence.",
+      "description": "Documented divergent idea field, scoring, selected coordinate-recovery and Schur/angular-response directions, and explicitly rejected scope expansions.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "NVG_DROPLET_STABILITY_RU.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -5859,23 +7638,772 @@
       "status": "maintained",
       "tests": []
     },
-    "verification/source_complete_scaling_saturation_audit.py": {
-      "kind": "script",
-      "role": "utility",
-      "status": "utility",
-      "evidence_weight": 0.0,
-      "description": "Shared BulkModel and inverse_potential_jet implementation used by the density-tail audit.",
-      "producer": null,
+    "verification/nvg_droplet_coordinate_response_audit.py": {
       "consumers": [
-        "verification/nvg_density_universality_audit.py"
+        "verification/test_nvg_droplet_coordinate_response_audit.py"
       ],
-      "inputs": [],
+      "deprecation": "Bounded coordinate-equilibrated finite-basis W8 replay and fixed-profile angular response with zero independent empirical weight; not full stability, an optimized-mode theorem or an empirical result.",
+      "description": "No-write coordinate-congruence replay, rank-conditioning diagnostics, physical-vector checks, strict density Schur identities and angular resolvent response for accepted y*=0.90/0.93,N=208 backgrounds.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/contracts/droplet_coordinate_response.md"
+      ],
+      "kind": "script",
       "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
       "tests": [
-        "verification/test_nvg_density_universality_audit.py"
+        "verification/test_nvg_droplet_coordinate_response_audit.py"
+      ]
+    },
+    "verification/test_nvg_droplet_coordinate_response_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live coordinate, rank, Schur, angular-identity, cache and strict-JSON controls with zero independent empirical weight.",
+      "description": "Fresh coordinate-response replay tests with known-sign congruence controls and fail-closed classification/data/CLI fault injections.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_coordinate_response_audit.py",
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/contracts/droplet_coordinate_response.md"
       ],
-      "deprecation": "Only the shared calculation API is included here. The separate upstream audit CLI requires source_complete_solution_audit.py and is outside this committed surface.",
-      "quarantine": null
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/droplet_coordinate_response.md": {
+      "consumers": [
+        "verification/nvg_droplet_coordinate_response_audit.py",
+        "verification/test_nvg_droplet_coordinate_response_audit.py"
+      ],
+      "deprecation": "Sealed bounded coordinate-response and angular-resolvent contract; no full stability or independent empirical claim.",
+      "description": "Declared diagonal Gram congruence, complete replay protocol, raw/normalized rank semantics, strict density Schur diagnostic, fixed-profile angular identity and interpretation limits.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_coordinate_response_audit.py"
+      ]
+    },
+    "NVG_DROPLET_COORDINATE_RESPONSE_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional coordinate-response report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
+      "description": "Russian public summary of coordinate-equilibrated finite-basis replay, rank-loss controls, physical-vector and Schur checks, and fixed-profile angular resolvent identities.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_coordinate_response_audit.py",
+        "verification/contracts/droplet_coordinate_response.md",
+        "NVG_DROPLET_STABILITY_RU.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_coordinate_response_audit.py"
+      ]
+    },
+    "verification/nvg_droplet_residual_enrichment_audit.py": {
+      "consumers": [
+        "verification/test_nvg_droplet_residual_enrichment_audit.py"
+      ],
+      "deprecation": "Bounded residual-guided finite-basis W8 enrichment with zero independent empirical weight; not full stability, a frequency calculation or an empirical result.",
+      "description": "No-write physical-space whitening, deterministic compact displacement/scalar selection, frozen validation replay and independent held-out residual diagnostics for accepted y*=0.90/0.93,N=208 droplets.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_stability_audit.py",
+        "verification/nvg_finite_droplet_audit.py",
+        "verification/contracts/droplet_residual_enrichment.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_residual_enrichment_audit.py"
+      ]
+    },
+    "verification/test_nvg_droplet_residual_enrichment_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live residual-selection, physical-whitening, held-out, hidden-negative, cache and strict-JSON controls with zero independent empirical weight.",
+      "description": "Fresh residual-enrichment coverage tests, analytic bump and quotient controls, frozen-ID/holdout checks, mutation rejection and no-write CLI regression.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_residual_enrichment_audit.py",
+        "verification/contracts/droplet_residual_enrichment.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/droplet_residual_enrichment.md": {
+      "consumers": [
+        "verification/nvg_droplet_residual_enrichment_audit.py",
+        "verification/test_nvg_droplet_residual_enrichment_audit.py"
+      ],
+      "deprecation": "Sealed bounded residual-guided finite-basis contract; no full stability, all-mode positivity or independent empirical claim.",
+      "description": "Physical SVD base representation, compact candidate dictionaries, greedy residual scoring, fixed validation replay, held-out residual gate and conservative finite-space labels.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_residual_enrichment_audit.py"
+      ]
+    },
+    "NVG_DROPLET_RESIDUAL_ENRICHMENT_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional residual-enrichment report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
+      "description": "Russian public summary of physical-space whitening, frozen residual-selected enrichments, validation/refinement controls, held-out residual localization and finite-space limits.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_droplet_residual_enrichment_audit.py",
+        "verification/contracts/droplet_residual_enrichment.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_droplet_residual_enrichment_audit.py"
+      ]
+    },
+    "verification/nvg_foundation_identifiability_audit.py": {
+      "consumers": [
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ],
+      "deprecation": "Live homogeneous identifiability and finite-momentum discriminator only; zero independent empirical weight and no full-dynamics or empirical claim.",
+      "description": "Fresh no-write original saturation, vector ceiling, quartic K negative control, passport and W0 scale-identifiability audit with finite-wave-number scalar exchange.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/foundation_identifiability.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ]
+    },
+    "verification/test_nvg_foundation_identifiability_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live quadrature, calibration-boundary, scale-map, finite-momentum, precision, passport, mutation and no-write controls; zero empirical weight.",
+      "description": "Semantic regression tests for original saturation, vector ceiling, held-out K control, homogeneous scaling invariance, canonical finite-q non-symmetry and fail-closed JSON.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_foundation_identifiability_audit.py",
+        "verification/contracts/foundation_identifiability.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/foundation_identifiability.md": {
+      "consumers": [
+        "verification/nvg_foundation_identifiability_audit.py",
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ],
+      "deprecation": "Sealed bounded homogeneous identifiability and finite-momentum discriminator contract; no interaction adoption or empirical validation.",
+      "description": "Frozen functional, scale map, canonical kinetic-term distinction, finite-wave-number exchange check, passport requirements and no-write numerical boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ]
+    },
+    "NVG_FOUNDATION_IDENTIFIABILITY_RU.md": {
+      "consumers": [],
+      "deprecation": "Public mathematical/model-class result with zero independent empirical weight; not a full-dynamics, finite-nucleus, transport or universal-theory result.",
+      "description": "Russian summary of the live original saturation and vector-ceiling controls, quartic K negative control, homogeneous W0 scaling degeneracy and finite-momentum discriminator.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_foundation_identifiability_audit.py",
+        "verification/contracts/foundation_identifiability.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ]
+    },
+    "NVG_FIRST_VALIDATION_PROTOCOL_RU.md": {
+      "consumers": [],
+      "deprecation": "Source-based validation design with pending raw inputs and zero independent empirical weight; not an empirical result or statistical pass.",
+      "description": "Russian physical-validation protocol separating Q4 control and W8 design hypotheses, source provenance, unused checks, missing covariance/microphysics and finite-q degeneracy breaking.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/foundation_identifiability.md",
+        "NVG_FOUNDATION_IDENTIFIABILITY_RU.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_foundation_identifiability_audit.py"
+      ]
+    },
+    "verification/nvg_spatial_identifiability_audit.py": {
+      "consumers": [
+        "verification/test_nvg_spatial_identifiability_audit.py"
+      ],
+      "deprecation": "Conditional static local Thomas-Fermi response and W0 gradient identifiability only; zero independent empirical weight and no full-dynamics claim.",
+      "description": "No-write 72-row Q4/W8 in-medium Hessian audit with direct saddle solve, scale monotonicity, blind-wave classification, inversion guards, and live 80/110-digit controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_foundation_identifiability_audit.py",
+        "verification/nvg_nuclear_closure_audit.py",
+        "verification/contracts/spatial_identifiability.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_spatial_identifiability_audit.py"
+      ]
+    },
+    "verification/test_nvg_spatial_identifiability_audit.py": {
+      "consumers": [],
+      "deprecation": "Focused live Hessian, direct-solve, ensemble, scale, inversion, blind-point, precision, mutation, and strict-JSON controls; zero empirical weight.",
+      "description": "Semantic regression tests for the complete 72-row atlas, constrained Gauss signs, scale monotonicity, degenerate refusal, explicit red statuses, and public-scope boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_spatial_identifiability_audit.py",
+        "verification/contracts/spatial_identifiability.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/spatial_identifiability.md": {
+      "consumers": [
+        "verification/nvg_spatial_identifiability_audit.py",
+        "verification/test_nvg_spatial_identifiability_audit.py"
+      ],
+      "deprecation": "Sealed conditional static TF response and gradient-scale identifiability contract; no empirical, all-k, finite-nucleus, or dynamical claim.",
+      "description": "Frozen Hessian signs, Gauss saddle elimination, source convention, scale family, exact monotonic difference, blind-point and inversion conditions, 72-row numerical protocol, and precision boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_spatial_identifiability_audit.py"
+      ]
+    },
+    "NVG_SPATIAL_IDENTIFIABILITY_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional static TF model-class result with zero independent empirical weight; not full dynamics, RPA, finite nucleus, or universal theory.",
+      "description": "Russian explanation of the live 72-row in-medium Hessian response, W0 gradient-scale discriminator, blind waves, inversion limits, and retained saturation mismatch.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_spatial_identifiability_audit.py",
+        "verification/contracts/spatial_identifiability.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_spatial_identifiability_audit.py"
+      ]
+    },
+    "verification/nvg_nonlocal_response.py": {
+      "consumers": [
+        "verification/test_nvg_nonlocal_response.py"
+      ],
+      "deprecation": "Conditional real static finite-q medium response under the explicitly named subtracted no-sea prescription; zero independent empirical weight and no dynamic/vacuum RPA claim.",
+      "description": "No-write 54-row Q4/W8 finite-momentum Dirac polarization calculation with matched q=0 limit, scalar-completeness control, Lindhard control, and live precision checks.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_foundation_identifiability_audit.py",
+        "verification/nvg_spatial_identifiability_audit.py",
+        "verification/contracts/nonlocal_response.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nonlocal_response.py"
+      ]
+    },
+    "verification/test_nvg_nonlocal_response.py": {
+      "consumers": [],
+      "deprecation": "Focused live nonlocal kernel, q=0, finite-q, completeness, scale, status, and strict-JSON controls; zero empirical weight.",
+      "description": "Goal-directed regression tests for the 54-row finite-q response calculation and its numerical/interpretation boundaries.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlocal_response.py",
+        "verification/contracts/nonlocal_response.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/nonlocal_response.md": {
+      "consumers": [
+        "verification/nvg_nonlocal_response.py",
+        "verification/test_nvg_nonlocal_response.py"
+      ],
+      "deprecation": "Sealed conditional SUBTRACTED_MEDIUM_DIRAC_STATIC contract; no empirical, dynamic, spectral, finite-nucleus, or full-vacuum-RPA claim.",
+      "description": "Implementation-ready finite-q Dirac kernels, thermodynamic matching, Legendre/Hessian bridge, quadrature prescription, coverage, and interpretation limits.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nonlocal_response.py"
+      ]
+    },
+    "NVG_NONLOCAL_RESPONSE_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional finite-q static medium-response result with zero independent empirical weight; not full RPA, dynamics, experiment, or complete EFT.",
+      "description": "Russian scientific report of the matched finite-momentum Dirac polarization, quantitative TF shifts, scalar-completeness resolution, scale comparison, and remaining limits.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlocal_response.py",
+        "verification/contracts/nonlocal_response.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_nonlocal_response.py"
+      ]
+    },
+    "verification/nvg_retarded_response.py": {
+      "consumers": [
+        "verification/test_nvg_retarded_response.py"
+      ],
+      "deprecation": "Conditional low-energy retarded finite-q response under the named subtracted medium Dirac prescription; zero independent empirical weight and no full-vacuum-RPA, finite-nucleus or global spectral claim.",
+      "description": "No-write 48-row complex Q4/W8 finite-frequency Dirac response with conserving longitudinal vector closure, analytic continuum absorption, bounded real-pole checks, Ward controls and explicit regulator convergence.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_nonlocal_response.py",
+        "verification/contracts/retarded_response.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_retarded_response.py"
+      ]
+    },
+    "verification/test_nvg_retarded_response.py": {
+      "consumers": [],
+      "deprecation": "Focused live retarded-kernel, continuum, Ward, closure, pole, conservation and no-write controls; zero independent empirical weight.",
+      "description": "Goal-directed regression tests for 48 complex response rows, dual-grid bounded poles, analytic absorptive parts, UHP convergence, and explicit negative controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_retarded_response.py",
+        "verification/contracts/retarded_response.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/contracts/retarded_response.md": {
+      "consumers": [
+        "verification/nvg_retarded_response.py",
+        "verification/test_nvg_retarded_response.py"
+      ],
+      "deprecation": "Sealed conditional SUBTRACTED_MEDIUM_DIRAC_RETARDED contract; no empirical, global spectral, finite-nucleus, or full-vacuum-RPA claim.",
+      "description": "Frozen retarded radial primitives, real-axis branches, particle-hole continuum, conserving four-variable closure, pole acceptance rules, numerical coverage and interpretation limits.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_retarded_response.py"
+      ]
+    },
+    "NVG_RETARDED_RESPONSE_RU.md": {
+      "consumers": [],
+      "deprecation": "Public conditional retarded finite-q response with zero independent empirical weight; not full RPA, experiment, finite nucleus, or complete EFT.",
+      "description": "Russian scientific report of the same-action retarded Dirac response, particle-hole absorption, Q4 bounded collective poles, W8 finite-interval no-root result, Ward/closure controls and caveats.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_retarded_response.py",
+        "verification/contracts/retarded_response.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_retarded_response.py"
+      ]
+    },
+    "verification/nvg_finite_monopole.py": {
+    "consumers": [
+      "verification/nvg_finite_static_bridge.py",
+      "verification/nvg_isovector_formfactor_probe.py",
+      "verification/nvg_ca48_quantum_surface_probe.py",
+      "verification/nvg_sn132_discriminating_set_probe.py",
+      "verification/nvg_j_identification_audit.py",
+      "verification/test_nvg_finite_static_bridge.py"
+    ],
+    "deprecation": "Static isoscalar finite-nucleus machinery of the accepted W8.93 branch; no shells, pairing, deformation, rotation or transport; zero independent empirical weight.",
+    "description": "Spherical two-component finite-nucleus monopole solver: covariant TF static BVP with scalar, vector and Coulomb fields, multi-seed terminal acceptance gates and the declared covariant_contact_J32 rho-coupling seam.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_isospin_jet_audit.py",
+      "verification/nvg_finite_droplet_audit.py"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_finite_static_bridge.py"
+    ]
+    },
+    "verification/nvg_finite_static_bridge.py": {
+    "consumers": [
+      "verification/nvg_isovector_formfactor_probe.py",
+      "verification/nvg_ca48_quantum_surface_probe.py",
+      "verification/nvg_sn132_discriminating_set_probe.py",
+      "verification/test_nvg_finite_static_bridge.py"
+    ],
+    "deprecation": "Conditional static bridge of one accepted branch; binding comparisons are descriptive and carry zero independent empirical weight.",
+    "description": "Finite-static bridge over the monopole solver: nucleus table, cited AME2020/Angeli observables with electron corrections, radius mapping and terminal-protocol case production.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/data/finite_static_observables_2026.json"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_finite_static_bridge.py"
+    ]
+    },
+    "verification/nvg_isovector_formfactor_probe.py": {
+    "consumers": [
+      "verification/nvg_ca48_quantum_surface_probe.py",
+      "verification/nvg_sn132_discriminating_set_probe.py",
+      "verification/nvg_j_identification_audit.py",
+      "verification/test_nvg_isovector_formfactor_probe.py"
+    ],
+    "deprecation": "Declared diagnostic probes through the live covariant_contact_J32 machinery; conditional zero-evidence diagnostics, never fitted interactions.",
+    "description": "Isovector contact and form-factor probe on the accepted W8.93 baseline: anchored binding slopes, self-consistent J20/J32 contact probes, point form factors and CVC weak convolutions.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_finite_static_bridge.py"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_isovector_formfactor_probe.py"
+    ]
+    },
+    "verification/nvg_ca48_quantum_surface_probe.py": {
+    "consumers": [
+      "verification/nvg_sn132_discriminating_set_probe.py",
+      "verification/test_nvg_ca48_quantum_surface_probe.py"
+    ],
+    "deprecation": "Conditional held-out diagnostic of one accepted branch; isotope shifts and skins remain outside static TF; zero independent empirical weight.",
+    "description": "Pre-registered 48Ca held-out probe: nucleus-table context patch, volume/surface operator split, WKB validity masking and frozen-profile ETF-2 quantum-surface energies.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_finite_static_bridge.py",
+      "verification/nvg_isovector_formfactor_probe.py"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_ca48_quantum_surface_probe.py"
+    ]
+    },
+    "verification/nvg_sn132_discriminating_set_probe.py": {
+    "consumers": [
+      "verification/nvg_j_identification_audit.py",
+      "verification/test_nvg_sn132_discriminating_set_probe.py"
+    ],
+    "deprecation": "Conditional zero-evidence diagnostic; the universal-j solves are declared probes at fixed s*, not a recalibration or a new theory element.",
+    "description": "132Sn completing the pre-registered discriminating set {Zr90, Pb208, Ca48, Sn132}: registered verdict bands, single-constant universality verdict and the universal-j residual-collapse demonstration.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_finite_static_bridge.py",
+      "verification/nvg_isovector_formfactor_probe.py",
+      "verification/nvg_ca48_quantum_surface_probe.py"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_sn132_discriminating_set_probe.py"
+    ]
+    },
+    "verification/nvg_j_identification_audit.py": {
+    "consumers": [
+      "verification/test_nvg_j_identification_audit.py"
+    ],
+    "deprecation": "Post-hoc interpretation of a completed zero-evidence diagnostic; adds no coefficient and plays no role in the pre-registered verdict.",
+    "description": "Read-only identification audit of the universal j contact: kinetic/contact decomposition at saturation, cited liquid-drop a_sym anchors and the zero-range QHD rho-channel algebra.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_isospin_jet_audit.py",
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_isovector_formfactor_probe.py",
+      "verification/nvg_sn132_discriminating_set_probe.py"
+    ],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_j_identification_audit.py"
+    ]
+    },
+    "verification/nvg_retarded_gradient_matching.py": {
+    "consumers": [
+      "verification/test_nvg_retarded_gradient_matching.py"
+    ],
+    "deprecation": "Algebraic reconstruction on a fixed background; no kernel calculation and no empirical claim; zero independent weight.",
+    "description": "Algebraic gradient matching for the accepted retarded Hartree matrix: longitudinal-vector Schur-block removal and Z reconstruction with dZ/dchi, never clipped into a physical gradient.",
+    "evidence_weight": 0.0,
+    "inputs": [],
+    "kind": "script",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": [
+      "verification/test_nvg_retarded_gradient_matching.py"
+    ]
+    },
+    "verification/test_nvg_finite_static_bridge.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the conditional static bridge; zero independent empirical weight.",
+    "description": "Bridge and monopole gates: nucleus table, electron corrections, terminal acceptance and baseline reproducibility controls without launching full BVP ladders.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_finite_static_bridge.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/test_nvg_isovector_formfactor_probe.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the zero-evidence isovector diagnostic.",
+    "description": "Contact-linearity, anchored-slope, form-factor, CVC weak-operator and strict-JSON controls for the isovector probe.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_isovector_formfactor_probe.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/test_nvg_ca48_quantum_surface_probe.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the zero-evidence Ca48 held-out diagnostic.",
+    "description": "Cited Ca48 input arithmetic, nucleus-table patch add/restore, WKB/ETF-2 analytic and decimation controls for the held-out probe.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_isovector_formfactor_probe.py",
+      "verification/nvg_ca48_quantum_surface_probe.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/test_nvg_sn132_discriminating_set_probe.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the zero-evidence discriminating-set diagnostic.",
+    "description": "Cited Sn132 input arithmetic, contact linearity, verdict-band and pre-registration controls for the discriminating set.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_finite_monopole.py",
+      "verification/nvg_sn132_discriminating_set_probe.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/test_nvg_j_identification_audit.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the post-hoc zero-evidence identification audit.",
+    "description": "Cited-anchor constants, contact-convention identities, band logic, fail-closed artifact gates and strict-JSON CLI controls for the identification audit.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_sn132_discriminating_set_probe.py",
+      "verification/nvg_j_identification_audit.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/test_nvg_retarded_gradient_matching.py": {
+    "consumers": [],
+    "deprecation": "Focused tests for the zero-weight algebraic matching diagnostic.",
+    "description": "Schur reconstruction, dZ/dchi and complex-domain controls for the algebraic gradient matching.",
+    "evidence_weight": 0.0,
+    "inputs": [
+      "verification/nvg_retarded_gradient_matching.py",
+      "verification/nvg_retarded_response.py"
+    ],
+    "kind": "test",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
+    },
+    "verification/data/finite_static_observables_2026.json": {
+    "consumers": [
+      "verification/nvg_finite_static_bridge.py"
+    ],
+    "deprecation": "Cited evaluated inputs consumed by the conditional static bridge; zero independent empirical weight.",
+    "description": "Cited evaluated finite-nucleus inputs 2026 (AME2020/ENSDF bindings, Angeli-Marinova charge radii with covariance, PREX/CREX skins, nucleon charge inputs); declared inputs only, never model outputs.",
+    "evidence_weight": 0.0,
+    "inputs": [],
+    "kind": "data",
+    "outputs": [],
+    "producer": null,
+    "quarantine": null,
+    "role": "validation",
+    "status": "maintained",
+    "tests": []
     }
   },
   "front_door": {
@@ -5886,7 +8414,7 @@
     "process_smoke_note": "Process return codes are not scientific evidence and are never run by the front door.",
     "semantic_test_command": "python -m pytest -q verification"
   },
-  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
+  "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",
   "kinds": [
     "script",
     "test",

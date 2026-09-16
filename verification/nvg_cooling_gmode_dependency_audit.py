@@ -21,6 +21,7 @@ import hashlib
 import json
 import math
 import re
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
@@ -371,15 +372,46 @@ _DOCUMENT_CLAIM_RE = re.compile(
 )
 
 
-def _document_claim_scan() -> list[dict[str, Any]]:
-    """Inventory prose/static-output claim lines without importing them."""
+def _tracked_document_paths() -> set[Path]:
+    """Candidate prose surfaces restricted to the tracked public tree.
+
+    ``_DOCUMENT_ROOTS`` contains directories that also hold local-only drafts
+    and ignored generated reports.  The scan is embedded verbatim in the P3-S6
+    artifact and deterministically regenerated on every front-door run, so it
+    must be identical wherever the front door runs (CI checkout or developer
+    tree).  Local-only files are not public claim surfaces and are excluded by
+    enumerating candidates through ``git ls-files`` (the same tracked-tree
+    idiom as the registry).  Fail closed when git is unavailable: a silent
+    disk fallback would let the artifact drift between environments.
+    """
 
     paths: set[Path] = set()
     for root in _DOCUMENT_ROOTS:
-        if root.is_file() and root.suffix.lower() in _DOCUMENT_SUFFIXES:
-            paths.add(root)
-        elif root.is_dir():
-            paths.update(path for path in root.rglob("*") if path.is_file() and path.suffix.lower() in _DOCUMENT_SUFFIXES)
+        spec = root.relative_to(ROOT).as_posix()
+        proc = subprocess.run(
+            ["git", "ls-files", "-z", "--", spec],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=False,
+        )
+        if proc.returncode != 0:
+            raise RuntimeError(
+                "P3-S6 documentation scan requires git to enumerate tracked surfaces"
+            )
+        for item in proc.stdout.decode("utf-8", errors="replace").split("\0"):
+            if not item:
+                continue
+            path = ROOT / item
+            if path.is_file() and path.suffix.lower() in _DOCUMENT_SUFFIXES:
+                paths.add(path)
+    return paths
+
+
+def _document_claim_scan() -> list[dict[str, Any]]:
+    """Inventory prose/static-output claim lines without importing them."""
+
+    paths: set[Path] = _tracked_document_paths()
     rows: list[dict[str, Any]] = []
     for path in sorted(paths):
         # Avoid counting this audit's generated JSON/report text as legacy

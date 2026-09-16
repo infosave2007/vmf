@@ -1,0 +1,1145 @@
+{
+  "artifacts": {
+    "evidence": "Lunacy/runs/deep-physics-audit/phases/phase-1/evidence/renorm-covariance/",
+    "generated_report": "verification/renormalization_covariance_audit_report.md",
+    "inventory_json": "verification/renormalization_covariance_audit_inventory.json",
+    "report": "Lunacy/runs/deep-physics-audit/REPORT-renorm-covariance.md",
+    "result_json": "verification/renormalization_covariance_audit_results.json"
+  },
+  "audit": "renormalization-covariance",
+  "claims": {
+    "M_Omega_remainder": "BOOKKEEPING_REMAINDER_SCHEME_DEPENDENT_NOT_A_UNIQUE_OPERATOR",
+    "heavy_quark_6_MeV": "NOT_COMPARABLE_MISSING_HEAVY_CONVENTION",
+    "in_medium_hadron_mass_predictions": "BLOCKED_INHERITED_UNPROVEN_CURRENT_MASS_SPLITS",
+    "parameter_refit": "NOT_PERFORMED",
+    "scalar_operator_matrix_elements": "BLOCKED_MISSING_SCHEME_SCALE_AND_ZS_FOR_MAINTAINED_INPUTS",
+    "sigma_products": "RG_INVARIANT_CONDITIONALLY_ON_MATCHED_MASS_AND_OPERATOR_RENORMALISATION"
+  },
+  "heavy_quark_matching": {
+    "comparison_status": "NOT_COMPARABLE_MISSING_HEAVY_CONVENTION",
+    "declared_maintained_heavy_MeV": 6.0,
+    "declared_maintained_heavy_error_MeV": 3.0,
+    "explicit_sum_reference": {
+      "correlated_error_MeV": 1.835634329284557,
+      "sigma_c_plus_sigma_b_plus_sigma_t_MeV": 208.4914653784219,
+      "status": "REFERENCE_ONLY_EXPLICIT_SUM_NOT_MAINTAINED_INPUT"
+    },
+    "fail_closed_note": "The 6 MeV literal has no source, order, active-flavour, per-flavour/total, or uncertainty convention. No difference, pull, or replacement is computed.",
+    "formula": "sigma_c=(2/27)R, sigma_b=(2/25)R, sigma_t=(2/23)R; R=M_N-sigma_piN-Delta_sM",
+    "maintained_literal_status": "OPAQUE_NOT_COMPARABLE_MISSING_DEFINITION",
+    "references": {
+      "bottom": {
+        "coefficient": 0.08,
+        "denominator": 25,
+        "sigma_reference_MeV": 69.2,
+        "sigma_reference_error_MeV": 0.6092618484691127
+      },
+      "charm": {
+        "coefficient": 0.07407407407407407,
+        "denominator": 27,
+        "sigma_reference_MeV": 64.07407407407408,
+        "sigma_reference_error_MeV": 0.5641313411751043
+      },
+      "top": {
+        "coefficient": 0.08695652173913043,
+        "denominator": 23,
+        "sigma_reference_MeV": 75.21739130434783,
+        "sigma_reference_error_MeV": 0.6622411396403398
+      }
+    },
+    "remainder": {
+      "assumption_status": "UNSOURCED_APPROXIMATION_NOT_IDENTITY",
+      "correlation_note": "c, b, and t references share the same remainder; errors are correlated, not independent.",
+      "delta_s_M_assumption": "Delta_sM = sigma_sN (point sigma term) for this arithmetic reference only",
+      "error_MeV": 7.615773105863909,
+      "shared_inputs": [
+        "M_N",
+        "sigma_piN",
+        "Delta_sM_assumed_from_sigma_sN"
+      ],
+      "value_MeV": 865.0
+    },
+    "source": {
+      "citation": "Kryjevski, Phys. Rev. D 70, 094028 (2004)",
+      "doi": "10.1103/PhysRevD.70.094028",
+      "url": "https://doi.org/10.1103/PhysRevD.70.094028"
+    },
+    "status": "REFERENCE_LO_SEQUENTIAL_MATCHING_DERIVED_NOT_COMPARABLE"
+  },
+  "inventory": [
+    {
+      "citation": "Gupta et al., Phys. Rev. Lett. 127, 242002 (2021)",
+      "input_id": "hadron_mass_fractions.sigma_piN",
+      "metadata_status": "PARTIAL_PROVENANCE",
+      "note": "Citation is present in a comment, but the producer exposes no scheme, scale, or Z_m/Z_S relation.",
+      "operator_definition": "sigma_piN = m_ud dM_N/dm_ud",
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_piN",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "Gupta et al. (2021)",
+      "transformation": null,
+      "uncertainty": 3.0,
+      "unit": "MeV",
+      "value": 44.0
+    },
+    {
+      "citation": "Agadjanov et al., Phys. Rev. Lett. 131, 261902 (2023)",
+      "input_id": "hadron_mass_fractions.sigma_sN",
+      "metadata_status": "PARTIAL_PROVENANCE",
+      "note": "The maintained 30 +/- 7 MeV is a rounded value; the cited paper reports 28.6 +/- 9.3 MeV.",
+      "operator_definition": "sigma_sN = m_s dM_N/dm_s",
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_sN",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "Agadjanov et al. (2023)",
+      "transformation": null,
+      "uncertainty": 7.0,
+      "unit": "MeV",
+      "value": 30.0
+    },
+    {
+      "citation": null,
+      "input_id": "hadron_mass_fractions.sigma_heavy",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "No PDG edition, matching order, active-flavour convention, or per-flavour/total definition is given.",
+      "operator_definition": null,
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_heavy",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "PDG heavy-quark matching",
+      "transformation": null,
+      "uncertainty": 3.0,
+      "unit": "MeV",
+      "value": 6.0
+    },
+    {
+      "citation": null,
+      "input_id": "hadron_mass_fractions.nucleon_mass",
+      "metadata_status": "PARTIAL_PROVENANCE",
+      "note": "The producer uses 939 MeV without an explicit proton/neutron choice or source edition.",
+      "operator_definition": null,
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "M_N",
+      "role": "hadron_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "PDG conventional nucleon mass",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 939.0
+    },
+    {
+      "citation": null,
+      "input_id": "hadron_mass_fractions.pion_sigma",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "PION_SIGMA is executable input but has no citation, scheme, scale, or operator transformation.",
+      "operator_definition": "sigma_piH = m_ud dM_pi/dm_ud",
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_piH (pion cross-check)",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "unidentified literature cross-check",
+      "transformation": null,
+      "uncertainty": 5.0,
+      "unit": "MeV",
+      "value": 67.0
+    },
+    {
+      "citation": null,
+      "input_id": "hadron_mass_fractions.kaon_sigma",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "KAON_SIGMA is executable input (22 +/- 3 and 340 +/- 20 MeV) but its source and renormalisation metadata are absent.",
+      "operator_definition": "light/strange sigma terms for kaon",
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_piH + sigma_sH (kaon)",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "unidentified literature cross-check",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 362.0
+    },
+    {
+      "citation": null,
+      "input_id": "hadron_mass_fractions.nucleon_sigma_broad",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "NUCLEON_SIGMA_BROAD is executable sensitivity input (51 + 33 + 6 MeV) with no traceable source metadata.",
+      "operator_definition": "broad sensitivity input",
+      "producer": "verification/nvg_hadron_mass_fractions.py",
+      "quantity": "sigma_piN + sigma_sN + sigma_heavy (broad range)",
+      "role": "sigma_product",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "various analyses",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 90.0
+    },
+    {
+      "citation": null,
+      "input_id": "eos_beta_saturated_vector.sigma_terms",
+      "metadata_status": "MISSING_RENORM_METADATA",
+      "note": "Fixed literals feed M_Omega_0 and M_current_0; no sigma operator metadata reaches the EOS.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_beta_saturated_vector.py",
+      "quantity": "sigma_piN + sigma_sN + sigma_heavy",
+      "role": "EOS_anchor",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "copied calibration",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 80.0
+    },
+    {
+      "citation": null,
+      "input_id": "eos_proof_checked.sigma_terms",
+      "metadata_status": "MISSING_RENORM_METADATA",
+      "note": "The checked proxy reproduces the same fixed 44 + 30 + 6 MeV split.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_proof_checked.py",
+      "quantity": "sigma_piN + sigma_sN + sigma_heavy",
+      "role": "EOS_anchor",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "copied calibration",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 80.0
+    },
+    {
+      "citation": null,
+      "input_id": "vacuum_w_derivation.sigma_terms",
+      "metadata_status": "MISSING_RENORM_METADATA",
+      "note": "Sigma values enter the lambda calculation, but the script does not state a renormalisation prescription.",
+      "operator_definition": null,
+      "producer": "verification/nvg_vacuum_w_field_derivation.py",
+      "quantity": "sigma_piN, sigma_sN",
+      "role": "W_field_calibration",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "lattice-style input",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 74.0
+    },
+    {
+      "citation": null,
+      "input_id": "fine_structure.current_masses",
+      "metadata_status": "MISSING_RENORM_METADATA",
+      "note": "The producer stores 2.16, 4.67, and 93.4 MeV (in GeV units) but does not state MSbar or a scale.",
+      "operator_definition": null,
+      "producer": "verification/nvg_fine_structure.py",
+      "quantity": "m_u, m_d, m_s",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "FLAG-like literals",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 100.23
+    },
+    {
+      "citation": null,
+      "input_id": "strong_cp.current_masses",
+      "metadata_status": "MISSING_RENORM_METADATA",
+      "note": "The comment names FLAG but has no edition table, scheme, scale, or matching inputs.",
+      "operator_definition": null,
+      "producer": "verification/nvg_strong_cp_solution.py",
+      "quantity": "m_u, m_d, m_s",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": "FLAG 2024 (comment only)",
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": 100.23
+    },
+    {
+      "citation": null,
+      "input_id": "fair_hades.current_mass_table",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "80, 67, 362, 300, and 200 MeV placeholders feed in-medium mass shifts without sigma-term provenance.",
+      "operator_definition": null,
+      "producer": "verification/nvg_fair_hades_link.py",
+      "quantity": "hadron current-mass placeholders",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "hyperon_puzzle.current_mass_table",
+      "metadata_status": "MISSING_SOURCE_METADATA",
+      "note": "Hyperon current-mass remainder is assumed rather than derived from renormalised scalar operators.",
+      "operator_definition": null,
+      "producer": "verification/nvg_hyperon_puzzle.py",
+      "quantity": "M_cur_N, M_cur_Lambda",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_black_hole_interior",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 10, 'current_mass': 17, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_black_hole_interior.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_direct_urca",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 10, 'current_mass': 4, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_direct_urca.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_dm_direct_detection",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 1, 'current_mass': 0, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_dm_direct_detection.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_dual_hierarchy_identity",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 7}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_dual_hierarchy_identity.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_em_priority2_formal",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 4, 'quark_masses': 12}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_em_priority2_formal.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_em_response_higher_order",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 1}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_em_response_higher_order.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_beta_checked",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 11, 'current_mass': 5, 'quark_masses': 2}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_beta_checked.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_beta_css_softening",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 1}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_beta_css_softening.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_beta_lambda_hyperon",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 1}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_beta_lambda_hyperon.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_fork_a",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 2}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_fork_a.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_fork_b",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 5, 'quark_masses': 9}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_fork_b.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_fork_b_nl",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 6, 'quark_masses': 2}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_fork_b_nl.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_eos_symmetric_rebuild",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 0, 'quark_masses': 8}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_eos_symmetric_rebuild.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_full_ns_eos",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_full_ns_eos.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_magnetar_closure",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 5, 'quark_masses': 6}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_magnetar_closure.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "quark_mass",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_magnetar_mass_correlation",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_magnetar_mass_correlation.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_melting_identifiability",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 3, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_melting_identifiability.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_sensitivity_analysis",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 2, 'current_mass': 3, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_sensitivity_analysis.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_tidal_deformability",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_tidal_deformability.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_tidal_deformability_gw170817",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_tidal_deformability_gw170817.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_verification_suite",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 2, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_verification_suite.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "sigma_consumer",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.nvg_weak_field_ppn",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 1, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/nvg_weak_field_ppn.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": null,
+      "input_id": "discovered.test_black_hole_interior_consistency",
+      "metadata_status": "DISCOVERED_MISSING_RENORM_METADATA",
+      "note": "Static scan matches sigma/current/quark-mass tokens: {'sigma_terms': 0, 'current_mass': 2, 'quark_masses': 0}; producer metadata must be inspected before conversion.",
+      "operator_definition": null,
+      "producer": "verification/test_black_hole_interior_consistency.py",
+      "quantity": "runtime literals matched by audit scan",
+      "role": "in_medium_prediction",
+      "scale_GeV": null,
+      "scheme": null,
+      "source": null,
+      "transformation": null,
+      "uncertainty": null,
+      "unit": "MeV (declared by producer where available)",
+      "value": null
+    },
+    {
+      "citation": "FLAG Review 2021, Eur. Phys. J. C 82, 869",
+      "input_id": "flag2021.m_u",
+      "metadata_status": "SOURCE_BACKED_METADATA",
+      "note": "Reference mass used only to show the required conversion contract; it is not substituted into NVG.",
+      "operator_definition": "renormalised qbar q operator is inverse to m_q",
+      "producer": "external reference (not a maintained producer)",
+      "quantity": "m_u",
+      "role": "quark_mass_reference",
+      "scale_GeV": 2.0,
+      "scheme": "MSbar",
+      "source": "FLAG Review 2021",
+      "transformation": "Z_m(μ) Z_S(μ) = 1 in a mass-independent scheme",
+      "uncertainty": 0.08,
+      "unit": "MeV",
+      "value": 2.14
+    },
+    {
+      "citation": "FLAG Review 2021, Eur. Phys. J. C 82, 869",
+      "input_id": "flag2021.m_d",
+      "metadata_status": "SOURCE_BACKED_METADATA",
+      "note": "Reference mass used only to show the required conversion contract; it is not substituted into NVG.",
+      "operator_definition": "renormalised qbar q operator is inverse to m_q",
+      "producer": "external reference (not a maintained producer)",
+      "quantity": "m_d",
+      "role": "quark_mass_reference",
+      "scale_GeV": 2.0,
+      "scheme": "MSbar",
+      "source": "FLAG Review 2021",
+      "transformation": "Z_m(μ) Z_S(μ) = 1 in a mass-independent scheme",
+      "uncertainty": 0.05,
+      "unit": "MeV",
+      "value": 4.7
+    },
+    {
+      "citation": "FLAG Review 2021, Eur. Phys. J. C 82, 869",
+      "input_id": "flag2021.m_s",
+      "metadata_status": "SOURCE_BACKED_METADATA",
+      "note": "Reference mass used only to show the required conversion contract; it is not substituted into NVG.",
+      "operator_definition": "renormalised qbar q operator is inverse to m_q",
+      "producer": "external reference (not a maintained producer)",
+      "quantity": "m_s",
+      "role": "quark_mass_reference",
+      "scale_GeV": 2.0,
+      "scheme": "MSbar",
+      "source": "FLAG Review 2021",
+      "transformation": "Z_m(μ) Z_S(μ) = 1 in a mass-independent scheme",
+      "uncertainty": 0.57,
+      "unit": "MeV",
+      "value": 93.4
+    }
+  ],
+  "limitations": [
+    "Sigma products are observables only when the same renormalised mass/operator convention is used.",
+    "No cross-scheme or cross-scale scalar matrix-element conversion is attempted for maintained literals.",
+    "The LO c/b/t relations are sequential convention references; Delta_sM=sigma_sN is an explicit unsourced approximation and does not authorize comparing or changing sigma_heavy.",
+    "An in-medium prediction needs a sourced hadron-specific scalar response and operator matching, absent here."
+  ],
+  "maintained_mass_budget": {
+    "M_Omega_MeV": 859.0,
+    "M_Omega_error_MeV": 8.18535277187245,
+    "f_Omega": 0.9148029818956337,
+    "f_Omega_error": 0.00871709560369803,
+    "formula": "M_Omega = M_N - (sigma_piN + sigma_sN + sigma_heavy)",
+    "interpretation": "bookkeeping remainder in the producer's declared input convention; not an RG-invariant operator",
+    "mass_MeV": 939.0,
+    "producer": "verification/nvg_hadron_mass_fractions.py::compute_mass_budget",
+    "sigma_heavy_MeV": 6.0,
+    "sigma_piN_MeV": 44.0,
+    "sigma_sN_MeV": 30.0,
+    "sum_sigma_MeV": 80.0,
+    "sum_sigma_error_quadrature_MeV": 8.18535277187245
+  },
+  "renormalization_contract": {
+    "blocked_maintained_records": 37,
+    "blocked_record_ids": [
+      "hadron_mass_fractions.sigma_piN",
+      "hadron_mass_fractions.sigma_sN",
+      "hadron_mass_fractions.sigma_heavy",
+      "hadron_mass_fractions.nucleon_mass",
+      "hadron_mass_fractions.pion_sigma",
+      "hadron_mass_fractions.kaon_sigma",
+      "hadron_mass_fractions.nucleon_sigma_broad",
+      "eos_beta_saturated_vector.sigma_terms",
+      "eos_proof_checked.sigma_terms",
+      "vacuum_w_derivation.sigma_terms",
+      "fine_structure.current_masses",
+      "strong_cp.current_masses",
+      "fair_hades.current_mass_table",
+      "hyperon_puzzle.current_mass_table",
+      "discovered.nvg_black_hole_interior",
+      "discovered.nvg_direct_urca",
+      "discovered.nvg_dm_direct_detection",
+      "discovered.nvg_dual_hierarchy_identity",
+      "discovered.nvg_em_priority2_formal",
+      "discovered.nvg_em_response_higher_order",
+      "discovered.nvg_eos_beta_checked",
+      "discovered.nvg_eos_beta_css_softening",
+      "discovered.nvg_eos_beta_lambda_hyperon",
+      "discovered.nvg_eos_fork_a",
+      "discovered.nvg_eos_fork_b",
+      "discovered.nvg_eos_fork_b_nl",
+      "discovered.nvg_eos_symmetric_rebuild",
+      "discovered.nvg_full_ns_eos",
+      "discovered.nvg_magnetar_closure",
+      "discovered.nvg_magnetar_mass_correlation",
+      "discovered.nvg_melting_identifiability",
+      "discovered.nvg_sensitivity_analysis",
+      "discovered.nvg_tidal_deformability",
+      "discovered.nvg_tidal_deformability_gw170817",
+      "discovered.nvg_verification_suite",
+      "discovered.nvg_weak_field_ppn",
+      "discovered.test_black_hole_interior_consistency"
+    ],
+    "conversion_policy": "reject unless scheme + scale + operator definition + transformation are present",
+    "maintained_records": 37,
+    "reference_records_ready": true,
+    "source_backed_reference_records": 3,
+    "status": "BLOCKED_MISSING_RENORM_METADATA"
+  },
+  "rg_invariant_controls": {
+    "checks": {
+      "inverse_mass_scalar_factors": true,
+      "mass_changes_under_scheme": true,
+      "scalar_changes_inverse": true
+    },
+    "example": {
+      "finite_factor": 1.37,
+      "m_original": 4.7,
+      "m_transformed": 6.439000000000001,
+      "product_original": 58.0215,
+      "product_transformed": 58.0215,
+      "scalar_original": 12.345,
+      "scalar_transformed": 9.010948905109489
+    },
+    "identity": "sigma_qH = m_q(mu) <H|qbar q|H>_mu; m'_q=C m_q and O'_S=O_S/C",
+    "source": {
+      "citation": "Hatta, Rajan & Tanaka, JHEP 12 (2018) 008",
+      "doi": "10.1007/JHEP12(2018)008",
+      "url": "https://doi.org/10.1007/JHEP12(2018)008"
+    },
+    "status": "PASS_RG_INVARIANT_PRODUCT_ALGEBRA"
+  },
+  "scalar_operator_conversion": {
+    "matrix_element": null,
+    "reason": "renormalisation metadata incomplete for hadron_mass_fractions.sigma_piN: scheme, scale, operator definition, and transformation are all required",
+    "required": [
+      "same scheme",
+      "same renormalisation scale",
+      "operator definition",
+      "Z_m Z_S relation"
+    ],
+    "status": "BLOCKED_MISSING_OPERATOR_TRANSFORMATION"
+  },
+  "schema_version": 1,
+  "source_surface_scan": {
+    "patterns": {
+      "current_mass": "M_current|M_cur|current.?mass",
+      "quark_masses": "\\bm_[uds]\\b",
+      "sigma_terms": "sigma_(?:piN|sN|heavy)|sigma_piH|sigma_sH"
+    },
+    "rows": [
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 17,
+          "quark_masses": 0,
+          "sigma_terms": 7
+        },
+        "surface": "verification/nvg_black_hole_interior.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 4,
+          "quark_masses": 0,
+          "sigma_terms": 7
+        },
+        "surface": "verification/nvg_direct_urca.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 0,
+          "sigma_terms": 1
+        },
+        "surface": "verification/nvg_dm_direct_detection.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 4,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_dual_hierarchy_identity.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 4,
+          "quark_masses": 11,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_em_priority2_formal.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_em_response_higher_order.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 0,
+          "sigma_terms": 7
+        },
+        "surface": "verification/nvg_eos_beta_checked.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_beta_css_softening.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_beta_lambda_hyperon.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 0,
+          "sigma_terms": 7
+        },
+        "surface": "verification/nvg_eos_beta_saturated_vector.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 2,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_fork_a.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 9,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_fork_b.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 6,
+          "quark_masses": 2,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_fork_b_nl.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 6,
+          "quark_masses": 0,
+          "sigma_terms": 7
+        },
+        "surface": "verification/nvg_eos_proof_checked.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 8,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_eos_symmetric_rebuild.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 8,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_fair_hades_link.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 6,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_fine_structure.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_full_ns_eos.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 16,
+          "quark_masses": 0,
+          "sigma_terms": 44
+        },
+        "surface": "verification/nvg_hadron_mass_fractions.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_hyperon_puzzle.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_magnetar_closure.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_magnetar_mass_correlation.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 3,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_melting_identifiability.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 5,
+          "quark_masses": 0,
+          "sigma_terms": 6
+        },
+        "surface": "verification/nvg_sensitivity_analysis.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 19,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_strong_cp_solution.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_tidal_deformability.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_tidal_deformability_gw170817.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 0,
+          "quark_masses": 0,
+          "sigma_terms": 10
+        },
+        "surface": "verification/nvg_vacuum_w_field_derivation.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 2
+        },
+        "surface": "verification/nvg_verification_suite.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 1,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/nvg_weak_field_ppn.py"
+      },
+      {
+        "exists": true,
+        "matches": {
+          "current_mass": 2,
+          "quark_masses": 0,
+          "sigma_terms": 0
+        },
+        "surface": "verification/test_black_hole_interior_consistency.py"
+      }
+    ],
+    "status": "PASS_MAINTAINED_SURFACES_SCANNED",
+    "surface_count": 31
+  },
+  "status": "COMPLETE_WITH_RENORM_BLOCKS"
+}

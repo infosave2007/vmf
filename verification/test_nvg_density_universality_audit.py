@@ -103,7 +103,14 @@ class DensityUniversalityAuditTests(unittest.TestCase):
                 self.assertLessEqual(float(row["checks"]["legendre_relative"]), 1e-25)
                 self.assertLessEqual(float(row["checks"]["trace_identity_relative"]), 1e-25)
                 fractions = row["derived"]["fractions"]
-                self.assertAlmostEqual(sum(float(fractions[key]) for key in ("fermi", "potential", "vector")), 1.0, places=20)
+                # Three independent float64 divisions: the sum carries ~1 ulp
+                # (1e-16) rounding, so places=20 is beyond float64 reach and
+                # flips between environments.  Keep the identity tight at 1e-12.
+                self.assertAlmostEqual(
+                    sum(float(fractions[key]) for key in ("fermi", "potential", "vector")),
+                    1.0,
+                    delta=1e-12,
+                )
                 for fd in row["fd_checks"].values():
                     self.assertTrue(fd["pass"])
                     self.assertLessEqual(float(fd["mu_relative_error"]), 1e-7)

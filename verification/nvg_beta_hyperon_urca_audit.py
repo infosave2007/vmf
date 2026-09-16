@@ -821,12 +821,15 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser.add_argument("--quick", action="store_true", help="use a smaller grid for a focused smoke run")
     parser.add_argument("--grid-points", type=int, default=None, help="override the density-grid point count")
     parser.add_argument("--no-figure", action="store_true", help="write JSON only")
+    parser.add_argument("--output-json", type=Path, default=RESULT_PATH,
+                        help="JSON destination (use a temporary path for noncanonical smoke runs)")
     args = parser.parse_args(list(argv) if argv is not None else None)
     result = run_audit(quick=args.quick, grid_points=args.grid_points)
     if args.no_figure:
-        RESULT_PATH.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        args.output_json.parent.mkdir(parents=True, exist_ok=True)
+        args.output_json.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     else:
-        write_artifacts(result)
+        write_artifacts(result, result_path=args.output_json)
     comp = result["composition"]["onsets"]
     print("P2-S2 beta-equilibrium/hyperon/Urca audit")
     print(f"status={result['status']}")

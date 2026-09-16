@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -89,19 +90,32 @@ class P2S2BetaHyperonUrcaTests(unittest.TestCase):
         self.assertLess(self.result["sensitivity"]["max_relative_y_Lambda"], 1.0e-3)
 
     def test_cli_regenerates_unique_json_artifact(self):
-        completed = subprocess.run(
-            [sys.executable, str(Path(audit.__file__)), "--quick", "--no-figure"],
-            cwd=audit.ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
-        self.assertIn("physical hyperon status=BLOCKED_", completed.stdout)
-        self.assertTrue(audit.RESULT_PATH.exists())
-        payload = json.loads(audit.RESULT_PATH.read_text(encoding="utf-8"))
+        # A quick-grid CLI smoke run must never replace the maintained full-grid
+        # artifact.  Keep the subprocess/serialization coverage and explicitly
+        # check that the canonical bytes (or their absence) survive unchanged.
+        canonical_before = audit.RESULT_PATH.read_bytes() if audit.RESULT_PATH.exists() else None
+        with tempfile.TemporaryDirectory(prefix="nvg-p2s2-test-") as temp_dir:
+            output_path = Path(temp_dir) / "quick-results.json"
+            completed = subprocess.run(
+                [sys.executable, str(Path(audit.__file__)), "--quick", "--no-figure",
+                 "--output-json", str(output_path)],
+                cwd=audit.ROOT,
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+            self.assertIn("physical hyperon status=BLOCKED_", completed.stdout)
+            self.assertTrue(output_path.exists())
+            self.assertEqual(list(Path(temp_dir).iterdir()), [output_path])
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
+        canonical_after = audit.RESULT_PATH.read_bytes() if audit.RESULT_PATH.exists() else None
+        self.assertEqual(canonical_after, canonical_before)
         self.assertEqual(payload["audit"], "P2-S2")
         self.assertEqual(payload["status"], self.result["status"])
+        self.assertEqual(payload["stellar_mapping"]["sampling"], "quick")
+        self.assertEqual(payload["sensitivity"]["grid_points"], [61, 121])
+        audit.assert_artifact_provenance(payload)
 
 
 if __name__ == "__main__":

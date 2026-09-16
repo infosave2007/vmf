@@ -1,259 +1,383 @@
 #!/usr/bin/env python3
-"""
-NVG Black Hole Interior: mass melting and singularity resolution.
+"""Thermodynamic audit of a phenomenological density-dependent mass ansatz.
 
-Computes the radial profile of effective nucleon mass M*(r) inside a
-Schwarzschild-like black hole in the NVG framework.
-
-Physical picture:
-  - Outside the horizon (r > R_s): M* = M_N = 939 MeV (standard GR)
-  - Inside (r < R_s): baryon density rises as matter falls inward
-  - At n_B >> n_0: M_Omega melts → 0, matter becomes conformal (P = ε/3)
-  - Singularity is replaced by a regular core (de Sitter bounce)
-
-Key results:
-  1. Maximum energy density ε_max ∝ M_Ω^4 / (ℏc)^3 — finite, no singularity
-  2. Critical density for conformal transition: n_crit ~ 5–10 n_0
-  3. EOS transitions to P = ε/3 (conformal) at high density
-  4. External geometry is EXACTLY Schwarzschild (indistinguishable from GR)
+This homogeneous, zero-temperature quasiparticle model uses one energy
+e(n) = Fermi(n, m(n)). It is not a source-complete NVG action, a collapse
+solution, or a measured decomposition of the nucleon mass. In particular,
+ultrarelativistic matter (P/e -> 1/3) is not de Sitter matter (P/e = -1).
 """
 
 from __future__ import annotations
+
+import argparse
+import json
 import math
+from collections.abc import Sequence
+
 import numpy as np
+from decimal import Decimal, localcontext
 
 
-# ── Physical constants ──────────────────────────────────────────────
-hbar_c = 197.3269804   # MeV·fm
-M_N = 939.0            # MeV, nucleon mass
-n_0 = 0.16             # fm^-3, nuclear saturation density
+hbar_c = 197.3269804  # MeV fm
+M_N = 939.0  # MeV
+n_0 = 0.16  # fm^-3
 
-# Sigma terms (lattice QCD)
+# Retained phenomenological inputs. Their sum is an ansatz, not a measured
+# current/vacuum mass split; no observational fit is performed here.
 sigma_piN = 44.0
 sigma_sN = 30.0
 sigma_heavy = 6.0
 sigma_total = sigma_piN + sigma_sN + sigma_heavy
-M_Omega_0 = M_N - sigma_total   # 859 MeV
-M_current_0 = sigma_total       # 80 MeV
-f_Omega_0 = M_Omega_0 / M_N     # ~0.915
-
-# Best-fit melting parameters from saturated-vector screening
+M_Omega_0 = M_N - sigma_total
+M_current_0 = sigma_total
+f_Omega_0 = M_Omega_0 / M_N
 kappa_1 = 0.25
 kappa_2 = 0.80
+FERMION_DEGENERACY = 2  # One species with two spin states.
+
+G_SI = 6.674e-11
+C_SI = 2.998e8
+M_SUN_KG = 1.989e30
+MEV_FM3_TO_PA = 1.602e32
+
+_CURRENT_SLOPE = sigma_piN * hbar_c**3 / (93.0**2 * 140.0**2)
+CURRENT_MASS_KINK_DENSITY = 1.0 / _CURRENT_SLOPE
+_nodes, _weights = np.polynomial.legendre.leggauss(128)
+_Q = (_nodes + 1.0) / 2.0
+_WEIGHTS = _weights / 2.0
+
+
+def _nonnegative_finite(value: float, name: str) -> float:
+    value = float(value)
+    if not math.isfinite(value) or value < 0.0:
+        raise ValueError(f"{name} must be finite and nonnegative")
+    return value
+
+
+def _positive_finite(value: float, name: str) -> float:
+    value = _nonnegative_finite(value, name)
+    if value == 0.0:
+        raise ValueError(f"{name} must be positive")
+    return value
+
+
+def _at_current_mass_kink(n_B: float) -> bool:
+    return math.isclose(n_B, CURRENT_MASS_KINK_DENSITY, rel_tol=4e-15)
 
 
 def M_Omega(n_B: float) -> float:
-    """Nonperturbative vacuum mass as function of baryon density."""
-    x = max(n_B / n_0, 0.0)
-    return M_Omega_0 * (1.0 + kappa_2 * x) ** (-kappa_1 / kappa_2)
+    """Smooth component of the retained mass ansatz, in MeV."""
+    n_B = _nonnegative_finite(n_B, "n_B")
+    return M_Omega_0 * (1.0 + kappa_2 * n_B / n_0) ** (-kappa_1 / kappa_2)
 
 
 def M_current(n_B: float) -> float:
-    """Current quark mass contribution (GOR theorem)."""
-    correction = sigma_piN * n_B * hbar_c**3 / (93.0**2 * 140.0**2)
-    return M_current_0 * max(1.0 - correction, 0.0)
+    """Clipped phenomenological component; continuous but kinked at n_kink."""
+    n_B = _nonnegative_finite(n_B, "n_B")
+    return M_current_0 * max(1.0 - _CURRENT_SLOPE * n_B, 0.0)
 
 
 def M_star(n_B: float) -> float:
-    """Total effective nucleon mass."""
     return M_current(n_B) + M_Omega(n_B)
 
 
 def f_Omega(n_B: float) -> float:
-    """Nonperturbative mass fraction at given density."""
-    m = M_star(n_B)
-    if m <= 0:
-        return 0.0
-    return M_Omega(n_B) / m
+    return M_Omega(n_B) / M_star(n_B)
+
+
+def mass_derivatives(n_B: float) -> tuple[float, float, float]:
+    """Return m, dm/dn, d2m/dn2; refuse the nondifferentiable clipping kink."""
+    n_B = _nonnegative_finite(n_B, "n_B")
+    if _at_current_mass_kink(n_B):
+        raise ValueError("M_current has a nondifferentiable kink at this density")
+    a = 1.0 + kappa_2 * n_B / n_0
+    omega = M_Omega(n_B)
+    first = -kappa_1 * omega / (n_0 * a)
+    second = kappa_1 * (kappa_1 + kappa_2) * omega / (n_0 * a) ** 2
+    if n_B < CURRENT_MASS_KINK_DENSITY:
+        first -= M_current_0 * _CURRENT_SLOPE
+    return M_star(n_B), first, second
+
+
+def fermi_integrals(
+    n_B: float, mass_mev: float, degeneracy: int = FERMION_DEGENERACY
+) -> dict[str, float]:
+    """Stable Fermi integrals, using n = g*kF^3/(6*pi^2*(hbar*c)^3).
+
+    Return energy, kinetic pressure, partial_e/partial_m, and
+    partial2_e/partial_m2 in MeV/fm^3, MeV/fm^3, fm^-3, and fm^-3/MeV.
+    Quadrature on p/kF avoids subtraction of nearly equal massive terms.
+    The exact massless branch uses the same degeneracy normalization.
+    """
+    n_B = _nonnegative_finite(n_B, "n_B")
+    mass_mev = _nonnegative_finite(mass_mev, "mass_mev")
+    if not isinstance(degeneracy, int) or isinstance(degeneracy, bool) or degeneracy <= 0:
+        raise ValueError("degeneracy must be a positive integer")
+    kf = (6.0 * math.pi**2 / degeneracy) ** (1.0 / 3.0) * n_B ** (1.0 / 3.0) * hbar_c
+    # The scalar boundary energy propagates into cancellation-sensitive EOS
+    # derivatives. Both legacy math.hypot and NumPy can differ by one ULP on
+    # this domain. Compute it from exact binary inputs with guard digits;
+    # independent mpmath tests check rounding without reading saved outputs.
+    with localcontext() as context:
+        context.prec = 80
+        k_exact, m_exact = Decimal.from_float(kf), Decimal.from_float(mass_mev)
+        ef = float((k_exact*k_exact + m_exact*m_exact).sqrt())
+    if n_B == 0.0:
+        energy = pressure = scalar = curvature = 0.0
+    elif mass_mev == 0.0:
+        energy = 0.75 * n_B * kf
+        pressure = energy / 3.0
+        scalar = 0.0
+        curvature = 1.5 * n_B / kf
+    else:
+        momenta = kf * _Q
+        energies = np.hypot(momenta, mass_mev)
+        energy = 3.0 * n_B * float(np.dot(_WEIGHTS, _Q**2 * energies))
+        pressure = n_B * kf**2 * float(np.dot(_WEIGHTS, _Q**4 / energies))
+        scalar = 3.0 * n_B * float(np.dot(_WEIGHTS, _Q**2 * (mass_mev / energies)))
+        curvature = 3.0 * n_B * float(np.dot(_WEIGHTS, _Q**2 * (momenta / energies) ** 2 / energies))
+    result = {
+        "kf_mev": kf,
+        "fermi_energy_mev": ef,
+        "energy_mev_fm3": energy,
+        "kinetic_pressure_mev_fm3": pressure,
+        "scalar_density_fm3": scalar,
+        "mass_curvature_fm3_per_mev": curvature,
+    }
+    if not all(math.isfinite(value) for value in result.values()):
+        raise ValueError("Fermi integrals exceed the finite floating-point range")
+    return result
+
+
+def energy_density(n_B: float) -> float:
+    """The single energy functional, including at the continuous mass kink."""
+    return fermi_integrals(n_B, M_star(n_B))["energy_mev_fm3"]
+
+
+def quasiparticle_eos(
+    n_B: float,
+    mass_mev: float,
+    mass_prime: float,
+    mass_second: float,
+    degeneracy: int = FERMION_DEGENERACY,
+) -> dict[str, object]:
+    """EOS for a specified smooth local mass law, with its rearrangement.
+
+    mu = EF + e_m*m'; e'' = kF^2/(3*n*EF) + 2*m*m'/EF
+                            + e_mm*(m')^2 + e_m*m''.
+    P = n*mu-e is evaluated as P_kinetic+n*e_m*m' to avoid cancellation.
+    cs2 = n*e''/mu is never clipped. Vacuum entries use one-sided limits;
+    e'' itself diverges there and is represented by None, not a finite value.
+    """
+    n_B = _nonnegative_finite(n_B, "n_B")
+    mass_mev = _nonnegative_finite(mass_mev, "mass_mev")
+    mass_prime, mass_second = float(mass_prime), float(mass_second)
+    if not math.isfinite(mass_prime) or not math.isfinite(mass_second):
+        raise ValueError("mass derivatives must be finite")
+    integrals = fermi_integrals(n_B, mass_mev, degeneracy)
+    ef = integrals["fermi_energy_mev"]
+    scalar = integrals["scalar_density_fm3"]
+    mu_rearrangement = scalar * mass_prime
+    mu = ef + mu_rearrangement
+    pressure_rearrangement = n_B * mu_rearrangement
+    pressure = integrals["kinetic_pressure_mev_fm3"] + pressure_rearrangement
+    if n_B == 0.0:
+        second = None
+        cs2 = 0.0 if mass_mev > 0.0 else 1.0 / 3.0
+        status = "vacuum_one_sided_limit"
+    else:
+        # Multiplication returns inf instead of the raw OverflowError from
+        # m'**2. If only the square overflows, apply its small coefficient
+        # first so a representable final curvature term is retained.
+        prime_squared = mass_prime * mass_prime
+        curvature_term = integrals["mass_curvature_fm3_per_mev"] * prime_squared
+        if not math.isfinite(prime_squared):
+            curvature_term = (integrals["mass_curvature_fm3_per_mev"] * mass_prime) * mass_prime
+        second = (
+            (integrals["kf_mev"] / ef) * (integrals["kf_mev"] / (3.0 * n_B))
+            + 2.0 * (mass_mev / ef) * mass_prime
+            + curvature_term
+            + scalar * mass_second
+        )
+        if mu == 0.0:
+            cs2 = None
+        else:
+            numerator = n_B * second
+            # Preserve ordinary arithmetic, but divide first if n*e'' alone
+            # overflows. This is an equivalent evaluation, never clipping.
+            cs2 = (numerator / mu if math.isfinite(numerator)
+                   else n_B * (second / mu))
+        if mu <= 0.0:
+            status = "nonpositive_chemical_potential"
+        elif cs2 < 0.0:
+            status = "mechanically_unstable"
+        elif cs2 > 1.0:
+            status = "superluminal"
+        else:
+            status = "locally_stable_and_subluminal"
+    result = {
+        **integrals,
+        "density_fm3": n_B,
+        "mass_mev": mass_mev,
+        "mass_prime_mev_fm3": mass_prime,
+        "mass_second_mev_fm6": mass_second,
+        "chemical_potential_mev": mu,
+        "chemical_rearrangement_mev": mu_rearrangement,
+        "pressure_rearrangement_mev_fm3": pressure_rearrangement,
+        "pressure_mev_fm3": pressure,
+        "energy_second_mev_fm3": second,
+        "cs2": cs2,
+        "pressure_over_energy": pressure / integrals["energy_mev_fm3"] if integrals["energy_mev_fm3"] > 0.0 else None,
+        "closure_residual_mev_fm3": integrals["energy_mev_fm3"] + pressure - n_B * mu,
+        "status": status,
+    }
+    for name, value in result.items():
+        if isinstance(value, (int, float)) and not math.isfinite(value):
+            raise ValueError(f"derived EOS field {name} exceeds the finite floating-point range")
+    if n_B > 0.0 and integrals["energy_mev_fm3"] == 0.0:
+        raise ValueError("positive-density energy underflows the floating-point range")
+    return result
+
+
+def eos_state(n_B: float) -> dict[str, object]:
+    """Thermodynamics of the retained mass ansatz; undefined at its kink."""
+    return quasiparticle_eos(n_B, *mass_derivatives(n_B))
 
 
 def conformal_EOS(n_B: float) -> tuple[float, float, float]:
-    """
-    Energy density and pressure in the conformal limit.
-    When M* → 0, matter becomes ultrarelativistic: P = ε/3.
-    Returns (eps, P, c_s^2).
-    """
-    m_eff = M_star(n_B)
-    kf = (3.0 * np.pi**2 * n_B) ** (1.0/3.0) * hbar_c  # Fermi momentum in MeV
-
-    if m_eff < 1.0:  # effectively massless
-        # Ultrarelativistic Fermi gas: ε = (3/4) n kf
-        eps = 0.75 * n_B * kf / (hbar_c**3 / hbar_c**3)  # simplified
-        # Actually: ε = kf^4 / (4π²(ℏc)³)
-        eps = kf**4 / (4.0 * np.pi**2 * hbar_c**3)
-        P = eps / 3.0
-        cs2 = 1.0 / 3.0
-    else:
-        ef = math.sqrt(kf**2 + m_eff**2)
-        log_term = math.log((kf + ef) / max(m_eff, 0.01))
-        eps = (kf * ef * (2*kf**2 + m_eff**2) - m_eff**4 * log_term) / (8 * np.pi**2 * hbar_c**3)
-        # Pressure from thermodynamic identity
-        P = (kf * ef * (2*kf**2/3 - m_eff**2) + m_eff**4 * log_term) / (8 * np.pi**2 * hbar_c**3)
-        cs2 = P / max(eps, 1e-10) * 3  # approximate
-        cs2 = min(cs2, 1.0)
-
-    return eps, P, cs2
+    """Legacy name for the full quasiparticle EOS, not an imposed conformal EOS."""
+    state = eos_state(n_B)
+    if state["cs2"] is None:
+        raise ValueError("sound speed is undefined where chemical potential vanishes")
+    return state["energy_mev_fm3"], state["pressure_mev_fm3"], state["cs2"]
 
 
-def epsilon_max_estimate() -> float:
-    """
-    Maximum energy density at complete vacuum de-condensation.
-    ε_max ~ M_Ω^4 / (ℏc)^3
-    This is the NVG prediction for the core density — finite, not infinite.
-    """
+def epsilon_density_scale() -> float:
+    """Dimensional scale M_Omega_0^4/(hbar*c)^3, not a density bound."""
     return M_Omega_0**4 / hbar_c**3
 
 
-def de_sitter_core_radius(M_bh_solar: float) -> float:
+def epsilon_max_estimate() -> float:
+    """Backward-compatible alias for epsilon_density_scale(); NOT a maximum."""
+    return epsilon_density_scale()
+
+
+def de_sitter_core_radius(
+    M_bh_solar: float, *, model: str | None = None,
+    assumed_core_density: float | None = None,
+) -> float:
+    """Optional Hayward crossover radius in km, not a derived collapse core.
+
+    Requires model='assumed_hayward'. For f=1-Rs*r^2/(r^3+Rs*l^2),
+    l^2=3*c^4/(8*pi*G*epsilon_core) and r0=(Rs*l^2)^(1/3).
+    Omitting epsilon_core explicitly adopts epsilon_density_scale() as an
+    illustrative assumption. Neither this density nor the metric follows
+    from the quasiparticle EOS. r0 is a crossover, not a horizon radius.
     """
-    Estimate the de Sitter core radius where bounce occurs.
-    R_core ~ (R_s^3 / R_dS)^(1/4) where R_dS ~ (3c^2 / 8πGε_max)^(1/2)
-
-    Returns radius in km.
-    """
-    G = 6.674e-11         # m^3 kg^-1 s^-2
-    c = 2.998e8            # m/s
-    M_sun = 1.989e30       # kg
-    MeV_fm3_to_Pa = 1.602e32  # MeV/fm^3 → Pa
-
-    M = M_bh_solar * M_sun
-    R_s = 2 * G * M / c**2  # Schwarzschild radius in m
-
-    eps_max_Pa = epsilon_max_estimate() * MeV_fm3_to_Pa
-    R_dS = math.sqrt(3 * c**2 / (8 * math.pi * G * eps_max_Pa / c**2))
-
-    # Regular core radius (Bardeen-like scaling)
-    R_core = (R_s**3 * R_dS) ** 0.25
-    return R_core / 1000.0  # convert to km
+    mass = _positive_finite(M_bh_solar, "M_bh_solar")
+    if model != "assumed_hayward":
+        raise ValueError("core radius requires the explicit model='assumed_hayward' assumption")
+    density = epsilon_density_scale() if assumed_core_density is None else assumed_core_density
+    density = _positive_finite(density, "assumed_core_density")
+    rs_m = 2.0 * G_SI * mass * M_SUN_KG / C_SI**2
+    length_squared = 3.0 * C_SI**4 / (8.0 * math.pi * G_SI * density * MEV_FM3_TO_PA)
+    return (rs_m * length_squared) ** (1.0 / 3.0) / 1000.0
 
 
-def main() -> None:
-    print("=" * 80)
-    print("NVG BLACK HOLE INTERIOR: MASS MELTING AND SINGULARITY RESOLUTION")
-    print("=" * 80)
-    print()
-
-    # 1. Vacuum parameters
-    print("1. VACUUM MASS PARAMETERS (Lattice QCD input)")
-    print(f"   M_N           = {M_N:.1f} MeV")
-    print(f"   M_Ω,0         = {M_Omega_0:.1f} MeV ({f_Omega_0*100:.1f}% of M_N)")
-    print(f"   M_current,0   = {M_current_0:.1f} MeV ({M_current_0/M_N*100:.1f}% of M_N)")
-    print(f"   κ₁ = {kappa_1:.2f}, κ₂ = {kappa_2:.2f}")
-    print()
-
-    # 2. Mass melting profile
-    print("2. EFFECTIVE MASS PROFILE M*(n_B)")
-    print(f"   {'n_B/n_0':>8}  {'M*(MeV)':>10}  {'M_Ω(MeV)':>10}  {'f_Ω':>8}  {'Status'}")
-    print("   " + "─" * 60)
-
-    densities = [0.0, 0.5, 1.0, 2.0, 3.0, 5.0, 8.0, 10.0, 15.0, 20.0, 50.0, 100.0]
-    n_conformal = None
-
-    for x in densities:
-        n_B = x * n_0
-        m = M_star(n_B)
-        m_omega = M_Omega(n_B)
-        frac = f_Omega(n_B)
-
-        if m < 0.1 * M_N and n_conformal is None:
-            n_conformal = x
-
-        if m < 10.0:
-            status = "← CONFORMAL (P = ε/3)"
-        elif m < 0.5 * M_N:
-            status = "← CHIRAL TRANSITION"
-        elif x == 0.0:
-            status = "← vacuum (standard physics)"
-        elif x == 1.0:
-            status = "← nuclear saturation"
+def compute_state(
+    density_ratios: Sequence[float] | None = None, *,
+    core_model: str | None = None,
+    black_hole_masses_solar: Sequence[float] = (3.0, 10.0, 30.0, 4.0e6, 6.5e9),
+) -> dict[str, object]:
+    """Pure, JSON-compatible report; statuses refer only to sampled densities."""
+    if density_ratios is None:
+        density_ratios = (0.0, 0.01, 0.5, 1.0, 2.0,
+                          CURRENT_MASS_KINK_DENSITY / n_0,
+                          5.0, 10.0, 20.0, 100.0, 500.0, 1.0e6)
+    rows = []
+    for ratio in density_ratios:
+        ratio = _nonnegative_finite(ratio, "density ratio")
+        density = ratio * n_0
+        if _at_current_mass_kink(density):
+            row = {
+                "density_fm3": density, "mass_mev": M_star(density),
+                "energy_mev_fm3": energy_density(density),
+                "pressure_mev_fm3": None, "cs2": None,
+                "pressure_over_energy": None,
+                "status": "undefined_thermodynamics_at_mass_kink",
+            }
         else:
-            status = ""
+            row = eos_state(density)
+        rows.append({"density_ratio": ratio, **row})
+    smooth = [row for row in rows if "closure_residual_mev_fm3" in row]
+    positive = [row for row in smooth if row["density_fm3"] > 0.0]
+    closure = max((abs(row["closure_residual_mev_fm3"]) / max(
+        abs(row["energy_mev_fm3"]), abs(row["pressure_mev_fm3"]),
+        abs(row["density_fm3"] * row["chemical_potential_mev"]), 1e-300)
+        for row in smooth), default=None)
+    unstable = [row["density_ratio"] for row in positive if row["status"] == "mechanically_unstable"]
+    superluminal = [row["density_ratio"] for row in positive if row["cs2"] is not None and row["cs2"] > 1.0]
+    exceeds_scale = [row["density_ratio"] for row in rows if row["energy_mev_fm3"] > epsilon_density_scale()]
+    if core_model is None:
+        geometry = {"status": "not_computed_no_geometry_model", "radii": []}
+    elif core_model == "assumed_hayward":
+        geometry = {
+            "status": "assumed_hayward_crossover_not_collapse_solution",
+            "assumed_core_density_mev_fm3": epsilon_density_scale(),
+            "radii": [{"mass_solar": mass, "crossover_radius_km": de_sitter_core_radius(
+                mass, model=core_model)} for mass in black_hole_masses_solar],
+        }
+    else:
+        raise ValueError("unsupported core_model")
+    return {
+        "model_status": "phenomenological_quasiparticle_ansatz_not_source_complete",
+        "inputs": {"n0_fm3": n_0, "nucleon_mass_mev": M_N,
+                   "omega_mass_parameter_mev": M_Omega_0,
+                   "current_mass_parameter_mev": M_current_0,
+                   "kappa1": kappa_1, "kappa2": kappa_2,
+                   "fermion_degeneracy": FERMION_DEGENERACY},
+        "current_mass_kink_density_fm3": CURRENT_MASS_KINK_DENSITY,
+        "density_scale_mev_fm3": epsilon_density_scale(),
+        "density_scale_status": "dimensional_scale_not_an_upper_bound",
+        "eos_rows": rows,
+        "sampled_checks": {
+            "closure_max_relative": closure,
+            "closure_within_1e_minus_11": closure is not None and closure < 1e-11,
+            "mechanically_unstable_density_ratios": unstable,
+            "superluminal_density_ratios": superluminal,
+            "energy_exceeds_density_scale_at_ratios": exceeds_scale,
+            "differentiable_at_all_samples": len(smooth) == len(rows),
+            "all_positive_samples_locally_stable_and_subluminal": bool(positive) and all(
+                row["status"] == "locally_stable_and_subluminal" for row in positive),
+        },
+        "geometry": geometry,
+        "uncomputed": ["collapse dynamics", "singularity resolution", "exterior matching",
+                       "cosmological bounce", "observational confirmation"],
+    }
 
-        print(f"   {x:8.1f}  {m:10.1f}  {m_omega:10.1f}  {frac:8.4f}  {status}")
 
-    print()
-
-    # 3. Maximum energy density (singularity resolution)
-    eps_max = epsilon_max_estimate()
-    print("3. SINGULARITY RESOLUTION")
-    print("   Maximum energy density (NVG prediction):")
-    print(f"     ε_max = M_Ω⁴ / (ℏc)³ = {eps_max:.2e} MeV/fm³")
-    print(f"     ε_max = {eps_max / 1000:.2e} GeV/fm³")
-    print()
-    print("   In classical GR:  ε → ∞  (SINGULARITY)")
-    print("   In NVG:           ε → ε_max (FINITE, REGULAR CORE)")
-    print()
-    print("   Physical mechanism: when ε → ε_max, all mass has melted (M* → 0).")
-    print("   Matter becomes conformal radiation (P = ε/3).")
-    print("   The metric transitions smoothly to a de Sitter interior.")
-    print()
-
-    # 4. EOS transition: hadronic → conformal
-    print("4. EOS TRANSITION: HADRONIC → CONFORMAL")
-    print(f"   {'n_B/n_0':>8}  {'ε (MeV/fm³)':>14}  {'P (MeV/fm³)':>14}  {'P/ε':>8}  {'c_s²':>8}")
-    print("   " + "─" * 60)
-
-    for x in [1.0, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 500.0]:
-        n_B = x * n_0
-        eps, P, cs2 = conformal_EOS(n_B)
-        ratio = P / eps if eps > 0 else 0
-        print(f"   {x:8.1f}  {eps:14.2f}  {P:14.2f}  {ratio:8.4f}  {cs2:8.4f}")
-
-    print()
-    print("   At extreme density: P/ε → 1/3 (conformal limit)")
-    print("   Speed of sound: c_s² → 1/3 (causal, subluminal)")
-    print()
-
-    # 5. Regular core estimates for astrophysical black holes
-    print("5. REGULAR CORE ESTIMATES FOR BLACK HOLES")
-    print(f"   {'M_BH (M☉)':>12}  {'R_s (km)':>12}  {'R_core (km)':>14}  {'R_core/R_s':>12}")
-    print("   " + "─" * 55)
-
-    for M_bh in [3.0, 10.0, 30.0, 4.0e6, 6.5e9]:
-        R_s = 2.953 * M_bh  # Schwarzschild radius in km
-        R_core = de_sitter_core_radius(M_bh)
-        label = ""
-        if M_bh == 4.0e6:
-            label = "  (Sgr A*)"
-        elif M_bh == 6.5e9:
-            label = "  (M87*)"
-        print(f"   {M_bh:12.1e}  {R_s:12.1f}  {R_core:14.4e}  {R_core/R_s:12.4e}{label}")
-
-    print()
-
-    # 6. Observational predictions
-    print("6. KEY PREDICTIONS")
-    print()
-    print("   EXTERIOR (r > R_s): EXACTLY Schwarzschild/Kerr")
-    print("     - Shadow shape: identical to GR (EHT compatible)")
-    print("     - Gravitational waves: identical to GR (LIGO compatible)")
-    print("     - Orbits: identical to GR")
-    print()
-    print("   INTERIOR (r < R_s): DIFFERENT from GR")
-    print("     - No singularity (finite ε_max)")
-    print("     - Conformal core with P = ε/3")
-    print("     - A regular core is a NECESSARY condition for information")
-    print("       preservation, but unitary evaporation is not shown here.")
-    if n_conformal is not None:
-        print(f"     - Conformal transition at n_B ~ {n_conformal:.0f} n_0")
-    print()
-    print("   FALSIFIABILITY:")
-    print("     - If NICA/FAIR show no mass modification at n_B ~ 3–5 n_0 → model falsified")
-    print("     - If lattice QCD gives M_Ω outside 851–867 MeV → model falsified")
-    print("     - If gravitational wave echoes from regular core are detected → model supported")
-    print()
-
-    # 7. Why this is physically consistent
-    print("7. PHYSICAL CONSISTENCY")
-    print("   ✓ Exterior matches GR exactly (Birkhoff's theorem)")
-    print("   ✓ Gravity is unmodified GR; the only added field is the W-condensate")
-    print("     already present in the NVG action (no EXTRA fields beyond it)")
-    print("   ✓ Mass melting is established QCD physics (chiral restoration)")
-    print(f"   ✓ ε_max is finite ({eps_max:.2e} MeV/fm³)")
-    print("   ✓ Conformal limit c_s² = 1/3 < 1 (causal)")
-    print("   ○ Regular core removes the singularity; full unitary evaporation")
-    print("     (Page-curve recovery) is a conjecture, not computed here")
-    print()
+def main(argv: Sequence[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--json", action="store_true", help="print the computed state as JSON")
+    parser.add_argument("--assumed-hayward", action="store_true", help="include explicitly assumed Hayward crossover radii")
+    args = parser.parse_args(argv)
+    state = compute_state(core_model="assumed_hayward" if args.assumed_hayward else None)
+    if args.json:
+        print(json.dumps(state, indent=2, allow_nan=False))
+        return
+    print("PHENOMENOLOGICAL MASS ANSATZ: THERMODYNAMIC AUDIT")
+    print(f"Model status: {state['model_status']}")
+    print("The mass split and melting parameters are inputs, not measured decompositions.")
+    print("n/n0          energy           pressure          cs2       calculated status")
+    for row in state["eos_rows"]:
+        pressure = "undefined" if row["pressure_mev_fm3"] is None else f"{row['pressure_mev_fm3']:.6g}"
+        cs2 = "undefined" if row["cs2"] is None else f"{row['cs2']:.6g}"
+        print(f"{row['density_ratio']:9.4g}  {row['energy_mev_fm3']:15.6g}  {pressure:>15}  {cs2:>11}  {row['status']}")
+    print(f"Density scale: {state['density_scale_mev_fm3']:.6g} MeV/fm^3 ({state['density_scale_status']})")
+    print("Sampled checks: " + json.dumps(state["sampled_checks"], allow_nan=False))
+    print("Geometry: " + json.dumps(state["geometry"], allow_nan=False))
+    print("Ultrarelativistic P/energy -> 1/3 does not imply de Sitter P/energy = -1.")
+    print("Uncomputed: " + "; ".join(state["uncomputed"]))
 
 
 if __name__ == "__main__":

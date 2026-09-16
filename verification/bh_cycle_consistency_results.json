@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "status": "CONSISTENCY_CHECKS_PASSED_PHYSICAL_UNIFICATION_UNRESOLVED",
+  "evidence_weight": 0,
+  "observed_likelihood": null,
+  "general_identity": {
+    "energy_map": "epsilon_eff=F(epsilon)",
+    "pressure": "P_eff=(epsilon+P)*Fprime-F",
+    "trace": "Theta_eff=Fprime*Theta+4*(F-epsilon*Fprime)",
+    "source_trace_on_shell": "Theta=4U-W*Uprime",
+    "assumptions": [
+      "F differentiable and a function of epsilon alone",
+      "same vacuum subtraction for all energies",
+      "separately conserved microscopic fluid or zero-T Legendre composition",
+      "source trace only on homogeneous stationary branch, not arbitrary field dynamics"
+    ],
+    "interpretation": "Conservation identity and diagnostic, not a new physical law or chosen NVG interaction."
+  },
+  "source_complete_GR_obstruction": {
+    "Cv_over_Cs": "216.8413504888754572004682493",
+    "analytic_no_binding_condition": true,
+    "samples": [
+      {
+        "n_over_n0": "0.001",
+        "W_over_W0": "0.9999989908484947417923525377",
+        "epsilon_MeV_fm3": "0.1502917338933537856058918085",
+        "P_MeV_fm3": "0.00003994263856204077527667860744",
+        "epsilon_plus_3P_MeV_fm3": "0.1504115618090399079317218444"
+      },
+      {
+        "n_over_n0": "0.1",
+        "W_over_W0": "0.9999017431707002913263717458",
+        "epsilon_MeV_fm3": "15.2637097928578370096589632",
+        "P_MeV_fm3": "0.2142717071213548941260654004",
+        "epsilon_plus_3P_MeV_fm3": "15.90652491422190169203715941"
+      },
+      {
+        "n_over_n0": "1",
+        "W_over_W0": "0.999233898912803150324150408",
+        "epsilon_MeV_fm3": "170.1307951397702898342421148",
+        "P_MeV_fm3": "18.72361682383087549779247807",
+        "epsilon_plus_3P_MeV_fm3": "226.3016456112629163276195491"
+      },
+      {
+        "n_over_n0": "2.5",
+        "W_over_W0": "0.9989619945126372910356257861",
+        "epsilon_MeV_fm3": "494.1940502006208717584281723",
+        "P_MeV_fm3": "113.2694904458741092832899115",
+        "epsilon_plus_3P_MeV_fm3": "834.0025215382431996082979069"
+      },
+      {
+        "n_over_n0": "10",
+        "W_over_W0": "1.011929772938466647552908269",
+        "epsilon_MeV_fm3": "3290.194523557561335026431357",
+        "P_MeV_fm3": "1692.018351625202702596048107",
+        "epsilon_plus_3P_MeV_fm3": "8366.249578433169442814575679"
+      },
+      {
+        "n_over_n0": "100",
+        "W_over_W0": "1.412152400035676573497523006",
+        "epsilon_MeV_fm3": "126839.5821299583674433247799",
+        "P_MeV_fm3": "66937.06682408993207421853007",
+        "epsilon_plus_3P_MeV_fm3": "327650.7826022281636659803702"
+      }
+    ],
+    "scope": "Original homogeneous stationary branch used as a GR fluid, no added sector.",
+    "consequence": "epsilon>0 prevents flat H=0; epsilon+3P>0 makes any k=+1 H=0 a maximum, not a bounce.",
+    "excluded_claim": "Not a no-go for dynamical scalars, other potentials, modified gravity, or all cyclic cosmologies."
+  },
+  "repaired_legacy_interior": {
+    "model_status": "phenomenological_quasiparticle_ansatz_not_source_complete",
+    "inputs": {
+      "n0_fm3": 0.16,
+      "nucleon_mass_mev": 939.0,
+      "omega_mass_parameter_mev": 859.0,
+      "current_mass_parameter_mev": 80.0,
+      "kappa1": 0.25,
+      "kappa2": 0.8,
+      "fermion_degeneracy": 2
+    },
+    "current_mass_kink_density_fm3": 0.5014295010018741,
+    "density_scale_mev_fm3": 70861.97377477809,
+    "density_scale_status": "dimensional_scale_not_an_upper_bound",
+    "eos_rows": [
+      {
+        "density_ratio": 0.0,
+        "kf_mev": 0.0,
+        "fermi_energy_mev": 939.0,
+        "energy_mev_fm3": 0.0,
+        "kinetic_pressure_mev_fm3": 0.0,
+        "scalar_density_fm3": 0.0,
+        "mass_curvature_fm3_per_mev": 0.0,
+        "density_fm3": 0.0,
+        "mass_mev": 939.0,
+        "mass_prime_mev_fm3": -1501.731363773785,
+        "mass_second_mev_fm6": 8808.10546875,
+        "chemical_potential_mev": 939.0,
+        "chemical_rearrangement_mev": -0.0,
+        "pressure_rearrangement_mev_fm3": -0.0,
+        "pressure_mev_fm3": 0.0,
+        "energy_second_mev_fm3": null,
+        "cs2": 0.0,
+        "pressure_over_energy": null,
+        "closure_residual_mev_fm3": 0.0,
+        "status": "vacuum_one_sided_limit"
+      },
+      {
+        "density_ratio": 0.01,
+        "kf_mev": 71.40031553943403,
+        "fermi_energy_mev": 939.3260167836389,
+        "energy_mev_fm3": 1.501183454236956,
+        "kinetic_pressure_mev_fm3": 0.0017381726168699825,
+        "scalar_density_fm3": 0.0015972191582777446,
+        "mass_curvature_fm3_per_mev": 5.919703853355719e-09,
+        "density_fm3": 0.0016,
+        "mass_mev": 936.6084351250988,
+        "mass_prime_mev_fm3": -1487.767613319818,
+        "mass_second_mev_fm6": 8647.290036106986,
+        "chemical_potential_mev": 936.9497258485793,
+        "chemical_rearrangement_mev": -2.376290935059569,
+        "pressure_rearrangement_mev_fm3": -0.0038020654960953105,
+        "pressure_mev_fm3": -0.0020638928792253283,
+        "energy_second_mev_fm3": -1822.4142150096345,
+        "cs2": -0.0031120802574274393,
+        "pressure_over_energy": -0.0013748438762765307,
+        "closure_residual_mev_fm3": 3.552713678800501e-15,
+        "status": "mechanically_unstable"
+      },
+      {
+        "density_ratio": 0.5,
+        "kf_mev": 263.04101146013767,
+        "fermi_energy_mev": 880.7001359167535,
+        "energy_mev_fm3": 69.18248505374649,
+        "kinetic_pressure_mev_fm3": 1.2735258195939407,
+        "scalar_density_fm3": 0.07776540087444905,
+        "mass_curvature_fm3_per_mev": 5.057519955993316e-06,
+        "density_fm3": 0.08,
+        "mass_mev": 840.5011336659909,
+        "mass_prime_mev_fm3": -1022.5624382915237,
+        "mass_second_mev_fm6": 4045.3995680519006,
+        "chemical_potential_mev": 801.1801579838591,
+        "chemical_rearrangement_mev": -79.5199779328944,
+        "pressure_rearrangement_mev_fm3": -6.361598234631552,
+        "pressure_mev_fm3": -5.088072415037612,
+        "energy_second_mev_fm3": -1304.5495644940434,
+        "cs2": -0.1302627931053006,
+        "pressure_over_energy": -0.07354567288360327,
+        "closure_residual_mev_fm3": 1.4210854715202004e-13,
+        "status": "mechanically_unstable"
+      },
+      {
+        "density_ratio": 1.0,
+        "kf_mev": 331.41090732426596,
+        "fermi_energy_mev": 837.6784486403149,
+        "energy_mev_fm3": 129.73374056616169,
+        "kinetic_pressure_mev_fm3": 4.2948112162889975,
+        "scalar_density_fm3": 0.15188407670831464,
+        "mass_curvature_fm3_per_mev": 1.9257587626352497e-05,
+        "density_fm3": 0.16,
+        "mass_mev": 769.3321739164113,
+        "mass_prime_mev_fm3": -780.0813569336955,
+        "mass_second_mev_fm6": 2262.3762771455067,
+        "chemical_potential_mev": 719.1965119850713,
+        "chemical_rearrangement_mev": -118.48193665524357,
+        "pressure_rearrangement_mev_fm3": -18.957109864838973,
+        "pressure_mev_fm3": -14.662298648549974,
+        "energy_second_mev_fm3": -804.3724911167164,
+        "cs2": -0.17894914176300414,
+        "pressure_over_energy": -0.11301839124165612,
+        "closure_residual_mev_fm3": 2.984279490192421e-13,
+        "status": "mechanically_unstable"
+      },
+      {
+        "density_ratio": 2.0,
+        "kf_mev": 417.5515783026017,
+        "fermi_energy_mev": 786.2407347272786,
+        "energy_mev_fm3": 236.7712703732117,
+        "kinetic_pressure_mev_fm3": 14.825764739518112,
+        "scalar_density_fm3": 0.2886421258279579,
+        "mass_curvature_fm3_per_mev": 7.879534472372814e-05,
+        "density_fm3": 0.32,
+        "mass_mev": 666.2020507334821,
+        "mass_prime_mev_fm3": -542.5102622960767,
+        "mass_second_mev_fm6": 966.6219193471301,
+        "chemical_potential_mev": 629.6494193346559,
+        "chemical_rearrangement_mev": -156.59131539262262,
+        "pressure_rearrangement_mev_fm3": -50.10922092563924,
+        "pressure_mev_fm3": -35.28345618612113,
+        "energy_second_mev_fm3": -386.1770632791413,
+        "cs2": -0.1962626446632912,
+        "pressure_over_energy": -0.14901916153300793,
+        "closure_residual_mev_fm3": 6.821210263296962e-13,
+        "status": "mechanically_unstable"
+      },
+      {
+        "density_ratio": 3.1339343812617133,
+        "density_fm3": 0.5014295010018741,
+        "mass_mev": 580.3567350917288,
+        "energy_mev_fm3": 345.910945557942,
+        "pressure_mev_fm3": null,
+        "cs2": null,
+        "pressure_over_energy": null,
+        "status": "undefined_thermodynamics_at_mass_kink"
+      },
+      {
+        "density_ratio": 5.0,
+        "kf_mev": 566.7046799907947,
+        "fermi_energy_mev": 768.7710642953953,
+        "energy_mev_fm3": 541.7134994562056,
+        "kinetic_pressure_mev_fm3": 73.30335198011251,
+        "scalar_density_fm3": 0.619477660526867,
+        "mass_curvature_fm3_per_mev": 0.00045565264511123144,
+        "density_fm3": 0.8,
+        "mass_mev": 519.4754613785002,
+        "mass_prime_mev_fm3": -162.3360816807813,
+        "mass_second_mev_fm6": 213.06610720602544,
+        "chemical_potential_mev": 668.2074881966864,
+        "chemical_rearrangement_mev": -100.5635760987088,
+        "pressure_rearrangement_mev_fm3": -80.45086087896703,
+        "pressure_mev_fm3": -7.147508898854525,
+        "energy_second_mev_fm3": 98.67195555594053,
+        "cs2": 0.11813331313868367,
+        "pressure_over_energy": -0.013194260261244165,
+        "closure_residual_mev_fm3": 1.8189894035458565e-12,
+        "status": "locally_stable_and_subluminal"
+      },
+      {
+        "density_ratio": 10.0,
+        "kf_mev": 714.0031553943403,
+        "fermi_energy_mev": 834.6795459543154,
+        "energy_mev_fm3": 1111.7434305997554,
+        "kinetic_pressure_mev_fm3": 223.7438429271542,
+        "scalar_density_fm3": 1.0189790781961579,
+        "mass_curvature_fm3_per_mev": 0.001320506643022875,
+        "density_fm3": 1.6,
+        "mass_mev": 432.3071113472777,
+        "mass_prime_mev_fm3": -75.0533179422357,
+        "mass_second_mev_fm6": 54.726377666213516,
+        "chemical_potential_mev": 758.2017852219728,
+        "chemical_rearrangement_mev": -76.47776073234249,
+        "pressure_rearrangement_mev_fm3": -122.36441717174799,
+        "pressure_mev_fm3": 101.3794257554062,
+        "energy_second_mev_fm3": 112.70301126379209,
+        "cs2": 0.2378322255852709,
+        "pressure_over_energy": 0.09118958832139422,
+        "closure_residual_mev_fm3": 5.002220859751105e-12,
+        "status": "locally_stable_and_subluminal"
+      },
+      {
+        "density_ratio": 20.0,
+        "kf_mev": 899.5876051726895,
+        "fermi_energy_mev": 966.8754104381172,
+        "energy_mev_fm3": 2457.3667842727664,
+        "kinetic_pressure_mev_fm3": 636.6345291292207,
+        "scalar_density_fm3": 1.544817047010311,
+        "mass_curvature_fm3_per_mev": 0.0031484801995303405,
+        "density_fm3": 3.2,
+        "mass_mev": 354.3870764143961,
+        "mass_prime_mev_fm3": -32.57234158220552,
+        "mass_second_mev_fm6": 12.573881860777865,
+        "chemical_potential_mev": 916.5571019008834,
+        "chemical_rearrangement_mev": -50.31830853723389,
+        "pressure_rearrangement_mev_fm3": -161.01858731914845,
+        "pressure_mev_fm3": 475.6159418100723,
+        "energy_second_mev_fm3": 86.07307258480664,
+        "cs2": 0.3005091899895253,
+        "pressure_over_energy": 0.19354698893711392,
+        "closure_residual_mev_fm3": 1.1823431123048067e-11,
+        "status": "locally_stable_and_subluminal"
+      },
+      {
+        "density_ratio": 100.0,
+        "kf_mev": 1538.2731667737924,
+        "fermi_energy_mev": 1553.582770191618,
+        "energy_mev_fm3": 18819.65804608727,
+        "kinetic_pressure_mev_fm3": 6037.666276978717,
+        "scalar_density_fm3": 3.248018029361326,
+        "mass_curvature_fm3_per_mev": 0.013890273478841777,
+        "density_fm3": 16.0,
+        "mass_mev": 217.5662846582393,
+        "mass_prime_mev_fm3": -4.196880491092579,
+        "mass_second_mev_fm6": 0.3400250397875932,
+        "chemical_potential_mev": 1539.9512266894744,
+        "chemical_rearrangement_mev": -13.631543502143513,
+        "pressure_rearrangement_mev_fm3": -218.1046960342962,
+        "pressure_mev_fm3": 5819.561580944421,
+        "energy_second_mev_fm3": 31.905142582654243,
+        "cs2": 0.3314924995513542,
+        "pressure_over_energy": 0.3092278067270381,
+        "closure_residual_mev_fm3": 9.822542779147625e-11,
+        "status": "locally_stable_and_subluminal"
+      },
+      {
+        "density_ratio": 500.0,
+        "kf_mev": 2630.4101146013754,
+        "fermi_energy_mev": 2633.7190977382297,
+        "energy_mev_fm3": 158220.2161146806,
+        "kinetic_pressure_mev_fm3": 52477.31170437861,
+        "scalar_density_fm3": 5.972697400761374,
+        "mass_curvature_fm3_per_mev": 0.04463704422410574,
+        "density_fm3": 80.0,
+        "mass_mev": 131.98073644988412,
+        "mass_prime_mev_fm3": -0.5142640915285385,
+        "mass_second_mev_fm6": 0.008416104989167169,
+        "chemical_potential_mev": 2630.6475539354524,
+        "chemical_rearrangement_mev": -3.071543802777411,
+        "pressure_rearrangement_mev_fm3": -245.72350422219287,
+        "pressure_mev_fm3": 52231.58820015642,
+        "energy_second_mev_fm3": 10.956802407061758,
+        "cs2": 0.333204724157605,
+        "pressure_over_energy": 0.33011956046310864,
+        "closure_residual_mev_fm3": 8.440110832452774e-10,
+        "status": "locally_stable_and_subluminal"
+      },
+      {
+        "density_ratio": 1000000.0,
+        "kf_mev": 33141.090732426586,
+        "fermi_energy_mev": 33141.09300835154,
+        "energy_mev_fm3": 3976931434.1129017,
+        "kinetic_pressure_mev_fm3": 1325643447.223366,
+        "scalar_density_fm3": 88.94495807126985,
+        "mass_curvature_fm3_per_mev": 7.2417421193435985,
+        "density_fm3": 160000.0,
+        "mass_mev": 12.282234169298587,
+        "mass_prime_mev_fm3": -2.398870862602552e-05,
+        "mass_second_mev_fm6": 1.9678212947020376e-10,
+        "chemical_potential_mev": 33141.09087467686,
+        "chemical_rearrangement_mev": -0.0021336746829257493,
+        "pressure_rearrangement_mev_fm3": -341.3879492681199,
+        "pressure_mev_fm3": 1325643105.8354168,
+        "energy_second_mev_fm3": 0.06904393817383556,
+        "cs2": 0.3333333277889997,
+        "pressure_over_energy": 0.33333315592631435,
+        "closure_residual_mev_fm3": 2.09808349609375e-05,
+        "status": "locally_stable_and_subluminal"
+      }
+    ],
+    "sampled_checks": {
+      "closure_max_relative": 4.123424790445663e-15,
+      "closure_within_1e_minus_11": true,
+      "mechanically_unstable_density_ratios": [
+        0.01,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "superluminal_density_ratios": [],
+      "energy_exceeds_density_scale_at_ratios": [
+        500.0,
+        1000000.0
+      ],
+      "differentiable_at_all_samples": false,
+      "all_positive_samples_locally_stable_and_subluminal": false
+    },
+    "geometry": {
+      "status": "not_computed_no_geometry_model",
+      "radii": []
+    },
+    "uncomputed": [
+      "collapse dynamics",
+      "singularity resolution",
+      "exterior matching",
+      "cosmological bounce",
+      "observational confirmation"
+    ]
+  },
+  "regular_metric_geometry": {
+    "schema_version": 1,
+    "status": "GEOMETRY_IDENTITIES_VERIFIED",
+    "evidence_status": "GEOMETRY_IDENTITY_AUDIT_NO_MATTER_REALIZATION",
+    "evidence_weight": 0,
+    "observed_likelihood": null,
+    "assumptions": [
+      "Four-dimensional Einstein gravity with c=G=1.",
+      "The Hayward metric is selected as an ansatz; M>0 and l>0.",
+      "Geometric temperatures also set hbar=k_B=1.",
+      "Stress eigenvalues are inferred from the Einstein tensor."
+    ],
+    "stress_fingerprint": {
+      "q": "r^3/(2 M l^2)",
+      "rho0": "3/(8 pi l^2)",
+      "rho": "rho0/(1+q)^2",
+      "p_r": "-rho",
+      "p_t": "rho (2q-1)/(1+q)",
+      "anisotropy": "p_t-p_r=3 rho q/(1+q)",
+      "radial_nec": "saturated for every r",
+      "tangential_nec": "nonnegative for every r",
+      "sec": "satisfied iff q>=1/2",
+      "dec": "satisfied iff q<=2",
+      "horizon_relation": "q_h=r_h^2/l^2-1; every nonextremal outer horizon has q_h>2",
+      "interpretation": "Necessary source fingerprint, not an NVG matter realization."
+    },
+    "central_invariants_at_unit_length": {
+      "ricci_scalar": 12.0,
+      "ricci_squared": 36.0,
+      "kretschmann": 24.0,
+      "weyl_squared": 0.0
+    },
+    "unit_length_horizon_scales": {
+      "r_crit": 1.7320508075688772,
+      "M_crit": 1.299038105676658,
+      "r_temperature_peak": 3.0,
+      "M_temperature_peak": 1.6875,
+      "M_peak_over_M_crit": 1.299038105676658,
+      "T_max": 0.01768388256576615
+    },
+    "schwarzschild_asymptotics": {
+      "exact_delta_f": "4 M^2 l^2/[r(r^3+2 M l^2)]",
+      "leading_delta_f": "4 M^2 l^2/r^4",
+      "remainder_order": "O(r^-7)"
+    },
+    "checks": {
+      "symbolic": {
+        "density_from_mass_derivative": {
+          "residual": "0",
+          "passed": true
+        },
+        "radial_pressure_from_einstein_tensor": {
+          "residual": "0",
+          "passed": true
+        },
+        "tangential_pressure_from_mass_derivative": {
+          "residual": "0",
+          "passed": true
+        },
+        "stress_conservation": {
+          "residual": "0",
+          "passed": true
+        },
+        "ricci_scalar": {
+          "residual": "0",
+          "passed": true
+        },
+        "ricci_squared": {
+          "residual": "0",
+          "passed": true
+        },
+        "kretschmann": {
+          "residual": "0",
+          "passed": true
+        },
+        "weyl_squared": {
+          "residual": "0",
+          "passed": true
+        },
+        "schwarzschild_deviation": {
+          "residual": "0",
+          "passed": true
+        },
+        "asymptotic_deviation_coefficient": {
+          "residual": "0",
+          "passed": true
+        },
+        "horizon_mass_relation": {
+          "residual": "0",
+          "passed": true
+        },
+        "horizon_temperature": {
+          "residual": "0",
+          "passed": true
+        },
+        "horizon_mass_derivative": {
+          "residual": "0",
+          "passed": true
+        },
+        "horizon_temperature_derivative": {
+          "residual": "0",
+          "passed": true
+        },
+        "extremal_mass_stationary": {
+          "residual": "0",
+          "passed": true
+        },
+        "extremal_mass": {
+          "residual": "0",
+          "passed": true
+        },
+        "extremal_temperature": {
+          "residual": "0",
+          "passed": true
+        },
+        "extremal_double_root_curvature": {
+          "residual": "0",
+          "passed": true
+        },
+        "temperature_peak_stationary": {
+          "residual": "0",
+          "passed": true
+        },
+        "temperature_peak_mass": {
+          "residual": "0",
+          "passed": true
+        },
+        "temperature_peak_ratio": {
+          "residual": "0",
+          "passed": true
+        },
+        "temperature_maximum": {
+          "residual": "0",
+          "passed": true
+        },
+        "horizon_q": {
+          "residual": "0",
+          "passed": true
+        },
+        "central_ricci": {
+          "residual": "0",
+          "passed": true
+        },
+        "central_ricci_squared": {
+          "residual": "0",
+          "passed": true
+        },
+        "central_kretschmann": {
+          "residual": "0",
+          "passed": true
+        }
+      },
+      "mass_quadrature": {
+        "input_mass": 2.0,
+        "length": 0.7,
+        "recovered_mass": 2.0,
+        "estimated_error": 5.1484041664227543e-14,
+        "passed": true
+      }
+    },
+    "limitations": [
+      "No field configuration realizing this stress from the accepted NVG action has been derived.",
+      "No collapse solution, perturbative stability analysis, or evaporation history is solved.",
+      "Finite central curvature and SEC violation do not imply a flat cosmological bounce.",
+      "The metric and stress tensor establish no information-transfer mechanism.",
+      "No observational likelihood or experimental confirmation is supplied."
+    ]
+  },
+  "conditional_bounce_background": {
+    "evidence_status": "CONDITIONAL_BACKGROUND_NOT_NVG_DERIVATION",
+    "observed_likelihood": null,
+    "epsilon_c_input_MeV_fm3": 70861.97377477809,
+    "t_char_s": 3.762719478736912e-06,
+    "thermal_comparison": {
+      "kBT_MeV": 432.0411752215432,
+      "temperature_K": 5013629647114.191,
+      "g_star_input": 47.5
+    },
+    "max_ODE_vs_exact_absolute_error": 2.3158808204470915e-11,
+    "max_dimensionless_Friedmann_constraint_error": 8.927275585435268e-12,
+    "radiation_bounce_effective_fluid_in_ec_units": {
+      "epsilon_eff": 0.0,
+      "pressure_eff": -1.3333333333333333,
+      "enthalpy_eff": -1.3333333333333333,
+      "trace_eff": 4.0,
+      "Fprime": -1.0
+    },
+    "samples": [
+      {
+        "tau": -5,
+        "a": 3.170153879722701,
+        "density_ratio": 0.009900990099009901,
+        "H_tchar": -0.09900990099009901,
+        "dH_dt_tchar2": -0.019409861778257032
+      },
+      {
+        "tau": -1,
+        "a": 1.4953487812212205,
+        "density_ratio": 0.2,
+        "H_tchar": -0.4,
+        "dH_dt_tchar2": -0.24
+      },
+      {
+        "tau": 0,
+        "a": 1.0,
+        "density_ratio": 1.0,
+        "H_tchar": 0.0,
+        "dH_dt_tchar2": 2.0
+      },
+      {
+        "tau": 1,
+        "a": 1.4953487812212205,
+        "density_ratio": 0.2,
+        "H_tchar": 0.4,
+        "dH_dt_tchar2": -0.24
+      },
+      {
+        "tau": 5,
+        "a": 3.170153879722701,
+        "density_ratio": 0.009900990099009901,
+        "H_tchar": 0.09900990099009901,
+        "dH_dt_tchar2": -0.019409861778257032
+      }
+    ],
+    "missing": [
+      "NVG action producing F and its coefficient",
+      "perturbation action, stability and propagation equations",
+      "recollapse/return map",
+      "entropy and information transfer"
+    ],
+    "slope_warning": "Fprime=0 at epsilon_c/2: effective barotropic slope is singular, not a certified physical sound speed."
+  },
+  "conditional_cycle_assignment": {
+    "rho_c_g_cm3": 1.2632560300546581e+17,
+    "r_c_km": 1.128063467796929,
+    "M_genesis_g": 7.595923704534517e+32,
+    "S_genesis_log10": 76.1849342295701,
+    "S_current_log10": 122.2884595016697,
+    "n_derived": 77.5762979373686,
+    "cycle_index": 77,
+    "M_turnaround_g": 5.739317681396613e+55,
+    "lifetime_yr": 14159234187.785166,
+    "H0_km_s_Mpc": 72.8,
+    "entropy_factor": 4.0,
+    "mass_growth_factor": 2.0,
+    "elapsed_growth_steps_from_H0": 76.5762979373686,
+    "cycle_assignment_is_input": true,
+    "entropy_area_interpretation": "Characteristic sphere area proxy; not a proved Hayward horizon entropy or entropy-transfer law.",
+    "M_genesis_over_Hayward_Mcrit": 0.3849001794597505,
+    "lifetime_is_total_scenario_scale_not_time_remaining": true,
+    "evidence_status": "CALIBRATED_HORIZON_CHAIN",
+    "observed_likelihood": null,
+    "limitation": "The per-cycle growth factor and entropy law are calibration inputs; no microphysical solver/likelihood is present."
+  },
+  "physical_completion_missing": [
+    "Stress-tensor realization of the regular metric from a specified matter action",
+    "A stable action producing any bounce modification and fixing its coefficient",
+    "Dynamical collapse/junction and perturbation analysis",
+    "Recollapse, entropy transfer and recurrence dynamics",
+    "Independent observational likelihoods"
+  ]
+}

@@ -30,3 +30,46 @@ This document outlines the short-term, medium-term, and long-term milestones for
   * Test the predicted B-mode tensor power spectrum cutoff ($r < 0.001$ at $\ell < 10$) using LiteBIRD polarization data.
 * **Numerical General Relativity:**
   * Build exact numerical GR solvers for de Sitter core regularized black holes and the Genesis cosmological bounce.
+
+## Dependency-ordered development plan
+
+The [current development plan](THEORY_DEVELOPMENT_PLAN_RU.md) defines the
+execution priorities, prerequisite calculations, independent validation and
+stop conditions. The topic list above is a research backlog, not a set of
+validated predictions or committed delivery dates; its proposed signals must
+pass the action-to-observable checks in the development plan before use.
+
+The first implemented step is the [live foundation/identifiability audit](NVG_FOUNDATION_IDENTIFIABILITY_RU.md),
+with a [provisional physical-validation protocol](NVG_FIRST_VALIDATION_PROTOCOL_RU.md).
+It preserves the original parameters and reports mathematical controls, not
+an empirical confirmation or completion of the research backlog.
+
+
+The next implemented step is the [static in-medium spatial response](NVG_SPATIAL_IDENTIFIABILITY_RU.md):
+72 live local-TF rows distinguish a bulk-degenerate scale family at
+nondegenerate finite wave numbers. This is conditional mathematical evidence,
+not a finite-nucleus or empirical test. The remaining action-to-observable
+bridge must include nonlocal/dynamic response and experimental uncertainties.
+
+
+The [finite-momentum Dirac/Hartree response](NVG_NONLOCAL_RESPONSE_RU.md)
+now replaces the local fermion kernel with an explicitly subtracted static
+medium kernel, using unchanged parameters. Its 54 live rows quantify the TF
+approximation shift and preserve conditional scale discrimination. The
+frequency-dependent/finite-nucleus observable and independent vacuum matching
+remain open; this is not full vacuum RPA or an empirical validation.
+
+The [retarded finite-momentum response](NVG_RETARDED_RESPONSE_RU.md) now
+closes the finite-frequency step for the same subtracted-medium Hartree
+prescription, with no parameter refit. The full longitudinal scalar/vector
+block yields 48 complex samples and four resolved Q4 poles across the two
+wave numbers and two scales. At scale 1 their energies are 46.07243 and
+92.37040 MeV; the eight W8 cases have no resolved pole in the bounded
+scanned intervals, not a global absence result. The equivalent long-wave
+condition `K > (3 kF²/EF)(3 mu/EF−2)` connects compressibility and current
+response without establishing a universal physical law.
+
+The remaining observable bridge is a specific experimental operator with
+finite-size effects, controlled approximation errors, and independent data.
+This calculation is neither full renormalized vacuum RPA nor empirical
+validation; the original Q4 saturation failure is unchanged.

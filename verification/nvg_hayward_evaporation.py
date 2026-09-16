@@ -35,15 +35,38 @@ l_h = math.sqrt(3 * c**2 / (8 * math.pi * G * rho_c))   # Hayward length, cm
 M_CRIT = (3 * math.sqrt(3) / 4) * l_h * c**2 / G        # extremal mass, g
 
 
+def _validated_mass(M_g):
+    mass = float(M_g)
+    if not math.isfinite(mass) or mass < 0:
+        raise ValueError("mass must be finite and nonnegative")
+    return mass
+
+
 def horizon(M_g):
-    """Outer horizon of Hayward f(r)=1-2mr^2/(r^3+2ml^2), m=GM/c^2. None if M<M_crit."""
-    m = G * M_g / c**2
-    f = lambda r: 1.0 - 2 * m * r**2 / (r**3 + 2 * m * l_h**2)
-    r_s = 2 * m
-    if M_g <= M_CRIT:
+    """Outer horizon in cm, including the double root at M_CRIT.
+
+    The horizonless branch is 0 <= M < M_CRIT. Near extremality solve
+    delta = t^2(3+2t)/(2+6t+3t^2), where t=r/(sqrt(3)*l)-1 and
+    delta=(M-M_CRIT)/M_CRIT, to avoid cancellation in f at its double root.
+    """
+    M_g = _validated_mass(M_g)
+    if M_g < M_CRIT:
         return None
-    # outer root lies between the extremal (double-root) radius sqrt(3)*l and r_s
-    return brentq(f, math.sqrt(3.0) * l_h, 1.001 * r_s, xtol=1e-12 * r_s)
+    r_crit = math.sqrt(3.0) * l_h
+    if M_g == M_CRIT:
+        return r_crit
+    delta = (M_g - M_CRIT) / M_CRIT
+    if delta <= 1.0:
+        equation = lambda t: t * t * (3 + 2 * t) / (2 + 6 * t + 3 * t * t) - delta
+        t = brentq(equation, 0.0, 1.5 * (1.0 + delta) - 1.0,
+                   xtol=np.nextafter(0.0, 1.0), rtol=8 * np.finfo(float).eps)
+        return r_crit * (1.0 + t)
+    # Scaling by the Schwarzschild radius keeps very large finite masses safe.
+    r_s = 2 * G * M_g / c**2
+    beta = (l_h / r_s)**2
+    x = brentq(lambda x: x * x * (x - 1.0) + beta, 2.0 / 3.0, 1.0,
+               xtol=np.nextafter(0.0, 1.0), rtol=8 * np.finfo(float).eps)
+    return r_s * x
 
 
 def hawking_T(M_g):
@@ -51,14 +74,17 @@ def hawking_T(M_g):
     r = horizon(M_g)
     if r is None:
         return 0.0
-    m = G * M_g / c**2
-    d = r**3 + 2 * m * l_h**2
-    # f'(r) = -2m[2r*d - 3r^4]/d^2 = (2m r^4 - 8 m^2 r l^2)/d^2
-    fprime = (2 * m * r**4 - 8 * m**2 * r * l_h**2) / d**2
+    r_crit = math.sqrt(3.0) * l_h
+    # On a horizon f'=(r^2-3l^2)/r^3. Factoring the numerator gives exact
+    # zero at the represented double root and avoids powers of a huge radius.
+    fprime = ((r - r_crit) / r) * ((r + r_crit) / r) / r
     return (hbar * c / k_B) * fprime / (4 * math.pi)
 
 
 def schwarzschild_T(M_g):
+    M_g = _validated_mass(M_g)
+    if M_g == 0:
+        raise ValueError("Schwarzschild temperature requires positive mass")
     return hbar * c**3 / (8 * math.pi * G * M_g * k_B)
 
 
@@ -119,10 +145,15 @@ def main():
     print("  the horizonless-remnant branch; standard evaporation benchmarks are only")
     print("  comparison inputs and do not apply to this Hayward model.")
     print("-" * 92)
-    print("  FALSIFIERS (live, zero-cost):")
-    print("   * independently established PBH evaporation burst (HAWC/CTA/Fermi searches) -> NVG dead")
-    print("   * independently established Hawking component in the MeV gamma background -> NVG dead")
-    print("   * independently established sub-solar BLACK HOLE (horizon, e.g. ringdown) -> NVG dead")
+    print("  FALSIFIER PROTOCOLS (not evaluated here):")
+    print("   * independently established PBH evaporation burst incompatible with the computed")
+    print("     temperature ceiling -> falsifies this fixed-anchor Hayward hypothesis")
+    print("   * independently established Hawking component in the MeV gamma background")
+    print("     incompatible with that ceiling -> falsifies this fixed-anchor Hayward hypothesis")
+    print(f"   * independently established black-hole horizon with mass below computed M_crit = "
+          f"{M_CRIT/M_sun:.6f} M_sun -> falsifies this fixed-anchor Hayward hypothesis")
+    print("  Alternative core-density scales and other NVG realizations require their own")
+    print("  predictions; these protocols do not test all such hypotheses together.")
     print("  EVIDENCE STATUS: MODEL_DERIVED_NO_EVAPORATION_LIKELIHOOD")
     print("  The falsifiers above are test protocols; no current-data likelihood is evaluated.")
     print("=" * 92)

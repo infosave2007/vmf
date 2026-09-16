@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "CITED_EVALUATED_INPUTS_ONLY_NOT_MODEL_OUTPUTS",
+  "description": "Primary/evaluated finite-system inputs for the conditional static bridge. Values in this file are never serialized model results and are never used to choose an interaction branch.",
+  "binding": {
+    "convention": "AME2020 tabulated B_atom/A = [Z M(1H) + N M(n) - M_atom]/A",
+    "source": "https://amdc.impcas.ac.cn/masstables/Ame2020/mass_1.mas20",
+    "source_publication": "https://doi.org/10.1088/1674-1137/abddaf",
+    "values": {
+      "Ca40": {
+        "A": 40,
+        "Z": 20,
+        "N": 20,
+        "B_atom_per_A_MeV": 8.5513046,
+        "B_atom_per_A_sigma_MeV": 0.0000006,
+        "role": "sole_conditional_calibration_anchor"
+      },
+      "Zr90": {
+        "A": 90,
+        "Z": 40,
+        "N": 50,
+        "B_atom_per_A_MeV": 8.7099699,
+        "B_atom_per_A_sigma_MeV": 0.0000013,
+        "role": "heldout_descriptive_comparison_only"
+      },
+      "Pb208": {
+        "A": 208,
+        "Z": 82,
+        "N": 126,
+        "B_atom_per_A_MeV": 7.8674530,
+        "B_atom_per_A_sigma_MeV": 0.0000055,
+        "role": "heldout_descriptive_comparison_only"
+      }
+    }
+  },
+  "electron_binding": {
+    "formula": "Be(Z) = 14.4381 Z^2.39 + 1.55468e-6 Z^5.35 eV",
+    "source_equation": "AME2020 Part II Eq. (2)",
+    "source": "https://doi.org/10.1088/1674-1137/abddaf",
+    "units": "eV",
+    "role": "explicit_approximate_atomic_to_bare_nucleus_conversion",
+    "precision_boundary": "approximate convention only; unknown correction covariance is not folded into a precise scalar posterior"
+  },
+  "charge_radii": {
+    "source": "https://nds.iaea.org/radii/",
+    "source_publication": "https://doi.org/10.1016/j.adt.2011.12.006",
+    "dataset": "IAEA/Angeli-Marinova published 2013 values; preliminary fields excluded",
+    "values": {
+      "Ca40": {"R_ch_fm": 3.4776, "R_ch_sigma_fm": 0.0019, "role": "unfitted_anchor_diagnostic"},
+      "Zr90": {"R_ch_fm": 4.2694, "R_ch_sigma_fm": 0.0010, "role": "heldout_descriptive_comparison_only"},
+      "Pb208": {"R_ch_fm": 5.5012, "R_ch_sigma_fm": 0.0013, "role": "heldout_descriptive_comparison_only"}
+    },
+    "covariance": "not exposed by the cited table; rows are not silently treated as independent"
+  },
+  "nucleon_charge_inputs": {
+    "proton_charge_radius_source": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+    "proton_charge_radius_fm": 0.84075,
+    "proton_charge_radius_sigma_fm": 0.00064,
+    "neutron_mean_square_charge_radius_source": "https://pdglive.lbl.gov/DataBlock.action?node=S017MCR",
+    "neutron_mean_square_charge_radius_fm2": -0.1155,
+    "neutron_mean_square_charge_radius_sigma_fm2": 0.0017,
+    "common_mass_MeV": 939.0,
+    "common_mass_role": "rest-mass/kinematic approximation; physical proton-neutron mass difference is not computed",
+    "hbarc_MeV_fm": 197.3269804
+  },
+  "alternate_radius_context": {
+    "muonic_90Zr_2026_source": "https://arxiv.org/abs/2511.22298",
+    "muonic_90Zr_R_ch_fm": 4.2732,
+    "muonic_90Zr_sigma_fm": 0.0007,
+    "muonic_208Pb_2025_source": "https://arxiv.org/abs/2504.19977",
+    "muonic_208Pb_R_ch_fm": 5.5062,
+    "muonic_208Pb_sigma_fm": 0.0005,
+    "role": "differing spectral/model extractions acknowledged, not pooled or substituted"
+  }
+}

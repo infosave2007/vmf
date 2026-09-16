@@ -2008,7 +2008,7 @@
       "physical_result": false,
       "source_exists": true,
       "source_lines": "verification/nvg_beta_hyperon_urca_audit.py:1-15,620-631,718-776",
-      "source_sha256": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9",
+      "source_sha256": "198c5b13204f2d0dff4fc22d07b2986af9174ad536550d15f9e579dde14e024d",
       "static_inputs": [
         "all interaction couplings are exactly zero and T=0",
         "P2-S2 density grid and conventional particle masses are reference controls"
@@ -2437,7 +2437,7 @@
       "physical_result": false,
       "source_exists": true,
       "source_lines": "verification/nvg_beta_hyperon_urca_audit.py:1-15,620-631,718-776",
-      "source_sha256": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9",
+      "source_sha256": "198c5b13204f2d0dff4fc22d07b2986af9174ad536550d15f9e579dde14e024d",
       "static_inputs": [
         "all interaction couplings are exactly zero and T=0",
         "P2-S2 density grid and conventional particle masses are reference controls"
@@ -2649,114 +2649,110 @@
   "documentation_claim_scan": [
     {
       "evidence_weight": 0.0,
-      "matching_line_count": 25,
+      "matching_line_count": 24,
       "matching_lines": [
         {
-          "line": 30,
+          "line": 69,
           "text": "- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20463836-blue.svg)](https://doi.org/10.5281/zenodo.20463836) *Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in t"
         },
         {
-          "line": 31,
+          "line": 70,
           "text": "Historical publication bundle (not current runtime evidence). The maintained code exposes a hyperon-threshold proxy, raw RMF comparisons, and a calibrated cooling threshold; a complete beta-equilibrated EOS and independent likelihood are no"
         },
         {
-          "line": 70,
+          "line": 188,
           "text": "- **Compute a calibrated Direct-Urca cooling threshold.** The threshold is an in-sample calibration, not an independent cooling-population confirmation."
         },
         {
-          "line": 120,
-          "text": "**Key advantage over competing models:** Unlike generic Bardeen/Hayward (free parameter $g$), fuzzballs ($10^{500}$ string vacua), or loop quantum gravity (Planck-scale, untestable), NVG derives $r_0$ from a **measured** QCD quantity ($M_{\\"
-        },
-        {
-          "line": 140,
+          "line": 260,
           "text": "| 5 | NS cooling dichotomy via a direct-Urca threshold at $1.45 M_\\odot$ (threshold position set by the coupling $\\alpha_v$) | Cas A (slow) vs Vela (fast): the two-regime cooling is reproduced ([nvg_direct_urca.py](verification/nvg_direct_u"
         },
         {
-          "line": 171,
+          "line": 291,
           "text": "| 36 | White Dwarf cooling age shift | Predicted effect $\\Delta t/t \\approx -1.8 \\times 10^{-6}$ is far below Gaia/SDSS age uncertainties ($\\sim 5\\%$) \u2014 indistinguishable from zero ([wd_cooling.py](verification/nvg_wd_cooling.py)) | \u26aa Null "
         },
         {
-          "line": 172,
+          "line": 292,
           "text": "| 37 | Neutron star core g-modes | Runtime WKB forecast over an assumed composition grid gives periods in a 50\u2013150 ms sensitivity band; no detector likelihood or confirmation is available ([nvg_ns_g_modes.py](verification/nvg_ns_g_modes.py)"
         },
         {
-          "line": 173,
+          "line": 293,
           "text": "| 38 | SN1987A dark-photon sensitivity scan | The current reference scan includes a 19.8% mass-drop point with $L_A=8.265\\times10^{55}$ erg/s, above the stated Raffelt reference. Without a sourced SN1987A likelihood and validated transport "
         },
         {
-          "line": 205,
+          "line": 325,
           "text": "| Joint Multi-Messenger Inference | Conditional/in-sample reduced $\\chi^2_\\nu = 0.684$ over three runtime structural rows; cooling is a calibration target and excluded. | The transition was selected using J0740, NICER, and GW170817 inputs, "
         },
         {
-          "line": 248,
+          "line": 368,
           "text": "- **Young Neutron Star Cooling:** The maintained route exposes a calibrated Direct-Urca threshold, but no independent cooling-population likelihood is implemented; the old object-level match is not evidence."
         },
         {
-          "line": 277,
+          "line": 397,
           "text": "| **III. Conditional compatibilities** | $2M_\\Omega$ and the scalar glueball (lattice QCD), $M_{\\rm crit} = 0.992\\,M_\\odot$ vs the absence of sub-solar horizons in GWTC, Cas A/Vela bimodality, and the runtime canonical $\\Lambda_{1.4}=519.4$"
         },
         {
-          "line": 278,
+          "line": 398,
           "text": "| **IV. Calibrations (not evidence)** | $H_0 = 72.8$, Direct Urca threshold $1.45\\,M_\\odot$, EOS shape parameters | one fitted input per block |"
         },
         {
-          "line": 357,
+          "line": 477,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cooling_dark_matter.py          # PBH Dark Matter, NS Cooling (Direct Urca)"
         },
         {
-          "line": 365,
+          "line": 485,
           "text": "\u2502   \u251c\u2500\u2500 nvg_advanced_observables_III.py     # Runtime ledger: mesons, Lorentz, cooling, QNM"
         },
         {
-          "line": 374,
+          "line": 494,
           "text": "\u2502   \u251c\u2500\u2500 nvg_new_predictions.py              # Quantitative multi-messenger predictions (FAIR, GW, LMXB)"
         },
         {
-          "line": 383,
+          "line": 503,
           "text": "\u2502   \u251c\u2500\u2500 nvg_observational_data_fit.py       # Quantitative fits to Planck, DESI, GW170817, and cooling data"
         },
         {
-          "line": 412,
+          "line": 532,
           "text": "\u2502   \u251c\u2500\u2500 nvg_ns_g_modes.py                  # WKB g-mode forecast with assumed composition (no detector likelihood)"
         },
         {
-          "line": 417,
+          "line": 537,
           "text": "\u2502   \u251c\u2500\u2500 nvg_wd_cooling.py                  # White Dwarf cooling rate under VMF"
         },
         {
-          "line": 470,
+          "line": 590,
           "text": "python verification/nvg_new_predictions.py          # Quantitative predictions (FAIR, post-merger GW shift, LMXB)"
         },
         {
-          "line": 483,
+          "line": 603,
           "text": "python verification/nvg_cooling_dark_matter.py     # PBH Dark Matter, NS Cooling dichotomy"
         },
         {
-          "line": 491,
+          "line": 611,
           "text": "python verification/nvg_advanced_observables_III.py# Mesons, Lorentz, NS Cooling"
         },
         {
-          "line": 498,
+          "line": 618,
           "text": "python verification/nvg_observational_data_fit.py   # Fits Planck PR4, DESI DR2, GW170817, and cooling"
         },
         {
-          "line": 529,
+          "line": 649,
           "text": "python verification/nvg_ns_g_modes.py                  # WKB g-mode forecast with assumed composition (no detector likelihood)"
         },
         {
-          "line": 532,
+          "line": 652,
           "text": "python verification/nvg_wd_cooling.py                  # Computes VMF white dwarf cooling rate deviation"
         },
         {
-          "line": 552,
-          "text": "13. **NS Cooling Population Dichotomy:** Strict threshold at $1.45 M_\\odot$. Regardless of envelope composition, light NSs are bright ($10^{33}$ erg/s), while heavy ones (Direct Urca) drop to $10^{31}$ erg/s. An old, hot heavy star falsifie"
+          "line": 672,
+          "text": "13. **NS cooling sensitivity:** The $1.45M_\\odot$ threshold is calibrated; the quoted $10^{33}$ versus $10^{31}$ erg/s regimes are illustrative. Composition, envelope and heating inputs matter, and no independent thermal-population likeliho"
         }
       ],
       "missing_producers": [
         "none: sourced cooling/g-mode composition and thermal likelihood",
         "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
       ],
-      "sha256": "10d54b83aa3d3b5a67ed422532a97173f9460bd602cce4109c4ac3e2ad9c7eee",
+      "sha256": "b909720c0f50217b3b4c911bd502476132e6161c61953c6e498da95b799cf63e",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "README.md"
     },
@@ -2765,634 +2761,81 @@
       "matching_line_count": 17,
       "matching_lines": [
         {
-          "line": 70,
+          "line": 190,
           "text": "- **\u0412\u044b\u0447\u0438\u0441\u043b\u044f\u044e\u0442 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u043e\u0440\u043e\u0433 Direct Urca.** \u041f\u043e\u0440\u043e\u0433 \u0432\u044b\u0431\u0440\u0430\u043d \u0432\u043d\u0443\u0442\u0440\u0438 \u0432\u044b\u0431\u043e\u0440\u043a\u0438 \u0438 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u043c \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\u043c \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f."
         },
         {
-          "line": 84,
+          "line": 204,
           "text": "#### \u0420\u0438\u0441. 2. \u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A: VMF vs Chandra"
         },
         {
-          "line": 87,
+          "line": 205,
+          "text": "\u0412 \u043a\u043e\u0434\u0435 \u0437\u0430\u043f\u0438\u0441\u0430\u043d\u044b 11 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440 Chandra ACIS-S (2000\u20132019), \u0438\u043b\u043b\u044e\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043d\u0430\u043a\u043b\u043e\u043d $-3650$ \u041a/\u0433\u043e\u0434 \u0438 \u043d\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u043a\u0430 2.010 MK. \u0422\u0435\u043f\u043b\u043e\u0432\u043e\u0439 \u0440\u0435\u0448\u0430\u0442\u0435\u043b\u044c \u0438 \u0441\u043f\u0435\u043a\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 likelihood Chandra \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0442; \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u043c \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u0435\u043c \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f"
+        },
+        {
+          "line": 207,
           "text": "![\u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A: VMF vs Chandra](verification/fig_cas_a_cooling.png)"
         },
         {
-          "line": 227,
+          "line": 351,
           "text": "| 5 | \u0414\u0438\u0445\u043e\u0442\u043e\u043c\u0438\u044f \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u041d\u0417 \u0447\u0435\u0440\u0435\u0437 \u043f\u043e\u0440\u043e\u0433 \u043f\u0440\u044f\u043c\u043e\u0439 \u0423\u0440\u043a\u0438 \u043f\u0440\u0438 $1.45 M_\\odot$ (\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e\u0440\u043e\u0433\u0430 \u0437\u0430\u0434\u0430\u0451\u0442\u0441\u044f \u0441\u0432\u044f\u0437\u044c\u044e $\\alpha_v$) | Cas A (\u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u0435) vs Vela (\u0431\u044b\u0441\u0442\u0440\u043e\u0435): \u0434\u0432\u0443\u0445\u0440\u0435\u0436\u0438\u043c\u043d\u043e\u0435 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0441\u044f ([nvg_direct_urca.py](verification/nvg_direc"
         },
         {
-          "line": 258,
+          "line": 382,
           "text": "| 36 | \u0421\u0434\u0432\u0438\u0433 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432 | \u041f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u044d\u0444\u0444\u0435\u043a\u0442 $\\Delta t/t \\approx -1.8 \\times 10^{-6}$ \u043d\u0430 \u043f\u043e\u0440\u044f\u0434\u043a\u0438 \u043c\u0435\u043d\u044c\u0448\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u043e\u0432 Gaia/SDSS ($\\sim 5\\%$) \u2014 \u043d\u0435\u043e\u0442\u043b\u0438\u0447\u0438\u043c \u043e\u0442 \u043d\u0443\u043b\u044f ([wd_cooling.py](verification/nvg_wd_cooling."
         },
         {
-          "line": 260,
+          "line": 384,
           "text": "| 38 | \u0427\u0443\u0432\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u043a\u0430\u043d \u0442\u0451\u043c\u043d\u043e\u0433\u043e \u0444\u043e\u0442\u043e\u043d\u0430 SN1987A | \u0422\u0435\u043a\u0443\u0449\u0438\u0439 reference-\u0441\u043a\u0430\u043d \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0442\u043e\u0447\u043a\u0443 \u043f\u0430\u0434\u0435\u043d\u0438\u044f \u043c\u0430\u0441\u0441\u044b 19.8% \u0441 $L_A=8.265\\times10^{55}$ \u044d\u0440\u0433/\u0441, \u0432\u044b\u0448\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u0435\u0434\u0435\u043b\u0430 \u0420\u0430\u0444\u0444\u0435\u043b\u044c\u0442\u0430. \u0411\u0435\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e likelihood SN1987A \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u043e\u0439 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d"
         },
         {
-          "line": 332,
+          "line": 456,
           "text": "- **\u041e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u043c\u043e\u043b\u043e\u0434\u044b\u0445 \u043d\u0435\u0439\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0437\u0432\u0435\u0437\u0434:** \u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u043e\u0440\u043e\u0433 Direct Urca; \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u0439 likelihood \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043f\u0440\u0435\u0436\u043d\u0435\u0435 \u043e\u0431\u044a\u0435\u043a\u0442\u043d\u043e\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0441\u0432\u0438\u0434\u0435\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e\u043c."
         },
         {
-          "line": 361,
+          "line": 485,
           "text": "| **III. \u0423\u0441\u043b\u043e\u0432\u043d\u044b\u0435 \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u0438** | $2M_\\Omega$ \u0438 \u0441\u043a\u0430\u043b\u044f\u0440\u043d\u044b\u0439 \u0433\u043b\u044e\u0431\u043e\u043b (\u0440\u0435\u0448\u0451\u0442\u043e\u0447\u043d\u0430\u044f \u041a\u0425\u0414), $M_{\\rm crit} = 0.992\\,M_\\odot$ \u043f\u0440\u043e\u0442\u0438\u0432 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044f \u0441\u0443\u0431-\u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u0445 \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u043e\u0432 \u0432 GWTC, Cas A/Vela \u0434\u0432\u0443\u0445\u0440\u0435\u0436\u0438\u043c\u043d\u043e\u0441\u0442\u044c \u0438 runtime-\u043a\u0430\u043d\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f $\\Lambda_{1.4}=519.4$ |"
         },
         {
-          "line": 362,
+          "line": 486,
           "text": "| **IV. \u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 (\u043d\u0435 \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e)** | $H_0 = 72.8$, \u043f\u043e\u0440\u043e\u0433 Direct Urca $1.45\\,M_\\odot$, \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0444\u043e\u0440\u043c\u044b EOS | \u043e\u0434\u0438\u043d \u043f\u043e\u0434\u043e\u0433\u043d\u0430\u043d\u043d\u044b\u0439 \u0432\u0445\u043e\u0434 \u043d\u0430 \u0431\u043b\u043e\u043a |"
         },
         {
-          "line": 441,
+          "line": 565,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cooling_dark_matter.py          # \u041f\u0427\u0414 \u0422\u0451\u043c\u043d\u0430\u044f \u043c\u0430\u0442\u0435\u0440\u0438\u044f, \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u041d\u0417 (Direct Urca)"
         },
         {
-          "line": 458,
+          "line": 582,
           "text": "\u2502   \u251c\u2500\u2500 nvg_new_predictions.py              # \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u043c\u0443\u043b\u044c\u0442\u0438\u043c\u0443\u043b\u044c\u0442\u0438\u043c\u0435\u0441\u0441\u0435\u043d\u0434\u0436\u0435\u0440\u043d\u044b\u0435 \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u044f (FAIR, GW, LMXB)"
         },
         {
-          "line": 494,
+          "line": 618,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cas_a_cooling_curve.py         # \u0420\u0438\u0441. 2: \u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A \u0441 \u0442\u043e\u0447\u043a\u0430\u043c\u0438 Chandra"
         },
         {
-          "line": 501,
+          "line": 625,
           "text": "\u2502   \u251c\u2500\u2500 nvg_wd_cooling.py                  # \u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432 \u043f\u043e\u0434 VMF"
         },
         {
-          "line": 554,
+          "line": 678,
           "text": "python verification/nvg_new_predictions.py          # \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u044f (FAIR, \u0441\u0434\u0432\u0438\u0433 GW, LMXB)"
         },
         {
-          "line": 567,
+          "line": 691,
           "text": "python verification/nvg_cooling_dark_matter.py     # \u041f\u0427\u0414 \u0422\u0451\u043c\u043d\u0430\u044f \u043c\u0430\u0442\u0435\u0440\u0438\u044f, \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u041d\u0417"
         },
         {
-          "line": 617,
+          "line": 741,
           "text": "python verification/nvg_wd_cooling.py                  # \u0412\u044b\u0447\u0438\u0441\u043b\u044f\u0435\u0442 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u0438 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432"
-        },
-        {
-          "line": 637,
-          "text": "13. **\u041f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0434\u0438\u0445\u043e\u0442\u043e\u043c\u0438\u044f \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u041d\u0417:** \u0421\u0442\u0440\u043e\u0433\u0438\u0439 \u043f\u043e\u0440\u043e\u0433 \u043d\u0430 $1.45 M_\\odot$. \u041d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u043e\u0442 \u0441\u043e\u0441\u0442\u0430\u0432\u0430 \u043e\u0431\u043e\u043b\u043e\u0447\u043a\u0438, \u043b\u0435\u0433\u043a\u0438\u0435 \u041d\u0417 \u044f\u0440\u0447\u0435 ($10^{33}$ \u044d\u0440\u0433/\u0441), \u0430 \u0442\u044f\u0436\u0435\u043b\u044b\u0435 (Direct Urca) \u043f\u0440\u043e\u0432\u0430\u043b\u0438\u0432\u0430\u044e\u0442\u0441\u044f \u0434\u043e $10^{31}$ \u044d\u0440\u0433/\u0441. \u041d\u0430\u043b\u0438\u0447\u0438\u0435 \u0441\u0442\u0430\u0440\u043e\u0439 \u0433\u043e\u0440\u044f\u0447\u0435\u0439 \u0442\u044f\u0436\u0435\u043b\u043e\u0439 \u0437\u0432\u0435\u0437\u0434\u044b"
         }
       ],
       "missing_producers": [
         "none: sourced cooling/g-mode composition and thermal likelihood",
         "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
       ],
-      "sha256": "5ce05b76150f744a1d0e2c7dee32f555da999a04b7df7dc1c8787d1a4861f122",
+      "sha256": "c5878398c93e1e7a55903c23dbf1ad64b4ae0052dcc8edea507561699296c8a3",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "README_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 37,
-          "text": "Standard inflation requires an arbitrary parameter of $N_e \\sim 50-60$ e-folds of exponential expansion to solve the horizon problem. In the NVG model, the number of e-folds is not a free parameter but a geometric necessity derived from the"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "f8cd45dbabb2d3a8cbe699cd3d9846fec75bd986642e82f3ccb0bfde2642440e",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_CMB_ANOMALY_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 155,
-          "text": "NVG model, the number of e-folds is not a free parameter but a geometric"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "b36c06daab64f8340f6c60b0a13162cb76e3d872c8e6e8377d06dcb23289496e",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_CMB_ANOMALY_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 11,
-      "matching_lines": [
-        {
-          "line": 43,
-          "text": "beam dumps, BaBar, SN1987A) by virtue of two independent suppressions:"
-        },
-        {
-          "line": 47,
-          "text": "- the resulting model produces five qualitatively distinct predictions"
-        },
-        {
-          "line": 146,
-          "text": "| SN1987A proto-NS       | $1.0$               | $0.39$ | n/a                      | $10^{-9}$                     | KINEMATIC-OFF            |"
-        },
-        {
-          "line": 157,
-          "text": "SN1987A ($T \\sim 30$ MeV), where standard dark-photon bounds become much"
-        },
-        {
-          "line": 182,
-          "text": "2. **Strong suppression in sub-nuclear stellar cooling channels.** Solar neutrino"
-        },
-        {
-          "line": 183,
-          "text": "counts, HB-star lifetimes, RG-tip luminosities, and white-dwarf cooling"
-        },
-        {
-          "line": 242,
-          "text": "### 4. SN1987A Core Cooling Constraints vs. In-Medium Mass Drop"
-        },
-        {
-          "line": 268,
-          "text": "### 7. LMXB Accreting Crust Thermal Balance"
-        },
-        {
-          "line": 269,
-          "text": "To satisfy the thermal balance of accreting neutron stars in Low-Mass X-ray Binaries (LMXBs), the dark photon must not cool the NS crust too rapidly. In the crust, the density is low ($n_B \\sim 0.5 n_0$), meaning the condensate is mostly in"
-        },
-        {
-          "line": 272,
-          "text": "This formally proves that the dark photon cooling in LMXB crusts is suppressed by more than $10^{24}$\u2014experimentally indistinguishable from zero, closing this experimental vulnerability."
-        },
-        {
-          "line": 281,
-          "text": "| **LMXB Crust Thermal Balance** | Suppressed by factor $>10^{24}$ | Confirmed by existing thermal observations |"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "c78aab796ed7056698d8307277ff33c8682e55cb0cf2f22c19d17b9beb588581",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_DARK_PHOTON_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 6,
-      "matching_lines": [
-        {
-          "line": 114,
-          "text": "red giants, BBN, beam dumps, BaBar, SN1987A) by virtue of two"
-        },
-        {
-          "line": 119,
-          "text": "the resulting model produces five qualitatively distinct predictions"
-        },
-        {
-          "line": 234,
-          "text": "SN1987A proto-NS & \\(1.0\\) & \\(0.39\\) & n/a & \\(10^{-9}\\) &"
-        },
-        {
-          "line": 254,
-          "text": "pairs. This includes SN1987A (\\(T \\sim 30\\) MeV), where standard"
-        },
-        {
-          "line": 285,
-          "text": "\\textbf{Strong suppression in sub-nuclear stellar cooling channels.}"
-        },
-        {
-          "line": 287,
-          "text": "white-dwarf cooling ages should show no deviation from Standard Model"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "962aea4811810d99ac3daf8478d6dcff18f9e806fb00df21ca244f302ad1f768",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_DARK_PHOTON_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 114,
-          "text": "A critical differentiator of the NVG model is the reflection coefficient $\\mathcal{R}$ of the inner boundary. Standard ECO models often assume substantial absorption at the surface, leading to a rapid attenuation of echoes (typically 2-3 vi"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "90cd2e0e65a14fb98eeec646679ed2491399d248889eac3549fd0f28610c7413",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_GW150914_ECHO_SEARCH_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 139,
-          "text": "\\item \\textbf{Tidal radius check:} For the soft SLy baseline, the NVG+$\\Lambda$ canonical radius is $R_{1.4} = 11.73\\,\\text{km}$, which is in excellent agreement with the GW170817 constraint ($R_{1.4} \\in [10.5, 13.6]\\,\\text{km}$ \\cite{Abbo"
-        },
-        {
-          "line": 194,
-          "text": "A crucial test of the NVG framework lies in the prediction of the dimensionless tidal deformability $\\Lambda_{1.4}$. The GW170817 event restricts the tidal deformability of a $1.4\\,M_\\odot$ star to $\\Lambda_{1.4} < 800$ \\cite{Abbott2018}. U"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "da0b339d3e81f2421e7cf5264f91d389ea4b4fad4ae286bc911606ce64f6bace",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_Hyperon_Puzzle_FULL_v2.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 7,
-      "matching_lines": [
-        {
-          "line": 21,
-          "text": "We present a population-level test of the density-activated vacuum field amplification model (the NVG magnetar mechanism) using the observed population of isolated magnetars from the McGill catalogue. In this framework, the core magnetic fi"
-        },
-        {
-          "line": 62,
-          "text": "where we set the characteristic decay timescale $\\tau_d = 10^4$ yr and decay index $\\gamma = 0.5$, consistent with standard magnetar cooling and magnetic evolution models."
-        },
-        {
-          "line": 67,
-          "text": "where $B_{\\text{seed,NS}} = B_{\\text{seed,surf}} \\times (R_{\\text{star}}/R_{\\text{NS}})^2$ is the seed field after geometric concentration from the progenitor star. In the NVG model, the core amplification is:"
-        },
-        {
-          "line": 139,
-          "text": "The reconstructed masses and fitted seed fields provide a highly self-consistent picture. The fact that the entire McGill magnetar population can be explained by varying the neutron star masses within the standard physical range ($1.1 - 2.3"
-        },
-        {
-          "line": 143,
-          "text": "In standard convective dynamo models, there is no physical reason for a correlation between the final dipole field and the mass of the neutron star, as the dynamo is driven primarily by the birth rotation period. In contrast, the NVG model "
-        },
-        {
-          "line": 147,
-          "text": "1. **CXOU J010043.1-721134** (observed $B_{\\text{dip}} \\approx 3.9 \\times 10^{14}$ G, very young $\\approx 6.8$ kyr). The NVG model predicts a high birth field ($B_{\\text{birth}} \\approx 5.1 \\times 10^{14}$ G), requiring a high core amplific"
-        },
-        {
-          "line": 148,
-          "text": "2. **SGR 1935+2154** (observed $B_{\\text{dip}} \\approx 2.2 \\times 10^{14}$ G, age $\\approx 3.6$ kyr). The NVG model predicts a low birth field ($B_{\\text{birth}} \\approx 2.5 \\times 10^{14}$ G), which requires no core amplification, predicti"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "0fa9ece4c30cf3e66c15c351cc1d73f52afc61242b5b3d6f3f504559aa6ac9da",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_MASS_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 3,
-      "matching_lines": [
-        {
-          "line": 19,
-          "text": "Finally, we report concrete multi-messenger and laboratory predictions: (i) a detectable Breit-Wigner peak significance ($>3\\sigma$ for $10\\text{ pb}^{-1}$) in the FAIR/NICA dilepton spectrometry at $2n_0$; (ii) a post-merger gravitational "
-        },
-        {
-          "line": 209,
-          "text": "**Thompson--Duncan turbulent dynamo (Duncan & Thompson 1992; Thompson & Duncan 1993).** A proto-neutron star with millisecond birth spin amplifies its seed field via an $\\alpha$--$\\Omega$ dynamo driven by neutrino-cooling convection. This p"
-        },
-        {
-          "line": 223,
-          "text": "3. **LMXB Crust Cooling and Thermal Balance:** In the accreting neutron star crust ($n_B \\approx 0.5 n_0$, $T \\approx 10$ keV), the chiral condensate integrity ratio remains high at $\\sigma/\\sigma_0 \\approx 0.8340$. On-shell dark photon emi"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "c8b18de75eba06e21ea086139459fbedaaa743523ffc2526c2b71b6e6742107c",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 7,
-      "matching_lines": [
-        {
-          "line": 61,
-          "text": "the Einstein Telescope; and (iii) a virtual dark photon cooling"
-        },
-        {
-          "line": 63,
-          "text": "neutron star crusts, confirming thermal security in LMXBs."
-        },
-        {
-          "line": 463,
-          "text": "driven by neutrino-cooling convection. This picture requires birth"
-        },
-        {
-          "line": 554,
-          "text": "\\textbf{LMXB Crust Cooling and Thermal Balance:} In the accreting"
-        },
-        {
-          "line": 560,
-          "text": "suppressed by a factor of \\((T/m_{A'})^4\\), yielding a total cooling"
-        },
-        {
-          "line": 562,
-          "text": "standard cooling. This ensures that dark photon cooling does not"
-        },
-        {
-          "line": 564,
-          "text": "(LMXBs) thermally secure and consistent with observations."
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "30cf2b5fcbcbc77e73558094ec59cfc6bf4612310ff455810917256c289dec64",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 197,
-          "text": "**Thompson--Duncan turbulent dynamo (Duncan & Thompson 1992; Thompson & Duncan 1993).** A proto-neutron star with millisecond birth spin amplifies its seed field via an $\\alpha$--$\\Omega$ dynamo driven by neutrino-cooling convection. This p"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "03069d3c3b24ac27cd18944077470b54ce3192ed1070e6de395efc1b75365f1d",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT_V3.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 463,
-          "text": "driven by neutrino-cooling convection. This picture requires birth"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "d9f7a62059bfe69a6527938b2ba0e7f2e7453b705df45362dbd781a7fd80b895",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT_V3.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 3,
-      "matching_lines": [
-        {
-          "line": 19,
-          "text": "Finally, we report concrete multi-messenger and laboratory predictions: (i) a detectable Breit-Wigner peak significance ($>3\\sigma$ for $10\\text{ pb}^{-1}$) in the FAIR/NICA dilepton spectrometry at $2n_0$; (ii) a post-merger gravitational "
-        },
-        {
-          "line": 209,
-          "text": "**Thompson--Duncan turbulent dynamo (Duncan & Thompson 1992; Thompson & Duncan 1993).** A proto-neutron star with millisecond birth spin amplifies its seed field via an $\\alpha$--$\\Omega$ dynamo driven by neutrino-cooling convection. This p"
-        },
-        {
-          "line": 223,
-          "text": "3. **LMXB Crust Cooling and Thermal Balance:** In the accreting neutron star crust ($n_B \\approx 0.5 n_0$, $T \\approx 10$ keV), the chiral condensate integrity ratio remains high at $\\sigma/\\sigma_0 \\approx 0.8340$. On-shell dark photon emi"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "c8b18de75eba06e21ea086139459fbedaaa743523ffc2526c2b71b6e6742107c",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT_V4.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 7,
-      "matching_lines": [
-        {
-          "line": 82,
-          "text": "the Einstein Telescope; and (iii) a virtual dark photon cooling"
-        },
-        {
-          "line": 84,
-          "text": "neutron star crusts, confirming thermal security in LMXBs."
-        },
-        {
-          "line": 481,
-          "text": "driven by neutrino-cooling convection. This picture requires birth"
-        },
-        {
-          "line": 572,
-          "text": "\\textbf{LMXB Crust Cooling and Thermal Balance:} In the accreting"
-        },
-        {
-          "line": 578,
-          "text": "suppressed by a factor of \\((T/m_{A'})^4\\), yielding a total cooling"
-        },
-        {
-          "line": 580,
-          "text": "standard cooling. This ensures that dark photon cooling does not"
-        },
-        {
-          "line": 582,
-          "text": "(LMXBs) thermally secure and consistent with observations."
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "9bcfadc7f3aa74ac9237455c7c17672c78897b48031cffeb925ebe8402383bb5",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_MAGNETAR_PREPRINT_V4.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 14,
-      "matching_lines": [
-        {
-          "line": 1,
-          "text": "# Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in the Null-Vector Gravity Framework"
-        },
-        {
-          "line": 13,
-          "text": "We present a parameter-free equation of state (EOS) for dense nuclear matter derived within the Null-Vector Gravity (NVG) framework, in which all macroscopic neutron star (NS) observables are determined by a single QCD input: the vector mes"
-        },
-        {
-          "line": 25,
-          "text": "The paper is structured as follows: Section 2 details the theoretical framework of NVG and the Vacuum Mass Fraction (VMF) model. Section 3 presents the computational results, including the mass-radius relation, tidal deformability, sound sp"
-        },
-        {
-          "line": 77,
-          "text": "The dimensionless tidal deformability $\\Lambda$ is a key signature in binary neutron star mergers, reflecting how easily a star is deformed by the tidal field of its companion. At the canonical mass of $1.4\\,M_\\odot$, the NVG model predicts"
-        },
-        {
-          "line": 95,
-          "text": "### 3.4 Cooling Dichotomy"
-        },
-        {
-          "line": 97,
-          "text": "The thermal evolution of neutron stars is highly sensitive to their mass. Stars heavier than a critical threshold $M_c$ can undergo rapid cooling via the Direct Urca (DURC) process ($n \\to p + e^- + \\bar{\\nu}_e$), whereas lighter stars are "
-        },
-        {
-          "line": 103,
-          "text": "*   **Below $M_c$ (e.g., Cassiopeia A, $M \\approx 1.40\\,M_\\odot$):** The core density is insufficient to trigger DURC. The star cools slowly ($dT_s/dt \\approx -3650$ K/yr predicted vs $-3500$ K/yr observed [8])."
-        },
-        {
-          "line": 104,
-          "text": "*   **Above $M_c$ (e.g., Vela, $M \\approx 1.80\\,M_\\odot$):** The central density exceeds the threshold, activating DURC and causing rapid cooling ($T_s \\approx 6.95 \\times 10^5$ K predicted vs $6.80 \\times 10^5$ K observed [8], see Figure 3"
-        },
-        {
-          "line": 106,
-          "text": "![Figure 3: Neutron star surface temperature evolution (cooling curves) for a $1.4 M_\\odot$ star (slow cooling) and a $1.8 M_\\odot$ star (fast cooling) compared with Cassiopeia A and Vela observations.](figures/fig_ns_cooling.png)"
-        },
-        {
-          "line": 108,
-          "text": "This parameter-free threshold resolves the long-standing cooling dichotomy observed in young neutron stars."
-        },
-        {
-          "line": 145,
-          "text": "*Table 1: Comparison of the parameter-free NVG model against standard equations of state across macroscopic observables.*"
-        },
-        {
-          "line": 161,
-          "text": "While phenomenologically similar, the NVG model differs from the original BR scaling in several fundamental aspects:"
-        },
-        {
-          "line": 181,
-          "text": "3. The cooling dichotomy threshold is established at $M_c = 1.45\\,M_\\odot$, matching Cas A and Vela cooling rates."
-        },
-        {
-          "line": 233,
-          "text": "8. Elshamouty, K. G., et al. \"Measuring the Cooling of the Neutron Star in Cassiopeia A with Chandra.\" *The Astrophysical Journal* 777, 22 (2013)."
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "ac122059928ba2da66c06b2557b04c3bdbd971b6f907775cecd306c4dab280a3",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_NS_STRUCTURE_EOS_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 16,
-      "matching_lines": [
-        {
-          "line": 22,
-          "text": "\\title{\\textbf{Neutron Star Structure from a Single QCD Parameter:\\\\Equation of State, Tidal Deformability, and Cooling Threshold\\\\in the Null-Vector Gravity Framework}}"
-        },
-        {
-          "line": 35,
-          "text": "We present a parameter-free equation of state (EOS) for dense nuclear matter derived within the Null-Vector Gravity (NVG) framework, in which all macroscopic neutron star (NS) observables are determined by a single QCD input: the vector mes"
-        },
-        {
-          "line": 48,
-          "text": "The paper is structured as follows: Section~\\ref{sec:field} details the theoretical framework of NVG and the Vacuum Mass Fraction (VMF) model. Section~\\ref{sec:results} presents the computational results, including the mass-radius relation,"
-        },
-        {
-          "line": 107,
-          "text": "The dimensionless tidal deformability $\\Lambda$ is a key signature in binary neutron star mergers, reflecting how easily a star is deformed by the tidal field of its companion. At the canonical mass of $1.4\\,M_\\odot$, the NVG model predicts"
-        },
-        {
-          "line": 130,
-          "text": "\\subsection{Cooling Dichotomy}"
-        },
-        {
-          "line": 132,
-          "text": "The thermal evolution of neutron stars is highly sensitive to their mass. Stars heavier than a critical threshold $M_c$ can undergo rapid cooling via the Direct Urca (DURC) process ($n \\to p + e^- + \\bar{\\nu}_e$), whereas lighter stars are "
-        },
-        {
-          "line": 139,
-          "text": "\\item \\textbf{Below $M_c$ (e.g., Cassiopeia A, $M \\approx 1.40\\,M_\\odot$):} The core density is insufficient to trigger DURC. The star cools slowly ($dT_s/dt \\approx -3650$ K/yr predicted vs $-3500$ K/yr observed \\cite{Elshamouty2013})."
-        },
-        {
-          "line": 140,
-          "text": "\\item \\textbf{Above $M_c$ (e.g., Vela, $M \\approx 1.80\\,M_\\odot$):} The central density exceeds the threshold, activating DURC and causing rapid cooling ($T_s \\approx 6.95 \\times 10^5$ K predicted vs $6.80 \\times 10^5$ K observed, see Figur"
-        },
-        {
-          "line": 142,
-          "text": "This parameter-free threshold resolves the long-standing cooling dichotomy observed in young neutron stars."
-        },
-        {
-          "line": 146,
-          "text": "\\includegraphics[width=0.72\\textwidth]{figures/fig_ns_cooling.pdf}"
-        },
-        {
-          "line": 147,
-          "text": "\\caption{Neutron star surface temperature evolution (cooling curves) for a $1.4 M_\\odot$ star (slow cooling) and a $1.8 M_\\odot$ star (fast cooling) compared with Cassiopeia A and Vela observations.}"
-        },
-        {
-          "line": 148,
-          "text": "\\label{fig:cooling}"
-        },
-        {
-          "line": 192,
-          "text": "\\caption{Comparison of the parameter-free NVG model against standard equations of state across macroscopic observables.}"
-        },
-        {
-          "line": 211,
-          "text": "While phenomenologically similar, the NVG model differs from the original BR scaling in several fundamental aspects:"
-        },
-        {
-          "line": 241,
-          "text": "$M_{\\rm cooling}$ & $1.45\\,M_\\odot$ & $\\sim 1.4 - 1.5\\,M_\\odot$ & $< 0.5\\sigma$ \\\\"
-        },
-        {
-          "line": 329,
-          "text": "\\emph{Measuring the Cooling of the Neutron Star in Cassiopeia A with Chandra},"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "344cf977d47e4c9d691b0d2fd654a71021ee74d10a9898c98e696efdb19ae6fd",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_NS_STRUCTURE_EOS_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 21,
-          "text": "To address this \"heavy seed\" crisis, mechanisms such as Direct Collapse Black Holes (DCBHs) have been proposed, yet they require highly fine-tuned environmental conditions (e.g., preventing $H_2$ cooling). Concurrently, the search for Dark "
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "45c271866612be27f26c5989a4116dcd2752692c6917b11cdf3486bc8218f94a",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_PBH_JWST_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 107,
-          "text": "fine-tuned environmental conditions (e.g., preventing \\(H_2\\) cooling)."
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "fc92f54963b6cc2260d1c0c54223dfef0eacaba6be10365cd92097d1dba4d268",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_PBH_JWST_PREPRINT.tex"
     },
     {
       "evidence_weight": 0.0,
@@ -3434,23 +2877,6 @@
     },
     {
       "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 581,
-          "text": "WD cooling ($g_{ee}$, KSVZ loop) & $4.8\\times 10^{-20}$ &"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "d896f88249943d491744945b15b15b5abde5797db865d9127380db77b814aef9",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_SPIN_FIFTH_FORCE_DETECTOR_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
       "matching_line_count": 3,
       "matching_lines": [
         {
@@ -3473,444 +2899,6 @@
       "sha256": "b93055438c71b4ea2ec5434fdb2124b17086aaf148894b8585746869f02d2895",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "article/NVG_THETA_HALOSCOPE_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 49,
-          "text": "The problem of mass generation in Quantum Chromodynamics (QCD) shows that the physical masses of ordinary hadrons, such as nucleons, are not simply the sum of the current masses of their constituent valence quarks. Instead, approximately $9"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "4fe1639eb91448fd080b7a94b41f4b23a0360fe8ebe9cc66f069a8e80a76f06e",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_VACUUM_W_FIELD_DERIVATION_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 284,
-          "text": "What the article does **not** yet show is equally important: it does not derive Born-rule probabilities, does not analyse Bell/EPR scenarios, does not establish compatibility with the modern decoherence framework, and does not confront the "
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "67a15a03190323bbf9b3b858b428aaf9efffd83065e36cfcd2595263d9a64da9",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_WAVE_COLLAPSE_PREPRINT.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 692,
-          "text": "rather than apologetic: it is a deterministic NVG model of localisation"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "dbca0c55695d86a7ac8e4eb7b2c3b84ae79e734691eac7c179656c2ccf5aa8f8",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/NVG_WAVE_COLLAPSE_PREPRINT.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 129,
-          "text": "This is a phenomenological identification, not a theorem (cf.\\ bag models~\\cite{Chodos1974}). Its value lies in organization: a single variable $f_\\Omega$ compresses the question of ``what fraction of mass does not reduce to current masses'"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "577155f9805de17ff453302389a34bc27b7c4b66a42008a58fcd3c0a32a68429",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/VMF_ARTICLE_ZENODO.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 70,
-          "text": "We discuss the implications of this gap for beyond-minimal coupling models and"
-        },
-        {
-          "line": 460,
-          "text": "\\(\\alpha\\)--\\(\\Omega\\) dynamo driven by neutrino-cooling convection. This picture"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "09653416671cd7e0ed5c69e032ffc658669ca7bc80bc54a4827e9787d3a19842",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "article/magnetar_density_amplification_arxiv.tex"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 144,
-          "text": "2. **Tidal radius check:** For the soft SLy baseline, the NVG+\\(\\Lambda\\) canonical radius is \\(R_{1.4} = 11.73\\,\\text{km}\\), which is in excellent agreement with the GW170817 constraint (\\(R_{1.4} \\in [10.5, 13.6]\\,\\text{km}\\) [6]). Conver"
-        },
-        {
-          "line": 207,
-          "text": "A crucial test of the NVG framework lies in the prediction of the dimensionless tidal deformability \\(\\Lambda_{1.4}\\). The GW170817 event restricts the tidal deformability of a \\(1.4\\,M_\\odot\\) star to \\(\\Lambda_{1.4} < 800\\) [6]. Using the"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "daef77ca0c64e3413c6041bd2c7110ae6d13c64b41d1b0a23defbafc2bcb46ab",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_Hyperon_Puzzle_FULL_v2.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 22,
-          "text": "\u041c\u043e\u0434\u0435\u043b\u044c VMF \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u0436\u0435\u0441\u0442\u043a\u043e\u0433\u043e \u043f\u043e\u0440\u043e\u0433\u0430 \u0434\u043b\u044f Direct Urca \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u043c\u0430\u0441\u0441\u0435 $M = 1.45 M_\\odot$. \u041f\u0440\u0438 \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u0438 \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u0438\u0437 3000 \u043d\u0435\u0439\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0437\u0432\u0435\u0437\u0434 \u0441\u043e \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u043c \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435\u043c \u043c\u0430\u0441\u0441 (\u0441\u043e\u0433\u043b\u0430\u0441\u043d\u043e \u0431\u0438\u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u0440\u0438\u0432\u043e\u0439 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f) \u044d\u0442\u043e \u0441\u043e\u0437\u0434\u0430\u0435\u0442 \u0432"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "254dd2a6e348bdb93c9c0e758e8145985305fd639fd11dd017e1a9822110b29c",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_NEW_DIRECTIONS_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 5,
-      "matching_lines": [
-        {
-          "line": 62,
-          "text": "## 4. \u0414\u0432\u0443\u0445\u0444\u0430\u0437\u043d\u043e\u0435 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u0435 \u043d\u0435\u0439\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0437\u0432\u0435\u0437\u0434: Cas A \u0438 Vela"
-        },
-        {
-          "line": 64,
-          "text": "\u041c\u043e\u0434\u0435\u043b\u044c VMF \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0436\u0435\u0441\u0442\u043a\u0438\u0439 \u043f\u043e\u0440\u043e\u0433 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0431\u044b\u0441\u0442\u0440\u043e\u0433\u043e \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f (Direct Urca) \u043f\u0440\u0438 \u043c\u0430\u0441\u0441\u0435 $M \\ge 1.45 M_\\odot$, \u043e\u0431\u0443\u0441\u043b\u043e\u0432\u043b\u0435\u043d\u043d\u044b\u0439 \u043d\u0430\u0441\u044b\u0449\u0435\u043d\u0438\u0435\u043c \u0432\u0435\u043a\u0442\u043e\u0440\u043d\u043e\u0433\u043e \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f \u0438 \u0440\u043e\u0441\u0442\u043e\u043c \u043f\u0440\u043e\u0442\u043e\u043d\u043d\u043e\u0439 \u0434\u043e\u043b\u0438 $Y_p > 11\\%$. \u042d\u0442\u043e \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0435\u0442\u0441\u044f \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f\u043c\u0438:"
-        },
-        {
-          "line": 66,
-          "text": "1. **Cassiopeia A (Cas A):**"
-        },
-        {
-          "line": 70,
-          "text": "2. **Vela Pulsar:**"
-        },
-        {
-          "line": 77,
-          "text": "> \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0440\u0430\u0437\u043b\u0438\u0447\u0438\u0435 \u043c\u0435\u0436\u0434\u0443 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440\u0430\u043c\u0438 Cas A (\u0433\u043e\u0440\u044f\u0447\u0430\u044f \u0437\u0432\u0435\u0437\u0434\u0430, \u043d\u0435\u0441\u043c\u043e\u0442\u0440\u044f \u043d\u0430 \u0432\u043e\u0437\u0440\u0430\u0441\u0442) \u0438 Vela (\u043b\u0435\u0434\u044f\u043d\u0430\u044f \u0437\u0432\u0435\u0437\u0434\u0430, \u043d\u0435\u0441\u043c\u043e\u0442\u0440\u044f \u043d\u0430 \u043c\u043e\u043b\u043e\u0434\u043e\u0441\u0442\u044c) \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u044f\u0440\u043a\u0438\u043c \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\u043c \u0441\u0442\u0443\u043f\u0435\u043d\u0447\u0430\u0442\u043e\u0433\u043e \u043f\u043e\u0440\u043e\u0433\u0430 VMF \u0434\u043b\u044f Direct Urca \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u043e\u0432 \u043f\u0440\u0438 $1.45 M_\\odot$."
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "168d51b6eb5b11703243edb87fd7d504f7f3105a20a3d237c550594227f3c165",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_OBSERVATIONAL_VERIFICATION_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 28,
-          "text": "4. \u041e\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043f\u043e\u0442\u0435\u0440\u0438 \u043f\u0440\u0438 \u044d\u0442\u043e\u043c \u0441\u043d\u0438\u0436\u0430\u044e\u0442\u0441\u044f \u0432\u0434\u0432\u043e\u0435 \u0437\u0430 \u0441\u0447\u0435\u0442 \u0441\u043a\u0432\u0430\u0436\u043d\u043e\u0441\u0442\u0438 50% ($D = 0.5$), \u0430 \u043f\u0435\u0440\u0435\u043d\u043e\u0441 \u0442\u0435\u043f\u043b\u0430 \u0432\u0430\u043a\u0443\u0443\u043c\u043e\u043c \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430\u0435\u0442 \u043d\u0430 \u043f\u043e\u0440\u044f\u0434\u043a\u0438, \u043e\u0431\u0435\u0441\u043f\u0435\u0447\u0438\u0432\u0430\u044f **$COP_{\\rm cooling} \\approx 9.4$**."
-        },
-        {
-          "line": 65,
-          "text": "$${\\rm COP}_{\\rm cooling} = \\frac{Q_{\\rm net}}{P_{\\rm in}} = \\frac{350.0}{37.2} \\approx 9.41$$"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "cf30b942345af8959f1b6a26723c61a61d3619cd914041393ef4e6186abae389",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_SIMPLE_PELTIER_COOLER_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 57,
-          "text": "### 3.2. \u041f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0434\u0438\u0441\u043a\u0440\u0435\u0442\u043d\u043e\u0439 \u043c\u043e\u0434\u0435\u043b\u0438 (Engineering Model):"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "e7f102330065235a2aef45e5745c084e562ed6ec839e37572c1208e347cd028d",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_THEORY_VERIFICATION_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 4,
-      "matching_lines": [
-        {
-          "line": 1,
-          "text": "# \u041f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0438 \u0440\u0430\u0441\u0447\u0435\u0442\u044b: \u0422\u0432\u0435\u0440\u0434\u043e\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0432\u0430\u043a\u0443\u0443\u043c\u043d\u044b\u0439 \u043a\u043e\u043d\u0434\u0438\u0446\u0438\u043e\u043d\u0435\u0440 (\u0440\u0435\u0444\u0440\u0438\u0436\u0435\u0440\u0430\u0442\u043e\u0440) \u043d\u0430 \u0430\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u043c \u0443\u0433\u043b\u0435 (NVG-VACUUM-COOLING-500W)"
-        },
-        {
-          "line": 32,
-          "text": "\u0414\u043b\u044f \u043a\u043e\u043c\u043f\u0435\u043d\u0441\u0430\u0446\u0438\u0438 \u043f\u0430\u0440\u0430\u0437\u0438\u0442\u043d\u043e\u0433\u043e \u043d\u0430\u0433\u0440\u0435\u0432\u0430 \u043e\u0442 \u0442\u043e\u043a\u043e\u0432 \u0432\u044b\u0441\u043e\u043a\u043e\u0439 \u0447\u0430\u0441\u0442\u043e\u0442\u044b \u0438 \u0434\u043e\u0441\u0442\u0438\u0436\u0435\u043d\u0438\u044f \u0447\u0438\u0441\u0442\u043e\u0439 \u043e\u0445\u043b\u0430\u0436\u0434\u0430\u044e\u0449\u0435\u0439 \u0441\u043f\u043e\u0441\u043e\u0431\u043d\u043e\u0441\u0442\u0438 $Q_{\\rm net} = 500$ \u0412\u0442, \u0431\u044b\u043b\u0438 \u043f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u044b \u0440\u0430\u0441\u0447\u0435\u0442\u044b \u0431\u0430\u043b\u0430\u043d\u0441\u0430 \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u0435\u0439 \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u043c\u043e\u0434\u0435\u043b\u0438 `generator_project/calc_vacuum_cooling.py`."
-        },
-        {
-          "line": 52,
-          "text": "\u041f\u0440\u0438 \u0444\u043e\u043d\u043e\u043d-\u0430\u0441\u0441\u0438\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0439 \u0441\u0432\u044f\u0437\u0438 $\\eta_{\\rm cooling} = 1.5\\%$ \u0443\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043b\u043e\u0442\u043d\u043e\u0441\u0442\u044c \u043f\u043e\u0433\u043b\u043e\u0449\u0435\u043d\u0438\u044f \u0441\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 $0.9576$ \u0412\u0442/\u043c\u00b2."
-        },
-        {
-          "line": 61,
-          "text": "$${\\rm COP}_{\\rm cooling} = \\frac{Q_{\\rm net}}{P_{\\rm in}} = \\frac{500.0}{15.96} \\approx 31.34$$"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "31fb9b8b5b892492e8dac7d8d62b6cceb6dbc7bdd3679a2b67e29d4d1393a404",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/NVG_VACUUM_COOLING_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 31,
-          "text": "Total Heat Dissipated in Device        : 95.52 W (Passive Cooling!)"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "c1617c1629a5b96342a27392d55212743b91015cb7721f72395a3a183aa8c37b",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_diy_carbon_mains_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 24,
-          "text": "Dielectric Loss (Heat in Carbon Core)  : 305.36 W (Requires cooling)"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "30a7ee6509e104640e2ce6b086da75eb0f428b0340cdc809a2b2faba0f8b69d9",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_diy_carbon_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 32,
-          "text": "Total Heat Dissipated in Device        : 52.27 W (Passive Cooling!)"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "e02e2aaa9969bbd6983cdfa5350982283b4c02e53ba63c82f33c3864b0ab5e57",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_diy_mains_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 30,
-          "text": "Total Heat Dissipated in Device        : 29.31 W (Passive Cooling!)"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "24dead9b3ecd3ed5a46b9e24fc5c91478ad25ee7397c744346934c6e9d71134a",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_diy_rod_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 4,
-          "text": "Target Net Cooling Power (Q_net)       : 350.0 W"
-        },
-        {
-          "line": 26,
-          "text": "Cooling COP (COP_cooling)              : 9.41"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "034ab0cabeb922ff645bea74d4cc4c85193a19dcc642e63c67f82d18dc922687",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_simple_peltier_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 14,
-          "text": "WD cooling: g_ee = 4.8e-20 (KSVZ loop) vs 2.8e-13  PASS"
-        },
-        {
-          "line": 72,
-          "text": "only to the SN1987A quadratic combination; dense-matter"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "637fa94b7f02e740a6d31f3a849f54fe3a937a6380306be75440a15e17115c30",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_spin_fifth_force_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 93,
-          "text": "suppression budget for the two signal-carrying modes (servo suppresses BY 1/delta_servo = 1e2):"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "cc661b99f011eed6df65d7df90ce429c5b8d61ffa7fa871502b5f4021529754e",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_spin_phase_detector_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 4,
-      "matching_lines": [
-        {
-          "line": 2,
-          "text": "NVG SOLID-STATE VACUUM COOLING REACTOR CALCULATIONS (27 MHz)"
-        },
-        {
-          "line": 4,
-          "text": "Target Net Cooling Power (Q_net)       : 500.0 W"
-        },
-        {
-          "line": 16,
-          "text": "Phonon-Assisted Coupling (eta_cooling) : 1.5 %"
-        },
-        {
-          "line": 27,
-          "text": "Cooling COP (COP_cooling)              : 31.34"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "e0cedd4af15521a369a677cdd7073915497681c7972127f0f1a6ef40cfaacd13",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/calc_vacuum_cooling_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 13,
-          "text": "DISCRETE ENGINEERING MODEL:"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "1486007f1acd95d10aa67e3e03379aeffaa08d1d686b0d0f8c7d853ec6212c29",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "generator_project/verify_peltier_unified_output.txt"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 1,
-      "matching_lines": [
-        {
-          "line": 22,
-          "text": "\u041c\u043e\u0434\u0435\u043b\u044c VMF \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u0436\u0435\u0441\u0442\u043a\u043e\u0433\u043e \u043f\u043e\u0440\u043e\u0433\u0430 \u0434\u043b\u044f Direct Urca \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u043c\u0430\u0441\u0441\u0435 $M = 1.45 M_\\odot$. \u041f\u0440\u0438 \u0441\u0438\u043c\u0443\u043b\u044f\u0446\u0438\u0438 \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u0438\u0437 3000 \u043d\u0435\u0439\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0437\u0432\u0435\u0437\u0434 \u0441\u043e \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u044b\u043c \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435\u043c \u043c\u0430\u0441\u0441 (\u0441\u043e\u0433\u043b\u0430\u0441\u043d\u043e \u0431\u0438\u043c\u043e\u0434\u0430\u043b\u044c\u043d\u043e\u0439 \u043a\u0440\u0438\u0432\u043e\u0439 \u0440\u043e\u0436\u0434\u0435\u043d\u0438\u044f) \u044d\u0442\u043e \u0441\u043e\u0437\u0434\u0430\u0435\u0442 \u0432"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "77a8334adcc7ca2a276fa769afb2c93010cd9c0f20eb6993dc4212d548853bee",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "verification/NVG_NEW_DIRECTIONS_RU.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 2,
-      "matching_lines": [
-        {
-          "line": 3,
-          "text": "These routines execute numerical comparisons using embedded or model-generated arrays. They do not establish independent predictions: several inputs have unknown provenance and the CPL/cooling values are calibration assumptions."
-        },
-        {
-          "line": 10,
-          "text": "| Cas A/Vela cooling | observed/model rows retained | unverified_input_comparison | unknown_provenance |"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "851a15b3ccf72c710ffe6af96b9ced7ba7ce4148df8d9a82171cfd049550fc11",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md"
     },
     {
       "evidence_weight": 0.0,
@@ -4146,7 +3134,7 @@
       "physical_result": false,
       "source_exists": true,
       "source_lines": "verification/nvg_beta_hyperon_urca_audit.py:1-15,620-631,718-776",
-      "source_sha256": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9",
+      "source_sha256": "198c5b13204f2d0dff4fc22d07b2986af9174ad536550d15f9e579dde14e024d",
       "static_inputs": [
         "all interaction couplings are exactly zero and T=0",
         "P2-S2 density grid and conventional particle masses are reference controls"
@@ -4364,9 +3352,9 @@
     "excluded_fields": [
       "payload_integrity"
     ],
-    "payload_sha256": "db3a90557f0d0101173b02c779ddf3cd79fc86f08ea61c0351ece8e9e0e046e0",
+    "payload_sha256": "c1f3ad1506bbbd29f1138ef91c45f0d4a3344dde384498b6c3a0f3417af230af",
     "schema": "P3-S6-complete-payload-v1",
-    "sha256": "db3a90557f0d0101173b02c779ddf3cd79fc86f08ea61c0351ece8e9e0e046e0",
+    "sha256": "c1f3ad1506bbbd29f1138ef91c45f0d4a3344dde384498b6c3a0f3417af230af",
     "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
   },
   "physical_no_go": {
@@ -4451,58 +3439,18 @@
       "status": "NONE_USED"
     },
     "local_source_sha256": {
-      "README.md": "10d54b83aa3d3b5a67ed422532a97173f9460bd602cce4109c4ac3e2ad9c7eee",
-      "README_RU.md": "5ce05b76150f744a1d0e2c7dee32f555da999a04b7df7dc1c8787d1a4861f122",
-      "article/NVG_CMB_ANOMALY_PREPRINT.md": "f8cd45dbabb2d3a8cbe699cd3d9846fec75bd986642e82f3ccb0bfde2642440e",
-      "article/NVG_CMB_ANOMALY_PREPRINT.tex": "b36c06daab64f8340f6c60b0a13162cb76e3d872c8e6e8377d06dcb23289496e",
-      "article/NVG_DARK_PHOTON_PREPRINT.md": "c78aab796ed7056698d8307277ff33c8682e55cb0cf2f22c19d17b9beb588581",
-      "article/NVG_DARK_PHOTON_PREPRINT.tex": "962aea4811810d99ac3daf8478d6dcff18f9e806fb00df21ca244f302ad1f768",
-      "article/NVG_GW150914_ECHO_SEARCH_PREPRINT.tex": "90cd2e0e65a14fb98eeec646679ed2491399d248889eac3549fd0f28610c7413",
-      "article/NVG_Hyperon_Puzzle_FULL_v2.tex": "da0b339d3e81f2421e7cf5264f91d389ea4b4fad4ae286bc911606ce64f6bace",
-      "article/NVG_MAGNETAR_MASS_PREPRINT.md": "0fa9ece4c30cf3e66c15c351cc1d73f52afc61242b5b3d6f3f504559aa6ac9da",
-      "article/NVG_MAGNETAR_PREPRINT.md": "c8b18de75eba06e21ea086139459fbedaaa743523ffc2526c2b71b6e6742107c",
-      "article/NVG_MAGNETAR_PREPRINT.tex": "30cf2b5fcbcbc77e73558094ec59cfc6bf4612310ff455810917256c289dec64",
-      "article/NVG_MAGNETAR_PREPRINT_V3.md": "03069d3c3b24ac27cd18944077470b54ce3192ed1070e6de395efc1b75365f1d",
-      "article/NVG_MAGNETAR_PREPRINT_V3.tex": "d9f7a62059bfe69a6527938b2ba0e7f2e7453b705df45362dbd781a7fd80b895",
-      "article/NVG_MAGNETAR_PREPRINT_V4.md": "c8b18de75eba06e21ea086139459fbedaaa743523ffc2526c2b71b6e6742107c",
-      "article/NVG_MAGNETAR_PREPRINT_V4.tex": "9bcfadc7f3aa74ac9237455c7c17672c78897b48031cffeb925ebe8402383bb5",
-      "article/NVG_NS_STRUCTURE_EOS_PREPRINT.md": "ac122059928ba2da66c06b2557b04c3bdbd971b6f907775cecd306c4dab280a3",
-      "article/NVG_NS_STRUCTURE_EOS_PREPRINT.tex": "344cf977d47e4c9d691b0d2fd654a71021ee74d10a9898c98e696efdb19ae6fd",
-      "article/NVG_PBH_JWST_PREPRINT.md": "45c271866612be27f26c5989a4116dcd2752692c6917b11cdf3486bc8218f94a",
-      "article/NVG_PBH_JWST_PREPRINT.tex": "fc92f54963b6cc2260d1c0c54223dfef0eacaba6be10365cd92097d1dba4d268",
+      "README.md": "b909720c0f50217b3b4c911bd502476132e6161c61953c6e498da95b799cf63e",
+      "README_RU.md": "c5878398c93e1e7a55903c23dbf1ad64b4ae0052dcc8edea507561699296c8a3",
       "article/NVG_SCIENTIFIC_ARTICLE_EN.md": "64bb26d87de8d128d858e27527b7ef3abf40a8f4f3435dc71f6a64e4066d9183",
       "article/NVG_SCIENTIFIC_ARTICLE_RU.md": "b561f96e6a03f6567de24a89725204ac9d94e8b40f43675ae4ae1d7717ec24c5",
-      "article/NVG_SPIN_FIFTH_FORCE_DETECTOR_PREPRINT.tex": "d896f88249943d491744945b15b15b5abde5797db865d9127380db77b814aef9",
       "article/NVG_THETA_HALOSCOPE_PREPRINT.tex": "b93055438c71b4ea2ec5434fdb2124b17086aaf148894b8585746869f02d2895",
-      "article/NVG_VACUUM_W_FIELD_DERIVATION_PREPRINT.tex": "4fe1639eb91448fd080b7a94b41f4b23a0360fe8ebe9cc66f069a8e80a76f06e",
-      "article/NVG_WAVE_COLLAPSE_PREPRINT.md": "67a15a03190323bbf9b3b858b428aaf9efffd83065e36cfcd2595263d9a64da9",
-      "article/NVG_WAVE_COLLAPSE_PREPRINT.tex": "dbca0c55695d86a7ac8e4eb7b2c3b84ae79e734691eac7c179656c2ccf5aa8f8",
-      "article/VMF_ARTICLE_ZENODO.tex": "577155f9805de17ff453302389a34bc27b7c4b66a42008a58fcd3c0a32a68429",
-      "article/magnetar_density_amplification_arxiv.tex": "09653416671cd7e0ed5c69e032ffc658669ca7bc80bc54a4827e9787d3a19842",
-      "generator_project/NVG_Hyperon_Puzzle_FULL_v2.md": "daef77ca0c64e3413c6041bd2c7110ae6d13c64b41d1b0a23defbafc2bcb46ab",
-      "generator_project/NVG_NEW_DIRECTIONS_RU.md": "254dd2a6e348bdb93c9c0e758e8145985305fd639fd11dd017e1a9822110b29c",
-      "generator_project/NVG_OBSERVATIONAL_VERIFICATION_RU.md": "168d51b6eb5b11703243edb87fd7d504f7f3105a20a3d237c550594227f3c165",
-      "generator_project/NVG_SIMPLE_PELTIER_COOLER_RU.md": "cf30b942345af8959f1b6a26723c61a61d3619cd914041393ef4e6186abae389",
-      "generator_project/NVG_THEORY_VERIFICATION_RU.md": "e7f102330065235a2aef45e5745c084e562ed6ec839e37572c1208e347cd028d",
-      "generator_project/NVG_VACUUM_COOLING_RU.md": "31fb9b8b5b892492e8dac7d8d62b6cceb6dbc7bdd3679a2b67e29d4d1393a404",
-      "generator_project/calc_diy_carbon_mains_output.txt": "c1617c1629a5b96342a27392d55212743b91015cb7721f72395a3a183aa8c37b",
-      "generator_project/calc_diy_carbon_output.txt": "30a7ee6509e104640e2ce6b086da75eb0f428b0340cdc809a2b2faba0f8b69d9",
-      "generator_project/calc_diy_mains_output.txt": "e02e2aaa9969bbd6983cdfa5350982283b4c02e53ba63c82f33c3864b0ab5e57",
-      "generator_project/calc_diy_rod_output.txt": "24dead9b3ecd3ed5a46b9e24fc5c91478ad25ee7397c744346934c6e9d71134a",
-      "generator_project/calc_simple_peltier_output.txt": "034ab0cabeb922ff645bea74d4cc4c85193a19dcc642e63c67f82d18dc922687",
-      "generator_project/calc_spin_fifth_force_output.txt": "637fa94b7f02e740a6d31f3a849f54fe3a937a6380306be75440a15e17115c30",
-      "generator_project/calc_spin_phase_detector_output.txt": "cc661b99f011eed6df65d7df90ce429c5b8d61ffa7fa871502b5f4021529754e",
-      "generator_project/calc_vacuum_cooling_output.txt": "e0cedd4af15521a369a677cdd7073915497681c7972127f0f1a6ef40cfaacd13",
-      "generator_project/verify_peltier_unified_output.txt": "1486007f1acd95d10aa67e3e03379aeffaa08d1d686b0d0f8c7d853ec6212c29",
-      "verification/NVG_NEW_DIRECTIONS_RU.md": "77a8334adcc7ca2a276fa769afb2c93010cd9c0f20eb6993dc4212d548853bee",
-      "verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md": "851a15b3ccf72c710ffe6af96b9ced7ba7ce4148df8d9a82171cfd049550fc11",
       "verification/nvg_advanced_observables_III.py": "1b4fd4c49ac38e26e3b352735532a2812f7decde3fecbc3f9af029f644147e90",
-      "verification/nvg_beta_hyperon_urca_audit.py": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9",
-      "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0",
+      "verification/nvg_beta_hyperon_urca_audit.py": "198c5b13204f2d0dff4fc22d07b2986af9174ad536550d15f9e579dde14e024d",
+      "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json": "68f49c1d1df1e69475b76654957d8cfb599f807ab176f63807744e0a04b905ef",
       "verification/nvg_cas_a_cooling_curve.py": "9b87806a407fb1fcfbc2ea934ac00fe9fe1741f72badc22c6363a577862da8b5",
       "verification/nvg_cmb_smbh_cyclic.py": "26a3faaf004397bba2d722ee707c161f2ea2a1dd2d96109f1187f9d830591412",
       "verification/nvg_cooling_dark_matter.py": "d51885373fe06f67f5823361728c1c1547417dc9619383d0c979b06d782fd399",
-      "verification/nvg_cooling_gmode_dependency_audit.py": "0a387086fab91b14fbbec87ebacb889ae0cfdf6b040f4b62b90ef0a4ecfd5cb6",
+      "verification/nvg_cooling_gmode_dependency_audit.py": "d371f916c8701f7a200b653ea4e3e7fc3e942579f098da8d1060a387fa7cd72a",
       "verification/nvg_dark_photon_kinetic_mixing.py": "6bf4934fcf66f89aa645653614d241da7d37c83459c531363c8c46cedae0ca94",
       "verification/nvg_dark_photon_kinetic_mixing_output.txt": "83f4050ac6afcd6243bb1bb643d9b77f8a0562c9bc5fd3c679bdc77c0bd0d221",
       "verification/nvg_dark_photon_observables.py": "527d676f5e10e17b018edc576ea5e2c273935eb83020183b9a71645a79a9014f",

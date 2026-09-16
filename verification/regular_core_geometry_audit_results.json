@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "status": "GEOMETRY_IDENTITIES_VERIFIED",
+  "evidence_status": "GEOMETRY_IDENTITY_AUDIT_NO_MATTER_REALIZATION",
+  "evidence_weight": 0,
+  "observed_likelihood": null,
+  "assumptions": [
+    "Four-dimensional Einstein gravity with c=G=1.",
+    "The Hayward metric is selected as an ansatz; M>0 and l>0.",
+    "Geometric temperatures also set hbar=k_B=1.",
+    "Stress eigenvalues are inferred from the Einstein tensor."
+  ],
+  "stress_fingerprint": {
+    "q": "r^3/(2 M l^2)",
+    "rho0": "3/(8 pi l^2)",
+    "rho": "rho0/(1+q)^2",
+    "p_r": "-rho",
+    "p_t": "rho (2q-1)/(1+q)",
+    "anisotropy": "p_t-p_r=3 rho q/(1+q)",
+    "radial_nec": "saturated for every r",
+    "tangential_nec": "nonnegative for every r",
+    "sec": "satisfied iff q>=1/2",
+    "dec": "satisfied iff q<=2",
+    "horizon_relation": "q_h=r_h^2/l^2-1; every nonextremal outer horizon has q_h>2",
+    "interpretation": "Necessary source fingerprint, not an NVG matter realization."
+  },
+  "central_invariants_at_unit_length": {
+    "ricci_scalar": 12.0,
+    "ricci_squared": 36.0,
+    "kretschmann": 24.0,
+    "weyl_squared": 0.0
+  },
+  "unit_length_horizon_scales": {
+    "r_crit": 1.7320508075688772,
+    "M_crit": 1.299038105676658,
+    "r_temperature_peak": 3.0,
+    "M_temperature_peak": 1.6875,
+    "M_peak_over_M_crit": 1.299038105676658,
+    "T_max": 0.01768388256576615
+  },
+  "schwarzschild_asymptotics": {
+    "exact_delta_f": "4 M^2 l^2/[r(r^3+2 M l^2)]",
+    "leading_delta_f": "4 M^2 l^2/r^4",
+    "remainder_order": "O(r^-7)"
+  },
+  "checks": {
+    "symbolic": {
+      "density_from_mass_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "radial_pressure_from_einstein_tensor": {
+        "residual": "0",
+        "passed": true
+      },
+      "tangential_pressure_from_mass_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "stress_conservation": {
+        "residual": "0",
+        "passed": true
+      },
+      "ricci_scalar": {
+        "residual": "0",
+        "passed": true
+      },
+      "ricci_squared": {
+        "residual": "0",
+        "passed": true
+      },
+      "kretschmann": {
+        "residual": "0",
+        "passed": true
+      },
+      "weyl_squared": {
+        "residual": "0",
+        "passed": true
+      },
+      "schwarzschild_deviation": {
+        "residual": "0",
+        "passed": true
+      },
+      "asymptotic_deviation_coefficient": {
+        "residual": "0",
+        "passed": true
+      },
+      "horizon_mass_relation": {
+        "residual": "0",
+        "passed": true
+      },
+      "horizon_temperature": {
+        "residual": "0",
+        "passed": true
+      },
+      "horizon_mass_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "horizon_temperature_derivative": {
+        "residual": "0",
+        "passed": true
+      },
+      "extremal_mass_stationary": {
+        "residual": "0",
+        "passed": true
+      },
+      "extremal_mass": {
+        "residual": "0",
+        "passed": true
+      },
+      "extremal_temperature": {
+        "residual": "0",
+        "passed": true
+      },
+      "extremal_double_root_curvature": {
+        "residual": "0",
+        "passed": true
+      },
+      "temperature_peak_stationary": {
+        "residual": "0",
+        "passed": true
+      },
+      "temperature_peak_mass": {
+        "residual": "0",
+        "passed": true
+      },
+      "temperature_peak_ratio": {
+        "residual": "0",
+        "passed": true
+      },
+      "temperature_maximum": {
+        "residual": "0",
+        "passed": true
+      },
+      "horizon_q": {
+        "residual": "0",
+        "passed": true
+      },
+      "central_ricci": {
+        "residual": "0",
+        "passed": true
+      },
+      "central_ricci_squared": {
+        "residual": "0",
+        "passed": true
+      },
+      "central_kretschmann": {
+        "residual": "0",
+        "passed": true
+      }
+    },
+    "mass_quadrature": {
+      "input_mass": 2.0,
+      "length": 0.7,
+      "recovered_mass": 2.0,
+      "estimated_error": 5.1484041664227543e-14,
+      "passed": true
+    }
+  },
+  "limitations": [
+    "No field configuration realizing this stress from the accepted NVG action has been derived.",
+    "No collapse solution, perturbative stability analysis, or evaporation history is solved.",
+    "Finite central curvature and SEC violation do not imply a flat cosmological bounce.",
+    "The metric and stress tensor establish no information-transfer mechanism.",
+    "No observational likelihood or experimental confirmation is supplied."
+  ]
+}

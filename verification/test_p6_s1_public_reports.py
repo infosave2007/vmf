@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -17,6 +18,11 @@ if HERE not in sys.path:
 import nvg_fork_b_full_chain as fork_b
 import nvg_joint_ns_inference as joint
 import run_all_checks
+
+
+def stale_number_pattern(value: str) -> str:
+    """Match a complete decimal number, not digits embedded in another value."""
+    return rf"(?<![\d.]){re.escape(value)}(?![\d.])"
 
 
 class P6S1PublicReportTests(unittest.TestCase):
@@ -73,7 +79,15 @@ class P6S1PublicReportTests(unittest.TestCase):
         for name in ("README.md", "README_RU.md"):
             text = (ROOT_PATH / name).read_text(encoding="utf-8")
             for value in stale:
-                self.assertNotIn(value, text)
+                self.assertNotRegex(text, stale_number_pattern(value))
+
+    def test_stale_number_guard_preserves_positive_and_negative_controls(self):
+        for value in ("1.89", "13.11", "393", "489", "313", "12.49", "12.27", "12.85"):
+            pattern=stale_number_pattern(value)
+            self.assertRegex(f"obsolete observable = {value} units",pattern)
+            self.assertNotRegex(f"unrelated longer number = 7{value}2",pattern)
+        self.assertNotRegex("M = 5.7393 * 10^55",stale_number_pattern("393"))
+        self.assertRegex("Lambda_1.4 = 393",stale_number_pattern("393"))
 
 
 if __name__ == "__main__":

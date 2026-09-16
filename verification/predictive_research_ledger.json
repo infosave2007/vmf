@@ -134,7 +134,7 @@
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+        "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
       },
       "status": "DERIVED_NULL_CONTROL_BAROTROPIC_NEUTRAL_BUOYANCY",
       "values": {
@@ -154,11 +154,11 @@
       "domain": "cooling/g-modes",
       "evidence_weight": 0.0,
       "id": "cooling_and_gmode",
-      "payload_sha256": "db3a90557f0d0101173b02c779ddf3cd79fc86f08ea61c0351ece8e9e0e046e0",
+      "payload_sha256": "c1f3ad1506bbbd29f1138ef91c45f0d4a3344dde384498b6c3a0f3417af230af",
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+        "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
       },
       "status": "blocked"
     },
@@ -175,7 +175,7 @@
       "source": {
         "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
         "role": "P2-S2 final composition artifact",
-        "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+        "sha256": "68f49c1d1df1e69475b76654957d8cfb599f807ab176f63807744e0a04b905ef"
       },
       "status": "BLOCKED_MISSING_TRACEABLE_COUPLINGS_PHASE_AND_NVG_DEPENDENCY"
     },
@@ -187,7 +187,7 @@
       "source": {
         "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
         "role": "P2-S2 final composition artifact",
-        "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+        "sha256": "68f49c1d1df1e69475b76654957d8cfb599f807ab176f63807744e0a04b905ef"
       },
       "status": "BLOCKED_MISSING_WEAK_MATRIX_ELEMENTS_TEMPERATURE_AND_SUPERFLUID_GAPS"
     },
@@ -542,34 +542,34 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "dbb0565e8f116455c6ce565a7a7f5648c9088b650bd38a5d399c236558712cc7",
+    "payload_sha256": "54a1299a8f824c6c898bb7a0a2591d859743c814061816703746a848375ccb16",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
     "beta_producer": {
       "path": "verification/nvg_beta_hyperon_urca_audit.py",
       "role": "P2-S2 composition producer",
-      "sha256": "4c4d77b01c9f888651555caac80abbb311a1a0e0bc3fac0ff9446cbead1ba6d9"
+      "sha256": "198c5b13204f2d0dff4fc22d07b2986af9174ad536550d15f9e579dde14e024d"
     },
     "beta_result": {
       "path": "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
       "role": "P2-S2 final composition artifact",
-      "sha256": "80bf43e91f8d5ee15033d4885b2a9fad00126ba983d325fcc7f2cd26d147e3b0"
+      "sha256": "68f49c1d1df1e69475b76654957d8cfb599f807ab176f63807744e0a04b905ef"
     },
     "beta_test": {
       "path": "verification/test_p2_beta_hyperon_urca_audit.py",
       "role": "P2-S2 focused test",
-      "sha256": "0547d070a9cd5fdbb685592eb8edf8f071a7b57d46de094b7670e0b178800d37"
+      "sha256": "52f37cf157c69b3644a752f05d223e145053a79d55cf681fef9bc3844eac97e9"
     },
     "cooling_producer": {
       "path": "verification/nvg_cooling_gmode_dependency_audit.py",
       "role": "P3-S6 cooling/g-mode producer",
-      "sha256": "0a387086fab91b14fbbec87ebacb889ae0cfdf6b040f4b62b90ef0a4ecfd5cb6"
+      "sha256": "d371f916c8701f7a200b653ea4e3e7fc3e942579f098da8d1060a387fa7cd72a"
     },
     "cooling_result": {
       "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
       "role": "P3-S6 final cooling/g-mode artifact",
-      "sha256": "7043a7c6a203fd58dc75d9b41999ff422b9e4985feb82cb716cdf149e8690089"
+      "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
     },
     "cooling_test": {
       "path": "verification/test_p3_cooling_gmode_dependency_audit.py",

@@ -1,0 +1,1097 @@
+{
+  "analytic_controls": {
+    "W_to_zero_diverges": true,
+    "W_to_zero_energy_samples": [
+      {
+        "W_over_W0": 0.1,
+        "energy_MeV4": 152985269494.233
+      },
+      {
+        "W_over_W0": 0.01,
+        "energy_MeV4": 1406738688687.7642
+      },
+      {
+        "W_over_W0": 0.001,
+        "energy_MeV4": 126503313904778.22
+      }
+    ],
+    "vacuum": {
+      "A0_MeV": 0.0,
+      "M_expected_MeV": 939.0,
+      "Mstar_MeV": 939.0000000000001,
+      "W_MeV": 859.0,
+      "W_expected_MeV": 859.0,
+      "epsilon_MeV4": 0.0,
+      "stationarity_MeV3": 0.0
+    },
+    "vacuum_pass": true,
+    "vector_only_limit": {
+      "W_MeV": 859.1896748941059,
+      "gs": 0.0,
+      "stationarity_MeV3": 1.0154908522963524e-06
+    },
+    "vector_only_stationarity_pass": true
+  },
+  "closure_summary": {
+    "max_HVH_mu_relative": 3.7536309685275917e-10,
+    "max_HVH_pressure_relative": 3.0179294852261186e-16,
+    "max_W_stationarity_relative": 6.7086346232458316e-15,
+    "max_current_relative": 0.0,
+    "max_generator_residual_MeV4": 7.62939453125e-06,
+    "max_stress_pressure_relative": 4.990980826192752e-15
+  },
+  "contract": {
+    "ensemble": "zero-temperature fixed baryon density, source-free gauge-neutral",
+    "fitted_threshold": "NOT_PERFORMED",
+    "mass_response": "Mstar=g_s*W, g_s=M_N/W0",
+    "metric": "(+---)",
+    "potential": "lambda*(W^2-W0^2)^2/4",
+    "transfer_branch": "NOT_IMPLEMENTED_BY_BINDING",
+    "vector_mass": "m_A=q_phi*W, q_phi=m_omega/W0",
+    "vector_source": "dynamical Gauss equation; no external A0"
+  },
+  "convergence": {
+    "max_delta_MeV": 2.7951045922236517e-09,
+    "pass": true,
+    "rows": [
+      {
+        "W_by_tolerance": [
+          859.0,
+          859.0,
+          859.0
+        ],
+        "max_delta_MeV": 0.0,
+        "n_over_n0": 0.0
+      },
+      {
+        "W_by_tolerance": [
+          858.9155973808363,
+          858.9155973836196,
+          858.9155973836314
+        ],
+        "max_delta_MeV": 2.7951045922236517e-09,
+        "n_over_n0": 0.1
+      },
+      {
+        "W_by_tolerance": [
+          858.3419191654689,
+          858.3419191661037,
+          858.341919166098
+        ],
+        "max_delta_MeV": 6.348273018375039e-10,
+        "n_over_n0": 1.0
+      },
+      {
+        "W_by_tolerance": [
+          858.1083532881644,
+          858.1083532863577,
+          858.1083532863557
+        ],
+        "max_delta_MeV": 1.8086439013131894e-09,
+        "n_over_n0": 2.5
+      },
+      {
+        "W_by_tolerance": [
+          869.2476749521134,
+          869.2476749541154,
+          869.2476749541431
+        ],
+        "max_delta_MeV": 2.0297648006817326e-09,
+        "n_over_n0": 10.0
+      }
+    ]
+  },
+  "covariance_control": {
+    "control_only": true,
+    "covariance": [
+      [
+        4.0,
+        0.6,
+        0.8
+      ],
+      [
+        0.6,
+        9.0,
+        1.2
+      ],
+      [
+        0.8,
+        1.2,
+        16.0
+      ]
+    ],
+    "derived_covariance": [
+      [
+        2.7231930838545604e-05,
+        1.9642623274585327e-05
+      ],
+      [
+        1.9642623274585327e-05,
+        2.8961275372777365e-05
+      ]
+    ],
+    "invariant_pass": true,
+    "jacobian": [
+      [
+        0.0,
+        0.0011641443538998836,
+        -0.0010606046232387065
+      ],
+      [
+        0.0011641443538998836,
+        0.0,
+        -0.0012725629200372418
+      ]
+    ],
+    "reparameterized_max_abs_error": 6.776263578034403e-21
+  },
+  "gates": {
+    "W_zero_at_finite_density": false,
+    "analytic_limits": true,
+    "correlated_derived_input_covariance": true,
+    "coupled_branch_stationarity": true,
+    "euler_noether_ward_identity": true,
+    "gauss_total_current": true,
+    "grid_root_convergence": true,
+    "hvh_legendre_closure": true,
+    "legacy_threshold_supported": false,
+    "local_u1_covariance_current_ward": true,
+    "metric_stress_convergence": true,
+    "passport_complete_for_contract": true,
+    "renorm_matching_available": false
+  },
+  "legacy_comparison": [
+    {
+      "Omega_MeV": 782.6,
+      "W_legacy_MeV": 859.0000000000001,
+      "gamma_MeV": 955.5467239938021,
+      "legacy_melting_branch": false,
+      "n_over_n0": 0.0
+    },
+    {
+      "Omega_MeV": -172.94672399380204,
+      "W_legacy_MeV": 1136.9664067826286,
+      "gamma_MeV": 955.5467239938021,
+      "legacy_melting_branch": false,
+      "n_over_n0": 1.0
+    },
+    {
+      "Omega_MeV": -1606.2668099845055,
+      "W_legacy_MeV": 0.0,
+      "gamma_MeV": 955.5467239938021,
+      "legacy_melting_branch": true,
+      "n_over_n0": 2.5
+    }
+  ],
+  "manufactured_euler_ward_controls": {
+    "all_pass": true,
+    "backend_source_sha256": "52af615468f91e7ebd53dce63069890e93252423fc8aaaf7cd37fe8564d1e797",
+    "connection_divergence_abs": 16403.9055659,
+    "euler_N_abs": 746.787825,
+    "euler_bar_N_abs": 746.787825,
+    "euler_phi_abs": 79562.44074,
+    "euler_phibar_abs": 79562.44074,
+    "finite_difference_step": null,
+    "identity_relative": 1.809627142535869e-83,
+    "independent_variation_checks_pass": true,
+    "input_sha256": "47d75768002c61d070c359013e802507336f1761f37f00ac83a4c4e284214fea",
+    "method": "analytic_Euler_and_independent_nested_mpmath_diff",
+    "precision_convergence_pass": true,
+    "precision_dps": [
+      80,
+      120
+    ]
+  },
+  "manufactured_gauge_controls": {
+    "A_variation_current_relative": 3.15222910957353e-12,
+    "action_invariance_relative": 0.0,
+    "all_pass": true,
+    "covariance_N_max": 0.0,
+    "covariance_phi_max": 0.0,
+    "no_duplicate_explicit_current": true,
+    "single_covariant_nucleon_coupling": true,
+    "ward_connection_relative": 0.0,
+    "ward_full_relative": 0.0,
+    "ward_global_relative": 0.0
+  },
+  "massless_controls": {
+    "continuity_pass": true,
+    "exact_pass": true,
+    "rows": [
+      {
+        "energy_continuity_relative": 1.0000084542595282e-12,
+        "energy_exact_MeV4": 242529249.18584865,
+        "energy_formula_relative": 0.0,
+        "massless_trace_relative": 0.0,
+        "n_over_n0": 1.0,
+        "pressure_continuity_relative": 9.999470135828104e-13,
+        "pressure_exact_MeV4": 80843083.06194955,
+        "pressure_formula_relative": 0.0
+      },
+      {
+        "energy_continuity_relative": 1.0001915694256291e-12,
+        "energy_exact_MeV4": 5225134277.933791,
+        "energy_formula_relative": 0.0,
+        "massless_trace_relative": 1.825167097492024e-16,
+        "n_over_n0": 10.0,
+        "pressure_continuity_relative": 9.999634235384426e-13,
+        "pressure_exact_MeV4": 1741711425.9779305,
+        "pressure_formula_relative": 0.0
+      }
+    ]
+  },
+  "metric_variation": {
+    "metric_steps": [
+      0.0001,
+      5e-05,
+      2.5e-05
+    ],
+    "pass": true,
+    "rows": [
+      {
+        "W_spread_MeV": 0.0,
+        "by_metric_step": [
+          {
+            "epsilon_metric_by_step": [
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            "epsilon_step_relative": 0.0,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pressure_step_relative": 0.0,
+            "solver_tol": 1e-08
+          },
+          {
+            "epsilon_metric_by_step": [
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            "epsilon_step_relative": 0.0,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pressure_step_relative": 0.0,
+            "solver_tol": 1e-10
+          },
+          {
+            "epsilon_metric_by_step": [
+              -0.0,
+              -0.0,
+              -0.0
+            ],
+            "epsilon_step_relative": 0.0,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "pressure_step_relative": 0.0,
+            "solver_tol": 1e-12
+          }
+        ],
+        "by_solver_tolerance": [
+          {
+            "W_MeV": 859.0,
+            "epsilon_metric_MeV_fm3": -0.0,
+            "mu_B_MeV": 939.0000000000001,
+            "pressure_metric_MeV_fm3": 0.0
+          },
+          {
+            "W_MeV": 859.0,
+            "epsilon_metric_MeV_fm3": -0.0,
+            "mu_B_MeV": 939.0000000000001,
+            "pressure_metric_MeV_fm3": 0.0
+          },
+          {
+            "W_MeV": 859.0,
+            "epsilon_metric_MeV_fm3": -0.0,
+            "mu_B_MeV": 939.0000000000001,
+            "pressure_metric_MeV_fm3": 0.0
+          }
+        ],
+        "epsilon_metric_action_relative": 0.0,
+        "epsilon_metric_spread_relative": 0.0,
+        "mu_B_spread_relative": 0.0,
+        "n_over_n0": 0.0,
+        "pressure_metric_action_relative": 0.0,
+        "pressure_metric_spread_relative": 0.0
+      },
+      {
+        "W_spread_MeV": 2.7951045922236517e-09,
+        "by_metric_step": [
+          {
+            "epsilon_metric_by_step": [
+              15.263709792855472,
+              15.263709792881333,
+              15.263709792849008
+            ],
+            "epsilon_step_relative": 2.1177266762266242e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.214271707123531,
+              0.21427170711383414,
+              0.21427170712891813
+            ],
+            "pressure_step_relative": 1.5083989612918458e-11,
+            "solver_tol": 1e-08
+          },
+          {
+            "epsilon_metric_by_step": [
+              15.263709792855472,
+              15.263709792881333,
+              15.263709792849008
+            ],
+            "epsilon_step_relative": 2.1177266762266242e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.214271707123531,
+              0.21427170711383414,
+              0.21427170712891813
+            ],
+            "pressure_step_relative": 1.5083989612918458e-11,
+            "solver_tol": 1e-10
+          },
+          {
+            "epsilon_metric_by_step": [
+              15.263709792855472,
+              15.263709792881333,
+              15.263709792849008
+            ],
+            "epsilon_step_relative": 2.1177266762266242e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              0.214271707123531,
+              0.21427170711383414,
+              0.21427170712891813
+            ],
+            "pressure_step_relative": 1.5083989612918458e-11,
+            "solver_tol": 1e-12
+          }
+        ],
+        "by_solver_tolerance": [
+          {
+            "W_MeV": 858.9155973808363,
+            "epsilon_metric_MeV_fm3": 15.263709792849008,
+            "mu_B_MeV": 967.3738437458034,
+            "pressure_metric_MeV_fm3": 0.21427170712891813
+          },
+          {
+            "W_MeV": 858.9155973836196,
+            "epsilon_metric_MeV_fm3": 15.263709792849008,
+            "mu_B_MeV": 967.3738437486872,
+            "pressure_metric_MeV_fm3": 0.21427170712891813
+          },
+          {
+            "W_MeV": 858.9155973836314,
+            "epsilon_metric_MeV_fm3": 15.263709792849008,
+            "mu_B_MeV": 967.3738437486995,
+            "pressure_metric_MeV_fm3": 0.21427170712891813
+          }
+        ],
+        "epsilon_metric_action_relative": 5.815398253075066e-13,
+        "epsilon_metric_spread_relative": 0.0,
+        "mu_B_spread_relative": 2.993850009149642e-12,
+        "n_over_n0": 0.1,
+        "pressure_metric_action_relative": 7.657263711990936e-12,
+        "pressure_metric_spread_relative": 0.0
+      },
+      {
+        "W_spread_MeV": 6.348273018375039e-10,
+        "by_metric_step": [
+          {
+            "epsilon_metric_by_step": [
+              170.13079513968708,
+              170.13079513971292,
+              170.1307951392992
+            ],
+            "epsilon_step_relative": 2.4316961672295797e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              18.723616823821956,
+              18.723616823761617,
+              18.72361682403744
+            ],
+            "pressure_step_relative": 1.4731236730231164e-11,
+            "solver_tol": 1e-08
+          },
+          {
+            "epsilon_metric_by_step": [
+              170.13079513968708,
+              170.13079513971292,
+              170.1307951392992
+            ],
+            "epsilon_step_relative": 2.4316961672295797e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              18.723616823821956,
+              18.723616823761617,
+              18.72361682403744
+            ],
+            "pressure_step_relative": 1.4731236730231164e-11,
+            "solver_tol": 1e-10
+          },
+          {
+            "epsilon_metric_by_step": [
+              170.13079513968708,
+              170.13079513971292,
+              170.1307951392992
+            ],
+            "epsilon_step_relative": 2.4316961672295797e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              18.723616823821956,
+              18.723616823761617,
+              18.72361682403744
+            ],
+            "pressure_step_relative": 1.4731236730231164e-11,
+            "solver_tol": 1e-12
+          }
+        ],
+        "by_solver_tolerance": [
+          {
+            "W_MeV": 858.3419191654689,
+            "epsilon_metric_MeV_fm3": 170.1307951392992,
+            "mu_B_MeV": 1180.340074772147,
+            "pressure_metric_MeV_fm3": 18.72361682403744
+          },
+          {
+            "W_MeV": 858.3419191661037,
+            "epsilon_metric_MeV_fm3": 170.1307951392992,
+            "mu_B_MeV": 1180.3400747725107,
+            "pressure_metric_MeV_fm3": 18.72361682403744
+          },
+          {
+            "W_MeV": 858.341919166098,
+            "epsilon_metric_MeV_fm3": 170.1307951392992,
+            "mu_B_MeV": 1180.3400747725073,
+            "pressure_metric_MeV_fm3": 18.72361682403744
+          }
+        ],
+        "epsilon_metric_action_relative": 2.767315678080824e-12,
+        "epsilon_metric_spread_relative": 0.0,
+        "mu_B_spread_relative": 3.0802182761082625e-13,
+        "n_over_n0": 1.0,
+        "pressure_metric_action_relative": 1.1004454131611066e-11,
+        "pressure_metric_spread_relative": 0.0
+      },
+      {
+        "W_spread_MeV": 1.8086439013131894e-09,
+        "by_metric_step": [
+          {
+            "epsilon_metric_by_step": [
+              494.1940502006015,
+              494.194050201429,
+              494.1940501995672
+            ],
+            "epsilon_step_relative": 3.76733086363382e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              113.26949044596115,
+              113.26949044596115,
+              113.26949044599561
+            ],
+            "pressure_step_relative": 3.0424187968599765e-13,
+            "solver_tol": 1e-08
+          },
+          {
+            "epsilon_metric_by_step": [
+              494.1940502006015,
+              494.194050201429,
+              494.1940501995672
+            ],
+            "epsilon_step_relative": 3.76733086363382e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              113.26949044596115,
+              113.26949044596115,
+              113.26949044599561
+            ],
+            "pressure_step_relative": 3.0424187968599765e-13,
+            "solver_tol": 1e-10
+          },
+          {
+            "epsilon_metric_by_step": [
+              494.1940502006015,
+              494.194050201429,
+              494.1940501995672
+            ],
+            "epsilon_step_relative": 3.76733086363382e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              113.26949044596115,
+              113.26949044596115,
+              113.26949044599561
+            ],
+            "pressure_step_relative": 3.0424187968599765e-13,
+            "solver_tol": 1e-12
+          }
+        ],
+        "by_solver_tolerance": [
+          {
+            "W_MeV": 858.1083532881644,
+            "epsilon_metric_MeV_fm3": 494.1940501995672,
+            "mu_B_MeV": 1518.658851615914,
+            "pressure_metric_MeV_fm3": 113.26949044599561
+          },
+          {
+            "W_MeV": 858.1083532863577,
+            "epsilon_metric_MeV_fm3": 494.1940501995672,
+            "mu_B_MeV": 1518.658851616237,
+            "pressure_metric_MeV_fm3": 113.26949044599561
+          },
+          {
+            "W_MeV": 858.1083532863557,
+            "epsilon_metric_MeV_fm3": 494.1940501995672,
+            "mu_B_MeV": 1518.6588516162374,
+            "pressure_metric_MeV_fm3": 113.26949044599561
+          }
+        ],
+        "epsilon_metric_action_relative": 2.1322864943717504e-12,
+        "epsilon_metric_spread_relative": 0.0,
+        "mu_B_spread_relative": 2.1290190758521965e-13,
+        "n_over_n0": 2.5,
+        "pressure_metric_action_relative": 1.0718096404784593e-12,
+        "pressure_metric_spread_relative": 0.0
+      },
+      {
+        "W_spread_MeV": 2.0297648006817326e-09,
+        "by_metric_step": [
+          {
+            "epsilon_metric_by_step": [
+              3290.1945235572457,
+              3290.194523560556,
+              3290.194523553109
+            ],
+            "epsilon_step_relative": 2.2633745709532896e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              1692.01835162561,
+              1692.0183516276786,
+              1692.018351625748
+            ],
+            "pressure_step_relative": 1.2225905807655931e-12,
+            "solver_tol": 1e-08
+          },
+          {
+            "epsilon_metric_by_step": [
+              3290.1945235572457,
+              3290.194523560556,
+              3290.194523553109
+            ],
+            "epsilon_step_relative": 2.2633745709532896e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              1692.01835162561,
+              1692.0183516276786,
+              1692.018351625748
+            ],
+            "pressure_step_relative": 1.2225905807655931e-12,
+            "solver_tol": 1e-10
+          },
+          {
+            "epsilon_metric_by_step": [
+              3290.1945235572457,
+              3290.194523560556,
+              3290.194523553109
+            ],
+            "epsilon_step_relative": 2.2633745709532896e-12,
+            "metric_steps": [
+              0.0001,
+              5e-05,
+              2.5e-05
+            ],
+            "pressure_metric_by_step": [
+              1692.01835162561,
+              1692.0183516276786,
+              1692.018351625748
+            ],
+            "pressure_step_relative": 1.2225905807655931e-12,
+            "solver_tol": 1e-12
+          }
+        ],
+        "by_solver_tolerance": [
+          {
+            "W_MeV": 869.2476749521134,
+            "epsilon_metric_MeV_fm3": 3290.194523553109,
+            "mu_B_MeV": 3113.883046996696,
+            "pressure_metric_MeV_fm3": 1692.018351625748
+          },
+          {
+            "W_MeV": 869.2476749541154,
+            "epsilon_metric_MeV_fm3": 3290.194523553109,
+            "mu_B_MeV": 3113.8830469893282,
+            "pressure_metric_MeV_fm3": 1692.018351625748
+          },
+          {
+            "W_MeV": 869.2476749541431,
+            "epsilon_metric_MeV_fm3": 3290.194523553109,
+            "mu_B_MeV": 3113.883046989226,
+            "pressure_metric_MeV_fm3": 1692.018351625748
+          }
+        ],
+        "epsilon_metric_action_relative": 1.352551511441687e-12,
+        "epsilon_metric_spread_relative": 0.0,
+        "mu_B_spread_relative": 2.3989772962786138e-12,
+        "n_over_n0": 10.0,
+        "pressure_metric_action_relative": 3.202278911814317e-13,
+        "pressure_metric_spread_relative": 0.0
+      }
+    ],
+    "solver_tolerances": [
+      1e-08,
+      1e-10,
+      1e-12
+    ]
+  },
+  "parameters": {
+    "M_N_MeV": 939.0,
+    "W0_MeV": 859.0,
+    "degeneracy": 4,
+    "g_omega": 10.12,
+    "g_s": 1.0931315483119908,
+    "hbar_c_MeV_fm": 197.3269804,
+    "lambda": 1.05,
+    "m_omega_MeV": 782.6,
+    "mu_scalar_MeV": 880.2130707959295,
+    "n0_fm3": 0.16,
+    "q_phi": 0.911059371362049,
+    "scalar_mass_MeV": 1244.8092624976728
+  },
+  "passport": {
+    "derived_records": [
+      {
+        "citation": "verification/contracts/source_complete_action.md",
+        "covariance_group": "W0_shared",
+        "formula": "m_omega/W0",
+        "input_id": "q_phi",
+        "metadata_status": "DERIVED_CORRELATED",
+        "operator_definition": "m_A=q_phi W0",
+        "producer": "verification/source_complete_solution_audit.py",
+        "quantity": "Higgs gauge charge",
+        "role": "derived vector calibration",
+        "scale": "model",
+        "scheme": "canonical A_mu normalization",
+        "source": "verification/contracts/source_complete_action.md",
+        "transformation": "Jacobian propagated",
+        "uncertainty": null,
+        "unit": "1",
+        "value": 0.911059371362049
+      },
+      {
+        "citation": "verification/contracts/source_complete_action.md",
+        "covariance_group": "W0_shared",
+        "formula": "M_N/W0",
+        "input_id": "g_s",
+        "metadata_status": "DERIVED_CORRELATED",
+        "operator_definition": "M*(W)=g_s W",
+        "producer": "verification/source_complete_solution_audit.py",
+        "quantity": "full nucleon scalar response",
+        "role": "derived mass response",
+        "scale": "model",
+        "scheme": "full-mass convention",
+        "source": "verification/contracts/source_complete_action.md",
+        "transformation": "Jacobian propagated",
+        "uncertainty": null,
+        "unit": "1",
+        "value": 1.0931315483119908
+      }
+    ],
+    "records": [
+      {
+        "citation": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "covariance_group": "anchors",
+        "input_id": "W0",
+        "metadata_status": "DECLARED_NO_UNCERTAINTY",
+        "operator_definition": "W amplitude",
+        "producer": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "quantity": "vacuum condensate anchor",
+        "role": "declared anchor",
+        "scale": "model",
+        "scheme": "model-defined",
+        "source": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "transformation": "identity in declared model convention",
+        "uncertainty": null,
+        "unit": "MeV",
+        "value": 859.0
+      },
+      {
+        "citation": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "covariance_group": "anchors",
+        "input_id": "lambda",
+        "metadata_status": "DECLARED_NO_UNCERTAINTY",
+        "operator_definition": "quartic centered at W0",
+        "producer": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "quantity": "scalar self-coupling",
+        "role": "declared model input",
+        "scale": "model",
+        "scheme": "model-defined",
+        "source": "article/NVG_VACUUM_W_FIELD_DERIVATION_RU.md",
+        "transformation": "identity in declared model convention",
+        "uncertainty": null,
+        "unit": "1",
+        "value": 1.05
+      },
+      {
+        "citation": "article/NVG_SCIENTIFIC_ARTICLE_EN.md",
+        "covariance_group": "W0_shared",
+        "input_id": "M_N",
+        "metadata_status": "BOOKKEEPING_INPUT",
+        "operator_definition": "full nucleon mass",
+        "producer": "article/NVG_SCIENTIFIC_ARTICLE_EN.md",
+        "quantity": "nucleon mass anchor",
+        "role": "mass response anchor",
+        "scale": "declared model scale",
+        "scheme": "declared bookkeeping convention",
+        "source": "article/NVG_SCIENTIFIC_ARTICLE_EN.md",
+        "transformation": "full-mass model identity",
+        "uncertainty": null,
+        "unit": "MeV",
+        "value": 939.0
+      },
+      {
+        "citation": "verification/nvg_vacuum_w_field_derivation.py",
+        "covariance_group": "W0_shared",
+        "input_id": "m_omega",
+        "metadata_status": "BOOKKEEPING_INPUT",
+        "operator_definition": "canonical vector mass",
+        "producer": "verification/nvg_vacuum_w_field_derivation.py",
+        "quantity": "vector mass anchor",
+        "role": "Higgs charge derivation",
+        "scale": "model",
+        "scheme": "model-defined",
+        "source": "verification/nvg_vacuum_w_field_derivation.py",
+        "transformation": "identity of canonical vector mass",
+        "uncertainty": null,
+        "unit": "MeV",
+        "value": 782.6
+      },
+      {
+        "citation": "verification/nvg_vacuum_w_field_derivation.py",
+        "covariance_group": "vector_matter",
+        "input_id": "g_omega",
+        "metadata_status": "BOOKKEEPING_INPUT",
+        "operator_definition": "A_mu J_B^mu",
+        "producer": "verification/nvg_vacuum_w_field_derivation.py",
+        "quantity": "nucleon-vector coupling",
+        "role": "matter-current coupling",
+        "scale": "model",
+        "scheme": "model-defined",
+        "source": "verification/nvg_vacuum_w_field_derivation.py",
+        "transformation": "charge convention bound",
+        "uncertainty": null,
+        "unit": "1",
+        "value": 10.12
+      },
+      {
+        "citation": "verification/nvg_vacuum_w_field_derivation.py",
+        "covariance_group": "units",
+        "input_id": "n0",
+        "metadata_status": "KINEMATIC_INPUT",
+        "operator_definition": "baryon number density",
+        "producer": "verification/nvg_vacuum_w_field_derivation.py",
+        "quantity": "reference baryon density",
+        "role": "grid scale",
+        "scale": "nuclear reference",
+        "scheme": "unit conversion",
+        "source": "verification/nvg_vacuum_w_field_derivation.py",
+        "transformation": "n_nat=n_fm3(hbar c)^3",
+        "uncertainty": null,
+        "unit": "fm^-3",
+        "value": 0.16
+      },
+      {
+        "citation": "verification/source_complete_solution_audit.py",
+        "covariance_group": "units",
+        "input_id": "hbar_c",
+        "metadata_status": "KINEMATIC_INPUT",
+        "operator_definition": "fm^-1 to MeV",
+        "producer": "verification/nvg_vacuum_w_field_derivation.py",
+        "quantity": "unit conversion",
+        "role": "unit conversion",
+        "scale": "exact",
+        "scheme": "natural units",
+        "source": "verification/source_complete_solution_audit.py",
+        "transformation": "n_nat=n_fm3(hbar c)^3",
+        "uncertainty": null,
+        "unit": "MeV fm",
+        "value": 197.3269804
+      }
+    ],
+    "renormalization_block": {
+      "metadata_status": "BLOCKED_MISSING_SCHEME_SCALE_OPERATOR_TRANSFORMATION",
+      "missing_fields": [
+        "scheme",
+        "scale",
+        "operator_definition",
+        "transformation"
+      ],
+      "parameter_refit": "NOT_PERFORMED",
+      "record_count": 37
+    }
+  },
+  "passport_validation": {
+    "errors": [],
+    "pass": true,
+    "record_count": 9
+  },
+  "rows": [
+    {
+      "A0_MeV": 0.0,
+      "Mstar_MeV": 939.0000000000001,
+      "W_MeV": 859.0,
+      "W_over_W0": 1.0,
+      "epsilon_MeV_fm3": 0.0,
+      "g0_MeV": -0.0,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": 0.0,
+      "hvh_mu_relative": 1.2107224464495848e-16,
+      "hvh_pressure_relative": 0.0,
+      "mu_B_MeV": 939.0000000000001,
+      "mu_B_fd_MeV": 939.0,
+      "n_fm3": 0.0,
+      "n_over_n0": 0.0,
+      "pressure_MeV_fm3": -0.0,
+      "pressure_legendre_MeV_fm3": 0.0,
+      "scalar_density_fm3": 0.0,
+      "stress_energy_MeV_fm3": 0.0,
+      "stress_pressure_MeV_fm3": 0.0,
+      "stress_pressure_relative": 0.0,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 0.0,
+      "w_stationarity_residual_MeV3": 0.0
+    },
+    {
+      "A0_MeV": 2.0317280075692152,
+      "Mstar_MeV": 938.9077368372845,
+      "W_MeV": 858.9155973836287,
+      "W_over_W0": 0.9999017431706969,
+      "epsilon_MeV_fm3": 15.263709792857885,
+      "g0_MeV": -1.8510248413546775,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": 1.4901161193847656e-08,
+      "hvh_mu_relative": 3.7536309685275917e-10,
+      "hvh_pressure_relative": 1.2705758666520927e-16,
+      "mu_B_MeV": 967.3738437486966,
+      "mu_B_fd_MeV": 967.373844111813,
+      "n_fm3": 0.016,
+      "n_over_n0": 0.1,
+      "pressure_MeV_fm3": 0.21427170712126087,
+      "pressure_legendre_MeV_fm3": 0.2142717071212628,
+      "scalar_density_fm3": 0.01591956101723127,
+      "stress_energy_MeV_fm3": 15.263709792857885,
+      "stress_pressure_MeV_fm3": 0.21427170712118662,
+      "stress_pressure_relative": 4.990980826192752e-15,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 6.7086346232458316e-15,
+      "w_stationarity_residual_MeV3": -4.463493496587034e-06
+    },
+    {
+      "A0_MeV": 10.165637748899295,
+      "Mstar_MeV": 938.5845236616224,
+      "W_MeV": 858.619921006745,
+      "W_over_W0": 0.9995575331859663,
+      "epsilon_MeV_fm3": 80.32125609454776,
+      "g0_MeV": -9.261499537006506,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": -1.1920928955078125e-07,
+      "hvh_mu_relative": 8.72370107557324e-11,
+      "hvh_pressure_relative": 1.9316133478348721e-16,
+      "mu_B_MeV": 1064.40016853834,
+      "mu_B_fd_MeV": 1064.400168445485,
+      "n_fm3": 0.08,
+      "n_over_n0": 0.5,
+      "pressure_MeV_fm3": 4.830757388519457,
+      "pressure_legendre_MeV_fm3": 4.830757388519441,
+      "scalar_density_fm3": 0.07884302477950315,
+      "stress_energy_MeV_fm3": 80.32125609454776,
+      "stress_pressure_MeV_fm3": 4.830757388519368,
+      "stress_pressure_relative": 9.054437567975964e-16,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 3.795634535553181e-15,
+      "w_stationarity_residual_MeV3": 2.5227636797353625e-06
+    },
+    {
+      "A0_MeV": 20.344447515144697,
+      "Mstar_MeV": 938.2806310791252,
+      "W_MeV": 858.3419191661006,
+      "W_over_W0": 0.9992338989128063,
+      "epsilon_MeV_fm3": 170.13079513977002,
+      "g0_MeV": -18.534999563855926,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": 0.0,
+      "hvh_mu_relative": 1.5736659875662075e-11,
+      "hvh_pressure_relative": 0.0,
+      "mu_B_MeV": 1180.3400747725088,
+      "mu_B_fd_MeV": 1180.3400747539342,
+      "n_fm3": 0.16,
+      "n_over_n0": 1.0,
+      "pressure_MeV_fm3": 18.723616823831396,
+      "pressure_legendre_MeV_fm3": 18.723616823831396,
+      "scalar_density_fm3": 0.15637872767912137,
+      "stress_energy_MeV_fm3": 170.13079513977002,
+      "stress_pressure_MeV_fm3": 18.72361682383117,
+      "stress_pressure_relative": 1.345116121587236e-15,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 6.287184659202129e-15,
+      "w_stationarity_residual_MeV3": 4.174711648374796e-06
+    },
+    {
+      "A0_MeV": 50.888810019675915,
+      "Mstar_MeV": 938.0253128473656,
+      "W_MeV": 858.1083532863546,
+      "W_over_W0": 0.9989619945126363,
+      "epsilon_MeV_fm3": 494.19405020062095,
+      "g0_MeV": -46.36272726588868,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": 0.0,
+      "hvh_mu_relative": 2.826115617143886e-11,
+      "hvh_pressure_relative": 0.0,
+      "mu_B_MeV": 1518.6588516162376,
+      "mu_B_fd_MeV": 1518.6588516591567,
+      "n_fm3": 0.4,
+      "n_over_n0": 2.5,
+      "pressure_MeV_fm3": 113.26949044587421,
+      "pressure_legendre_MeV_fm3": 113.26949044587421,
+      "scalar_density_fm3": 0.3838522661154995,
+      "stress_energy_MeV_fm3": 494.19405020062095,
+      "stress_pressure_MeV_fm3": 113.2694904458742,
+      "stress_pressure_relative": 3.1394471528766415e-17,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 1.9301325742043663e-15,
+      "w_stationarity_residual_MeV3": -1.280568540096283e-06
+    },
+    {
+      "A0_MeV": 101.4094421311698,
+      "Mstar_MeV": 939.7265710889575,
+      "W_MeV": 859.6646693987374,
+      "W_over_W0": 1.0007737711277502,
+      "epsilon_MeV_fm3": 1212.0560820080457,
+      "g0_MeV": -92.39002259819964,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": -1.9073486328125e-06,
+      "hvh_mu_relative": 3.001247168315101e-12,
+      "hvh_pressure_relative": 2.0480849055109864e-16,
+      "mu_B_MeV": 2068.089112345209,
+      "mu_B_fd_MeV": 2068.089112339002,
+      "n_fm3": 0.8,
+      "n_over_n0": 5.0,
+      "pressure_MeV_fm3": 442.41520786812185,
+      "pressure_legendre_MeV_fm3": 442.41520786812157,
+      "scalar_density_fm3": 0.7509024368976136,
+      "stress_energy_MeV_fm3": 1212.0560820080457,
+      "stress_pressure_MeV_fm3": 442.4152078681208,
+      "stress_pressure_relative": 6.656275942910706e-16,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 4.48295006478093e-15,
+      "w_stationarity_residual_MeV3": 2.9904767870903015e-06
+    },
+    {
+      "A0_MeV": 198.37158833373195,
+      "Mstar_MeV": 950.2020567892201,
+      "W_MeV": 869.2476749541428,
+      "W_over_W0": 1.0119297729384666,
+      "epsilon_MeV_fm3": 3290.194523557559,
+      "g0_MeV": -180.728294563421,
+      "gauss_residual_MeV3": 0.0,
+      "generator_residual_MeV4": -7.62939453125e-06,
+      "hvh_mu_relative": 2.3237673792218216e-12,
+      "hvh_pressure_relative": 3.0179294852261186e-16,
+      "mu_B_MeV": 3113.8830469892273,
+      "mu_B_fd_MeV": 3113.8830469964632,
+      "n_fm3": 1.6,
+      "n_over_n0": 10.0,
+      "pressure_MeV_fm3": 1692.0183516252062,
+      "pressure_legendre_MeV_fm3": 1692.018351625205,
+      "scalar_density_fm3": 1.455804302963548,
+      "stress_energy_MeV_fm3": 3290.194523557559,
+      "stress_pressure_MeV_fm3": 1692.0183516252034,
+      "stress_pressure_relative": 5.281376599145708e-16,
+      "total_current_relative": 0.0,
+      "total_current_residual_MeV3": 0.0,
+      "w_stationarity_relative": 2.538855988724384e-16,
+      "w_stationarity_residual_MeV3": -1.7508864402770996e-07
+    }
+  ],
+  "schema": "source_complete_solution_audit.v1",
+  "scientific_boundary": {
+    "W_zero_claim": "NO_GO: eliminated energy has g_omega^2*n_B^2/(2*q_phi^2*W^2) divergence",
+    "candidate_branch": "W>0 for all scanned n_B; mild low-density suppression and vector-driven growth",
+    "legacy_threshold": "NOT_SUPPORTED: maintained 2.5 n0 belongs to external fixed-frequency branch",
+    "parameter_refit": "NOT_PERFORMED",
+    "renormalization": "BLOCKED: 37 maintained records lack scheme/scale/operator transformation"
+  },
+  "status": "PASS_CONTRACT_FAIL_CLOSED_MELTING_NO_GO"
+}

@@ -1,5 +1,3 @@
-> **Publication status (Phase 10 audit, 2026-08-27):** This historical draft is not current computational evidence. See [PUBLICATION_STATUS.md](../PUBLICATION_STATUS.md); do not cite its numerical values as independent confirmations.
-
 # NVG/VMF: Extension to Electromagnetism and Quantum Mechanics
 
 **Oleg Kirichenko**

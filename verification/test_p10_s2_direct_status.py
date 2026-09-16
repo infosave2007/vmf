@@ -121,7 +121,9 @@ class P10S2DirectStatusTests(unittest.TestCase):
         self.assertNotEqual(cas_a.compute_cas_a_state()["slope_observed_K_per_yr"], -3650.0)
 
     def test_hayward_model_routes_horizonless_masses(self):
-        self.assertIsNone(hayward.horizon(hayward.M_CRIT))
+        self.assertAlmostEqual(hayward.horizon(hayward.M_CRIT) / hayward.l_h, np.sqrt(3.0))
+        self.assertEqual(hayward.hawking_T(hayward.M_CRIT), 0.0)
+        self.assertIsNone(hayward.horizon(hayward.M_CRIT * (1 - 1e-10)))
         pstate = pbh_dm.compute_spectrum(cycles=[-30, 0])
         self.assertTrue(all("horizonless" in row["horizon_class"] for row in pstate["rows"]))
 

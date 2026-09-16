@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "description": "Declared local-jet design inputs and separate descriptive nuclear source references; no saved calculation answers.",
+  "calculation_inputs": {
+    "n0_fm3": "0.16",
+    "binding_MeV": "-16",
+    "Ktarget_MeV": "240",
+    "J_design_MeV": "32",
+    "J_reference_controls_MeV": ["31", "34"],
+    "residual_y": ["0.60", "0.75", "0.85", "0.90", "0.93"],
+    "sensitivity_K_MeV": ["220", "260"],
+    "direct_check_y": ["0.75", "0.90"],
+    "working_precisions": [80, 110]
+  },
+  "descriptive_benchmarks": {
+    "roca_maza_eq14": {
+      "source": "Roca-Maza et al. (2013), Eq. 14",
+      "source_url": "https://arxiv.org/abs/1307.4806",
+      "intercept_MeV": "-146",
+      "intercept_theory_sigma_MeV": "1",
+      "slope": "6.11",
+      "slope_exp_sigma": "0.18",
+      "slope_theory_sigma": "0.26",
+      "reference_J_MeV": "31",
+      "reference_J_sigma_MeV": "2",
+      "comparison_role": "conditional_model_mediated_reference_not_direct_measurement"
+    },
+    "asy_eos": {
+      "source": "Russotto et al. ASY-EOS (2016)",
+      "source_url": "https://arxiv.org/abs/1608.04332",
+      "assumed_J_MeV": "34",
+      "L_MeV": "72",
+      "L_sigma_MeV": "13",
+      "comparison_role": "transport_inference_conditional_on_source_functional"
+    },
+    "drischler": {
+      "source": "Drischler et al. (2020), Eq. 5",
+      "source_url": "https://arxiv.org/abs/2004.07232",
+      "definition_boundary": "density-marginalized chiral-EFT PNM-minus-SNM posterior; not a direct pull for exact local S2 at fixed n0"
+    },
+    "somasundaram": {
+      "source": "Somasundaram et al. (2021), Table V",
+      "source_url": "https://arxiv.org/abs/2009.04737",
+      "definition_boundary": "chiral-EFT quartic/Taylor and logarithmic terms are model-dependent and not interchangeable with a full neutron-minus-symmetric difference"
+    },
+    "sahu_ohnishi": {
+      "source": "Sahu and Ohnishi (2000), Eqs. 8-10",
+      "source_url": "https://arxiv.org/abs/nucl-th/0007068",
+      "definition_boundary": "motivates the conventional rho normalization; no parameters are copied and no NVG fundamental interaction is inferred"
+    }
+  }
+}

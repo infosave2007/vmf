@@ -1,0 +1,566 @@
+{
+  "branches_at_declared_grid": [
+    {
+      "Omega_MeV": 782.6,
+      "action": {
+        "W_MeV": 1380.0278016523193,
+        "W_squared_MeV2": 1904476.7333333334,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 3999401.14,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": 1355773901434.6797,
+        "W_MeV": 859.0,
+        "W_squared_MeV2": 737881.0,
+        "branch": "nonzero_energy_minimum",
+        "energy_hessian_MeV2": 1549550.1,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": 451924633811.55994,
+        "rho_MeV4": 3.0517578125e-05,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": 176452.46498261383,
+      "fixed_frequency_pressure_MeV_fm3": 58817.488327537954,
+      "fixed_frequency_rho_MeV_fm3": 3.971828842373675e-12,
+      "x_n0": 0.0
+    },
+    {
+      "Omega_MeV": 304.8264956349525,
+      "action": {
+        "W_MeV": 1187.2966502345473,
+        "W_squared_MeV2": 1409673.335658177,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 2960314.0048821718,
+        "eom_residual_MeV3": 1.2094208143595942e-07,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": 855517404708.2561,
+        "W_MeV": 1110.2632109887982,
+        "W_squared_MeV2": 1232684.3976751564,
+        "branch": "nonzero_energy_minimum",
+        "energy_hessian_MeV2": 2588637.2351178285,
+        "eom_residual_MeV3": -1.130951928923836e-07,
+        "pressure_MeV4": 370488682970.77716,
+        "rho_MeV4": -255948644204.07547,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": 111344.63846557036,
+      "fixed_frequency_pressure_MeV_fm3": 48218.68992254343,
+      "fixed_frequency_rho_MeV_fm3": -33311.431302059944,
+      "x_n0": 0.5
+    },
+    {
+      "Omega_MeV": -172.94700873009504,
+      "action": {
+        "W_MeV": 1161.7509272557961,
+        "W_squared_MeV2": 1349665.2169797022,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 2834296.955657375,
+        "eom_residual_MeV3": -1.1833990706932051e-07,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": 707453314513.5842,
+        "W_MeV": 1136.966365533137,
+        "W_squared_MeV2": 1292692.516353631,
+        "branch": "nonzero_energy_minimum",
+        "energy_hessian_MeV2": 2714654.284342625,
+        "eom_residual_MeV3": 1.1581526718119797e-07,
+        "pressure_MeV4": 334394009026.1502,
+        "rho_MeV4": -295728712564.8665,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": 92074.26184701243,
+      "fixed_frequency_pressure_MeV_fm3": 43521.008263725926,
+      "fixed_frequency_rho_MeV_fm3": -38488.76294416535,
+      "x_n0": 1.0
+    },
+    {
+      "Omega_MeV": -650.7205130951426,
+      "action": {
+        "W_MeV": 1313.1840607081363,
+        "W_squared_MeV2": 1724452.3772979102,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 3621349.9923256114,
+        "eom_residual_MeV3": 7.64373725226694e-08,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": 1322518766420.9202,
+        "W_MeV": 958.0737737958509,
+        "W_squared_MeV2": 917905.3560354232,
+        "branch": "nonzero_energy_minimum",
+        "energy_hessian_MeV2": 1927601.2476743888,
+        "eom_residual_MeV3": -5.5767233355194965e-08,
+        "pressure_MeV4": 466921752648.7562,
+        "rho_MeV4": -78246491525.3483,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": 172124.34615668128,
+      "fixed_frequency_pressure_MeV_fm3": 60769.34666000783,
+      "fixed_frequency_rho_MeV_fm3": -10183.693823342206,
+      "x_n0": 1.5
+    },
+    {
+      "Omega_MeV": -1128.4940174601902,
+      "action": {
+        "W_MeV": 1591.8652005156716,
+        "W_squared_MeV2": 2534034.8166127997,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 5321473.11488688,
+        "eom_residual_MeV3": -3.7063499924626007e-07,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": 134161675455.12537,
+        "W_MeV": 329.1244699510099,
+        "W_squared_MeV2": 108322.91672053325,
+        "branch": "nonzero_energy_minimum",
+        "energy_hessian_MeV2": 227478.12511311984,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -1893711653.9468994,
+        "rho_MeV4": 139842810416.96606,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": 17460.992806546416,
+      "fixed_frequency_pressure_MeV_fm3": -246.46446502004167,
+      "fixed_frequency_rho_MeV_fm3": 18200.386201606543,
+      "x_n0": 2.0
+    },
+    {
+      "Omega_MeV": -1606.2675218252375,
+      "action": {
+        "W_MeV": 1943.8139146853464,
+        "W_squared_MeV2": 3778412.534924371,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 7934666.32334118,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 1192857.5416705897,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 2.5
+    },
+    {
+      "Omega_MeV": -2084.0410261902853,
+      "action": {
+        "W_MeV": 2336.147583572713,
+        "W_squared_MeV2": 5457585.532232625,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 11460929.617688514,
+        "eom_residual_MeV3": -2.1757069822146677e-06,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 2955989.1888442575,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 3.0
+    },
+    {
+      "Omega_MeV": -3039.5880349203803,
+      "action": {
+        "W_MeV": 3181.24462496036,
+        "W_squared_MeV2": 10120317.363839181,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 21252666.46406228,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 7851857.612031139,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 4.0
+    },
+    {
+      "Omega_MeV": -3995.135043650475,
+      "action": {
+        "W_MeV": 4064.754643448047,
+        "W_squared_MeV2": 16522230.311432458,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 34696683.654008165,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 14573866.207004081,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 5.0
+    },
+    {
+      "Omega_MeV": -6861.77606984076,
+      "action": {
+        "W_MeV": 6794.339986351336,
+        "W_squared_MeV2": 46163055.850132674,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 96942417.28527862,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 45696733.022639304,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 8.0
+    },
+    {
+      "Omega_MeV": -8772.87008730095,
+      "action": {
+        "W_MeV": 8638.258608608554,
+        "W_squared_MeV2": 74619511.78919978,
+        "branch": "nonzero_action_stationary",
+        "effective_potential_hessian_MeV2": 156700974.75731954,
+        "eom_residual_MeV3": 0.0,
+        "stable": true
+      },
+      "fixed_frequency": {
+        "SEC_MeV4": -285845894334.525,
+        "W_MeV": 0.0,
+        "W_squared_MeV2": 0.0,
+        "branch": "melted_zero_energy_minimum",
+        "energy_hessian_MeV2": 75576011.75865977,
+        "eom_residual_MeV3": 0.0,
+        "pressure_MeV4": -142922947167.2625,
+        "rho_MeV4": 142922947167.2625,
+        "stable": true
+      },
+      "fixed_frequency_SEC_MeV_fm3": -37202.525146053486,
+      "fixed_frequency_pressure_MeV_fm3": -18601.262573026743,
+      "fixed_frequency_rho_MeV_fm3": 18601.262573026743,
+      "x_n0": 10.0
+    }
+  ],
+  "calibration": {
+    "A0_per_n0_MeV": 20.313293701808977,
+    "C_scaling": 1.1366895115535995,
+    "I1": 0.5277226723727038,
+    "V0_MeV4": 142922947167.2625,
+    "V0_MeV_fm3": 18601.262573026743,
+    "gamma_per_n0_MeV": 955.5470087300951,
+    "lambda_model": 1.05,
+    "lambda_sigma": 1.0574981413073596,
+    "mu": 1177.810600223992,
+    "mu_squared": 1387237.81,
+    "mu_theta": 782.6,
+    "q": 47.040476190476184,
+    "scalar_mass_MeV": 1244.8092624976728
+  },
+  "checks": {
+    "action_eom_sign_matches_article": false,
+    "article_section7_energy_stationary_on_advertised_branch": false,
+    "article_threshold_matches_derived": false,
+    "canonical_pressure_sign_matches_maintained": false,
+    "fixed_charge_cubic_dimensions_consistent": true,
+    "fixed_charge_has_no_melting_at_vacuum_charge": true,
+    "gauged_threshold_is_on_positive_density_branch": true,
+    "vacuum_fixed_frequency_anchor": true,
+    "vacuum_fixed_frequency_energy_zero": true
+  },
+  "contract_comparison": {
+    "action_euler_lagrange_sign": "mu^2 + Omega^2",
+    "article_eom_minimum_sign": "mu^2 - Omega^2",
+    "article_pressure_phase_sign": "-phase-term",
+    "article_threshold_x_n0": 2.5,
+    "canonical_pressure_phase_sign": "+phase-term",
+    "derived_threshold_x_n0": 2.0516108389364773,
+    "maintained_script": {
+      "article_section7_rows": [
+        {
+          "quadratic_approx_MeV_fm3": -0.0,
+          "rho_section7_MeV_fm3": 0.0,
+          "x_n0": 0.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -15032.821735906286,
+          "rho_section7_MeV_fm3": -13590.708673895868,
+          "x_n0": 0.5
+        },
+        {
+          "quadratic_approx_MeV_fm3": -60131.28694362514,
+          "rho_section7_MeV_fm3": -16376.376335001205,
+          "x_n0": 1.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -135295.39562315657,
+          "rho_section7_MeV_fm3": -3008.701880341881,
+          "x_n0": 1.5
+        },
+        {
+          "quadratic_approx_MeV_fm3": -240525.14777450057,
+          "rho_section7_MeV_fm3": -6891.075168720931,
+          "x_n0": 2.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -375820.54339765717,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 2.5
+        },
+        {
+          "quadratic_approx_MeV_fm3": -541181.5824926263,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 3.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -962100.5910980023,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 4.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -1503282.1735906287,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 5.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -3848402.364392009,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 8.0
+        },
+        {
+          "quadratic_approx_MeV_fm3": -6013128.694362515,
+          "rho_section7_MeV_fm3": -10807.481590742236,
+          "x_n0": 10.0
+        }
+      ],
+      "article_section7_stationarity_residual_at_vacuum_MeV3": 526105510.84000003,
+      "canonical_phase_pressure_sign": "+0.5*W^2*Omega^2 - V",
+      "legacy_first_melted_grid_x_n0": 2.5,
+      "legacy_rows": [
+        {
+          "Omega_MeV": 782.6,
+          "W_MeV": 859.0,
+          "melted": false,
+          "pressure_MeV_fm3": -29408.74416376898,
+          "rho_MeV_fm3": 29408.74416376898,
+          "x_n0": 0.0
+        },
+        {
+          "Omega_MeV": 304.8264956349525,
+          "W_MeV": 1110.2632109887982,
+          "melted": false,
+          "pressure_MeV_fm3": -15818.035489873106,
+          "rho_MeV_fm3": 15818.035489873106,
+          "x_n0": 0.5
+        },
+        {
+          "Omega_MeV": -172.94700873009504,
+          "W_MeV": 1136.966365533137,
+          "melted": false,
+          "pressure_MeV_fm3": -13032.367828767787,
+          "rho_MeV_fm3": 13032.367828767787,
+          "x_n0": 1.0
+        },
+        {
+          "Omega_MeV": -650.7205130951423,
+          "W_MeV": 958.073773795851,
+          "melted": false,
+          "pressure_MeV_fm3": -26400.042283427105,
+          "rho_MeV_fm3": 26400.042283427105,
+          "x_n0": 1.5
+        },
+        {
+          "Omega_MeV": -1128.4940174601902,
+          "W_MeV": 329.1244699510099,
+          "melted": false,
+          "pressure_MeV_fm3": -22517.66899504805,
+          "rho_MeV_fm3": 22517.66899504805,
+          "x_n0": 2.0
+        },
+        {
+          "Omega_MeV": -1606.2675218252375,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 2.5
+        },
+        {
+          "Omega_MeV": -2084.041026190285,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 3.0
+        },
+        {
+          "Omega_MeV": -3039.5880349203803,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 4.0
+        },
+        {
+          "Omega_MeV": -3995.135043650475,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 5.0
+        },
+        {
+          "Omega_MeV": -6861.77606984076,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 8.0
+        },
+        {
+          "Omega_MeV": -8772.87008730095,
+          "W_MeV": 0.0,
+          "melted": true,
+          "pressure_MeV_fm3": -18601.262573026743,
+          "rho_MeV_fm3": 18601.262573026743,
+          "x_n0": 10.0
+        }
+      ],
+      "legacy_vacuum_pressure_MeV_fm3": -29408.74416376898,
+      "legacy_vacuum_rho_MeV_fm3": 29408.74416376898,
+      "maintained_script_phase_pressure_sign": "-0.5*W^2*Omega^2 - V",
+      "script": "verification/nvg_vacuum_w_field_derivation.py",
+      "vacuum_energy_expected_MeV_fm3": 0.0
+    }
+  },
+  "conventions": {
+    "Omega": "partial_0 theta - q A_0",
+    "V0_choice": "lambda*W_vac^4/4, fixed-frequency vacuum E=0",
+    "density_conversion": "n[fm^-3]*(hbar*c)^3 = n[MeV^3]",
+    "field": "Phi = W exp(i theta)/sqrt(2)",
+    "metric": "+---",
+    "phase_charge": "N = W^2 Omega (MeV^3), physical gauged charge q*N",
+    "potential": "V=-mu^2 W^2/2+lambda W^4/4+V0"
+  },
+  "fixed_charge_branches": [
+    {
+      "Omega_MeV": 0.0,
+      "SEC_MeV4": 630548744471.9495,
+      "W_MeV": 1149.4254506781492,
+      "W_squared_MeV2": 1321178.8666666667,
+      "canonical_phase_charge_MeV3": 0.0,
+      "charge_ratio": 0.0,
+      "pressure_MeV4": 315274372235.9747,
+      "rho_MeV4": -315274372235.9747,
+      "routhian_hessian_MeV2": 2774475.620000001,
+      "stable": true,
+      "stationarity_equation": "lambda*y^3-mu^2*y^2-N^2=0, y=W^2",
+      "stationarity_residual_MeV3": -3.371533922816133e-07,
+      "stationarity_residual_relative": 2.1144421489397216e-16,
+      "zero_branch_allowed": true
+    },
+    {
+      "Omega_MeV": 393.24639033434954,
+      "SEC_MeV4": 1073333529323.3828,
+      "W_MeV": 1211.7993443482517,
+      "W_squared_MeV2": 1468457.6509628529,
+      "canonical_phase_charge_MeV3": 577465670.6,
+      "charge_ratio": 1.0,
+      "pressure_MeV4": 423123619408.96423,
+      "rho_MeV4": -196037328903.50977,
+      "routhian_hessian_MeV2": 3702331.961065974,
+      "stable": true,
+      "stationarity_equation": "lambda*y^3-mu^2*y^2-N^2=0, y=W^2",
+      "stationarity_residual_MeV3": -2.1579386065201854e-07,
+      "stationarity_residual_relative": 1.1549352751761606e-16,
+      "zero_branch_allowed": false
+    }
+  ],
+  "incompatible_contracts": [
+    "action_eom_sign_matches_article",
+    "article_threshold_matches_derived",
+    "canonical_pressure_sign_matches_maintained",
+    "article_section7_energy_stationary_on_advertised_branch"
+  ],
+  "inputs": {
+    "G_coupling_MeV_minus2": 5.01e-06,
+    "Lambda_njl_MeV": 650.0,
+    "M_N_MeV": 939.0,
+    "M_q_MeV": 335.0,
+    "N_f": 2.0,
+    "W_vac_MeV": 859.0,
+    "f_pi_MeV": 92.4,
+    "g_omega": 10.12,
+    "hbar_c_MeV_fm": 197.327,
+    "lambda_model": 1.05,
+    "m_omega_MeV": 782.6,
+    "m_pi_MeV": 139.57,
+    "n0_fm3": 0.16,
+    "sigma_piN_MeV": 44.0,
+    "sigma_sN_MeV": 30.0
+  },
+  "repair": {
+    "attempt": "w-fixed-charge-repair-1",
+    "fixed_charge_equation": "lambda*y^3-mu^2*y^2-N^2=0, y=W^2",
+    "fixed_charge_hessian": "6*lambda*y-4*mu^2",
+    "original_final_report_preserved": true
+  },
+  "schema": "static_w_branch_audit.v1",
+  "status": "FAIL_CLOSED_INCOMPATIBLE_CONTRACT",
+  "thresholds": {
+    "Omega_equals_minus_mu_positive_x_n0": 2.0516108389364773,
+    "Omega_equals_plus_mu_x_n0": -0.41359618795648767,
+    "Omega_equals_zero_x_n0": 0.819007325489995,
+    "action_branch_melting": false,
+    "article_claim_relative_error": 0.2185546852033403,
+    "article_claim_x_n0": 2.5,
+    "article_rho_c_cosmology_MeV_fm3": 70861.9526591495,
+    "article_rho_c_density_MeV_fm3": 0.3753795860241935,
+    "fixed_frequency_melting_condition": "abs(Omega) >= mu"
+  }
+}
