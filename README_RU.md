@@ -167,18 +167,33 @@ M\_max = 2.0405 M☉, R\_1.4 = 12.588 км, Λ̃ = 634/624 (отступ +0.431,
 три полосы при сохранении отождествленного j — одна константа, оба сектора,
 внутри семейства (условно, in-sample, evidence\_weight = 0).
 
-Воспроизведение проб, отождествления, переносимости и перевыбора (всего 115 целевых тестов):
+Первый по-настоящему внешний тест — [проба согласованности с
+PREX-II/CREX](NVG_PREX_CREX_CONSISTENCY_RU.md) — сравнивает точечные
+нейтронные кожи Pb208/Ca48 на обеих ветвях с опубликованными полосами 2σ
+(пре-регистрация; ни j, ни s\* никогда не настраивались по кожам). Вердикт:
+**SKINS\_EXCLUDED\_BOTH\_BRANCHES** (Pb208: −5.1σ no\_rho / −4.4σ
+identified\_j; Ca48: −3.4σ / −2.8σ). Плосковолновые F\_W и A\_PV завышены
+тем же дефицитом компактности, а наивная сила контакта, требуемая кожами
+(58–72 МэВ), в ~5 раз превосходит отождествленную j. Проба чисто разделяет
+объёмный энергетический канал (где j работает на 1–3%) и поверхностный/
+оболочечный канал (направление IV): исключение подтверждает задокументированную
+границу статической TF-ветви, а не провал константы (evidence\_weight = 0).
+
+Воспроизведение проб, отождествления, переносимости, перевыбора
+и внешней согласованности (всего 141 целевой тест):
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_sn132_discriminating_set_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_j_identification_audit.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_isovector_transferability_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_soft_isospin_ns_reselection_probe.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_prex_crex_external_consistency_probe.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
   verification.test_nvg_sn132_discriminating_set_probe \
   verification.test_nvg_j_identification_audit \
   verification.test_nvg_isovector_transferability_probe \
-  verification.test_nvg_soft_isospin_ns_reselection_probe -v
+  verification.test_nvg_soft_isospin_ns_reselection_probe \
+  verification.test_nvg_prex_crex_external_consistency_probe -v
 ```
 
 Контракты: [изоспиновый джет](verification/contracts/nuclear_isospin_jet.md),
@@ -188,9 +203,10 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
 [дискриминирующий набор](NVG_SN132_DISCRIMINATING_SET_RU.md),
 [отождествление j](NVG_J_IDENTIFICATION_RU.md),
 [переносимость изовекторного контакта](NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
-[перевыбор с мягким изоспином](NVG_SOFT_ISOSPIN_RESELECTION_RU.md). Полный научный фронт-дор
-(валидация реестра из 510 записей, предсказательный реестр, канонический
-набор, 1094 семантических тестов) на этом состоянии зелёный.
+[перевыбор с мягким изоспином](NVG_SOFT_ISOSPIN_RESELECTION_RU.md),
+[согласованность с PREX/CREX](NVG_PREX_CREX_CONSISTENCY_RU.md). Полный научный
+фронт-дор (валидация реестра из 512 записей, предсказательный реестр,
+канонический набор, 1120 семантических тестов) на этом состоянии зелёный.
 
 ## Обзор
 

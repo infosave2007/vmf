@@ -2660,91 +2660,91 @@
           "text": "Historical publication bundle (not current runtime evidence). The maintained code exposes a hyperon-threshold proxy, raw RMF comparisons, and a calibrated cooling threshold; a complete beta-equilibrated EOS and independent likelihood are no"
         },
         {
-          "line": 226,
+          "line": 241,
           "text": "- **Compute a calibrated Direct-Urca cooling threshold.** The threshold is an in-sample calibration, not an independent cooling-population confirmation."
         },
         {
-          "line": 298,
+          "line": 313,
           "text": "| 5 | NS cooling dichotomy via a direct-Urca threshold at $1.45 M_\\odot$ (threshold position set by the coupling $\\alpha_v$) | Cas A (slow) vs Vela (fast): the two-regime cooling is reproduced ([nvg_direct_urca.py](verification/nvg_direct_u"
         },
         {
-          "line": 329,
+          "line": 344,
           "text": "| 36 | White Dwarf cooling age shift | Predicted effect $\\Delta t/t \\approx -1.8 \\times 10^{-6}$ is far below Gaia/SDSS age uncertainties ($\\sim 5\\%$) \u2014 indistinguishable from zero ([wd_cooling.py](verification/nvg_wd_cooling.py)) | \u26aa Null "
         },
         {
-          "line": 330,
+          "line": 345,
           "text": "| 37 | Neutron star core g-modes | Runtime WKB forecast over an assumed composition grid gives periods in a 50\u2013150 ms sensitivity band; no detector likelihood or confirmation is available ([nvg_ns_g_modes.py](verification/nvg_ns_g_modes.py)"
         },
         {
-          "line": 331,
+          "line": 346,
           "text": "| 38 | SN1987A dark-photon sensitivity scan | The current reference scan includes a 19.8% mass-drop point with $L_A=8.265\\times10^{55}$ erg/s, above the stated Raffelt reference. Without a sourced SN1987A likelihood and validated transport "
         },
         {
-          "line": 363,
+          "line": 378,
           "text": "| Joint Multi-Messenger Inference | Conditional/in-sample reduced $\\chi^2_\\nu = 0.684$ over three runtime structural rows; cooling is a calibration target and excluded. | The transition was selected using J0740, NICER, and GW170817 inputs, "
         },
         {
-          "line": 406,
+          "line": 421,
           "text": "- **Young Neutron Star Cooling:** The maintained route exposes a calibrated Direct-Urca threshold, but no independent cooling-population likelihood is implemented; the old object-level match is not evidence."
         },
         {
-          "line": 435,
+          "line": 450,
           "text": "| **III. Conditional compatibilities** | $2M_\\Omega$ and the scalar glueball (lattice QCD), $M_{\\rm crit} = 0.992\\,M_\\odot$ vs the absence of sub-solar horizons in GWTC, Cas A/Vela bimodality, and the runtime canonical $\\Lambda_{1.4}=519.4$"
         },
         {
-          "line": 436,
+          "line": 451,
           "text": "| **IV. Calibrations (not evidence)** | $H_0 = 72.8$, Direct Urca threshold $1.45\\,M_\\odot$, EOS shape parameters | one fitted input per block |"
         },
         {
-          "line": 515,
+          "line": 530,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cooling_dark_matter.py          # PBH Dark Matter, NS Cooling (Direct Urca)"
         },
         {
-          "line": 523,
+          "line": 538,
           "text": "\u2502   \u251c\u2500\u2500 nvg_advanced_observables_III.py     # Runtime ledger: mesons, Lorentz, cooling, QNM"
         },
         {
-          "line": 532,
+          "line": 547,
           "text": "\u2502   \u251c\u2500\u2500 nvg_new_predictions.py              # Quantitative multi-messenger predictions (FAIR, GW, LMXB)"
         },
         {
-          "line": 541,
+          "line": 556,
           "text": "\u2502   \u251c\u2500\u2500 nvg_observational_data_fit.py       # Quantitative fits to Planck, DESI, GW170817, and cooling data"
         },
         {
-          "line": 570,
+          "line": 585,
           "text": "\u2502   \u251c\u2500\u2500 nvg_ns_g_modes.py                  # WKB g-mode forecast with assumed composition (no detector likelihood)"
         },
         {
-          "line": 575,
+          "line": 590,
           "text": "\u2502   \u251c\u2500\u2500 nvg_wd_cooling.py                  # White Dwarf cooling rate under VMF"
         },
         {
-          "line": 628,
+          "line": 643,
           "text": "python verification/nvg_new_predictions.py          # Quantitative predictions (FAIR, post-merger GW shift, LMXB)"
         },
         {
-          "line": 641,
+          "line": 656,
           "text": "python verification/nvg_cooling_dark_matter.py     # PBH Dark Matter, NS Cooling dichotomy"
         },
         {
-          "line": 649,
+          "line": 664,
           "text": "python verification/nvg_advanced_observables_III.py# Mesons, Lorentz, NS Cooling"
         },
         {
-          "line": 656,
+          "line": 671,
           "text": "python verification/nvg_observational_data_fit.py   # Fits Planck PR4, DESI DR2, GW170817, and cooling"
         },
         {
-          "line": 687,
+          "line": 702,
           "text": "python verification/nvg_ns_g_modes.py                  # WKB g-mode forecast with assumed composition (no detector likelihood)"
         },
         {
-          "line": 690,
+          "line": 705,
           "text": "python verification/nvg_wd_cooling.py                  # Computes VMF white dwarf cooling rate deviation"
         },
         {
-          "line": 710,
+          "line": 725,
           "text": "13. **NS cooling sensitivity:** The $1.45M_\\odot$ threshold is calibrated; the quoted $10^{33}$ versus $10^{31}$ erg/s regimes are illustrative. Composition, envelope and heating inputs matter, and no independent thermal-population likeliho"
         }
       ],
@@ -2752,7 +2752,7 @@
         "none: sourced cooling/g-mode composition and thermal likelihood",
         "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
       ],
-      "sha256": "3f6542f748c327b9d092398530dfa768d6c60ed2237e65f5de1b0f29fa92b3d6",
+      "sha256": "1872d1911a2587a195bf4896e4c97b161085766d14456b5175a550402cfb4ef5",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "README.md"
     },
@@ -2761,71 +2761,71 @@
       "matching_line_count": 17,
       "matching_lines": [
         {
-          "line": 226,
+          "line": 242,
           "text": "- **\u0412\u044b\u0447\u0438\u0441\u043b\u044f\u044e\u0442 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u043e\u0440\u043e\u0433 Direct Urca.** \u041f\u043e\u0440\u043e\u0433 \u0432\u044b\u0431\u0440\u0430\u043d \u0432\u043d\u0443\u0442\u0440\u0438 \u0432\u044b\u0431\u043e\u0440\u043a\u0438 \u0438 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u043c \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435\u043c \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f."
         },
         {
-          "line": 240,
+          "line": 256,
           "text": "#### \u0420\u0438\u0441. 2. \u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A: VMF vs Chandra"
         },
         {
-          "line": 241,
+          "line": 257,
           "text": "\u0412 \u043a\u043e\u0434\u0435 \u0437\u0430\u043f\u0438\u0441\u0430\u043d\u044b 11 \u0442\u0435\u043c\u043f\u0435\u0440\u0430\u0442\u0443\u0440 Chandra ACIS-S (2000\u20132019), \u0438\u043b\u043b\u044e\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u043d\u0430\u043a\u043b\u043e\u043d $-3650$ \u041a/\u0433\u043e\u0434 \u0438 \u043d\u043e\u0440\u043c\u0438\u0440\u043e\u0432\u043a\u0430 2.010 MK. \u0422\u0435\u043f\u043b\u043e\u0432\u043e\u0439 \u0440\u0435\u0448\u0430\u0442\u0435\u043b\u044c \u0438 \u0441\u043f\u0435\u043a\u0442\u0440\u0430\u043b\u044c\u043d\u044b\u0439 likelihood Chandra \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044e\u0442; \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u0435 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u043c \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u0435\u043c \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f"
         },
         {
-          "line": 243,
+          "line": 259,
           "text": "![\u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A: VMF vs Chandra](verification/fig_cas_a_cooling.png)"
         },
         {
-          "line": 387,
+          "line": 403,
           "text": "| 5 | \u0414\u0438\u0445\u043e\u0442\u043e\u043c\u0438\u044f \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u041d\u0417 \u0447\u0435\u0440\u0435\u0437 \u043f\u043e\u0440\u043e\u0433 \u043f\u0440\u044f\u043c\u043e\u0439 \u0423\u0440\u043a\u0438 \u043f\u0440\u0438 $1.45 M_\\odot$ (\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e\u0440\u043e\u0433\u0430 \u0437\u0430\u0434\u0430\u0451\u0442\u0441\u044f \u0441\u0432\u044f\u0437\u044c\u044e $\\alpha_v$) | Cas A (\u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u0435) vs Vela (\u0431\u044b\u0441\u0442\u0440\u043e\u0435): \u0434\u0432\u0443\u0445\u0440\u0435\u0436\u0438\u043c\u043d\u043e\u0435 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438\u0442\u0441\u044f ([nvg_direct_urca.py](verification/nvg_direc"
         },
         {
-          "line": 418,
+          "line": 434,
           "text": "| 36 | \u0421\u0434\u0432\u0438\u0433 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u0430 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432 | \u041f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u044d\u0444\u0444\u0435\u043a\u0442 $\\Delta t/t \\approx -1.8 \\times 10^{-6}$ \u043d\u0430 \u043f\u043e\u0440\u044f\u0434\u043a\u0438 \u043c\u0435\u043d\u044c\u0448\u0435 \u043f\u043e\u0433\u0440\u0435\u0448\u043d\u043e\u0441\u0442\u0435\u0439 \u0432\u043e\u0437\u0440\u0430\u0441\u0442\u043e\u0432 Gaia/SDSS ($\\sim 5\\%$) \u2014 \u043d\u0435\u043e\u0442\u043b\u0438\u0447\u0438\u043c \u043e\u0442 \u043d\u0443\u043b\u044f ([wd_cooling.py](verification/nvg_wd_cooling."
         },
         {
-          "line": 420,
+          "line": 436,
           "text": "| 38 | \u0427\u0443\u0432\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u043a\u0430\u043d \u0442\u0451\u043c\u043d\u043e\u0433\u043e \u0444\u043e\u0442\u043e\u043d\u0430 SN1987A | \u0422\u0435\u043a\u0443\u0449\u0438\u0439 reference-\u0441\u043a\u0430\u043d \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0442\u043e\u0447\u043a\u0443 \u043f\u0430\u0434\u0435\u043d\u0438\u044f \u043c\u0430\u0441\u0441\u044b 19.8% \u0441 $L_A=8.265\\times10^{55}$ \u044d\u0440\u0433/\u0441, \u0432\u044b\u0448\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u0440\u0435\u0434\u0435\u043b\u0430 \u0420\u0430\u0444\u0444\u0435\u043b\u044c\u0442\u0430. \u0411\u0435\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e likelihood SN1987A \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u043e\u0439 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u043d"
         },
         {
-          "line": 492,
+          "line": 508,
           "text": "- **\u041e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u043c\u043e\u043b\u043e\u0434\u044b\u0445 \u043d\u0435\u0439\u0442\u0440\u043e\u043d\u043d\u044b\u0445 \u0437\u0432\u0435\u0437\u0434:** \u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u043e\u0440\u043e\u0433 Direct Urca; \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u044b\u0439 likelihood \u043f\u043e\u043f\u0443\u043b\u044f\u0446\u0438\u0438 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043f\u0440\u0435\u0436\u043d\u0435\u0435 \u043e\u0431\u044a\u0435\u043a\u0442\u043d\u043e\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435 \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0441\u0432\u0438\u0434\u0435\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e\u043c."
         },
         {
-          "line": 521,
+          "line": 537,
           "text": "| **III. \u0423\u0441\u043b\u043e\u0432\u043d\u044b\u0435 \u0441\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u0438** | $2M_\\Omega$ \u0438 \u0441\u043a\u0430\u043b\u044f\u0440\u043d\u044b\u0439 \u0433\u043b\u044e\u0431\u043e\u043b (\u0440\u0435\u0448\u0451\u0442\u043e\u0447\u043d\u0430\u044f \u041a\u0425\u0414), $M_{\\rm crit} = 0.992\\,M_\\odot$ \u043f\u0440\u043e\u0442\u0438\u0432 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044f \u0441\u0443\u0431-\u0441\u043e\u043b\u043d\u0435\u0447\u043d\u044b\u0445 \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u043e\u0432 \u0432 GWTC, Cas A/Vela \u0434\u0432\u0443\u0445\u0440\u0435\u0436\u0438\u043c\u043d\u043e\u0441\u0442\u044c \u0438 runtime-\u043a\u0430\u043d\u043e\u043d\u0438\u0447\u0435\u0441\u043a\u0430\u044f $\\Lambda_{1.4}=519.4$ |"
         },
         {
-          "line": 522,
+          "line": 538,
           "text": "| **IV. \u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 (\u043d\u0435 \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e)** | $H_0 = 72.8$, \u043f\u043e\u0440\u043e\u0433 Direct Urca $1.45\\,M_\\odot$, \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b \u0444\u043e\u0440\u043c\u044b EOS | \u043e\u0434\u0438\u043d \u043f\u043e\u0434\u043e\u0433\u043d\u0430\u043d\u043d\u044b\u0439 \u0432\u0445\u043e\u0434 \u043d\u0430 \u0431\u043b\u043e\u043a |"
         },
         {
-          "line": 601,
+          "line": 617,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cooling_dark_matter.py          # \u041f\u0427\u0414 \u0422\u0451\u043c\u043d\u0430\u044f \u043c\u0430\u0442\u0435\u0440\u0438\u044f, \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u041d\u0417 (Direct Urca)"
         },
         {
-          "line": 618,
+          "line": 634,
           "text": "\u2502   \u251c\u2500\u2500 nvg_new_predictions.py              # \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u043c\u0443\u043b\u044c\u0442\u0438\u043c\u0443\u043b\u044c\u0442\u0438\u043c\u0435\u0441\u0441\u0435\u043d\u0434\u0436\u0435\u0440\u043d\u044b\u0435 \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u044f (FAIR, GW, LMXB)"
         },
         {
-          "line": 654,
+          "line": 670,
           "text": "\u2502   \u251c\u2500\u2500 nvg_cas_a_cooling_curve.py         # \u0420\u0438\u0441. 2: \u041a\u0440\u0438\u0432\u0430\u044f \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f Cas A \u0441 \u0442\u043e\u0447\u043a\u0430\u043c\u0438 Chandra"
         },
         {
-          "line": 661,
+          "line": 677,
           "text": "\u2502   \u251c\u2500\u2500 nvg_wd_cooling.py                  # \u0421\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432 \u043f\u043e\u0434 VMF"
         },
         {
-          "line": 714,
+          "line": 730,
           "text": "python verification/nvg_new_predictions.py          # \u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0435 \u043f\u0440\u0435\u0434\u0441\u043a\u0430\u0437\u0430\u043d\u0438\u044f (FAIR, \u0441\u0434\u0432\u0438\u0433 GW, LMXB)"
         },
         {
-          "line": 727,
+          "line": 743,
           "text": "python verification/nvg_cooling_dark_matter.py     # \u041f\u0427\u0414 \u0422\u0451\u043c\u043d\u0430\u044f \u043c\u0430\u0442\u0435\u0440\u0438\u044f, \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u0435 \u041d\u0417"
         },
         {
-          "line": 777,
+          "line": 793,
           "text": "python verification/nvg_wd_cooling.py                  # \u0412\u044b\u0447\u0438\u0441\u043b\u044f\u0435\u0442 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u0438 \u043e\u0441\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u0431\u0435\u043b\u044b\u0445 \u043a\u0430\u0440\u043b\u0438\u043a\u043e\u0432"
         }
       ],
@@ -2833,7 +2833,7 @@
         "none: sourced cooling/g-mode composition and thermal likelihood",
         "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
       ],
-      "sha256": "07b16105d5aa65e21a9f2a9608ed7d5561b63738bb4e2013bc627afa279f6dd5",
+      "sha256": "aa645b45a40734d2f6dd05621b50c86970b8d1d54c83f1702a294bf9ca626af9",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "README_RU.md"
     },
@@ -3352,9 +3352,9 @@
     "excluded_fields": [
       "payload_integrity"
     ],
-    "payload_sha256": "b9a05c65201d5bd5180c4716b3bda66458f810120cb8955d094da69542495c00",
+    "payload_sha256": "7b6a8ce8b47cc77bd42ee1dd19f6cdeb536b557cf5d38124baca3c744659e79f",
     "schema": "P3-S6-complete-payload-v1",
-    "sha256": "b9a05c65201d5bd5180c4716b3bda66458f810120cb8955d094da69542495c00",
+    "sha256": "7b6a8ce8b47cc77bd42ee1dd19f6cdeb536b557cf5d38124baca3c744659e79f",
     "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
   },
   "physical_no_go": {
@@ -3439,8 +3439,8 @@
       "status": "NONE_USED"
     },
     "local_source_sha256": {
-      "README.md": "3f6542f748c327b9d092398530dfa768d6c60ed2237e65f5de1b0f29fa92b3d6",
-      "README_RU.md": "07b16105d5aa65e21a9f2a9608ed7d5561b63738bb4e2013bc627afa279f6dd5",
+      "README.md": "1872d1911a2587a195bf4896e4c97b161085766d14456b5175a550402cfb4ef5",
+      "README_RU.md": "aa645b45a40734d2f6dd05621b50c86970b8d1d54c83f1702a294bf9ca626af9",
       "article/NVG_SCIENTIFIC_ARTICLE_EN.md": "64bb26d87de8d128d858e27527b7ef3abf40a8f4f3435dc71f6a64e4066d9183",
       "article/NVG_SCIENTIFIC_ARTICLE_RU.md": "b561f96e6a03f6567de24a89725204ac9d94e8b40f43675ae4ae1d7717ec24c5",
       "article/NVG_THETA_HALOSCOPE_PREPRINT.tex": "b93055438c71b4ea2ec5434fdb2124b17086aaf148894b8585746869f02d2895",

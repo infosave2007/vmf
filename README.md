@@ -166,19 +166,33 @@ compensates the isospin-driven stiffening and restores all three bands while
 keeping the identified j — one constant, both sectors, within the family
 (conditional, in-sample, evidence_weight = 0).
 
-Reproduce the probes, the identification, the transferability and the
-re-selection (115 focused tests total):
+The first genuinely external test — the [PREX-II/CREX consistency
+probe](NVG_PREX_CREX_CONSISTENCY_RU.md) — then compares the point neutron
+skins of Pb208/Ca48 on both branches against the published two-sigma bands
+(pre-registered; neither j nor s* was ever tuned to a skin). Verdict:
+**SKINS_EXCLUDED_BOTH_BRANCHES** (Pb208: -5.1 sigma no_rho / -4.4 sigma
+identified_j; Ca48: -3.4 / -2.8 sigma). The plane-wave F_W and A_PV run high
+by the same compactness deficit, and the naive contact strength the skins
+would require (58-72 MeV) is ~5x the identified j. This cleanly separates the
+bulk energy channel (where j works at 1-3%) from the surface/shell channel
+(direction IV): the exclusion confirms the documented boundary of the static
+TF branch rather than failing the constant (evidence_weight = 0).
+
+Reproduce the probes, the identification, the transferability, the
+re-selection and the external-consistency probe (141 focused tests total):
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_sn132_discriminating_set_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_j_identification_audit.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_isovector_transferability_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_soft_isospin_ns_reselection_probe.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_prex_crex_external_consistency_probe.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
   verification.test_nvg_sn132_discriminating_set_probe \
   verification.test_nvg_j_identification_audit \
   verification.test_nvg_isovector_transferability_probe \
-  verification.test_nvg_soft_isospin_ns_reselection_probe -v
+  verification.test_nvg_soft_isospin_ns_reselection_probe \
+  verification.test_nvg_prex_crex_external_consistency_probe -v
 ```
 
 Contracts: [nuclear isospin jet](verification/contracts/nuclear_isospin_jet.md),
@@ -188,9 +202,10 @@ Contracts: [nuclear isospin jet](verification/contracts/nuclear_isospin_jet.md),
 [discriminating set](NVG_SN132_DISCRIMINATING_SET_RU.md),
 [j identification](NVG_J_IDENTIFICATION_RU.md),
 [isovector transferability](NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
-[soft-isospin re-selection](NVG_SOFT_ISOSPIN_RESELECTION_RU.md). The full scientific front
-door (registry validation with 510 entries, predictive ledger, canonical
-suite, 1094 semantic tests) is green at this state.
+[soft-isospin re-selection](NVG_SOFT_ISOSPIN_RESELECTION_RU.md),
+[PREX/CREX consistency](NVG_PREX_CREX_CONSISTENCY_RU.md). The full scientific
+front door (registry validation with 512 entries, predictive ledger, canonical
+suite, 1120 semantic tests) is green at this state.
 
 ## Overview
 

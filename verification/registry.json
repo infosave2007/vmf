@@ -8489,6 +8489,47 @@
       "role": "validation",
       "status": "maintained",
       "tests": []
+    },
+    "verification/nvg_prex_crex_external_consistency_probe.py": {
+      "consumers": [
+        "verification/test_nvg_prex_crex_external_consistency_probe.py"
+      ],
+      "deprecation": "Conditional zero-evidence external-consistency audit against published PREX-II/CREX values; the experimental numbers are public knowledge, so this is not a blind prediction, and the plane-wave F_W/A_PV comparisons are descriptive only.",
+      "description": "PREX-II/CREX external-consistency probe: point neutron skins of Pb208/Ca48 on the no_rho and identified-j branches against the published two-sigma bands (pre-registered), with fail-closed reproduction of three retained artifacts, five multi-seed terminal solves, plane-wave F_W/A_PV at the measured kinematics and the naive contact strength required for each skin.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_finite_monopole.py",
+        "verification/nvg_finite_static_bridge.py",
+        "verification/nvg_isovector_formfactor_probe.py",
+        "verification/nvg_sn132_discriminating_set_probe.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_prex_crex_external_consistency_probe.py"
+      ]
+    },
+    "verification/test_nvg_prex_crex_external_consistency_probe.py": {
+      "consumers": [],
+      "deprecation": "Focused tests for the zero-evidence PREX/CREX external-consistency audit.",
+      "description": "Published-band and kinematics checks, verdict logic, A_PV reconstruction identity against the form-factor operator stack on synthetic profiles, fail-closed retained-artifact controls and retained-payload checks for the PREX/CREX consistency probe.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_prex_crex_external_consistency_probe.py",
+        "verification/nvg_isovector_formfactor_probe.py",
+        "verification/nvg_isovector_transferability_probe.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
     }
   },
   "front_door": {
