@@ -134,7 +134,7 @@
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
+        "sha256": "c819b6b119253fe920c108bb74da617a217f1d84375c27d69105f9e23c6d1b29"
       },
       "status": "DERIVED_NULL_CONTROL_BAROTROPIC_NEUTRAL_BUOYANCY",
       "values": {
@@ -154,11 +154,11 @@
       "domain": "cooling/g-modes",
       "evidence_weight": 0.0,
       "id": "cooling_and_gmode",
-      "payload_sha256": "c1f3ad1506bbbd29f1138ef91c45f0d4a3344dde384498b6c3a0f3417af230af",
+      "payload_sha256": "b9a05c65201d5bd5180c4716b3bda66458f810120cb8955d094da69542495c00",
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
+        "sha256": "c819b6b119253fe920c108bb74da617a217f1d84375c27d69105f9e23c6d1b29"
       },
       "status": "blocked"
     },
@@ -542,7 +542,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "54a1299a8f824c6c898bb7a0a2591d859743c814061816703746a848375ccb16",
+    "payload_sha256": "e46c5de7bffe1b7926855bc6f57c579728dccf7b61986cc97beab1646599fec6",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -569,7 +569,7 @@
     "cooling_result": {
       "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
       "role": "P3-S6 final cooling/g-mode artifact",
-      "sha256": "f4462f5f97e45dba7c716435e99861d8762f507f1382b10be5cd643dc18ded2c"
+      "sha256": "c819b6b119253fe920c108bb74da617a217f1d84375c27d69105f9e23c6d1b29"
     },
     "cooling_test": {
       "path": "verification/test_p3_cooling_gmode_dependency_audit.py",

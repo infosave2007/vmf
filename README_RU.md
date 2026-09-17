@@ -137,14 +137,48 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest verifica
 изовекторного члена как элемента теории — открытое решение автора;
 все эти аудиты несут evidence_weight = 0.
 
-Воспроизведение проб и отождествления (всего 69 целевых тестов):
+Замыкающая [проба переносимости](NVG_ISOVECTOR_TRANSFERABILITY_RU.md)
+проверяет константу с двух сторон. Часть A: секант-переанкеровка s\* по Ca40
+под ро-контакт даёт ds/s = −0.041% (s\*\_ρ = 0.2267063) — вердикт
+**REANCHORED_UNIVERSAL_J_SURVIVES**, коллапс остатков 202.7 → −2.6 МэВ
+переживает чистую перекалибровку якоря. Часть B: каноническая NS-цепочка
+однокомпонентна (изоскалярный EOS — ро-член в неё не входит), а перенос
+j = 11.136 МэВ в двухкомпонентное семейство насыщенного векторного EOS
+(C\_ρ → 2j/n₀ = 139.2 МэВ·фм³) даёт реалистичные J = 29.0 / L = 85 МэВ и
+РАСТЁТ M\_max 2.048 → 2.095 M☉ (вердикт **TRANSFERABLE_TO_NS_SECTOR**),
+но ломает вторичные полосы (R\_1.4 = 13.45 км > 13.2; Λ̃ ≈ 940/870 > 720):
+механизм — связанная калибровка насыщения компенсирует мягкий изоспин
+ростом c\_ω0 (1794 → 2074), ужесточая EOS. Вывод: j не является свободно
+переносимой константой drop-in — NS-семейство потребовало бы перевыбора,
+не одной замены.
+
+Этот перевыбор выполнен: пре-регистрированный [скан перевыбора с мягким
+изоспином](NVG_SOFT_ISOSPIN_RESELECTION_RU.md) (сетка 3150 точек по форме
+изоскалярного семейства и параметрам перехода при C\_ρ = 2j/n₀) отвечает в
+две стадии. Стадия 1 (только параметры перехода при базлайн-изоскалярной
+форме): 0 из 42 выживших — drop-in-перевыбор сдвиг не поглощает. Стадия 2
+(полное семейство): 75 выживших, вердикт **SOFT_ISOSPIN_SURVIVOR_FOUND**.
+Лучшая точка k1 = 0.20, k2 = 0.60, Cs = 900, n\_tr = 1.8, δϵ = 0.10:
+M\_max = 2.0405 M☉, R\_1.4 = 12.588 км, Λ̃ = 634/624 (отступ +0.431,
+связывающее — GW170817), UNIQUE\_STABLE\_BRANCH, подтверждено на 120-точечном
+разрешении; область выживания — широкое плато (k1 ∈ {0.20, 0.25}), а не
+игольное ушко. Умеренно более быстрое затухание скалярной массы (k1 0.25 →
+0.20) компенсирует изоспин-индуцированное ужесточение и восстанавливает все
+три полосы при сохранении отождествленного j — одна константа, оба сектора,
+внутри семейства (условно, in-sample, evidence\_weight = 0).
+
+Воспроизведение проб, отождествления, переносимости и перевыбора (всего 115 целевых тестов):
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_sn132_discriminating_set_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_j_identification_audit.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_isovector_transferability_probe.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_soft_isospin_ns_reselection_probe.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
   verification.test_nvg_sn132_discriminating_set_probe \
-  verification.test_nvg_j_identification_audit -v
+  verification.test_nvg_j_identification_audit \
+  verification.test_nvg_isovector_transferability_probe \
+  verification.test_nvg_soft_isospin_ns_reselection_probe -v
 ```
 
 Контракты: [изоспиновый джет](verification/contracts/nuclear_isospin_jet.md),
@@ -152,9 +186,11 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
 [проба с формфактором](NVG_ISOVECTOR_FORMFACTOR_PROBE_RU.md),
 [внеконкурсная проба Ca48](NVG_CA48_QUANTUM_SURFACE_PROBE_RU.md),
 [дискриминирующий набор](NVG_SN132_DISCRIMINATING_SET_RU.md),
-[отождествление j](NVG_J_IDENTIFICATION_RU.md). Полный научный фронт-дор
-(валидация реестра из 506 записей, предсказательный реестр, канонический
-набор, 1048 семантических тестов) на этом состоянии зелёный.
+[отождествление j](NVG_J_IDENTIFICATION_RU.md),
+[переносимость изовекторного контакта](NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
+[перевыбор с мягким изоспином](NVG_SOFT_ISOSPIN_RESELECTION_RU.md). Полный научный фронт-дор
+(валидация реестра из 510 записей, предсказательный реестр, канонический
+набор, 1094 семантических тестов) на этом состоянии зелёный.
 
 ## Обзор
 

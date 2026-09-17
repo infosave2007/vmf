@@ -1,5 +1,5 @@
 # NVG Runtime Evidence Ledger
-**Generated (UTC):** 2026-09-16T18:20:15+00:00
+**Generated (UTC):** 2026-09-17T06:23:59+00:00
 
 ## Canonical executable result
 

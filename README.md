@@ -135,14 +135,50 @@ pre-registration, at 1-3% accuracy. Radii/skins remain outside the static
 branch (shell physics); adopting the isovector term as a theory element is a
 pending author decision; all these audits carry evidence_weight = 0.
 
-Reproduce the probes and the identification (69 focused tests total):
+The closing [transferability probe](NVG_ISOVECTOR_TRANSFERABILITY_RU.md)
+tests the constant from both sides. Part A: a secant re-anchoring of s\* on
+Ca40 under the rho contact gives ds/s = -0.041% (s\*_rho = 0.2267063) —
+verdict **REANCHORED_UNIVERSAL_J_SURVIVES**, the residual collapse
+202.7 -> -2.6 MeV survives a clean recalibration of the anchor. Part B: the
+canonical NS chain is one-component (isoscalar EOS — the rho term cannot
+enter it), and transferring j = 11.136 MeV into the two-component
+saturated-vector family (C_rho -> 2j/n0 = 139.2 MeV fm^3) yields realistic
+J = 29.0 / L = 85 MeV and RAISES M_max 2.048 -> 2.095 Msun (verdict
+**TRANSFERABLE_TO_NS_SECTOR**), but breaks the secondary screening bands
+(R_1.4 = 13.45 km > 13.2; Lambda_tilde ~ 940/870 > 720): the mechanism is
+the tied saturation calibration compensating the softer isospin by raising
+c_omega0 (1794 -> 2074), stiffening the EOS. Conclusion: j is not a freely
+transferable drop-in constant — the NS family would require re-selection,
+not a single substitution.
+
+That re-selection is now done: the pre-registered [soft-isospin re-selection
+scan](NVG_SOFT_ISOSPIN_RESELECTION_RU.md) (3150-point grid over the isoscalar
+family shape and transition parameters at C_rho = 2j/n0) answers in two
+stages. Stage 1 (transition parameters alone at the baseline isoscalar
+shape): 0 of 42 survivors — drop-in re-selection cannot absorb the shift.
+Stage 2 (full family): 75 survivors, verdict **SOFT_ISOSPIN_SURVIVOR_FOUND**.
+Best point k1 = 0.20, k2 = 0.60, Cs = 900, n_tr = 1.8, de = 0.10: M_max =
+2.0405 Msun, R_1.4 = 12.588 km, Lambda_tilde = 634/624 (margin +0.431,
+binding: GW170817), UNIQUE_STABLE_BRANCH, confirmed at 120-point resolution;
+the surviving region is a wide plateau (k1 in {0.20, 0.25}) rather than a
+fine-tuned needle. A mildly faster scalar-mass decay (k1 0.25 -> 0.20)
+compensates the isospin-driven stiffening and restores all three bands while
+keeping the identified j — one constant, both sectors, within the family
+(conditional, in-sample, evidence_weight = 0).
+
+Reproduce the probes, the identification, the transferability and the
+re-selection (115 focused tests total):
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_sn132_discriminating_set_probe.py
 PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_j_identification_audit.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_isovector_transferability_probe.py
+PYTHONDONTWRITEBYTECODE=1 python -B verification/nvg_soft_isospin_ns_reselection_probe.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
   verification.test_nvg_sn132_discriminating_set_probe \
-  verification.test_nvg_j_identification_audit -v
+  verification.test_nvg_j_identification_audit \
+  verification.test_nvg_isovector_transferability_probe \
+  verification.test_nvg_soft_isospin_ns_reselection_probe -v
 ```
 
 Contracts: [nuclear isospin jet](verification/contracts/nuclear_isospin_jet.md),
@@ -150,9 +186,11 @@ Contracts: [nuclear isospin jet](verification/contracts/nuclear_isospin_jet.md),
 [isovector form-factor probe](NVG_ISOVECTOR_FORMFACTOR_PROBE_RU.md),
 [Ca48 held-out probe](NVG_CA48_QUANTUM_SURFACE_PROBE_RU.md),
 [discriminating set](NVG_SN132_DISCRIMINATING_SET_RU.md),
-[j identification](NVG_J_IDENTIFICATION_RU.md). The full scientific front
-door (registry validation with 506 entries, predictive ledger, canonical
-suite, 1048 semantic tests) is green at this state.
+[j identification](NVG_J_IDENTIFICATION_RU.md),
+[isovector transferability](NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
+[soft-isospin re-selection](NVG_SOFT_ISOSPIN_RESELECTION_RU.md). The full scientific front
+door (registry validation with 510 entries, predictive ledger, canonical
+suite, 1094 semantic tests) is green at this state.
 
 ## Overview
 

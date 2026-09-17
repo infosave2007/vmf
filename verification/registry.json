@@ -8404,6 +8404,91 @@
     "role": "validation",
     "status": "maintained",
     "tests": []
+    },
+    "verification/nvg_isovector_transferability_probe.py": {
+      "consumers": [
+        "verification/test_nvg_isovector_transferability_probe.py"
+      ],
+      "deprecation": "Conditional zero-evidence diagnostic; the re-anchored rho branch and the NS-sector transfer are declared probes, not a recalibration of production files or a theory change.",
+      "description": "Isovector transferability: secant re-anchoring of s* on Ca40 under the universal-j rho contact with all five nuclei re-solved, plus NS-sector consistency of the saturated-vector family (symmetry-energy audit, cross-branch contact ratio, transferred-contact TOV chain against pre-registered bands).",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_finite_static_bridge.py",
+        "verification/nvg_isovector_formfactor_probe.py",
+        "verification/nvg_sn132_discriminating_set_probe.py",
+        "verification/nvg_eos_beta_saturated_vector.py",
+        "verification/nvg_eos_beta_css_softening.py",
+        "verification/nvg_ns_predictive_audit.py",
+        "verification/nvg_tidal_deformability.py",
+        "verification/nvg_ns_predictive_audit_results.json"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_isovector_transferability_probe.py"
+      ]
+    },
+    "verification/test_nvg_isovector_transferability_probe.py": {
+      "consumers": [],
+      "deprecation": "Focused tests for the zero-evidence isovector transferability diagnostic.",
+      "description": "Cited-anchor live verification, transfer algebra, pre-registered verdict-band logic, symmetry-energy sanity bands and retained-artifact payload checks for the transferability probe.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_isovector_transferability_probe.py",
+        "verification/nvg_sn132_discriminating_set_probe.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_soft_isospin_ns_reselection_probe.py": {
+      "consumers": [
+        "verification/test_nvg_soft_isospin_ns_reselection_probe.py"
+      ],
+      "deprecation": "Conditional zero-evidence family-viability diagnostic; the isovector coupling is pinned to the identified j and the three screening constraints are selection inputs exactly as for the canonical chain, not independent evidence.",
+      "description": "Soft-isospin NS-family re-selection: pre-registered 3150-point grid (k1, k2, Cs, n_trans, delta_eps) at C_rho = 2j/n0 with the saturation calibration intact, against the three canonical screening constraints; includes fail-closed reproduction of both retained transferability chains.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_eos_beta_css_softening.py",
+        "verification/nvg_isovector_transferability_probe.py",
+        "verification/nvg_ns_predictive_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_soft_isospin_ns_reselection_probe.py"
+      ]
+    },
+    "verification/test_nvg_soft_isospin_ns_reselection_probe.py": {
+      "consumers": [],
+      "deprecation": "Focused tests for the zero-evidence soft-isospin re-selection diagnostic.",
+      "description": "Pre-registered grid and verdict-band checks, canonical constraint mirror, baseline-patch restoration, retained-control reproductions and retained-artifact payload checks for the soft-isospin re-selection probe.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_soft_isospin_ns_reselection_probe.py",
+        "verification/nvg_eos_beta_css_softening.py",
+        "verification/nvg_isovector_transferability_probe.py",
+        "verification/nvg_ns_predictive_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
     }
   },
   "front_door": {
