@@ -8530,6 +8530,198 @@
       "role": "validation",
       "status": "maintained",
       "tests": []
+    },
+    "verification/data/nonlinear_calibration_protocol_2026.md": {
+      "consumers": [
+        "verification/nvg_nonlinear_calibration_response.py"
+      ],
+      "deprecation": "Versioned numerical specification for the local nonlinear calibration bridge; not an independent preregistration or empirical input.",
+      "description": "Public machine-readable nonlinear calibration protocol bound by the live producer; zero-evidence reproducibility input.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "utility",
+      "status": "utility",
+      "tests": []
+    },
+    "verification/nvg_nonlinear_calibration_response.py": {
+      "consumers": [
+        "verification/nvg_thermal_observable_bridge.py",
+        "verification/nvg_thermal_spatial_response.py",
+        "verification/nvg_thermal_master_response.py",
+        "verification/nvg_thermal_composition_hessian.py"
+      ],
+      "deprecation": "Local nonlinear inverse-response calibration only; no global phase, dynamical, resonance, or empirical claim.",
+      "description": "Live W8/U16 inverse chemical-potential response on the public calibration protocol, retained as a zero-weight prerequisite for the finite-temperature bridges.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_density_universality_audit.py",
+        "verification/data/nonlinear_calibration_protocol_2026.md"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_thermal_observable_bridge.py": {
+      "consumers": [
+        "verification/nvg_thermal_spatial_response.py",
+        "verification/nvg_thermal_master_response.py",
+        "verification/nvg_thermal_composition_hessian.py"
+      ],
+      "deprecation": "Bounded local thermal/susceptibility bridge only; no global phase-equilibrium, covariance, or experimental claim.",
+      "description": "Live finite-temperature W8/U16 homogeneous observable bridge with local saddle and susceptibility controls; zero independent evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlinear_calibration_response.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_thermal_spatial_response.py": {
+      "consumers": [
+        "verification/nvg_thermal_master_response.py"
+      ],
+      "deprecation": "Finite-temperature static spatial response on a bounded local branch; not an equal-time covariance or proton-count prediction.",
+      "description": "Live finite-q thermal baryon response with analytic angular kernel, full scalar/vector saddle elimination, and refinement controls; zero independent evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlinear_calibration_response.py",
+        "verification/nvg_nonlocal_response.py",
+        "verification/nvg_spatial_identifiability_audit.py",
+        "verification/nvg_thermal_observable_bridge.py"
+      ],
+      "kind": "script",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_thermal_master_response.py": {
+      "consumers": [
+        "verification/test_thermal_master_response.py"
+      ],
+      "deprecation": "Finite-temperature six-current response certificate on bounded local states; not an all-frequency positivity or experimental result.",
+      "description": "Live finite-temperature master response with 160 complex off-pole/static rows, 32 analytic cut rows, Ward/static/dynamic controls, and full saddle checks; zero independent evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlinear_calibration_response.py",
+        "verification/nvg_retarded_response.py",
+        "verification/nvg_thermal_observable_bridge.py",
+        "verification/nvg_thermal_spatial_response.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_thermal_master_response_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_thermal_master_response.py"
+      ]
+    },
+    "verification/nvg_thermal_composition_hessian.py": {
+      "consumers": [
+        "verification/test_thermal_composition_hessian.py"
+      ],
+      "deprecation": "Bounded local finite-temperature composition Hessian only; fixed j is a conditional known input, not a fitted force or empirical confirmation.",
+      "description": "Live canonical two-component thermal composition Hessian with free energy, pressure, inverse map and charge-coordinate controls; zero independent evidence weight.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_nonlinear_calibration_response.py",
+        "verification/nvg_thermal_observable_bridge.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_thermal_composition_hessian_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_thermal_composition_hessian.py"
+      ]
+    },
+    "verification/test_thermal_master_response.py": {
+      "consumers": [],
+      "deprecation": "Focused live controls for the zero-weight finite-temperature master response.",
+      "description": "Coverage, Ward/static/dynamic, cut-limit, scale, mutation, and strict-output regression tests for the finite-temperature master response.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_thermal_master_response.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_thermal_composition_hessian.py": {
+      "consumers": [],
+      "deprecation": "Focused live controls for the zero-weight finite-temperature composition Hessian.",
+      "description": "Canonical coverage, Maxwell, contact, charge-coordinate, units, mutation, and strict-output regression tests for the composition Hessian bridge.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_thermal_composition_hessian.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/nvg_thermal_master_response_results.json": {
+      "consumers": [],
+      "deprecation": "Accepted zero-weight finite-temperature master-response snapshot; reproducible output, not independent evidence.",
+      "description": "Authenticated output snapshot for the live finite-temperature master response: 160 response rows and 32 analytic thermal-cut rows.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_thermal_master_response.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_thermal_master_response.py"
+      ]
+    },
+    "verification/nvg_thermal_composition_hessian_results.json": {
+      "consumers": [],
+      "deprecation": "Accepted zero-weight finite-temperature composition snapshot; reproducible output, not independent evidence.",
+      "description": "Authenticated output snapshot for the live finite-temperature composition Hessian: 32 canonical rows with full Hessian and inverse controls.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_thermal_composition_hessian.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_thermal_composition_hessian.py"
+      ]
     }
   },
   "front_door": {

@@ -20,6 +20,38 @@ process-smoke; её успешный код не является научным
 манифестах [`provenance.json`](verification/data/provenance.json) и
 [`artifact_manifest.json`](verification/artifact_manifest.json). Происхождение текущих расчётов и отличие от исторических публикаций описаны в [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md).
 
+### Последние принятые мосты конечной температуры
+
+Принятый замыкающий шаг конечной температуры содержит два ограниченных живых
+расчёта. Единый отклик заново строит восемь состояний W8/U16 и публикует
+**160** комплексных внеполюсных/статических строк и **32** аналитические строки
+пространственно-подобного поглощающего разреза. В каждой строке сохранены все
+шесть компонент трёх операторов (плотность, скаляр и продольный ток), проверки
+Уорда и статического/динамического пределов, полное исключение седла 4×4 и оба
+заявленных масштаба без двойного применения. Composition-мост публикует **32**
+канонические строки с `mu_B`, `mu_D`, свободной энергией, давлением, полной
+матрицей Гессиана и обратной матрицей, а также картой координат `(B,Q)`.
+Фиксированный контакт `j=11.13601607117819 МэВ` — только условный известный
+вход: это локальные математические мосты, а не новая сила, доказательство
+положительной спектральной меры на всех частотах или экспериментальное
+подтверждение.
+
+Отчёты: [единый тепловой отклик](NVG_THERMAL_MASTER_RESPONSE_RU.md),
+[тепловой composition-Hessian](NVG_THERMAL_COMPOSITION_HESSIAN_RU.md) и
+[принятая записка о замыкании](NVG_CLOSURE_ADHD_2026_09_20_RU.md).
+
+Целенаправленное воспроизведение (JSON записывается вне checkout):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-research/bin/python3.12 -B verification/nvg_thermal_master_response.py \
+  --output /tmp/nvg_thermal_master_response_results.json
+PYTHONDONTWRITEBYTECODE=1 .venv-research/bin/python3.12 -B verification/nvg_thermal_composition_hessian.py \
+  --output /tmp/nvg_thermal_composition_hessian_results.json
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification .venv-research/bin/python3.12 -B -m unittest \
+  verification.test_thermal_master_response \
+  verification.test_thermal_composition_hessian -v
+```
+
 Используйте Python 3.12 и новое окружение; CI применяет те же requirements и
 [зафиксированные версии](constraints-python312.txt). Из корня репозитория:
 

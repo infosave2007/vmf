@@ -705,6 +705,22 @@
       "producer": "verification/source_complete_resonator_prediction.py",
       "sha256": "2d127e5d7453978a5dcc444676a686171bcc8284cc38d26fabd7fe9b3e9d5c85",
       "status": "conditional_resonator_report_physical_power_blocked"
+    },
+    "verification/nvg_thermal_master_response_results.json": {
+      "canonical_path": "verification/nvg_thermal_master_response_results.json",
+      "command": ".venv-research/bin/python3.12 -B verification/nvg_thermal_master_response.py --output verification/nvg_thermal_master_response_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_thermal_master_response.py",
+      "sha256": "c8a3b83b668c19023a9abf29e6083b726c9e112643f89827ed6f3cc34a3f041d",
+      "status": "finite_temperature_master_response_zero_weight"
+    },
+    "verification/nvg_thermal_composition_hessian_results.json": {
+      "canonical_path": "verification/nvg_thermal_composition_hessian_results.json",
+      "command": ".venv-research/bin/python3.12 -B verification/nvg_thermal_composition_hessian.py --output verification/nvg_thermal_composition_hessian_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_thermal_composition_hessian.py",
+      "sha256": "a68fbb17dca8b09890dca043dbf17d5c9fe3dfcadd8ea6c62cc41f85d3bab7be",
+      "status": "finite_temperature_composition_hessian_zero_weight"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",

@@ -20,6 +20,36 @@ Input provenance and generated-artifact ownership are recorded in the
 [`provenance.json`](verification/data/provenance.json) and
 [`artifact_manifest.json`](verification/artifact_manifest.json) manifests. Current runtime provenance and the distinction from historical publications are described in [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md).
 
+### Latest accepted finite-temperature bridges
+
+The accepted finite-temperature closure adds two bounded, live calculations.
+The master response rebuilds eight W8/U16 states and publishes **160** complex
+off-pole/static rows plus **32** analytic spacelike absorptive-cut rows.  Each
+response keeps all six components of the three density/scalar/longitudinal-
+current operators, the Ward/static/dynamic controls, the full 4x4 saddle
+elimination, and both declared scales without applying a scale twice.  The
+composition bridge publishes **32** canonical rows with `mu_B`, `mu_D`, free
+energy, pressure, the full Hessian and inverse, and the `(B,Q)` coordinate map.
+The fixed `j=11.13601607117819 MeV` contact is a conditional known input only:
+these are local mathematical bridges, not a new force, an all-frequency
+positive spectral-measure proof, or experimental confirmation.
+
+Reports: [thermal master response](NVG_THERMAL_MASTER_RESPONSE_RU.md),
+[thermal composition Hessian](NVG_THERMAL_COMPOSITION_HESSIAN_RU.md), and the
+[accepted closure note](NVG_CLOSURE_ADHD_2026_09_20_RU.md).
+
+Focused reproduction (write JSON outside the checkout):
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv-research/bin/python3.12 -B verification/nvg_thermal_master_response.py \
+  --output /tmp/nvg_thermal_master_response_results.json
+PYTHONDONTWRITEBYTECODE=1 .venv-research/bin/python3.12 -B verification/nvg_thermal_composition_hessian.py \
+  --output /tmp/nvg_thermal_composition_hessian_results.json
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification .venv-research/bin/python3.12 -B -m unittest \
+  verification.test_thermal_master_response \
+  verification.test_thermal_composition_hessian -v
+```
+
 Use Python 3.12 and a fresh environment; CI uses the same requirements and
 [resolved constraints](constraints-python312.txt). From the repository root:
 

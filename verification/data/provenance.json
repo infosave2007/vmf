@@ -120,6 +120,17 @@
       "status": "declared_local_configuration_with_primary_references",
       "trust_status": "declared_local_configuration",
       "version": "finite-static-2026"
+    },
+    "nonlinear_calibration_protocol_2026.md": {
+      "config": "protocol_version=nonlinear-calibration-public-v1; anchors=0.90,0.93; amplitudes=0,1; response_u=-0.20,-0.10,0.10,0.20; primary_dps=90; control_dps=120",
+      "kind": "input",
+      "producer": null,
+      "sha256": "eb0ed369b5773cb865e4a66d5403a7a7d0916cb950e19bb74ab29231212eb58d",
+      "source": "repository-declared public numerical reproduction protocol",
+      "source_url": null,
+      "status": "frozen_public_protocol_bytes",
+      "trust_status": "declared_public_protocol",
+      "version": "nonlinear-calibration-public-v1"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",
