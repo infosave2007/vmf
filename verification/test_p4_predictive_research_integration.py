@@ -9,6 +9,7 @@ import subprocess
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 HERE = Path(__file__).resolve().parent
@@ -94,7 +95,16 @@ class PredictiveResearchIntegrationTests(unittest.TestCase):
         self.assertEqual(claims["pbh"]["seed_band"]["minimum_required_rate_product"], 299558.79267302185)
         self.assertEqual(claims["pbh"]["expanded_scan"]["first_reachable_rung"], 17)
         self.assertEqual(claims["M_Omega"]["status"], "BLOCKED_NO_PHYSICAL_DEPENDENCY")
-        self.assertEqual(claims["ns_quadrupole_Q"]["status"], "blocked")
+        q = claims["ns_quadrupole_Q"]
+        self.assertEqual(q["status"], "derived_conditional_second_order")
+        self.assertEqual(q["historical_first_order"]["status"], "blocked")
+        self.assertEqual(q["mass_correction_status"], "BLOCKED_SURFACE_AND_ENSEMBLE_VALIDATION")
+        self.assertEqual(q["convergence_status"], "PASS_NUMERICAL_CONVERGENCE")
+        self.assertAlmostEqual(q["values"]["q_tilde"], 6.5082, delta=0.001)
+        self.assertEqual(q["source"]["path"], ledger.quadrupole.RESULT_PATH.relative_to(ROOT).as_posix())
+        self.assertEqual(claims["ns_inverse_mass"]["status"], "blocked")
+        self.assertEqual(claims["ns_hartle_j0737a"]["blocked"]["phase1_wider_envelope"], "BLOCKED_NO_HARTLE_REVALIDATION")
+        self.assertEqual(ledger.sha256_file(ledger.P3_NS_RESULT_PATH), ledger.quadrupole.FROZEN_FORECAST_SHA256)
         self.assertTrue(all(row["evidence_weight"] == 0.0 for row in self.payload["claims"]))
 
     def test_ledger_digest_and_semantic_mutations_fail_closed(self) -> None:
@@ -111,6 +121,27 @@ class PredictiveResearchIntegrationTests(unittest.TestCase):
         mutated["claims"][11]["max_row_integrity"]["expanded_max_row"]["cycle"] = 1
         with self.assertRaises(AssertionError):
             ledger.assert_ledger(mutated)
+
+    def test_resigned_quadrupole_claim_is_rejected(self) -> None:
+        value = copy.deepcopy(self.payload)
+        q = next(row for row in value["claims"] if row["id"] == "ns_quadrupole_Q")
+        q["values"]["q_tilde"] += 0.1
+        value["ledger_integrity"]["payload_sha256"] = ledger.canonical_payload_digest(value)
+        with self.assertRaises(AssertionError):
+            ledger.assert_ledger(value)
+
+    def test_corrupt_second_order_source_artifact_is_rejected(self) -> None:
+        original_read = ledger._read_json
+        value = original_read(ledger.quadrupole.RESULT_PATH)
+        value["j0737a"]["q_tilde"] += 0.1
+        value["payload_integrity"]["sha256"] = ledger.quadrupole.payload_digest(value)
+
+        def read(path):
+            return value if path == ledger.quadrupole.RESULT_PATH else original_read(path)
+
+        with patch.object(ledger, "_read_json", side_effect=read):
+            with self.assertRaises(AssertionError):
+                ledger.build_ledger()
 
     def test_cli_regenerates_deterministically(self) -> None:
         completed = subprocess.run(

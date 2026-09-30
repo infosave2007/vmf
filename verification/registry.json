@@ -3957,6 +3957,64 @@
       "status": "maintained",
       "tests": []
     },
+    "verification/nvg_hartle_second_order_quadrupole_probe.png": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Second-order quadrupole and Maclaurin diagnostic figure; no empirical evidence.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": ["verification/test_hartle_second_order_quadrupole.py"]
+    },
+    "verification/nvg_hartle_second_order_quadrupole_probe.py": {
+      "consumers": [
+        "verification/nvg_predictive_research_ledger.py",
+        "verification/test_hartle_second_order_quadrupole.py"
+      ],
+      "deprecation": null,
+      "description": "Second-order Hartle quadrupole on the frozen EOS with convergence, matching, and spin checks; mass correction remains blocked.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+        "verification/nvg_hartle_slow_rotation.py",
+        "verification/nvg_tidal_deformability.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
+        "verification/nvg_hartle_second_order_quadrupole_probe.png"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_hartle_second_order_quadrupole.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
+    "verification/nvg_hartle_second_order_quadrupole_probe_results.json": {
+      "consumers": ["verification/nvg_predictive_research_ledger.py"],
+      "deprecation": null,
+      "description": "Authenticated conditional spin-quadrupole forecast; numerical sensitivity is not a confidence interval.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_hartle_second_order_quadrupole.py",
+        "verification/test_p4_predictive_research_integration.py"
+      ]
+    },
     "verification/nvg_hartle_slow_rotation.py": {
       "consumers": [
         "verification/nvg_ns_frozen_forecasts.py",
@@ -5177,9 +5235,9 @@
         "verification/test_p4_predictive_research_integration.py"
       ],
       "deprecation": null,
-      "description": "Phase-4 fail-closed machine ledger over P3-S8-authorized statuses and values.",
+      "description": "Phase-4 fail-closed ledger over frozen P3-S8 values and a separately validated second-order quadrupole.",
       "evidence_weight": 0.0,
-      "inputs": [],
+      "inputs": ["verification/nvg_hartle_second_order_quadrupole_probe_results.json"],
       "kind": "script",
       "outputs": [
         "verification/predictive_research_ledger.json"
@@ -6202,6 +6260,20 @@
       "description": "Phase-2 hierarchical echo provenance/calibration semantic tests.",
       "evidence_weight": 0.0,
       "inputs": [],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_hartle_second_order_quadrupole.py": {
+      "consumers": [],
+      "deprecation": null,
+      "description": "Second-order convergence, spin normalization, junction, Maclaurin, and mutation rejection tests.",
+      "evidence_weight": 0.0,
+      "inputs": ["verification/nvg_hartle_second_order_quadrupole_probe_results.json"],
       "kind": "test",
       "outputs": [],
       "producer": null,

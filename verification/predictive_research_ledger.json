@@ -87,16 +87,35 @@
       }
     },
     {
-      "blocker": "Hartle second-order quadrupole equations and matching are unavailable.",
+      "convergence_status": "PASS_NUMERICAL_CONVERGENCE",
       "domain": "NS/Hartle",
       "evidence_weight": 0.0,
-      "id": "ns_quadrupole_Q",
-      "source": {
-        "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
-        "role": "P3-S5 final forecast artifact",
-        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+      "historical_first_order": {
+        "reason": "Hartle second-order quadrupole equations and matching are unavailable.",
+        "source": {
+          "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+          "role": "P3-S5 final forecast artifact",
+          "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+        },
+        "status": "blocked"
       },
-      "status": "blocked"
+      "id": "ns_quadrupole_Q",
+      "mass_correction_status": "BLOCKED_SURFACE_AND_ENSEMBLE_VALIDATION",
+      "numerical_sensitivity": [
+        6.508178279388648,
+        6.508268803152033
+      ],
+      "payload_sha256": "7f57fe3a70bae3d6dccfbb665abf3f038a93521ce529fe80ed38952225c83fa3",
+      "scope": "second-order Hartle; frozen zero-jump EOS, branch 1, finite-pressure surface; not EOS-wide or empirical evidence",
+      "source": {
+        "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
+        "role": "validated second-order quadrupole; conditional frozen EOS",
+        "sha256": "11c7980123cba2a164a7a37cbb27ed6b3824a7e17f14a97917a827298fdb39c8"
+      },
+      "status": "derived_conditional_second_order",
+      "values": {
+        "q_tilde": 6.508199652901674
+      }
     },
     {
       "blocker": "No direct I_A measurement and no inverse-mass likelihood are available.",
@@ -464,11 +483,11 @@
   },
   "inventory": {
     "counts": {
-      "durable_artifacts": 27,
+      "durable_artifacts": 29,
       "manifests": 4,
-      "producers": 9,
+      "producers": 10,
       "source_inputs": 3,
-      "tests": 13
+      "tests": 14
     },
     "durable_artifacts": [
       "verification/nvg_ns_predictive_audit_p1s7_results.json",
@@ -483,6 +502,8 @@
       "verification/P1-S3-pbh-nanograv-boundary.png",
       "verification/nvg_hartle_slow_rotation_p2s1_results.json",
       "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+      "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
+      "verification/nvg_hartle_second_order_quadrupole_probe.png",
       "verification/fig_hartle_slow_rotation_p2s1.png",
       "verification/fig_hartle_slow_rotation_p2s5.png",
       "verification/nvg_beta_hyperon_urca_audit_p2s2_results.json",
@@ -511,6 +532,7 @@
       "verification/nvg_s8_no_go.py",
       "verification/nvg_pbh_nanograv_audit.py",
       "verification/nvg_hartle_slow_rotation.py",
+      "verification/nvg_hartle_second_order_quadrupole_probe.py",
       "verification/nvg_beta_hyperon_urca_audit.py",
       "verification/nvg_echo_hierarchical_upper_limit.py",
       "verification/nvg_ns_frozen_forecasts.py",
@@ -527,6 +549,7 @@
       "verification/test_p2_beta_hyperon_urca_audit.py",
       "verification/test_p2_echo_hierarchical_upper_limit.py",
       "verification/test_p2_hartle_slow_rotation.py",
+      "verification/test_hartle_second_order_quadrupole.py",
       "verification/test_p3_cooling_gmode_dependency_audit.py",
       "verification/test_p3_ns_frozen_forecasts.py",
       "verification/test_p3_prospective_falsification_reach.py",
@@ -542,7 +565,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "d9e5c355a1b926324fe04c13bf669a233dfbb7d9c71f4c712f035b529d0d7453",
+    "payload_sha256": "d2046004d0c5cafef77cf38781c03baa0d115e0c23613790be161466e4abc402",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -676,6 +699,21 @@
       "role": "P1-S3 tracked PBH artifact; byte-identical promotion of final control",
       "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
     },
+    "quadrupole_producer": {
+      "path": "verification/nvg_hartle_second_order_quadrupole_probe.py",
+      "role": "independent second-order Hartle producer",
+      "sha256": "63527f1578b0277dba86eb577b3648113431f3717be4028c1734c8247630ca21"
+    },
+    "quadrupole_result": {
+      "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
+      "role": "validated second-order quadrupole; conditional frozen EOS",
+      "sha256": "11c7980123cba2a164a7a37cbb27ed6b3824a7e17f14a97917a827298fdb39c8"
+    },
+    "quadrupole_test": {
+      "path": "verification/test_hartle_second_order_quadrupole.py",
+      "role": "second-order numerical/provenance tests",
+      "sha256": "847925a9250c94a5c8f59499547122e97556936ca4eb568bc282b6fa8af0c014"
+    },
     "reach_csv": {
       "path": "verification/p3_s3_prospective_reach.csv",
       "role": "P3-S7 reach table",
@@ -712,7 +750,7 @@
       "sha256": "46c79cb8325b05754aa10619bb7349cbf62411ff01d72ab42f9e229582c70570"
     }
   },
-  "schema_version": "P4-S1-predictive-research-ledger-v1",
-  "scope": "P3-S8-authorized predictive integration; registry presence is not empirical evidence",
+  "schema_version": "P4-S1-predictive-research-ledger-v2",
+  "scope": "P3-S8-authorized integration plus separately validated second-order quadrupole; registry presence is not empirical evidence",
   "status": "FINAL_P4_S1_MACHINE_LEDGER"
 }

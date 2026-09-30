@@ -1,0 +1,542 @@
+{
+  "artifacts": {
+    "figure_png": "verification/nvg_hartle_second_order_quadrupole_probe.png",
+    "result_json": "verification/nvg_hartle_second_order_quadrupole_probe_results.json"
+  },
+  "audit": "hartle-second-order-quadrupole",
+  "blocker_resolution": {
+    "previous_reason": "The repository supplies no complete second-order Hartle equations, gauge choice, centre data, or vacuum matching conditions; a universal-relation table cannot replace those dependencies.",
+    "previous_status": "BLOCKED",
+    "resolved_by": "independent YY(l=2)+UMS(l=0) second-order producer, symbolically verified",
+    "substitute_used": false
+  },
+  "classification": {
+    "empirical_confirmation": "not_claimed",
+    "independent_evidence_weight": 0.0,
+    "mass_correction": "blocked",
+    "q_tilde": "derived_conditional_second_order",
+    "quadrupole_Q": "derived_conditional_second_order"
+  },
+  "j0737a": {
+    "A_seed_km": 7328.628803911997,
+    "Q_rot_geom_km3_seed": -106868.12748767641,
+    "branch_id": 1,
+    "convergence": {
+      "checks": {
+        "background_max_step_km": true,
+        "background_rtol": true,
+        "max_step_km": true,
+        "rtol": true,
+        "seed_radius_km": true,
+        "spin_normalization": true,
+        "surface_matching": true
+      },
+      "finest_pair_relative_differences": {
+        "background_max_step_km": 1.0436417643272135e-05,
+        "background_rtol": 3.305162968691399e-08,
+        "max_step_km": 1.8069673072275165e-11,
+        "rtol": 5.776803803055676e-13,
+        "seed_radius_km": 5.6019575701162294e-11
+      },
+      "interpretation": "Numerical sensitivity at fixed central pressure and frozen finite-pressure surface; not a confidence interval or EOS uncertainty.",
+      "ladders": {
+        "background_max_step_km": [
+          {
+            "Ibar": 14.303017918457469,
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748767641,
+            "R_km": 12.466899931727045,
+            "background_points": 275,
+            "control": 0.05,
+            "h2_matching_residual": 1.554006710062698e-16,
+            "matching_condition_number": 54197.72288132861,
+            "q_tilde": 6.508199652901674
+          },
+          {
+            "Ibar": 14.303017918398625,
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106869.2629085457,
+            "R_km": 12.466899925138128,
+            "background_points": 516,
+            "control": 0.025,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54198.01501358262,
+            "q_tilde": 6.508268803152033
+          },
+          {
+            "Ibar": 14.303017918895838,
+            "K2_matching_residual": 1.6714040483602958e-16,
+            "Q_rot_seed_km3": -106868.14738434911,
+            "R_km": 12.466899908837782,
+            "background_points": 1012,
+            "control": 0.0125,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54197.747156050136,
+            "q_tilde": 6.508200880849534
+          }
+        ],
+        "background_rtol": [
+          {
+            "Ibar": 14.303017918698178,
+            "K2_matching_residual": 1.67140286549902e-16,
+            "Q_rot_seed_km3": -106868.2213864078,
+            "R_km": 12.466899920049462,
+            "background_points": 273,
+            "control": 1e-09,
+            "h2_matching_residual": 1.5540052648372445e-16,
+            "matching_condition_number": 54197.74296345877,
+            "q_tilde": 6.508205380259057
+          },
+          {
+            "Ibar": 14.303017918562377,
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106867.7799441314,
+            "R_km": 12.466899921953695,
+            "background_points": 279,
+            "control": 1e-10,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54197.64620024132,
+            "q_tilde": 6.508178494494547
+          },
+          {
+            "Ibar": 14.30301791850311,
+            "K2_matching_residual": 1.6714100100471707e-16,
+            "Q_rot_seed_km3": -106867.77642784,
+            "R_km": 12.466899923062405,
+            "background_points": 290,
+            "control": 1e-11,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54197.65015725848,
+            "q_tilde": 6.508178279388648
+          }
+        ],
+        "max_step_km": [
+          {
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748767641,
+            "control": 0.05,
+            "h2_matching_residual": 1.554006710062698e-16,
+            "matching_condition_number": 54197.72288132861,
+            "q_tilde": 6.508199652901674
+          },
+          {
+            "K2_matching_residual": 1.6714043782592097e-16,
+            "Q_rot_seed_km3": -106868.12748593302,
+            "control": 0.025,
+            "h2_matching_residual": 1.554006710089436e-16,
+            "matching_condition_number": 54197.722879558874,
+            "q_tilde": 6.508199652795502
+          },
+          {
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748786408,
+            "control": 0.0125,
+            "h2_matching_residual": 1.55400671005982e-16,
+            "matching_condition_number": 54197.72288027132,
+            "q_tilde": 6.508199652913103
+          }
+        ],
+        "rtol": [
+          {
+            "K2_matching_residual": 3.342808756280755e-16,
+            "Q_rot_seed_km3": -106868.12749333525,
+            "control": 1e-09,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54197.7215521954,
+            "q_tilde": 6.508199653246295
+          },
+          {
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748767641,
+            "control": 1e-10,
+            "h2_matching_residual": 1.554006710062698e-16,
+            "matching_condition_number": 54197.72288132861,
+            "q_tilde": 6.508199652901674
+          },
+          {
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748761468,
+            "control": 1e-11,
+            "h2_matching_residual": 1.5540067100636452e-16,
+            "matching_condition_number": 54197.722820541036,
+            "q_tilde": 6.508199652897915
+          }
+        ],
+        "seed_radius_km": [
+          {
+            "K2_matching_residual": 0.0,
+            "Q_rot_seed_km3": -106868.12748767641,
+            "control": 0.01,
+            "h2_matching_residual": 1.554006710062698e-16,
+            "matching_condition_number": 54197.72288132861,
+            "q_tilde": 6.508199652901674
+          },
+          {
+            "K2_matching_residual": 1.6714043782715143e-16,
+            "Q_rot_seed_km3": -106868.12748516657,
+            "control": 0.005,
+            "h2_matching_residual": 0.0,
+            "matching_condition_number": 54197.77410742221,
+            "q_tilde": 6.508199652748826
+          },
+          {
+            "K2_matching_residual": 3.3428087563508127e-16,
+            "Q_rot_seed_km3": -106868.12749115327,
+            "control": 0.0025,
+            "h2_matching_residual": 1.5540067100093746e-16,
+            "matching_condition_number": 54198.65050585186,
+            "q_tilde": 6.5081996531134125
+          }
+        ]
+      },
+      "q_tilde_numerical_range": [
+        6.508178279388648,
+        6.508268803152033
+      ],
+      "spin_rescaling": [
+        {
+          "K2_matching_residual": 2.1728256917337646e-15,
+          "Q_quadratic_relative_drift": 1.4874768083927847e-11,
+          "Q_rot_seed_km3": -26717.031871521693,
+          "control": 0.5,
+          "h2_matching_residual": 1.864808052104494e-15,
+          "matching_condition_number": 54197.7226487095,
+          "q_relative_drift": 1.487487910623031e-11,
+          "q_tilde": 6.508199652804866
+        },
+        {
+          "K2_matching_residual": 3.34280875644889e-16,
+          "Q_quadratic_relative_drift": 3.950173521616307e-12,
+          "Q_rot_seed_km3": -427472.50995239423,
+          "control": 2.0,
+          "h2_matching_residual": 1.554006710056224e-16,
+          "matching_condition_number": 54197.722732199254,
+          "q_relative_drift": 3.950173521616307e-12,
+          "q_tilde": 6.508199652927383
+        }
+      ],
+      "status": "PASS_NUMERICAL_CONVERGENCE",
+      "tolerances": {
+        "matching": 1e-08,
+        "refinement": 0.001,
+        "spin": 0.0001
+      }
+    },
+    "deltaM_geom_km_seed": 2066.868217226598,
+    "deltaM_over_MR2Om2": 2.5250477997665755,
+    "first_order_reproduced": {
+      "I_A_g_cm2": 1.4856539538408488e+45,
+      "Ibar_A": 14.303017918457469,
+      "R_A_km": 12.466899931727045,
+      "compactness": 0.15848674983037614,
+      "mass_msun": 1.3380999936610847,
+      "tolerances": {
+        "I_A_g_cm2": 1e-07,
+        "Ibar_A": 1e-07,
+        "R_A_km": 1e-07,
+        "compactness": 1e-07
+      }
+    },
+    "gap_crossed": false,
+    "iloveq_crosscheck": {
+      "Ibar_first_order": 14.303017918457469,
+      "Ibar_from_universal_IQ_fit": 14.216420687616589,
+      "Qbar_second_order": 6.508199652901674,
+      "acceptance_gate": false,
+      "authority": "non-authoritative corroboration overlay (Yagi-Yunes 2013 Eq. fit, Table II)",
+      "relative_deviation": 0.006091352580492481,
+      "status": "PASS_IQ_UNIVERSAL_1PCT"
+    },
+    "interpretation": "q_tilde = -Q_rot M / J^2 = Qbar (Yagi-Yunes Eq. bar-Q) is independent of the spin rate; it is a pure structure forecast for the frozen canonical EOS, not an empirical measurement (no direct quadrupole measurement is used). The finite-pressure surface convention is frozen. deltaM_geom_km_seed and deltaM_over_MR2Om2 are bulk-only diagnostics, not total physical mass changes. A_seed_km is a legacy key for dimensionless A.",
+    "kappa": 0.9368776659521888,
+    "mass_correction": {
+      "bulk_seed_km": 2066.868217226598,
+      "reason": "Canonical star terminates at finite pressure; zero-pressure surface matching and a physical sequence are not validated.",
+      "sequence": "p0(0)=0; fixed central pressure, not fixed baryon number",
+      "source": "https://arxiv.org/html/1503.07835v1 Eq. (22)",
+      "status": "BLOCKED_SURFACE_AND_ENSEMBLE_VALIDATION",
+      "surface_candidate_seed_km": 1.1215856489608491
+    },
+    "q_tilde": 6.508199652901674,
+    "q_tilde_band": [
+      2.0,
+      9.0
+    ],
+    "q_tilde_band_acceptance_gate": false,
+    "q_tilde_in_band": true,
+    "q_tilde_seed_radius_drift": 2.3485511931842264e-11,
+    "rel_dev_from_ums_fit": 0.05249196187698194,
+    "status": "derived_conditional_second_order",
+    "surface_state": {
+      "K2_complementary_R": -94.2699394628062,
+      "K2_exterior": -85.02343837486389,
+      "K2_interior": -85.02343837486389,
+      "K2_particular_R": 3.2959624785041175,
+      "K2_relative_residual": 0.0,
+      "deltaM_bulk_seed_km": 2066.868217226598,
+      "deltaM_surface_candidate_seed_km": 1.1215856489608491,
+      "deltaM_total_candidate_seed_km": 2067.989802875559,
+      "h2_complementary_R": 77.0456867349576,
+      "h2_exterior": 91.44654667950982,
+      "h2_interior": 91.44654667950984,
+      "h2_particular_R": 19.264163519579242,
+      "h2_relative_residual": 1.554006710062698e-16,
+      "legendre_Gk": -0.010078666043600786,
+      "legendre_Q22": 0.011138372812273405,
+      "m0_R": 2050.1240580229105,
+      "matching_condition_number": 54197.72288132861,
+      "matching_det": -0.2734959840256598,
+      "p0_R": 70.84703652726786,
+      "surface_density_geom": 1.508623524614704e-07,
+      "surface_pressure_geom": 1.323399999999987e-10
+    },
+    "ums_fit_3p64x_minus_5p3": 6.1836098408724665,
+    "x_R_over_2M": 3.1548378683715566
+  },
+  "maclaurin_validation": {
+    "checks": {
+      "I_ratio_to_two_fifths": true,
+      "Q_ratio_to_minus_half": true,
+      "deltaM_ratio_to_two_fifths": true,
+      "q_tilde_ratio_to_1": true,
+      "seed_radius_stable": true,
+      "successive_extrapolations": true
+    },
+    "extrapolation_difference": 0.00015930289733467884,
+    "mass_correction_scope": "bulk_only_not_total_mass",
+    "previous_q_tilde_ratio_C0": 0.9998037769985544,
+    "provenance": "uniform-density analytic interior-Schwarzschild background; q_tilde/Q targets from Maclaurin E1/E2; 2/5 validates only the l=0 bulk integral. The nonzero-density surface term is separately reported at fixed central pressure; no fixed-baryon-number or total-mass limit is claimed.",
+    "quadrupole_checks": {
+      "I_ratio_to_two_fifths": true,
+      "Q_ratio_to_minus_half": true,
+      "q_tilde_ratio_to_1": true,
+      "seed_radius_stable": true,
+      "successive_extrapolations": true
+    },
+    "radius_km": 10.0,
+    "richardson_limits_C0": {
+      "I_over_MR2_C0": 0.39999817171939256,
+      "Q_over_Om2R5_C0": -0.4999935821260243,
+      "deltaM_over_MR2Om2_C0": 0.3999985860536721,
+      "q_tilde_ratio_C0": 0.9999630798958891
+    },
+    "rows": [
+      {
+        "I_over_MR2": 0.41822622339973153,
+        "I_over_MR2_target": 0.4,
+        "Q_over_Om2R5": -0.4279201938721359,
+        "Q_over_Om2R5_target": -0.5,
+        "R_over_M": 20.0,
+        "compactness": 0.05,
+        "deltaM_over_MR2Om2": 0.41512110877077174,
+        "deltaM_over_MR2Om2_target": 0.4,
+        "deltaM_surface_over_MR2Om2": 17.36232084436733,
+        "deltaM_total_over_MR2Om2": 17.7774419531381,
+        "mass_correction_scope": "bulk_only_not_total_mass",
+        "q_tilde": 48.92944130336075,
+        "q_tilde_newtonian_target": 62.5,
+        "q_tilde_ratio": 0.782871060853772,
+        "q_tilde_seed_radius_drift": 2.759138796566358e-15
+      },
+      {
+        "I_over_MR2": 0.4070231768219251,
+        "I_over_MR2_target": 0.4,
+        "Q_over_Om2R5": -0.47028834997054325,
+        "Q_over_Om2R5_target": -0.5,
+        "R_over_M": 50.0,
+        "compactness": 0.02,
+        "deltaM_over_MR2Om2": 0.40584256879001285,
+        "deltaM_over_MR2Om2_target": 0.4,
+        "deltaM_surface_over_MR2Om2": 47.354919764492706,
+        "deltaM_total_over_MR2Om2": 47.76076233328272,
+        "mass_correction_scope": "bulk_only_not_total_mass",
+        "q_tilde": 141.9371058463843,
+        "q_tilde_newtonian_target": 156.25,
+        "q_tilde_ratio": 0.9083974774168595,
+        "q_tilde_seed_radius_drift": 7.248744965211184e-14
+      },
+      {
+        "I_over_MR2": 0.40276898444398823,
+        "I_over_MR2_target": 0.4,
+        "Q_over_Om2R5": -0.4879771181120054,
+        "Q_over_Om2R5_target": -0.5,
+        "R_over_M": 125.0,
+        "compactness": 0.008,
+        "deltaM_over_MR2Om2": 0.4023059161512321,
+        "deltaM_over_MR2Om2_target": 0.4,
+        "deltaM_surface_over_MR2Om2": 122.35196658350681,
+        "deltaM_total_over_MR2Om2": 122.75427249965804,
+        "mass_correction_scope": "bulk_only_not_total_mass",
+        "q_tilde": 376.00829937252945,
+        "q_tilde_newtonian_target": 390.625,
+        "q_tilde_ratio": 0.9625812463936754,
+        "q_tilde_seed_radius_drift": 8.480971838687842e-14
+      },
+      {
+        "I_over_MR2": 0.40103222055369675,
+        "I_over_MR2_target": 0.4,
+        "Q_over_Om2R5": -0.4954699710297432,
+        "Q_over_Om2R5_target": -0.5,
+        "R_over_M": 333.33333333333337,
+        "compactness": 0.003,
+        "deltaM_over_MR2Om2": 0.40085996525397244,
+        "deltaM_over_MR2Om2_target": 0.4,
+        "deltaM_surface_over_MR2Om2": 330.6840705980289,
+        "deltaM_total_over_MR2Om2": 331.08493056328285,
+        "mass_correction_scope": "bulk_only_not_total_mass",
+        "q_tilde": 1026.9222166892966,
+        "q_tilde_newtonian_target": 1041.6666666666667,
+        "q_tilde_ratio": 0.9858453280217248,
+        "q_tilde_seed_radius_drift": 3.305692407075992e-13
+      },
+      {
+        "I_over_MR2": 0.4005151961365447,
+        "I_over_MR2_target": 0.4,
+        "Q_over_Om2R5": -0.49773177657788376,
+        "Q_over_Om2R5_target": -0.5,
+        "R_over_M": 666.6666666666667,
+        "compactness": 0.0015,
+        "deltaM_over_MR2Om2": 0.40042927565382225,
+        "deltaM_over_MR2Om2_target": 0.4,
+        "deltaM_surface_over_MR2Om2": 664.017035268528,
+        "deltaM_total_over_MR2Om2": 664.4174645441818,
+        "mass_correction_scope": "bulk_only_not_total_mass",
+        "q_tilde": 2068.5504249141813,
+        "q_tilde_newtonian_target": 2083.3333333333335,
+        "q_tilde_ratio": 0.992904203958807,
+        "q_tilde_seed_radius_drift": 1.1090860331903157e-12
+      }
+    ],
+    "status": "PASS_MACLAURIN_NEWTONIAN_LIMIT",
+    "surface_term_source": "https://arxiv.org/html/1503.07835v1 Eq. (22)",
+    "tolerances": {
+      "I_over_MR2": 0.002,
+      "Q_over_Om2R5": 0.002,
+      "deltaM_over_MR2Om2": 0.002,
+      "q_tilde_ratio": 0.002
+    }
+  },
+  "payload_integrity": {
+    "algorithm": "sha256",
+    "covered": "complete_payload_except_payload_integrity",
+    "sha256": "7f57fe3a70bae3d6dccfbb665abf3f038a93521ce529fe80ed38952225c83fa3"
+  },
+  "public_status": "DERIVED_CONDITIONAL_SECOND_ORDER",
+  "schema_version": "nvg_hartle_second_order_quadrupole_probe/2.0",
+  "source_provenance": {
+    "configuration": {
+      "acceptance_uses_empirical_fit": false,
+      "convention": "g_tt=-exp(nu) single exponent; j^2=exp(-(nu+lambda)); omega_tilde=Omega-omega",
+      "maclaurin_compactnesses": [
+        0.05,
+        0.02,
+        0.008,
+        0.003,
+        0.0015
+      ],
+      "matching_tolerance": 1e-08,
+      "ode_method": "DOP853",
+      "refinement_tolerance": 0.001,
+      "rtol_ladder": [
+        1e-09,
+        1e-10,
+        1e-11
+      ],
+      "second_order_seed_radius_km": 0.01,
+      "seed_ladder_km": [
+        0.01,
+        0.005,
+        0.0025
+      ],
+      "spin_tolerance": 0.0001,
+      "step_ladder_km": [
+        0.05,
+        0.025,
+        0.0125
+      ],
+      "surface_convention": "frozen finite-pressure surface; no zero-pressure extrapolation claimed",
+      "ums_v2_exterior_sign_correction": "-J^2/r^4 (their printed +J^2/r^4 is inconsistent with their own dv2/dr)"
+    },
+    "eos_dependency": {
+      "producer": "verification/nvg_tidal_deformability.py",
+      "source_sha256": "87358d15eea30b6219fdfc2e6d31682eca63607d31cd515628b328fdffdf619c"
+    },
+    "equation_sources": {
+      "l0_interior_and_centre": "Urbanec, Miller & Stuchlik (2013) MNRAS 433 1906 arXiv:1301.5925",
+      "l2_interior_and_exterior": "Yagi & Yunes (2013) PRD 88 023009 arXiv:1303.1528",
+      "newtonian_target": "Maclaurin spheroid (scratch E1/E2)",
+      "symbolic_verification": "scratch/hartle_yy_verify.py (A/B/C/D/E, 24 checks)"
+    },
+    "first_order_dependency": {
+      "canonical_sources_sha256": {
+        "verification/nvg_eos_beta_css_softening.py": "9cfb9f4bf7755d4c274355cfd8eb643571a48fb379141fc985bbdf4aaf74aecb",
+        "verification/nvg_ns_canonical.py": "effdfe34e2f7e3231262e8312ad243bcdd5bb88f10476361b1ab8db38a2c1f13",
+        "verification/nvg_tidal_deformability.py": "87358d15eea30b6219fdfc2e6d31682eca63607d31cd515628b328fdffdf619c"
+      },
+      "configuration": {
+        "branch_contract": {
+          "disconnected_bridging": false,
+          "mass_sorting": false,
+          "minimum_branch_points": 3,
+          "pressure_order_authoritative": true,
+          "raw_negative_drop_tolerance_relative": 0.001,
+          "slope_threshold_relative": 0.001,
+          "slope_window_min": 5
+        },
+        "central_seed_radius_km": 1e-05,
+        "density_jump": "zero-jump canonical EOS; no interface jump applied",
+        "ode_backend": "scipy.integrate.solve_ivp",
+        "ode_default_atol": 1e-11,
+        "ode_default_max_step_km": 0.05,
+        "ode_default_rtol": 1e-09,
+        "ode_method": "DOP853",
+        "surface_pressure": 0.0001,
+        "units": {
+          "inertia": "km^3 internally; g cm^2 at output",
+          "mass": "M_sun for TOV state; km for geometric mass",
+          "pressure_energy": "MeV/fm^3 and km^-2 internally",
+          "radius": "km"
+        }
+      },
+      "input_path": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
+      "input_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+      "producer": "verification/nvg_hartle_slow_rotation.py",
+      "producer_source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
+      "source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
+      "test_path": "verification/test_p2_hartle_slow_rotation.py",
+      "test_sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132",
+      "test_source_sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132"
+    },
+    "frozen_forecast_dependencies": {
+      "hartle_producer": "verification/nvg_hartle_slow_rotation.py",
+      "hartle_result_artifact": "verification/nvg_hartle_slow_rotation_p2s5_results.json",
+      "hartle_result_sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c",
+      "hartle_source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
+      "j0737a_input": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
+      "j0737a_input_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
+      "phase1_ns_result_artifact": "verification/nvg_ns_predictive_audit_p1s7_results.json",
+      "phase1_ns_result_sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0",
+      "producer": "verification/nvg_ns_frozen_forecasts.py",
+      "source_sha256": "5ebdd13c82d56b83c72397afe45b765689f379e75808157ec045f03e9514a215",
+      "test_path": "verification/test_p3_ns_frozen_forecasts.py",
+      "test_sha256": "8f0c0317923395bed49012118a7d408ef22279badae89ff46536b3b7c6938a71",
+      "tidal_producer": "verification/nvg_tidal_deformability.py",
+      "tidal_source_sha256": "87358d15eea30b6219fdfc2e6d31682eca63607d31cd515628b328fdffdf619c"
+    },
+    "frozen_target": {
+      "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
+      "source_sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c",
+      "values": {
+        "I_A_g_cm2": 1.4856539538408488e+45,
+        "Ibar_A": 14.303017715186515,
+        "R_A_km": 12.466899931727045,
+        "central_pressure_mev_fm3": 46.752078078168736,
+        "compactness": 0.15848675058116762,
+        "mass_msun": 1.3381
+      }
+    },
+    "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
+    "producer_sha256": "63527f1578b0277dba86eb577b3648113431f3717be4028c1734c8247630ca21",
+    "test_sha256": "847925a9250c94a5c8f59499547122e97556936ca4eb568bc282b6fa8af0c014"
+  }
+}

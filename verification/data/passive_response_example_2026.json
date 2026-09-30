@@ -1,0 +1,96 @@
+{
+  "schema": "nvg_passive_response_input.v1",
+  "units": {
+    "frequency": "Hz",
+    "admittance": "S",
+    "phasor_convention": "e^-iomega_t",
+    "imaginary_sign": "negative_for_capacitive_e_minus_iomega_t"
+  },
+  "measurement": {
+    "frequencies_hz": [
+      20.0,
+      60.0,
+      180.0,
+      540.0,
+      1620.0,
+      4860.0,
+      14580.0,
+      43740.0,
+      131220.0,
+      393660.0,
+      1180980.0,
+      2000000.0
+    ],
+    "admittance": [
+      {
+        "real_S": 1.5796330616362225e-07,
+        "imag_S": -0.0001256833547609075
+      },
+      {
+        "real_S": 1.4252510983106455e-06,
+        "imag_S": -0.0003775222887332234
+      },
+      {
+        "real_S": 1.3122891727046883e-05,
+        "imag_S": -0.00114547674023413
+      },
+      {
+        "real_S": 0.00014680456080891694,
+        "imag_S": -0.003828694882308774
+      },
+      {
+        "real_S": 0.08884262050411665,
+        "imag_S": 0.03148413620179497
+      },
+      {
+        "real_S": 0.00013437452049448587,
+        "imag_S": 0.003663249314159557
+      },
+      {
+        "real_S": 1.2203498495768254e-05,
+        "imag_S": 0.00110462705208649
+      },
+      {
+        "real_S": 1.3274791251398233e-06,
+        "imag_S": 0.00036434345103645633
+      },
+      {
+        "real_S": 1.4715239817969482e-07,
+        "imag_S": 0.00012130629894667957
+      },
+      {
+        "real_S": 1.6346012008392806e-08,
+        "imag_S": 4.043019828849683e-05
+      },
+      {
+        "real_S": 1.8161710436910456e-09,
+        "imag_S": 1.3476538912889589e-05
+      },
+      {
+        "real_S": 6.332581957850772e-10,
+        "imag_S": 7.957752143507096e-06
+      }
+    ]
+  },
+  "noise": {
+    "model": "independent_gaussian_cartesian",
+    "sigma_real_S": 2e-07,
+    "sigma_imag_S": 2e-07
+  },
+  "endpoint_constraints": {
+    "low_frequency_capacitance_F": {
+      "value": 1e-06,
+      "sigma_F": 2e-09,
+      "unit": "F"
+    },
+    "high_frequency_inductance_H": {
+      "value": 0.01,
+      "sigma_H": 2e-05,
+      "unit": "H"
+    }
+  },
+  "constraint_metadata": {
+    "independent": true,
+    "source": "separate_low_frequency_C_and_high_frequency_L_measurements"
+  }
+}

@@ -3,9 +3,10 @@
 
 The ledger is an integration surface, not a second scientific producer.  It
 loads the final Phase 1--3 artifacts, authenticates them against their live
-producers, and copies only the statuses and values authorised by the P3-S8
-gate.  In particular, conditional, synthetic, sensitivity and blocked rows
-always carry zero independent-evidence weight.
+producers, and copies the statuses and values authorised by the P3-S8 gate.
+The v2 ledger additionally consumes the independently validated second-order
+quadrupole without rewriting the frozen first-order artifacts. Conditional,
+synthetic, sensitivity and blocked rows always carry zero independent-evidence weight.
 
 Run from any working directory with::
 
@@ -37,6 +38,7 @@ import nvg_beta_hyperon_urca_audit as beta
 import nvg_cooling_gmode_dependency_audit as cooling
 import nvg_echo_hierarchical_upper_limit as echo
 import nvg_hartle_slow_rotation as hartle
+import nvg_hartle_second_order_quadrupole_probe as quadrupole
 import nvg_pbh_nanograv_audit as pbh_audit
 import nvg_ns_frozen_forecasts as forecast
 import nvg_ns_predictive_audit as ns_audit
@@ -44,7 +46,7 @@ import nvg_prospective_falsification_reach as prospective
 import nvg_s8_no_go as s8
 
 
-SCHEMA_VERSION = "P4-S1-predictive-research-ledger-v1"
+SCHEMA_VERSION = "P4-S1-predictive-research-ledger-v2"
 AUDIT_ID = "P4-S1"
 RESULT_PATH = HERE / "predictive_research_ledger.json"
 
@@ -231,6 +233,9 @@ def _assert_authorized_inputs() -> dict[str, dict[str, Any]]:
     hartle_result = _read_json(P2_HARTLE_RESULT_PATH)
     _assert_hartle_core(hartle_result)
 
+    quadrupole_result = _read_json(quadrupole.RESULT_PATH)
+    quadrupole.assert_artifact_provenance(quadrupole_result)
+
     beta_result = _read_json(P2_BETA_RESULT_PATH)
     beta.assert_artifact_provenance(beta_result)
     if beta_result.get("status") != "COMPLETE_WITH_BLOCKED_PHYSICAL_HYPERON_PHASE_URCA_DEPENDENCIES":
@@ -280,6 +285,7 @@ def _assert_authorized_inputs() -> dict[str, dict[str, Any]]:
     return {
         "p1_ns": p1,
         "hartle": hartle_result,
+        "quadrupole": quadrupole_result,
         "beta": beta_result,
         "echo": echo_result,
         "s8": s8_result,
@@ -309,6 +315,9 @@ def _source_provenance() -> dict[str, Any]:
         "hartle_producer": (HERE / "nvg_hartle_slow_rotation.py", "P2-S5 Hartle producer"),
         "hartle_test": (HERE / "test_p2_hartle_slow_rotation.py", "P2 Hartle focused test"),
         "hartle_result": (P2_HARTLE_RESULT_PATH, "P2-S5 final Hartle artifact"),
+        "quadrupole_producer": (quadrupole.SOURCE_PATH, "independent second-order Hartle producer"),
+        "quadrupole_test": (quadrupole.TEST_PATH, "second-order numerical/provenance tests"),
+        "quadrupole_result": (quadrupole.RESULT_PATH, "validated second-order quadrupole; conditional frozen EOS"),
         "j0737_input": (J0737_INPUT_PATH, "pinned J0737A timing input"),
         "beta_producer": (HERE / "nvg_beta_hyperon_urca_audit.py", "P2-S2 composition producer"),
         "beta_test": (HERE / "test_p2_beta_hyperon_urca_audit.py", "P2-S2 focused test"),
@@ -342,6 +351,7 @@ def _inventory() -> dict[str, Any]:
         "verification/nvg_s8_no_go.py",
         "verification/nvg_pbh_nanograv_audit.py",
         "verification/nvg_hartle_slow_rotation.py",
+        "verification/nvg_hartle_second_order_quadrupole_probe.py",
         "verification/nvg_beta_hyperon_urca_audit.py",
         "verification/nvg_echo_hierarchical_upper_limit.py",
         "verification/nvg_ns_frozen_forecasts.py",
@@ -358,6 +368,7 @@ def _inventory() -> dict[str, Any]:
         "verification/test_p2_beta_hyperon_urca_audit.py",
         "verification/test_p2_echo_hierarchical_upper_limit.py",
         "verification/test_p2_hartle_slow_rotation.py",
+        "verification/test_hartle_second_order_quadrupole.py",
         "verification/test_p3_cooling_gmode_dependency_audit.py",
         "verification/test_p3_ns_frozen_forecasts.py",
         "verification/test_p3_prospective_falsification_reach.py",
@@ -378,6 +389,8 @@ def _inventory() -> dict[str, Any]:
             PBH_FIGURE_PATH,
             P2_HARTLE_OLD_RESULT_PATH,
             P2_HARTLE_RESULT_PATH,
+            quadrupole.RESULT_PATH,
+            quadrupole.FIGURE_PATH,
             HERE / "fig_hartle_slow_rotation_p2s1.png",
             HERE / "fig_hartle_slow_rotation_p2s5.png",
             P2_BETA_RESULT_PATH,
@@ -518,10 +531,16 @@ def _claims(payloads: Mapping[str, Mapping[str, Any]], provenance: Mapping[str, 
         {
             "id": "ns_quadrupole_Q",
             "domain": "NS/Hartle",
-            "status": j0737["Q"]["status"],
+            "status": payloads["quadrupole"]["classification"]["quadrupole_Q"],
             "evidence_weight": 0.0,
-            "blocker": j0737["Q"]["reason"],
-            "source": provenance["forecast_result"],
+            "scope": "second-order Hartle; frozen zero-jump EOS, branch 1, finite-pressure surface; not EOS-wide or empirical evidence",
+            "values": {"q_tilde": payloads["quadrupole"]["j0737a"]["q_tilde"]},
+            "numerical_sensitivity": payloads["quadrupole"]["j0737a"]["convergence"]["q_tilde_numerical_range"],
+            "convergence_status": payloads["quadrupole"]["j0737a"]["convergence"]["status"],
+            "mass_correction_status": payloads["quadrupole"]["j0737a"]["mass_correction"]["status"],
+            "historical_first_order": {**j0737["Q"], "source": provenance["forecast_result"]},
+            "payload_sha256": payloads["quadrupole"]["payload_integrity"]["sha256"],
+            "source": provenance["quadrupole_result"],
         },
         {
             "id": "ns_inverse_mass",
@@ -672,7 +691,7 @@ def build_ledger() -> dict[str, Any]:
         "schema_version": SCHEMA_VERSION,
         "audit": AUDIT_ID,
         "status": "FINAL_P4_S1_MACHINE_LEDGER",
-        "scope": "P3-S8-authorized predictive integration; registry presence is not empirical evidence",
+        "scope": "P3-S8-authorized integration plus separately validated second-order quadrupole; registry presence is not empirical evidence",
         "evidence_policy": {
             "independent_evidence_weight": 0.0,
             "conditional_synthetic_sensitivity_blocked_zero_weight": True,
