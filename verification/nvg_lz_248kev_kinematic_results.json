@@ -1,0 +1,267 @@
+{
+  "all_controls_pass": true,
+  "conditional_input_passports": {
+    "dark_neutron_cogenesis": {
+      "input_artifact": "verification/data/legacy_dark_neutron_cogenesis_inputs.json",
+      "input_sha256": "cb17388cc08f57810dd74ac2135b6752ba5d26c163992de94771798716e81c9d",
+      "input_status": "LEGACY_UNDOCUMENTED_CONDITIONAL_INPUTS_NOT_MECHANISM"
+    }
+  },
+  "controls": {
+    "all_current_proxy_candidates_fail_screen": {
+      "pass": true
+    },
+    "all_screened_light_states_need_a_new_exothermic_excitation": {
+      "pass": true
+    },
+    "candidate_corridor_order": {
+      "pass": true
+    },
+    "dark_neutron_corridor_has_explicit_legacy_conditional_input_passport": {
+      "pass": true
+    },
+    "exact_elastic_inverse_threshold": {
+      "absolute_error_keV": "0e-67",
+      "pass": true
+    },
+    "external_comparator_is_near_the_speed_boundary": {
+      "pass": true
+    },
+    "no_fit_or_detector_likelihood": {
+      "pass": true
+    },
+    "nonrelativistic_endpoint_is_negligibly_close_at_speed_cap": {
+      "maximum_relative_difference": "0.00000751336061369649191510756894523",
+      "pass": true
+    },
+    "source_complete_mode_masses_are_live_action_derivations": {
+      "pass": true
+    }
+  },
+  "current_nvg_candidate_screens": [
+    {
+      "candidate_id": "source_complete_massive_vector_mode",
+      "caveat": "The source-complete action derives this vacuum mode, but does not establish it as a stable cosmological cold-halo particle or calculate a xenon rate; this is only its conditional free-target kinematic screen.",
+      "classification": "KINEMATICALLY_INCOMPATIBLE_WITH_DECLARED_BOUND_SHM_SCREEN",
+      "elastic_endpoint_nr_relative_difference": "0.00000751336061369649191510756894523",
+      "elastic_kinematically_accessible_under_screen": false,
+      "elastic_speed_cap_ratio": "56.8870539305530193407606228734",
+      "exact_elastic_minimum_speed_for_event_km_s": "46895.1082574856720437251994137",
+      "exact_elastic_recoil_maximum_at_speed_cap_keV": "0.0747717573135053199846599060172",
+      "formal_delta_interval_if_declared_mass_is_treated_as_incoming_state_keV": {
+        "interpretation": "This fixed-initial-mass diagnostic is retained to expose the exact two-body endpoints. It is not the usual proposal of a new heavier excitation decaying to the declared state; use hypothetical_heavier_excitation_to_declared_ground_state instead for that scenario.",
+        "maximum": "-39313.7276985020128064957996648",
+        "minimum": "-40741.2335723136384650529934208",
+        "zero_elastic_splitting_is_allowed": false
+      },
+      "hypothetical_heavier_excitation_to_declared_ground_state": {
+        "declared_ground_state_mass_GeV": "0.7826",
+        "incoming_excited_mass_maximum_GeV": "0.821366439411927165501852398105",
+        "incoming_excited_mass_minimum_GeV": "0.820011536453280050353102618501",
+        "interpretation": "This is the exact kinematic window only if a new long-lived incoming excitation decays to the already declared mass. Current NVG supplies no such partner, transition operator, lifetime, halo fraction, rate, or detector response.",
+        "maximum_required_release_MeV": "38.7664394119271655018523981051",
+        "minimum_required_release_MeV": "37.4115364532800503531026185007",
+        "transition_definition": "m_in=m_declared_ground+Delta, m_out=m_declared_ground, Delta>0"
+      },
+      "initial_kinetic_energy_at_speed_cap_keV": "2.95868754996609382677003566849",
+      "mass_GeV": "0.7826",
+      "mass_origin": "source_complete_solution_audit.py: m_A=q_phi*W0=m_omega; quadratic massive-vector mode of the bound action",
+      "nonrelativistic_elastic_recoil_maximum_at_speed_cap_keV": "0.0747711955263289038211713200700"
+    },
+    {
+      "candidate_id": "source_complete_scalar_radial_mode",
+      "caveat": "The source-complete action derives this vacuum mode, but does not establish it as a stable cosmological cold-halo particle or calculate a xenon rate; this is only its conditional free-target kinematic screen.",
+      "classification": "KINEMATICALLY_INCOMPATIBLE_WITH_DECLARED_BOUND_SHM_SCREEN",
+      "elastic_endpoint_nr_relative_difference": "0.00000748571425178549823478152804710",
+      "elastic_kinematically_accessible_under_screen": false,
+      "elastic_speed_cap_ratio": "36.1648816405623420440294593919",
+      "exact_elastic_minimum_speed_for_event_km_s": "29812.6888715968362846735307065",
+      "exact_elastic_recoil_maximum_at_speed_cap_keV": "0.187762038834528460018064149811",
+      "formal_delta_interval_if_declared_mass_is_treated_as_incoming_state_keV": {
+        "interpretation": "This fixed-initial-mass diagnostic is retained to expose the exact two-body endpoints. It is not the usual proposal of a new heavier excitation decaying to the declared state; use hypothetical_heavier_excitation_to_declared_ground_state instead for that scenario.",
+        "maximum": "-24170.6487448325388597223559938",
+        "minimum": "-25552.7459224408088245543895337",
+        "zero_elastic_splitting_is_allowed": false
+      },
+      "hypothetical_heavier_excitation_to_declared_ground_state": {
+        "declared_ground_state_mass_GeV": "1.2448092624976728",
+        "incoming_excited_mass_maximum_GeV": "1.26986617976028592390317154773",
+        "incoming_excited_mass_minimum_GeV": "1.26851142151339448037188388285",
+        "interpretation": "This is the exact kinematic window only if a new long-lived incoming excitation decays to the already declared mass. Current NVG supplies no such partner, transition operator, lifetime, halo fraction, rate, or detector response.",
+        "maximum_required_release_MeV": "25.0569172626131239031715477291",
+        "minimum_required_release_MeV": "23.7021590157216803718838828545",
+        "transition_definition": "m_in=m_declared_ground+Delta, m_out=m_declared_ground, Delta>0"
+      },
+      "initial_kinetic_energy_at_speed_cap_keV": "4.70610997576583145775764089451",
+      "mass_GeV": "1.2448092624976728",
+      "mass_origin": "source_complete_solution_audit.py: m_sigma=sqrt(2*lambda)*W0; radial scalar mode of the bound action",
+      "nonrelativistic_elastic_recoil_maximum_at_speed_cap_keV": "0.187760633301558412086190064002"
+    },
+    {
+      "candidate_id": "nvg_dark_neutron_lower_corridor_edge",
+      "caveat": "No xenon-scattering amplitude or event-rate likelihood is supplied by the current NVG extension; this screen is kinematic only.",
+      "classification": "KINEMATICALLY_INCOMPATIBLE_WITH_DECLARED_BOUND_SHM_SCREEN",
+      "elastic_endpoint_nr_relative_difference": "0.00000750402512385594178931377803288",
+      "elastic_kinematically_accessible_under_screen": false,
+      "elastic_speed_cap_ratio": "47.7034275550827880912175584669",
+      "exact_elastic_minimum_speed_for_event_km_s": "39324.5430178139155822687131887",
+      "exact_elastic_recoil_maximum_at_speed_cap_keV": "0.107121176450137110080059827304",
+      "formal_delta_interval_if_declared_mass_is_treated_as_incoming_state_keV": {
+        "interpretation": "This fixed-initial-mass diagnostic is retained to expose the exact two-body endpoints. It is not the usual proposal of a new heavier excitation decaying to the declared state; use hypothetical_heavier_excitation_to_declared_ground_state instead for that scenario.",
+        "maximum": "-32471.1347516793181748663868289",
+        "minimum": "-33875.2929096270265516757457797",
+        "zero_elastic_splitting_is_allowed": false
+      },
+      "hypothetical_heavier_excitation_to_declared_ground_state": {
+        "declared_ground_state_mass_GeV": "0.9378996",
+        "incoming_excited_mass_maximum_GeV": "0.970624504551298374134264854592",
+        "incoming_excited_mass_minimum_GeV": "0.969269664613438173858624189021",
+        "interpretation": "This is the exact kinematic window only if a new long-lived incoming excitation decays to the already declared mass. Current NVG supplies no such partner, transition operator, lifetime, halo fraction, rate, or detector response.",
+        "maximum_required_release_MeV": "32.7249045512983741342648545916",
+        "minimum_required_release_MeV": "31.3700646134381738586241890212",
+        "transition_definition": "m_in=m_declared_ground+Delta, m_out=m_declared_ground, Delta>0"
+      },
+      "initial_kinetic_energy_at_speed_cap_keV": "3.54581123132913290785853021399",
+      "mass_GeV": "0.9378996",
+      "mass_origin": "nvg_adm_bl_cogenesis.py plus its explicit verification/data/legacy_dark_neutron_cogenesis_inputs.json passport: M_N-S_N_BE9; speculative B-L extension, not a source-complete NVG particle",
+      "nonrelativistic_elastic_recoil_maximum_at_speed_cap_keV": "0.107120372610137731245737547791"
+    },
+    {
+      "candidate_id": "nvg_dark_neutron_upper_corridor_edge",
+      "caveat": "Screening both corridor endpoints bounds all masses in the narrow declared corridor for elastic recoil.",
+      "classification": "KINEMATICALLY_INCOMPATIBLE_WITH_DECLARED_BOUND_SHM_SCREEN",
+      "elastic_endpoint_nr_relative_difference": "0.00000750397215526447572145339478838",
+      "elastic_kinematically_accessible_under_screen": false,
+      "elastic_speed_cap_ratio": "47.6596425620646346381875761834",
+      "exact_elastic_minimum_speed_for_event_km_s": "39288.4486545841690561391166031",
+      "exact_elastic_recoil_maximum_at_speed_cap_keV": "0.107321525969424252471414656539",
+      "formal_delta_interval_if_declared_mass_is_treated_as_incoming_state_keV": {
+        "interpretation": "This fixed-initial-mass diagnostic is retained to expose the exact two-body endpoints. It is not the usual proposal of a new heavier excitation decaying to the declared state; use hypothetical_heavier_excitation_to_declared_ground_state instead for that scenario.",
+        "maximum": "-32439.0666709941344140373697857",
+        "minimum": "-33843.1265877207745944654764254",
+        "zero_elastic_splitting_is_allowed": false
+      },
+      "hypothetical_heavier_excitation_to_declared_ground_state": {
+        "declared_ground_state_mass_GeV": "0.938783",
+        "incoming_excited_mass_maximum_GeV": "0.971478960869343855414275983489",
+        "incoming_excited_mass_minimum_GeV": "0.970124121236458287076155929660",
+        "interpretation": "This is the exact kinematic window only if a new long-lived incoming excitation decays to the already declared mass. Current NVG supplies no such partner, transition operator, lifetime, halo fraction, rate, or detector response.",
+        "maximum_required_release_MeV": "32.6959608693438554142759834885",
+        "minimum_required_release_MeV": "31.3411212364582870761559296597",
+        "transition_definition": "m_in=m_declared_ground+Delta, m_out=m_declared_ground, Delta>0"
+      },
+      "initial_kinetic_energy_at_speed_cap_keV": "3.54915100206979230894026884101",
+      "mass_GeV": "0.938783",
+      "mass_origin": "nvg_adm_bl_cogenesis.py plus its explicit verification/data/legacy_dark_neutron_cogenesis_inputs.json passport: M_P+M_E; speculative B-L extension, not a source-complete NVG particle",
+      "nonrelativistic_elastic_recoil_maximum_at_speed_cap_keV": "0.107320720631681717418504721111"
+    },
+    {
+      "candidate_id": "nvg_W_like_relic_excitation_proxy",
+      "caveat": "The current action does not provide a stable-particle spectrum or xenon-scattering Lagrangian for this proxy; kinematic failure is conditional on treating it as a cold-halo particle.",
+      "classification": "KINEMATICALLY_INCOMPATIBLE_WITH_DECLARED_BOUND_SHM_SCREEN",
+      "elastic_endpoint_nr_relative_difference": "0.00000748667690123570993665806024888",
+      "elastic_kinematically_accessible_under_screen": false,
+      "elastic_speed_cap_ratio": "36.6325384033415058693964965441",
+      "exact_elastic_minimum_speed_for_event_km_s": "30198.2039053802176263275881725",
+      "exact_elastic_recoil_maximum_at_speed_cap_keV": "0.182951301916157793844604886498",
+      "formal_delta_interval_if_declared_mass_is_treated_as_incoming_state_keV": {
+        "interpretation": "This fixed-initial-mass diagnostic is retained to expose the exact two-body endpoints. It is not the usual proposal of a new heavier excitation decaying to the declared state; use hypothetical_heavier_excitation_to_declared_ground_state instead for that scenario.",
+        "maximum": "-24501.8097221640024324149432554",
+        "minimum": "-25884.6595286838624833129175220",
+        "zero_elastic_splitting_is_allowed": false
+      },
+      "hypothetical_heavier_excitation_to_declared_ground_state": {
+        "declared_ground_state_mass_GeV": "1.2285976327199248",
+        "incoming_excited_mass_maximum_GeV": "1.25396680015666865132127413443",
+        "incoming_excited_mass_minimum_GeV": "1.25261203855082602068110815972",
+        "interpretation": "This is the exact kinematic window only if a new long-lived incoming excitation decays to the already declared mass. Current NVG supplies no such partner, transition operator, lifetime, halo fraction, rate, or detector response.",
+        "maximum_required_release_MeV": "25.3691674367438513212741344306",
+        "minimum_required_release_MeV": "24.0144058309012206811081597203",
+        "transition_definition": "m_in=m_declared_ground+Delta, m_out=m_declared_ground, Delta>0"
+      },
+      "initial_kinetic_energy_at_speed_cap_keV": "4.64482049558683503517929227688",
+      "mass_GeV": "1.2285976327199248",
+      "mass_origin": "nvg_relic_dark_matter.py: m_W inferred after inputting Omega_DM; conditional excitation proxy, not a defined stable WIMP",
+      "nonrelativistic_elastic_recoil_maximum_at_speed_cap_keV": "0.182949932218871687145571252807"
+    }
+  ],
+  "declared_screen": {
+    "bound_shm_speed_cap_km_s": "824.354664503010025546752731403",
+    "event_recoil_keV": "248",
+    "minimum_exact_elastic_particle_mass_at_speed_cap_GeV": "70.6589667405763230350085313490",
+    "speed_cap_formula": "v_max <= v_esc + |v_0 + v_pec| + max_t |v_earth(t)|",
+    "speed_cap_interpretation": "The producer evaluates the maximum norm of the recommended Earth-orbital vector over its sine/cosine phase, then applies a triangle-inequality upper envelope for particles in the bound Standard Halo Model. This is neither an LZ likelihood nor a universal bound on unbound, relativistic, or otherwise non-SHM populations.",
+    "target_mass_GeV": "122.29865518902906",
+    "threshold_is_not_a_fit": true
+  },
+  "external_comparator_not_adopted_by_nvg": {
+    "endothermic_mass_splitting_keV": "350",
+    "exact_delta_interval_for_fixed_recoil_at_speed_cap_keV": {
+      "maximum": "398.915679153920138931022504701",
+      "minimum": "-955.578223430664430024385575106"
+    },
+    "interpretation": "Shows why the published heavy inelastic benchmark is a qualitatively different kinematic regime. It neither validates the benchmark nor supplies an NVG particle.",
+    "kinematically_accessible_under_same_screen": true,
+    "mass_GeV": "1000",
+    "minimum_exact_speed_for_LZ_event_km_s": "764.814005835618397435483916499",
+    "speed_cap_ratio": "0.927773006897113004669771002775"
+  },
+  "external_event_role": "observational comparison input only; neither event energy nor significance is fitted back into NVG",
+  "fit_used": false,
+  "independent_evidence_weight": 0.0,
+  "input_artifact": "verification/data/lz_248kev_event_2026.json",
+  "input_artifact_sha256": "7a58896180870e0b5f5f36bf27313d4308a92036411cddea21511c9acdbc2f3a",
+  "integrity_sha256": "cc21d32da78c5cc8bf504fb09624f27a69c3e282d87e645b7a2194d90e189fb0",
+  "interpretation_limits": [
+    "LZ reports one event of interest with 2.6-sigma global and 3.4-sigma maximum local significance, not a dark-matter discovery.",
+    "The derived SHM/bound-halo cap is a deliberately generous triangle-inequality envelope, not a universal speed theorem.",
+    "Kinematic incompatibility of a declared proxy under this screen does not falsify all NVG variants, relativistic populations, or an as-yet-unwritten interaction sector.",
+    "The exact exothermic intervals identify only a necessary new transition scale; they do not furnish such a state, a rate, or an LZ explanation.",
+    "Kinematic accessibility of the external comparator is necessary but far from sufficient: it does not calculate a rate or establish an explanation."
+  ],
+  "method": {
+    "exact_elastic_endpoint_formula": "E_R,max=2*m_A*(gamma*m_chi*beta)^2/s, s=m_chi^2+m_A^2+2*m_A*gamma*m_chi",
+    "exact_fixed_recoil_delta_formula": "q=sqrt(E_R*(E_R+2*m_A)); delta_-=sqrt((E_i-E_R)^2-(p_i+q)^2)-m_i at cos(theta)=-1; delta_+=sqrt((E_i-E_R)^2-(p_i-q)^2)-m_i at cos(theta)=+1",
+    "exact_heavier_excitation_formula": "m_in=m_g+Delta, m_out=m_g; endpoint roots satisfy m_in^2+2*gamma*(eta*beta*q-E_R)*m_in-(m_g^2+2*m_A*E_R)=0 for eta=-1,+1; Delta=m_in-m_g",
+    "nonrelativistic_cross_check": "E_R,max,NR=2*mu_chiA^2*v^2/m_A",
+    "scope": "free-nucleus two-body kinematic necessary condition only"
+  },
+  "minimal_non_ad_hoc_extension_requirements": [
+    "Derive a stable field excitation and all of its mass eigenstates from an explicit action, rather than inserting a new particle mass.",
+    "Derive the ordinary-matter coupling and calculate the xenon nuclear response, including isotope dependence and form factors.",
+    "Derive or independently constrain the cosmological abundance and local halo phase-space distribution before calculating rates.",
+    "Use the public LZ response/data release and nuisance likelihood to make a forward prediction; do not tune the mass splitting to the single event."
+  ],
+  "schema_version": "nvg-lz-248kev-kinematic-audit.v5",
+  "source_provenance": {
+    "higgsino_comparator": {
+      "citation": "Freese and Theodosopoulos, Higgsino Dark Matter Interpretation of the LUX-ZEPLIN 248 keV Nuclear-Recoil Event, arXiv:2609.01583v2 (2026)",
+      "source_url": "https://arxiv.org/abs/2609.01583",
+      "version": "arXiv v2, accessed 2026-10-01"
+    },
+    "lz_extended_nuclear_recoil_search": {
+      "citation": "LZ Collaboration, Search for dark matter particle interactions in an extended nuclear recoil energy window with the LUX-ZEPLIN (LZ) experiment, arXiv:2609.02823 (2026)",
+      "source_url": "https://arxiv.org/abs/2609.02823",
+      "version": "arXiv v1, accessed 2026-10-01"
+    },
+    "recommended_standard_halo_model": {
+      "citation": "Baxter et al., Recommended conventions for reporting results from direct dark matter searches, arXiv:2105.00599v3 (2025), Table 1 and Eq. (11)",
+      "source_url": "https://arxiv.org/abs/2105.00599",
+      "version": "arXiv v3, accessed 2026-10-01"
+    }
+  },
+  "source_sha256": {
+    "dark_neutron_historical_input": "cb17388cc08f57810dd74ac2135b6752ba5d26c163992de94771798716e81c9d",
+    "dark_neutron_module": "5aaaa3851e0a50d13ffc30f48418777f7a88774881f283666df2f5212a306d6f",
+    "producer": "4f60fca4831359086e451da88950fb130c228fa023f4e02640d3400a190b066d",
+    "relic_module": "bf6d67ea21ed0be37caf72b8df96704b00cf2ad1b6dd8fa2900c29f06a2a081f",
+    "source_complete_module": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "status": "PASS_KINEMATIC_SCREEN_NO_CURRENT_NVG_PARTICLE_EXPLANATION",
+  "what_current_nvg_cannot_claim": [
+    "The current source-complete action does not contain a derived stable ~TeV dark particle or an excited partner with a ~350-keV splitting.",
+    "The source-complete radial and vector vacuum modes are not established as a long-lived, cosmologically abundant cold-halo population.",
+    "No current NVG module matches the action couplings to xenon isotopes or computes an LZ detector response, halo integral, background model, recoil spectrum, event count, or profile likelihood.",
+    "Primordial-black-hole and topological-defect proposals are not particle-recoil models here; without their transport and detector response they are not evaluated by this two-body screen."
+  ]
+}

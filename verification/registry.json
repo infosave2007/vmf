@@ -1958,17 +1958,22 @@
       "tests": []
     },
     "verification/nvg_adm_bl_cogenesis.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
-      "inputs": [],
+      "consumers": [
+        "verification/nvg_dm_budget_audit.py",
+        "verification/nvg_lz_248kev_kinematic_audit.py"
+      ],
+      "deprecation": "Retired as a baryogenesis/cogenesis and abundance mechanism: no dynamical theta source, CP/washout network or entropy history is implemented; its values remain conditional historical arithmetic.",
+      "description": "Historical conditional B-L/dark-neutron arithmetic retained only for a mass corridor and transparent sensitivity bookkeeping.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": null,
       "quarantine": null,
-      "role": "validation",
-      "status": "maintained",
+      "role": "retired",
+      "status": "retired",
       "tests": []
     },
     "verification/nvg_advanced_calculations.py": {
@@ -2100,7 +2105,8 @@
     },
     "verification/nvg_baryogenesis_bsm_closure.py": {
       "consumers": [
-        "verification/test_p10_s2_direct_status.py"
+        "verification/test_p10_s2_direct_status.py",
+        "verification/nvg_dm_budget_audit.py"
       ],
       "deprecation": "Retired evidentiary claim: required independent data, solver, or likelihood is absent.",
       "description": "Retired maintained computational surface.",
@@ -2776,18 +2782,34 @@
       "tests": []
     },
     "verification/nvg_dm_budget_audit.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
-      "inputs": [],
+      "consumers": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ],
+      "deprecation": "Fail-closed abundance-reconciliation audit. It explicitly rejects a manual remainder allocation and does not establish a dark-matter composition.",
+      "description": "Consumes one sourced Planck physical-density comparison reference and live legacy producers to expose incompatible normalizations, missing PBH abundance and retired cogenesis; it emits no inferred composition.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/planck2018_dm_budget.json",
+        "verification/data/legacy_relic_dark_matter_calibration.json",
+        "verification/data/pbh_population_b_seed_calibration.json",
+        "verification/nvg_relic_dark_matter.py",
+        "verification/nvg_pbh_dark_matter.py",
+        "verification/nvg_pbh_two_population.py",
+        "verification/nvg_adm_bl_cogenesis.py",
+        "verification/nvg_baryogenesis_bsm_closure.py",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
       "kind": "script",
-      "outputs": [],
+      "outputs": [
+        "verification/nvg_dm_budget_audit_results.json"
+      ],
       "producer": null,
       "quarantine": null,
       "role": "validation",
       "status": "maintained",
-      "tests": []
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
     },
     "verification/nvg_dm_direct_detection.py": {
       "consumers": [
@@ -5054,7 +5076,8 @@
     },
     "verification/nvg_pbh_dark_matter.py": {
       "consumers": [
-        "verification/test_p10_s2_direct_status.py"
+        "verification/test_p10_s2_direct_status.py",
+        "verification/nvg_dm_budget_audit.py"
       ],
       "deprecation": null,
       "description": "Forecast maintained computational surface.",
@@ -5171,12 +5194,16 @@
     "verification/nvg_pbh_two_population.py": {
       "consumers": [
         "verification/nvg_advanced_calculations.py",
-        "verification/nvg_nanograv_background.py"
+        "verification/nvg_nanograv_background.py",
+        "verification/nvg_dm_budget_audit.py"
       ],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
-      "inputs": [],
+      "deprecation": "PBH-B values are an undocumented calibration trace, not a dark-matter component, JWST likelihood, NANOGrav attribution, or common-cosmology abundance result.",
+      "description": "Conditional PBH-A shape plus PBH-B legacy seed-trace arithmetic; neither branch supplies a PBH formation calculation or absolute cosmological abundance.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_pbh_mass_spectrum.py",
+        "verification/data/pbh_population_b_seed_calibration.json"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": "verification/nvg_pbh_mass_spectrum.py",
@@ -5377,11 +5404,16 @@
       ]
     },
     "verification/nvg_relic_dark_matter.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Validation maintained computational surface.",
-      "evidence_weight": 0.5,
-      "inputs": [],
+      "consumers": [
+        "verification/nvg_dm_budget_audit.py",
+        "verification/nvg_lz_248kev_kinematic_audit.py"
+      ],
+      "deprecation": "Legacy inversion of supplied Omega_DM and H0 into lambda_v/m_W; it does not independently predict dark-matter abundance or provide a citable cosmological input.",
+      "description": "Conditional instanton-density inversion consuming an explicit legacy calibration passport, retained for transparent comparison rather than an independently predicted component abundance.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/legacy_relic_dark_matter_calibration.json"
+      ],
       "kind": "script",
       "outputs": [],
       "producer": null,
@@ -6945,7 +6977,14 @@
         "verification/nvg_euler_ward_precision.py",
         "verification/test_source_complete_solution_audit.py",
         "verification/source_complete_stellar_prediction.py",
-        "verification/source_complete_resonator_prediction.py"
+        "verification/source_complete_resonator_prediction.py",
+        "verification/nvg_lz_248kev_kinematic_audit.py",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+        "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+        "verification/nvg_source_complete_conditional_vortex_sector_audit.py"
       ],
       "deprecation": "Constructive equilibrium EFT audit with explicit density-melting no-go; zero independent-evidence weight.",
       "description": "Executable source-complete local-U(1) W/Gauss/HVH/stress closure audit.",
@@ -7021,7 +7060,13 @@
       "consumers": [
         "verification/source_complete_solution_audit.py",
         "verification/source_complete_stellar_prediction.py",
-        "verification/source_complete_resonator_prediction.py"
+        "verification/source_complete_resonator_prediction.py",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+        "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+        "verification/nvg_source_complete_conditional_vortex_sector_audit.py"
       ],
       "deprecation": "Byte-preserved mathematical action snapshot; historical workflow metadata is not current execution authority or empirical evidence.",
       "description": "Portable source-complete local-U(1) equilibrium action and claim boundary.",
@@ -7036,7 +7081,11 @@
       "tests": [
         "verification/test_source_complete_solution_audit.py",
         "verification/test_source_complete_stellar_prediction.py",
-        "verification/test_source_complete_resonator_prediction.py"
+        "verification/test_source_complete_resonator_prediction.py",
+        "verification/test_nvg_source_complete_q4_droplet_audit.py",
+        "verification/test_nvg_source_complete_nn_static_audit.py",
+        "verification/test_nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
       ]
     },
     "verification/contracts/observable_predictions.md": {
@@ -8794,6 +8843,776 @@
       "tests": [
         "verification/test_thermal_composition_hessian.py"
       ]
+    },
+    "NVG_DARK_MATTER_BUDGET_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Public fail-closed dark-matter bookkeeping synthesis; it does not provide a cosmological composition or a new dark-matter model.",
+      "description": "Russian explanation of the common physical-density convention, legacy normalization mismatch, PBH missing normalization and conditional cogenesis status.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_dm_budget_audit.py",
+        "verification/nvg_dm_budget_audit_results.json",
+        "verification/data/planck2018_dm_budget.json",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
+    },
+    "NVG_LZ_248KEV_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Public LZ kinematic synthesis; it does not constitute a dark-matter discovery, detector likelihood, or universal NVG exclusion.",
+      "description": "Russian explanation of the source-derived bound-SHM screen, exact light-proxy no-go, formal exothermic transition target and source-complete action boundary.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/lz_248kev_event_2026.json",
+        "verification/nvg_lz_248kev_kinematic_audit.py",
+        "verification/nvg_lz_248kev_kinematic_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ]
+    },
+    "NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Russian derivation and scope record for the conditional source-free local vortex-sector audit.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+        "verification/nvg_source_complete_conditional_vortex_sector_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py"
+      ],
+      "deprecation": "Explanation of a conditional mathematical branch, not a cosmic-string, superconductor, neutron-star, device, or energy result.",
+      "quarantine": null
+    },
+    "NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Russian explanation of a formal static reduction, not a physical NN/deuteron result, parameter recommendation, or energy claim.",
+      "description": "Russian derivation and numerical-control record for the source-complete formal S-wave threshold audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+        "verification/nvg_source_complete_formal_swave_threshold_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
+      ]
+    },
+    "NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Russian derivation and scope record for the source-complete minimal-vacuum tree-cut audit.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+        "verification/nvg_source_complete_minimal_vacuum_closure_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py"
+      ],
+      "deprecation": "Explanation of a zero-evidence kinematic result; it is not a claim of observed particle stability, lifetime, dark matter, device performance, or free energy.",
+      "quarantine": null
+    },
+    "NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "No-fit analytic boundary result, not an NN phenomenology, deuteron, QCD, or all-orders quantum claim.",
+      "description": "Russian derivation and limitations for the source-complete leading tree/static same-sign two-baryon exchange sign certificate.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_nn_static_results.json",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_nn_static_audit.py"
+      ]
+    },
+    "NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md": {
+      "consumers": [],
+      "deprecation": "Explanation of a restricted mathematical result; it does not prove the full NVG theory, a physical nuclear result, or an energy mechanism.",
+      "description": "Russian derivation and scope statement for the sharp C>=1/4 Q4 finite-droplet no-self-binding certificate.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_q4_droplet_results.json",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_q4_droplet_audit.py"
+      ]
+    },
+    "NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md": {
+      "consumers": [],
+      "deprecation": "Russian explanation of a formal no-fit threshold map, not a parameter recommendation, bound-state result, or physical completion.",
+      "description": "Russian derivation and scope boundary for the source-complete scalar cross-scale Q4/Yukawa entry-gate audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_scalar_cross_scale_gate.py"
+      ]
+    },
+    "verification/data/legacy_dark_neutron_cogenesis_inputs.json": {
+      "consumers": [
+        "verification/nvg_adm_bl_cogenesis.py",
+        "verification/nvg_dm_budget_audit.py",
+        "verification/nvg_lz_248kev_kinematic_audit.py",
+        "verification/test_nvg_dm_budget_audit.py",
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ],
+      "deprecation": "No citable source, covariance, renormalisation prescription, dynamical theta source, CP/washout calculation, entropy history or abundance likelihood is recorded. It is a legacy conditional-input passport, not a particle, abundance or cogenesis prediction.",
+      "description": "Explicit passport for the formerly source-level dark-neutron corridor, portal and historical cogenesis sensitivity constants; its missing provenance and mechanism are recorded rather than repaired by calibration.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py",
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ]
+    },
+    "verification/data/legacy_relic_dark_matter_calibration.json": {
+      "consumers": [
+        "verification/nvg_relic_dark_matter.py",
+        "verification/nvg_dm_budget_audit.py",
+        "verification/test_nvg_dm_budget_audit.py"
+      ],
+      "deprecation": "No citable source, uncertainty, likelihood or common cosmology is recorded; it is a legacy calibration input, not an abundance observation or prediction.",
+      "description": "Explicit passport for the undocumented historical H0 and Omega_DM inputs used only by the retained relic inversion.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
+    },
+    "verification/data/lz_248kev_event_2026.json": {
+      "consumers": [
+        "verification/nvg_lz_248kev_kinematic_audit.py",
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ],
+      "deprecation": "One-event external input plus a source-derived bound-SHM kinematic envelope; it is not an LZ likelihood or a dark-matter discovery.",
+      "description": "Traceable LZ 248-keV event summary, recommended-SHM velocity components and external Higgsino comparator, separated from NVG construction.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ]
+    },
+    "verification/data/pbh_population_b_seed_calibration.json": {
+      "consumers": [
+        "verification/nvg_pbh_two_population.py",
+        "verification/nvg_dm_budget_audit.py",
+        "verification/test_nvg_dm_budget_audit.py"
+      ],
+      "deprecation": "No formation solver, common cosmology, absolute PBH abundance, JWST likelihood or merger likelihood is supplied; not a dark-matter component input.",
+      "description": "Explicit passport for undocumented historical PBH-B seed/density/strain benchmark inputs used only for a conditional trace.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
+    },
+    "verification/data/planck2018_dm_budget.json": {
+      "consumers": [
+        "verification/nvg_dm_budget_audit.py",
+        "verification/test_nvg_dm_budget_audit.py"
+      ],
+      "deprecation": "Base-LambdaCDM comparison input only; it does not by itself constrain an NVG cosmology without a joint CMB/background fit.",
+      "description": "Traceable Planck 2018 physical-density and H0 reference for a common omega=Omega h^2 bookkeeping audit.",
+      "evidence_weight": 0.0,
+      "inputs": [],
+      "kind": "data",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
+    },
+    "verification/nvg_dm_budget_audit_results.json": {
+      "consumers": [],
+      "deprecation": "Authenticated fail-closed bookkeeping result; a NOT_CLOSED status is not a cosmological exclusion or empirical evidence.",
+      "description": "Reproducible fail-closed physical-density comparison of the legacy relic calibration, normalized-only PBH-A profile, PBH-B calibration trace and retired cogenesis branch.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/planck2018_dm_budget.json",
+        "verification/data/legacy_relic_dark_matter_calibration.json",
+        "verification/data/pbh_population_b_seed_calibration.json",
+        "verification/nvg_relic_dark_matter.py",
+        "verification/nvg_pbh_dark_matter.py",
+        "verification/nvg_pbh_two_population.py",
+        "verification/nvg_adm_bl_cogenesis.py",
+        "verification/nvg_baryogenesis_bsm_closure.py",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_dm_budget_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_dm_budget_audit.py"
+      ]
+    },
+    "verification/nvg_lz_248kev_kinematic_audit.py": {
+      "consumers": [
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ],
+      "deprecation": "Exact free-nucleus two-body necessary-condition screen only; it has no detector likelihood, event-rate prediction, halo inference, or claim that LZ discovered dark matter.",
+      "description": "Audits whether declared light NVG proxies can kinematically produce the LZ 248-keV xenon recoil under a source-derived bound-SHM envelope without fitting; reports a formal exact exothermic target only, not a particle model.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/lz_248kev_event_2026.json",
+        "verification/nvg_adm_bl_cogenesis.py",
+        "verification/nvg_relic_dark_matter.py",
+        "verification/source_complete_solution_audit.py",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_lz_248kev_kinematic_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ]
+    },
+    "verification/nvg_lz_248kev_kinematic_results.json": {
+      "consumers": [],
+      "deprecation": "Authenticated kinematic necessary-condition snapshot; not independent empirical evidence for or against all NVG sectors or a LZ detector-level interpretation.",
+      "description": "Reproducible exact LZ 248-keV free-target kinematic screen for two source-complete vacuum modes, legacy proxies and an external non-NVG comparator.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/data/lz_248kev_event_2026.json",
+        "verification/nvg_adm_bl_cogenesis.py",
+        "verification/nvg_relic_dark_matter.py",
+        "verification/source_complete_solution_audit.py",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_lz_248kev_kinematic_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_lz_248kev_kinematic_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_conditional_vortex_sector_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Fail-closed algebraic audit of the source-free local Abelian-Higgs mass ratio and conditional classical vortex BVP, with global completion explicitly undeclared.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py"
+      ],
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [
+        "verification/nvg_source_complete_conditional_vortex_sector_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py"
+      ],
+      "deprecation": "A conditional local-sector classification only; it does not establish a physical vortex/string, a numerical profile/tension, or an energy mechanism.",
+      "quarantine": null
+    },
+    "verification/nvg_source_complete_conditional_vortex_sector_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Canonical no-fit conditional source-free local type-II/non-BPS classification with undeclared global completion.",
+      "producer": "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+      "consumers": [
+        "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py"
+      ],
+      "inputs": [
+        "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py"
+      ],
+      "deprecation": "No numerical vortex, physical topological protection, string, superconductivity, or energy claim follows from this result.",
+      "quarantine": null
+    },
+    "verification/nvg_source_complete_formal_swave_threshold_audit.py": {
+      "consumers": [
+        "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
+      ],
+      "deprecation": "Formal vacuum tree/static spinless S-wave calculation only. It neither selects a changed action nor establishes NN/deuteron/nuclear/QCD binding or any energy mechanism.",
+      "description": "Fail-closed numerical/analytic audit of the first formal S-wave threshold in the source action’s one-parameter scalar Yukawa deformation, using no empirical target or fit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_source_complete_formal_swave_threshold_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_formal_swave_threshold_results.json": {
+      "consumers": [],
+      "deprecation": "Authenticated formal S-wave threshold result with zero independent empirical weight; it is not a viable new action parameter or a physical two-nucleon prediction.",
+      "description": "Reproducible no-fit formal tree/static S-wave threshold, monotonicity, comparator, and controlled shooting/inertia signs for the declared scalar deformation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_minimal_vacuum_closure_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Fail-closed exact threshold audit of the displayed source action’s minimal source-free vacuum two-body cuts; it reads no empirical width or damping input.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py"
+      ],
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [
+        "verification/nvg_source_complete_minimal_vacuum_closure_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py"
+      ],
+      "deprecation": "Minimal displayed (N,sigma,A) vacuum tree-cut kinematics only; it supplies neither a physical lifetime/Q/dark-matter claim nor an energy mechanism.",
+      "quarantine": null
+    },
+    "verification/nvg_source_complete_minimal_vacuum_closure_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Canonical no-fit minimal-vacuum two-body threshold certificate generated from live source-complete parameters.",
+      "producer": "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+      "consumers": [
+        "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py"
+      ],
+      "inputs": [
+        "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py"
+      ],
+      "deprecation": "Kinematic closure of listed tree cuts only, not an all-orders spectral or physical stability result.",
+      "quarantine": null
+    },
+    "verification/nvg_source_complete_nn_static_audit.py": {
+      "consumers": [
+        "verification/test_nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py"
+      ],
+      "deprecation": "Tree/static nonrelativistic exchange only; no all-orders NN/QCD/deuteron or empirical nuclear claim is licensed, especially because the vector loop-counting diagnostic is not small.",
+      "description": "No-fit exact-sign audit of the bound action’s leading vacuum tree/static nonrelativistic same-sign two-N exchange kernel.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_source_complete_nn_static_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_nn_static_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_nn_static_results.json": {
+      "consumers": [],
+      "deprecation": "Zero independent empirical weight; no physical NN channel, all-orders quantum prediction, or deuteron conclusion follows from this artifact.",
+      "description": "Authenticated live-parameter sign certificate for repulsive leading same-sign N exchange in the source-complete tree/static reduction.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_source_complete_nn_static_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_nn_static_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_q4_droplet_audit.py": {
+      "consumers": [
+        "verification/test_nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py"
+      ],
+      "deprecation": "Restricted static Thomas-Fermi result only; it is neither a real-nucleus calculation nor a result for the full NVG theory, quantum sectors, or added interactions.",
+      "description": "Sharp no-fit variational no-self-binding certificate for the unmodified d=4, s=1 static zero-temperature source-complete Thomas-Fermi functional, with nonstationary positive-operator Gauss controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_source_complete_q4_droplet_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_q4_droplet_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_q4_droplet_results.json": {
+      "consumers": [],
+      "deprecation": "Zero independent empirical weight; a restricted static TF certificate, not a result for physical nuclei or all NVG sectors.",
+      "description": "Authenticated result of the sharp source-complete Q4 Thomas-Fermi finite-self-binding no-go and nonstationary Gauss operator controls.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/source_complete_solution_audit.py",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_source_complete_q4_droplet_audit.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_q4_droplet_audit.py"
+      ]
+    },
+    "verification/nvg_source_complete_scalar_cross_scale_gate.py": {
+      "consumers": [
+        "verification/test_nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py"
+      ],
+      "deprecation": "A zero-evidence algebraic entry-gate only. It does not select a new action parameter, establish binding, or supply an NN/nuclear prediction.",
+      "description": "Fail-closed cross-scale classification of the source action’s Q4 TF certificate, zero-momentum tree/static Yukawa sign, and coordinate-range sign under an explicitly symbolic one-parameter lambda deformation.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py"
+      ],
+      "kind": "script",
+      "outputs": [
+        "verification/nvg_source_complete_scalar_cross_scale_gate_results.json"
+      ],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_scalar_cross_scale_gate.py"
+      ]
+    },
+    "verification/nvg_source_complete_scalar_cross_scale_gate_results.json": {
+      "consumers": [],
+      "deprecation": "Authenticated mathematical sign/threshold map with zero independent empirical weight; its formal entry window is not a fitted or viable physical model.",
+      "description": "Reproducible source-complete scalar cross-scale gate that records the strict Q4, q=0 Yukawa, and coordinate-tail thresholds without changing the live action.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py"
+      ],
+      "kind": "artifact",
+      "outputs": [],
+      "producer": "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": [
+        "verification/test_nvg_source_complete_scalar_cross_scale_gate.py"
+      ]
+    },
+    "verification/test_lz_248kev_kinematic_audit.py": {
+      "consumers": [],
+      "deprecation": "Regression coverage for the LZ kinematic necessary-condition calculation; it cannot validate a detector-level physical interpretation.",
+      "description": "Checks serialized rebuild, sourced SHM envelope, exact elastic closure, full dark-neutron corridor, self-consistent heavier-excitation endpoints, source-complete modes, comparator separation and fail-closed mutations.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_lz_248kev_kinematic_audit.py",
+        "verification/nvg_lz_248kev_kinematic_results.json",
+        "verification/data/lz_248kev_event_2026.json",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_dm_budget_audit.py": {
+      "consumers": [],
+      "deprecation": "Regression coverage for a fail-closed abundance bookkeeping audit; it cannot establish an abundance mechanism.",
+      "description": "Checks regenerated result, Planck density identity, live legacy relic normalization, PBH-shape non-normalization, conditional chi arithmetic, and malformed-input/mutation rejection.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_dm_budget_audit.py",
+        "verification/nvg_dm_budget_audit_results.json",
+        "verification/data/planck2018_dm_budget.json",
+        "verification/data/legacy_relic_dark_matter_calibration.json",
+        "verification/data/pbh_population_b_seed_calibration.json",
+        "verification/data/legacy_dark_neutron_cogenesis_inputs.json"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_source_complete_conditional_vortex_sector_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Regression coverage for live Higgs identities, exact BPS/type-II algebra, conditional-global scope, canonical regeneration, provenance, and mutation rejection.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+        "verification/nvg_source_complete_conditional_vortex_sector_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Passing tests validate only a conditional local classical-sector calculation, not a physical vortex or theory confirmation.",
+      "quarantine": null
+    },
+    "verification/test_nvg_source_complete_formal_swave_threshold_audit.py": {
+      "consumers": [],
+      "deprecation": "Regression coverage for a formal tree/static numerical threshold only; passing does not validate a physical binding claim or altered theory.",
+      "description": "Checks live action relations, analytic comparator/monotonicity, nodeless threshold controls, independent FD inertia signs, canonical rebuild, provenance, and mutation rejection.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+        "verification/nvg_source_complete_formal_swave_threshold_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_source_complete_minimal_vacuum_closure_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Regression coverage for exact mass-gap certificates, lambda diagnostic gates, canonical regeneration, provenance, and mutation rejection.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+        "verification/nvg_source_complete_minimal_vacuum_closure_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/source_complete_solution_audit.py"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Passing tests establish only deterministic minimal-sector tree-cut bookkeeping, not physical mode stability or an energy claim.",
+      "quarantine": null
+    },
+    "verification/test_nvg_source_complete_nn_static_audit.py": {
+      "consumers": [],
+      "deprecation": "Checks a restricted analytic reduction only; it is not an NN experimental comparison or a deuteron computation.",
+      "description": "Exact-rational, semantic-mutation, ambient-precision, provenance and canonical-regeneration tests for the scoped source-complete tree/static two-baryon audit.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_nn_static_audit.py",
+        "verification/nvg_source_complete_nn_static_results.json",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_source_complete_q4_droplet_audit.py": {
+      "consumers": [],
+      "deprecation": "Passing numerical controls authenticate only the restricted no-self-binding certificate; they do not establish nuclear phenomenology or an all-sector theory.",
+      "description": "Regression, exact-certificate, mutation, Gauss-sign, grid/box-control and canonical-regeneration tests for the scoped Q4 finite-droplet no-go.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_q4_droplet_results.json",
+        "verification/contracts/source_complete_action.md"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
+    },
+    "verification/test_nvg_source_complete_scalar_cross_scale_gate.py": {
+      "consumers": [],
+      "deprecation": "Regression coverage for a scoped analytic compatibility map; passing cannot validate a modified action or a physical bound state.",
+      "description": "Checks exact/rational threshold ordering, static sign regimes, source-action relations, canonical rebuild, provenance and semantic mutation rejection for the cross-scale gate.",
+      "evidence_weight": 0.0,
+      "inputs": [
+        "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+        "verification/nvg_source_complete_scalar_cross_scale_gate_results.json",
+        "verification/contracts/source_complete_action.md",
+        "verification/nvg_source_complete_q4_droplet_audit.py",
+        "verification/nvg_source_complete_nn_static_audit.py"
+      ],
+      "kind": "test",
+      "outputs": [],
+      "producer": null,
+      "quarantine": null,
+      "role": "validation",
+      "status": "maintained",
+      "tests": []
     }
   },
   "front_door": {

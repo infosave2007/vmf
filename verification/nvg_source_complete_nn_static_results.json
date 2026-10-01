@@ -1,0 +1,209 @@
+{
+  "action_inputs": {
+    "base_live_decimal_inputs": {
+      "M_N_MeV": {
+        "decimal": "939.0",
+        "derivation": "live Params.M_N",
+        "exact_denominator": "1",
+        "exact_numerator": "939",
+        "unit": "MeV"
+      },
+      "W0_MeV": {
+        "decimal": "859.0",
+        "derivation": "live Params.W0",
+        "exact_denominator": "1",
+        "exact_numerator": "859",
+        "unit": "MeV"
+      },
+      "g_omega": {
+        "decimal": "10.12",
+        "derivation": "live Params.g_omega; nucleon current coupling",
+        "exact_denominator": "25",
+        "exact_numerator": "253",
+        "unit": "1"
+      },
+      "hbar_c_MeV_fm": {
+        "decimal": "197.3269804",
+        "derivation": "live Params.hbar_c",
+        "exact_denominator": "2500000",
+        "exact_numerator": "493317451",
+        "unit": "MeV fm"
+      },
+      "lambda": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "m_omega_MeV": {
+        "decimal": "782.6",
+        "derivation": "live Params.m_omega",
+        "exact_denominator": "5",
+        "exact_numerator": "3913",
+        "unit": "MeV"
+      }
+    },
+    "coupling_assignment": {
+      "scalar_exchange_nucleon_vertex": "g_s=M_N/W0",
+      "vector_exchange_nucleon_vertex": "g_omega (not q_phi)",
+      "why": "The bound action and live source use D_N=partial+i*g_omega*A; q_phi only fixes the Higgs-generated vector mass."
+    },
+    "derived_from_bound_action": {
+      "g_s_M_N_over_W0": {
+        "decimal": "1.09313154831199068684516880093",
+        "derivation": "M_N/W0",
+        "exact_denominator": "859",
+        "exact_numerator": "939",
+        "unit": "1"
+      },
+      "m_A_MeV": "782.6",
+      "m_A_squared_MeV2": {
+        "decimal": "612462.76",
+        "derivation": "(q_phi W0)^2=m_omega^2",
+        "exact_denominator": "25",
+        "exact_numerator": "15311569",
+        "unit": "MeV^2"
+      },
+      "m_sigma_MeV": "1244.8092624976727734824332511",
+      "m_sigma_squared_MeV2": {
+        "decimal": "1549550.1",
+        "derivation": "2*lambda*W0^2",
+        "exact_denominator": "10",
+        "exact_numerator": "15495501",
+        "unit": "MeV^2"
+      },
+      "q_phi_momega_over_W0": {
+        "decimal": "0.911059371362048894062863795111",
+        "derivation": "m_omega/W0",
+        "exact_denominator": "4295",
+        "exact_numerator": "3913",
+        "unit": "1"
+      }
+    }
+  },
+  "caveats": [
+    "Only the vacuum, tree-level, static, leading nonrelativistic two-baryon exchange kernel is calculated.",
+    "The theorem concerns two equal-sign N gauge currents. N-anti-N, finite-density screening, and dynamical external sources are outside this audit.",
+    "A charged N probe in a Higgs phase needs a gauge-invariant dressed/static-source interpretation; this is not the closed homogeneous gauge-neutral ensemble.",
+    "No pion, rho/isovector sector, contact operator, form factor, cutoff, compositeness model, electromagnetic sector, or fitted NN quantity is present.",
+    "The bound source action does not define a complete proton/neutron flavor, spin-isospin, or QCD scattering model; this output is not a physical NN-channel prediction.",
+    "g_omega^2/(16*pi^2) is not small and the upstream passport blocks the required renormalization records; do not promote this tree/static result to an all-orders quantum conclusion.",
+    "No empirical NN table, binding energy, phase shift, scattering length, likelihood, or fit is read or used."
+  ],
+  "certificate": {
+    "domain": {
+      "coordinate": "r>0, two equal-sign N currents, hbar=c=1 before the fm conversion",
+      "momentum": "Q2=|q|^2>=0 for the static spatial momentum transfer"
+    },
+    "exact_rational_inequalities": {
+      "g_omega_squared_m_sigma_squared_minus_g_s_squared_m_A_squared": {
+        "decimal": "157964389.604455391370695274712",
+        "derivation": "constant term in the factored momentum numerator",
+        "exact_denominator": "4611756250",
+        "exact_numerator": "728493261035782179",
+        "strictly_positive": true,
+        "unit": "MeV^2"
+      },
+      "g_omega_squared_minus_g_s_squared": {
+        "decimal": "101.219463418085029970957376596",
+        "derivation": "coefficient of Q2 in the factored momentum numerator",
+        "exact_denominator": "461175625",
+        "exact_numerator": "46679949304",
+        "strictly_positive": true,
+        "unit": "1"
+      },
+      "g_omega_squared_over_g_s_squared_minus_one": {
+        "decimal": "84.7069752068965126156686752385",
+        "derivation": "coordinate-space bracket is already positive as r approaches zero",
+        "exact_denominator": "551075625",
+        "exact_numerator": "46679949304",
+        "strictly_positive": true,
+        "unit": "1"
+      },
+      "m_sigma_squared_minus_m_A_squared": {
+        "decimal": "937087.34",
+        "derivation": "positive masses imply m_sigma>m_A",
+        "exact_denominator": "50",
+        "exact_numerator": "46854367",
+        "strictly_positive": true,
+        "unit": "MeV^2"
+      },
+      "static_contact_vector_minus_scalar": {
+        "decimal": "0.000166446199828639218626971012946",
+        "derivation": "V_tilde(0)",
+        "exact_denominator": "208416625450942315225",
+        "exact_numerator": "34690155287418199",
+        "strictly_positive": true,
+        "unit": "MeV^-2"
+      }
+    },
+    "kernel_definitions": {
+      "coordinate_factored": "V(r)=g_s^2 exp(-m_sigma r)*[(g_omega^2/g_s^2) exp((m_sigma-m_A)r)-1]/(4*pi*r)",
+      "coordinate_fm": "V(r_fm)=hbar_c*[g_omega^2 exp(-m_A*r_fm/hbar_c)-g_s^2 exp(-m_sigma*r_fm/hbar_c)]/(4*pi*r_fm)",
+      "coordinate_natural": "V(r)=[g_omega^2 exp(-m_A r)-g_s^2 exp(-m_sigma r)]/(4*pi*r)",
+      "momentum": "V_tilde(Q2)=g_omega^2/(Q2+m_A^2)-g_s^2/(Q2+m_sigma^2)",
+      "momentum_factored": "V_tilde(Q2)=[(g_omega^2-g_s^2)Q2+(g_omega^2*m_sigma^2-g_s^2*m_A^2)]/[(Q2+m_A^2)(Q2+m_sigma^2)]"
+    },
+    "proof": {
+      "coordinate_reason": "For r>0, m_sigma>m_A and g_omega^2/g_s^2>1; therefore (g_omega^2/g_s^2) exp((m_sigma-m_A)r)-1>0.",
+      "coordinate_strictly_positive": true,
+      "momentum_reason": "For Q2>=0, both denominator factors are positive and both exact coefficients of the factored numerator are positive.",
+      "momentum_strictly_positive": true,
+      "static_hamiltonian_nonnegative": true,
+      "static_hamiltonian_reason": "Within the leading static nonrelativistic reduction, -nabla^2/(2*mu)+V has nonnegative kinetic and strictly positive r>0 potential terms, so it has no E<0 bound state."
+    }
+  },
+  "claim_scope": "ANALYTIC_TREE_STATIC_NONRELATIVISTIC_ONLY",
+  "diagnostics": {
+    "alpha_scalar_gs2_over_4pi": "0.0950900318465504921182927604347",
+    "alpha_vector_gomega2_over_4pi": "8.14987900189530283778438464777",
+    "coordinate_repulsion_to_attraction_infimum": "85.7069752068965126156686752385",
+    "coordinate_repulsion_to_attraction_statement": "V_vector/abs(V_scalar)=(g_omega^2/g_s^2)*exp((m_sigma-m_A)r); its infimum over r>0 is g_omega^2/g_s^2.",
+    "loop_counting_interpretation": "These conventional dimensionless loop-counting combinations are diagnostics, not error bars. The vector value is not small, so a tree/static result is not a precision all-orders prediction.",
+    "mass_ratio_m_sigma_over_m_A": "1.59060728660576638574295074253",
+    "momentum_repulsion_to_attraction_infimum": "85.7069752068965126156686752385",
+    "momentum_repulsion_to_attraction_statement": "Vtilde_vector/abs(Vtilde_scalar)=(g_omega^2/g_s^2)*(Q2+m_sigma^2)/(Q2+m_A^2); its infimum over Q2>=0 is g_omega^2/g_s^2.",
+    "range_scalar_hbarc_over_m_sigma_fm": "0.15851985227364815788697748197",
+    "range_vector_hbarc_over_m_A_fm": "0.252142832098134423715819064656",
+    "static_contact_net_MeV_minus2": "0.000166446199828639218626971012946",
+    "static_contact_net_fm2": "6.48107167507123954931178358126",
+    "static_contact_ratio_vector_over_scalar": "216.841350488875457200468249339",
+    "static_contact_scalar_MeV_minus2": "0.000000771150659739862576268184813156",
+    "static_contact_vector_MeV_minus2": "0.00016721735048837908120323919776",
+    "tree_loop_counting_gomega2_over_16pi2": "0.648546764376239841235128056059",
+    "tree_loop_counting_gs2_over_16pi2": "0.00756702430357212936226072057865",
+    "tree_loop_counting_lambda_over_16pi2": "0.00664920267652841625100458977314"
+  },
+  "evidence_weight": 0.0,
+  "provenance": {
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "producer_path": "verification/nvg_source_complete_nn_static_audit.py",
+    "producer_sha256": "2bbcea5f883545789305c9c421b79ba8e39e0655141d0135214c59b4980015d5",
+    "source_complete_path": "verification/source_complete_solution_audit.py",
+    "source_complete_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "quadratic_vacuum_expansion": {
+    "field_definition": "unitary gauge: W=W0+sigma and g_mu=-q_phi A_mu",
+    "leading_vertices": "L_int=-g_s sigma bar N N-g_omega A_mu bar N gamma^mu N+...",
+    "no_sigma_A_bilinear": true,
+    "quadratic_lagrangian": "L2=(partial sigma)^2/2-m_sigma^2 sigma^2/2-F^2/4+m_A^2 A_mu A^mu/2+bar N(i slash partial-M_N)N",
+    "radial_mass_definition": "m_sigma^2=2 lambda W0^2 (not mu0^2=lambda W0^2)",
+    "vector_longitudinal_scope": "For the conserved equal-mass on-shell current used in the leading static exchange, q_mu bar u(p') gamma^mu u(p)=0; the longitudinal propagator term does not alter the kernel.",
+    "vector_mass_definition": "m_A^2=q_phi^2 W0^2=m_omega^2"
+  },
+  "schema": "nvg_source_complete_nn_static_audit.v1",
+  "scope": {
+    "included": [
+      "bound local-U(1) source-complete action in its source-free vacuum",
+      "M*(W)=g_s W with g_s=M_N/W0",
+      "m_A=q_phi W0=m_omega and m_sigma=sqrt(2*lambda)W0",
+      "same-sign nucleon current coupling D_N=partial+i*g_omega*A",
+      "analytic static momentum and coordinate exchange kernels"
+    ],
+    "not_an_empirical_comparison": true,
+    "parameter_fit_performed": false
+  },
+  "status": "PASS_SOURCE_COMPLETE_STATIC_EXCHANGE_REPULSION_CERTIFICATE"
+}

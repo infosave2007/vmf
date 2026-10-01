@@ -1,0 +1,29 @@
+{
+  "schema_version": "planck2018-dark-matter-budget-input.v1",
+  "source": {
+    "citation": "Planck Collaboration, Planck 2018 results. VI. Cosmological parameters, arXiv:1807.06209v4 (2021), base LambdaCDM TT,TE,EE+lowE+lensing",
+    "source_url": "https://arxiv.org/abs/1807.06209",
+    "version": "arXiv v4, accessed 2026-10-01"
+  },
+  "reference_model": "base LambdaCDM, TT,TE,EE+lowE+lensing; a comparison reference only unless NVG supplies a joint CMB/background fit",
+  "parameters": {
+    "omega_b": {
+      "value": "0.02237",
+      "uncertainty_68_percent": "0.00015",
+      "units": "dimensionless",
+      "definition": "Omega_b h^2"
+    },
+    "omega_c": {
+      "value": "0.1200",
+      "uncertainty_68_percent": "0.0012",
+      "units": "dimensionless",
+      "definition": "Omega_c h^2"
+    },
+    "H0_km_s_Mpc": {
+      "value": "67.36",
+      "uncertainty_68_percent": "0.54",
+      "units": "km s^-1 Mpc^-1",
+      "definition": "Hubble constant"
+    }
+  }
+}

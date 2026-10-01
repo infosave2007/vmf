@@ -1,0 +1,146 @@
+{
+  "audit_controls_pass": true,
+  "closure_requirements": {
+    "all_components_share_one_predeclared_cosmology": false,
+    "cogenesis_is_a_viable_source_complete_abundance_mechanism": false,
+    "pbh_population_A_has_absolute_abundance_contract": false,
+    "pbh_population_B_has_absolute_abundance_contract": false,
+    "relic_independently_predicts_omega": false
+  },
+  "component_audit": {
+    "dark_neutron_chi": {
+      "baryogenesis_evidence_status": "RETIRED_MISSING_BARYOGENESIS_SOURCE",
+      "conditional_fraction_of_Planck_omega_c": "0.186430435249",
+      "conditional_identity": "omega_chi=(m_chi/m_p)*omega_b, conditional on N_chi=N_B",
+      "conditional_mass_GeV": "0.9383413",
+      "conditional_omega_chi": "0.0223716522298",
+      "historical_input_artifact": "verification/data/legacy_dark_neutron_cogenesis_inputs.json",
+      "historical_input_sha256": "cb17388cc08f57810dd74ac2135b6752ba5d26c163992de94771798716e81c9d",
+      "historical_input_status": "LEGACY_UNDOCUMENTED_CONDITIONAL_INPUTS_NOT_MECHANISM",
+      "missing_components": [
+        "dynamical theta(t) solution and its initial conditions",
+        "CP-violating baryon-number source and washout network",
+        "reheating/entropy history converting n_B/s to the quoted eta"
+      ],
+      "status": "CONDITIONAL_ON_RETIRED_COGENESIS_EXTENSION",
+      "unassigned_reference_gap_for_diagnostic_only": "0.0976283477702"
+    },
+    "pbh_population_A": {
+      "limitation": "No PBH formation solver or independent abundance likelihood is present.",
+      "normalized_profile_sum": "1.00000000000",
+      "physical_omega_h2": null,
+      "producer_evidence_status": "CALIBRATED_GRID_NO_LIKELIHOOD",
+      "status": "UNIDENTIFIABLE_NO_ABSOLUTE_ABUNDANCE_NORMALIZATION"
+    },
+    "pbh_population_B": {
+      "calibration_input_artifact": "verification/data/pbh_population_b_seed_calibration.json",
+      "calibration_input_sha256": "29f9f2dcb73d073936a4b22ef6d311f6882bc63a0f0ecf3f4d8d553c2544ee00",
+      "calibration_status": "LEGACY_UNDOCUMENTED_SEED_TRACE_NOT_ABSOLUTE_COSMOLOGY",
+      "canonical_ladder_nearest_cycle": 10,
+      "conditional_seed_fraction_range": [
+        "1.21212121212e-10",
+        "1.21212121212e-9"
+      ],
+      "limitation": "Seed counts, reference density, CMB benchmark and strain reference are calibration inputs. No PBH formation solver, shared background cosmology, absolute omega_PBH prediction, JWST occupation likelihood or merger likelihood is supplied.",
+      "physical_omega_h2": null,
+      "status": "CALIBRATED_SEED_TRACE_NOT_ABSOLUTE_COSMOLOGY"
+    },
+    "relic_defect_inversion": {
+      "Planck_omega_c_ratio": "1.18363093333",
+      "calibration_input_artifact": "verification/data/legacy_relic_dark_matter_calibration.json",
+      "calibration_input_sha256": "9bc735e352b516be8e673521cd3890d4add1ac538273a3db03760937716b2211",
+      "calibration_status": "LEGACY_UNDOCUMENTED_CALIBRATION_NOT_ABUNDANCE_PREDICTION",
+      "declared_target_Omega_at_legacy_h": "0.268",
+      "implied_target_omega": "0.142035712",
+      "lambda_v_inferred_after_inputting_target": "1.02282898132",
+      "legacy_h": "0.728",
+      "m_W_MeV_inferred_after_inputting_target": "1228.59763272",
+      "relative_difference_from_Planck_omega_c": "0.183630933333",
+      "signed_difference_from_Planck_omega_c": "0.022035712",
+      "status": "LEGACY_CALIBRATION_NOT_AN_INDEPENDENT_ABUNDANCE_PREDICTION"
+    }
+  },
+  "composition": null,
+  "controls": {
+    "PBH_A_shape_is_not_mistaken_for_absolute_abundance": {
+      "pass": true
+    },
+    "PBH_B_calibration_is_not_mistaken_for_absolute_abundance": {
+      "pass": true
+    },
+    "Planck_physical_density_identity_is_arithmetic_only": {
+      "meaning": "Same-input arithmetic identity, not a physical precision or independent cosmological test.",
+      "pass": true
+    },
+    "cogenesis_historical_input_passport_is_explicit_and_conditional": {
+      "pass": true
+    },
+    "cogenesis_parent_is_retired": {
+      "pass": true
+    },
+    "conditional_chi_identity_is_arithmetic_only": {
+      "pass": true
+    },
+    "manual_composition_is_not_emitted": {
+      "pass": true
+    },
+    "relic_is_not_promoted_to_a_prediction_even_if_its_target_changes": {
+      "pass": true
+    },
+    "relic_producer_returns_its_own_calibration_passport": {
+      "pass": true
+    }
+  },
+  "fit_used": false,
+  "independent_evidence_weight": 0.0,
+  "input_artifact": "verification/data/planck2018_dm_budget.json",
+  "input_artifact_sha256": "d75ef2831e6d88a8d17e12aaefa161cf731a53175a9d3864b7052d1ff6f6ba93",
+  "integrity_sha256": "ad0a3b32b1316fa2b32fe07753e2d8bf07ba341a8b69dcbb37ebc82de16dabfe",
+  "manual_remainder_allocation": {
+    "reason": "A calibrated relic target, an unnormalized PBH shape and a conditional chi identity cannot be repaired by assigning an observed-density remainder to another sector.",
+    "status": "REJECTED_NOT_DERIVED"
+  },
+  "next_non_ad_hoc_calculation": [
+    "Derive an absolute PBH/defect production yield or formation probability from a predeclared model, rather than normalize a profile or invert omega_c.",
+    "Provide a viable, source-complete baryogenesis/cogenesis mechanism before using N_chi=N_B as a component abundance.",
+    "Choose one background cosmology and jointly calculate CMB/BBN/structure observables before comparing its omega_i values with Planck.",
+    "Only then test sum_i omega_i=omega_c; no component may be filled in by a remainder allocation."
+  ],
+  "planck_reference": {
+    "H0_km_s_Mpc": "67.3600",
+    "H0_uncertainty_68_percent_km_s_Mpc": "0.54",
+    "Omega_b_derived_for_comparison_only": "0.0493016923285",
+    "Omega_c_derived_for_comparison_only": "0.264470410345",
+    "derived_Omega_c_caveat": "This is arithmetic from correlated base-LambdaCDM inputs; no uncertainty/covariance propagation or NVG CMB fit is claimed.",
+    "h": "0.6736",
+    "omega_b": "0.02237",
+    "omega_b_uncertainty_68_percent": "0.00015",
+    "omega_c": "0.1200",
+    "omega_c_uncertainty_68_percent": "0.0012"
+  },
+  "reference_scope": "base LambdaCDM, TT,TE,EE+lowE+lensing; a comparison reference only unless NVG supplies a joint CMB/background fit",
+  "schema_version": "nvg-dm-budget-audit.v4",
+  "source_provenance": {
+    "citation": "Planck Collaboration, Planck 2018 results. VI. Cosmological parameters, arXiv:1807.06209v4 (2021), base LambdaCDM TT,TE,EE+lowE+lensing",
+    "source_url": "https://arxiv.org/abs/1807.06209",
+    "version": "arXiv v4, accessed 2026-10-01"
+  },
+  "source_sha256": {
+    "baryogenesis_closure_module": "13047d80e17b65805a3d53283d0db6a5855dfc7aaaee179f22955ee0da66eaa9",
+    "cogenesis_historical_input": "cb17388cc08f57810dd74ac2135b6752ba5d26c163992de94771798716e81c9d",
+    "cogenesis_module": "5aaaa3851e0a50d13ffc30f48418777f7a88774881f283666df2f5212a306d6f",
+    "pbh_population_A_module": "6b78079d5430d9a1e8a65d8aa69707cb5cfc119a9218d0d222a331bc42f48d16",
+    "pbh_population_B_calibration_input": "29f9f2dcb73d073936a4b22ef6d311f6882bc63a0f0ecf3f4d8d553c2544ee00",
+    "pbh_population_B_module": "d4bc76441cb30fb36538cd6aac51b56c6b27cbf23dc36959facb53a34ea2b44d",
+    "producer": "b382313186b32b1c49c4af301723a1cd481971209bcc57c618e7724fd88c3dfa",
+    "relic_calibration_input": "9bc735e352b516be8e673521cd3890d4add1ac538273a3db03760937716b2211",
+    "relic_module": "bf6d67ea21ed0be37caf72b8df96704b00cf2ad1b6dd8fa2900c29f06a2a081f"
+  },
+  "status": "NOT_CLOSED_MISSING_PBH_NORMALIZATION_AND_VIABLE_COGENESIS",
+  "unified_abundance_status": "UNIFIED_ABUNDANCE_NOT_ESTABLISHED",
+  "why_no_sum_is_reported": [
+    "The relic module explicitly inverts a legacy, undocumented calibration target; it does not predict omega.",
+    "PBH population A normalizes a shape only, while PBH population B is a seed/reference-density calibration with no shared physical omega_PBH.",
+    "The dark-neutron fraction is conditional on a cogenesis extension whose baryogenesis parent is explicitly retired for missing source dynamics."
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "action_inputs": {
+    "derived_from_bound_action": {
+      "g_s_M_N_over_W0": {
+        "decimal": "1.0931315483119906868451688009313",
+        "derivation": "M_N/W0",
+        "exact_denominator": "859",
+        "exact_numerator": "939",
+        "unit": "1"
+      },
+      "m_A_MeV_display": "782.6",
+      "m_A_squared_MeV2": {
+        "decimal": "612462.76",
+        "derivation": "(q_phi*W0)^2=m_omega^2",
+        "exact_denominator": "25",
+        "exact_numerator": "15311569",
+        "unit": "MeV^2"
+      },
+      "m_sigma_MeV_display": "1244.8092624976727734824332511009",
+      "m_sigma_squared_MeV2": {
+        "decimal": "1549550.1",
+        "derivation": "2*lambda*W0^2",
+        "exact_denominator": "10",
+        "exact_numerator": "15495501",
+        "unit": "MeV^2"
+      },
+      "q_phi_momega_over_W0": {
+        "decimal": "0.91105937136204889406286379511059",
+        "derivation": "m_omega/W0",
+        "exact_denominator": "4295",
+        "exact_numerator": "3913",
+        "unit": "1"
+      }
+    },
+    "live_decimal_inputs": {
+      "M_N_MeV": {
+        "decimal": "939.0",
+        "derivation": "live Params.M_N",
+        "exact_denominator": "1",
+        "exact_numerator": "939",
+        "unit": "MeV"
+      },
+      "W0_MeV": {
+        "decimal": "859.0",
+        "derivation": "live Params.W0",
+        "exact_denominator": "1",
+        "exact_numerator": "859",
+        "unit": "MeV"
+      },
+      "g_omega": {
+        "decimal": "10.12",
+        "derivation": "live Params.g_omega; matter-current coupling",
+        "exact_denominator": "25",
+        "exact_numerator": "253",
+        "unit": "1"
+      },
+      "hbar_c_MeV_fm": {
+        "decimal": "197.3269804",
+        "derivation": "live Params.hbar_c",
+        "exact_denominator": "2500000",
+        "exact_numerator": "493317451",
+        "unit": "MeV fm"
+      },
+      "lambda": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "m_omega_MeV": {
+        "decimal": "782.6",
+        "derivation": "live Params.m_omega",
+        "exact_denominator": "5",
+        "exact_numerator": "3913",
+        "unit": "MeV"
+      }
+    }
+  },
+  "caveats": [
+    "A kinematically closed displayed tree cut is not an all-orders pole-width calculation.",
+    "The scalar cubic vertex does not allow sigma->sigma+sigma for positive m_sigma; its threshold is always above its parent mass.",
+    "No physical AAA or A-sigma-sigma vertex exists in the displayed Abelian unitary-gauge minimal sector.",
+    "This audit does not identify the formal A or sigma mode with an observed particle or experimental resonance.",
+    "No empirical mass, decay, material, source, damping, detector, or likelihood table is read."
+  ],
+  "conclusion": {
+    "minimal_tree_vacuum_only": "All listed intrinsic vacuum two-body cuts in the displayed minimal (N,sigma,A) sector are kinematically closed at the live baseline. Therefore this action fragment supplies no nonzero tree-level intrinsic width from those cuts.",
+    "not_claimed": [
+      "a numerical lifetime, linewidth, quality factor, or stored energy",
+      "dark matter, a stable real-world particle, or all-orders stability",
+      "a device, energy source, gain, or free-energy mechanism",
+      "a statement about unspecified spectators, gravity, external ports, loops, or matter-induced damping"
+    ]
+  },
+  "evidence_weight": 0.0,
+  "hypothetical_lambda_diagnostic_gates": {
+    "baseline_is_below_both_opening_thresholds": true,
+    "lambda_only_hypothetical_deformation": "m_sigma(lambda_d)^2=2*lambda_d*W0^2 with W0, M_N, m_A, g_s, and q_phi held fixed; this is a diagnostic identity, not a parameter recommendation",
+    "sigma_to_A_A_closure_threshold": {
+      "decimal": "1.6600583562932234330467920979128",
+      "derivation": "2*q_phi^2 from m_sigma=2*m_A",
+      "exact_denominator": "18447025",
+      "exact_numerator": "30623138",
+      "unit": "1"
+    },
+    "sigma_to_A_A_opens_only_if": "lambda_d > 2*q_phi^2",
+    "sigma_to_N_Nbar_closure_threshold": {
+      "decimal": "2.3898731638299400580852468080897",
+      "derivation": "2*g_s^2 from m_sigma=2*M_N",
+      "exact_denominator": "737881",
+      "exact_numerator": "1763442",
+      "unit": "1"
+    },
+    "sigma_to_N_Nbar_opens_only_if": "lambda_d > 2*g_s^2"
+  },
+  "leading_tree_two_body_cuts": {
+    "all_listed_cuts_closed": true,
+    "channels": [
+      {
+        "closure_gap_squared": {
+          "decimal": "1977333.9",
+          "derivation": "(2*M_N)^2-m_sigma^2",
+          "exact_denominator": "10",
+          "exact_numerator": "19773339",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "final_state": "N+Nbar",
+        "identifier": "sigma_to_N_Nbar",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(sigma) > total rest mass(N+Nbar)",
+        "parent": "sigma",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "closure_gap_squared": {
+          "decimal": "2914421.24",
+          "derivation": "(2*M_N)^2-m_A^2",
+          "exact_denominator": "25",
+          "exact_numerator": "72860531",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "final_state": "N+Nbar",
+        "identifier": "A_to_N_Nbar",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(A) > total rest mass(N+Nbar)",
+        "parent": "A",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "closure_gap_squared": {
+          "decimal": "900300.94",
+          "derivation": "(2*m_A)^2-m_sigma^2",
+          "exact_denominator": "50",
+          "exact_numerator": "45015047",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "final_state": "A+A",
+        "identifier": "sigma_to_A_A",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(sigma) > total rest mass(A+A)",
+        "parent": "sigma",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "final_state": "N+sigma (and charge-conjugate Nbar process)",
+        "identifier": "N_to_N_sigma",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(N) > m(N)+m(sigma)",
+        "parent": "N",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "positive_emitted_mass_squared": {
+          "decimal": "1549550.1",
+          "derivation": "m_sigma^2>0; therefore m(N)<m(N)+m(sigma)",
+          "exact_denominator": "10",
+          "exact_numerator": "15495501",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "final_state": "N+A (and charge-conjugate Nbar process)",
+        "identifier": "N_to_N_A",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(N) > m(N)+m(A)",
+        "parent": "N",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "positive_emitted_mass_squared": {
+          "decimal": "612462.76",
+          "derivation": "m_A^2>0; therefore m(N)<m(N)+m(A)",
+          "exact_denominator": "25",
+          "exact_numerator": "15311569",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "final_state": "A+sigma",
+        "identifier": "A_to_A_sigma",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(A) > m(A)+m(sigma)",
+        "parent": "A",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "positive_emitted_mass_squared": {
+          "decimal": "1549550.1",
+          "derivation": "m_sigma^2>0; therefore m(A)<m(A)+m(sigma)",
+          "exact_denominator": "10",
+          "exact_numerator": "15495501",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "status": "KINEMATICALLY_CLOSED"
+      },
+      {
+        "final_state": "sigma+sigma",
+        "identifier": "sigma_to_sigma_sigma",
+        "minimal_tree_vacuum_width": "0 (kinematically closed; no coupling, line shape, or damping fit evaluated)",
+        "open_threshold": "m(sigma) > m(sigma)+m(sigma)",
+        "parent": "sigma",
+        "phase_space_theta": "Theta(m_parent-total_final_rest_mass)=0",
+        "positive_emitted_mass_squared": {
+          "decimal": "1549550.1",
+          "derivation": "m_sigma^2>0; therefore m(sigma)<m(sigma)+m(sigma)",
+          "exact_denominator": "10",
+          "exact_numerator": "15495501",
+          "strictly_positive": true,
+          "unit": "MeV^2"
+        },
+        "status": "KINEMATICALLY_CLOSED"
+      }
+    ],
+    "scope": "only physical two-body cuts enabled by the displayed minimal-sector unitary-gauge vertices"
+  },
+  "mass_ordering": {
+    "squared_gap_certificates": {
+      "M_N_squared_minus_m_A_squared": {
+        "decimal": "269258.24",
+        "derivation": "M_N^2-m_A^2; establishes m_A<M_N",
+        "exact_denominator": "25",
+        "exact_numerator": "6731456",
+        "strictly_positive": true,
+        "unit": "MeV^2"
+      },
+      "four_m_A_squared_minus_m_sigma_squared": {
+        "decimal": "900300.94",
+        "derivation": "4*m_A^2-m_sigma^2; establishes m_sigma<2*m_A",
+        "exact_denominator": "50",
+        "exact_numerator": "45015047",
+        "strictly_positive": true,
+        "unit": "MeV^2"
+      },
+      "m_sigma_squared_minus_M_N_squared": {
+        "decimal": "667829.1",
+        "derivation": "m_sigma^2-M_N^2; establishes M_N<m_sigma",
+        "exact_denominator": "10",
+        "exact_numerator": "6678291",
+        "strictly_positive": true,
+        "unit": "MeV^2"
+      }
+    },
+    "strict_mass_ordering": "m_A < M_N < m_sigma < 2*m_A < 2*M_N"
+  },
+  "minimal_sector_contract": {
+    "displayed_vertices_used": [
+      "-g_s*sigma*Nbar*N",
+      "-g_omega*A_mu*Nbar*gamma^mu*N",
+      "+(m_A^2/W0)*sigma*A_mu*A^mu",
+      "-lambda*W0*sigma^3"
+    ],
+    "empirical_target_or_data_read": false,
+    "excluded": [
+      "L_spectator content not specified by the displayed action",
+      "new operators or particles",
+      "external/open-system damping and drive",
+      "loops, renormalized pole shifts, finite-density or finite-temperature damping, and gravity"
+    ],
+    "not_counted_as_physical_final_particles": [
+      "theta is the eaten Goldstone in unitary gauge",
+      "A0 is a Gauss constraint, not an additional particle"
+    ],
+    "parameter_fit_performed": false,
+    "physical_claim_permitted": false,
+    "physical_modes_counted": [
+      "N and Nbar with rest mass M_N",
+      "one radial scalar sigma with m_sigma^2=2*lambda*W0^2",
+      "one massive vector A with three polarizations and m_A=q_phi*W0=m_omega"
+    ],
+    "vacuum": "source-free gauge-neutral vacuum; unitary gauge W=W0+sigma, theta=0, A_mu=0"
+  },
+  "provenance": {
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "producer_path": "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+    "producer_sha256": "70d6324c05c08aaf7df86f78bae6a9d88a9de43c89b7d6ce618ce56971d8a2af",
+    "source_complete_path": "verification/source_complete_solution_audit.py",
+    "source_complete_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "schema": "nvg_source_complete_minimal_vacuum_closure_audit.v1",
+  "status": "PASS_MINIMAL_VACUUM_TREE_TWO_BODY_CUTS_CLOSED"
+}

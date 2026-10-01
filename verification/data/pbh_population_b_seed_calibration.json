@@ -1,0 +1,52 @@
+{
+  "schema_version": "pbh-population-b-seed-calibration.v1",
+  "calibration_status": "LEGACY_UNDOCUMENTED_SEED_TRACE_NOT_ABSOLUTE_COSMOLOGY",
+  "provenance": {
+    "citation": null,
+    "source_url": null,
+    "version": null,
+    "limitation": "The legacy script preserved these seed, density, CMB-benchmark and strain numbers without a machine-readable source, covariance, JWST occupation likelihood, merger likelihood or common cosmological abundance calculation. This passport records that limitation and does not invent provenance."
+  },
+  "parameters": {
+    "legacy_rho_dm_Msun_Mpc3": {
+      "value": "3.3e10",
+      "units": "M_sun Mpc^-3",
+      "definition": "Historical reference dark-matter density used only to form a conditional seed trace"
+    },
+    "seed_mass_Msun": {
+      "value": "4.0e5",
+      "units": "M_sun",
+      "definition": "Historical PBH-B seed mass calibration"
+    },
+    "seed_density_low_Mpc_minus3": {
+      "value": "1e-5",
+      "units": "Mpc^-3",
+      "definition": "Historical low seed-number calibration"
+    },
+    "seed_density_high_Mpc_minus3": {
+      "value": "1e-4",
+      "units": "Mpc^-3",
+      "definition": "Historical high seed-number calibration"
+    },
+    "legacy_nanograv_strain_at_1_per_year": {
+      "value": "2.4e-15",
+      "units": "dimensionless",
+      "definition": "Historical reference strain used for a conditional scaling exercise"
+    },
+    "legacy_smbh_chirp_mass_Msun": {
+      "value": "4.0e8",
+      "units": "M_sun",
+      "definition": "Historical effective SMBH chirp-mass calibration for strain scaling"
+    },
+    "legacy_smbh_merger_density_Mpc_minus3": {
+      "value": "3.0e-3",
+      "units": "Mpc^-3",
+      "definition": "Historical merger-density calibration for strain scaling"
+    },
+    "legacy_cmb_fraction_benchmark": {
+      "value": "1e-8",
+      "units": "dimensionless",
+      "definition": "Historical comparison benchmark, not a likelihood or an abundance solver"
+    }
+  }
+}

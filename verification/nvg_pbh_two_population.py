@@ -1,105 +1,178 @@
 #!/usr/bin/env python3
-"""
-NVG: two-population PBH abundance — one calibration, three claims tested
-=========================================================================
-Three rows of the verification table rely on PBH abundance:
-  (i)   PBH dark matter (asteroid-window peak) — population A;
-  (ii)  JWST early SMBH seeds (~4e5 M_sun at z ~ 20) — population B;
-  (iii) the NANOGrav SGWB attributed to PBH-binary mergers — population B.
-The published single-Gaussian abundance (peak N = -21, sigma_N = 1.3) gives
-essentially zero weight to population B, so claims (ii) and (iii) had no
-abundance behind them. This script constructs the minimal honest fix — a
-second population calibrated to what (ii) REQUIRES — and then computes what
-that same population yields for (iii). One calibration, one cross-check.
+"""Conditional two-population PBH bookkeeping, not a cosmological abundance model.
 
-Population B calibration (JWST):
-  Observed z > 10 AGN/SMBH comoving density from JWST surveys:
-  n_seed ~ 1e-5 .. 1e-4 Mpc^-3 (GN-z11 / UHZ1-type objects, with duty-cycle
-  and completeness giving the order-of-magnitude range). Every seed is one
-  M_B = 4e5 M_sun PBH (rung N ~ 20 of the corrected 2^N ladder).
+Population A is the normalized *shape* produced by ``nvg_pbh_dark_matter``.
+Population B is a legacy JWST-seed calibration: a stipulated seed number
+range is divided by a stipulated present-day dark-matter density merely to
+show its tiny conditional fraction.  Neither row contains a PBH formation
+solver, a shared cosmology, an absolute physical ``omega_PBH`` prediction, or
+an observational likelihood.  In particular, this module must not be used to
+close the NVG dark-matter budget.
 
-Checks performed:
-  1. f_PBH(B) against the CMB-accretion bound for 1e5-6 M_sun PBHs;
-  2. the SGWB strain from population-B binaries vs NANOGrav A ~ 2.4e-15,
-     scaled from the standard SMBH-binary background formula
-     h_c^2 ∝ n_merge * (G Mc)^{5/3} / f^{4/3} at f = 1/yr.
-
-Verdict is computed, not asserted in advance.
+The former text called a 4e5-solar-mass seed ``N~20`` under a separate 2^N
+convention.  The maintained canonical ladder is 0.38*4^N; its nearest runtime
+rung is now derived below rather than hard-coded.
 """
 
 from __future__ import annotations
+
+import hashlib
+import json
 import math
+from pathlib import Path
+from typing import Any
 
-# ── constants / benchmarks ─────────────────────────────────────────────
-RHO_DM_MSUN_MPC3 = 3.3e10      # mean DM density today, M_sun / Mpc^3
-M_B = 4.0e5                    # population-B PBH mass, M_sun (JWST seed)
-N_SEED_LO, N_SEED_HI = 1e-5, 1e-4   # required seed density, Mpc^-3
-A_NANOGRAV = 2.4e-15           # NANOGrav 15yr strain amplitude at f = 1/yr
+from nvg_pbh_mass_spectrum import get_pbh_mass
 
-# Reference: the observed SGWB is consistent with the standard SMBH-binary
-# population — characteristic chirp mass and merger-population density:
-M_SMBH = 4.0e8                 # M_sun, effective chirp mass of the SMBHB background
-N_SMBH = 3.0e-3                # Mpc^-3, galaxies contributing merging SMBH binaries
-
-# CMB accretion bound (Serpico et al. 2020 class): for M ~ 1e5-6 M_sun,
-# f_PBH < ~1e-8 (spherical accretion; disk accretion tighter).
-F_PBH_CMB_BOUND = 1e-8
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+CALIBRATION_PATH = HERE / "data" / "pbh_population_b_seed_calibration.json"
+CALIBRATION_SCHEMA_VERSION = "pbh-population-b-seed-calibration.v1"
+CALIBRATION_STATUS = "LEGACY_UNDOCUMENTED_SEED_TRACE_NOT_ABSOLUTE_COSMOLOGY"
+STATUS = "CALIBRATED_SEED_TRACE_NOT_ABSOLUTE_COSMOLOGY"
 
 
-def main():
+def _load_seed_calibration(path: Path = CALIBRATION_PATH) -> dict[str, Any]:
+    """Load the historical seed trace without pretending it has provenance."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or payload.get("schema_version") != CALIBRATION_SCHEMA_VERSION:
+        raise ValueError("unrecognized PBH-B seed calibration schema")
+    if payload.get("calibration_status") != CALIBRATION_STATUS:
+        raise ValueError("PBH-B calibration status changed; review required")
+    provenance = payload.get("provenance")
+    params = payload.get("parameters")
+    if not isinstance(provenance, dict) or not isinstance(params, dict):
+        raise ValueError("PBH-B seed calibration passport is incomplete")
+    if provenance.get("citation") is not None or provenance.get("source_url") is not None:
+        raise ValueError("PBH-B seed calibration must not invent source provenance")
+    if not isinstance(provenance.get("limitation"), str) or not provenance["limitation"]:
+        raise ValueError("PBH-B seed calibration misses its limitation")
+    expected_units = {
+        "legacy_rho_dm_Msun_Mpc3": "M_sun Mpc^-3",
+        "seed_mass_Msun": "M_sun",
+        "seed_density_low_Mpc_minus3": "Mpc^-3",
+        "seed_density_high_Mpc_minus3": "Mpc^-3",
+        "legacy_nanograv_strain_at_1_per_year": "dimensionless",
+        "legacy_smbh_chirp_mass_Msun": "M_sun",
+        "legacy_smbh_merger_density_Mpc_minus3": "Mpc^-3",
+        "legacy_cmb_fraction_benchmark": "dimensionless",
+    }
+    for key, units in expected_units.items():
+        entry = params.get(key)
+        if not isinstance(entry, dict) or entry.get("units") != units or not isinstance(entry.get("definition"), str):
+            raise ValueError(f"PBH-B seed calibration misses passport for {key}")
+        try:
+            value = float(entry.get("value"))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"PBH-B seed calibration has invalid {key}") from exc
+        if not math.isfinite(value) or value <= 0.0:
+            raise ValueError(f"PBH-B seed calibration has nonpositive {key}")
+    if float(params["seed_density_high_Mpc_minus3"]["value"]) <= float(params["seed_density_low_Mpc_minus3"]["value"]):
+        raise ValueError("PBH-B seed density range is reversed")
+    return payload
+
+
+_CALIBRATION = _load_seed_calibration()
+_PARAMETERS = _CALIBRATION["parameters"]
+# Compatibility aliases for existing consumers; each is loaded from the
+# explicit legacy passport rather than held as a hidden script constant.
+RHO_DM_MSUN_MPC3 = float(_PARAMETERS["legacy_rho_dm_Msun_Mpc3"]["value"])
+M_B = float(_PARAMETERS["seed_mass_Msun"]["value"])
+N_SEED_LO = float(_PARAMETERS["seed_density_low_Mpc_minus3"]["value"])
+N_SEED_HI = float(_PARAMETERS["seed_density_high_Mpc_minus3"]["value"])
+A_NANOGRAV = float(_PARAMETERS["legacy_nanograv_strain_at_1_per_year"]["value"])
+M_SMBH = float(_PARAMETERS["legacy_smbh_chirp_mass_Msun"]["value"])
+N_SMBH = float(_PARAMETERS["legacy_smbh_merger_density_Mpc_minus3"]["value"])
+F_PBH_CMB_BOUND = float(_PARAMETERS["legacy_cmb_fraction_benchmark"]["value"])
+
+
+def _nearest_canonical_cycle(mass_msun: float) -> tuple[int, float, float]:
+    """Return the nearest declared 0.38*4^N rung without changing the ladder."""
+    if not math.isfinite(mass_msun) or mass_msun <= 0.0:
+        raise ValueError("seed mass must be finite and positive")
+    cycles = range(-30, 21)
+    cycle = min(cycles, key=lambda candidate: abs(math.log(get_pbh_mass(candidate) / mass_msun)))
+    ladder_mass = float(get_pbh_mass(cycle))
+    return cycle, ladder_mass, ladder_mass / mass_msun - 1.0
+
+
+def compute_population_b_calibrated_trace() -> dict[str, Any]:
+    """Expose the B calibration while explicitly withholding physical abundance.
+
+    ``conditional_fraction_relative_to_legacy_rho_dm`` is arithmetic using a
+    declared historical density benchmark.  It is not ``f_PBH`` in a common
+    NVG cosmology and never becomes a physical abundance component.
+    """
+    cycle, ladder_mass, ladder_relative_difference = _nearest_canonical_cycle(M_B)
+    rows: list[dict[str, float | bool]] = []
+    for seed_density in (N_SEED_LO, N_SEED_HI):
+        mass_density = seed_density * M_B
+        conditional_fraction = mass_density / RHO_DM_MSUN_MPC3
+        ratio_h2 = (seed_density / N_SMBH) * (M_B / M_SMBH) ** (5.0 / 3.0)
+        strain = A_NANOGRAV * math.sqrt(ratio_h2)
+        rows.append(
+            {
+                "seed_density_Mpc_minus3": seed_density,
+                "conditional_mass_density_Msun_Mpc_minus3": mass_density,
+                "conditional_fraction_relative_to_legacy_rho_dm": conditional_fraction,
+                "conditional_fraction_below_legacy_cmb_benchmark": conditional_fraction < F_PBH_CMB_BOUND,
+                "conditional_strain_at_1_per_year": strain,
+                "conditional_strain_deficit_vs_legacy_nanograv_benchmark": A_NANOGRAV / strain,
+            }
+        )
+    return {
+        "status": STATUS,
+        "calibration_status": CALIBRATION_STATUS,
+        "calibration_input_artifact": CALIBRATION_PATH.relative_to(ROOT).as_posix(),
+        "calibration_input_sha256": hashlib.sha256(CALIBRATION_PATH.read_bytes()).hexdigest(),
+        "physical_omega_h2": None,
+        "physical_fraction_of_dark_matter": None,
+        "observed_likelihood": None,
+        "seed_mass_Msun": M_B,
+        "canonical_ladder_nearest_cycle": cycle,
+        "canonical_ladder_mass_Msun": ladder_mass,
+        "canonical_ladder_relative_mass_difference": ladder_relative_difference,
+        "calibration_inputs": {
+            "legacy_rho_dm_Msun_Mpc3": RHO_DM_MSUN_MPC3,
+            "seed_density_range_Mpc_minus3": [N_SEED_LO, N_SEED_HI],
+            "legacy_nanograv_strain_at_1_per_year": A_NANOGRAV,
+            "legacy_cmb_fraction_benchmark": F_PBH_CMB_BOUND,
+        },
+        "rows": rows,
+        "limitation": (
+            "Seed counts, reference density, CMB benchmark and strain reference are calibration inputs. "
+            "No PBH formation solver, shared background cosmology, absolute omega_PBH prediction, "
+            "JWST occupation likelihood or merger likelihood is supplied."
+        ),
+    }
+
+
+def main() -> dict[str, Any]:
+    state = compute_population_b_calibrated_trace()
     print("=" * 78)
-    print("  NVG: TWO-POPULATION PBH ABUNDANCE — JWST CALIBRATION vs NANOGrav")
+    print("  NVG: CONDITIONAL PBH SEED TRACE — NOT A DM ABUNDANCE")
     print("=" * 78)
-
-    print("\n1. Population A (dark matter): asteroid-window peak — unchanged,")
-    print("   abundance calibrated within the allowed window (see nvg_pbh_dark_matter.py).")
-
-    # ── population B from JWST requirement ──────────────────────────────
-    print(f"\n2. Population B calibrated to the JWST seeding requirement:")
-    print(f"   {'n_seed [Mpc^-3]':>16} {'rho_B [Msun/Mpc^3]':>20} {'f_PBH(B)':>12} {'CMB bound ok?':>14}")
-    results = []
-    for n_seed in (N_SEED_LO, N_SEED_HI):
-        rho_B = n_seed * M_B
-        f_B = rho_B / RHO_DM_MSUN_MPC3
-        ok = f_B < F_PBH_CMB_BOUND
-        results.append((n_seed, f_B, ok))
-        print(f"   {n_seed:>16.0e} {rho_B:>20.1f} {f_B:>12.2e} {'yes' if ok else 'NO':>14}")
-    # the low-density end passes the CMB bound; the high end is marginal
-    f_B_lo, f_B_hi = results[0][1], results[1][1]
-
-    # ── NANOGrav cross-check from the SAME population ──────────────────
-    # Background strain scaling (phinney 2001): h_c^2 ∝ n * (Mc)^{5/3}
-    # (same merger efficiency per object assumed as for the SMBHB population —
-    # deliberately GENEROUS to population B).
-    print(f"\n3. SGWB from population-B binaries (same-per-object merger efficiency")
-    print(f"   as the SMBHB population — a deliberately generous assumption):")
-    for n_seed, f_B, _ in results:
-        ratio_h2 = (n_seed / N_SMBH) * (M_B / M_SMBH) ** (5.0 / 3.0)
-        A_B = A_NANOGRAV * math.sqrt(ratio_h2)
-        deficit = A_NANOGRAV / A_B
-        print(f"   n_seed = {n_seed:.0e}: A_B = {A_B:.1e}  →  {deficit:,.0f}x below NANOGrav")
-
-    ratio_h2_hi = (N_SEED_HI / N_SMBH) * (M_B / M_SMBH) ** (5.0 / 3.0)
-    A_B_hi = A_NANOGRAV * math.sqrt(ratio_h2_hi)
-    deficit_hi = A_NANOGRAV / A_B_hi
-
-    # ── verdict ─────────────────────────────────────────────────────────
-    print(f"\n4. VERDICT:")
-    print(f"   - Population B needed by JWST is TINY (f_PBH ~ {f_B_lo:.0e}..{f_B_hi:.0e});")
-    print(f"     the low end passes the CMB-accretion bound — the JWST claim can be")
-    print(f"     carried by an abundance model, at the cost of one calibrated number.")
-    print(f"   - The SAME population falls short of the NANOGrav amplitude by a factor")
-    print(f"     ~{deficit_hi:,.0f} in strain even at the generous end. Raising it to NANOGrav")
-    print(f"     levels would need f_PBH ~ {f_B_hi * deficit_hi**2:.0e} — {f_B_hi*deficit_hi**2/F_PBH_CMB_BOUND:,.0f}x over the CMB bound.")
-    print(f"   - CONCLUSION: the PBH-binary explanation of NANOGrav is RETIRED. NVG")
-    print(f"     currently has NO mechanism for the NANOGrav signal: the bounce radiates")
-    print(f"     at microHz (nvg_recondensation_dynamics.py) and heavy-PBH binaries are")
-    print(f"     {deficit_hi:,.0f}x too weak. NANOGrav is attributed to ordinary SMBH binaries.")
+    print("Population A is a normalized profile only; it has no formation abundance.")
+    print(
+        "Population B uses calibrated seed/reference-density inputs; it is not "
+        "a component of a common physical DM budget."
+    )
+    print(
+        f"Seed mass {state['seed_mass_Msun']:.2e} M_sun; nearest canonical "
+        f"0.38*4^N rung: N={state['canonical_ladder_nearest_cycle']} "
+        f"({state['canonical_ladder_mass_Msun']:.2e} M_sun, "
+        f"relative difference {state['canonical_ladder_relative_mass_difference']:+.3e})."
+    )
+    print(f"{'n_seed [Mpc^-3]':>16} {'conditional f':>16} {'A_B (conditional)':>20}")
+    for row in state["rows"]:
+        print(
+            f"{row['seed_density_Mpc_minus3']:>16.0e} "
+            f"{row['conditional_fraction_relative_to_legacy_rho_dm']:>16.2e} "
+            f"{row['conditional_strain_at_1_per_year']:>20.1e}"
+        )
+    print("Evidence status:", state["status"])
     print("=" * 78)
-
-    assert not results[0][2] or results[0][1] < F_PBH_CMB_BOUND
-    assert deficit_hi > 100.0, "NANOGrav deficit should be large"
-    assert A_B_hi < A_NANOGRAV / 100.0
+    return state
 
 
 if __name__ == "__main__":

@@ -1,0 +1,67 @@
+{
+  "schema_version": "lz-248kev-event-input.v3",
+  "sources": {
+    "lz_extended_nuclear_recoil_search": {
+      "citation": "LZ Collaboration, Search for dark matter particle interactions in an extended nuclear recoil energy window with the LUX-ZEPLIN (LZ) experiment, arXiv:2609.02823 (2026)",
+      "source_url": "https://arxiv.org/abs/2609.02823",
+      "version": "arXiv v1, accessed 2026-10-01"
+    },
+    "higgsino_comparator": {
+      "citation": "Freese and Theodosopoulos, Higgsino Dark Matter Interpretation of the LUX-ZEPLIN 248 keV Nuclear-Recoil Event, arXiv:2609.01583v2 (2026)",
+      "source_url": "https://arxiv.org/abs/2609.01583",
+      "version": "arXiv v2, accessed 2026-10-01"
+    },
+    "recommended_standard_halo_model": {
+      "citation": "Baxter et al., Recommended conventions for reporting results from direct dark matter searches, arXiv:2105.00599v3 (2025), Table 1 and Eq. (11)",
+      "source_url": "https://arxiv.org/abs/2105.00599",
+      "version": "arXiv v3, accessed 2026-10-01"
+    }
+  },
+  "event": {
+    "recoil_energy_keV": "248",
+    "recoil_energy_statistical_uncertainty_keV": "23",
+    "recoil_energy_systematic_uncertainty_keV": "23",
+    "global_significance_sigma": "2.6",
+    "maximum_local_significance_sigma": "3.4",
+    "exposure_tonne_years": "2.84",
+    "interpretation": "One event of interest; not a dark-matter discovery. These values are observations only and are never used to fit an NVG parameter."
+  },
+  "target": {
+    "description": "Natural-xenon mass proxy for a free-nucleus two-body kinematic screen; this is not an isotope-by-isotope detector-response calculation.",
+    "natural_xenon_atomic_mass_u": "131.293",
+    "atomic_mass_unit_GeV": "0.93149410242"
+  },
+  "bound_standard_halo_model_screen": {
+    "galactic_escape_speed_km_s": "544",
+    "local_standard_of_rest_velocity_km_s": [
+      "0",
+      "238",
+      "0"
+    ],
+    "solar_peculiar_velocity_km_s": [
+      "11.1",
+      "12.2",
+      "7.3"
+    ],
+    "formula": "v_max <= v_esc + |v_0 + v_pec| + max_t |v_earth(t)|",
+    "interpretation": "The producer evaluates the maximum norm of the recommended Earth-orbital vector over its sine/cosine phase, then applies a triangle-inequality upper envelope for particles in the bound Standard Halo Model. This is neither an LZ likelihood nor a universal bound on unbound, relativistic, or otherwise non-SHM populations.",
+    "earth_orbital_velocity_basis": {
+      "mean_speed_km_s": "29.8",
+      "cosine_coefficients": [
+        "0.9941",
+        "0.1088",
+        "0.0042"
+      ],
+      "sine_coefficients": [
+        "-0.0504",
+        "0.4946",
+        "-0.8677"
+      ]
+    }
+  },
+  "external_higgsino_comparator": {
+    "mass_GeV": "1000",
+    "endothermic_mass_splitting_keV": "350",
+    "interpretation": "External comparison benchmark only. It is not a particle predicted by the current NVG action."
+  }
+}

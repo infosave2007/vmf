@@ -1,0 +1,87 @@
+{
+  "schema_version": "legacy-dark-neutron-cogenesis-inputs.v1",
+  "status": "LEGACY_UNDOCUMENTED_CONDITIONAL_INPUTS_NOT_MECHANISM",
+  "provenance": {
+    "citation": null,
+    "source_url": null,
+    "version": null,
+    "limitation": "These values were hard-coded in a historical conditional cogenesis script. The repository does not contain a complete source passport, covariance, renormalisation prescription, dynamical theta source, CP/washout calculation, entropy history or abundance likelihood. This file exposes that absence rather than inventing provenance."
+  },
+  "parameters": {
+    "M_P_MeV": {
+      "value": "938.272",
+      "units": "MeV",
+      "definition": "Historical proton-mass input used by the conditional dark-neutron corridor arithmetic"
+    },
+    "M_E_MeV": {
+      "value": "0.511",
+      "units": "MeV",
+      "definition": "Historical electron-mass input used by the conditional dark-neutron corridor arithmetic"
+    },
+    "M_N_MeV": {
+      "value": "939.565",
+      "units": "MeV",
+      "definition": "Historical neutron-mass input used by the conditional dark-neutron corridor arithmetic"
+    },
+    "S_N_BE9_MeV": {
+      "value": "1.6654",
+      "units": "MeV",
+      "definition": "Historical Be-9 neutron-separation input used to define the lower corridor edge"
+    },
+    "BETA_LAT_GeV3": {
+      "value": "0.0144",
+      "units": "GeV^3",
+      "definition": "Historical neutron matrix-element input in the conditional portal sensitivity"
+    },
+    "ALPHA_EM": {
+      "value": "0.0072973525205055605",
+      "units": "dimensionless",
+      "definition": "Historical electromagnetic-coupling input in the conditional portal sensitivity"
+    },
+    "TAU_N_GEV": {
+      "value": "7.5e-28",
+      "units": "GeV",
+      "definition": "Historical neutron-width input in the conditional portal sensitivity"
+    },
+    "T_STAR_GeV": {
+      "value": "0.2",
+      "units": "GeV",
+      "definition": "Historical temperature scale used by the eta-target inversion"
+    },
+    "M_THETA_GeV": {
+      "value": "0.0066",
+      "units": "GeV",
+      "definition": "Superseded historical theta-mass identification used only to reproduce the old conditional sensitivity"
+    },
+    "M_PL_GeV": {
+      "value": "1.22e19",
+      "units": "GeV",
+      "definition": "Historical Planck-scale input used by the eta-target inversion"
+    },
+    "G_STAR": {
+      "value": "20.0",
+      "units": "dimensionless",
+      "definition": "Historical effective-degrees-of-freedom input used by the eta-target inversion"
+    },
+    "ETA_TARGET": {
+      "value": "8.6e-11",
+      "units": "dimensionless",
+      "definition": "Historical baryon-asymmetry target supplied to the inversion, not a generated result"
+    },
+    "OMEGA_RATIO_OBS": {
+      "value": "5.364327223960661",
+      "units": "dimensionless",
+      "definition": "Historical Omega_DM/Omega_b comparison ratio used only in the rejected full-ADM arithmetic"
+    },
+    "OMEGA_RATIO_ERR": {
+      "value": "0.065",
+      "units": "dimensionless",
+      "definition": "Historical comparison uncertainty used only in the rejected full-ADM arithmetic"
+    },
+    "BR_BOUND_NOW": {
+      "value": "1e-4",
+      "units": "dimensionless",
+      "definition": "Historical benchmark used only for a conditional portal-sensitivity comparison"
+    }
+  }
+}

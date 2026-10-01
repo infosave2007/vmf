@@ -1,0 +1,585 @@
+{
+  "action_inputs": {
+    "derived_action_relations": {
+      "g_s_M_N_over_W0": {
+        "decimal": "1.0931315483119906868451688009313",
+        "derivation": "M_N/W0",
+        "exact_denominator": "859",
+        "exact_numerator": "939",
+        "unit": "1"
+      },
+      "m_sigma_deformation": "m_sigma(lambda_d)^2=2*lambda_d*W0^2",
+      "q_phi_momega_over_W0": {
+        "decimal": "0.91105937136204889406286379511059",
+        "derivation": "m_omega/W0",
+        "exact_denominator": "4295",
+        "exact_numerator": "3913",
+        "unit": "1"
+      },
+      "reduced_mass_M_N_over_2": {
+        "decimal": "469.5",
+        "derivation": "fixed formal two-body reduced mass",
+        "exact_denominator": "2",
+        "exact_numerator": "939",
+        "unit": "MeV"
+      },
+      "static_potential": "V_lambda_d(r_nat)=[g_omega^2 exp(-m_omega r_nat)-g_s^2 exp(-m_sigma(lambda_d) r_nat)]/(4*pi*r_nat)"
+    },
+    "live_decimal_inputs": {
+      "M_N_MeV": {
+        "decimal": "939.0",
+        "derivation": "live Params.M_N",
+        "exact_denominator": "1",
+        "exact_numerator": "939",
+        "unit": "MeV"
+      },
+      "W0_MeV": {
+        "decimal": "859.0",
+        "derivation": "live Params.W0",
+        "exact_denominator": "1",
+        "exact_numerator": "859",
+        "unit": "MeV"
+      },
+      "g_omega": {
+        "decimal": "10.12",
+        "derivation": "live Params.g_omega; nucleon-current vertex",
+        "exact_denominator": "25",
+        "exact_numerator": "253",
+        "unit": "1"
+      },
+      "hbar_c_MeV_fm": {
+        "decimal": "197.3269804",
+        "derivation": "live Params.hbar_c",
+        "exact_denominator": "2500000",
+        "exact_numerator": "493317451",
+        "unit": "MeV fm"
+      },
+      "lambda_baseline": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "m_omega_MeV": {
+        "decimal": "782.6",
+        "derivation": "live Params.m_omega",
+        "exact_denominator": "5",
+        "exact_numerator": "3913",
+        "unit": "MeV"
+      }
+    }
+  },
+  "analytic_formal_certificates": {
+    "bargmann_comparator": {
+      "comparator": "V_comp(r)=-alpha_s exp(-m_sigma r)/r, alpha_s=g_s^2/(4*pi)",
+      "lambda_B_exact_pi_display": "0.0054023764917731308258697099062312",
+      "lambda_B_rational_bounds": {
+        "strict_lower_from_pi_lt_22_over_7": {
+          "decimal": "0.0053980302090449241291730990676364",
+          "derivation": "M_N^6/[32*(22/7)^2*W0^6] < lambda_B",
+          "exact_denominator": "6222348379977603809408",
+          "exact_numerator": "33588424526320849689",
+          "strictly_positive": true,
+          "unit": "1"
+        },
+        "strict_upper_from_pi_gt_3": {
+          "decimal": "0.0059243687555050867993645803826214",
+          "derivation": "lambda_B < M_N^6/(288*W0^6)",
+          "exact_denominator": "12856091694168602912",
+          "exact_numerator": "76164227950840929",
+          "strictly_positive": true,
+          "unit": "1"
+        }
+      },
+      "strict_no_binding_for_lambda_d_at_least_rational_upper": true,
+      "sufficient_no_binding_condition": "2*mu*alpha_s/m_sigma(lambda_d)<1",
+      "why": "The full formal potential is pointwise no more attractive than V_comp; Bargmann N_0<1 for the comparator excludes an S-wave bound state there as well."
+    },
+    "cross_scale_thresholds": {
+      "baseline_above_coordinate_range": true,
+      "certified_analytic_ordering": "lambda_witness < lambda_q0 < lambda_B < lambda_range < lambda_baseline",
+      "lambda_q0": {
+        "decimal": "0.0048422498643950652569952967492714",
+        "derivation": "tree/static q=0 zero-kernel threshold",
+        "exact_denominator": "69701751811270898",
+        "exact_numerator": "337513298256225",
+        "unit": "1"
+      },
+      "lambda_range": {
+        "decimal": "0.4150145890733058582616980244782",
+        "derivation": "m_omega^2/(2*W0^2), tree/static coordinate range-sign threshold",
+        "exact_denominator": "36894050",
+        "exact_numerator": "15311569",
+        "unit": "1"
+      },
+      "q0_strictly_below_Bargmann_lower_bound": true
+    },
+    "declared_negative_variational_witness": {
+      "beta_MeV_display": "10.69280755976045",
+      "beta_definition": "(2/5)*m_sigma(lambda_witness)",
+      "lambda_witness": {
+        "decimal": "0.00048422498643950652569952967492714",
+        "derivation": "lambda_q0/10; predeclared non-fitted control",
+        "exact_denominator": "139403503622541796",
+        "exact_numerator": "67502659651245",
+        "unit": "1"
+      },
+      "rayleigh_energy_MeV_display": "-0.01742353652411416",
+      "scope": "Within this formal self-adjoint central Hamiltonian, a negative trial Rayleigh quotient witnesses at least one E<0 S-wave state. It is not a physical NN/deuteron claim.",
+      "status": "NEGATIVE_DECLARED_FORMAL_TRIAL_WITNESS",
+      "trial_state": "psi_beta(r)=(beta^3/pi)^(1/2)*exp(-beta*r), normalized in natural units"
+    },
+    "monotonicity": {
+      "min_max_consequence": "Every discrete eigenvalue of this formal central Hamiltonian is nondecreasing with lambda_d; the first S-wave bound-state region, if present, is an interval below its first threshold.",
+      "pointwise_statement": "For lambda_2>lambda_1>0 and r>0, V_lambda_2(r)-V_lambda_1(r)>0 because m_sigma(lambda) increases and only the negative scalar Yukawa term changes."
+    }
+  },
+  "baseline_classification": {
+    "lambda_baseline": {
+      "decimal": "1.05",
+      "derivation": "live Params.lam",
+      "exact_denominator": "20",
+      "exact_numerator": "21",
+      "unit": "1"
+    },
+    "lambda_q0": {
+      "decimal": "0.0048422498643950652569952967492714",
+      "derivation": "tree/static q=0 zero-kernel threshold",
+      "exact_denominator": "69701751811270898",
+      "exact_numerator": "337513298256225",
+      "unit": "1"
+    },
+    "lambda_range": {
+      "decimal": "0.4150145890733058582616980244782",
+      "derivation": "m_sigma=m_omega",
+      "exact_denominator": "36894050",
+      "exact_numerator": "15311569",
+      "unit": "1"
+    },
+    "reason": "lambda_baseline>lambda_range and lambda_baseline>lambda_c_formal in this formal reduction",
+    "status": "FORMAL_BASELINE_POINTWISE_STATIC_REPULSIVE_AND_ABOVE_FIRST_THRESHOLD"
+  },
+  "caveats": [
+    "The numerical threshold is controlled shooting plus finite-difference agreement, not an interval-ODE proof of an infinite-volume eigenvalue.",
+    "Finite Dirichlet boxes are operator controls only: a positive finite-box spectrum does not prove infinite-volume nonbinding.",
+    "The formal potential is tree/static and spinless; the source action does not make its loop expansion a controlled precision NN approximation.",
+    "The zero-energy threshold is a resonance condition, not itself a normalizable bound-state wavefunction.",
+    "No empirical NN/nuclear binding energy, scattering datum, radius, cutoff, form factor, likelihood, or fit is used."
+  ],
+  "conclusion": {
+    "cross_scale_interpretation": "The threshold lies below lambda_q0, so a negative static q=0 sign or a coordinate-space negative tail is not sufficient to create an S-wave bound state in this reduction.",
+    "formal_only": "The declared formal central Hamiltonian has a controlled numerical first S-wave zero-energy threshold near lambda_d=0.0011028573. Its bound-state side is lambda_d below that threshold, by formal monotonicity.",
+    "not_claimed": [
+      "a physical NN, deuteron, nuclear, or QCD prediction",
+      "a fitted or preferred replacement for the source-action lambda",
+      "a new interaction, energy source, or completed physical theory",
+      "a controlled loop, relativistic, spin, isospin, pion/rho, form-factor, Coulomb, or experimental result"
+    ]
+  },
+  "evidence_weight": 0.0,
+  "finite_difference_sign_controls": {
+    "controls_are_operator_not_droplet_boundaries": true,
+    "interpretation": "The stable negative/zero finite-box inertia signs independently agree with a first threshold between the two deliberately separated formal lambdas. They do not replace the infinite-volume shooting definition.",
+    "lambda_above_shooting_midpoint": "0.001213143039832135",
+    "lambda_below_shooting_midpoint": "0.0009925715780444745",
+    "method": "Dirichlet finite-difference tridiagonal LDL inertia at E=0",
+    "rows": [
+      {
+        "above_shooting_midpoint": {
+          "dz": "0.2",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.001213143039832135",
+          "matrix_dimension": 2499,
+          "minimum_abs_ldl_pivot": "25.00520304041913",
+          "negative_eigenvalue_count": 0,
+          "physical_outer_radius_fm": "126.0714160490672",
+          "relative_minimum_abs_ldl_pivot": "0.2794942579126644",
+          "z_omega_max": "500.0"
+        },
+        "below_shooting_midpoint": {
+          "dz": "0.2",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.0009925715780444745",
+          "matrix_dimension": 2499,
+          "minimum_abs_ldl_pivot": "4.650815270118265",
+          "negative_eigenvalue_count": 1,
+          "physical_outer_radius_fm": "126.0714160490672",
+          "relative_minimum_abs_ldl_pivot": "0.05198456613444186",
+          "z_omega_max": "500.0"
+        },
+        "coordinate": "z_omega=m_omega*r_nat=m_omega*r_fm/(hbar*c)",
+        "identifier": "dirichlet_z500_dz0p2",
+        "sign_control_pass": true
+      },
+      {
+        "above_shooting_midpoint": {
+          "dz": "0.1",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.001213143039832135",
+          "matrix_dimension": 19999,
+          "minimum_abs_ldl_pivot": "100.0040641754045",
+          "negative_eigenvalue_count": 0,
+          "physical_outer_radius_fm": "504.2856641962688",
+          "relative_minimum_abs_ldl_pivot": "0.3480270130960784",
+          "z_omega_max": "2000.0"
+        },
+        "below_shooting_midpoint": {
+          "dz": "0.1",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.0009925715780444745",
+          "matrix_dimension": 19999,
+          "minimum_abs_ldl_pivot": "24.17985468222773",
+          "negative_eigenvalue_count": 1,
+          "physical_outer_radius_fm": "504.2856641962688",
+          "relative_minimum_abs_ldl_pivot": "0.08414917762891239",
+          "z_omega_max": "2000.0"
+        },
+        "coordinate": "z_omega=m_omega*r_nat=m_omega*r_fm/(hbar*c)",
+        "identifier": "dirichlet_z2000_dz0p1",
+        "sign_control_pass": true
+      },
+      {
+        "above_shooting_midpoint": {
+          "dz": "0.05",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.001213143039832135",
+          "matrix_dimension": 159999,
+          "minimum_abs_ldl_pivot": "400.0023639462291",
+          "negative_eigenvalue_count": 0,
+          "physical_outer_radius_fm": "2017.142656785075",
+          "relative_minimum_abs_ldl_pivot": "0.4066063711491551",
+          "z_omega_max": "8000.0"
+        },
+        "below_shooting_midpoint": {
+          "dz": "0.05",
+          "finite_box_interpretation": "negative count means this declared Dirichlet operator has that many E<0 eigenvalues; zero count is not an infinite-volume no-binding proof",
+          "lambda_d": "0.0009925715780444745",
+          "matrix_dimension": 159999,
+          "minimum_abs_ldl_pivot": "26.82522646978532",
+          "negative_eigenvalue_count": 1,
+          "physical_outer_radius_fm": "2017.142656785075",
+          "relative_minimum_abs_ldl_pivot": "0.005194122392122837",
+          "z_omega_max": "8000.0"
+        },
+        "coordinate": "z_omega=m_omega*r_nat=m_omega*r_fm/(hbar*c)",
+        "identifier": "dirichlet_z8000_dz0p05",
+        "sign_control_pass": true
+      }
+    ]
+  },
+  "formal_model_contract": {
+    "empirical_target_or_data_read": false,
+    "held_fixed": [
+      "W0",
+      "M_N",
+      "m_omega",
+      "g_omega",
+      "g_s=M_N/W0",
+      "q_phi=m_omega/W0",
+      "mu=M_N/2",
+      "all omitted sectors"
+    ],
+    "hypothetical_deformed_action_member": true,
+    "no_new_operator_introduced": true,
+    "parameter_fit_performed": false,
+    "physical_action_replacement_claimed": false,
+    "physical_claim_permitted": false,
+    "scope": "formal static tree-level central S-wave Hamiltonian only",
+    "symbolic_deformation": "lambda -> lambda_d>0 only in U=lambda(W^2-W0^2)^2/4 and m_sigma^2=2*lambda_d*W0^2"
+  },
+  "formal_threshold_diagnostics": {
+    "lambda_baseline_over_lambda_c_display": "952.0723954858772",
+    "lambda_c_over_lambda_q0_display": "0.2277572078730562",
+    "m_sigma_at_lambda_c_MeV_display": "40.34296602821129",
+    "rounded_numerical_enclosure": {
+      "statement": "0.0011028 < lambda_c_formal < 0.0011029",
+      "strict_lower": "0.0011028",
+      "strict_upper": "0.0011029"
+    },
+    "scalar_range_hbarc_over_msigma_fm_display": "4.891236312719593",
+    "tree_static_coordinate_tail_crossover_fm_display_not_prediction": "1.183268555319778"
+  },
+  "provenance": {
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "cross_scale_gate_path": "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+    "cross_scale_gate_sha256": "ab48041526e564e4f59aedebc5b425b6aed80852ca6130874b02d8692aa273fb",
+    "nn_static_audit_path": "verification/nvg_source_complete_nn_static_audit.py",
+    "nn_static_audit_sha256": "2bbcea5f883545789305c9c421b79ba8e39e0655141d0135214c59b4980015d5",
+    "producer_path": "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+    "producer_sha256": "c7dd7273eb1460e383ebe3448fe4ef964d2c1d2cdd6bfd7a9f41b03d899f5596",
+    "source_complete_path": "verification/source_complete_solution_audit.py",
+    "source_complete_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "runtime_control_surface": {
+    "evidence_weight": 0.0,
+    "finite_difference_controls": [
+      {
+        "dz": "0.2",
+        "identifier": "dirichlet_z500_dz0p2",
+        "z_omega_max": "500.0"
+      },
+      {
+        "dz": "0.1",
+        "identifier": "dirichlet_z2000_dz0p1",
+        "z_omega_max": "2000.0"
+      },
+      {
+        "dz": "0.05",
+        "identifier": "dirichlet_z8000_dz0p05",
+        "z_omega_max": "8000.0"
+      }
+    ],
+    "pi_bounds": [
+      "3",
+      "22/7"
+    ],
+    "schema": "nvg_source_complete_formal_swave_threshold_audit.v1",
+    "search": {
+      "convergence_relative_limit": "1e-06",
+      "initial_start_replays": [
+        "1e-06",
+        "1e-10"
+      ],
+      "node_bracket_max_iterations": 96,
+      "pivot_relative_floor": "1e-10",
+      "ratio": "0.8",
+      "root_max_iterations": 96,
+      "root_relative_tolerance": "2e-10",
+      "search_max_iterations": 96
+    },
+    "shooting_controls": [
+      {
+        "atol": "1e-11",
+        "identifier": "coarse_x30_rtol1e-9_step1e-1",
+        "max_step": "0.1",
+        "rtol": "1e-09",
+        "x_sigma_max": "30.0",
+        "x_start": "1e-08"
+      },
+      {
+        "atol": "1e-13",
+        "identifier": "medium_x50_rtol1e-11_step7p5e-2",
+        "max_step": "0.075",
+        "rtol": "1e-11",
+        "x_sigma_max": "50.0",
+        "x_start": "1e-08"
+      },
+      {
+        "atol": "2e-15",
+        "identifier": "fine_x80_rtol2e-13_step5e-2",
+        "max_step": "0.05",
+        "rtol": "2e-13",
+        "x_sigma_max": "80.0",
+        "x_start": "1e-08"
+      }
+    ],
+    "status": "PASS_FORMAL_SWAVE_THRESHOLD_NOT_PHYSICAL",
+    "witness": {
+      "beta_over_m_sigma": "2/5",
+      "lambda_divisor": 10
+    }
+  },
+  "schema": "nvg_source_complete_formal_swave_threshold_audit.v1",
+  "status": "PASS_FORMAL_SWAVE_THRESHOLD_NOT_PHYSICAL",
+  "zero_energy_shooting": {
+    "box_tolerance_convergence_pass": true,
+    "controls": [
+      {
+        "control": {
+          "atol": "1.0e-11",
+          "coordinate": "x_sigma=m_sigma(lambda_d)*r_nat=m_sigma*r_fm/(hbar*c)",
+          "identifier": "coarse_x30_rtol1e-9_step1e-1",
+          "max_step": "0.1",
+          "outer_control_has_at_least_30_scalar_ranges": true,
+          "rtol": "1.0e-9",
+          "x_sigma_max": "30.0",
+          "x_sigma_min": "1.0e-8"
+        },
+        "first_threshold_nodeless": true,
+        "lambda_bracket": {
+          "lower_negative_log_derivative": "0.001102857308779202",
+          "relative_width": "1.573779044204267e-10",
+          "upper_positive_log_derivative": "0.001102857308952767"
+        },
+        "lower_state": {
+          "endpoint_du_dx": "-5.555835761472358e-9",
+          "endpoint_log_derivative": "-5.024904998387315e-11",
+          "endpoint_u": "110.5659860884024",
+          "lambda_d": "0.001102857308779202",
+          "nfev": 3974,
+          "node_count": 0,
+          "physical_outer_radius_fm": "146.7370893921722",
+          "x_sigma_max": "30.0",
+          "x_start": "1.0e-8"
+        },
+        "midpoint_lambda_display": "0.001102857308865985",
+        "midpoint_state": {
+          "endpoint_du_dx": "-1.964686642237236e-9",
+          "endpoint_log_derivative": "-1.776935846037422e-11",
+          "endpoint_u": "110.5659861957593",
+          "lambda_d": "0.001102857308865985",
+          "nfev": 3974,
+          "node_count": 0,
+          "physical_outer_radius_fm": "146.7370893863989",
+          "x_sigma_max": "30.0",
+          "x_start": "1.0e-8"
+        },
+        "node_refinement_iterations": 2,
+        "root_iterations": 30,
+        "search_iterations": 8,
+        "upper_state": {
+          "endpoint_du_dx": "1.626468123208848e-9",
+          "endpoint_log_derivative": "1.471038406648751e-11",
+          "endpoint_u": "110.5659863031169",
+          "lambda_d": "0.001102857308952767",
+          "nfev": 3974,
+          "node_count": 0,
+          "physical_outer_radius_fm": "146.7370893806256",
+          "x_sigma_max": "30.0",
+          "x_start": "1.0e-8"
+        }
+      },
+      {
+        "control": {
+          "atol": "1.0e-13",
+          "coordinate": "x_sigma=m_sigma(lambda_d)*r_nat=m_sigma*r_fm/(hbar*c)",
+          "identifier": "medium_x50_rtol1e-11_step7p5e-2",
+          "max_step": "0.075",
+          "outer_control_has_at_least_30_scalar_ranges": true,
+          "rtol": "1.0e-11",
+          "x_sigma_max": "50.0",
+          "x_sigma_min": "1.0e-8"
+        },
+        "first_threshold_nodeless": true,
+        "lambda_bracket": {
+          "lower_negative_log_derivative": "0.001102857308779202",
+          "relative_width": "1.573779044204267e-10",
+          "upper_positive_log_derivative": "0.001102857308952767"
+        },
+        "lower_state": {
+          "endpoint_du_dx": "-4.635214991746266e-9",
+          "endpoint_log_derivative": "-4.192261251991864e-11",
+          "endpoint_u": "110.5659860664442",
+          "lambda_d": "0.001102857308779202",
+          "nfev": 8654,
+          "node_count": 0,
+          "physical_outer_radius_fm": "244.5618156536204",
+          "x_sigma_max": "50.0",
+          "x_start": "1.0e-8"
+        },
+        "midpoint_lambda_display": "0.001102857308865985",
+        "midpoint_state": {
+          "endpoint_du_dx": "-1.044080201208776e-9",
+          "endpoint_log_derivative": "-9.443050586003277e-12",
+          "endpoint_u": "110.5659862456246",
+          "lambda_d": "0.001102857308865985",
+          "nfev": 8654,
+          "node_count": 0,
+          "physical_outer_radius_fm": "244.5618156439982",
+          "x_sigma_max": "50.0",
+          "x_start": "1.0e-8"
+        },
+        "node_refinement_iterations": 2,
+        "root_iterations": 30,
+        "search_iterations": 8,
+        "upper_state": {
+          "endpoint_du_dx": "2.547047330024554e-9",
+          "endpoint_log_derivative": "2.303644558678858e-11",
+          "endpoint_u": "110.5659864248019",
+          "lambda_d": "0.001102857308952767",
+          "nfev": 8654,
+          "node_count": 0,
+          "physical_outer_radius_fm": "244.561815634376",
+          "x_sigma_max": "50.0",
+          "x_start": "1.0e-8"
+        }
+      },
+      {
+        "control": {
+          "atol": "2.0e-15",
+          "coordinate": "x_sigma=m_sigma(lambda_d)*r_nat=m_sigma*r_fm/(hbar*c)",
+          "identifier": "fine_x80_rtol2e-13_step5e-2",
+          "max_step": "0.05",
+          "outer_control_has_at_least_30_scalar_ranges": true,
+          "rtol": "2.0e-13",
+          "x_sigma_max": "80.0",
+          "x_sigma_min": "1.0e-8"
+        },
+        "first_threshold_nodeless": true,
+        "lambda_bracket": {
+          "lower_negative_log_derivative": "0.001102857308865986",
+          "relative_width": "1.311484175225427e-10",
+          "upper_positive_log_derivative": "0.001102857309010624"
+        },
+        "lower_state": {
+          "endpoint_du_dx": "-1.04438022209682e-9",
+          "endpoint_log_derivative": "-9.445764089410113e-12",
+          "endpoint_u": "110.5659862146781",
+          "lambda_d": "0.001102857308865986",
+          "nfev": 20186,
+          "node_count": 0,
+          "physical_outer_radius_fm": "391.298905030397",
+          "x_sigma_max": "80.0",
+          "x_start": "1.0e-8"
+        },
+        "midpoint_lambda_display": "0.001102857308938305",
+        "midpoint_state": {
+          "endpoint_du_dx": "1.948198434202072e-9",
+          "endpoint_log_derivative": "1.762023291870566e-11",
+          "endpoint_u": "110.5659864537808",
+          "lambda_d": "0.001102857308938305",
+          "nfev": 20186,
+          "node_count": 0,
+          "physical_outer_radius_fm": "391.2989050175674",
+          "x_sigma_max": "80.0",
+          "x_start": "1.0e-8"
+        },
+        "node_refinement_iterations": 3,
+        "root_iterations": 30,
+        "search_iterations": 8,
+        "upper_state": {
+          "endpoint_du_dx": "4.940810079194072e-9",
+          "endpoint_log_derivative": "4.468652817180202e-11",
+          "endpoint_u": "110.5659866928711",
+          "lambda_d": "0.001102857309010624",
+          "nfev": 20186,
+          "node_count": 0,
+          "physical_outer_radius_fm": "391.2989050047379",
+          "x_sigma_max": "80.0",
+          "x_start": "1.0e-8"
+        }
+      }
+    ],
+    "equation": "[-d^2/dx_sigma^2+U_lambda_d(x_sigma)]u=0, u(0)=0, u'(0)=1",
+    "fine_control_identifier": "fine_x80_rtol2e-13_step5e-2",
+    "first_threshold_nodeless": true,
+    "origin_series_replays": [
+      {
+        "lower_log_derivative": "-9.446115648298206e-12",
+        "nodes_lower_and_upper": [
+          0,
+          0
+        ],
+        "sign_bracket_preserved": true,
+        "upper_log_derivative": "4.468695210196042e-11",
+        "x_start": "1.0e-6"
+      },
+      {
+        "lower_log_derivative": "-9.445980950795037e-12",
+        "nodes_lower_and_upper": [
+          0,
+          0
+        ],
+        "sign_bracket_preserved": true,
+        "upper_log_derivative": "4.468724223118999e-11",
+        "x_start": "1.0e-10"
+      }
+    ],
+    "outer_coordinate": "x_sigma=m_sigma(lambda_d)*r_fm/(hbar*c)",
+    "relative_spread_across_declared_box_tolerance_controls": "6.557509353752241e-11",
+    "relative_spread_limit": "1.0e-6",
+    "threshold_definition": "first nodeless zero-energy threshold: u'(infinity)=0; at threshold it is a zero-energy resonance, not a normalizable bound state"
+  }
+}

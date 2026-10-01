@@ -81,6 +81,49 @@ and a [vacuum-spectrum/conditional-response audit](verification/source_complete_
 Current artifact acceptance is recorded in the registry and manifest above;
 the model document explains the physical limits independently of that status.
 
+Two no-fit boundary calculations now make the nuclear limitation more precise.
+For the unmodified static, zero-temperature `d=4`, `s=1` Thomas--Fermi
+functional, a sharp inequality proves \(E>N_BM_N\) for every finite
+configuration: the live coefficient \(C=3\pi^2\lambda W_0^4/(8M_N^4)\)
+is \(2.72164>1/4\), so this restricted functional has no self-bound droplet.
+Separately, its leading tree/static exchange between two same-sign `N`
+currents is repulsive at every \(r>0\).  The latter is **not** a deuteron or
+full NN prediction: \(g_\omega^2/(16\pi^2)=0.649\), so loops, QCD channels
+and the missing quantum sectors are not controlled.  See the
+[finite-droplet audit](NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md) and
+[static two-baryon audit](NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md).
+Combining those two restricted calculations yields a useful no-fit scale map,
+not a repaired theory: in a *formal* deformation that changes only
+\(\lambda\), the Q4 certificate ceases to be strict below
+\(\lambda_{Q4}=0.0964492\), while the same tree/static kernel becomes
+attractive at \(Q=0\) only below \(\lambda_{q0}=0.00484225\).  The live
+value is \(1.05\); this is a substantial change of the scalar action, and
+the resulting interval neither selects a parameter nor proves binding.  The
+[cross-scale gate](NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md) records
+the exact assumptions, range-sign consequence, and limits.
+Solving that same **formal**, spinless tree/static S-wave Hamiltonian is a
+stronger follow-up: its first zero-energy threshold is only
+\(0.0011028<\lambda_c^{\rm formal}<0.0011029\), about 952 times below the
+live value.  This shows that a negative long-range tail or a negative
+\(Q=0\) sign is not by itself a binding criterion; it is still not a real
+NN/deuteron calculation.  See the [formal S-wave threshold
+audit](NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md).
+
+A separate source-free vacuum check finds the listed minimal-sector tree-level
+two-body cuts \(\sigma\to N\bar N\), \(A\to N\bar N\), and \(\sigma\to AA\)
+kinematically closed at the live masses.  This is only the absence of those
+intrinsic vacuum widths in the displayed action fragment; it is not a lifetime,
+Q, dark-matter, device, or all-orders stability prediction.  See the [minimal
+vacuum-closure audit](NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md).
+
+The source-free local Abelian-Higgs subsector also has
+\(\beta=m_\sigma^2/m_A^2=2.53003\ldots>1\), hence a type-II, non-BPS
+parameter ratio.  This is a conditional mathematical direction only: without
+an explicit compact-U(1), charge-lattice, and global-boundary completion it
+does not establish a physically protected vortex or string.  The branch and
+its BVP are recorded in the [conditional vortex-sector
+audit](NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md).
+
 For the generator branch, see the [practical energy audit producer](verification/nvg_generator_practical_audit.py),
 [semantic tests](verification/test_generator_practical_audit.py),
 [deterministic JSON](verification/nvg_generator_practical_audit_results.json), and
@@ -349,7 +392,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 11 | Historical-template instantaneous mass-shift hierarchy at $2n_0$: $\rho, \omega$ ($-20\%$), $K^*$ ($-7.8\%$), $\phi$ ($-2.9\%$), $J/\psi$ ($-0.4\%$) — light non-Goldstone mesons shift most (observable spectral shifts are smaller, per row 7) | HADES, CBM (FAIR), NICA, LHC in-medium invariant-mass spectra ([fair_hades_link.py](verification/nvg_fair_hades_link.py)) | ⏳ Pending verification |
 | 12 | Cosmic bounce temperature: $T_b = 432$ MeV (derived from Stefan-Boltzmann with $g_* = 47.5$) | Conditional thermodynamic scale for the assigned density and $g_*=47.5$; comparing it with $T_c\approx155$–$175$ MeV supplies no observation of a bounce | ⚙️ Conditional scale |
 | 13 | Effective vacuum dielectric constant: $\varepsilon_{\rm eff} \approx 0.135\,\varepsilon_0$ in NS cores (from $e^{-2\alpha_v f_{\rm melt}}$ with phenomenological melting parameters $\kappa$) | Amplifies magnetar seed fields by $1/\sqrt{\varepsilon_{\rm eff}} \approx 2.7\times$ | ⚙️ Scale estimate |
-| 14 | Relic dark matter: the observed $\Omega_{\rm DM} = 0.268$ determines the condensate self-coupling $\lambda_v$ | The inferred $\lambda_v$ lands in the $f_0(1370)$–$f_0(1500)$ scalar-meson range ([nvg_relic_dark_matter.py](verification/nvg_relic_dark_matter.py)) | ⚙️ Consistency check |
+| 14 | Legacy relic calibration inversion | A legacy, undocumented `Omega_DM=0.268` and `H0=72.8` are supplied to infer $\lambda_v$ and $m_W$; the result does not predict dark-matter abundance and corresponds to $\omega=0.14204$, 18.36% above the Planck comparison reference ([nvg_relic_dark_matter.py](verification/nvg_relic_dark_matter.py), [budget audit](NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Calibration only; no abundance prediction |
 | 15 | NS core speed of sound: the quark phase follows a CSS ansatz with $c_{s}^2 = 1/3$ (conformal limit) | Compatible with joint NICER+LIGO posterior limits ([speed_of_sound_curve.py](verification/nvg_speed_of_sound_curve.py)) | ⚪ Ansatz parameter |
 | 16 | First cycle duration: $\tau_1 = 5.9\,\mu\text{s}$ | A timescale assigned through $\rho_c\to t_b$ in the historical cosmology; no CCC/LQC boundary problem is solved by this dimensional calculation | ⚙️ Conditional timescale |
 | 17 | Joint NS comparison: conditional/in-sample reduced $\chi_\nu^2 = 0.684$ over 3 runtime rows (calibration target excluded) | Runtime outputs $M_{\max}=2.048$, $R_{1.4}=12.550$, $\Lambda_{1.4}=519.4$ from the canonical chain; transition selected on J0740/GW170817/NICER ([nvg_joint_ns_inference.py](verification/nvg_joint_ns_inference.py)) | ⚙️ Conditional/in-sample |
@@ -370,7 +413,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 32 | $S_8$ structure growth | **Open problem.** The maintained calculation gives $S_8 \approx 0.851$ ($4.4\sigma$ from the weak-lensing input): the input-dependent $w_0/w_a$ growth shift moves away from the lensing value. The retired empirical IDE drag-factor resolution claim is not evidence ([nvg_s8_tension_check.py](verification/nvg_s8_tension_check.py)) | ⚠️ WORSENS (not an independent prediction) |
 | 33 | NANOGrav SGWB | Retired attribution. The maintained PBH abundance cross-check leaves a large amplitude deficit and the bounce calculation radiates in the $\mu$Hz band; NVG supplies no mechanism for the PTA signal ([nvg_nanograv_background.py](verification/nvg_nanograv_background.py)) | ❌ Retired (no mechanism) |
 | 34 | Higgs boson mass shift $\delta m_H \approx 4.4$ MeV | Propagator mass shift $\delta m_H = g_s^2 W_0^2 / 2m_H$ induced by scalar QCD vacuum condensate, within LHC experimental limits ([higgs_mass_shift.py](verification/nvg_higgs_mass_shift.py)) | ⚙️ Assumed-coupling scale; no collider likelihood |
-| 35 | PBH DM Fraction Peak | The discrete mass ladder follows from the theory (spacing $\times 2$ per rung); the abundance peak ($N=-21$, $\sim 10^{20}$ g) is in the asteroid-mass window. Critically, since this mass is $\sim 13$ orders of magnitude below $M_{\rm crit}$ (Row 54), these PBHs are strictly naked de Sitter remnants lacking event horizons, fundamentally altering their Hawking evaporation signatures ([pbh_dark_matter.py](verification/nvg_pbh_dark_matter.py)) | ⚙️ Ladder predicted; abundance calibrated |
+| 35 | PBH ladder / profile peak | The discrete mass ladder is the declared $0.38\times4^N\,M_\odot$ mapping; the calibrated profile peak ($N=-21$, $\sim 10^{20}$ g) is in the asteroid-mass window. However the current profile is normalized only as a shape: it has no formation solver or absolute $\omega_{\rm PBH}$, and the separate PBH-B seed trace is only a calibration, so a unified dark-matter composition is not closed ([pbh_dark_matter.py](verification/nvg_pbh_dark_matter.py), [budget audit](NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Ladder mapping; abundance unnormalized |
 | 36 | White Dwarf cooling age shift | Predicted effect $\Delta t/t \approx -1.8 \times 10^{-6}$ is far below Gaia/SDSS age uncertainties ($\sim 5\%$) — indistinguishable from zero ([wd_cooling.py](verification/nvg_wd_cooling.py)) | ⚪ Null test (unobservably small) |
 | 37 | Neutron star core g-modes | Runtime WKB forecast over an assumed composition grid gives periods in a 50–150 ms sensitivity band; no detector likelihood or confirmation is available ([nvg_ns_g_modes.py](verification/nvg_ns_g_modes.py)) | 🔭 Forecast (assumed composition) |
 | 38 | SN1987A dark-photon sensitivity scan | The current reference scan includes a 19.8% mass-drop point with $L_A=8.265\times10^{55}$ erg/s, above the stated Raffelt reference. Without a sourced SN1987A likelihood and validated transport model, it establishes no mass-drop bound or limit status ([nvg_dark_photon_observables.py](verification/nvg_dark_photon_observables.py)) | ⚙️ Conditional scan (no evidence) |
@@ -378,7 +421,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 40 | Conditional strong-CP potential | The minimum of an added $\chi(1-\cos\theta)$ term is at $\theta=0$ modulo $2\pi$. Identifying this phase with $\bar\theta_{\rm QCD}$ is a separate physical postulate, not a result of the maintained Higgs action. ([strong_cp_solution.py](verification/nvg_strong_cp_solution.py)) | 📐 Conditional potential identity |
 | 41 | Arrow of Time from Topology | Illustration of a selected phase winding $Q=1$ and entropy-growth prescription. Winding sign alone does not derive a statistical H-theorem or its entropy budget. ([arrow_of_time.py](verification/nvg_arrow_of_time.py)) | 📐 Synthetic illustration |
 | 42 | Double-slit interference from vacuum hydrodynamics | $|\psi|^2$ pattern reproduced by Huygens-Fresnel integral over vacuum phase $\theta$ (Madelung representation), $r_{\rm Pearson} = 1.000$ ([double_slit_madelung.py](verification/nvg_double_slit_madelung.py)) | 📐 Reproduces standard QM (Madelung) |
-| 43 | Null WIMP signal in direct detectors | EFT cross-section sensitivities are compared with named experiment curves as benchmark display inputs; no detector event likelihood is implemented and no exclusion is claimed ([dm_direct_detection.py](verification/nvg_dm_direct_detection.py)) | ⚙️ Model sensitivity (no evidence) |
+| 43 | LZ 248-keV nuclear-recoil screen | An exact two-body screen with a derived bound-SHM envelope `v_max<=824.355` km/s excludes an elastic path for the bound action's 0.783-GeV vector and 1.245-GeV scalar modes, as well as the legacy 0.938-GeV χ and 1.229-GeV W proxy; a new elastic candidate must be at least 70.659 GeV. The action does not establish any of these light modes as a cold halo population. This is a necessary condition, not a likelihood or exclusion of all NVG variants ([nvg_lz_248kev_kinematic_audit.py](verification/nvg_lz_248kev_kinematic_audit.py), [Russian audit](NVG_LZ_248KEV_AUDIT_RU.md)) | ⚙️ Kinematic screen; LZ is not explained by the current model |
 | 44 | Bell-CHSH correlations in the condensate | The correlation form $E = -\cos(a-b)$ is postulated (preprint Limitations: conjectural); by Bell's theorem a local derivation is impossible — a shared phase read out locally is a hidden variable giving $S \le 2$, so any derivation from the action must contain an explicitly nonlocal or contextual element. **Resolved as a dichotomy** ([nvg_bell_from_action.py](verification/nvg_bell_from_action.py)): a classical spacetime $\theta$ of any dynamics gives $S \le 2$ (verified by exhaustion) — excluded by loophole-free experiments; the quantized W-field yields the configuration-space $\theta$ automatically ([nvg_bell_contextual.py](verification/nvg_bell_contextual.py) reproduces $S = 2\sqrt{2}$) but then QM is the input. The quantum block is a consistent hydrodynamic *representation*, not a derivation; its falsifiable content is $S(T > T_c) \to 0$ (row 51) | 📐 Resolved: representation, not derivation |
 | 45 | Heisenberg uncertainty | $\Delta x\,\Delta p\ge\hbar/2$ is the standard Fourier/Cauchy–Schwarz identity for the stated wavefunction and momentum definitions. Demonstrating it does not derive quantum dynamics from the classical action. | 📐 Standard identity; synthetic examples |
 | 46 | Phase-thermalization illustration | The toy estimate $\tau=\hbar/(k_BT)\approx25$ fs at 300 K assumes a reservoir. It does not derive the Born rule from a Boltzmann weight or select a measurement outcome. ([wavefunction_collapse.py](verification/nvg_wavefunction_collapse.py)) | ❓ Measurement mechanism unclosed |
@@ -593,7 +636,7 @@ NVG-Research/
 │   ├── nvg_s8_tension_check.py             # Maintained S8 tension accounting (input-dependent route; currently worsens)
 │   ├── nvg_chime_frb_check.py              # Retired: no repeater-linked CHIME DM/mass likelihood
 │   ├── nvg_ligo_o4_echo_candidates.py      # Predicted echo time delays for massive LIGO O4 remnants (M ~ 65 M_sun)
-│   ├── nvg_relic_dark_matter.py            # Relic instanton dark matter density and coupling inference
+│   ├── nvg_relic_dark_matter.py            # Legacy relic-target inversion into coupling/mass (not abundance prediction)
 │   ├── nvg_glueball_mass.py                # Scalar glueball mass calculation
 │   ├── nvg_neutrino_mass.py                # Majorana neutrino mass see-saw limit
 │   ├── nvg_starquake_qpo.py                # Magnetar starquake QPO shear frequencies
@@ -616,7 +659,7 @@ NVG-Research/
 │   ├── nvg_higgs_mass_shift.py            # Higgs boson mass shift from QCD vacuum condensate
 │   ├── nvg_dna_chirality.py               # DNA homochirality and biological θ-coherence scales
 │   ├── nvg_ds_core_oscillations.py        # de Sitter core standing wave oscillations
-│   ├── nvg_pbh_dark_matter.py             # PBH DM fraction Subaru/LIGO check
+│   ├── nvg_pbh_dark_matter.py             # PBH ladder and normalized-profile benchmark bookkeeping
 │   ├── nvg_wd_cooling.py                  # White Dwarf cooling rate under VMF
 │   ├── run_nvg_suite.py                    # MASTER SCRIPT: generates final uncertainty report
 │   ├── run_all_checks.py                   # Automated suite runner for all physical verifications
@@ -710,7 +753,7 @@ python verification/nvg_dark_energy_desi.py         # Verifies dark energy w0-wa
 python verification/nvg_s8_tension_check.py         # Maintained S8 tension accounting (currently worsens)
 python verification/nvg_chime_frb_check.py          # Retired: no repeater-linked CHIME DM/mass likelihood
 python verification/nvg_ligo_o4_echo_candidates.py  # Echo delay times for O4 candidates (M ~ 65 M_sun)
-python verification/nvg_relic_dark_matter.py        # Relic instanton dark matter abundance and coupling check
+python verification/nvg_relic_dark_matter.py        # Legacy relic-target inversion into coupling/mass (not abundance)
 python verification/nvg_glueball_mass.py           # Calculates the scalar glueball mass
 python verification/nvg_neutrino_mass.py           # Calculates the Majorana neutrino mass limit
 python verification/nvg_starquake_qpo.py           # Validates magnetar QPO starquake frequencies
@@ -731,7 +774,7 @@ python verification/nvg_ns_redshift.py          # Solves TOV to compute surface 
 python verification/nvg_sgr_temperature.py      # Simulates quiescent thermal cap emission for light magnetars (SGR 1935+2154)
 python verification/nvg_ns_g_modes.py                  # WKB g-mode forecast with assumed composition (no detector likelihood)
 python verification/nvg_ds_core_oscillations.py        # Computes standing wave oscillations in de Sitter cores
-python verification/nvg_pbh_dark_matter.py             # Computes PBH dark matter fraction and limits
+python verification/nvg_pbh_dark_matter.py             # Computes PBH normalized profile and benchmark comparisons
 python verification/nvg_wd_cooling.py                  # Computes VMF white dwarf cooling rate deviation
 python verification/run_nvg_suite.py               # Canonical runtime ledger (NVG_FINAL_REPORT.md)
 ```

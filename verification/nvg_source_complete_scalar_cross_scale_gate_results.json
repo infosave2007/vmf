@@ -1,0 +1,319 @@
+{
+  "action_inputs": {
+    "baseline_live_decimal_inputs": {
+      "M_N_MeV": {
+        "decimal": "939.0",
+        "derivation": "live Params.M_N",
+        "exact_denominator": "1",
+        "exact_numerator": "939",
+        "unit": "MeV"
+      },
+      "W0_MeV": {
+        "decimal": "859.0",
+        "derivation": "live Params.W0",
+        "exact_denominator": "1",
+        "exact_numerator": "859",
+        "unit": "MeV"
+      },
+      "g_omega": {
+        "decimal": "10.12",
+        "derivation": "live Params.g_omega",
+        "exact_denominator": "25",
+        "exact_numerator": "253",
+        "unit": "1"
+      },
+      "hbar_c_MeV_fm": {
+        "decimal": "197.3269804",
+        "derivation": "live Params.hbar_c",
+        "exact_denominator": "2500000",
+        "exact_numerator": "493317451",
+        "unit": "MeV fm"
+      },
+      "lambda": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "m_omega_MeV": {
+        "decimal": "782.6",
+        "derivation": "live Params.m_omega",
+        "exact_denominator": "5",
+        "exact_numerator": "3913",
+        "unit": "MeV"
+      }
+    },
+    "derived_action_relations": {
+      "g_s_M_N_over_W0": {
+        "decimal": "1.0931315483119906868451688009313",
+        "derivation": "M_N/W0",
+        "exact_denominator": "859",
+        "exact_numerator": "939",
+        "unit": "1"
+      },
+      "m_A_squared_MeV2": {
+        "decimal": "612462.76",
+        "derivation": "q_phi^2 W0^2=m_omega^2",
+        "exact_denominator": "25",
+        "exact_numerator": "15311569",
+        "unit": "MeV^2"
+      },
+      "m_sigma_squared_under_deformation": "m_sigma(lambda_d)^2=2*lambda_d*W0^2",
+      "q_phi_momega_over_W0": {
+        "decimal": "0.91105937136204889406286379511059",
+        "derivation": "m_omega/W0",
+        "exact_denominator": "4295",
+        "exact_numerator": "3913",
+        "unit": "1"
+      }
+    }
+  },
+  "caveats": [
+    "The Q4 result is a static zero-temperature d=4,s=1 Thomas-Fermi certificate, not a full quantum calculation.",
+    "The q=0 result is the leading tree/static equal-sign-current Yukawa sign only; it does not by itself determine a finite-range bound-state spectrum.",
+    "A coordinate-space negative tail or sign crossover is not a bound-state proof; a kinetic term and full controlled two-body calculation are still required.",
+    "Changing lambda_d would alter the source action's scalar potential and mass; it is not a numerical repair and requires a separate derivation and validation before being called a model.",
+    "No empirical nuclear/NN data, binding target, radius, scattering observable, cutoff, form factor, likelihood, or fit is read or used.",
+    "Coulomb, isovector, pion/rho, density-dependent, transfer, gravity, pairing, shell, RPA, and finite-temperature sectors remain outside this gate."
+  ],
+  "conclusion": {
+    "baseline": "The live lambda=1.05 is rigorously above the Q4 strict-no-go threshold and above the q=0 attraction and coordinate-range thresholds; baseline tree/static exchange is repulsive at q=0 and for every coordinate separation r>0.",
+    "entry_gate_only": "A hypothetical deformation would need 0<lambda_d<lambda_q0 merely to evade the strict Q4 certificate and make this tree/static q=0 sign attractive.",
+    "not_claimed": [
+      "existence of a self-bound droplet, nucleus, or NN bound state",
+      "a preferred or fitted value of lambda_d",
+      "a new interaction, energy source, or completed physical theory",
+      "an all-orders, finite-q, coordinate-space, QCD, or experimental prediction"
+    ]
+  },
+  "cross_scale_entry_gate": {
+    "analytic_regime_map_not_binding": [
+      {
+        "Q4_status": "strict Q4 no-self-binding certificate active",
+        "interval": "lambda_d >= lambda_range",
+        "tree_static_signs": "V_tilde(Q2)>0 for Q2>=0 and V(r)>0 for every r>0"
+      },
+      {
+        "Q4_status": "strict Q4 no-self-binding certificate active",
+        "interval": "lambda_Q4 < lambda_d < lambda_range",
+        "tree_static_signs": "V_tilde(Q2)>0 for Q2>=0, while V(r) has a negative long-range tail"
+      },
+      {
+        "Q4_status": "strict certificate evaded only; binding is undecided",
+        "interval": "lambda_q0 <= lambda_d <= lambda_Q4",
+        "tree_static_signs": "V_tilde(0)>=0 and V(r) has a negative long-range tail"
+      },
+      {
+        "Q4_status": "strict certificate evaded only; binding is undecided",
+        "interval": "0 < lambda_d < lambda_q0",
+        "tree_static_signs": "V_tilde(0)<0 and V(r) has a negative long-range tail"
+      }
+    ],
+    "baseline_is_outside_intersection": true,
+    "display_ratio_lambda_Q4_over_lambda_q0": "19.918265345899171850293621151136",
+    "exact_ordering_certificate": {
+      "certified_ordering": "lambda_q0 < lambda_Q4 < lambda_range < lambda_baseline",
+      "lambda_Q4_strict_lower_bound": {
+        "decimal": "0.09637162300982501657816022409209",
+        "derivation": "from pi<22/7",
+        "exact_denominator": "131761345578962",
+        "exact_numerator": "12698054723403",
+        "unit": "1"
+      },
+      "lambda_Q4_strict_upper_bound": {
+        "decimal": "0.10576840257767643542818491714415",
+        "derivation": "from pi>3",
+        "exact_denominator": "544468370161",
+        "exact_numerator": "57587549766",
+        "unit": "1"
+      },
+      "lambda_Q4_strictly_less_than_lambda_range": true,
+      "lambda_baseline": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "lambda_q0": {
+        "decimal": "0.0048422498643950652569952967492714",
+        "derivation": "q=0 zero-kernel threshold",
+        "exact_denominator": "69701751811270898",
+        "exact_numerator": "337513298256225",
+        "unit": "1"
+      },
+      "lambda_q0_strictly_less_than_lambda_Q4": true,
+      "lambda_range": {
+        "decimal": "0.4150145890733058582616980244782",
+        "derivation": "coordinate static range threshold",
+        "exact_denominator": "36894050",
+        "exact_numerator": "15311569",
+        "unit": "1"
+      },
+      "lambda_range_strictly_less_than_baseline": true
+    },
+    "gate_status": "BASELINE_OUTSIDE_ENTRY_WINDOW",
+    "logical_intersection": "0 < lambda_d < lambda_q0",
+    "not_a_solution": "The intersection is necessary only for these two obstructions to stop deciding the question; the coordinate tail is only an additional sign consequence. Neither is a parameter recommendation, fit, completed action, or evidence that a bound state exists.",
+    "why_q0_gate_is_stricter": "lambda_q0 is strictly below a rational lower bound on lambda_Q4, so any positive lambda_d that gives q=0 attraction also merely evades the strict Q4 certificate."
+  },
+  "evidence_weight": 0.0,
+  "one_parameter_deformation_contract": {
+    "changed": [
+      "lambda in U=lambda(W^2-W0^2)^2/4 and m_sigma^2=2*lambda*W0^2"
+    ],
+    "domain": "lambda_d>0",
+    "held_fixed": [
+      "W0",
+      "M_N",
+      "m_omega",
+      "g_omega",
+      "g_s=M_N/W0",
+      "q_phi=m_omega/W0",
+      "all omitted sectors"
+    ],
+    "hypothetical_deformed_action_member": true,
+    "meaning": "symbolic necessary-entry analysis only; the live baseline is not changed",
+    "no_new_operator_introduced": true,
+    "parameter_fit_performed": false,
+    "physical_action_replacement_claimed": false,
+    "symbol": "lambda_d"
+  },
+  "provenance": {
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "nn_static_audit_path": "verification/nvg_source_complete_nn_static_audit.py",
+    "nn_static_audit_sha256": "2bbcea5f883545789305c9c421b79ba8e39e0655141d0135214c59b4980015d5",
+    "producer_path": "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+    "producer_sha256": "ab48041526e564e4f59aedebc5b425b6aed80852ca6130874b02d8692aa273fb",
+    "q4_audit_path": "verification/nvg_source_complete_q4_droplet_audit.py",
+    "q4_audit_sha256": "150792f980da37423a3c5f3b55a558cf7a7b238b3cc75af442498fd2de8719e7",
+    "source_complete_path": "verification/source_complete_solution_audit.py",
+    "source_complete_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "q4_tf_gate": {
+    "baseline": {
+      "C_baseline_display": "2.7216394942434000735642890402072",
+      "C_critical": "1/4",
+      "baseline_over_lambda_Q4_display": "10.886557976973600294257156160829",
+      "lambda_baseline": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "status": "STRICT_Q4_NO_SELF_BINDING_CERTIFICATE_ACTIVE"
+    },
+    "coefficient": "C(lambda_d)=3*pi^2*lambda_d*W0^4/(8*M_N^4)",
+    "condition_merely_to_evade_strict_certificate": "0 < lambda_d <= lambda_Q4",
+    "interpretation": "At lambda_d=lambda_Q4 the sharp local result weakens from E>N_B M_N to E>=N_B M_N; lambda_d below it only removes this sufficient strict certificate and does not establish binding.",
+    "lambda_Q4_exact_pi_display": "0.096449217670165192467575085006279",
+    "lambda_Q4_rational_bounds": {
+      "proof_baseline_lambda_above_lambda_Q4": true,
+      "strict_lower_from_pi_lt_22_over_7": {
+        "decimal": "0.09637162300982501657816022409209",
+        "derivation": "2*M_N^4/[3*(22/7)^2*W0^4] < lambda_Q4",
+        "exact_denominator": "131761345578962",
+        "exact_numerator": "12698054723403",
+        "strictly_positive": true,
+        "unit": "1"
+      },
+      "strict_upper_from_pi_gt_3": {
+        "decimal": "0.10576840257767643542818491714415",
+        "derivation": "lambda_Q4 < 2*M_N^4/(27*W0^4)",
+        "exact_denominator": "544468370161",
+        "exact_numerator": "57587549766",
+        "strictly_positive": true,
+        "unit": "1"
+      }
+    },
+    "origin": "sharp Q4 d=4,s=1 TF no-self-binding certificate C(lambda_d)>1/4",
+    "strict_no_go_condition": "lambda_d > lambda_Q4",
+    "threshold_scalar_diagnostics_not_predictions": {
+      "m_sigma_at_lambda_Q4_MeV_display": "377.27455568505852362217796772915",
+      "scalar_range_at_lambda_Q4_fm_display": "0.52303283491167830894263016477128"
+    }
+  },
+  "schema": "nvg_source_complete_scalar_cross_scale_gate.v1",
+  "static_coordinate_yukawa_gate": {
+    "all_r_repulsion_condition": "lambda_d >= lambda_range",
+    "baseline": {
+      "lambda_baseline_over_lambda_range": "2.5300315402033586499202008624982",
+      "status": "STATIC_COORDINATE_ALL_R_REPULSIVE"
+    },
+    "cross_scale_consequence": "The rational ordering lambda_Q4<lambda_range proves that every positive lambda_d which merely evades the strict Q4 certificate has this tree/static negative long-range tail. A negative tail is not a binding proof.",
+    "fixed_vertex_ordering": {
+      "decimal": "101.21946341808502997095737659596",
+      "derivation": "g_omega^2-(M_N/W0)^2 > 0",
+      "exact_denominator": "461175625",
+      "exact_numerator": "46679949304",
+      "strictly_positive": true,
+      "unit": "1"
+    },
+    "kernel": "V_lambda_d(r)=hbar_c*[g_omega^2*exp(-m_omega*r/hbar_c)-g_s^2*exp(-m_sigma(lambda_d)*r/hbar_c)]/(4*pi*r), r>0",
+    "lambda_range": {
+      "decimal": "0.4150145890733058582616980244782",
+      "derivation": "m_omega^2/(2*W0^2), equivalently m_sigma(lambda_range)=m_omega",
+      "exact_denominator": "36894050",
+      "exact_numerator": "15311569",
+      "unit": "1"
+    },
+    "long_range_attractive_tail_condition": "0 < lambda_d < lambda_range",
+    "origin": "same tree/static coordinate Yukawa kernel used by the NN static audit",
+    "scope": "This is only a leading tree/static coordinate-kernel sign statement. It is not a coordinate-space bound-state solution, all-orders NN result, QCD calculation, or finite-density prediction.",
+    "tail_crossover_when_present": {
+      "at_lambda_Q4_fm_display_not_prediction": "2.1668745956676313108431343745282",
+      "at_lambda_q0_fm_display_not_prediction": "1.2581754325890882066776519329334",
+      "formula_fm": "r_cross=hbar_c*ln(g_omega^2/g_s^2)/[m_omega-sqrt(2*lambda_d)*W0]",
+      "signs": "V(r)>0 for 0<r<r_cross and V(r)<0 for r>r_cross"
+    }
+  },
+  "static_q0_yukawa_gate": {
+    "attraction_condition": "0 < lambda_d < lambda_q0",
+    "baseline": {
+      "lambda_baseline_over_lambda_q0": "216.84135048887545720046824933935",
+      "static_net_kernel_baseline_MeV_minus2": {
+        "decimal": "0.00016644619982863921862697101294639",
+        "derivation": "vector term minus scalar term",
+        "exact_denominator": "208416625450942315225",
+        "exact_numerator": "34690155287418199",
+        "strictly_positive": true,
+        "unit": "MeV^-2"
+      },
+      "static_scalar_term_baseline_MeV_minus2": {
+        "decimal": "0.0000007711506597398625762681848131563",
+        "derivation": "M_N^2/(2*lambda_baseline*W0^4)",
+        "exact_denominator": "3811278591127",
+        "exact_numerator": "2939070",
+        "unit": "MeV^-2"
+      },
+      "static_vector_term_MeV_minus2": {
+        "decimal": "0.00016721735048837908120323919775955",
+        "derivation": "g_omega^2/m_omega^2",
+        "exact_denominator": "382789225",
+        "exact_numerator": "64009",
+        "unit": "MeV^-2"
+      },
+      "status": "STATIC_Q0_REPULSIVE"
+    },
+    "equality_condition": "lambda_d=lambda_q0 gives Vtilde(0)=0",
+    "kernel": "Vtilde_lambda_d(0)=g_omega^2/m_omega^2-M_N^2/(2*lambda_d*W0^4)",
+    "origin": "tree/static equal-sign N-current Yukawa kernel at Q2=0",
+    "repulsion_condition": "lambda_d > lambda_q0",
+    "scope": "This is only the leading tree/static q=0 Yukawa sign. It is not a coordinate-space, all-orders NN, QCD, deuteron, or finite-density binding calculation.",
+    "threshold_scalar_diagnostics_not_predictions": {
+      "m_sigma_at_lambda_q0_MeV_display": "84.53406617677509007164319205621",
+      "scalar_range_at_lambda_q0_fm_display": "2.3342894684298726263210994617488"
+    },
+    "zero_kernel_threshold": {
+      "decimal": "0.0048422498643950652569952967492714",
+      "derivation": "M_N^2*m_omega^2/(2*g_omega^2*W0^4)",
+      "exact_denominator": "69701751811270898",
+      "exact_numerator": "337513298256225",
+      "unit": "1"
+    }
+  },
+  "status": "PASS_ENTRY_GATE_BASELINE_OUTSIDE_WINDOW"
+}

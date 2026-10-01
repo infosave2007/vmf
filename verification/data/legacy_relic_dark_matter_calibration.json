@@ -1,0 +1,24 @@
+{
+  "schema_version": "legacy-relic-dark-matter-calibration.v1",
+  "calibration_status": "LEGACY_UNDOCUMENTED_CALIBRATION_NOT_ABUNDANCE_PREDICTION",
+  "provenance": {
+    "citation": null,
+    "source_url": null,
+    "version": null,
+    "limitation": "The historical producer preserved these two calibration numbers without a citable source, uncertainty, likelihood, or declared cosmological model. This passport records that absence; it does not invent provenance."
+  },
+  "parameters": {
+    "H0_km_s_Mpc": {
+      "value": "72.8",
+      "uncertainty_68_percent": null,
+      "units": "km s^-1 Mpc^-1",
+      "definition": "Historical Hubble-normalization input to the relic inversion"
+    },
+    "target_Omega_DM": {
+      "value": "0.2680",
+      "uncertainty_68_percent": null,
+      "units": "dimensionless",
+      "definition": "Historical full dark-matter density target input to the relic inversion"
+    }
+  }
+}

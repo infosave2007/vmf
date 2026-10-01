@@ -1,0 +1,179 @@
+{
+  "action_inputs": {
+    "derived_from_bound_action": {
+      "m_A_MeV_display": "782.6",
+      "m_A_squared_MeV2": {
+        "decimal": "612462.76",
+        "derivation": "q_phi^2*W0^2=m_omega^2",
+        "exact_denominator": "25",
+        "exact_numerator": "15311569",
+        "unit": "MeV^2"
+      },
+      "m_sigma_MeV_display": "1244.8092624976727734824332511009",
+      "m_sigma_squared_MeV2": {
+        "decimal": "1549550.1",
+        "derivation": "2*lambda*W0^2",
+        "exact_denominator": "10",
+        "exact_numerator": "15495501",
+        "unit": "MeV^2"
+      },
+      "q_phi_momega_over_W0": {
+        "decimal": "0.91105937136204889406286379511059",
+        "derivation": "m_omega/W0",
+        "exact_denominator": "4295",
+        "exact_numerator": "3913",
+        "unit": "1"
+      }
+    },
+    "live_decimal_inputs": {
+      "W0_MeV": {
+        "decimal": "859.0",
+        "derivation": "live Params.W0",
+        "exact_denominator": "1",
+        "exact_numerator": "859",
+        "unit": "MeV"
+      },
+      "g_omega": {
+        "decimal": "10.12",
+        "derivation": "live Params.g_omega; distinct matter-current coupling",
+        "exact_denominator": "25",
+        "exact_numerator": "253",
+        "unit": "1"
+      },
+      "lambda": {
+        "decimal": "1.05",
+        "derivation": "live Params.lam",
+        "exact_denominator": "20",
+        "exact_numerator": "21",
+        "unit": "1"
+      },
+      "m_omega_MeV": {
+        "decimal": "782.6",
+        "derivation": "live Params.m_omega",
+        "exact_denominator": "5",
+        "exact_numerator": "3913",
+        "unit": "MeV"
+      }
+    }
+  },
+  "caveats": [
+    "The bound contract specifies a local U(1) action but does not itself declare compactness, a charge lattice, or large gauge transformations.",
+    "The homogeneous finite-density W^-2 no-go is not applied to the source-free A0=J_B=0 vortex truncation.",
+    "Conversely, the source-free conditional BVP says nothing about a vortex in baryonic matter; that needs full inhomogeneous matter equations.",
+    "q_phi=m_omega/W0 fixes the Higgs vector mass; g_omega is a different matter-current coupling and is not substituted into beta or the BPS gate.",
+    "No numerical BVP solution is generated here, and no empirical data, material parameter, external field, or fitted input is read."
+  ],
+  "conclusion": {
+    "local_math_only": "The displayed source-free local action has a type-II, non-BPS Abelian-Higgs parameter ratio at the live baseline. A classical winding-vortex BVP is available only conditional on the listed global completion and boundary assumptions.",
+    "not_claimed": [
+      "an unconditionally topologically protected quantum sector",
+      "a solved baseline vortex profile, tension, flux tube, or physical string",
+      "a superconductor, Abrikosov lattice, neutron-star vortex, or cosmic-string population",
+      "a generator, energy source, dark-matter candidate, or experimental prediction"
+    ]
+  },
+  "conditional_vortex_boundary_problem": {
+    "BPS_tension_only_at_lambda_BPS": "T_n=pi*W0^2*abs(n)",
+    "BPS_tension_unit_MeV2_display_not_baseline_result": "2318121.5288234902245900537622977",
+    "baseline_BPS_equations_or_tension_claimed": false,
+    "conditional_BVP": [
+      "f''+f'/x-n^2*(1-a)^2*f/x^2-(beta/2)*f*(f^2-1)=0",
+      "a''-a'/x+f^2*(1-a)=0"
+    ],
+    "conditional_ansatz": "W=W0*f(r), theta=n*varphi, A_phi=n*a(r)/q_phi; f(0)=a(0)=0, f(infinity)=a(infinity)=1",
+    "conditional_flux_quantum_for_integer_n": "Phi_B=2*pi*n/q_phi",
+    "conditional_flux_unit_display": "6.8965706348930038125208552676644",
+    "dimensionless_coordinate": "x=m_A*r",
+    "global_completion_status": "UNDECLARED_BY_BOUND_CONTRACT",
+    "not_declared_by_bound_contract": [
+      "compactness/charge lattice and large-gauge transformation sector",
+      "UV completion and quantum renormalization",
+      "gravitational sector or physical string interpretation"
+    ],
+    "numerical_vortex_solution_published_by_this_audit": false,
+    "required_extra_global_assumptions": [
+      "compact U(1) global completion with allowed integer winding n",
+      "finite-energy boundary condition on a flat transverse R^2",
+      "source-free truncation N=J_B=A0=0 and unspecified spectators absent"
+    ]
+  },
+  "evidence_weight": 0.0,
+  "local_abelian_higgs_classification": {
+    "BPS_equals_scalar_vector_mass_equality_threshold": true,
+    "baseline_minus_lambda_BPS": {
+      "decimal": "0.6349854109266941417383019755218",
+      "derivation": "lambda_baseline-q_phi^2/2",
+      "exact_denominator": "73788100",
+      "exact_numerator": "46854367",
+      "strictly_positive": true,
+      "unit": "1"
+    },
+    "beta": {
+      "decimal": "2.5300315402033586499202008624982",
+      "derivation": "m_sigma^2/m_A^2=2*lambda/q_phi^2",
+      "exact_denominator": "4374734",
+      "exact_numerator": "11068215",
+      "unit": "1"
+    },
+    "beta_minus_one": {
+      "decimal": "1.5300315402033586499202008624982",
+      "derivation": "beta-1",
+      "exact_denominator": "4374734",
+      "exact_numerator": "6693481",
+      "strictly_positive": true,
+      "unit": "1"
+    },
+    "convention": {
+      "BPS_condition": "lambda=q_phi^2/2, equivalently beta=1 and kappa_GL=1/sqrt(2)",
+      "beta": "m_sigma^2/m_A^2=2*lambda/q_phi^2",
+      "kappa_GL": "m_sigma/(sqrt(2)*m_A)=sqrt(lambda/q_phi^2)"
+    },
+    "kappa_GL_display": "1.1247291985636717366709522395307",
+    "kappa_GL_squared": {
+      "decimal": "1.2650157701016793249601004312491",
+      "derivation": "lambda/q_phi^2",
+      "exact_denominator": "8749468",
+      "exact_numerator": "11068215",
+      "unit": "1"
+    },
+    "kappa_GL_squared_minus_one_half": {
+      "decimal": "0.76501577010167932496010043124908",
+      "derivation": "kappa_GL^2-1/2",
+      "exact_denominator": "8749468",
+      "exact_numerator": "6693481",
+      "strictly_positive": true,
+      "unit": "1"
+    },
+    "lambda_BPS": {
+      "decimal": "0.4150145890733058582616980244782",
+      "derivation": "q_phi^2/2=m_omega^2/(2*W0^2), equivalently m_sigma=m_A",
+      "exact_denominator": "36894050",
+      "exact_numerator": "15311569",
+      "unit": "1"
+    },
+    "local_classification": "TYPE_II_NOT_BPS",
+    "mass_ratio_m_sigma_over_m_A_display": "1.590607286605766385742950742526"
+  },
+  "provenance": {
+    "action_path": "verification/contracts/source_complete_action.md",
+    "action_sha256": "25e42abb91028f09a76cccddc05ca4a7458bc0609df7f41fb932d165cc73606e",
+    "producer_path": "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+    "producer_sha256": "15143623e144c28010db9951249b2525f949779e85584535c28120e89e472e35",
+    "source_complete_path": "verification/source_complete_solution_audit.py",
+    "source_complete_sha256": "5d39d3d07a3f00d2fcbe853ad27359b34a86d853c842ba01861196c1aaa517a8"
+  },
+  "schema": "nvg_source_complete_conditional_vortex_sector_audit.v1",
+  "source_free_local_truncation": {
+    "action": "S0=integral[-F^2/4+(partial W)^2/2+W^2*(partial theta-q_phi*A)^2/2-lambda*(W^2-W0^2)^2/4]",
+    "empirical_target_or_data_read": false,
+    "fixed_conditions": [
+      "N=J_B=0",
+      "A0=0",
+      "all unspecified spectators absent"
+    ],
+    "no_new_operator_or_particle_introduced": true,
+    "parameter_fit_performed": false,
+    "physical_claim_permitted": false
+  },
+  "status": "CONDITIONAL_LOCAL_TYPE_II_VORTEX_SECTOR_GLOBAL_COMPLETION_UNDECLARED"
+}

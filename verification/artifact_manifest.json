@@ -737,6 +737,70 @@
       "producer": "verification/nvg_thermal_composition_hessian.py",
       "sha256": "a68fbb17dca8b09890dca043dbf17d5c9fe3dfcadd8ea6c62cc41f85d3bab7be",
       "status": "finite_temperature_composition_hessian_zero_weight"
+    },
+    "verification/nvg_dm_budget_audit_results.json": {
+      "canonical_path": "verification/nvg_dm_budget_audit_results.json",
+      "command": "python3 -B verification/nvg_dm_budget_audit.py --output verification/nvg_dm_budget_audit_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_dm_budget_audit.py",
+      "sha256": "7ebaeff0525def579bea4436317f0a5e537904d31b11b007032ef47bfbffb434",
+      "status": "fail_closed_abundance_reconciliation_not_closed"
+    },
+    "verification/nvg_lz_248kev_kinematic_results.json": {
+      "canonical_path": "verification/nvg_lz_248kev_kinematic_results.json",
+      "command": "python3 -B verification/nvg_lz_248kev_kinematic_audit.py --output verification/nvg_lz_248kev_kinematic_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_lz_248kev_kinematic_audit.py",
+      "sha256": "3760112fa15e1a3b190b0a46689bf48b09859351a2d4fddb3dab0d0ef6138f68",
+      "status": "exact_kinematic_necessary_condition_no_detector_likelihood"
+    },
+    "verification/nvg_source_complete_conditional_vortex_sector_results.json": {
+      "canonical_path": "verification/nvg_source_complete_conditional_vortex_sector_results.json",
+      "command": "python3 -B verification/nvg_source_complete_conditional_vortex_sector_audit.py --output verification/nvg_source_complete_conditional_vortex_sector_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_conditional_vortex_sector_audit.py",
+      "sha256": "ad8ee050fbf08c1a474e165e50f2502b42626a8f93d76d3c28f44ba739ccd020",
+      "status": "conditional_source_free_local_type_ii_vortex_sector_global_completion_undeclared_non_evidence"
+    },
+    "verification/nvg_source_complete_formal_swave_threshold_results.json": {
+      "canonical_path": "verification/nvg_source_complete_formal_swave_threshold_results.json",
+      "command": "python3 -B verification/nvg_source_complete_formal_swave_threshold_audit.py --output verification/nvg_source_complete_formal_swave_threshold_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_formal_swave_threshold_audit.py",
+      "sha256": "c4257189532b7c22b48fbe17c2bc97dcb877bbc2cdb93e885211ef84c475a8a4",
+      "status": "formal_tree_static_swave_threshold_non_evidence"
+    },
+    "verification/nvg_source_complete_minimal_vacuum_closure_results.json": {
+      "canonical_path": "verification/nvg_source_complete_minimal_vacuum_closure_results.json",
+      "command": "python3 -B verification/nvg_source_complete_minimal_vacuum_closure_audit.py --output verification/nvg_source_complete_minimal_vacuum_closure_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_minimal_vacuum_closure_audit.py",
+      "sha256": "dc180120aa04bbff45b807a8086c35a91010b6be3c91e7e7dbdffc2cbae070c1",
+      "status": "minimal_source_complete_vacuum_tree_cut_kinematic_closure_non_evidence"
+    },
+    "verification/nvg_source_complete_nn_static_results.json": {
+      "canonical_path": "verification/nvg_source_complete_nn_static_results.json",
+      "command": "python3 -B verification/nvg_source_complete_nn_static_audit.py --output verification/nvg_source_complete_nn_static_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_nn_static_audit.py",
+      "sha256": "4f9aaa74bfc6ec188b7ee56eaf24f20d87116df5fa8423dc049f6cccf7e5ab76",
+      "status": "source_complete_tree_static_same_sign_exchange_repulsion_non_evidence"
+    },
+    "verification/nvg_source_complete_q4_droplet_results.json": {
+      "canonical_path": "verification/nvg_source_complete_q4_droplet_results.json",
+      "command": "python3 -B verification/nvg_source_complete_q4_droplet_audit.py --output verification/nvg_source_complete_q4_droplet_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_q4_droplet_audit.py",
+      "sha256": "6f95aa3ae1b3b9a896551299cc5e742fcfad6854942944c643aef15938928fe0",
+      "status": "sharp_source_complete_q4_tf_no_self_binding_certificate"
+    },
+    "verification/nvg_source_complete_scalar_cross_scale_gate_results.json": {
+      "canonical_path": "verification/nvg_source_complete_scalar_cross_scale_gate_results.json",
+      "command": "python3 -B verification/nvg_source_complete_scalar_cross_scale_gate.py --output verification/nvg_source_complete_scalar_cross_scale_gate_results.json",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_source_complete_scalar_cross_scale_gate.py",
+      "sha256": "ab8ccc04033b6868a1e5f74fc173dfe17ac630a6579d2dd8005bb76f9784c535",
+      "status": "source_complete_cross_scale_entry_gate_non_evidence"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",

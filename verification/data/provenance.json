@@ -1,5 +1,16 @@
 {
   "entries": {
+    "finite_static_observables_2026.json": {
+      "config": "cited evaluated finite-system inputs for the conditional static bridge: AME2020/ENSDF binding energies, Angeli-Marinova charge radii with covariance, PREX/CREX PV skins and nucleon charge inputs",
+      "kind": "input",
+      "producer": null,
+      "sha256": "c33c527ceb27c9e536ab91cac9d00b193e54648204e14eed3a7e46eca462b53b",
+      "source": "Cited evaluated compilations (AME2020/ENSDF via IAEA LiveChart; Angeli & Marinova ADNDT 99 (2013) 69; published PREX/CREX values)",
+      "source_url": "https://nds.iaea.org/relnsd/v1/data",
+      "status": "declared_local_configuration_with_primary_references",
+      "trust_status": "declared_local_configuration",
+      "version": "finite-static-2026"
+    },
     "gwtc_events.csv": {
       "config": "latest version per commonName; min network SNR 8; p_astro >= 0.5; final mass >= 5 Msun; selection metadata only",
       "kind": "input",
@@ -33,6 +44,50 @@
       "trust_status": "unknown_provenance",
       "version": null
     },
+    "legacy_dark_neutron_cogenesis_inputs.json": {
+      "config": "Historical dark-neutron corridor, portal and cogenesis-sensitivity constants preserved as an explicit conditional-input passport; no source, covariance, renormalisation prescription, dynamical theta source, CP/washout calculation, entropy history or abundance likelihood is available.",
+      "kind": "input",
+      "producer": null,
+      "sha256": "cb17388cc08f57810dd74ac2135b6752ba5d26c163992de94771798716e81c9d",
+      "source": null,
+      "source_url": null,
+      "status": "legacy_undocumented_conditional_input_not_mechanism",
+      "trust_status": "legacy_undocumented_input",
+      "version": null
+    },
+    "legacy_relic_dark_matter_calibration.json": {
+      "config": "Historical H0 and Omega_DM inputs preserved as explicit calibration data; no source, uncertainty, likelihood or common cosmology is available.",
+      "kind": "input",
+      "producer": null,
+      "sha256": "9bc735e352b516be8e673521cd3890d4add1ac538273a3db03760937716b2211",
+      "source": null,
+      "source_url": null,
+      "status": "legacy_undocumented_calibration_not_abundance_prediction",
+      "trust_status": "legacy_undocumented_input",
+      "version": null
+    },
+    "lz_248kev_event_2026.json": {
+      "config": "LZ 2026 published event summary plus natural-xenon free-target proxy and a script-derived bound-SHM triangle-inequality speed envelope; the external Higgsino point is comparator only, not NVG input",
+      "kind": "input",
+      "producer": null,
+      "sha256": "7a58896180870e0b5f5f36bf27313d4308a92036411cddea21511c9acdbc2f3a",
+      "source": "LZ Collaboration arXiv:2609.02823; external Higgsino comparator arXiv:2609.01583v2; bound-SHM parameters Baxter et al. arXiv:2105.00599v3, Table 1 and Eq. (11)",
+      "source_url": "https://arxiv.org/abs/2609.02823",
+      "status": "verified_primary_source_with_derived_declared_screen",
+      "trust_status": "verified_primary_source_with_declared_local_configuration",
+      "version": "LZ arXiv v1; SHM conventions arXiv v3; accessed 2026-10-01"
+    },
+    "nonlinear_calibration_protocol_2026.md": {
+      "config": "protocol_version=nonlinear-calibration-public-v1; anchors=0.90,0.93; amplitudes=0,1; response_u=-0.20,-0.10,0.10,0.20; primary_dps=90; control_dps=120",
+      "kind": "input",
+      "producer": null,
+      "sha256": "eb0ed369b5773cb865e4a66d5403a7a7d0916cb950e19bb74ab29231212eb58d",
+      "source": "repository-declared public numerical reproduction protocol",
+      "source_url": null,
+      "status": "frozen_public_protocol_bytes",
+      "trust_status": "declared_public_protocol",
+      "version": "nonlinear-calibration-public-v1"
+    },
     "nvg_gw_template.txt": {
       "config": "module default frequency grid and comb constants",
       "kind": "generated_artifact",
@@ -54,6 +109,17 @@
       "status": "verified_primary_source",
       "trust_status": "verified_primary_source",
       "version": "released timing value 1.3381 +/- 0.0007 M_sun"
+    },
+    "nvg_isospin_jet_benchmarks.json": {
+      "config": "P1 sealed local-jet design grid plus descriptive conditional nuclear source references; calculation_inputs are consumed separately from descriptive_benchmarks",
+      "kind": "input",
+      "producer": null,
+      "sha256": "578ced91f00d9145c904cab2f88c4a1957812464d8c92c9f9b607aa3a650fa99",
+      "source": "P1 sealed calculation/design record with traceable primary-source URLs",
+      "source_url": null,
+      "status": "declared_local_configuration_with_primary_references",
+      "trust_status": "declared_local_configuration",
+      "version": "nuclear-validation-2026-09-10-P1-I-v1"
     },
     "nvg_residual_stack_results.csv": {
       "config": "O1-O4 residual stack defaults; per-event Fisher/rho90 sensitivity table",
@@ -77,6 +143,28 @@
       "trust_status": "declared_local_configuration",
       "version": "P2-S3-hierarchical-echo-config-v1"
     },
+    "pbh_population_b_seed_calibration.json": {
+      "config": "Historical PBH-B seed/density/strain benchmarks preserved as an explicit conditional calibration trace; no formation solver, common cosmology or likelihood is available.",
+      "kind": "input",
+      "producer": null,
+      "sha256": "29f9f2dcb73d073936a4b22ef6d311f6882bc63a0f0ecf3f4d8d553c2544ee00",
+      "source": null,
+      "source_url": null,
+      "status": "legacy_undocumented_seed_trace_not_absolute_cosmology",
+      "trust_status": "legacy_undocumented_input",
+      "version": null
+    },
+    "planck2018_dm_budget.json": {
+      "config": "base LambdaCDM TT,TE,EE+lowE+lensing physical-density reference: omega_b, omega_c and H0; comparison reference only unless NVG supplies a joint CMB/background fit",
+      "kind": "input",
+      "producer": null,
+      "sha256": "d75ef2831e6d88a8d17e12aaefa161cf731a53175a9d3864b7052d1ff6f6ba93",
+      "source": "Planck Collaboration, Planck 2018 results VI, arXiv:1807.06209v4, base LambdaCDM TT,TE,EE+lowE+lensing parameter table",
+      "source_url": "https://arxiv.org/abs/1807.06209",
+      "status": "verified_primary_source_comparison_reference",
+      "trust_status": "verified_primary_source_with_declared_scope",
+      "version": "arXiv v4, accessed 2026-10-01"
+    },
     "planck2018_te_full.txt": {
       "config": null,
       "kind": "input",
@@ -98,39 +186,6 @@
       "status": "unknown_provenance",
       "trust_status": "unknown_provenance",
       "version": null
-    },
-    "nvg_isospin_jet_benchmarks.json": {
-      "config": "P1 sealed local-jet design grid plus descriptive conditional nuclear source references; calculation_inputs are consumed separately from descriptive_benchmarks",
-      "kind": "input",
-      "producer": null,
-      "sha256": "578ced91f00d9145c904cab2f88c4a1957812464d8c92c9f9b607aa3a650fa99",
-      "source": "P1 sealed calculation/design record with traceable primary-source URLs",
-      "source_url": null,
-      "status": "declared_local_configuration_with_primary_references",
-      "trust_status": "declared_local_configuration",
-      "version": "nuclear-validation-2026-09-10-P1-I-v1"
-    },
-    "finite_static_observables_2026.json": {
-      "config": "cited evaluated finite-system inputs for the conditional static bridge: AME2020/ENSDF binding energies, Angeli-Marinova charge radii with covariance, PREX/CREX PV skins and nucleon charge inputs",
-      "kind": "input",
-      "producer": null,
-      "sha256": "c33c527ceb27c9e536ab91cac9d00b193e54648204e14eed3a7e46eca462b53b",
-      "source": "Cited evaluated compilations (AME2020/ENSDF via IAEA LiveChart; Angeli & Marinova ADNDT 99 (2013) 69; published PREX/CREX values)",
-      "source_url": "https://nds.iaea.org/relnsd/v1/data",
-      "status": "declared_local_configuration_with_primary_references",
-      "trust_status": "declared_local_configuration",
-      "version": "finite-static-2026"
-    },
-    "nonlinear_calibration_protocol_2026.md": {
-      "config": "protocol_version=nonlinear-calibration-public-v1; anchors=0.90,0.93; amplitudes=0,1; response_u=-0.20,-0.10,0.10,0.20; primary_dps=90; control_dps=120",
-      "kind": "input",
-      "producer": null,
-      "sha256": "eb0ed369b5773cb865e4a66d5403a7a7d0916cb950e19bb74ab29231212eb58d",
-      "source": "repository-declared public numerical reproduction protocol",
-      "source_url": null,
-      "status": "frozen_public_protocol_bytes",
-      "trust_status": "declared_public_protocol",
-      "version": "nonlinear-calibration-public-v1"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1",

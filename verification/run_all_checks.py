@@ -137,9 +137,9 @@ CHECKS = [
         "critical": True,
     },
     {
-        "name": "Relic Dark Matter density",
+        "name": "Legacy Relic Calibration Inversion (not abundance)",
         "script": "nvg_relic_dark_matter.py",
-        "critical": True,
+        "critical": False,
     },
     {
         "name": "Scalar Glueball Mass from VMF",
@@ -222,9 +222,9 @@ CHECKS = [
         "critical": True,
     },
     {
-        "name": "PBH Dark Matter Fraction & Constraints",
+        "name": "PBH Ladder / Normalized-Profile Bookkeeping",
         "script": "nvg_pbh_dark_matter.py",
-        "critical": True,
+        "critical": False,
     },
     {
         "name": "White Dwarf Cooling rate correction",
@@ -339,7 +339,7 @@ CHECKS = [
         "critical": False,
     },
     {
-        "name": "B-L Cogenesis Construction (dark neutron)",
+        "name": "Historical Conditional B-L/Dark-Neutron Arithmetic",
         "script": "nvg_adm_bl_cogenesis.py",
         "critical": False,
     },
