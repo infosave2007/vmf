@@ -1,0 +1,132 @@
+NVG SCIENTIFIC VERIFICATION FRONT DOOR
+Repository root: /Users/oleg/Documents/NVG-Research
+Scientific semantics: registry/provenance + canonical runtime ledger + semantic pytest
+Process smoke is separate: python verification/run_all_checks.py
+[registry/provenance] PASS entries=396, scripts=292, artifacts=91, inputs=9
+
+[scientific/predictive-ledger] /Users/oleg/Documents/NVG-Research/.venv-research/bin/python /Users/oleg/Documents/NVG-Research/verification/nvg_predictive_research_ledger.py
+P4-S1 predictive ledger: status=FINAL_P4_S1_MACHINE_LEDGER, claims=12, digest=e827976553f6168a7d4e3d10afc2c49c2d86ff49f1fadac58a58699ea201ec2f
+Ledger artifact: /Users/oleg/Documents/NVG-Research/verification/predictive_research_ledger.json
+[scientific/predictive-ledger] PASS
+
+[scientific/canonical-ledger] /Users/oleg/Documents/NVG-Research/.venv-research/bin/python /Users/oleg/Documents/NVG-Research/verification/run_nvg_suite.py
+Runtime evidence ledger generated: /Users/oleg/Documents/NVG-Research/NVG_FINAL_REPORT.md
+Canonical outputs: M_max=2.048 M_sun, R_1.4=12.550 km, Lambda_1.4=519.4
+Conditional/in-sample reduced chi-squared=0.684; calibrated rows excluded=['Cooling_Dichotomy']
+[scientific/canonical-ledger] PASS
+
+[scientific/semantic-pytest] /Users/oleg/Documents/NVG-Research/.venv-research/bin/python -m pytest -q verification
+........................................................................ [ 21%]
+........................................................................ [ 42%]
+........................................................................ [ 64%]
+........................................................................ [ 85%]
+...............................................                          [100%]
+=============================== warnings summary ===============================
+.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: 6 warnings
+verification/test_p10_s2_direct_status.py: 25 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: 6 warnings
+verification/test_p10_s2_direct_status.py: 25 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:45
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+.venv-research/lib/python3.12/site-packages/astropy/cosmology/core.py:30
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/astropy/cosmology/core.py:30: DeprecationWarning: The module `astropy.cosmology.core` is deprecated since v7.1 and will be removed in a future version. Import from `astropy.cosmology` instead.
+    warnings.warn(
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2010: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    p.space          = oneOf(self._space_widths)("space")
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2012: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    p.style_literal  = oneOf(
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2020: PyparsingDeprecationWarning: 'leaveWhitespace' deprecated - use 'leave_whitespace'
+    )("sym").leaveWhitespace()
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2024: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    p.start_group    = Optional(r"\math" + oneOf(self._fontnames)("font")) + "{"
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2027: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    p.delim          = oneOf(self._delims)
+
+verification/test_p10_s2_direct_status.py: 47 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:1984: PyparsingDeprecationWarning: 'setName' deprecated - use 'set_name'
+    val.setName(key)
+
+verification/test_p10_s2_direct_status.py: 44 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:1987: PyparsingDeprecationWarning: 'setParseAction' deprecated - use 'set_parse_action'
+    val.setParseAction(getattr(self, key))
+
+verification/test_p10_s2_direct_status.py: 16 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:1748: PyparsingDeprecationWarning: 'setParseAction' deprecated - use 'set_parse_action'
+    return Empty().setParseAction(raise_error)
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2088: PyparsingDeprecationWarning: 'endQuoteChar' argument is deprecated, use 'end_quote_char'
+    p.text = cmd(r"\text", QuotedString('{', '\\', endQuoteChar="}"))
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2097: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    + OneOrMore(oneOf(["_", "^"]) - p.placeable)("subsuper")
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2146: PyparsingDeprecationWarning: 'unquoteResults' argument is deprecated, use 'unquote_results'
+    p.math_string   = QuotedString('$', '\\', unquoteResults=False)
+
+verification/test_p10_s2_direct_status.py::P10S2DirectStatusTests::test_canonical_eos_and_formal_statuses
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2147: PyparsingDeprecationWarning: 'leaveWhitespace' deprecated - use 'leave_whitespace'
+    p.non_math      = Regex(r"(?:(?:\\[$])|[^$])*").leaveWhitespace()
+
+verification/test_p10_s2_direct_status.py: 7 warnings
+verification/test_p11_s2_artifact_provenance.py: 1 warning
+verification/test_p1_s3_pbh_nanograv_audit.py: 3 warnings
+verification/test_p3_prospective_falsification_reach.py: 12 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2170: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    result = self._expression.parseString(s)
+
+verification/test_p10_s2_direct_status.py: 8 warnings
+verification/test_p11_s2_artifact_provenance.py: 1 warning
+verification/test_p1_s3_pbh_nanograv_audit.py: 3 warnings
+verification/test_p3_prospective_falsification_reach.py: 12 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2197: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    return self._math_expression.parseString(toks[0][1:-1], parseAll=True)
+
+verification/test_p10_s2_direct_status.py: 8 warnings
+verification/test_p11_s2_artifact_provenance.py: 1 warning
+verification/test_p1_s3_pbh_nanograv_audit.py: 3 warnings
+verification/test_p3_prospective_falsification_reach.py: 12 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/pyparsing/util.py:466: PyparsingDeprecationWarning: 'parseAll' argument is deprecated, use 'parse_all'
+    return fn(self, *args, **kwargs)
+
+verification/test_p10_s2_direct_status.py: 7 warnings
+verification/test_p11_s2_artifact_provenance.py: 1 warning
+verification/test_p1_s3_pbh_nanograv_audit.py: 3 warnings
+verification/test_p3_prospective_falsification_reach.py: 12 warnings
+  /Users/oleg/Documents/NVG-Research/.venv-research/lib/python3.12/site-packages/matplotlib/_mathtext.py:2178: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    ParserElement.resetCache()
+
+verification/test_p11_s2_artifact_provenance.py::P11S2ArtifactProvenanceTests::test_plot_and_waveform_producers_target_canonical_survivors
+  /Users/oleg/Documents/NVG-Research/verification/nvg_echo_waveform_generator.py:78: SyntaxWarning: invalid escape sequence '\o'
+    plt.title('NVG Parameter-Free GW Echo Waveform (65 $M_\odot$)')
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+335 passed, 276 warnings in 1112.99s (0:18:32)
+[scientific/semantic-pytest] PASS
+
+[process-smoke] NOT RUN by this front door; use python verification/run_all_checks.py for process-only diagnostics.
+Scientific verification front door: PASS

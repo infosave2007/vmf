@@ -1,0 +1,295 @@
+{
+  "all_controls_pass": true,
+  "controls": {
+    "coverage": {
+      "pass": true
+    },
+    "eos_vs_static_fluctuation_identity": {
+      "maximum_relative_error": "1.10643942904293934883727104154e-15",
+      "pass": true
+    },
+    "model_contrasts_finite": {
+      "maximum_relative_difference": "0.0000404789282788067691877184617333",
+      "pass": true
+    }
+  },
+  "coverage": {
+    "paired_W8_U16_contrasts": 4,
+    "primary_rows": 8,
+    "refined_rows": 8
+  },
+  "fit_used": false,
+  "independent_evidence_weight": 0.0,
+  "input_artifact": "verification/nvg_thermo_static_zero_mode_results.json",
+  "input_artifact_sha256": "1b0b7dd3ce33e48c7b1029a6a2a7d08d70088d2194455998610c46408123f0bb",
+  "integrity_sha256": "cc40892b6ec7a63a632d25e5e30fa131f031096a8f74132a0c4641be2f45fd3b",
+  "interpretation_limits": [
+    "This is an equilibrium grand-canonical identity applied to the validated model output, not an experimental measurement or an independent test of NVG.",
+    "Finite-volume conservation, detector acceptance, diffusion, nonequilibrium evolution and particle-to-proton mapping are not included.",
+    "A small W8/U16 difference on this grid means this observable does not distinguish those model variants here."
+  ],
+  "model_contrasts": [
+    {
+      "anchor": "0.90",
+      "mu_MeV": "775.0",
+      "w8_over_u16_relative_difference": "0.0000152172367754376338283865341405"
+    },
+    {
+      "anchor": "0.90",
+      "mu_MeV": "875.0",
+      "w8_over_u16_relative_difference": "0.0000404789282788067691877184617333"
+    },
+    {
+      "anchor": "0.93",
+      "mu_MeV": "775.0",
+      "w8_over_u16_relative_difference": "0.000000583052587829184305916662908742"
+    },
+    {
+      "anchor": "0.93",
+      "mu_MeV": "875.0",
+      "w8_over_u16_relative_difference": "0.00000236836821787437502718066777152"
+    }
+  ],
+  "primary_rows": [
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "12669.3849099740738509430798511",
+      "chi_static_q0_MeV2": "12669.3849099740785137392800783",
+      "eos_static_ratio_relative_error": "3.9313259598601279241241007218e-16",
+      "kappa2_over_kappa1": "1.12961686307452002786533284961",
+      "kappa2_over_kappa1_from_static_q0": "1.12961686307452047195454269968",
+      "kappa2_per_volume_MeV3": "886856.943698185263201594352722",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "n_MeV3": "785095.347536149442091286372218",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "18177.6235231634269408666146751",
+      "chi_static_q0_MeV2": "18177.6235231634249033455309436",
+      "eos_static_ratio_relative_error": "2.08842481802258277336976342524e-16",
+      "kappa2_over_kappa1": "0.531607848673416483187281755818",
+      "kappa2_over_kappa1_from_static_q0": "0.531607848673416372164979293302",
+      "kappa2_per_volume_MeV3": "1272433.64662143983878195285797",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2393556.92320324672293405319311",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "12669.2462343174261336943887618",
+      "chi_static_q0_MeV2": "12669.246234317439568995841841",
+      "eos_static_ratio_relative_error": "9.82846446172116783463026849356e-16",
+      "kappa2_over_kappa1": "1.12959967342724909578066672111",
+      "kappa2_over_kappa1_from_static_q0": "1.12959967342725020600369134627",
+      "kappa2_per_volume_MeV3": "886847.236402219859883189201355",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "n_MeV3": "785098.701127888116357966974613",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "18176.741486822005534281374141",
+      "chi_static_q0_MeV2": "18176.7414868220085015296397591",
+      "eos_static_ratio_relative_error": "2.08850935864312034921658789656e-16",
+      "kappa2_over_kappa1": "0.531586329757437581200463228015",
+      "kappa2_over_kappa1_from_static_q0": "0.531586329757437692222765690531",
+      "kappa2_per_volume_MeV3": "1272371.90407754038460552692413",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2393537.66801738952255898512925",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "11684.4516740620222941655469269",
+      "chi_static_q0_MeV2": "11684.451674062020131051284774",
+      "eos_static_ratio_relative_error": "1.17710451509134335085837979412e-16",
+      "kappa2_over_kappa1": "0.943181349142138913954624968028",
+      "kappa2_over_kappa1_from_static_q0": "0.943181349142138802932322505512",
+      "kappa2_per_volume_MeV3": "817911.617184341535903513431549",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "n_MeV3": "867183.832598327766498958949131",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "28537.0016396793297240540976094",
+      "chi_static_q0_MeV2": "28537.001639679340273929295503",
+      "eos_static_ratio_relative_error": "3.16124802453417241342206637955e-16",
+      "kappa2_over_kappa1": "0.702395393217369434779584480566",
+      "kappa2_over_kappa1_from_static_q0": "0.702395393217369656824189405597",
+      "kappa2_per_volume_MeV3": "1997590.11477755312807857990265",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2843968.13257481227709275351042",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "11684.4459227781500600882378549",
+      "chi_static_q0_MeV2": "11684.4459227781489529519498682",
+      "eos_static_ratio_relative_error": "1.17710520140557731119643599396e-16",
+      "kappa2_over_kappa1": "0.943180799217812504409153007146",
+      "kappa2_over_kappa1_from_static_q0": "0.94318079921781239338685054463",
+      "kappa2_per_volume_MeV3": "817911.214594470453448593616486",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "n_MeV3": "867183.911369666177462931015649",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "28536.9179478364732592513717296",
+      "chi_static_q0_MeV2": "28536.9179478364480409546214567",
+      "eos_static_ratio_relative_error": "9.48376653465376669238472166432e-16",
+      "kappa2_over_kappa1": "0.702393729686443757387337427645",
+      "kappa2_over_kappa1_from_static_q0": "0.702393729686443091253522652551",
+      "kappa2_per_volume_MeV3": "1997584.25634855334646999835968",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2843966.52749206189800026080583",
+      "pass": true
+    }
+  ],
+  "refined_rows": [
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "12669.384909974073850944351266",
+      "chi_static_q0_MeV2": "12669.384909974067865910187748",
+      "eos_static_ratio_relative_error": "5.89698893979019435137647989837e-16",
+      "kappa2_over_kappa1": "1.12961686307452002786533284961",
+      "kappa2_over_kappa1_from_static_q0": "1.12961686307451936173151807452",
+      "kappa2_per_volume_MeV3": "886856.943698185263201594352722",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "n_MeV3": "785095.347536149442091657434166",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "18177.6235231634269408578312212",
+      "chi_static_q0_MeV2": "18177.623523163422752671809681",
+      "eos_static_ratio_relative_error": "2.08842481802258277336976342524e-16",
+      "kappa2_over_kappa1": "0.531607848673416483187281755818",
+      "kappa2_over_kappa1_from_static_q0": "0.531607848673416372164979293302",
+      "kappa2_per_volume_MeV3": "1272433.64662143983878195285797",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2393556.92320324672293435021619",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "12669.2462343174261336956602711",
+      "chi_static_q0_MeV2": "12669.2462343174289143735178752",
+      "eos_static_ratio_relative_error": "0.0",
+      "kappa2_over_kappa1": "1.12959967342724909578066672111",
+      "kappa2_over_kappa1_from_static_q0": "1.12959967342724909578066672111",
+      "kappa2_per_volume_MeV3": "886847.236402219859883189201355",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "n_MeV3": "785098.701127888116358338036357",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "chi_T_MeV2": "18176.7414868220055342725955485",
+      "chi_static_q0_MeV2": "18176.7414868220038646521322771",
+      "eos_static_ratio_relative_error": "0.0",
+      "kappa2_over_kappa1": "0.531586329757437581200463228015",
+      "kappa2_over_kappa1_from_static_q0": "0.531586329757437581200463228015",
+      "kappa2_per_volume_MeV3": "1272371.90407754038460552692413",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2393537.66801738952255928222374",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "11684.4516740620222941722990571",
+      "chi_static_q0_MeV2": "11684.4516740620149323237139199",
+      "eos_static_ratio_relative_error": "5.88552257545671749384899761528e-16",
+      "kappa2_over_kappa1": "0.943181349142138913954624968028",
+      "kappa2_over_kappa1_from_static_q0": "0.94318134914213835884311265545",
+      "kappa2_per_volume_MeV3": "817911.617184341535903513431549",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "n_MeV3": "867183.832598327766499532133642",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "28537.0016396793297241097642121",
+      "chi_static_q0_MeV2": "28537.0016396793312557887595759",
+      "eos_static_ratio_relative_error": "0.0",
+      "kappa2_over_kappa1": "0.702395393217369434779584480566",
+      "kappa2_over_kappa1_from_static_q0": "0.702395393217369434779584480566",
+      "kappa2_per_volume_MeV3": "1997590.11477755312807857990265",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2843968.13257481227709462907992",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "11684.4459227781500600949899871",
+      "chi_static_q0_MeV2": "11684.4459227781429390188156978",
+      "eos_static_ratio_relative_error": "5.88552600702788680250121285136e-16",
+      "kappa2_over_kappa1": "0.943180799217812504409153007146",
+      "kappa2_over_kappa1_from_static_q0": "0.943180799217811949297640694567",
+      "kappa2_per_volume_MeV3": "817911.214594470453448593616486",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "n_MeV3": "867183.911369666177463504200119",
+      "pass": true
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "chi_T_MeV2": "28536.9179478364732593070377908",
+      "chi_static_q0_MeV2": "28536.9179478364466539486295909",
+      "eos_static_ratio_relative_error": "1.10643942904293934883727104154e-15",
+      "kappa2_over_kappa1": "0.702393729686443757387337427645",
+      "kappa2_over_kappa1_from_static_q0": "0.702393729686442980231220190035",
+      "kappa2_per_volume_MeV3": "1997584.25634855334646999835968",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "n_MeV3": "2843966.52749206189800213637281",
+      "pass": true
+    }
+  ],
+  "relation": "grand-canonical equilibrium: kappa2/V=T*(partial n/partial mu)_T; kappa1/V=n; therefore kappa2/kappa1=T*chi_T/n",
+  "schema_version": "nvg-gc-fluctuation-ratio.v1",
+  "source_sha256": {
+    "producer": "1fe13c91a471f1fdcd93926ee10ee84f53a4b0b850a98c0b9e26f7ad95b79b1d",
+    "upstream_producer": "22c955a135b13779ec746ae3829e14528258690cf3c607f24298687999de2c66"
+  },
+  "status": "PASS_DERIVED_GC_FLUCTUATION_RATIO",
+  "units": {
+    "T": "MeV",
+    "chi_T": "MeV^2",
+    "kappa2/V": "MeV^3",
+    "kappa2/kappa1": "dimensionless",
+    "n": "MeV^3"
+  }
+}

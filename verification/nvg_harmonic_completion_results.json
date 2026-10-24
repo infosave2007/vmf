@@ -1,0 +1,198 @@
+{
+  "schema_version": "nvg_harmonic_completion.v1",
+  "status": "HARMONIC_COMPLETION_COMPUTED_ZERO_EVIDENCE",
+  "evidence_weight": 0.0,
+  "precision_check": {
+    "dps": [
+      80,
+      110
+    ],
+    "pass": true
+  },
+  "source_sha256": "01e0558ac43dc6402149241f62ea1c8177a033f53f534d753544bb8709e94da9",
+  "science": {
+    "scalar_global_stability": [
+      {
+        "y_target": "0.60",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "583035380.0491079319436723567",
+        "a3_MeV4": "-272221334.3757089984019362262",
+        "a4_MeV4": "-257647030.5171732769934752067",
+        "qmin_a5_MeV4": "97609683.90764365335213337608",
+        "globally_nonnegative_a5": true,
+        "Cv_MeVminus2": "0.00008820783931285438453668583579"
+      },
+      {
+        "y_target": "0.65",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "565613351.660689656704166312",
+        "a3_MeV4": "-316831710.6930905394344198058",
+        "a4_MeV4": "-292348802.7187611400488567013",
+        "qmin_a5_MeV4": "90096259.63501905608972941643",
+        "globally_nonnegative_a5": true,
+        "Cv_MeVminus2": "0.00008879914906093866725303530222"
+      },
+      {
+        "y_target": "0.70",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "543484570.621158901886099007",
+        "a3_MeV4": "-471052375.6717009797554217279",
+        "a4_MeV4": "-441954420.2519599617993413718",
+        "qmin_a5_MeV4": "72582526.04089991984217936304",
+        "globally_nonnegative_a5": true,
+        "Cv_MeVminus2": "0.00008570341665890617678933738218"
+      },
+      {
+        "y_target": "0.75",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "525316068.1642627430595855136",
+        "a3_MeV4": "-744670185.5963303588119132523",
+        "a4_MeV4": "-726047017.4927144612037027184",
+        "qmin_a5_MeV4": "-573181670.4013249959498181175",
+        "globally_nonnegative_a5": false,
+        "Cv_MeVminus2": "0.00007834695848833522686320018218"
+      },
+      {
+        "y_target": "0.80",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "520580261.6239319339262896972",
+        "a3_MeV4": "-1169191473.936568977592912598",
+        "a4_MeV4": "-1140803728.870468316071014607",
+        "qmin_a5_MeV4": "-2390841241.918618587828530663",
+        "globally_nonnegative_a5": false,
+        "Cv_MeVminus2": "0.00006615620096689288963481410386"
+      },
+      {
+        "y_target": "0.85",
+        "quartic_qmin_MeV4": null,
+        "quartic_globally_nonnegative": false,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "570117288.1447955374891919111",
+        "a3_MeV4": "-1569637520.892644878253253197",
+        "a4_MeV4": "-893573754.6113695521138769439",
+        "qmin_a5_MeV4": "-2235161059.64125010710058658",
+        "globally_nonnegative_a5": false,
+        "Cv_MeVminus2": "0.00004855767378211098081758835861"
+      },
+      {
+        "y_target": "0.87",
+        "quartic_qmin_MeV4": "27487288.30818140852909735678",
+        "quartic_globally_nonnegative": true,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "657607989.1414385578101206808",
+        "a3_MeV4": "-1234822397.762343566111788312",
+        "a4_MeV4": "1067597734.704136348090329155",
+        "qmin_a5_MeV4": "363561530.7436304348554580053",
+        "globally_nonnegative_a5": true,
+        "Cv_MeVminus2": "0.00003987564774857277397667841351"
+      },
+      {
+        "y_target": "0.90",
+        "quartic_qmin_MeV4": "1003006250.702520892121483856",
+        "quartic_globally_nonnegative": true,
+        "a5_MeV4": "500000000.0",
+        "a2_MeV4": "1223382592.988899104281772389",
+        "a3_MeV4": "4428551023.022607076958756607",
+        "a4_MeV4": "22335775328.82661747673780333",
+        "qmin_a5_MeV4": "1003378965.806279292296609395",
+        "globally_nonnegative_a5": true,
+        "Cv_MeVminus2": "0.00002497799800549034101582450035"
+      }
+    ],
+    "harmonic_beta_tov": [
+      {
+        "y_target": "0.70",
+        "a5_MeV4": "500000000.0",
+        "mstar_over_M": "0.7",
+        "qmin_MeV4": "72582526.04089991984217936304",
+        "globally_nonnegative": true,
+        "gamma_L50": "-1.678183141143161138941763966",
+        "C0_MeVminus2": "0.0001022431127447227545285146633",
+        "L_kin_MeV": "81.96625158819870193838141859",
+        "Mmax_curve": [
+          {
+            "A_MeV": "0.0",
+            "Mmax_Msun": 2.6078453924723926,
+            "R14_km": 15.619039897364482,
+            "Lambda14": 1725.4674207705712,
+            "Lambda_tilde_136": 2050.3566661276473,
+            "p_extra_at_3n0_MeV_fm3": 0.0,
+            "fractional_p_increase_at_3n0": 0.0
+          },
+          {
+            "A_MeV": "0.5",
+            "Mmax_Msun": 2.658941867885491,
+            "R14_km": 15.620423563290556,
+            "Lambda14": 1787.7169360069959,
+            "Lambda_tilde_136": 2034.0621343532391,
+            "p_extra_at_3n0_MeV_fm3": 8.64,
+            "fractional_p_increase_at_3n0": 0.06218162816010574
+          },
+          {
+            "A_MeV": "1.0",
+            "Mmax_Msun": 2.708353023394247,
+            "R14_km": 15.62210980318465,
+            "Lambda14": 1796.0272580197648,
+            "Lambda_tilde_136": 2049.4904268615655,
+            "p_extra_at_3n0_MeV_fm3": 17.28,
+            "fractional_p_increase_at_3n0": 0.12436325632021147
+          }
+        ],
+        "note": "y=0.70 a5=5e8 is globally stable (qmin>0) and already gives Mmax>2.5 without A, but R14~14.8 FAILs NICER; y=0.87 quartic is globally stable without a5 but gives Mmax~1.85 and needs A~0.27 MeV to reach 2.01 (see mmax stiffening audit). Single a5 does not uniformly open y=0.80."
+      },
+      {
+        "y_target": "0.87",
+        "a5_MeV4": "0.0",
+        "mstar_over_M": "0.87",
+        "qmin_MeV4": "27487288.30818140852909735678",
+        "globally_nonnegative": true,
+        "gamma_L50": "-0.6278094438675463351273720036",
+        "C0_MeVminus2": "0.0001208001889964904773406423333",
+        "L_kin_MeV": "29.27265749837785691056524229",
+        "Mmax_curve": [
+          {
+            "A_MeV": "0.0",
+            "Mmax_Msun": 1.8484848287245945,
+            "R14_km": 13.859203668211274,
+            "Lambda14": 522.9946210474993,
+            "Lambda_tilde_136": 640.7910749738832,
+            "p_extra_at_3n0_MeV_fm3": 0.0,
+            "fractional_p_increase_at_3n0": 0.0
+          },
+          {
+            "A_MeV": "0.5",
+            "Mmax_Msun": 2.106644195894146,
+            "R14_km": 14.036345331107684,
+            "Lambda14": 575.1521412820492,
+            "Lambda_tilde_136": 708.777902906538,
+            "p_extra_at_3n0_MeV_fm3": 8.64,
+            "fractional_p_increase_at_3n0": 0.13010069936721214
+          },
+          {
+            "A_MeV": "1.0",
+            "Mmax_Msun": 2.2911441432135833,
+            "R14_km": 14.165995198052647,
+            "Lambda14": 616.1894920146028,
+            "Lambda_tilde_136": 756.8180171082581,
+            "p_extra_at_3n0_MeV_fm3": 17.28,
+            "fractional_p_increase_at_3n0": 0.26020139873442427
+          }
+        ],
+        "note": "y=0.70 a5=5e8 is globally stable (qmin>0) and already gives Mmax>2.5 without A, but R14~14.8 FAILs NICER; y=0.87 quartic is globally stable without a5 but gives Mmax~1.85 and needs A~0.27 MeV to reach 2.01 (see mmax stiffening audit). Single a5 does not uniformly open y=0.80."
+      }
+    ],
+    "scalar_form": "U=z^2(a2+a3 z+a4 z^2+a5 z^3), z=y^2-1, a5=5e8 MeV^4",
+    "stiffening_form": "eps_extra=A n (x-1)^3 theta(x-1), p_extra=3 A n0 x^2(x-1)^2 theta(x-1)",
+    "interpretation": "Degree-5 scalar opens y=0.60-0.75 with a5=5e8 but leaves y=0.80 closed and y=0.85 in a narrow window; the low-y extended branch is already very stiff (Cv large) giving Mmax>2.5 but R14 too large, while the high-y quartic branch is soft in Mmax and needs only a tiny A~0.3 MeV (zeta~0.01). The harmonic completion therefore needs two independent operators that decouple: a5 controls vacuum/saturation mass, gamma(L=50) controls slope, A (or zeta w^4) controls high-density stiffness. No joint tuning was used."
+  }
+}

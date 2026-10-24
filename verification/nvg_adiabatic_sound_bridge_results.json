@@ -1,0 +1,467 @@
+{
+  "all_controls_pass": true,
+  "controls": {
+    "causality": {
+      "pass": true
+    },
+    "coverage": {
+      "pass": true
+    },
+    "refinement": {
+      "max_relative_cs2_difference": "0.00012467237021093955620827664621",
+      "pass": true
+    },
+    "row_gates": {
+      "pass": true
+    }
+  },
+  "coverage": {
+    "expected_rows": 8,
+    "primary_rows": 8,
+    "refined_rows": 8
+  },
+  "evidence_weight": "derived_local_equilibrium_hydrodynamic_limit",
+  "fit_used": false,
+  "formula": "cs2=(dP/dT|mu + dP/dmu|T*dmu/dT|sigma)/(depsilon/dT|mu + depsilon/dmu|T*dmu/dT|sigma), with sigma=s/n and dmu/dT|sigma=-(dsigma/dT|mu)/(dsigma/dmu|T)",
+  "hydrodynamic_assumptions": [
+    "local thermal equilibrium",
+    "wavelength and period long compared with microscopic relaxation scales",
+    "homogeneous symmetric branch",
+    "no finite-volume boundary, viscosity, diffusion, or multi-fluid mode is calculated"
+  ],
+  "integrity_sha256": "1b9d6458dd1fac3a7cc92ecd4214eb752af594dfbf8de004ddd01017128d488e",
+  "interpretation_limits": [
+    "This is the local-equilibrium adiabatic hydrodynamic speed, not an independently solved microscopic spectral pole.",
+    "No damping, attenuation, finite nucleus/collision geometry, transport coefficient, real-frequency response, black-hole/cosmology result, or device power is calculated.",
+    "All states are bounded locally stable branches; this does not establish global phase equilibrium."
+  ],
+  "no_saved_results_as_inputs": true,
+  "physical_inputs_fixed": true,
+  "primary_rows": [
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.0972062359964781065839610680342",
+        "cs2_implicit": "0.097220343138028084743510169056",
+        "cs_direct_isentrope": "0.311779146186011142883432175989",
+        "cs_implicit": "0.3118017689783495836148406017",
+        "iso_minus_mu_MeV": "775.931938056913760834276608617",
+        "iso_plus_mu_MeV": "774.07427152812669051490023474",
+        "relative_implicit_vs_direct": "0.000145104831917221455519221728665"
+      },
+      "anchor": "0.90",
+      "base": {
+        "energy_MeV_fm3": "104.84833025089060479495572909",
+        "entropy_per_baryon": "4.38437932005525636961580413935",
+        "n_fm3": "0.10217931651632222606141793513",
+        "pressure_MeV_fm3": "5.70014180826717719618690186376",
+        "root_residual_relative": "2.20637091343288749453739749094e-27",
+        "y": "0.925145802528550517469245020135"
+      },
+      "derivatives": {
+        "P_T_MeV3": "3442139.48548444621749376952746",
+        "P_mu_MeV3": "785099.45662952268004342044911",
+        "dmu_dT_at_sigma": "-1.85841301036596125970113822853",
+        "epsilon_T_MeV3": "44160793.0462317392992808419077",
+        "epsilon_mu_MeV3": "12786605.6319700278802765657363",
+        "sigma_T_per_MeV": "-0.0311259844146845788238423673639",
+        "sigma_mu_per_MeV": "-0.0167486905446035415635594976914"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.00000474136720173335987608057330287",
+        "P_mu_equals_n_relative": "0.00000523385074150799613894258500593",
+        "implicit_direct_relative": "0.000145104831917221455519221728665",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.156545531781083548691903893711",
+        "cs2_implicit": "0.156541101322917288869899109062",
+        "cs_direct_isentrope": "0.395658352345914149402623118334",
+        "cs_implicit": "0.395652753463080664644655470266",
+        "iso_minus_mu_MeV": "874.528258712812548122120385885",
+        "iso_plus_mu_MeV": "875.484335956195467019558749045",
+        "relative_implicit_vs_direct": "0.0000283014028944337082292119074003"
+      },
+      "anchor": "0.90",
+      "base": {
+        "energy_MeV_fm3": "317.569756871145481685522579662",
+        "entropy_per_baryon": "3.24630855779634642389672229907",
+        "n_fm3": "0.311518863566514365062927263132",
+        "pressure_MeV_fm3": "25.7992934393223515904646324352",
+        "root_residual_relative": "1.3129294474661762818561715326e-43",
+        "y": "0.874210141132666185202990708418"
+      },
+      "derivatives": {
+        "P_T_MeV3": "7770244.86261717572438070162529",
+        "P_mu_MeV3": "2393557.82203085186479829271259",
+        "dmu_dT_at_sigma": "0.956044933238781077076334812967",
+        "epsilon_T_MeV3": "46310764.6707194276921240408068",
+        "epsilon_mu_MeV3": "18769540.6449562722809842730152",
+        "sigma_T_per_MeV": "0.00722719669413200712733462923222",
+        "sigma_mu_per_MeV": "-0.00755947387289478769073126785299"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.00000264332078933009538748503633765",
+        "P_mu_equals_n_relative": "0.000000375519486878006477121652706194",
+        "implicit_direct_relative": "0.0000283014028944337082292119074003",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.0972070351662634445611944680173",
+        "cs2_implicit": "0.0972211374613485674910702933354",
+        "cs_direct_isentrope": "0.311780427811406154920068987806",
+        "cs_implicit": "0.311803042739080029477119410791",
+        "iso_minus_mu_MeV": "775.931924118059793032817658282",
+        "iso_plus_mu_MeV": "774.074285575744756057561957088",
+        "relative_implicit_vs_direct": "0.000145053796462003614182568862107"
+      },
+      "anchor": "0.90",
+      "base": {
+        "energy_MeV_fm3": "104.848773101416785200624297713",
+        "entropy_per_baryon": "4.38437444685948953827902971095",
+        "n_fm3": "0.102179752982686226191035935195",
+        "pressure_MeV_fm3": "5.70013631762433404558251563969",
+        "root_residual_relative": "2.18095142200465979309822326402e-27",
+        "y": "0.925145272094640763035842521696"
+      },
+      "derivatives": {
+        "P_T_MeV3": "3442150.36201922256704763861753",
+        "P_mu_MeV3": "785102.810007324365313801930571",
+        "dmu_dT_at_sigma": "-1.8583851336452453111942232562",
+        "epsilon_T_MeV3": "44160277.0633817109873691809508",
+        "epsilon_mu_MeV3": "12786462.6223939178753446253191",
+        "sigma_T_per_MeV": "-0.0311250025480497999463247049605",
+        "sigma_mu_per_MeV": "-0.0167484134394670519055246208672"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.00000474162641335284812573213457907",
+        "P_mu_equals_n_relative": "0.00000523355589086558403697404131138",
+        "implicit_direct_relative": "0.000145053796462003614182568862107",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.156549352770835952351992416526",
+        "cs2_implicit": "0.156544921061241093120675793445",
+        "cs_direct_isentrope": "0.395663180964360079477198325147",
+        "cs_implicit": "0.395657580568401460674146029186",
+        "iso_minus_mu_MeV": "874.528187993104562160813894793",
+        "iso_plus_mu_MeV": "875.484410343737577874561256797",
+        "relative_implicit_vs_direct": "0.000028308705953876212804856534606"
+      },
+      "anchor": "0.90",
+      "base": {
+        "energy_MeV_fm3": "317.567254787080769730869069163",
+        "entropy_per_baryon": "3.24631870739825842605828809345",
+        "n_fm3": "0.311516357524749555220626218405",
+        "pressure_MeV_fm3": "25.7992545835962008459016464933",
+        "root_residual_relative": "1.44499895990288263910859789627e-43",
+        "y": "0.874212189036967438880633057408"
+      },
+      "derivatives": {
+        "P_T_MeV3": "7770206.64423410232529576955868",
+        "P_mu_MeV3": "2393538.56591984066484752600546",
+        "dmu_dT_at_sigma": "0.956190017226332297827806992152",
+        "epsilon_T_MeV3": "46309173.2611881108250930420183",
+        "epsilon_mu_MeV3": "18768658.9893029451405688904329",
+        "sigma_T_per_MeV": "0.00722790849049824790971769190365",
+        "sigma_mu_per_MeV": "-0.00755907127274200138309311504607"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.0000026428752527207341623249292608",
+        "P_mu_equals_n_relative": "0.000000375135986495886355459497441794",
+        "implicit_direct_relative": "0.000028308705953876212804856534606",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.105755179410651706411870209199",
+        "cs2_implicit": "0.105761130810431146472222530726",
+        "cs_direct_isentrope": "0.325200214345949818920151344039",
+        "cs_implicit": "0.325209364579852076670206365748",
+        "iso_minus_mu_MeV": "775.726582018397634194488621295",
+        "iso_plus_mu_MeV": "774.275349528019770264914826895",
+        "relative_implicit_vs_direct": "0.0000562720891298665837289811544415"
+      },
+      "anchor": "0.93",
+      "base": {
+        "energy_MeV_fm3": "115.644250423735843036484973013",
+        "entropy_per_baryon": "4.2992560330605487690684344272",
+        "n_fm3": "0.112863044707855671858250367731",
+        "pressure_MeV_fm3": "5.79050803574046832475895797478",
+        "root_residual_relative": "5.45038749390818108428044974918e-27",
+        "y": "0.934613864589487565555809545978"
+      },
+      "derivatives": {
+        "P_T_MeV3": "3728347.98247658030093634902607",
+        "P_mu_MeV3": "867189.490916737996136523098682",
+        "dmu_dT_at_sigma": "-1.45135662921183543281774965642",
+        "epsilon_T_MeV3": "40422763.9151539580294926731283",
+        "epsilon_mu_MeV3": "11761852.4433602787216447149719",
+        "sigma_T_per_MeV": "-0.0193677372429116350621693551978",
+        "sigma_mu_per_MeV": "-0.0133445748984723046059705542388"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.0000275345558228928904491415520102",
+        "P_mu_equals_n_relative": "0.00000652489273624386346301207357909",
+        "implicit_direct_relative": "0.0000562720891298665837289811544415",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.125343637016316871577381660338",
+        "cs2_implicit": "0.125342514488694674838778799085",
+        "cs_direct_isentrope": "0.354039033181818628095060420662",
+        "cs_implicit": "0.35403744786207952049716043092",
+        "iso_minus_mu_MeV": "874.845166871706289070689552826",
+        "iso_plus_mu_MeV": "875.158791304815836031574753572",
+        "relative_implicit_vs_direct": "0.00000895560116905344950767272172241"
+      },
+      "anchor": "0.93",
+      "base": {
+        "energy_MeV_fm3": "377.238904646249396890409455692",
+        "entropy_per_baryon": "3.14363500822831512485334303044",
+        "n_fm3": "0.370139398854755360266476843589",
+        "pressure_MeV_fm3": "28.0838914031690170034083337907",
+        "root_residual_relative": "3.01966524743719908395415583858e-39",
+        "y": "0.92080133692778091592500059029"
+      },
+      "derivatives": {
+        "P_T_MeV3": "8940467.6927548278350329619224",
+        "P_mu_MeV3": "2843975.44261833759442034408348",
+        "dmu_dT_at_sigma": "0.313611117500855930633848979511",
+        "epsilon_T_MeV3": "69237070.852140838613701778422",
+        "epsilon_mu_MeV3": "29357835.2868378112039822916234",
+        "sigma_T_per_MeV": "0.00298007682500169182074473206295",
+        "sigma_mu_per_MeV": "-0.00950245912437577527806641321249"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.00000781937918063226341338658746767",
+        "P_mu_equals_n_relative": "0.00000257036098686817590359526464576",
+        "implicit_direct_relative": "0.00000895560116905344950767272172241",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.105755215424574471303111840608",
+        "cs2_implicit": "0.105761166827818651592984339709",
+        "cs_direct_isentrope": "0.325200269717868578681551681542",
+        "cs_implicit": "0.325209419955539805075461268583",
+        "iso_minus_mu_MeV": "775.726581386379100547784049322",
+        "iso_plus_mu_MeV": "774.275350130992732315426884197",
+        "relative_implicit_vs_direct": "0.0000562721027262236657959569809735"
+      },
+      "anchor": "0.93",
+      "base": {
+        "energy_MeV_fm3": "115.644260756937388743389602083",
+        "entropy_per_baryon": "4.29925593246926814832683634885",
+        "n_fm3": "0.112863054959860788392983238895",
+        "pressure_MeV_fm3": "5.79050793844978098563413908012",
+        "root_residual_relative": "5.44680345911011352616696750534e-27",
+        "y": "0.934613855435549780337285206958"
+      },
+      "derivatives": {
+        "P_T_MeV3": "3728348.2343532030880573199418",
+        "P_mu_MeV3": "867189.569697102006112808141409",
+        "dmu_dT_at_sigma": "-1.45135539146647779054769525957",
+        "epsilon_T_MeV3": "40422744.4130916869246568236429",
+        "epsilon_mu_MeV3": "11761846.6277001108252526727769",
+        "sigma_T_per_MeV": "-0.0193677080961330939006062091393",
+        "sigma_mu_per_MeV": "-0.0133445661965423809456368071517"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.0000275346745552996165488712852311",
+        "P_mu_equals_n_relative": "0.00000652490255135913335562988685209",
+        "implicit_direct_relative": "0.0000562721027262236657959569809735",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "adiabatic": {
+        "cs2_direct_isentrope": "0.12534382003612736968571300878",
+        "cs2_implicit": "0.125342697466990503361308898236",
+        "cs_direct_isentrope": "0.354039291655781293291065685911",
+        "cs_implicit": "0.354037706278569293525628096433",
+        "iso_minus_mu_MeV": "874.84516395937513744693297242",
+        "iso_plus_mu_MeV": "875.158794337927756849031549092",
+        "relative_implicit_vs_direct": "0.00000895591929895523047503878550174"
+      },
+      "anchor": "0.93",
+      "base": {
+        "energy_MeV_fm3": "377.238695197352496363814905818",
+        "entropy_per_baryon": "3.14363563297148214215647353616",
+        "n_fm3": "0.370139189954958793426295441379",
+        "pressure_MeV_fm3": "28.0838882823490464720126502926",
+        "root_residual_relative": "3.03979216204411712809795889492e-39",
+        "y": "0.920801418806740762143908267983"
+      },
+      "derivatives": {
+        "P_T_MeV3": "8940464.42298265588160001906083",
+        "P_mu_MeV3": "2843973.83740630451279856502133",
+        "dmu_dT_at_sigma": "0.313617062119698439242269833401",
+        "epsilon_T_MeV3": "69236912.9675622881538609412729",
+        "epsilon_mu_MeV3": "29357751.1937156837083061880048",
+        "sigma_T_per_MeV": "0.0029801250568447089776596274765",
+        "sigma_mu_per_MeV": "-0.00950243279719036014319713565467"
+      },
+      "gates": {
+        "P_T_equals_s_relative": "0.00000781930078040456695775241141724",
+        "P_mu_equals_n_relative": "0.000002570316979174962401826742832",
+        "implicit_direct_relative": "0.00000895591929895523047503878550174",
+        "pass": true,
+        "positive_causal": true
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "derivative_step_MeV": "0.5",
+        "dps": 44,
+        "nquad": 80
+      }
+    }
+  ],
+  "refinement": [
+    {
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.00012467237021093955620827664621"
+    },
+    {
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.000000264135418460668857417171810284"
+    },
+    {
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.000124631573116696617482823672418"
+    },
+    {
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.000000265797675812325290305219950213"
+    },
+    {
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.000052160653478698781209711710094"
+    },
+    {
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000060011748162790231841371042798"
+    },
+    {
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000521606846392222970763483114176"
+    },
+    {
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.00000600117282540689369051438092906"
+    }
+  ],
+  "schema_version": "nvg-adiabatic-sound-bridge.v1",
+  "source_sha256": {
+    "nonlinear_calibration": "6e523ea380404f92c288555fbfd6b58469b9c9721dbce58689011ea2630d4c8a",
+    "producer": "a666e468239ce07f2d573169164a6bb9928e33dbfeb67d0d6ccb79bf79cc4ca0",
+    "thermal_observable_bridge": "ddf9ee64845bb6593882a4ded62d27fd0671c4699618dfd7f519169d56f33a40"
+  },
+  "status": "PASS_LIVE_ADIABATIC_SOUND_BRIDGE"
+}

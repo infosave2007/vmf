@@ -1,0 +1,448 @@
+{
+  "all_controls_pass": true,
+  "controls": {
+    "complete_grid": {
+      "pass": true
+    },
+    "inverse_identity": {
+      "max_absolute": "2.2204460492503131e-16",
+      "pass": true
+    },
+    "positive_static_stiffness": {
+      "pass": true
+    },
+    "relative_shape_identity": {
+      "max_absolute": "2.2204460492503131e-16",
+      "pass": true
+    },
+    "underdetermination_explicit": {
+      "pass": true,
+      "reason": "no value for I, damping, source coupling, or output port is inserted"
+    }
+  },
+  "coverage": {
+    "point_count": 32,
+    "state_count": 8
+  },
+  "evidence_weight": "derived_conditional_not_real_frequency_measurement",
+  "fit_used": false,
+  "integrity_sha256": "f4aedbab030d2cb90c720d4c312d6d0897595e7682ce19f25304918eb90857b5",
+  "interpretation_limits": [
+    "The displayed relative shape follows only after the explicitly conditional constant-inertia, zero-damping ansatz.",
+    "A static susceptibility does not determine a real-frequency response or equal-time fluctuation spectrum.",
+    "This audit is not an experimental measurement, a proof of a covariant action, a black-hole/cosmology result, or a power-generator calculation.",
+    "The upstream states are local static branches; they are not a global phase-equilibrium certificate."
+  ],
+  "minimal_completion": {
+    "assumptions": [
+      "single positive inertial coefficient I independent of q over the displayed grid",
+      "no damping and no additional poles",
+      "the density-source normalization is the same at all q"
+    ],
+    "conditional_kernel": "K(omega,q)=S_static(q)-I*omega^2",
+    "device_or_power_prediction": false,
+    "real_frequency_prediction": false,
+    "what_static_data_do_not_fix": [
+      "I and therefore every absolute frequency",
+      "damping or a spectral linewidth",
+      "extra dynamical poles, memory kernels, or finite-temperature noise",
+      "external-source coupling, finite-volume normalization, load port, power, or efficiency"
+    ],
+    "what_static_data_fix": "S_static(q)=1/chi_static(q) and, under the listed ansatz only, omega(q)/omega(0)=sqrt(S(q)/S(0))"
+  },
+  "no_saved_results_as_inputs": true,
+  "physical_inputs_fixed": true,
+  "schema_version": "nvg-dynamic-response-identifiability.v1",
+  "source_sha256": {
+    "producer": "2797d4c10d49673d3788a42cb8980a11c4b76f3a42175fdd693ec07c155a3c37",
+    "thermal_spatial_response": "95dee0f26340d440e2c8ef73281b5bdb6e2ea88ed9cabcc74c0fa52a5b8559d7"
+  },
+  "states": [
+    {
+      "T_MeV": "70",
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "775",
+      "points": [
+        {
+          "S_static_MeVminus2": "7.8931294056885565e-05",
+          "chi_static_MeV2": "12669.246234317439",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "8.4341073695717752e-05",
+          "chi_static_MeV2": "11856.619274349752",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0337010352697542",
+          "relative_frequency_if_constant_inertia": "1.0337010352697544",
+          "static_stiffening_over_q0": "0.06853783031776195"
+        },
+        {
+          "S_static_MeVminus2": "9.5067436176118881e-05",
+          "chi_static_MeV2": "10518.848937373594",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0974665178402974",
+          "relative_frequency_if_constant_inertia": "1.0974665178402974",
+          "static_stiffening_over_q0": "0.20443275778050762"
+        },
+        {
+          "S_static_MeVminus2": "0.00011193871370439632",
+          "chi_static_MeV2": "8933.4598094521934",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.1908732623893112",
+          "relative_frequency_if_constant_inertia": "1.1908732623893112",
+          "static_stiffening_over_q0": "0.41817912707376115"
+        }
+      ],
+      "q0_S_static_MeVminus2": "7.8931294056885565e-05",
+      "q0_chi_static_MeV2": "12669.246234317439"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "775",
+      "points": [
+        {
+          "S_static_MeVminus2": "7.8930430096313644e-05",
+          "chi_static_MeV2": "12669.384909974078",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "8.4340475723199409e-05",
+          "chi_static_MeV2": "11856.703337575927",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0337030281601858",
+          "relative_frequency_if_constant_inertia": "1.0337030281601858",
+          "static_stiffening_over_q0": "0.068541950427537746"
+        },
+        {
+          "S_static_MeVminus2": "9.506726459843583e-05",
+          "chi_static_MeV2": "10518.867921823568",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0974715338157686",
+          "relative_frequency_if_constant_inertia": "1.0974715338157686",
+          "static_stiffening_over_q0": "0.20444376753593585"
+        },
+        {
+          "S_static_MeVminus2": "0.00011193894960725859",
+          "chi_static_MeV2": "8933.4409828619282",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.190881034777425",
+          "relative_frequency_if_constant_inertia": "1.190881034777425",
+          "static_stiffening_over_q0": "0.4181976389925508"
+        }
+      ],
+      "q0_S_static_MeVminus2": "7.8930430096313644e-05",
+      "q0_chi_static_MeV2": "12669.384909974078"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "875",
+      "points": [
+        {
+          "S_static_MeVminus2": "5.5015361291515965e-05",
+          "chi_static_MeV2": "18176.741486822011",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "5.5548012116856174e-05",
+          "chi_static_MeV2": "18002.444406044688",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0048292672663111",
+          "relative_frequency_if_constant_inertia": "1.0048292672663111",
+          "static_stiffening_over_q0": "0.0096818563549514458"
+        },
+        {
+          "S_static_MeVminus2": "5.6821910322304256e-05",
+          "chi_static_MeV2": "17598.845134347248",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0162859709333332",
+          "relative_frequency_if_constant_inertia": "1.0162859709333332",
+          "static_stiffening_over_q0": "0.032837174715907524"
+        },
+        {
+          "S_static_MeVminus2": "5.9436809014844853e-05",
+          "chi_static_MeV2": "16824.590966016385",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.0394072889221275",
+          "relative_frequency_if_constant_inertia": "1.0394072889221275",
+          "static_stiffening_over_q0": "0.080367512264446939"
+        }
+      ],
+      "q0_S_static_MeVminus2": "5.5015361291515965e-05",
+      "q0_chi_static_MeV2": "18176.741486822011"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "875",
+      "points": [
+        {
+          "S_static_MeVminus2": "5.5012691770501113e-05",
+          "chi_static_MeV2": "18177.623523163424",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "5.5545606931530334e-05",
+          "chi_static_MeV2": "18003.223931510456",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0048318919933696",
+          "relative_frequency_if_constant_inertia": "1.0048318919933699",
+          "static_stiffening_over_q0": "0.0096871311669752824"
+        },
+        {
+          "S_static_MeVminus2": "5.6820090342699435e-05",
+          "chi_static_MeV2": "17599.408835302664",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0162943524401404",
+          "relative_frequency_if_constant_inertia": "1.0162943524401404",
+          "static_stiffening_over_q0": "0.032854210801724237"
+        },
+        {
+          "S_static_MeVminus2": "5.9435970333724343e-05",
+          "chi_static_MeV2": "16824.828372198608",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.0394251740555214",
+          "relative_frequency_if_constant_inertia": "1.0394251740555216",
+          "static_stiffening_over_q0": "0.080404692460351201"
+        }
+      ],
+      "q0_S_static_MeVminus2": "5.5012691770501113e-05",
+      "q0_chi_static_MeV2": "18177.623523163424"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "775",
+      "points": [
+        {
+          "S_static_MeVminus2": "8.5583861366550376e-05",
+          "chi_static_MeV2": "11684.44592277815",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "8.6025704496685656e-05",
+          "chi_static_MeV2": "11624.432555952242",
+          "inverse_identity_absolute": "1.1102230246251565e-16",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0025780229789683",
+          "relative_frequency_if_constant_inertia": "1.0025780229789683",
+          "static_stiffening_over_q0": "0.0051626921604166487"
+        },
+        {
+          "S_static_MeVminus2": "8.7298158278640062e-05",
+          "chi_static_MeV2": "11454.995382699592",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0099656477152563",
+          "relative_frequency_if_constant_inertia": "1.0099656477152563",
+          "static_stiffening_over_q0": "0.020030609564897439"
+        },
+        {
+          "S_static_MeVminus2": "9.1845879928865149e-05",
+          "chi_static_MeV2": "10887.804665538644",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.03593832695716",
+          "relative_frequency_if_constant_inertia": "1.03593832695716",
+          "static_stiffening_over_q0": "0.073168217258799961"
+        }
+      ],
+      "q0_S_static_MeVminus2": "8.5583861366550376e-05",
+      "q0_chi_static_MeV2": "11684.44592277815"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "775",
+      "points": [
+        {
+          "S_static_MeVminus2": "8.5583819240732663e-05",
+          "chi_static_MeV2": "11684.45167406202",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "8.6025664752389016e-05",
+          "chi_static_MeV2": "11624.437926499475",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0025780381238909",
+          "relative_frequency_if_constant_inertia": "1.0025780381238909",
+          "static_stiffening_over_q0": "0.0051627225283499278"
+        },
+        {
+          "S_static_MeVminus2": "8.7298124738869085e-05",
+          "chi_static_MeV2": "11454.999783686701",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0099657022629798",
+          "relative_frequency_if_constant_inertia": "1.0099657022629798",
+          "static_stiffening_over_q0": "0.020030719747553771"
+        },
+        {
+          "S_static_MeVminus2": "9.1845862148780589e-05",
+          "chi_static_MeV2": "10887.80677326656",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.0359384816387451",
+          "relative_frequency_if_constant_inertia": "1.0359384816387451",
+          "static_stiffening_over_q0": "0.073168537739988881"
+        }
+      ],
+      "q0_S_static_MeVminus2": "8.5583819240732663e-05",
+      "q0_chi_static_MeV2": "11684.45167406202"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "875",
+      "points": [
+        {
+          "S_static_MeVminus2": "3.504232663905514e-05",
+          "chi_static_MeV2": "28536.917947836453",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "3.5110850857692728e-05",
+          "chi_static_MeV2": "28481.223769058895",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.000977257486253",
+          "relative_frequency_if_constant_inertia": "1.000977257486253",
+          "static_stiffening_over_q0": "0.0019554700047004214"
+        },
+        {
+          "S_static_MeVminus2": "3.5315040015796825e-05",
+          "chi_static_MeV2": "28316.547271436997",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0038836582270652",
+          "relative_frequency_if_constant_inertia": "1.0038836582270652",
+          "static_stiffening_over_q0": "0.0077823992553549548"
+        },
+        {
+          "S_static_MeVminus2": "3.6120400553213353e-05",
+          "chi_static_MeV2": "27685.185786541279",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.0152659291190835",
+          "relative_frequency_if_constant_inertia": "1.0152659291190835",
+          "static_stiffening_over_q0": "0.030764906830035743"
+        }
+      ],
+      "q0_S_static_MeVminus2": "3.504232663905514e-05",
+      "q0_chi_static_MeV2": "28536.917947836453"
+    },
+    {
+      "T_MeV": "70",
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "875",
+      "points": [
+        {
+          "S_static_MeVminus2": "3.5042223868731462e-05",
+          "chi_static_MeV2": "28537.001639679333",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "0",
+          "relative_frequency_from_chi": "1",
+          "relative_frequency_if_constant_inertia": "1",
+          "static_stiffening_over_q0": "0"
+        },
+        {
+          "S_static_MeVminus2": "3.5110750026382392e-05",
+          "chi_static_MeV2": "28481.305561646936",
+          "inverse_identity_absolute": "2.2204460492503131e-16",
+          "q_MeV": "50",
+          "relative_frequency_from_chi": "1.0009772879907142",
+          "relative_frequency_if_constant_inertia": "1.0009772879907144",
+          "static_stiffening_over_q0": "0.0019555310732455311"
+        },
+        {
+          "S_static_MeVminus2": "3.5314944613286457e-05",
+          "chi_static_MeV2": "28316.623767937963",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "100",
+          "relative_frequency_from_chi": "1.0038837743158022",
+          "relative_frequency_if_constant_inertia": "1.0038837743158022",
+          "static_stiffening_over_q0": "0.0077826323345404624"
+        },
+        {
+          "S_static_MeVminus2": "3.612032221449208e-05",
+          "chi_static_MeV2": "27685.245830912969",
+          "inverse_identity_absolute": "0",
+          "q_MeV": "200",
+          "relative_frequency_from_chi": "1.0152663169142895",
+          "relative_frequency_if_constant_inertia": "1.0152663169142895",
+          "static_stiffening_over_q0": "0.030765694260706411"
+        }
+      ],
+      "q0_S_static_MeVminus2": "3.5042223868731462e-05",
+      "q0_chi_static_MeV2": "28537.001639679333"
+    }
+  ],
+  "status": "PASS_STATIC_IDENTIFIABILITY_AUDIT",
+  "upstream_provenance": {
+    "producer": "verification/nvg_thermal_spatial_response.py",
+    "selected_q_grid_MeV": [
+      "0",
+      "50",
+      "100",
+      "200"
+    ],
+    "selected_scale": "1",
+    "upstream_integrity_sha256": "be6a53a25df2b835d09748eb15b58e3ab640467f50bdd4b480c8a24bc0db24d9",
+    "upstream_source_sha256": {
+      "nonlocal_response": "da8360bf156c8c425e5bc44eee89ea1cb52e2c914ff1027c976bc23837b7f489",
+      "producer": "95dee0f26340d440e2c8ef73281b5bdb6e2ea88ed9cabcc74c0fa52a5b8559d7",
+      "thermal_bridge": "ddf9ee64845bb6593882a4ded62d27fd0671c4699618dfd7f519169d56f33a40"
+    },
+    "upstream_status": "PASS_LIVE_THERMAL_SPATIAL_RESPONSE"
+  }
+}

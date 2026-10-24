@@ -1,0 +1,473 @@
+{
+  "all_controls_pass": true,
+  "controls": {
+    "coverage": {
+      "pass": true
+    },
+    "refinement": {
+      "max_relative_cs2_difference": "0.0000209657245663946523791133086378",
+      "max_relative_pressure_reconstruction_difference": "0.0000591094220080438928683654042917",
+      "pass": true
+    },
+    "row_gates": {
+      "pass": true
+    }
+  },
+  "coverage": {
+    "expected_rows": 8,
+    "primary_rows": 8,
+    "refined_rows": 8
+  },
+  "derived_identities": [
+    "P=n*(partial epsilon/partial n)|sigma-epsilon",
+    "(partial epsilon/partial n)|sigma=(epsilon+P)/n=mu+T*sigma",
+    "cs2=(dP/dn)|sigma/(d epsilon/dn)|sigma=(dP/d epsilon)|sigma"
+  ],
+  "effective_action": "S_m=integral sqrt(-g)[-epsilon(n,sigma)+J^mu(partial_mu phi+alpha partial_mu beta+theta partial_mu sigma)] d4x, with n=sqrt(-J_mu J^mu)/sqrt(-g); standard Clebsch/entropy constraints are shown schematically.",
+  "evidence_weight": "local_covariant_perfect_fluid_reconstruction",
+  "fit_used": false,
+  "integrity_sha256": "0279595d15f951d82eaa27efaf4752f1b4ccca41bef45428826502411b645105",
+  "interpretation_limits": [
+    "This proves only a local perfect-fluid effective representation wherever the checked thermodynamic map is regular; it does not reconstruct a unique microscopic NVG action.",
+    "The calculation contains no scalar/vector kinetic sector beyond the effective fluid variables, no viscosity/diffusion, no finite-frequency pole, and no global phase construction.",
+    "Coupling this effective fluid to gravity is a subsequent model choice, not a derived black-hole, bounce, dark-energy, or cyclic-universe result."
+  ],
+  "no_saved_results_as_inputs": true,
+  "physical_inputs_fixed": true,
+  "primary_rows": [
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "base": {
+        "epsilon_MeV4": "805602729.430654396022419322573",
+        "n_MeV3": "785095.347536149442091286373829",
+        "pressure_MeV4": "43797071.3304975875505105586599",
+        "root_residual_relative": "2.20637091343288749453739749094e-27",
+        "sigma_entropy_per_baryon": "4.38437932005525636961580413935"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.0972062359964781065839610680342",
+        "cs2_from_direct_isentrope": "0.0972062359964781065839610680342",
+        "enthalpy_per_baryon_MeV": "1081.90655240386794587217060327",
+        "epsilon_n_at_fixed_sigma_MeV": "1081.91011278722807898119496034",
+        "mu_plus_T_sigma_MeV": "1081.90655240386794587310628975",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "43799866.5709090731772583915711",
+        "pressure_n_at_fixed_sigma_MeV": "105.168409750571538328301400009"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000329083102011202428075887598436",
+        "grand_canonical_euler_relative": "8.64849628748211829861089669768e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000638184686467096488639481685962",
+        "sound_identity_relative": "0.0"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "0.0",
+        "minus_mu_MeV": "775.931938056913760834276608617",
+        "minus_root_residual_relative": "2.32594108684350835715039437314e-45",
+        "plus_entropy_residual": "0.0",
+        "plus_mu_MeV": "774.07427152812669051490023474",
+        "plus_root_residual_relative": "1.11604419379633526318801874823e-44"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "base": {
+        "epsilon_MeV4": "2440048995.60955091039029149662",
+        "n_MeV3": "2393556.92320324672293405319311",
+        "pressure_MeV4": "198229014.829007424987450065608",
+        "root_residual_relative": "1.3129294474661762818561715326e-43",
+        "sigma_entropy_per_baryon": "3.24630855779634642389672229907"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.156545531781083548691903893711",
+        "cs2_from_direct_isentrope": "0.156545531781083548691903893711",
+        "enthalpy_per_baryon_MeV": "1102.24159904574424967210334035",
+        "epsilon_n_at_fixed_sigma_MeV": "1102.2481253963224085589100694",
+        "mu_plus_T_sigma_MeV": "1102.24159904574424967277056093",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "198244636.020617028702928014853",
+        "pressure_n_at_fixed_sigma_MeV": "172.552018944869754218611704422"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000592094504657223490847543692776",
+        "grand_canonical_euler_relative": "6.05330616815681695316857210021e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000787975499522677835725297310814",
+        "sound_identity_relative": "0.0"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "3.53127213009853901872779854989e-43",
+        "minus_mu_MeV": "874.528258712812548122120385885",
+        "minus_root_residual_relative": "1.51671541501302600877797125842e-40",
+        "plus_entropy_residual": "2.46628529721167804482576406659e-43",
+        "plus_mu_MeV": "875.484335956195467019558749045",
+        "plus_root_residual_relative": "1.23196264202234845364249209705e-40"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "base": {
+        "epsilon_MeV4": "805606132.075138738736759431016",
+        "n_MeV3": "785098.701127888116357966976208",
+        "pressure_MeV4": "43797029.143112722320927737662",
+        "root_residual_relative": "2.18095142200465979309822326402e-27",
+        "sigma_entropy_per_baryon": "4.38437444685948953827902971095"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.0972070351662634445611944680173",
+        "cs2_from_direct_isentrope": "0.0972070351662634445611944680173",
+        "enthalpy_per_baryon_MeV": "1081.90621128016426767859639768",
+        "epsilon_n_at_fixed_sigma_MeV": "1081.90977171864593548443821324",
+        "mu_plus_T_sigma_MeV": "1081.90621128016426767953207977",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "43799824.4387401254653784961883",
+        "pressure_n_at_fixed_sigma_MeV": "105.169241226178470953601178383"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.0000032908830059016318334641841224",
+        "grand_canonical_euler_relative": "8.64845840165907385748894797984e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000638197906777625746081258527774",
+        "sound_identity_relative": "1.80195093638030996679001753227e-45"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "1.12103877145985365673898366663e-44",
+        "minus_mu_MeV": "775.931924118059793032817658282",
+        "minus_root_residual_relative": "9.44909623092814642441670825841e-45",
+        "plus_entropy_residual": "2.24207754291970731347796733326e-44",
+        "plus_mu_MeV": "774.074285575744756057561957088",
+        "plus_root_residual_relative": "8.03264099715651151057058678812e-45"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "base": {
+        "epsilon_MeV4": "2440029770.83270445436300500822",
+        "n_MeV3": "2393537.66801738952255898512925",
+        "pressure_MeV4": "198228716.280819140568050331417",
+        "root_residual_relative": "1.44499895990288263910859789627e-43",
+        "sigma_entropy_per_baryon": "3.24631870739825842605828809345"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.156549352770835952351992416526",
+        "cs2_from_direct_isentrope": "0.156549352770835952351992416526",
+        "enthalpy_per_baryon_MeV": "1102.24230951787808982341293547",
+        "epsilon_n_at_fixed_sigma_MeV": "1102.24883715072313895355532628",
+        "mu_plus_T_sigma_MeV": "1102.24230951787808982408016654",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "198244340.415916753180775393795",
+        "pressure_n_at_fixed_sigma_MeV": "172.556342048352265848538914531"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.0000059221045421311993242680962609",
+        "grand_canonical_euler_relative": "6.05339743001744925382314077293e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000788125152265793176340524291492",
+        "sound_identity_relative": "0.0"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "2.97075274436861219035830671657e-43",
+        "minus_mu_MeV": "874.528187993104562160813894793",
+        "minus_root_residual_relative": "1.5583827746879522294138096208e-40",
+        "plus_entropy_residual": "2.52233723578467072766271324992e-43",
+        "plus_mu_MeV": "875.484410343737577874561256797",
+        "plus_root_residual_relative": "1.26928262240101256607757365312e-40"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "base": {
+        "epsilon_MeV4": "888553242.206089939776843581252",
+        "n_MeV3": "867183.832598327766498958949654",
+        "pressure_MeV4": "44491400.7425791533205939061539",
+        "root_residual_relative": "5.45038749390818108428044974918e-27",
+        "sigma_entropy_per_baryon": "4.2992560330605487690684344272"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.105755179410651706411870209199",
+        "cs2_from_direct_isentrope": "0.105755179410651706411870209199",
+        "enthalpy_per_baryon_MeV": "1075.9479223142384138337623228",
+        "epsilon_n_at_fixed_sigma_MeV": "1075.95125405856747267953092947",
+        "mu_plus_T_sigma_MeV": "1075.9479223142384138347904099",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "44494289.9773956643145639748227",
+        "pressure_n_at_fixed_sigma_MeV": "113.787417910079498051943827751"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000309655694576428111517867001614",
+        "grand_canonical_euler_relative": "9.55517530378565407690765220322e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000649349572266195401913055999501",
+        "sound_identity_relative": "0.0"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "1.12103877145985365673898366663e-44",
+        "minus_mu_MeV": "775.726582018397634194488621295",
+        "minus_root_residual_relative": "4.93388593338715092439620918183e-46",
+        "plus_entropy_residual": "0.0",
+        "plus_mu_MeV": "774.275349528019770264914826895",
+        "plus_root_residual_relative": "2.25411361884884580021349636074e-44"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "base": {
+        "epsilon_MeV4": "2898517224.86412656101771134753",
+        "n_MeV3": "2843968.13257481227709275351042",
+        "pressure_MeV4": "215782736.008186200914978962534",
+        "root_residual_relative": "3.01966524743719908395415583858e-39",
+        "sigma_entropy_per_baryon": "3.14363500822831512485334303044"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.125343637016316871577381660338",
+        "cs2_from_direct_isentrope": "0.125343637016316871577381660338",
+        "enthalpy_per_baryon_MeV": "1095.05445057598205873867926906",
+        "epsilon_n_at_fixed_sigma_MeV": "1095.05884553817485978405393979",
+        "mu_plus_T_sigma_MeV": "1095.05445057598205873973401213",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "215795235.140606398206066592615",
+        "pressure_n_at_fixed_sigma_MeV": "137.258658446643993819620574584"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000401344841942362315177399160604",
+        "grand_canonical_euler_relative": "9.63187784670100192449354873338e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000579212623117150432651167603138",
+        "sound_identity_relative": "2.79491344291852664218553965303e-45"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "1.00893489431386829106508529997e-43",
+        "minus_mu_MeV": "874.845166871706289070689552826",
+        "minus_root_residual_relative": "1.3135821976150730824993663299e-39",
+        "plus_entropy_residual": "1.28919458717883170524983121663e-43",
+        "plus_mu_MeV": "875.158791304815836031574753572",
+        "plus_root_residual_relative": "1.17180808596232752458575915541e-39"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "base": {
+        "epsilon_MeV4": "888553321.601301566504962294375",
+        "n_MeV3": "867183.911369666177462931016172",
+        "pressure_MeV4": "44491399.9950456152944353273009",
+        "root_residual_relative": "5.44680345911011352616696750534e-27",
+        "sigma_entropy_per_baryon": "4.29925593246926814832683634885"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.105755215424574471303111840608",
+        "cs2_from_direct_isentrope": "0.105755215424574471303111840608",
+        "enthalpy_per_baryon_MeV": "1075.9479152728487703818504574",
+        "epsilon_n_at_fixed_sigma_MeV": "1075.95124701246915642715006538",
+        "mu_plus_T_sigma_MeV": "1075.94791527284877038287854442",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "44494289.2260412869519778344235",
+        "pressure_n_at_fixed_sigma_MeV": "113.787455914143215167064872382"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000309655258975450018785231835082",
+        "grand_canonical_euler_relative": "9.55517460742233563949113359864e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000649348724505676538784175065177",
+        "sound_identity_relative": "1.65629947740524813765933466304e-45"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "1.12103877145985365673898366663e-44",
+        "minus_mu_MeV": "775.726581386379100547784049322",
+        "minus_root_residual_relative": "1.10847960831872105563260944661e-44",
+        "plus_entropy_residual": "0.0",
+        "plus_mu_MeV": "774.275350130992732315426884197",
+        "plus_root_residual_relative": "7.4837208051820569887270697677e-44"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "base": {
+        "epsilon_MeV4": "2898515615.5623607098566965109",
+        "n_MeV3": "2843966.52749206189800026080583",
+        "pressure_MeV4": "215782712.029348576074204595098",
+        "root_residual_relative": "3.03979216204411712809795889492e-39",
+        "sigma_entropy_per_baryon": "3.14363563297148214215647353616"
+      },
+      "fluid_action_reconstruction": {
+        "cs2_from_action": "0.12534382003612736968571300878",
+        "cs2_from_direct_isentrope": "0.12534382003612736968571300878",
+        "enthalpy_per_baryon_MeV": "1095.05449430800374994989840385",
+        "epsilon_n_at_fixed_sigma_MeV": "1095.05888930950927560300603908",
+        "mu_plus_T_sigma_MeV": "1095.05449430800374995095314753",
+        "pressure_from_n_epsilon_n_minus_epsilon_MeV4": "215795211.266518568249965046174",
+        "pressure_n_at_fixed_sigma_MeV": "137.258864350572652251224503009"
+      },
+      "gates": {
+        "enthalpy_gradient_relative": "0.00000401348415910027148586340920315",
+        "grand_canonical_euler_relative": "9.63188302149220984191317429845e-22",
+        "local_stable": true,
+        "pass": true,
+        "positive_causal_sound": true,
+        "pressure_identity_relative": "0.0000579217541326945980208931312893",
+        "sound_identity_relative": "0.0"
+      },
+      "isentropic_neighbors": {
+        "minus_entropy_residual": "1.73761009576277316794542468328e-43",
+        "minus_mu_MeV": "874.84516395937513744693297242",
+        "minus_root_residual_relative": "1.3162020823503274240778487078e-39",
+        "plus_entropy_residual": "5.04467447156934145532542649984e-44",
+        "plus_mu_MeV": "875.158794337927756849031549092",
+        "plus_root_residual_relative": "1.17433872471550462806730054813e-39"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "cutoff_MeV": "4500.0",
+        "dps": 44,
+        "isentropic_temperature_step_MeV": "0.5",
+        "nquad": 80
+      }
+    }
+  ],
+  "refinement": [
+    {
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000158145308468905181726541636644",
+      "relative_pressure_reconstruction_difference": "0.0000478638434149845191250584319764"
+    },
+    {
+      "anchor": "0.90",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000209619096490029609700708052022",
+      "relative_pressure_reconstruction_difference": "0.0000590981981283514418395834411069"
+    },
+    {
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000158120149966823123066639311673",
+      "relative_pressure_reconstruction_difference": "0.0000478648349662914618677864164731"
+    },
+    {
+      "anchor": "0.90",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000209657245663946523791133086378",
+      "relative_pressure_reconstruction_difference": "0.0000591094220080438928683654042917"
+    },
+    {
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.00000995597356076235407373008212684",
+      "relative_pressure_reconstruction_difference": "0.0000487012126213440203607342449121"
+    },
+    {
+      "anchor": "0.93",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000127177842669288655567429169313",
+      "relative_pressure_reconstruction_difference": "0.00004344094401845868407040576753"
+    },
+    {
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "relative_cs2_difference": "0.00000995599456360886329452271337193",
+      "relative_pressure_reconstruction_difference": "0.000048701149039519529360467431367"
+    },
+    {
+      "anchor": "0.93",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "relative_cs2_difference": "0.0000127180208697196462150737564234",
+      "relative_pressure_reconstruction_difference": "0.0000434413128850351954054163916563"
+    }
+  ],
+  "schema_version": "nvg-covariant-fluid-bridge.v1",
+  "source_sha256": {
+    "adiabatic_sound_bridge": "a666e468239ce07f2d573169164a6bb9928e33dbfeb67d0d6ccb79bf79cc4ca0",
+    "nonlinear_calibration": "6e523ea380404f92c288555fbfd6b58469b9c9721dbce58689011ea2630d4c8a",
+    "producer": "820bb1006b6ba70b3819f17ca42bea029838e9c9615b9b659f81e4bc631d2f50",
+    "thermal_observable_bridge": "ddf9ee64845bb6593882a4ded62d27fd0671c4699618dfd7f519169d56f33a40"
+  },
+  "status": "PASS_LIVE_COVARIANT_FLUID_BRIDGE"
+}

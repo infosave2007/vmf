@@ -1,0 +1,136 @@
+{
+  "schema_version": "nvg_forward_tov_heldout.v1",
+  "status": "FORWARD_TOV_HELDOUT_COMPUTED_ZERO_EVIDENCE",
+  "evidence_weight": 0.0,
+  "source_sha256": "6ca5d64ef7c436c373eaf8715a8dceb0d97a448a7d6868c45e9b7f8aad7c5d77",
+  "forward_beta_sha256": "9fd4dfff569319f6f4a516ec4047302530bad173c445dde7835cea2933a49995",
+  "science": {
+    "crust": {
+      "p_match_MeV_fm3": 1.5,
+      "Gamma": 1.35,
+      "note": "identical for all y, not tuned"
+    },
+    "branches": [
+      {
+        "y_target": "0.87",
+        "gamma": "-0.6278094438675463099416083726",
+        "C0": "0.0001208001889964904801449992604",
+        "eos_p_max": 292.44139121012086,
+        "M_max_Msun": 1.8484848287245945,
+        "M_max_Pc": 269.0460799133112,
+        "R_at_Mmax_km": 11.979953355379982,
+        "R_14_km": 13.859281069312486,
+        "Lambda_14": 522.033620390851,
+        "k2_14": 0.057534662496627385,
+        "Lambda_136": 639.1684856597118,
+        "Lambda_tilde_sym_136": 639.1684856597119,
+        "Lambda_tilde_asym_146_127": 642.9662030510017,
+        "n_points_stable": 66,
+        "rtol": 1e-08,
+        "atol": 1e-10
+      },
+      {
+        "y_target": "0.88",
+        "gamma": "-0.6143222401505475280241981099",
+        "C0": "0.0001217019053188289037150076289",
+        "eos_p_max": 262.98082734818803,
+        "M_max_Msun": 1.7297756595737515,
+        "M_max_Pc": 241.9423611603329,
+        "R_at_Mmax_km": 11.839727878679307,
+        "R_14_km": 13.444010981137017,
+        "Lambda_14": 426.06775946264355,
+        "k2_14": 0.05482888261377234,
+        "Lambda_136": 535.5623048959447,
+        "Lambda_tilde_sym_136": 535.5623048959447,
+        "Lambda_tilde_asym_146_127": 537.7372599484346,
+        "n_points_stable": 64,
+        "rtol": 1e-08,
+        "atol": 1e-10
+      },
+      {
+        "y_target": "0.90",
+        "gamma": "-0.5910473516382018165080722472",
+        "C0": "0.0001234533327578933483394795399",
+        "eos_p_max": 194.3335877718979,
+        "M_max_Msun": 1.4451909182517735,
+        "M_max_Pc": 165.2173913043478,
+        "R_at_Mmax_km": 11.81346278000484,
+        "R_14_km": 12.152254220050347,
+        "Lambda_14": 210.94251053677837,
+        "k2_14": 0.04501601049683786,
+        "Lambda_136": 289.98220277552673,
+        "Lambda_tilde_sym_136": 289.98220277552673,
+        "Lambda_tilde_asym_146_127": null,
+        "n_points_stable": 50,
+        "rtol": 1e-08,
+        "atol": 1e-10
+      },
+      {
+        "y_target": "0.93",
+        "gamma": "-0.5633768960919771554360321129",
+        "C0": "0.000125957360101229649410984055",
+        "eos_p_max": 109.14286309223588,
+        "M_max_Msun": 1.0505691259321002,
+        "M_max_Pc": 100.411434044857,
+        "R_at_Mmax_km": 11.833732708769663,
+        "R_14_km": null,
+        "Lambda_14": null,
+        "k2_14": null,
+        "Lambda_136": null,
+        "Lambda_tilde_sym_136": null,
+        "Lambda_tilde_asym_146_127": null,
+        "n_points_stable": 40,
+        "rtol": 1e-08,
+        "atol": 1e-10
+      }
+    ],
+    "convergence_y087": {
+      "loose_Mmax": 1.8484844406525085,
+      "tight_Mmax": 1.8484848287230173,
+      "terminal_Mmax": 1.8484848287245945
+    },
+    "heldout_descriptive": [
+      {
+        "y_target": "0.87",
+        "Mmax_vs_J0740_201": "FAIL",
+        "R14_vs_NICER_11_2_13_2": "FAIL",
+        "Lambda_vs_GW170817_70_720": "PASS",
+        "Mmax": 1.8484848287245945,
+        "R14": 13.859281069312486,
+        "Lambda_14": 522.033620390851,
+        "Lambda_tilde_sym": 639.1684856597119
+      },
+      {
+        "y_target": "0.88",
+        "Mmax_vs_J0740_201": "FAIL",
+        "R14_vs_NICER_11_2_13_2": "FAIL",
+        "Lambda_vs_GW170817_70_720": "PASS",
+        "Mmax": 1.7297756595737515,
+        "R14": 13.444010981137017,
+        "Lambda_14": 426.06775946264355,
+        "Lambda_tilde_sym": 535.5623048959447
+      },
+      {
+        "y_target": "0.90",
+        "Mmax_vs_J0740_201": "FAIL",
+        "R14_vs_NICER_11_2_13_2": "PASS",
+        "Lambda_vs_GW170817_70_720": "PASS",
+        "Mmax": 1.4451909182517735,
+        "R14": 12.152254220050347,
+        "Lambda_14": 210.94251053677837,
+        "Lambda_tilde_sym": 289.98220277552673
+      },
+      {
+        "y_target": "0.93",
+        "Mmax_vs_J0740_201": "FAIL",
+        "R14_vs_NICER_11_2_13_2": "NO_R14",
+        "Lambda_vs_GW170817_70_720": "NO_LT",
+        "Mmax": 1.0505691259321002,
+        "R14": null,
+        "Lambda_14": null,
+        "Lambda_tilde_sym": null
+      }
+    ],
+    "interpretation": "Forward beta EOS with gamma(L=50) is not tuned to stars; Mmax/R/Lambda are held-out consequences. Evidence weight 0."
+  }
+}

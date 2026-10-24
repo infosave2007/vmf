@@ -1,0 +1,85 @@
+{"mode": "build", "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]", "stage": "start", "upstream": "b2bf146b71716e56232c56b7afab2b09126d6b32c8e397989f037440c5dae5a0", "wall_seconds": 0.0}
+{"argument": "32", "stage": "_matched_grid:begin", "wall_seconds": 0.011}
+{"completed": 50, "stage": "enthalpy_progress", "wall_seconds": 23.192}
+{"completed": 100, "stage": "enthalpy_progress", "wall_seconds": 45.068}
+{"completed": 150, "stage": "enthalpy_progress", "wall_seconds": 75.429}
+{"completed": 200, "stage": "enthalpy_progress", "wall_seconds": 112.022}
+{"completed": 250, "stage": "enthalpy_progress", "wall_seconds": 146.261}
+{"completed": 300, "stage": "enthalpy_progress", "wall_seconds": 187.945}
+{"stage": "_matched_grid:end", "wall_seconds": 230.901}
+{"argument": "64", "stage": "_matched_grid:begin", "wall_seconds": 230.901}
+{"completed": 350, "stage": "enthalpy_progress", "wall_seconds": 246.411}
+{"completed": 400, "stage": "enthalpy_progress", "wall_seconds": 289.899}
+{"completed": 450, "stage": "enthalpy_progress", "wall_seconds": 334.036}
+{"completed": 500, "stage": "enthalpy_progress", "wall_seconds": 372.115}
+{"completed": 550, "stage": "enthalpy_progress", "wall_seconds": 407.495}
+{"completed": 600, "stage": "enthalpy_progress", "wall_seconds": 444.227}
+{"completed": 650, "stage": "enthalpy_progress", "wall_seconds": 474.443}
+{"completed": 700, "stage": "enthalpy_progress", "wall_seconds": 498.944}
+{"completed": 750, "stage": "enthalpy_progress", "wall_seconds": 522.847}
+{"stage": "_matched_grid:end", "wall_seconds": 525.352}
+{"argument": "grids32,64", "stage": "_convergence_summary:begin", "wall_seconds": 529.371}
+{"completed": 800, "stage": "enthalpy_progress", "wall_seconds": 546.433}
+{"argument": "EOSPoint(x=0.001, n_fm3=0.00016, eps=0.15029173389335374, pressure=3.99426385620", "stage": "_frobenius_coefficients:begin", "wall_seconds": 559.457}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 560.162}
+{"argument": "0.001", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 560.162}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 569.222}
+{"argument": "0.001", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 569.245}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 572.53}
+{"argument": "0.001", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 572.53}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 578.976}
+{"argument": "EOSPoint(x=0.0014330125702369627, n_fm3=0.00022928201123791403, eps=0.2153938358", "stage": "_frobenius_coefficients:begin", "wall_seconds": 578.978}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 579.754}
+{"argument": "0.0014330125702369627", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 579.754}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 587.685}
+{"argument": "0.0014330125702369627", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 587.726}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 590.85}
+{"argument": "0.0014330125702369627", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 590.85}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 596.257}
+{"argument": "EOSPoint(x=0.002053525026457146, n_fm3=0.00032856400423314334, eps=0.30870794746", "stage": "_frobenius_coefficients:begin", "wall_seconds": 596.26}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 597.099}
+{"argument": "0.002053525026457146", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 597.099}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 607.364}
+{"argument": "0.002053525026457146", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 607.424}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 610.674}
+{"argument": "0.002053525026457146", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 610.675}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 615.317}
+{"argument": "EOSPoint(x=0.1, n_fm3=0.016, eps=15.263709792857835, pressure=0.2142717071213636", "stage": "_frobenius_coefficients:begin", "wall_seconds": 615.32}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 616.023}
+{"argument": "0.1", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 616.023}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 617.323}
+{"argument": "0.1", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 617.323}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 618.981}
+{"argument": "0.1", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 618.981}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 622.572}
+{"argument": "EOSPoint(x=2.485075342166858, n_fm3=0.3976120547466973, eps=490.5715483149936, p", "stage": "_frobenius_coefficients:begin", "wall_seconds": 622.575}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 623.676}
+{"argument": "2.485075342166858", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 623.676}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 625.202}
+{"argument": "2.485075342166858", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 625.202}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 626.378}
+{"argument": "2.485075342166858", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 626.378}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 628.021}
+{"argument": "EOSPoint(x=10.0, n_fm3=1.6, eps=3290.19452355756, pressure=1692.018351625203, mu", "stage": "_frobenius_coefficients:begin", "wall_seconds": 628.024}
+{"stage": "_frobenius_coefficients:end", "wall_seconds": 628.708}
+{"argument": "10.0", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 628.708}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 629.645}
+{"argument": "10.0", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 629.645}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 630.499}
+{"argument": "10.0", "stage": "integrate_pressure_rk4:begin", "wall_seconds": 630.499}
+{"stage": "integrate_pressure_rk4:end", "wall_seconds": 632.704}
+{"stage": "_convergence_summary:end", "wall_seconds": 632.706}
+Traceback (most recent call last):
+  File "/Users/oleg/Documents/NVG-Research/scratch/stellar-build-2026-09-08.py", line 44, in <module>
+    result = s.build_result()
+             ^^^^^^^^^^^^^^^^
+  File "/Users/oleg/Documents/NVG-Research/verification/source_complete_stellar_prediction.py", line 6507, in build_result
+    return _generate_result()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/oleg/Documents/NVG-Research/verification/source_complete_stellar_prediction.py", line 6493, in _generate_result
+    "gamma2_control": gamma2_newtonian_control(),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/oleg/Documents/NVG-Research/scratch/stellar-build-2026-09-08.py", line 20, in run
+    stage(name + ":begin", argument=str(args[0])[:80] if name != "_convergence_summary" else "grids32,64")
+                                        ~~~~^^^
+IndexError: tuple index out of range

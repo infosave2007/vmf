@@ -1,0 +1,1246 @@
+{
+  "all_controls_pass": true,
+  "controls": {
+    "coverage": {
+      "pass": true
+    },
+    "primary_cross_sector_identity": {
+      "max_relative_error": "1.06046572973589540837009380148e-15",
+      "pass": true
+    },
+    "quadrature_and_root_refinement": {
+      "max_relative_change": "8.40983127718002065189352164931e-16",
+      "pass": true
+    },
+    "refined_cross_sector_identity": {
+      "max_relative_error": "9.32313659689271038475564972564e-16",
+      "pass": true
+    }
+  },
+  "coverage": {
+    "expected_rows": 8,
+    "primary_rows": 8,
+    "refined_rows": 8
+  },
+  "ensemble_and_units": "grand canonical at fixed T,mu; n in MeV^3; chi=(partial n/partial mu)_T and static q=0 chi in MeV^2; hbar=c=1",
+  "evidence_weight": "conditional_cross_sector_consistency",
+  "fit_used": false,
+  "independence_contract": [
+    "EOS chi uses implicit differentiation of the converged coupled number/gap root in mpmath.",
+    "Static q=0 polarization uses a separately coded piecewise NumPy Gauss-Legendre quadrature, then a full scalar/vector Schur reduction.",
+    "Both calculations use the same fixed action and thermodynamic background; this is a cross-sector consistency check, not independent physical evidence."
+  ],
+  "integrity_sha256": "d1ec73027c60571f21280b84f634aa5e1bcade152a34a31ea9136813496a5738",
+  "interpretation_limits": [
+    "The equality is an expected thermodynamic/response consistency identity; passing it validates a bridge, not the truth of NVG.",
+    "It applies only to the homogeneous grand-canonical isoscalar density channel at q=0 and fixed T on the scanned locally stable branch.",
+    "No finite-q dynamics, equal-time covariance, experimental fit, phase transition, gravity, or energy source is inferred."
+  ],
+  "no_saved_results_as_inputs": true,
+  "physical_inputs_fixed": true,
+  "primary_rows": [
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "2.42103748009277441321625548836e-41",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "3.68036509535394977305177403704e-16",
+        "static_vs_thermodynamic_relative": "3.68036509535394977305177359168e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "868.711908574308935903621074092",
+        "n_MeV3": "785095.347536149442091286372218",
+        "nu_MeV": "752.088175983240213083916891076",
+        "root_residual_relative": "5.18169863524819959759815982569e-41",
+        "y": "0.925145802528550517469245020333"
+      },
+      "static_q0_side": {
+        "B_MeV": "780.875565042537094587026109423",
+        "C_MeV4": "13678050188.2617412894335242877",
+        "D_MeVminus2": "0.000123510369465434581541250454485",
+        "S_MeVminus2": "0.0000789304300963136492203467443995",
+        "chi_full_hessian_MeV2": "12669.3849099740785137392800783",
+        "chi_static_MeV2": "12669.3849099740785137392800783",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "5.85788724583920533876186115544",
+          "Uyy_MeV4": "13530766780.4576404694399874941",
+          "Z": "737881.0",
+          "a": "0.0000943268771817730483772758919629",
+          "b": "830.406836662942495925366952549",
+          "d0": "13593983934.4875865351265137552",
+          "g": "3.91127774489579164837374874006",
+          "h": "-6638361.11464085485341490994541",
+          "t0": "524203.664490208856857387141178"
+        },
+        "full_vs_schur_relative": "2.42103748009277441321625548836e-41",
+        "polarization": [
+          "10601.432273358794",
+          "9375.40131865421",
+          "8195.624688031832"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "12669.3849099740738509430798511",
+        "chi_eos_vs_fnn_relative": "4.45354918493712918242219219437e-41",
+        "chi_from_fnn_inverse_MeV2": "12669.3849099740738509430798511",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "2.44522503636561511428777142668e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "1.12089519355218002965482658742e-16",
+        "static_vs_thermodynamic_relative": "1.12089519355218002965482658742e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "820.883322523573547905608275205",
+        "n_MeV3": "2393556.92320324672293405319311",
+        "nu_MeV": "796.770652735156941474396799955",
+        "root_residual_relative": "8.30965678984073692931756751219e-41",
+        "y": "0.874210141132666185202990708418"
+      },
+      "static_q0_side": {
+        "B_MeV": "632.957525254313991546341264658",
+        "C_MeV4": "32555389755.626122232993977955",
+        "D_MeVminus2": "0.0000673189560107204763720869237449",
+        "S_MeVminus2": "0.0000550126917705011133849869187867",
+        "chi_full_hessian_MeV2": "18177.6235231634249033455309436",
+        "chi_static_MeV2": "18177.6235231634249033455309436",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "20.0009695979612224133506285693",
+          "Uyy_MeV4": "31499518037.9619760714158839376",
+          "Z": "737881.0",
+          "a": "0.0000346356525528063132823783872905",
+          "b": "811.929018683766958459291726638",
+          "d0": "31575354322.5000204632428719699",
+          "g": "3.91127774489579164837374874006",
+          "h": "-21417884.5208463210458596095628",
+          "t0": "468070.604228126833137892716722"
+        },
+        "full_vs_schur_relative": "2.44522503636561511428777142668e-42",
+        "polarization": [
+          "28871.98381711957",
+          "24964.857814789662",
+          "21222.581884050298"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "18177.6235231634269408666146751",
+        "chi_eos_vs_fnn_relative": "0.0",
+        "chi_from_fnn_inverse_MeV2": "18177.6235231634269408666146751",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "3.3343994939689390663555885351e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "1.06046572973589540837009372725e-15",
+        "static_vs_thermodynamic_relative": "1.06046572973589540837009380148e-15"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "868.711410496867676490656128056",
+        "n_MeV3": "785098.701127888116357966974613",
+        "nu_MeV": "752.088051840520701230004055678",
+        "root_residual_relative": "1.27775442476856821989145364001e-40",
+        "y": "0.925145272094640763035842521891"
+      },
+      "static_q0_side": {
+        "B_MeV": "780.875184207150753566682482955",
+        "C_MeV4": "13678407459.4863404876397327613",
+        "D_MeVminus2": "0.000123510025544202289050474805074",
+        "S_MeVminus2": "0.0000789312940568855695692604684589",
+        "chi_full_hessian_MeV2": "12669.246234317439568995841841",
+        "chi_static_MeV2": "12669.246234317439568995841841",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "5.85791898552316766024946040797",
+          "Uyy_MeV4": "13531122896.4734587528426066169",
+          "Z": "737881.0",
+          "a": "0.0000943264997957027094627917210823",
+          "b": "830.406752600953118599836337761",
+          "d0": "13594340294.7204088904439525107",
+          "g": "3.91127774489579164837374874006",
+          "h": "-6638393.2770160015352011393457",
+          "t0": "524203.063384266871469218873084"
+        },
+        "full_vs_schur_relative": "3.3343994939689390663555885351e-42",
+        "polarization": [
+          "10601.47468808715",
+          "9375.4378791434",
+          "8195.655645792362"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "12669.2462343174261336943887618",
+        "chi_eos_vs_fnn_relative": "7.42266322135695048875849714171e-41",
+        "chi_from_fnn_inverse_MeV2": "12669.2462343174261336943887618",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "7.37644998075556963897917348856e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "1.63244235374607040336951838581e-16",
+        "static_vs_thermodynamic_relative": "1.63244235374607040336951838581e-16"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "820.885245505712425108914440906",
+        "n_MeV3": "2393537.66801738952255898512925",
+        "nu_MeV": "796.771648570494296590066217505",
+        "root_residual_relative": "2.82216909445615182029665445554e-41",
+        "y": "0.874212189036967438880633057408"
+      },
+      "static_q0_side": {
+        "B_MeV": "632.960682938563896746150829549",
+        "C_MeV4": "32562596207.5084836682796206697",
+        "D_MeVminus2": "0.000067319024782993698578948583716",
+        "S_MeVminus2": "0.0000550153612915159718470372049424",
+        "chi_full_hessian_MeV2": "18176.7414868220085015296397591",
+        "chi_static_MeV2": "18176.7414868220085015296397591",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "20.0007149918191107521508175279",
+          "Uyy_MeV4": "31506747668.3189259329330246172",
+          "Z": "737881.0",
+          "a": "0.000034635874450831322503096518815",
+          "b": "811.929478868261679528719618356",
+          "d0": "31582585725.3180216314732308265",
+          "g": "3.91127774489579164837374874006",
+          "h": "-21417662.0502149261184415108016",
+          "t0": "468072.797213271576119875945529"
+        },
+        "full_vs_schur_relative": "7.37644998075556963897917348856e-42",
+        "polarization": [
+          "28871.798846008296",
+          "24964.712024524808",
+          "21222.473121937273"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "18176.741486822005534281374141",
+        "chi_eos_vs_fnn_relative": "0.0",
+        "chi_from_fnn_inverse_MeV2": "18176.741486822005534281374141",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "7.43521234790281809604096713096e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "1.85127580009150408010096981294e-16",
+        "static_vs_thermodynamic_relative": "1.85127580009150408010096949101e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "877.602418849528824056905163729",
+        "n_MeV3": "867183.832598327766498958949131",
+        "nu_MeV": "767.335109369433923308175416395",
+        "root_residual_relative": "8.66856498671669026658660029878e-41",
+        "y": "0.934613864589487565555809546037"
+      },
+      "static_q0_side": {
+        "B_MeV": "814.502077417412295704330956379",
+        "C_MeV4": "73154627018.5218993734346137052",
+        "D_MeVminus2": "0.0000946524682265215059592315879287",
+        "S_MeVminus2": "0.0000855838192407326550525147298729",
+        "chi_full_hessian_MeV2": "11684.451674062020131051284774",
+        "chi_static_MeV2": "11684.451674062020131051284774",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "3.52481643303025970379388188914",
+          "Uyy_MeV4": "73039958384.7218187032624072119",
+          "Z": "737881.0",
+          "a": "0.0000858136380472273431361130011319",
+          "b": "830.904339187694813173038442787",
+          "d0": "73124189258.5781558353726524482",
+          "g": "2.1745502996241493759153328748",
+          "h": "-4035323.96522747321286247561958",
+          "t0": "534988.104723728532923074876137"
+        },
+        "full_vs_schur_relative": "7.43521234790281809604096713096e-42",
+        "polarization": [
+          "11653.159366692416",
+          "10311.672718882277",
+          "9020.454840669354"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "11684.4516740620222941655469269",
+        "chi_eos_vs_fnn_relative": "3.21930547325686440627821254502e-41",
+        "chi_from_fnn_inverse_MeV2": "11684.4516740620222941655469269",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "4.65983778239238649901129495604e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "3.69691088471765224163040997623e-16",
+        "static_vs_thermodynamic_relative": "3.69691088471765224163041010804e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "864.632455375186280053575554282",
+        "n_MeV3": "2843968.13257481227709275351042",
+        "nu_MeV": "849.102844065480402920631747995",
+        "root_residual_relative": "2.69006017351540069084051737455e-39",
+        "y": "0.92080133692778091592500059029"
+      },
+      "static_q0_side": {
+        "B_MeV": "759.52945681282446888008179849",
+        "C_MeV4": "155783707081.855882605981906124",
+        "D_MeVminus2": "0.0000387453389542086685084028701959",
+        "S_MeVminus2": "0.0000350422238687314533828738894316",
+        "chi_full_hessian_MeV2": "28537.001639679340273929295503",
+        "chi_static_MeV2": "28537.001639679340273929295503",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "11.9092006926653651525357125594",
+          "Uyy_MeV4": "155169407156.561637734859681663",
+          "Z": "737881.0",
+          "a": "0.0000296393452414474173221523554976",
+          "b": "815.778627824944163238442396588",
+          "d0": "155436247008.924285777275976124",
+          "g": "2.1745502996241493759153328748",
+          "h": "-13432542.9531758674814539418145",
+          "t0": "519291.925160091328578970407149"
+        },
+        "full_vs_schur_relative": "4.65983778239238649901129495604e-42",
+        "polarization": [
+          "33738.93693851267",
+          "29311.505516477304",
+          "25063.916130371133"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "28537.0016396793297240540976094",
+        "chi_eos_vs_fnn_relative": "1.31814195833420042514720440731e-41",
+        "chi_from_fnn_inverse_MeV2": "28537.0016396793297240540976094",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "7.40377746215448483030853703188e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "9.47529985849285891426515811086e-17",
+        "static_vs_thermodynamic_relative": "9.47529985849285891426515650121e-17"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "877.60241025398124373671080939",
+        "n_MeV3": "867183.911369666177462931015649",
+        "nu_MeV": "767.335108523042140471487937379",
+        "root_residual_relative": "3.92415648747694618589320303116e-40",
+        "y": "0.934613855435549780337285207018"
+      },
+      "static_q0_side": {
+        "B_MeV": "814.50207386905772327917454555",
+        "C_MeV4": "73155023495.9810453030430356319",
+        "D_MeVminus2": "0.0000946524611240700083449466212295",
+        "S_MeVminus2": "0.0000855838613665503862552802342056",
+        "chi_full_hessian_MeV2": "11684.4459227781489529519498682",
+        "chi_static_MeV2": "11684.4459227781489529519498682",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "3.52481682225638290865989962738",
+          "Uyy_MeV4": "73040354846.5627058937475326358",
+          "Z": "737881.0",
+          "a": "0.000085813630771634603326363504209",
+          "b": "830.904337611201495251289369067",
+          "d0": "73124585729.3151520127071585719",
+          "g": "2.1745502996241493759153328748",
+          "h": "-4035324.3713027495426163891747",
+          "t0": "534988.094244004257398174623661"
+        },
+        "full_vs_schur_relative": "7.40377746215448483030853703188e-42",
+        "polarization": [
+          "11653.160354689788",
+          "10311.673573578948",
+          "9020.455567667388"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "11684.4459227781500600882378549",
+        "chi_eos_vs_fnn_relative": "1.60965352892700461738197531986e-41",
+        "chi_from_fnn_inverse_MeV2": "11684.4459227781500600882378549",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "7.13137486879649611513702906912e-42",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "8.83707792003684256155201375641e-16",
+        "static_vs_thermodynamic_relative": "8.83707792003684256155201375641e-16"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "4500.0",
+        "eos_nquad": 80,
+        "q0_cutoff_MeV": "5000.0",
+        "q0_order": 120,
+        "root_dps": 40
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "864.632532259529575653129863636",
+        "n_MeV3": "2843966.52749206189800026080583",
+        "nu_MeV": "849.102863286974237382826033257",
+        "root_residual_relative": "3.28070703626384314798693193061e-39",
+        "y": "0.920801418806740762143908267983"
+      },
+      "static_q0_side": {
+        "B_MeV": "759.529526050505536638485952998",
+        "C_MeV4": "155787560029.371771563365360687",
+        "D_MeVminus2": "0.0000387453508139876039753456042129",
+        "S_MeVminus2": "0.0000350423266390551434602080359305",
+        "chi_full_hessian_MeV2": "28536.9179478364480409546214567",
+        "chi_static_MeV2": "28536.9179478364480409546214567",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "11.9091918533693333318649213202",
+          "Uyy_MeV4": "155173260787.259180991679816148",
+          "Z": "737881.0",
+          "a": "0.0000296393587206618688287600559931",
+          "b": "815.778650311381798514747765124",
+          "d0": "155440100472.226478676040886814",
+          "g": "2.1745502996241493759153328748",
+          "h": "-13432534.177658332892960752706",
+          "t0": "519292.017512443293967523397567"
+        },
+        "full_vs_schur_relative": "7.13137486879649611513702906912e-42",
+        "polarization": [
+          "33738.92159491598",
+          "29311.492994315326",
+          "25063.906289468097"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "28536.9179478364732592513717296",
+        "chi_eos_vs_fnn_relative": "0.0",
+        "chi_from_fnn_inverse_MeV2": "28536.9179478364732592513717296",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    }
+  ],
+  "refined_rows": [
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "1.28535212572392052744744957869e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "4.72401320667606700801117603213e-16",
+        "static_vs_thermodynamic_relative": "4.72401320667606700801117603213e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "868.711908574308935903624322217",
+        "n_MeV3": "785095.347536149442091657434166",
+        "nu_MeV": "752.088175983240213083906233527",
+        "root_residual_relative": "6.09809795478781976539113096355e-49",
+        "y": "0.925145802528550517469248479465"
+      },
+      "static_q0_side": {
+        "B_MeV": "780.875565042536866224858003161",
+        "C_MeV4": "13678050188.2617399928289435443",
+        "D_MeVminus2": "0.000123510369465434626029049030576",
+        "S_MeVminus2": "0.0000789304300963137155564582306036",
+        "chi_full_hessian_MeV2": "12669.384909974067865910187748",
+        "chi_static_MeV2": "12669.384909974067865910187748",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "5.85788724583920533876458598068",
+          "Uyy_MeV4": "13530766780.4576404694390509831",
+          "Z": "737881.0",
+          "a": "0.0000943268771817730928650746862894",
+          "b": "830.406836662942267563221700805",
+          "d0": "13593983934.4875852385218548041",
+          "g": "3.91127774489579164837374874006",
+          "h": "-6638361.11464085485341802263285",
+          "t0": "524203.664490208856857391061187"
+        },
+        "full_vs_schur_relative": "1.28535212572392052744744957869e-50",
+        "polarization": [
+          "10601.432273358789",
+          "9375.401318654203",
+          "8195.624688031825"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "12669.384909974073850944351266",
+        "chi_eos_vs_fnn_relative": "4.42420361929846722128167278158e-49",
+        "chi_from_fnn_inverse_MeV2": "12669.384909974073850944351266",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "9.3049074036643421318687671012e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "2.30403386680510534059016806098e-16",
+        "static_vs_thermodynamic_relative": "2.30403386680510534059016806098e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "820.883322523573547905624813884",
+        "n_MeV3": "2393556.92320324672293435021619",
+        "nu_MeV": "796.770652735156941474390244499",
+        "root_residual_relative": "1.30777278129458716076042762328e-43",
+        "y": "0.874210141132666185203008321495"
+      },
+      "static_q0_side": {
+        "B_MeV": "632.957525254314216519860982408",
+        "C_MeV4": "32555389755.6261372057477024902",
+        "D_MeVminus2": "0.0000673189560107204859691130288463",
+        "S_MeVminus2": "0.0000550126917705011198937778163411",
+        "chi_full_hessian_MeV2": "18177.623523163422752671809681",
+        "chi_static_MeV2": "18177.623523163422752671809681",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "20.000969597961222413352304609",
+          "Uyy_MeV4": "31499518037.9619760714086342392",
+          "Z": "737881.0",
+          "a": "0.0000346356525528063228794058093602",
+          "b": "811.929018683767183432822836014",
+          "d0": "31575354322.5000354359964322553",
+          "g": "3.91127774489579164837374874006",
+          "h": "-21417884.5208463210458618358521",
+          "t0": "468070.604228126833137911577551"
+        },
+        "full_vs_schur_relative": "9.3049074036643421318687671012e-50",
+        "polarization": [
+          "28871.983817119562",
+          "24964.857814789662",
+          "21222.581884050287"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "18177.6235231634269408578312212",
+        "chi_eos_vs_fnn_relative": "1.54178400992755406920683926756e-49",
+        "chi_from_fnn_inverse_MeV2": "18177.6235231634269408578312212",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "1.23135921201129119435192664008e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "2.19482501656020584767696443829e-16",
+        "static_vs_thermodynamic_relative": "2.19482501656020584767696443829e-16"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "868.711410496867676490659376107",
+        "n_MeV3": "785098.701127888116358338036357",
+        "nu_MeV": "752.08805184052070122999339812",
+        "root_residual_relative": "3.15871376675864902482702608555e-49",
+        "y": "0.925145272094640763035845980944"
+      },
+      "static_q0_side": {
+        "B_MeV": "780.875184207150692107334056795",
+        "C_MeV4": "13678407459.4863423218358151297",
+        "D_MeVminus2": "0.000123510025544202342435405969096",
+        "S_MeVminus2": "0.0000789312940568856359491470192479",
+        "chi_full_hessian_MeV2": "12669.2462343174289143735178752",
+        "chi_static_MeV2": "12669.2462343174289143735178752",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "5.85791898552316766025218523559",
+          "Uyy_MeV4": "13531122896.4734587528416700451",
+          "Z": "737881.0",
+          "a": "0.0000943264997957027628477231033346",
+          "b": "830.406752600953057140510766155",
+          "d0": "13594340294.7204107246399566709",
+          "g": "3.91127774489579164837374874006",
+          "h": "-6638393.27701600153520425203363",
+          "t0": "524203.063384266871469222793001"
+        },
+        "full_vs_schur_relative": "1.23135921201129119435192664008e-50",
+        "polarization": [
+          "10601.474688087144",
+          "9375.437879143394",
+          "8195.655645792354"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "12669.2462343174261336956602711",
+        "chi_eos_vs_fnn_relative": "2.21212602298168852590255504528e-49",
+        "chi_from_fnn_inverse_MeV2": "12669.2462343174261336956602711",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.90",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "1.2964262197749555681113971567e-49",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "9.18547730065879081083742493658e-17",
+        "static_vs_thermodynamic_relative": "9.18547730065879081083742493658e-17"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "820.885245505712425108930974605",
+        "n_MeV3": "2393537.66801738952255928222374",
+        "nu_MeV": "796.771648570494296590059658763",
+        "root_residual_relative": "1.39614331087675937369805130374e-43",
+        "y": "0.874212189036967438880650665181"
+      },
+      "static_q0_side": {
+        "B_MeV": "632.960682938563707723517184716",
+        "C_MeV4": "32562596207.5084823131831775392",
+        "D_MeVminus2": "0.000067319024782993705776810060996",
+        "S_MeVminus2": "0.000055015361291515985881427886219",
+        "chi_full_hessian_MeV2": "18176.7414868220038646521322771",
+        "chi_static_MeV2": "18176.7414868220038646521322771",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "20.0007149918191107521524944075",
+          "Uyy_MeV4": "31506747668.318925932925760768",
+          "Z": "737881.0",
+          "a": "0.0000346358744508313297009593126575",
+          "b": "811.929478868261490506097373779",
+          "d0": "31582585725.318020276376623366",
+          "g": "3.91127774489579164837374874006",
+          "h": "-21417662.0502149261184437378591",
+          "t0": "468072.797213271576119894800722"
+        },
+        "full_vs_schur_relative": "1.2964262197749555681113971567e-49",
+        "polarization": [
+          "28871.79884600829",
+          "24964.712024524797",
+          "21222.47312193726"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "18176.7414868220055342725955485",
+        "chi_eos_vs_fnn_relative": "1.54185882584152657352513830888e-49",
+        "chi_from_fnn_inverse_MeV2": "18176.7414868220055342725955485",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "3.13875304285044041344791683615e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "6.30055118588017744908794555679e-16",
+        "static_vs_thermodynamic_relative": "6.30055118588017744908794555679e-16"
+      },
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "877.602418849528824056904414097",
+        "n_MeV3": "867183.832598327766499532133642",
+        "nu_MeV": "767.33510936943392330817033702",
+        "root_residual_relative": "1.57545802218139722592387423222e-48",
+        "y": "0.934613864589487565555808747707"
+      },
+      "static_q0_side": {
+        "B_MeV": "814.502077417412249323910515791",
+        "C_MeV4": "73154627018.5219011953041181071",
+        "D_MeVminus2": "0.0000946524682265215427791339775313",
+        "S_MeVminus2": "0.0000855838192407326931310633102452",
+        "chi_full_hessian_MeV2": "11684.4516740620149323237139199",
+        "chi_static_MeV2": "11684.4516740620149323237139199",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "3.52481643303025970379621771691",
+          "Uyy_MeV4": "73039958384.7218187032665219257",
+          "Z": "737881.0",
+          "a": "0.0000858136380472273799560153756347",
+          "b": "830.904339187694766792628885672",
+          "d0": "73124189258.578157657242116509",
+          "g": "2.1745502996241493759153328748",
+          "h": "-4035323.96522747321286514630393",
+          "t0": "534988.104723728532923073962182"
+        },
+        "full_vs_schur_relative": "3.13875304285044041344791683615e-50",
+        "polarization": [
+          "11653.159366692411",
+          "10311.672718882272",
+          "9020.454840669347"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "11684.4516740620222941722990571",
+        "chi_eos_vs_fnn_relative": "1.19928474473091379041833884829e-49",
+        "chi_from_fnn_inverse_MeV2": "11684.4516740620222941722990571",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "1.98528421879149008134738236604e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "5.36734382505712571931180990957e-17",
+        "static_vs_thermodynamic_relative": "5.36734382505712571931180990957e-17"
+      },
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "864.632455375186280053575107649",
+        "n_MeV3": "2843968.13257481227709462907992",
+        "nu_MeV": "849.102844065480402920614642316",
+        "root_residual_relative": "1.67224651515154321377821404659e-48",
+        "y": "0.920801336927780915925000114643"
+      },
+      "static_q0_side": {
+        "B_MeV": "759.529456812824612568649813272",
+        "C_MeV4": "155783707081.855890015896365424",
+        "D_MeVminus2": "0.0000387453389542086808072738883874",
+        "S_MeVminus2": "0.0000350422238687314644567667787334",
+        "chi_full_hessian_MeV2": "28537.0016396793312557887595759",
+        "chi_static_MeV2": "28537.0016396793312557887595759",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "11.9092006926653651525435788658",
+          "Uyy_MeV4": "155169407156.561637734862863468",
+          "Z": "737881.0",
+          "a": "0.0000296393452414474296210233642816",
+          "b": "815.778627824944306927047594323",
+          "d0": "155436247008.924293187189976413",
+          "g": "2.1745502996241493759153328748",
+          "h": "-13432542.9531758674814628073855",
+          "t0": "519291.92516009132857896987066"
+        },
+        "full_vs_schur_relative": "1.98528421879149008134738236604e-50",
+        "polarization": [
+          "33738.936938512656",
+          "29311.505516477297",
+          "25063.916130371123"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "28537.0016396793297241097642121",
+        "chi_eos_vs_fnn_relative": "1.96418457975119415692185332195e-49",
+        "chi_from_fnn_inverse_MeV2": "28537.0016396793297241097642121",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "3.68920781774800535270096377585e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "6.09449196081015675452534660073e-16",
+        "static_vs_thermodynamic_relative": "6.09449196081015675452534660073e-16"
+      },
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "877.602410253981243736710059762",
+        "n_MeV3": "867183.911369666177463504200119",
+        "nu_MeV": "767.335108523042140471482858004",
+        "root_residual_relative": "4.41485363497637657926430035753e-49",
+        "y": "0.934613855435549780337284408692"
+      },
+      "static_q0_side": {
+        "B_MeV": "814.502073869057748201675395157",
+        "C_MeV4": "73155023495.9810486970355598829",
+        "D_MeVminus2": "0.000094652461124070052528821993592",
+        "S_MeVminus2": "0.000085583861366550430304918789952",
+        "chi_full_hessian_MeV2": "11684.4459227781429390188156978",
+        "chi_static_MeV2": "11684.4459227781429390188156978",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "3.52481682225638290866223545499",
+          "Uyy_MeV4": "73040354846.5627058937516472335",
+          "Z": "737881.0",
+          "a": "0.0000858136307716346475102388614716",
+          "b": "830.904337611201520173801102146",
+          "d0": "73124585729.3151554066996424819",
+          "g": "2.1745502996241493759153328748",
+          "h": "-4035324.37130274954261905985887",
+          "t0": "534988.094244004257398173709712"
+        },
+        "full_vs_schur_relative": "3.68920781774800535270096377585e-50",
+        "polarization": [
+          "11653.160354689782",
+          "10311.673573578943",
+          "9020.45556766738"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "11684.4459227781500600949899871",
+        "chi_eos_vs_fnn_relative": "1.19928533503935085041898872231e-49",
+        "chi_from_fnn_inverse_MeV2": "11684.4459227781500600949899871",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    },
+    {
+      "T_MeV": "70.0",
+      "anchor": "0.93",
+      "checks": {
+        "full_hessian_vs_static_schur_relative": "6.09014094748137559541499248394e-50",
+        "pass": true,
+        "static_vs_fnn_schur_relative": "9.32313659689271038475564972564e-16",
+        "static_vs_thermodynamic_relative": "9.32313659689271038475564972564e-16"
+      },
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "settings": {
+        "eos_cutoff_MeV": "5200.0",
+        "eos_nquad": 112,
+        "q0_cutoff_MeV": "6000.0",
+        "q0_order": 180,
+        "root_dps": 48
+      },
+      "state": {
+        "locally_stable": true,
+        "mstar_MeV": "864.632532259529575653129417025",
+        "n_MeV3": "2843966.52749206189800213637281",
+        "nu_MeV": "849.102863286974237382808927605",
+        "root_residual_relative": "4.40065112416902996044944008116e-49",
+        "y": "0.920801418806740762143907792359"
+      },
+      "static_q0_side": {
+        "B_MeV": "759.5295260505053696503017379",
+        "C_MeV4": "155787560029.371774715269055475",
+        "D_MeVminus2": "0.00003874535081398760397534561362",
+        "S_MeVminus2": "0.0000350423266390551451634023719878",
+        "chi_full_hessian_MeV2": "28536.9179478364466539486295909",
+        "chi_static_MeV2": "28536.9179478364466539486295909",
+        "coefficient_units": {
+          "A0_MeV": "MeV",
+          "Uyy_MeV4": "MeV^4",
+          "Z": "MeV^2",
+          "a": "MeV^-2",
+          "b": "MeV",
+          "d0": "MeV^4",
+          "g": "1",
+          "h": "MeV^3",
+          "t0": "MeV^2"
+        },
+        "coefficients": {
+          "A0_MeV": "11.909191853369333331872787614",
+          "Uyy_MeV4": "155173260787.259180991682998386",
+          "Z": "737881.0",
+          "a": "0.0000296393587206618688287600559931",
+          "b": "815.778650311381631526600732915",
+          "d0": "155440100472.226481827944122591",
+          "g": "2.1745502996241493759153328748",
+          "h": "-13432534.1776583328929696182639",
+          "t0": "519292.017512443293967522861106"
+        },
+        "full_vs_schur_relative": "6.09014094748137559541499248394e-50",
+        "polarization": [
+          "33738.92159491598",
+          "29311.49299431532",
+          "25063.906289468083"
+        ],
+        "polarization_units": "MeV^2 for each of Pi_vv, Pi_vs, Pi_ss"
+      },
+      "thermodynamic_side": {
+        "chi_eos_MeV2": "28536.9179478364732593070377908",
+        "chi_eos_vs_fnn_relative": "0.0",
+        "chi_from_fnn_inverse_MeV2": "28536.9179478364732593070377908",
+        "definition": "chi_T=(partial n/partial mu)_T after implicit scalar/vector saddle relaxation"
+      }
+    }
+  ],
+  "refinement": [
+    {
+      "anchor": "0.90",
+      "maximum_relative_change": "8.40437729849671557185903581683e-16",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "static_q0_relative_change": "8.40437729849671557185903581683e-16",
+      "thermodynamic_chi_relative_change": "1.00353324887861645625799575206e-22"
+    },
+    {
+      "anchor": "0.90",
+      "maximum_relative_change": "1.18314350526736040417266314538e-16",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "static_q0_relative_change": "1.18314350526736040417266314538e-16",
+      "thermodynamic_chi_relative_change": "4.83201442081105855153888158647e-22"
+    },
+    {
+      "anchor": "0.90",
+      "maximum_relative_change": "8.40983127718002065189352164931e-16",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "static_q0_relative_change": "8.40983127718002065189352164931e-16",
+      "thermodynamic_chi_relative_change": "1.00361874454364837173430038172e-22"
+    },
+    {
+      "anchor": "0.90",
+      "maximum_relative_change": "2.5509949133862628393128275862e-16",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "static_q0_relative_change": "2.5509949133862628393128275862e-16",
+      "thermodynamic_chi_relative_change": "4.82957438018492502926629642335e-22"
+    },
+    {
+      "anchor": "0.93",
+      "maximum_relative_change": "4.449269607057904608343178847e-16",
+      "model": "w8",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "static_q0_relative_change": "4.449269607057904608343178847e-16",
+      "thermodynamic_chi_relative_change": "5.77873090526691923325686554597e-22"
+    },
+    {
+      "anchor": "0.93",
+      "maximum_relative_change": "3.16015699539639284530258827507e-16",
+      "model": "w8",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "static_q0_relative_change": "3.16015699539639284530258827507e-16",
+      "thermodynamic_chi_relative_change": "1.95068155382513148960379352407e-21"
+    },
+    {
+      "anchor": "0.93",
+      "maximum_relative_change": "5.14695619622543377157988168763e-16",
+      "model": "u16",
+      "mu_MeV": "775.0",
+      "pass": true,
+      "static_q0_relative_change": "5.14695619622543377157988168763e-16",
+      "thermodynamic_chi_relative_change": "5.7787354613342081120112985252e-22"
+    },
+    {
+      "anchor": "0.93",
+      "maximum_relative_change": "4.86039170172880249627669591498e-17",
+      "model": "u16",
+      "mu_MeV": "875.0",
+      "pass": true,
+      "static_q0_relative_change": "4.86039170172880249627669591498e-17",
+      "thermodynamic_chi_relative_change": "1.95066829928003220220613949768e-21"
+    }
+  ],
+  "schema_version": "nvg-thermo-static-zero-mode.v1",
+  "source_sha256": {
+    "nonlinear_calibration": "6e523ea380404f92c288555fbfd6b58469b9c9721dbce58689011ea2630d4c8a",
+    "producer": "22c955a135b13779ec746ae3829e14528258690cf3c607f24298687999de2c66",
+    "thermal_observable_bridge": "ddf9ee64845bb6593882a4ded62d27fd0671c4699618dfd7f519169d56f33a40"
+  },
+  "status": "PASS_LIVE_THERMO_STATIC_ZERO_MODE"
+}
