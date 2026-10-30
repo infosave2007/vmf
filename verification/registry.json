@@ -10641,6 +10641,66 @@
       "tests": [],
       "deprecation": "Forward completion operator scan; zero evidence weight, not a fitted EOS.",
       "quarantine": null
+    },
+    "verification/nvg_forward_band_propagation_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Forward-band propagation of the declared nuclear windows (n0, E/A, K, y*, Q0, J, L) through the float NVG chain (scalar jet, global stability, isovector running, beta equilibrium, author polytrope or SLy crust, TOV+Hinderer) to descriptive held-out star comparisons; fast declared grid by default, --full for the LHS-400 + grid design, --crust {author,sly}; corner (star-selected, post hoc) and author's four forward points under both crusts and both pressure conventions; fixed-y* precision control; exact 2n0 evaluation.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_forward_band_propagation_audit.py"
+      ],
+      "inputs": [
+        "verification/source_complete_scaling_saturation_audit.py",
+        "verification/nvg_isospin_jet_audit.py",
+        "verification/nvg_forward_beta_eos_audit.py",
+        "verification/nvg_forward_tov_heldout_audit.py",
+        "declared:nuclear windows n0/EA/K/ystar/Q0/J/L and held-out star data embedded as constants with sources"
+      ],
+      "outputs": [
+        "verification/nvg_forward_band_propagation_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_forward_band_propagation_audit.py"
+      ],
+      "deprecation": "Zero-weight forward consequence of declared windows; pass/fail flags are descriptive; the corner point is star-selected (post hoc) and is not a prediction.",
+      "quarantine": null
+    },
+    "verification/test_nvg_forward_band_propagation_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Author y*=0.87 forward point, SLy-crust corner (M_max 2.0132, R(1.44) 12.3005; 2-sigma joint pass, 1-sigma fail), stability/causality flags, star-data isolation from the coefficient solve, exact-2n0 correction, SLy continuity and strict-JSON/validate_result checks.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_forward_band_propagation_audit.py",
+        "verification/nvg_forward_band_propagation_results.json",
+        "verification/nvg_forward_tov_heldout_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Regression controls for a zero-weight forward-band propagation.",
+      "quarantine": null
+    },
+    "verification/nvg_forward_band_propagation_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Forward-band propagation results: declared inputs with sources, band statistics and held-out pass fractions per model class, corner_and_author_points under both crusts and both pressure conventions, fixed-y* precision/convergence control; strict JSON, zero evidence weight.",
+      "producer": "verification/nvg_forward_band_propagation_audit.py",
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_forward_band_propagation_audit.py"
+      ],
+      "deprecation": "Descriptive zero-weight output; no held-out pass is evidence for the EOS and the corner block is star-selected.",
+      "quarantine": null
     }
   },
   "front_door": {
