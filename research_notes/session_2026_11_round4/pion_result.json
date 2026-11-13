@@ -1,0 +1,3666 @@
+{
+ "schema": "round4/pion/result/1",
+ "candidate": "pion (isovector pseudoscalar), pseudovector coupling, exchange (Fock) term at first order with the Hartree spinors of the NVG action; no mean field",
+ "quantum_numbers": {
+  "spin": 0,
+  "parity": -1,
+  "isospin": 1,
+  "coupling": "pseudovector: L_piNN = -(f_pi/m_pi) psibar gamma5 gamma^mu tau psi . d_mu pi"
+ },
+ "fixed_couplings_and_sources": {
+  "f2_over_4pi": 0.075,
+  "f2": 0.9424777960769379,
+  "source_f": "Nijmegen partial-wave analyses of NN scattering: Stoks, Timmermans, de Swart, Phys. Rev. C 47, 512 (1993) (f^2 = 0.0745-0.0751); de Swart, Rentmeester, Timmermans, piN Newsletter 13, 96 (1997) (f^2 = 0.0750 +- 0.0009); equivalent g_piNN^2/4pi = (2 M_N/m_pi)^2 f^2/4pi = 13.9. Quoted from memory (no internet); the round-4 brief fixes 0.075.",
+  "m_pi_MeV": 138.0,
+  "source_m": "isospin average (2 x 139.570 + 134.977)/3 = 138.04 MeV (PDG); the brief fixes 138",
+  "literature_alternative_not_used_for_verdict": "PKO1/PKO2/PKA1 use f_pi^2/4pi = 0.08 at zero density and a FITTED exponential in-medium quenching f_pi(rho) = f_pi(0) exp(-a_pi rho/rho0), a_pi about 1.2-1.6; that quenching is a fitted parameter and is NOT used here (zero-parameter rule)"
+ },
+ "unknown_parameters": {
+  "count": 0,
+  "list": []
+ },
+ "training_residual": "none: zero unknown parameters, no training step",
+ "fitted_values": {},
+ "declared_before_compute": {
+  "file": "SCR/round4/pion/declared.json",
+  "sha256": "c1be896d32dbbe20fd592f1f39b1fdb4490b61072e475594c73efa21febb3af7",
+  "primary_zero_range_choice": "g' = 1/3 (zero-range term removed)",
+  "alternative": "g' = 0 (kept)",
+  "sensitivity_only": "g' = 0.6",
+  "added_after_first_jet_results": [
+   "declared scalar rule re-applied to the pion-inclusive functional (quartic if stable, else quintic a5_min), because the re-solved jets of all three members lose global stability for g' = 1/3",
+   "island member moved to the same distance (0.0042) above the new lower island edge",
+   "low effective-mass scan for the g' = 0 alternative and the Q0-window members"
+  ]
+ },
+ "derivation": {
+  "two_body_potential": "V_pi(q) = -(f/m_pi)^2 tau1.tau2 [gamma5 gamma^i]_1 [gamma5 gamma^j]_2 ( q^i q^j D(q) - g' delta^ij ), D = 1/(q_vec^2 + m_pi^2), static (q0 = 0 in vertex and propagator); nonrelativistic limit -(f/m_pi)^2 tau1.tau2 (sigma1.q)(sigma2.q)/(q^2+m_pi^2) + g' (f/m_pi)^2 sigma1.sigma2 tau1.tau2 (OPEP + Landau-Migdal contact)",
+  "spin_traces": "T_pi(k,k') = sum_{ss'} [ubar_k gamma5 qslash u_k'][ubar_k' gamma5 qslash u_k] = [ (k^2+k'^2)(EE'+M*^2) - 2 k^2 k'^2 + (k.k') (k^2+k'^2 - 2(EE'+M*^2)) ]/(EE') (u^dagger u = 1, q = k - k'); T_ii = sum_i sum_{ss'} [ubar gamma5 gamma^i u'][ubar' gamma5 gamma^i u] = 3 + (3 M*^2 - k.k')/(EE'); NR limits 2 q^2 and 6",
+  "isospin": "Fock weights c_nn = c_pp = 1, c_np = c_pn = 2 (tau1.tau2 = 2 P_tau - 1); symmetric matter total 6 = 3 x isoscalar",
+  "energy_density": "eps_pi = f^2/(8 pi^4 m_pi^2) sum_{ij} c_ij int_0^{k_i} dk int_0^{k_j} dk' k^2 k'^2 { [C0 Theta + C1 k k' Phi]/(EE') - g' (3 + 3 M*^2/(EE')) }, C0 = (k^2+k'^2)(EE'+M*^2) - 2k^2k'^2, C1 = k^2+k'^2 - 2(EE'+M*^2), Theta = <1/(A-Bx)>, Phi = <x/(A-Bx)>, A = k^2+k'^2+m_pi^2, B = 2kk' (session kernels fock_exchange.theta_phi)",
+  "contact_part_closed_form": "eps_contact = -(3 g' f^2/(8 m_pi^2)) sum_ij c_ij (n_i n_j + rho_s,i rho_s,j)",
+  "functional": "eps(n, delta, y) = chain functional [+ sigma/omega Fock of missing/fock] + eps_pi ; y re-stationarised (d eps/dy = 0); mu_i = d eps/dn_i ; P = sum n_i mu_i - eps ; S = (1/2n) d^2 eps/d delta^2 ; L = 3 n dS/dn ; K = 9 dP/dn"
+ },
+ "discrete_choices": {
+  "D1_zero_range_term": {
+   "g'=1/3 (PRIMARY)": "delta-function part of the pseudovector pion exchange removed exactly (q^i q^j D -> q^i q^j D - delta^ij/3), the convention of the PKO density-dependent RHF models named in the brief",
+   "g'=0": "full pseudovector Yukawa exchange including its zero-range term (Bouyssy et al. 1987 style, reported as the alternative)",
+   "g'=0.6 (sensitivity only, not in the verdict)": "empirical Landau-Migdal value; it encodes short-range correlations and Delta physics and is not a property of the pion"
+  },
+  "D2": "static propagator and vertex (no retardation), no-sea, point vertices (no form factor), free pion mass at all densities",
+  "D3": "first order in the exchange with Hartree spinors; scalar mean field W (y) re-stationarised with the Fock term (same treatment as missing/fock); momentum-dependent self-energies of full RHF are evaluated only for the spin-orbit/effective-mass test",
+  "D4_isovector_bookkeeping": {
+   "Z (R1 test)": "no rho contact at all: S(n) = T(n) + S_pi(n) [+ S_sigma,omega Fock]; this is the zero-parameter test of R1",
+   "K": "chain rho contact C0, gamma kept; pion added on top (S = J + dS_pi)",
+   "R": "declared J, L kept; C0, gamma re-derived (the pion replaces part of the contact)"
+  },
+  "D5_saturation": "PRIMARY: scalar jet re-solved with the pion Fock term included so that the declared (n0, E/A, P = 0, K) at y* hold (quartic 3 coefficients + C_v; quintic members keep their declared Q0 or a5_min rule); also reported: jet not re-solved (saturation moves)",
+  "D6_sigma_omega_Fock_masses": "vacuum (PRIMARY, as in missing/fock for propagation) and medium"
+ },
+ "validation": {
+  "dirac_traces_explicit_spinors": {
+   "max_rel_err_T_pi_12_random": 2.1094237467877974e-15,
+   "max_rel_err_T_ii_12_random": 4.440892098500626e-16,
+   "max_rel_err_self_energy_matrix_decomposition": 7.122229869992983e-16,
+   "NR_limit_T_pi_over_2q2": 0.999999988196154
+  },
+  "isospin_spin_weights": {
+   "<ab|tau1.tau2|ba>": {
+    "pp": 1.0,
+    "nn": 1.0,
+    "pn->np": 2.0,
+    "np->pn": 2.0
+   },
+   "expected": {
+    "like": 1,
+    "unlike": 2
+   },
+   "sum_spins <ab|s1^i s2^j|ba>": [
+    [
+     2.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     2.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     2.0
+    ]
+   ],
+   "expected_spin": "2 delta_ij"
+  },
+  "nonrelativistic_limit_vs_validated_scalar_exchange": [
+   {
+    "delta": 0.0,
+    "eps_pi_gp1/3": -7311528.459964159,
+    "minus_f2_sum_c_J": -7311520.957755431,
+    "rel": 1.0260804519379718e-06
+   },
+   {
+    "delta": 0.4,
+    "eps_pi_gp1/3": -6689596.432051673,
+    "minus_f2_sum_c_J": -6689588.723245353,
+    "rel": 1.1523587828410342e-06
+   },
+   {
+    "delta": 1.0,
+    "eps_pi_gp1/3": -3594305.510317655,
+    "minus_f2_sum_c_J": -3594293.706799823,
+    "rel": 3.283960297917332e-06
+   }
+  ],
+  "closed_form_1pi_fock": {
+   "formula": "E/A = (3 f^2 m_pi/(4 pi^2)) [u^3/3 + 1/(8u) - 3u/4 + arctan 2u - (3/(8u) + 1/(32u^3)) ln(1+4u^2)], u = k_F/m_pi (= 3 g_A^2 m_pi^3/(4 pi f_pi)^2 [...] with g_A^2/(4 f_pi^2) = f^2/m_pi^2; static 1pi-exchange Fock term of chiral nuclear matter, zero-range term included; the u^3/3 term is the zero-range part, (3/8)(f/m_pi)^2 n)",
+   "max_rel_dev": 2.645500999376438e-06
+  },
+  "contact_closed_form_max_rel": 3.1086244689504383e-15,
+  "energy_from_self_energies_max_rel": 8.881784197001252e-16,
+  "gauss_legendre_48_vs_160_max_rel": 4.440892098500626e-16,
+  "analytic_vs_fd_derivatives": {
+   "nn": {
+    "analytic": -8.452640760336902,
+    "finite_diff": -8.452640760225712,
+    "rel": 1.3154366484968705e-11
+   },
+   "np": {
+    "analytic": -12.304760707896657,
+    "finite_diff": -12.304760707582064,
+    "rel": 2.5566659900277955e-11
+   },
+   "M": {
+    "analytic": 817.3467014788837,
+    "finite_diff": 817.3467013519257,
+    "rel": 1.5532930497386133e-10
+   }
+  },
+  "pion_off_reproduces_chain": {
+   "EA": -16.00000000000091,
+   "P": 1.5514961038709153e-13,
+   "K": 239.99999996709755,
+   "S": 13.436618070955886,
+   "T_chain": 13.43662150108775,
+   "L": 29.27264949619648,
+   "L_kin_chain": 29.272657498377843
+  },
+  "thermodynamic_consistency_max_abs_dP_MeVfm3": 3.054585529301058e-10,
+  "generalised_jet_equals_chain_jet": [
+   {
+    "max_rel_coef": 1.5931700403370996e-12,
+    "Cv_rel": 0.0,
+    "Q0_forward": [
+     -417.4924482172223,
+     -417.49244821738944
+    ]
+   },
+   {
+    "max_rel_coef": 9.089728969513544e-12,
+    "Cv_rel": 0.0
+   }
+  ],
+  "island_finder_reproduces_session_a5min": {
+   "Q_island": [
+    -138.9125836942277,
+    -107.7778945690086
+   ],
+   "a5_at_ends": [
+    1686875711.9940815,
+    1466387894.542927
+   ],
+   "Q0_a5min": -107.7778945690086,
+   "a5_min": 1466387894.542927,
+   "session_reference": {
+    "Q0_a5min": -107.77789456941183,
+    "a5_min": 1466387894.5431898
+   },
+   "contiguous": true
+  },
+  "stability_edges_no_pion": [
+   [
+    0.7585,
+    "stable below"
+   ],
+   [
+    0.83579,
+    "stable above"
+   ],
+   [
+    0.94038,
+    "stable below"
+   ],
+   [
+    0.86988,
+    "stable above"
+   ],
+   [
+    0.94038,
+    "stable below"
+   ]
+  ],
+  "re_solved_jets_forward_check": "E/A, P = 0, K and Q0 of every pion-only re-solved jet of the declared and shifted members reproduced by the full functional (|dEA| < 3e-13 MeV, |P| < 1e-13 MeV/fm^3, |dK| < 2e-5 MeV, |dQ0| < 5e-4 MeV); vacuum-mass RHF jets: |dK| < 1e-5 MeV, |dQ0| < 5e-4 MeV. In the low effective-mass scan the finite-difference K departs from the designed 240 MeV for y* <= 0.70 without pion and with g' = 1/3 and for y* <= 0.65 with g' = 0 (fold of the scalar branch next to the design point); those rows are marked irregular",
+  "anchors_baseline_same_routines": {
+   "island_y0.84_a5min": [
+    25.302,
+    11.839
+   ],
+   "author_y0.87_quartic": [
+    25.156,
+    11.761
+   ],
+   "corner_y0.83_Q0+55": [
+    29.107,
+    16.689
+   ]
+  },
+  "stars_pipeline": "pion-capable beta solver with the pion off reproduces the validated chain for the three members (M_max 2.0386 / 1.7882 / 2.0132, R(1.44) 12.679 / 11.880 / 12.300 km, chi2 13.88 / 30.82 / 52.64)",
+  "spin_orbit_pipeline": {
+   "rmf_reproduction": {
+    "NL3": {
+     "16O_1p": 6.84137454743705,
+     "session": 6.84137454743705,
+     "diff": 0.0
+    },
+    "DD-ME2": {
+     "16O_1p": 6.513341086688987,
+     "session": 6.513341086688987,
+     "diff": 0.0
+    }
+   },
+   "nvg_baselines": {
+    "island_y0.84_a5min": [
+     1.45,
+     1.45,
+     1.45
+    ],
+    "author_y0.87_quartic": [
+     1.04,
+     1.04,
+     1.04
+    ],
+    "corner_y0.83_Q0+55": [
+     1.482,
+     1.482,
+     1.482
+    ]
+   }
+  },
+  "rmf_control_spin_orbit": {
+   "NL3": {
+    "baseline": 6.841,
+    "with_pion_gp1/3": 6.754,
+    "change": -0.087,
+    "with_pion_gp0_not_refitted": 4.718
+   },
+   "DD-ME2": {
+    "baseline": 6.513,
+    "with_pion_gp1/3": 6.311,
+    "change": -0.202,
+    "with_pion_gp0_not_refitted": 4.809
+   }
+  },
+  "rmf_control_note": "adding the pion Fock self-energies (g' = 1/3) to NL3 and DD-ME2 without refit changes the 16O 1p splitting by -0.09 and -0.20 MeV: the known RHF result that the pion does little to spin-orbit splittings of spin-saturated nuclei. With g' = 0 the unrefitted control loses 36 MeV of central potential depth, so its splitting (4.7-4.8 MeV) is not a consistent model result."
+ },
+ "task1_pion_fock_at_saturation": {
+  "island_y0.84_a5min": {
+   "hartree_T_MeV": 13.869,
+   "hartree_V_minus_S_MeV": 241.776,
+   "gp1/3_PRIMARY": {
+    "E_pi_per_A_MeV": -6.237,
+    "like_pairs_MeV": -2.079,
+    "unlike_pairs_MeV": -4.158,
+    "dP_MeVfm3": -0.663,
+    "dK_MeV": -66.653,
+    "dS_MeV": 3.272,
+    "dL_MeV": 6.979,
+    "E_PNM_minus_E_SNM_MeV": 2.935,
+    "E_pi_per_A_vs_delta": {
+     "0.0": -6.237,
+     "0.25": -6.033,
+     "0.5": -5.44,
+     "0.75": -4.501,
+     "1.0": -3.301
+    },
+    "after_y_restationarised": {
+     "S_n0": 17.143,
+     "L": 39.493,
+     "dK": -66.672,
+     "dy": -0.000131
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     -4.557,
+     -4.703,
+     -0.01526
+    ],
+    "Sigma0_minus_SigmaS_MeV": -0.146,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.885,
+     0.794
+    ],
+    "dirac_mass_shift_MeV": 7.478
+   },
+   "gp0_alternative": {
+    "E_pi_per_A_MeV": 15.871,
+    "like_pairs_MeV": 5.29,
+    "unlike_pairs_MeV": 10.581,
+    "dP_MeVfm3": 2.769,
+    "dK_MeV": 306.347,
+    "dS_MeV": -4.302,
+    "dL_MeV": -15.576,
+    "E_PNM_minus_E_SNM_MeV": -4.681,
+    "E_pi_per_A_vs_delta": {
+     "0.0": 15.871,
+     "0.25": 15.601,
+     "0.5": 14.772,
+     "0.75": 13.335,
+     "1.0": 11.19
+    },
+    "after_y_restationarised": {
+     "S_n0": 9.574,
+     "L": 17.004,
+     "dK": 306.157,
+     "dy": -0.000452
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     17.539,
+     18.113,
+     -0.01526
+    ],
+    "Sigma0_minus_SigmaS_MeV": 0.573,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.885,
+     0.812
+    ],
+    "dirac_mass_shift_MeV": 29.574
+   },
+   "gp0.6_sensitivity": {
+    "E_pi_per_A_MeV": -23.923,
+    "dS_MeV": 9.331,
+    "dL_MeV": 25.023
+   }
+  },
+  "author_y0.87_quartic": {
+   "hartree_T_MeV": 13.437,
+   "hartree_V_minus_S_MeV": 186.836,
+   "gp1/3_PRIMARY": {
+    "E_pi_per_A_MeV": -6.218,
+    "like_pairs_MeV": -2.073,
+    "unlike_pairs_MeV": -4.146,
+    "dP_MeVfm3": -0.652,
+    "dK_MeV": -63.183,
+    "dS_MeV": 3.267,
+    "dL_MeV": 6.905,
+    "E_PNM_minus_E_SNM_MeV": 2.94,
+    "E_pi_per_A_vs_delta": {
+     "0.0": -6.218,
+     "0.25": -6.015,
+     "0.5": -5.422,
+     "0.75": -4.483,
+     "1.0": -3.278
+    },
+    "after_y_restationarised": {
+     "S_n0": 16.704,
+     "L": 36.189,
+     "dK": -63.189,
+     "dy": -6.8e-05
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     -4.566,
+     -4.703,
+     -0.01477
+    ],
+    "Sigma0_minus_SigmaS_MeV": -0.136,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.914,
+     0.816
+    ],
+    "dirac_mass_shift_MeV": 7.498
+   },
+   "gp0_alternative": {
+    "E_pi_per_A_MeV": 15.934,
+    "like_pairs_MeV": 5.311,
+    "unlike_pairs_MeV": 10.623,
+    "dP_MeVfm3": 2.807,
+    "dK_MeV": 316.858,
+    "dS_MeV": -4.311,
+    "dL_MeV": -15.699,
+    "E_PNM_minus_E_SNM_MeV": -4.678,
+    "E_pi_per_A_vs_delta": {
+     "0.0": 15.934,
+     "0.25": 15.663,
+     "0.5": 14.834,
+     "0.75": 13.396,
+     "1.0": 11.257
+    },
+    "after_y_restationarised": {
+     "S_n0": 9.129,
+     "L": 13.609,
+     "dK": 316.802,
+     "dy": -0.000235
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     17.576,
+     18.113,
+     -0.01477
+    ],
+    "Sigma0_minus_SigmaS_MeV": 0.536,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.914,
+     0.835
+    ],
+    "dirac_mass_shift_MeV": 29.64
+   },
+   "gp0.6_sensitivity": {
+    "E_pi_per_A_MeV": -23.94,
+    "dS_MeV": 9.329,
+    "dL_MeV": 24.989
+   }
+  },
+  "corner_y0.83_Q0+55": {
+   "hartree_T_MeV": 14.567,
+   "hartree_V_minus_S_MeV": 258.835,
+   "gp1/3_PRIMARY": {
+    "E_pi_per_A_MeV": -6.495,
+    "like_pairs_MeV": -2.165,
+    "unlike_pairs_MeV": -4.33,
+    "dP_MeVfm3": -0.741,
+    "dK_MeV": -71.69,
+    "dS_MeV": 3.417,
+    "dL_MeV": 7.322,
+    "E_PNM_minus_E_SNM_MeV": 3.043,
+    "E_pi_per_A_vs_delta": {
+     "0.0": -6.495,
+     "0.25": -6.283,
+     "0.5": -5.665,
+     "0.75": -4.69,
+     "1.0": -3.453
+    },
+    "after_y_restationarised": {
+     "S_n0": 17.986,
+     "L": 42.169,
+     "dK": -71.722,
+     "dy": -0.000176
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     -4.699,
+     -4.859,
+     -0.01647
+    ],
+    "Sigma0_minus_SigmaS_MeV": -0.16,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.878,
+     0.788
+    ],
+    "dirac_mass_shift_MeV": 8.139
+   },
+   "gp0_alternative": {
+    "E_pi_per_A_MeV": 16.948,
+    "like_pairs_MeV": 5.649,
+    "unlike_pairs_MeV": 11.299,
+    "dP_MeVfm3": 3.114,
+    "dK_MeV": 320.472,
+    "dS_MeV": -4.627,
+    "dL_MeV": -16.602,
+    "E_PNM_minus_E_SNM_MeV": -5.049,
+    "E_pi_per_A_vs_delta": {
+     "0.0": 16.948,
+     "0.25": 16.657,
+     "0.5": 15.765,
+     "0.75": 14.216,
+     "1.0": 11.899
+    },
+    "after_y_restationarised": {
+     "S_n0": 9.95,
+     "L": 18.343,
+     "dK": 320.156,
+     "dy": -0.000599
+    },
+    "Sigma_S_Sigma_0_SigmaV_over_kF_at_kF": [
+     18.731,
+     19.382,
+     -0.01647
+    ],
+    "Sigma0_minus_SigmaS_MeV": 0.652,
+    "landau_mass_over_M_hartree_to_with_pion": [
+     0.878,
+     0.807
+    ],
+    "dirac_mass_shift_MeV": 31.569
+   },
+   "gp0.6_sensitivity": {
+    "E_pi_per_A_MeV": -25.25,
+    "dS_MeV": 9.851,
+    "dL_MeV": 26.461
+   }
+  },
+  "rmf_control": {
+   "DD-ME2": {
+    "Mstar_over_M": 0.572,
+    "n0_fm3": 0.152,
+    "gp1/3_PRIMARY": {
+     "E_pi_per_A_MeV": -6.291,
+     "dP_MeVfm3": -0.743,
+     "dK_MeV": -98.854,
+     "dS_MeV": 3.239,
+     "dL_MeV": 7.712,
+     "E_PNM_minus_E_SNM_MeV": 2.787
+    },
+    "gp0_alternative": {
+     "E_pi_per_A_MeV": 14.08,
+     "dP_MeVfm3": 2.069,
+     "dK_MeV": 186.609,
+     "dS_MeV": -3.881,
+     "dL_MeV": -12.781,
+     "E_PNM_minus_E_SNM_MeV": -4.413
+    },
+    "with_PKO1_like_quenching_at_n0": {
+     "f2_eff_over_free_0.075": 0.09027565946798642,
+     "E_pi_per_A_MeV": -0.5679422238912034,
+     "S_pi_MeV_fixed_coupling_scaling": 0.29237299048300036,
+     "note": "energy scales linearly with f^2; rearrangement terms of a density-dependent coupling not included"
+    }
+   },
+   "NL3": {
+    "Mstar_over_M": 0.595,
+    "n0_fm3": 0.1482037396199026,
+    "gp1/3_PRIMARY": {
+     "E_pi_per_A_MeV": -6.147,
+     "dP_MeVfm3": -0.709,
+     "dK_MeV": -101.821,
+     "dS_MeV": 3.167,
+     "dL_MeV": 7.523,
+     "E_PNM_minus_E_SNM_MeV": 2.751
+    },
+    "gp0_alternative": {
+     "E_pi_per_A_MeV": 13.818,
+     "dP_MeVfm3": 1.962,
+     "dK_MeV": 163.052,
+     "dS_MeV": -3.79,
+     "dL_MeV": -12.512,
+     "E_PNM_minus_E_SNM_MeV": -4.278
+    },
+    "with_PKO1_like_quenching_at_n0": {
+     "f2_eff_over_free_0.075": 0.09600598237716873,
+     "E_pi_per_A_MeV": -0.5901528305095398,
+     "S_pi_MeV_fixed_coupling_scaling": 0.3040548558097345,
+     "note": "energy scales linearly with f^2; rearrangement terms of a density-dependent coupling not included"
+    }
+   },
+   "literature_comparison": "RHF literature (from memory, not verifiable offline): the kernels used here coincide with the standard RHF pseudovector-pion functions A_pi = B_pi = -f_pi^2 Theta_pi, C_pi = 2 (f_pi/m_pi)^2 [(p^2+p'^2) Phi_pi - p p' Theta_pi] (Bouyssy, Mathiot, Van Giai, Marcos, PRC 36, 380 (1987)), i.e. the zero-range term removed. PKO1 (Long, Van Giai, Meng, PLB 640, 150 (2006)) uses f_pi(0) = 1.0 (f^2/4pi = 0.0796) with a fitted quenching exp(-a_pi rho/rho0), a_pi = 1.232, so that at saturation the pion strength is 8.5 percent of the free one and its Fock energy is below 1 MeV per nucleon; scaling the present free-coupling result by that factor gives E_pi/A = -0.57 MeV and S_pi = +0.29 MeV at the DD-ME2 saturation point, the size RHF papers describe (small pion contribution to bulk matter, large sigma/omega Fock contributions to the symmetry energy). With the free coupling 0.075 the pion Fock term is -6.3 MeV (zero-range removed) or +14.1 MeV (kept) per nucleon at M*/M = 0.57."
+  },
+  "nonrelativistic_benchmark": {
+   "0.6": {
+    "E_pi_per_A_zero_range_kept": 0.871,
+    "closed_form": 0.871,
+    "zero_range_removed": -1.209
+   },
+   "1.0": {
+    "E_pi_per_A_zero_range_kept": 6.117,
+    "closed_form": 6.117,
+    "zero_range_removed": -3.515
+   },
+   "1.333": {
+    "E_pi_per_A_zero_range_kept": 16.867,
+    "closed_form": 16.867,
+    "zero_range_removed": -5.947
+   },
+   "1.6": {
+    "E_pi_per_A_zero_range_kept": 31.349,
+    "closed_form": 31.349,
+    "zero_range_removed": -8.103
+   },
+   "2.2": {
+    "E_pi_per_A_zero_range_kept": 89.202,
+    "closed_form": 89.202,
+    "zero_range_removed": -13.359
+   }
+  }
+ },
+ "task2_R1": {
+  "residual": "R1 isovector: S(n0) from the action alone vs J = 31.7 +- 3.2 MeV, L in 35-65 MeV",
+  "before": {
+   "island_y0.84_a5min": {
+    "S_n0": 13.869,
+    "L": 32.486
+   },
+   "author_y0.87_quartic": {
+    "S_n0": 13.437,
+    "L": 29.273
+   },
+   "corner_y0.83_Q0+55": {
+    "S_n0": 14.567,
+    "L": 34.804
+   }
+  },
+  "after_pion_gp1/3_jet_resolved_no_rho_contact": {
+   "author_y0.87 (declared rule: quintic a5_min)": {
+    "globally_stable_U": false,
+    "q_min_over_a2": -2.126181588500157e-13,
+    "Q0": -310.575,
+    "dCv_rel": 0.158,
+    "V_minus_S_hartree_MeV": 197.076,
+    "forward_check_EA_P_K": [
+     -16.0,
+     -3.1e-14,
+     240.0
+    ],
+    "S_n0_no_rho_contact": 16.703,
+    "L_no_rho_contact": 36.496,
+    "Ksym_no_rho_contact": -25.873,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      11.895,
+      -1.682
+     ],
+     "K": [
+      27.479,
+      13.902
+     ],
+     "R": [
+      25.216,
+      11.639
+     ]
+    },
+    "ground_state_SNM_scan_ok": true
+   },
+   "island y*=0.84": {
+    "status": "no_stable_model_at_this_ystar",
+    "island": {
+     "exists": false,
+     "max_q_min_over_a5": -78031217.77212024,
+     "max_q_min_rel_a2": -0.1259117107604932,
+     "a5_at_max": 1315227439.706927
+    }
+   },
+   "island y*=0.84, member Q0 kept (U not globally stable)": {
+    "globally_stable_U": false,
+    "q_min_over_a2": -0.2133570932380372,
+    "Q0": -107.778,
+    "dCv_rel": 0.112,
+    "V_minus_S_hartree_MeV": 252.071,
+    "forward_check_EA_P_K": [
+     -16.0,
+     -6.2e-14,
+     240.0
+    ],
+    "S_n0_no_rho_contact": 17.141,
+    "L_no_rho_contact": 39.92,
+    "Ksym_no_rho_contact": -4.773,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      12.038,
+      -1.575
+     ],
+     "K": [
+      27.623,
+      14.01
+     ],
+     "R": [
+      25.399,
+      11.786
+     ]
+    },
+    "ground_state_SNM_scan_ok": false
+   },
+   "island shifted to y*=0.8507 (a5_min)": {
+    "globally_stable_U": false,
+    "q_min_over_a2": -9.404444831914283e-14,
+    "Q0": -126.597,
+    "dCv_rel": 0.125,
+    "V_minus_S_hartree_MeV": 232.407,
+    "forward_check_EA_P_K": [
+     -16.0,
+     0.0,
+     240.0
+    ],
+    "S_n0_no_rho_contact": 16.981,
+    "L_no_rho_contact": 38.593,
+    "Ksym_no_rho_contact": -14.582,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      11.988,
+      -1.627
+     ],
+     "K": [
+      27.562,
+      13.947
+     ],
+     "R": [
+      25.321,
+      11.707
+     ]
+    },
+    "ground_state_SNM_scan_ok": true
+   },
+   "corner y*=0.83 (a5_min)": {
+    "globally_stable_U": true,
+    "q_min_over_a2": 2.4862198325872858e-14,
+    "Q0": 156.772,
+    "dCv_rel": 0.108,
+    "V_minus_S_hartree_MeV": 269.577,
+    "forward_check_EA_P_K": [
+     -15.5,
+     -3.1e-14,
+     260.0
+    ],
+    "S_n0_no_rho_contact": 17.984,
+    "L_no_rho_contact": 42.672,
+    "Ksym_no_rho_contact": 1.447,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      12.026,
+      -0.575
+     ],
+     "K": [
+      31.424,
+      18.823
+     ],
+     "R": [
+      29.458,
+      16.857
+     ]
+    },
+    "ground_state_SNM_scan_ok": false
+   }
+  },
+  "after_pion_gp0_jet_resolved_no_rho_contact": {
+   "island_y0.84_a5min": {
+    "globally_stable_U": true,
+    "q_min_over_a2": 3.046908825956726e-13,
+    "Q0": -237.519,
+    "dCv_rel": -0.366,
+    "V_minus_S_hartree_MeV": 208.294,
+    "forward_check_EA_P_K": [
+     -16.0,
+     6.2e-14,
+     240.0
+    ],
+    "S_n0_no_rho_contact": 9.567,
+    "L_no_rho_contact": 16.341,
+    "Ksym_no_rho_contact": -17.838,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      7.339,
+      -6.263
+     ],
+     "K": [
+      22.924,
+      9.322
+     ],
+     "R": [
+      25.073,
+      11.471
+     ]
+    },
+    "ground_state_SNM_scan_ok": true
+   },
+   "author_y0.87_quartic": {
+    "globally_stable_U": true,
+    "q_min_over_a2": 0.9986938042099228,
+    "Q0": -745.386,
+    "dCv_rel": -0.52,
+    "V_minus_S_hartree_MeV": 153.184,
+    "forward_check_EA_P_K": [
+     -16.0,
+     6.2e-14,
+     240.0
+    ],
+    "S_n0_no_rho_contact": 9.125,
+    "L_no_rho_contact": 13.327,
+    "Ksym_no_rho_contact": -28.62,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      7.187,
+      -6.255
+     ],
+     "K": [
+      22.771,
+      9.329
+     ],
+     "R": [
+      24.981,
+      11.539
+     ]
+    },
+    "ground_state_SNM_scan_ok": true
+   },
+   "corner_y0.83_Q0+55": {
+    "globally_stable_U": true,
+    "q_min_over_a2": 7.175255887449056e-14,
+    "Q0": -77.053,
+    "dCv_rel": -0.359,
+    "V_minus_S_hartree_MeV": 223.183,
+    "forward_check_EA_P_K": [
+     -15.5,
+     6.2e-14,
+     260.0
+    ],
+    "S_n0_no_rho_contact": 9.94,
+    "L_no_rho_contact": 17.425,
+    "Ksym_no_rho_contact": -16.041,
+    "anchors_S2_EPNM_by_bookkeeping": {
+     "Z": [
+      7.335,
+      -5.227
+     ],
+     "K": [
+      26.734,
+      14.172
+     ],
+     "R": [
+      28.479,
+      15.917
+     ]
+    },
+    "ground_state_SNM_scan_ok": true
+   }
+  },
+  "direction": "right sign, +3.3 MeV of the +18.3 MeV needed (18 percent), for the primary convention; wrong sign (-4.3 MeV) if the zero-range term is kept",
+  "pass": false,
+  "L_window": "L = 36.5-42.7 MeV with the primary convention: inside 35-65",
+  "strength_that_would_close_R1_first_order": {
+   "f2_over_4pi_needed_at_gp1/3": 0.409,
+   "measured": 0.075,
+   "contact_g_prime_needed_at_f2_0.075": 0.97,
+   "empirical_Landau_Migdal_g_prime": "0.6-0.7",
+   "note": "dS_pi is linear in f^2 and in g' (island member, fixed y): dS = -4.30 + 22.72 g' MeV"
+  },
+  "neutron_matter_without_contact": "E_PNM/N(0.10 fm^-3) = -0.6 to -1.7 MeV (bound neutron matter) and S_2(0.10) = 11.9-12.0 MeV when the pion is the only isovector potential source"
+ },
+ "task2_R2": {
+  "16O_1p_by_member": {
+   "island_y0.84_a5min": {
+    "gp1/3|Q0_kept": {
+     "16O_1p_MeV": 1.356,
+     "jet_only": 1.45,
+     "plus_SigmaS_Sigma0": 1.533,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 252.071
+    },
+    "gp0|a5min": {
+     "16O_1p_MeV": 1.02,
+     "jet_only": 1.299,
+     "plus_SigmaS_Sigma0": 1.196,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 208.294
+    },
+    "gp0|Q0_kept": {
+     "16O_1p_MeV": 1.017,
+     "jet_only": 1.299,
+     "plus_SigmaS_Sigma0": 1.192,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 208.294
+    },
+    "RHF_full_gp1/3_vacuum|Q0_kept": {
+     "16O_1p_MeV": 1.336,
+     "jet_only": 1.374,
+     "plus_SigmaS_Sigma0": 1.497,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 261.244
+    },
+    "RHF_full_gp0_vacuum|a5min": {
+     "16O_1p_MeV": 1.019,
+     "jet_only": 1.311,
+     "plus_SigmaS_Sigma0": 1.19,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 211.057
+    },
+    "RHF_full_gp0_vacuum|Q0_kept": {
+     "16O_1p_MeV": 1.015,
+     "jet_only": 1.31,
+     "plus_SigmaS_Sigma0": 1.185,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 210.994
+    },
+    "gp0|declared_rule": {
+     "16O_1p_MeV": 1.02,
+     "jet_only": 1.299,
+     "plus_SigmaS_Sigma0": 1.196,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 208.294
+    },
+    "gp1/3|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 1.313,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    },
+    "gp0|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 0.867,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    }
+   },
+   "author_y0.87_quartic": {
+    "gp1/3|quartic": {
+     "16O_1p_MeV": 0.949,
+     "jet_only": 1.065,
+     "plus_SigmaS_Sigma0": 1.117,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 197.076
+    },
+    "gp0|quartic": {
+     "16O_1p_MeV": 0.648,
+     "jet_only": 0.843,
+     "plus_SigmaS_Sigma0": 0.816,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 153.184
+    },
+    "RHF_full_gp1/3_vacuum|quartic": {
+     "16O_1p_MeV": 0.955,
+     "jet_only": 1.043,
+     "plus_SigmaS_Sigma0": 1.114,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 203.409
+    },
+    "RHF_full_gp0_vacuum|quartic": {
+     "16O_1p_MeV": 0.638,
+     "jet_only": 0.83,
+     "plus_SigmaS_Sigma0": 0.807,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 152.692
+    },
+    "gp1/3|declared_rule": {
+     "16O_1p_MeV": 0.949,
+     "jet_only": 1.066,
+     "plus_SigmaS_Sigma0": 1.118,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 197.076
+    },
+    "gp0|declared_rule": {
+     "16O_1p_MeV": 0.648,
+     "jet_only": 0.843,
+     "plus_SigmaS_Sigma0": 0.816,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 153.184
+    },
+    "gp1/3|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 0.889,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    },
+    "gp0|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 0.625,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    }
+   },
+   "corner_y0.83_Q0+55": {
+    "gp1/3|Q0_kept": {
+     "16O_1p_MeV": 1.38,
+     "jet_only": 1.476,
+     "plus_SigmaS_Sigma0": 1.558,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 269.577
+    },
+    "gp0|Q0_kept": {
+     "16O_1p_MeV": 1.053,
+     "jet_only": 1.339,
+     "plus_SigmaS_Sigma0": 1.23,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 223.183
+    },
+    "RHF_full_gp1/3_vacuum|Q0_kept": {
+     "16O_1p_MeV": 1.356,
+     "jet_only": 1.396,
+     "plus_SigmaS_Sigma0": 1.52,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 279.207
+    },
+    "RHF_full_gp0_vacuum|Q0_kept": {
+     "16O_1p_MeV": 1.052,
+     "jet_only": 1.352,
+     "plus_SigmaS_Sigma0": 1.224,
+     "stable_U": false,
+     "V_minus_S_hartree_n0": 226.248
+    },
+    "gp1/3|declared_rule": {
+     "16O_1p_MeV": 1.378,
+     "jet_only": 1.473,
+     "plus_SigmaS_Sigma0": 1.556,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 269.577
+    },
+    "gp0|declared_rule": {
+     "16O_1p_MeV": 1.056,
+     "jet_only": 1.34,
+     "plus_SigmaS_Sigma0": 1.234,
+     "stable_U": true,
+     "V_minus_S_hartree_n0": 223.183
+    },
+    "gp1/3|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 1.343,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    },
+    "gp0|jet_not_resolved_self_energies_only": {
+     "16O_1p_MeV": 0.887,
+     "jet_only": null,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": null
+    }
+   },
+   "island_shifted_y0.8507_a5min": {
+    "gp1/3|declared_rule": {
+     "16O_1p_MeV": 1.205,
+     "jet_only": 1.308,
+     "plus_SigmaS_Sigma0": null,
+     "stable_U": null,
+     "V_minus_S_hartree_n0": 232.407
+    }
+   }
+  },
+  "baseline": {
+   "island_y0.84_a5min": 1.45,
+   "author_y0.87_quartic": 1.04,
+   "corner_y0.83_Q0+55": 1.482
+  },
+  "like_for_like_no_pion_at_y0.8507": 1.298,
+  "effective_mass": "Dirac mass at saturation is the design value y* by construction; the stability bound moves it up (0.8358 -> 0.8465). First-order pion self-energies raise the Dirac mass by +7.5 MeV (0.84 -> 0.848). The Landau mass falls from 0.885 to 0.794 M (island), 0.914 to 0.816 (y* = 0.87), 0.878 to 0.788 (corner).",
+  "tensor_force": "the tensor part of pion exchange contributes to the spin-orbit potential through the spin-current density, which vanishes in spin-saturated 16O and 40Ca; it was not computed for 208Pb"
+ },
+ "task2_R6_stability_maps": {
+  "centre": {
+   "no_pion": {
+    "quintic_any_a5": [
+     [
+      0.7585,
+      "stable below"
+     ],
+     [
+      0.83579,
+      "stable above"
+     ],
+     [
+      0.94038,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.86988,
+      "stable above"
+     ],
+     [
+      0.94038,
+      "stable below"
+     ]
+    ]
+   },
+   "gp0": {
+    "quintic_any_a5": [
+     [
+      0.90455,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.84805,
+      "stable above"
+     ],
+     [
+      0.90455,
+      "stable below"
+     ]
+    ]
+   },
+   "gp1/3": {
+    "quintic_any_a5": [
+     [
+      0.7568,
+      "stable below"
+     ],
+     [
+      0.84652,
+      "stable above"
+     ],
+     [
+      0.94429,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.87576,
+      "stable above"
+     ],
+     [
+      0.9443,
+      "stable below"
+     ]
+    ]
+   },
+   "gp0.6_sensitivity": {
+    "quintic_any_a5": [
+     [
+      0.72367,
+      "stable below"
+     ],
+     [
+      0.88137,
+      "stable above"
+     ],
+     [
+      0.9451,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.89225,
+      "stable above"
+     ],
+     [
+      0.9451,
+      "stable below"
+     ]
+    ]
+   }
+  },
+  "corner": {
+   "no_pion": {
+    "quintic_any_a5": [
+     [
+      0.77151,
+      "stable below"
+     ],
+     [
+      0.81391,
+      "stable above"
+     ],
+     [
+      0.93791,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.86227,
+      "stable above"
+     ],
+     [
+      0.93791,
+      "stable below"
+     ]
+    ]
+   },
+   "gp0": {
+    "quintic_any_a5": [
+     [
+      0.9008,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.83752,
+      "stable above"
+     ],
+     [
+      0.9008,
+      "stable below"
+     ]
+    ]
+   },
+   "gp1/3": {
+    "quintic_any_a5": [
+     [
+      0.76658,
+      "stable below"
+     ],
+     [
+      0.82768,
+      "stable above"
+     ],
+     [
+      0.94194,
+      "stable below"
+     ]
+    ],
+    "quartic_only": [
+     [
+      0.86789,
+      "stable above"
+     ],
+     [
+      0.94194,
+      "stable below"
+     ]
+    ]
+   }
+  },
+  "island_shift": {
+   "old_lower_edge": 0.835789,
+   "new_lower_edge_gp1/3": 0.8465214638342149,
+   "offset_kept": 0.004210999999999965,
+   "ystar_new": 0.850732
+  }
+ },
+ "task2_R5_stars_all_runs": {
+  "island_y0.84_a5min|baseline_chain": {
+   "M_max": 2.0386,
+   "R_14_km": 12.672,
+   "R_144_km_static": 12.679,
+   "Lambda_14": 542.7,
+   "chi2_8": 13.88,
+   "p_nu8": 0.0849,
+   "p_replicated": 0.091915,
+   "z": {
+    "Mmax": -0.59,
+    "R207": -0.87,
+    "R134": 0.02,
+    "R1418": 1.44,
+    "R144": 2.54,
+    "Lt": 1.34,
+    "S2": -0.2,
+    "EPNM": 0.44
+   },
+   "max_abs_z_PIT": 2.51,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.302,
+   "EPNM_0p10": 11.839,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "island_y0.84_a5min|baseline_via_fock_solver": {
+   "M_max": 2.0386,
+   "R_14_km": 12.672,
+   "R_144_km_static": 12.679,
+   "Lambda_14": 542.7,
+   "chi2_8": 13.88,
+   "p_nu8": 0.0849,
+   "p_replicated": 0.09244,
+   "z": {
+    "Mmax": -0.59,
+    "R207": -0.87,
+    "R134": 0.02,
+    "R1418": 1.44,
+    "R144": 2.54,
+    "Lt": 1.34,
+    "S2": -0.2,
+    "EPNM": 0.44
+   },
+   "max_abs_z_PIT": 2.51,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.302,
+   "EPNM_0p10": 11.839,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "author_y0.87_quartic|baseline_chain": {
+   "M_max": 1.7882,
+   "R_14_km": 11.923,
+   "R_144_km_static": 11.88,
+   "Lambda_14": 331.3,
+   "chi2_8": 30.82,
+   "p_nu8": 0.000151,
+   "p_replicated": 0.000265,
+   "z": {
+    "Mmax": -4.17,
+    "R207": -2.14,
+    "R134": -0.56,
+    "R1418": 0.62,
+    "R144": 1.72,
+    "Lt": 0.41,
+    "S2": -0.34,
+    "EPNM": 0.36
+   },
+   "max_abs_z_PIT": 4.17,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "Mmax"
+   ],
+   "S2_0p10": 25.156,
+   "EPNM_0p10": 11.761,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "author_y0.87_quartic|baseline_via_fock_solver": {
+   "M_max": 1.7882,
+   "R_14_km": 11.923,
+   "R_144_km_static": 11.88,
+   "Lambda_14": 331.3,
+   "chi2_8": 30.82,
+   "p_nu8": 0.000151,
+   "p_replicated": 0.000255,
+   "z": {
+    "Mmax": -4.17,
+    "R207": -2.14,
+    "R134": -0.56,
+    "R1418": 0.62,
+    "R144": 1.72,
+    "Lt": 0.41,
+    "S2": -0.34,
+    "EPNM": 0.36
+   },
+   "max_abs_z_PIT": 4.17,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "Mmax"
+   ],
+   "S2_0p10": 25.156,
+   "EPNM_0p10": 11.761,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "corner_y0.83_Q0+55|baseline_chain": {
+   "M_max": 2.0132,
+   "R_14_km": 12.285,
+   "R_144_km_static": 12.3,
+   "Lambda_14": 478.6,
+   "chi2_8": 52.64,
+   "p_nu8": 1.26e-08,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.95,
+    "R207": -1.13,
+    "R134": -0.32,
+    "R1418": 1.03,
+    "R144": 2.14,
+    "Lt": 1.04,
+    "S2": 3.61,
+    "EPNM": 5.29
+   },
+   "max_abs_z_PIT": 5.29,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 29.107,
+   "EPNM_0p10": 16.689,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "corner_y0.83_Q0+55|baseline_via_fock_solver": {
+   "M_max": 2.0132,
+   "R_14_km": 12.285,
+   "R_144_km_static": 12.3,
+   "Lambda_14": 478.6,
+   "chi2_8": 52.64,
+   "p_nu8": 1.26e-08,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.95,
+    "R207": -1.13,
+    "R134": -0.32,
+    "R1418": 1.03,
+    "R144": 2.14,
+    "Lt": 1.04,
+    "S2": 3.61,
+    "EPNM": 5.29
+   },
+   "max_abs_z_PIT": 5.29,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 29.107,
+   "EPNM_0p10": 16.689,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "island_y0.84_a5min|gp0|declared_rule|Z": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "island_y0.84_a5min|gp0|declared_rule|K": {
+   "M_max": 1.9378,
+   "R_14_km": 11.95,
+   "R_144_km_static": 11.943,
+   "Lambda_14": 372.3,
+   "chi2_8": 26.37,
+   "p_nu8": 0.000908,
+   "p_replicated": 0.00124,
+   "z": {
+    "Mmax": -2.03,
+    "R207": -1.85,
+    "R134": -0.58,
+    "R1418": 0.66,
+    "R144": 1.78,
+    "Lt": 0.57,
+    "S2": -2.58,
+    "EPNM": -2.08
+   },
+   "max_abs_z_PIT": 2.58,
+   "box2": false,
+   "fails2": [
+    "S2",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 22.924,
+   "EPNM_0p10": 9.322,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "island_y0.84_a5min|gp0|declared_rule|R": {
+   "M_max": 1.9708,
+   "R_14_km": 12.26,
+   "R_144_km_static": 12.247,
+   "Lambda_14": 418.3,
+   "chi2_8": 14.66,
+   "p_nu8": 0.0662,
+   "p_replicated": 0.07874,
+   "z": {
+    "Mmax": -1.56,
+    "R207": -1.65,
+    "R134": -0.31,
+    "R1418": 0.99,
+    "R144": 2.09,
+    "Lt": 0.79,
+    "S2": -0.43,
+    "EPNM": 0.07
+   },
+   "max_abs_z_PIT": 2.06,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.073,
+   "EPNM_0p10": 11.471,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|gp1/3|declared_rule|Z": {
+   "M_max": 1.8493,
+   "R_14_km": 12.051,
+   "R_144_km_static": 12.029,
+   "Lambda_14": 380.0,
+   "chi2_8": 379.53,
+   "p_nu8": 4.46e-77,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -3.3,
+    "R207": -1.83,
+    "R134": -0.48,
+    "R1418": 0.77,
+    "R144": 1.87,
+    "Lt": 0.62,
+    "S2": -13.61,
+    "EPNM": -13.08
+   },
+   "max_abs_z_PIT": 8.21,
+   "box2": false,
+   "fails2": [
+    "S2",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 11.895,
+   "EPNM_0p10": -1.682,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|gp1/3|declared_rule|K": {
+   "M_max": 1.8377,
+   "R_14_km": 12.192,
+   "R_144_km_static": 12.159,
+   "Lambda_14": 385.2,
+   "chi2_8": 35.25,
+   "p_nu8": 2.4e-05,
+   "p_replicated": 4e-05,
+   "z": {
+    "Mmax": -3.46,
+    "R207": -1.79,
+    "R134": -0.34,
+    "R1418": 0.91,
+    "R144": 2.01,
+    "Lt": 0.65,
+    "S2": 1.98,
+    "EPNM": 2.5
+   },
+   "max_abs_z_PIT": 3.46,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 27.479,
+   "EPNM_0p10": 13.902,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|gp1/3|declared_rule|R": {
+   "M_max": 1.8341,
+   "R_14_km": 12.094,
+   "R_144_km_static": 12.065,
+   "Lambda_14": 373.9,
+   "chi2_8": 25.24,
+   "p_nu8": 0.00142,
+   "p_replicated": 0.002305,
+   "z": {
+    "Mmax": -3.51,
+    "R207": -1.85,
+    "R134": -0.43,
+    "R1418": 0.81,
+    "R144": 1.91,
+    "Lt": 0.6,
+    "S2": -0.28,
+    "EPNM": 0.24
+   },
+   "max_abs_z_PIT": 3.51,
+   "box2": false,
+   "fails2": [
+    "Mmax"
+   ],
+   "S2_0p10": 25.216,
+   "EPNM_0p10": 11.639,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|gp0|declared_rule|Z": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "author_y0.87_quartic|gp0|declared_rule|K": {
+   "M_max": 1.6144,
+   "R_14_km": 10.759,
+   "R_144_km_static": 10.659,
+   "Lambda_14": 158.7,
+   "chi2_8": 76.89,
+   "p_nu8": 2.07e-13,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -6.65,
+    "R207": -3.37,
+    "R134": -1.49,
+    "R1418": -0.97,
+    "R144": 0.47,
+    "Lt": -0.69,
+    "S2": -2.73,
+    "EPNM": -2.07
+   },
+   "max_abs_z_PIT": 6.65,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "S2",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 22.771,
+   "EPNM_0p10": 9.329,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|gp0|declared_rule|R": {
+   "M_max": 1.6551,
+   "R_14_km": 11.199,
+   "R_144_km_static": 11.102,
+   "Lambda_14": 201.4,
+   "chi2_8": 54.5,
+   "p_nu8": 5.53e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -6.07,
+    "R207": -3.1,
+    "R134": -1.12,
+    "R1418": -0.26,
+    "R144": 0.93,
+    "Lt": -0.31,
+    "S2": -0.52,
+    "EPNM": 0.14
+   },
+   "max_abs_z_PIT": 6.07,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "Mmax"
+   ],
+   "S2_0p10": 24.981,
+   "EPNM_0p10": 11.539,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "corner_y0.83_Q0+55|gp1/3|declared_rule|Z": {
+   "M_max": 2.0823,
+   "R_14_km": 12.697,
+   "R_144_km_static": 12.717,
+   "Lambda_14": 584.6,
+   "chi2_8": 337.51,
+   "p_nu8": 4.19e-68,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": 0.03,
+    "R207": -0.31,
+    "R134": 0.03,
+    "R1418": 1.47,
+    "R144": 2.58,
+    "Lt": 1.52,
+    "S2": -13.47,
+    "EPNM": -11.98
+   },
+   "max_abs_z_PIT": 8.21,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 12.026,
+   "EPNM_0p10": -0.575,
+   "ground_state_beta_ok": false,
+   "stable_U": true,
+   "gs_SNM_scan_ok": false
+  },
+  "corner_y0.83_Q0+55|gp1/3|declared_rule|K": {
+   "M_max": 2.0429,
+   "R_14_km": 12.47,
+   "R_144_km_static": 12.489,
+   "Lambda_14": 527.8,
+   "chi2_8": 101.98,
+   "p_nu8": 1.68e-18,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.53,
+    "R207": -0.88,
+    "R134": -0.17,
+    "R1418": 1.23,
+    "R144": 2.34,
+    "Lt": 1.26,
+    "S2": 5.92,
+    "EPNM": 7.42
+   },
+   "max_abs_z_PIT": 7.42,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 31.424,
+   "EPNM_0p10": 18.823,
+   "ground_state_beta_ok": false,
+   "stable_U": true,
+   "gs_SNM_scan_ok": false
+  },
+  "corner_y0.83_Q0+55|gp1/3|declared_rule|R": {
+   "M_max": 2.0425,
+   "R_14_km": 12.414,
+   "R_144_km_static": 12.434,
+   "Lambda_14": 521.0,
+   "chi2_8": 56.83,
+   "p_nu8": 1.94e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.54,
+    "R207": -0.91,
+    "R134": -0.22,
+    "R1418": 1.17,
+    "R144": 2.28,
+    "Lt": 1.22,
+    "S2": 3.96,
+    "EPNM": 5.46
+   },
+   "max_abs_z_PIT": 5.46,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 29.458,
+   "EPNM_0p10": 16.857,
+   "ground_state_beta_ok": false,
+   "stable_U": true,
+   "gs_SNM_scan_ok": false
+  },
+  "corner_y0.83_Q0+55|gp0|declared_rule|Z": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "corner_y0.83_Q0+55|gp0|declared_rule|K": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "corner_y0.83_Q0+55|gp0|declared_rule|R": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "island_shifted_y0.8507_a5min|gp1/3|declared_rule|Z": {
+   "M_max": 2.0116,
+   "R_14_km": 12.561,
+   "R_144_km_static": 12.567,
+   "Lambda_14": 524.4,
+   "chi2_8": 366.08,
+   "p_nu8": 3.34e-74,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.98,
+    "R207": -0.99,
+    "R134": -0.07,
+    "R1418": 1.32,
+    "R144": 2.42,
+    "Lt": 1.26,
+    "S2": -13.51,
+    "EPNM": -13.03
+   },
+   "max_abs_z_PIT": 8.21,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 11.988,
+   "EPNM_0p10": -1.627,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "island_shifted_y0.8507_a5min|gp1/3|declared_rule|K": {
+   "M_max": 1.9972,
+   "R_14_km": 12.655,
+   "R_144_km_static": 12.654,
+   "Lambda_14": 521.0,
+   "chi2_8": 25.9,
+   "p_nu8": 0.00109,
+   "p_replicated": 0.00147,
+   "z": {
+    "Mmax": -1.18,
+    "R207": -0.99,
+    "R134": 0.02,
+    "R1418": 1.42,
+    "R144": 2.52,
+    "Lt": 1.25,
+    "S2": 2.06,
+    "EPNM": 2.55
+   },
+   "max_abs_z_PIT": 2.55,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 27.562,
+   "EPNM_0p10": 13.947,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "island_shifted_y0.8507_a5min|gp1/3|declared_rule|R": {
+   "M_max": 1.9934,
+   "R_14_km": 12.564,
+   "R_144_km_static": 12.566,
+   "Lambda_14": 509.5,
+   "chi2_8": 14.73,
+   "p_nu8": 0.0645,
+   "p_replicated": 0.0748,
+   "z": {
+    "Mmax": -1.24,
+    "R207": -1.05,
+    "R134": -0.06,
+    "R1418": 1.32,
+    "R144": 2.42,
+    "Lt": 1.19,
+    "S2": -0.18,
+    "EPNM": 0.31
+   },
+   "max_abs_z_PIT": 2.4,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.321,
+   "EPNM_0p10": 11.707,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "island_y0.84_a5min|gp1/3|Q0_kept|R": {
+   "M_max": 2.0689,
+   "R_14_km": 12.775,
+   "R_144_km_static": 12.789,
+   "Lambda_14": 583.7,
+   "chi2_8": 14.0,
+   "p_nu8": 0.0818,
+   "p_replicated": 0.08522,
+   "z": {
+    "Mmax": -0.16,
+    "R207": -0.65,
+    "R134": 0.11,
+    "R1418": 1.55,
+    "R144": 2.65,
+    "Lt": 1.52,
+    "S2": -0.1,
+    "EPNM": 0.39
+   },
+   "max_abs_z_PIT": 2.63,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.399,
+   "EPNM_0p10": 11.786,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "island_y0.84_a5min|RHF_full_gp0_vacuum|a5min|K": {
+   "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+  },
+  "island_y0.84_a5min|RHF_full_gp0_vacuum|a5min|R": {
+   "M_max": 1.9898,
+   "R_14_km": 12.328,
+   "R_144_km_static": 12.319,
+   "Lambda_14": 438.2,
+   "chi2_8": 13.86,
+   "p_nu8": 0.0856,
+   "p_replicated": 0.09946,
+   "z": {
+    "Mmax": -1.29,
+    "R207": -1.54,
+    "R134": -0.25,
+    "R1418": 1.07,
+    "R144": 2.17,
+    "Lt": 0.88,
+    "S2": -0.34,
+    "EPNM": 0.26
+   },
+   "max_abs_z_PIT": 2.14,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.161,
+   "EPNM_0p10": 11.663,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "island_y0.84_a5min|RHF_full_gp1/3_vacuum|Q0_kept|R": {
+   "M_max": 2.0858,
+   "R_14_km": 12.906,
+   "R_144_km_static": 12.925,
+   "Lambda_14": 634.2,
+   "chi2_8": 15.45,
+   "p_nu8": 0.051,
+   "p_replicated": 0.05146,
+   "z": {
+    "Mmax": 0.08,
+    "R207": -0.06,
+    "R134": 0.22,
+    "R1418": 1.7,
+    "R144": 2.79,
+    "Lt": 1.74,
+    "S2": 0.08,
+    "EPNM": 0.64
+   },
+   "max_abs_z_PIT": 2.77,
+   "box2": false,
+   "fails2": [
+    "R144"
+   ],
+   "S2_0p10": 25.584,
+   "EPNM_0p10": 12.038,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "author_y0.87_quartic|gp1/3|quartic|R": {
+   "M_max": 1.8337,
+   "R_14_km": 12.099,
+   "R_144_km_static": 12.07,
+   "Lambda_14": 375.0,
+   "chi2_8": 25.3,
+   "p_nu8": 0.00138,
+   "p_replicated": 0.00197,
+   "z": {
+    "Mmax": -3.52,
+    "R207": -1.85,
+    "R134": -0.42,
+    "R1418": 0.81,
+    "R144": 1.92,
+    "Lt": 0.61,
+    "S2": -0.28,
+    "EPNM": 0.23
+   },
+   "max_abs_z_PIT": 3.52,
+   "box2": false,
+   "fails2": [
+    "Mmax"
+   ],
+   "S2_0p10": 25.215,
+   "EPNM_0p10": 11.63,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "author_y0.87_quartic|RHF_full_gp0_vacuum|quartic|K": {
+   "M_max": 1.607,
+   "R_14_km": 10.688,
+   "R_144_km_static": 10.586,
+   "Lambda_14": 152.3,
+   "chi2_8": 81.85,
+   "p_nu8": 2.07e-14,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -6.76,
+    "R207": -3.42,
+    "R134": -1.55,
+    "R1418": -1.09,
+    "R144": 0.4,
+    "Lt": -0.74,
+    "S2": -3.05,
+    "EPNM": -2.27
+   },
+   "max_abs_z_PIT": 6.76,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "S2",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 22.448,
+   "EPNM_0p10": 9.128,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|RHF_full_gp0_vacuum|quartic|R": {
+   "M_max": 1.6529,
+   "R_14_km": 11.194,
+   "R_144_km_static": 11.096,
+   "Lambda_14": 200.8,
+   "chi2_8": 54.98,
+   "p_nu8": 4.46e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -6.1,
+    "R207": -3.11,
+    "R134": -1.12,
+    "R1418": -0.27,
+    "R144": 0.92,
+    "Lt": -0.31,
+    "S2": -0.49,
+    "EPNM": 0.29
+   },
+   "max_abs_z_PIT": 6.1,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "Mmax"
+   ],
+   "S2_0p10": 25.009,
+   "EPNM_0p10": 11.689,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "author_y0.87_quartic|RHF_full_gp1/3_vacuum|quartic|R": {
+   "M_max": 1.8627,
+   "R_14_km": 12.23,
+   "R_144_km_static": 12.209,
+   "Lambda_14": 409.3,
+   "chi2_8": 22.61,
+   "p_nu8": 0.0039,
+   "p_replicated": 0.005265,
+   "z": {
+    "Mmax": -3.1,
+    "R207": -1.64,
+    "R134": -0.32,
+    "R1418": 0.96,
+    "R144": 2.06,
+    "Lt": 0.76,
+    "S2": -0.21,
+    "EPNM": 0.37
+   },
+   "max_abs_z_PIT": 3.1,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "Mmax"
+   ],
+   "S2_0p10": 25.293,
+   "EPNM_0p10": 11.775,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "corner_y0.83_Q0+55|gp1/3|Q0_kept|R": {
+   "M_max": 2.0433,
+   "R_14_km": 12.406,
+   "R_144_km_static": 12.427,
+   "Lambda_14": 519.4,
+   "chi2_8": 57.09,
+   "p_nu8": 1.73e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.52,
+    "R207": -0.91,
+    "R134": -0.23,
+    "R1418": 1.16,
+    "R144": 2.27,
+    "Lt": 1.22,
+    "S2": 3.96,
+    "EPNM": 5.49
+   },
+   "max_abs_z_PIT": 5.49,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 29.459,
+   "EPNM_0p10": 16.889,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "corner_y0.83_Q0+55|RHF_full_gp1/3_vacuum|Q0_kept|R": {
+   "M_max": 2.0479,
+   "R_14_km": 12.525,
+   "R_144_km_static": 12.55,
+   "Lambda_14": 558.9,
+   "chi2_8": 60.73,
+   "p_nu8": 3.35e-10,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.46,
+    "R207": -0.74,
+    "R134": -0.13,
+    "R1418": 1.29,
+    "R144": 2.4,
+    "Lt": 1.39,
+    "S2": 4.06,
+    "EPNM": 5.66
+   },
+   "max_abs_z_PIT": 5.66,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 29.564,
+   "EPNM_0p10": 17.058,
+   "ground_state_beta_ok": false,
+   "stable_U": false,
+   "gs_SNM_scan_ok": false
+  },
+  "island_y0.84_a5min|gp1/3_jet_not_resolved|K": {
+   "M_max": 2.0048,
+   "R_14_km": 12.43,
+   "R_144_km_static": 12.44,
+   "Lambda_14": 495.6,
+   "chi2_8": 21.38,
+   "p_nu8": 0.0062,
+   "p_replicated": 0.00773,
+   "z": {
+    "Mmax": -1.07,
+    "R207": -1.06,
+    "R134": -0.19,
+    "R1418": 1.18,
+    "R144": 2.29,
+    "Lt": 1.12,
+    "S2": 2.15,
+    "EPNM": -1.95
+   },
+   "max_abs_z_PIT": 2.26,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2"
+   ],
+   "S2_0p10": 27.647,
+   "EPNM_0p10": 9.45,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "island_y0.84_a5min|gp1/3_jet_not_resolved|R": {
+   "M_max": 2.0018,
+   "R_14_km": 12.371,
+   "R_144_km_static": 12.383,
+   "Lambda_14": 488.2,
+   "chi2_8": 30.68,
+   "p_nu8": 0.00016,
+   "p_replicated": 0.00019,
+   "z": {
+    "Mmax": -1.12,
+    "R207": -1.1,
+    "R134": -0.24,
+    "R1418": 1.12,
+    "R144": 2.23,
+    "Lt": 1.08,
+    "S2": -0.14,
+    "EPNM": -4.24
+   },
+   "max_abs_z_PIT": 4.24,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "EPNM"
+   ],
+   "S2_0p10": 25.361,
+   "EPNM_0p10": 7.164,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "author_y0.87_quartic|gp1/3_jet_not_resolved|K": {
+   "M_max": 1.7439,
+   "R_14_km": 11.594,
+   "R_144_km_static": 11.549,
+   "Lambda_14": 282.0,
+   "chi2_8": 44.58,
+   "p_nu8": 4.42e-07,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -4.8,
+    "R207": -2.38,
+    "R134": -0.84,
+    "R1418": 0.27,
+    "R144": 1.38,
+    "Lt": 0.18,
+    "S2": 2.0,
+    "EPNM": -2.02
+   },
+   "max_abs_z_PIT": 4.8,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "S2",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 27.501,
+   "EPNM_0p10": 9.376,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "author_y0.87_quartic|gp1/3_jet_not_resolved|R": {
+   "M_max": 1.741,
+   "R_14_km": 11.521,
+   "R_144_km_static": 11.479,
+   "Lambda_14": 274.7,
+   "chi2_8": 55.82,
+   "p_nu8": 3.05e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -4.84,
+    "R207": -2.42,
+    "R134": -0.91,
+    "R1418": 0.19,
+    "R144": 1.31,
+    "Lt": 0.15,
+    "S2": -0.31,
+    "EPNM": -4.33
+   },
+   "max_abs_z_PIT": 4.84,
+   "box2": false,
+   "fails2": [
+    "R207",
+    "EPNM",
+    "Mmax"
+   ],
+   "S2_0p10": 25.195,
+   "EPNM_0p10": 7.07,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "corner_y0.83_Q0+55|gp1/3_jet_not_resolved|K": {
+   "M_max": 1.9819,
+   "R_14_km": 12.105,
+   "R_144_km_static": 12.122,
+   "Lambda_14": 444.7,
+   "chi2_8": 56.07,
+   "p_nu8": 2.74e-09,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -1.4,
+    "R207": -1.29,
+    "R134": -0.48,
+    "R1418": 0.84,
+    "R144": 1.96,
+    "Lt": 0.88,
+    "S2": 5.95,
+    "EPNM": 2.9
+   },
+   "max_abs_z_PIT": 5.95,
+   "box2": false,
+   "fails2": [
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 31.453,
+   "EPNM_0p10": 14.3,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  },
+  "corner_y0.83_Q0+55|gp1/3_jet_not_resolved|R": {
+   "M_max": 1.9824,
+   "R_14_km": 12.068,
+   "R_144_km_static": 12.086,
+   "Lambda_14": 440.9,
+   "chi2_8": 27.86,
+   "p_nu8": 0.000502,
+   "p_replicated": 0.00071,
+   "z": {
+    "Mmax": -1.39,
+    "R207": -1.31,
+    "R134": -0.51,
+    "R1418": 0.8,
+    "R144": 1.92,
+    "Lt": 0.86,
+    "S2": 3.89,
+    "EPNM": 0.83
+   },
+   "max_abs_z_PIT": 3.89,
+   "box2": false,
+   "fails2": [
+    "S2"
+   ],
+   "S2_0p10": 29.388,
+   "EPNM_0p10": 12.235,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": null
+  }
+ },
+ "task2_saturation_if_jet_not_resolved": {
+  "island_y0.84_a5min|gp1/3": {
+   "n_sat_fm3": 0.1843559885865053,
+   "EA_sat": -22.551472061692152,
+   "y_sat": 0.8188185286441697
+  },
+  "island_y0.84_a5min|gp0": {
+   "error": "ValueError('f(a) and f(b) must have different signs')"
+  },
+  "author_y0.87_quartic|gp1/3": {
+   "n_sat_fm3": 0.18457699665143082,
+   "EA_sat": -22.52621983490519,
+   "y_sat": 0.8570929285471394
+  },
+  "author_y0.87_quartic|gp0": {
+   "error": "ValueError('f(a) and f(b) must have different signs')"
+  },
+  "corner_y0.83_Q0+55|gp1/3": {
+   "n_sat_fm3": 0.19487892092028264,
+   "EA_sat": -22.315402927721266,
+   "y_sat": 0.8071259030084228
+  },
+  "corner_y0.83_Q0+55|gp0": {
+   "error": "ValueError('f(a) and f(b) must have different signs')"
+  }
+ },
+ "task3_full_RHF_level": {
+  "definition": "action's own scalar-fluctuation and vector Fock terms (missing/fock, vacuum masses) + pion Fock, jet iterated to a fixed point (g_v^2 = C_v m_omega^2 and m_sigma are jet outputs), no rho contact",
+  "S_n0_L": {
+   "island_y0.84_a5min": {
+    "hartree": [
+     13.869,
+     32.486
+    ],
+    "sigma_omega_only": [
+     9.921
+    ],
+    "pion_only_gp1/3": [
+     17.141
+    ],
+    "RHF_full_gp1/3": {
+     "RHF_full_gp1/3_vacuum|Q0_kept": [
+      12.587,
+      32.004,
+      false
+     ]
+    },
+    "RHF_full_gp0": {
+     "RHF_full_gp0_vacuum|a5min": [
+      7.546,
+      11.976,
+      true
+     ],
+     "RHF_full_gp0_vacuum|Q0_kept": [
+      7.552,
+      11.97,
+      false
+     ]
+    }
+   },
+   "author_y0.87_quartic": {
+    "hartree": [
+     13.437,
+     29.273
+    ],
+    "sigma_omega_only": [
+     10.657
+    ],
+    "pion_only_gp1/3": [
+     16.703
+    ],
+    "RHF_full_gp1/3": {
+     "RHF_full_gp1/3_vacuum|quartic": [
+      13.259,
+      29.338,
+      false
+     ]
+    },
+    "RHF_full_gp0": {
+     "RHF_full_gp0_vacuum|quartic": [
+      8.472,
+      10.99,
+      true
+     ]
+    }
+   },
+   "corner_y0.83_Q0+55": {
+    "hartree": [
+     14.567,
+     34.804
+    ],
+    "sigma_omega_only": [
+     10.501
+    ],
+    "pion_only_gp1/3": [
+     17.984
+    ],
+    "RHF_full_gp1/3": {
+     "RHF_full_gp1/3_vacuum|Q0_kept": [
+      13.321,
+      35.404,
+      false
+     ]
+    },
+    "RHF_full_gp0": {
+     "RHF_full_gp0_vacuum|Q0_kept": [
+      7.814,
+      13.208,
+      false
+     ]
+    }
+   }
+  },
+  "island_existence_at_y0.84": {
+   "gp1/3|a5min": false,
+   "gp0|a5min": true,
+   "sigma_omega_only_vacuum|a5min": false,
+   "RHF_full_gp1/3_vacuum|a5min": false,
+   "RHF_full_gp0_vacuum|a5min": true,
+   "RHF_full_gp1/3_medium|a5min": false
+  },
+  "anchors_RHF_full_gp1/3": {
+   "island_y0.84_a5min": {
+    "RHF_full_gp1/3_vacuum|Q0_kept": {
+     "Z": [
+      8.796,
+      -4.751
+     ],
+     "K": [
+      24.38,
+      10.834
+     ],
+     "R": [
+      25.584,
+      12.038
+     ]
+    }
+   },
+   "author_y0.87_quartic": {
+    "RHF_full_gp1/3_vacuum|quartic": {
+     "Z": [
+      9.526,
+      -3.993
+     ],
+     "K": [
+      25.11,
+      11.591
+     ],
+     "R": [
+      25.293,
+      11.775
+     ]
+    }
+   },
+   "corner_y0.83_Q0+55": {
+    "RHF_full_gp1/3_vacuum|Q0_kept": {
+     "Z": [
+      8.814,
+      -3.692
+     ],
+     "K": [
+      28.213,
+      15.707
+     ],
+     "R": [
+      29.564,
+      17.058
+     ]
+    }
+   }
+  },
+  "stars": {
+   "island_y0.84_a5min|RHF_full_gp0_vacuum|a5min|K": {
+    "status": "table_failed: ValueError('f(a) and f(b) must have different signs')"
+   },
+   "island_y0.84_a5min|RHF_full_gp0_vacuum|a5min|R": {
+    "M_max": 1.9898,
+    "R_14_km": 12.328,
+    "R_144_km_static": 12.319,
+    "Lambda_14": 438.2,
+    "chi2_8": 13.86,
+    "p_nu8": 0.0856,
+    "p_replicated": 0.09946,
+    "z": {
+     "Mmax": -1.29,
+     "R207": -1.54,
+     "R134": -0.25,
+     "R1418": 1.07,
+     "R144": 2.17,
+     "Lt": 0.88,
+     "S2": -0.34,
+     "EPNM": 0.26
+    },
+    "max_abs_z_PIT": 2.14,
+    "box2": false,
+    "fails2": [
+     "R144"
+    ],
+    "S2_0p10": 25.161,
+    "EPNM_0p10": 11.663,
+    "ground_state_beta_ok": true,
+    "stable_U": true,
+    "gs_SNM_scan_ok": true
+   },
+   "island_y0.84_a5min|RHF_full_gp1/3_vacuum|Q0_kept|R": {
+    "M_max": 2.0858,
+    "R_14_km": 12.906,
+    "R_144_km_static": 12.925,
+    "Lambda_14": 634.2,
+    "chi2_8": 15.45,
+    "p_nu8": 0.051,
+    "p_replicated": 0.05146,
+    "z": {
+     "Mmax": 0.08,
+     "R207": -0.06,
+     "R134": 0.22,
+     "R1418": 1.7,
+     "R144": 2.79,
+     "Lt": 1.74,
+     "S2": 0.08,
+     "EPNM": 0.64
+    },
+    "max_abs_z_PIT": 2.77,
+    "box2": false,
+    "fails2": [
+     "R144"
+    ],
+    "S2_0p10": 25.584,
+    "EPNM_0p10": 12.038,
+    "ground_state_beta_ok": false,
+    "stable_U": false,
+    "gs_SNM_scan_ok": false
+   },
+   "author_y0.87_quartic|RHF_full_gp0_vacuum|quartic|K": {
+    "M_max": 1.607,
+    "R_14_km": 10.688,
+    "R_144_km_static": 10.586,
+    "Lambda_14": 152.3,
+    "chi2_8": 81.85,
+    "p_nu8": 2.07e-14,
+    "p_replicated": 0.0,
+    "z": {
+     "Mmax": -6.76,
+     "R207": -3.42,
+     "R134": -1.55,
+     "R1418": -1.09,
+     "R144": 0.4,
+     "Lt": -0.74,
+     "S2": -3.05,
+     "EPNM": -2.27
+    },
+    "max_abs_z_PIT": 6.76,
+    "box2": false,
+    "fails2": [
+     "R207",
+     "S2",
+     "EPNM",
+     "Mmax"
+    ],
+    "S2_0p10": 22.448,
+    "EPNM_0p10": 9.128,
+    "ground_state_beta_ok": true,
+    "stable_U": true,
+    "gs_SNM_scan_ok": true
+   },
+   "author_y0.87_quartic|RHF_full_gp0_vacuum|quartic|R": {
+    "M_max": 1.6529,
+    "R_14_km": 11.194,
+    "R_144_km_static": 11.096,
+    "Lambda_14": 200.8,
+    "chi2_8": 54.98,
+    "p_nu8": 4.46e-09,
+    "p_replicated": 0.0,
+    "z": {
+     "Mmax": -6.1,
+     "R207": -3.11,
+     "R134": -1.12,
+     "R1418": -0.27,
+     "R144": 0.92,
+     "Lt": -0.31,
+     "S2": -0.49,
+     "EPNM": 0.29
+    },
+    "max_abs_z_PIT": 6.1,
+    "box2": false,
+    "fails2": [
+     "R207",
+     "Mmax"
+    ],
+    "S2_0p10": 25.009,
+    "EPNM_0p10": 11.689,
+    "ground_state_beta_ok": true,
+    "stable_U": true,
+    "gs_SNM_scan_ok": true
+   },
+   "author_y0.87_quartic|RHF_full_gp1/3_vacuum|quartic|R": {
+    "M_max": 1.8627,
+    "R_14_km": 12.23,
+    "R_144_km_static": 12.209,
+    "Lambda_14": 409.3,
+    "chi2_8": 22.61,
+    "p_nu8": 0.0039,
+    "p_replicated": 0.005265,
+    "z": {
+     "Mmax": -3.1,
+     "R207": -1.64,
+     "R134": -0.32,
+     "R1418": 0.96,
+     "R144": 2.06,
+     "Lt": 0.76,
+     "S2": -0.21,
+     "EPNM": 0.37
+    },
+    "max_abs_z_PIT": 3.1,
+    "box2": false,
+    "fails2": [
+     "R144",
+     "Mmax"
+    ],
+    "S2_0p10": 25.293,
+    "EPNM_0p10": 11.775,
+    "ground_state_beta_ok": false,
+    "stable_U": false,
+    "gs_SNM_scan_ok": false
+   },
+   "corner_y0.83_Q0+55|RHF_full_gp1/3_vacuum|Q0_kept|R": {
+    "M_max": 2.0479,
+    "R_14_km": 12.525,
+    "R_144_km_static": 12.55,
+    "Lambda_14": 558.9,
+    "chi2_8": 60.73,
+    "p_nu8": 3.35e-10,
+    "p_replicated": 0.0,
+    "z": {
+     "Mmax": -0.46,
+     "R207": -0.74,
+     "R134": -0.13,
+     "R1418": 1.29,
+     "R144": 2.4,
+     "Lt": 1.39,
+     "S2": 4.06,
+     "EPNM": 5.66
+    },
+    "max_abs_z_PIT": 5.66,
+    "box2": false,
+    "fails2": [
+     "R144",
+     "S2",
+     "EPNM"
+    ],
+    "S2_0p10": 29.564,
+    "EPNM_0p10": 17.058,
+    "ground_state_beta_ok": false,
+    "stable_U": false,
+    "gs_SNM_scan_ok": false
+   }
+  },
+  "16O_1p": {
+   "island_y0.84_a5min": {
+    "RHF_full_gp1/3_vacuum|Q0_kept": 1.336,
+    "RHF_full_gp0_vacuum|a5min": 1.019,
+    "RHF_full_gp0_vacuum|Q0_kept": 1.015
+   },
+   "author_y0.87_quartic": {
+    "RHF_full_gp1/3_vacuum|quartic": 0.955,
+    "RHF_full_gp0_vacuum|quartic": 0.638
+   },
+   "corner_y0.83_Q0+55": {
+    "RHF_full_gp1/3_vacuum|Q0_kept": 1.356,
+    "RHF_full_gp0_vacuum|Q0_kept": 1.052
+   }
+  },
+  "summary": "At the full RHF level of the action the pion's +3.3 MeV is cancelled by the action's own vector exchange: S(n0) = 12.6-13.3 MeV (g' = 1/3), 7.5-8.5 MeV (g' = 0), against 13.4-14.6 MeV at Hartree level; every re-solved RHF jet with g' = 1/3 is globally unstable (no stable quintic at y* = 0.84), and the 'medium'-mass variant fails its own forward check for the quintic members (reported, not used)."
+ },
+ "alternative_gp0_low_effective_mass": {
+  "status": "declared alternative (zero-range term kept), NOT the primary convention; reported in full, not used for the verdict",
+  "stability_map_centre_windows": [
+   [
+    0.90455,
+    "stable below"
+   ]
+  ],
+  "statement": "with the zero-range term kept the forbidden band 0.7585-0.8358 closes: a globally stable quintic exists for every y* from 0.40 to 0.9045 and for y* = 0.65-0.84 the design branch is the SNM ground state with Q0 inside the declared window [-600, 200]",
+  "members_at_declared_Q0_window_edge": [
+   {
+    "ystar": 0.6,
+    "Q0": 200.0,
+    "a5": 995812682.239,
+    "globally_stable": true,
+    "gs_SNM_all_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": -6.412,
+    "V_minus_S_hartree": 645.563,
+    "S_noRho": 14.01,
+    "L_noRho": -150.324,
+    "forward_check_K": 1640.908
+   },
+   {
+    "ystar": 0.62,
+    "Q0": 200.0,
+    "a5": 866506137.992,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": false,
+    "16O_1p_MeV": 4.639,
+    "V_minus_S_hartree": 609.448,
+    "S_noRho": 13.848,
+    "L_noRho": 170.062,
+    "forward_check_K": 1472.14
+   },
+   {
+    "ystar": 0.65,
+    "Q0": 200.0,
+    "a5": 738281618.498,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 4.368,
+    "V_minus_S_hartree": 555.139,
+    "S_noRho": 13.148,
+    "L_noRho": 132.946,
+    "forward_check_K": 129.615
+   },
+   {
+    "ystar": 0.7,
+    "Q0": 200.0,
+    "a5": 674132853.304,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 3.362,
+    "V_minus_S_hartree": 464.303,
+    "S_noRho": 12.05,
+    "L_noRho": 53.451,
+    "forward_check_K": 239.977
+   },
+   {
+    "ystar": 0.75,
+    "Q0": 200.0,
+    "a5": 784194158.991,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 2.397,
+    "V_minus_S_hartree": 373.122,
+    "S_noRho": 11.073,
+    "L_noRho": 32.23,
+    "forward_check_K": 240.0
+   },
+   {
+    "ystar": 0.8,
+    "Q0": 200.0,
+    "a5": 722729890.614,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 1.58,
+    "V_minus_S_hartree": 281.651,
+    "S_noRho": 10.201,
+    "L_noRho": 21.684,
+    "forward_check_K": 240.0
+   },
+   {
+    "ystar": 0.84,
+    "Q0": -237.519,
+    "a5": 297910197.229,
+    "globally_stable": true,
+    "gs_SNM_all_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 1.02,
+    "V_minus_S_hartree": 208.294,
+    "S_noRho": 9.567,
+    "L_noRho": 16.341,
+    "forward_check_K": 240.0
+   }
+  ],
+  "a5min_rule_scan": [
+   {
+    "ystar": 0.6,
+    "column": "no_pion",
+    "status": "ok",
+    "Q0": -32646.43,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": -6.144,
+    "S_n0_no_rho": 18.548,
+    "V_minus_S": 676.82,
+    "forward_check_K": 304.234,
+    "stars_R": "ok",
+    "M_max": 3.029,
+    "R_144": 16.137,
+    "chi2": 373.142
+   },
+   {
+    "ystar": 0.6,
+    "column": "gp1/3",
+    "status": "ok",
+    "Q0": -20376.382,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": -6.484,
+    "S_n0_no_rho": 21.896,
+    "V_minus_S": 687.838,
+    "forward_check_K": 117.004,
+    "stars_R": "ok",
+    "M_max": 3.003,
+    "R_144": 15.879,
+    "chi2": 281.857
+   },
+   {
+    "ystar": 0.6,
+    "column": "gp0",
+    "status": "ok",
+    "Q0": -32947074.815,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": -5.55,
+    "S_n0_no_rho": 9.684,
+    "V_minus_S": 645.563,
+    "forward_check_K": 2110.173,
+    "stars_R": "ok",
+    "M_max": 3.023,
+    "R_144": 16.55,
+    "chi2": 376.825
+   },
+   {
+    "ystar": 0.65,
+    "column": "no_pion",
+    "status": "ok",
+    "Q0": -1489423.05,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 4.84,
+    "S_n0_no_rho": 17.34,
+    "V_minus_S": 587.032,
+    "forward_check_K": 1394.787,
+    "stars_R": "crust_match_failed: ValueError('no eps-continuous SLy/core match on the monotone tail (g at ends: -1.326, -222.1)')",
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.65,
+    "column": "gp1/3",
+    "status": "ok",
+    "Q0": -8581079.12,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 4.524,
+    "S_n0_no_rho": 20.641,
+    "V_minus_S": 597.843,
+    "forward_check_K": 1630.981,
+    "stars_R": "crust_match_failed: ValueError('no eps-continuous SLy/core match on the monotone tail (g at ends: -9.696, -225.6)')",
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.65,
+    "column": "gp0",
+    "status": "ok",
+    "Q0": 91576.057,
+    "gs_SNM_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 4.174,
+    "S_n0_no_rho": 13.148,
+    "V_minus_S": 555.139,
+    "forward_check_K": 256.522,
+    "stars_R": "table_failed: ValueError('f(a) and f(b) must have different signs')",
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.7,
+    "column": "no_pion",
+    "status": "ok",
+    "Q0": -26796.587,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 4.687,
+    "S_n0_no_rho": 16.288,
+    "V_minus_S": 496.721,
+    "forward_check_K": 263.719,
+    "stars_R": "ok",
+    "M_max": 2.5,
+    "R_144": 14.125,
+    "chi2": 139.779
+   },
+   {
+    "ystar": 0.7,
+    "column": "gp1/3",
+    "status": "ok",
+    "Q0": -39378.498,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 4.508,
+    "S_n0_no_rho": 19.596,
+    "V_minus_S": 507.362,
+    "forward_check_K": -878.481,
+    "stars_R": "ok",
+    "M_max": 2.58,
+    "R_144": 14.792,
+    "chi2": 99.239
+   },
+   {
+    "ystar": 0.7,
+    "column": "gp0",
+    "status": "ok",
+    "Q0": 4300.478,
+    "gs_SNM_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 3.324,
+    "S_n0_no_rho": 12.05,
+    "V_minus_S": 464.303,
+    "forward_check_K": 239.919,
+    "stars_R": "table_failed: ValueError('f(a) and f(b) must have different signs')",
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.75,
+    "column": "no_pion",
+    "status": "ok",
+    "Q0": -3422.588,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 2.985,
+    "S_n0_no_rho": 15.339,
+    "V_minus_S": 405.98,
+    "forward_check_K": 240.024,
+    "stars_R": "ok",
+    "M_max": 2.425,
+    "R_144": 13.95,
+    "chi2": 49.305
+   },
+   {
+    "ystar": 0.75,
+    "column": "gp1/3",
+    "status": "ok",
+    "Q0": -4564.972,
+    "gs_SNM_ok": false,
+    "branch_continuous": false,
+    "16O_1p_MeV": 2.875,
+    "S_n0_no_rho": 18.632,
+    "V_minus_S": 416.477,
+    "forward_check_K": 240.053,
+    "stars_R": "ok",
+    "M_max": 2.429,
+    "R_144": 13.979,
+    "chi2": 54.931
+   },
+   {
+    "ystar": 0.75,
+    "column": "gp0",
+    "status": "ok",
+    "Q0": 889.479,
+    "gs_SNM_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 2.387,
+    "S_n0_no_rho": 11.073,
+    "V_minus_S": 373.122,
+    "forward_check_K": 239.999,
+    "stars_R": "table_failed: ValueError('f(a) and f(b) must have different signs')",
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.8,
+    "column": "no_pion",
+    "status": "no_stable_model",
+    "Q0": null,
+    "gs_SNM_ok": null,
+    "branch_continuous": null,
+    "16O_1p_MeV": null,
+    "S_n0_no_rho": null,
+    "V_minus_S": null,
+    "forward_check_K": null,
+    "stars_R": null,
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.8,
+    "column": "gp1/3",
+    "status": "no_stable_model",
+    "Q0": null,
+    "gs_SNM_ok": null,
+    "branch_continuous": null,
+    "16O_1p_MeV": null,
+    "S_n0_no_rho": null,
+    "V_minus_S": null,
+    "forward_check_K": null,
+    "stars_R": null,
+    "M_max": null,
+    "R_144": null,
+    "chi2": null
+   },
+   {
+    "ystar": 0.8,
+    "column": "gp0",
+    "status": "ok",
+    "Q0": 215.41,
+    "gs_SNM_ok": true,
+    "branch_continuous": true,
+    "16O_1p_MeV": 1.58,
+    "S_n0_no_rho": 10.201,
+    "V_minus_S": 281.651,
+    "forward_check_K": 240.0,
+    "stars_R": "ok",
+    "M_max": 2.256,
+    "R_144": 13.108,
+    "chi2": 17.212
+   }
+  ],
+  "result": "members with Q0 at the declared-window edge (+200 MeV): 16O 1p = 1.58 / 2.40 / 3.36 MeV at y* = 0.80 / 0.75 / 0.70 (regular members; a5_min rule: 1.58 / 2.39 / 3.32), 4.37 MeV at y* = 0.65 and 4.64 MeV at y* = 0.62, where the design point sits next to a fold of the scalar branch (finite-difference K = 130 and 1470 MeV instead of the designed 240, L without contact 133 and 170 MeV, branch discontinuous at 0.62); below 0.62 the design branch is not the ground state. The window edge 4.9 MeV is not reached. The same choice lowers S(n0) to 9.1-13.1 MeV (R1 worse), gives no beta-equilibrium solution for y* = 0.65-0.75 with the declared (J, L) contact, and M_max = 2.26 Msun, R(1.44) = 13.1 km, chi2 = 17.2 at y* = 0.80.",
+  "control": "without the pion and with g' = 1/3 the low band (y* below 0.7585 / 0.7568) has stable quintics, but at a5_min they have Q0 = -3e3 to -9e6 MeV, a discontinuous design branch that is not the ground state, and M_max = 2.4-3.0 Msun",
+  "S_noRho_vs_density_gp0": [
+   {
+    "x": 0.5,
+    "y": 0.9086416645953769,
+    "S_noRho": 6.472063347439145,
+    "T_kin": 8.270342649396241,
+    "S_Fock": -1.7982793019570957
+   },
+   {
+    "x": 1.0,
+    "y": 0.84,
+    "S_noRho": 9.567063862283701,
+    "T_kin": 13.86922089378763,
+    "S_Fock": -4.302157031503928
+   },
+   {
+    "x": 1.5,
+    "y": 0.7830056606063472,
+    "S_noRho": 12.09301644523248,
+    "T_kin": 19.01911659786497,
+    "S_Fock": -6.926100152632488
+   },
+   {
+    "x": 2.0,
+    "y": 0.7392384397974188,
+    "S_noRho": 14.264375114970115,
+    "T_kin": 23.79810910152407,
+    "S_Fock": -9.533733986553955
+   },
+   {
+    "x": 3.0,
+    "y": 0.697839446933391,
+    "S_noRho": 17.073305800571873,
+    "T_kin": 31.67995566559343,
+    "S_Fock": -14.606649865021556
+   },
+   {
+    "x": 4.0,
+    "y": 0.6960066731053275,
+    "S_noRho": 17.846743448423833,
+    "T_kin": 37.467903983351235,
+    "S_Fock": -19.6211605349274
+   },
+   {
+    "x": 6.0,
+    "y": 0.7262948882285724,
+    "S_noRho": 15.997522983414212,
+    "T_kin": 45.72111711415851,
+    "S_Fock": -29.723594130744296
+   },
+   {
+    "x": 8.0,
+    "y": 0.764383386322994,
+    "S_noRho": 11.90512763462381,
+    "T_kin": 51.83351228315536,
+    "S_Fock": -39.92838464853155
+   }
+  ]
+ },
+ "test_table": [
+  {
+   "residual": "R1 isovector (S(n0) = 31.7 +- 3.2, L 35-65, no empirical J window)",
+   "before": "13.44 / 13.87 / 14.57 MeV (y*=0.87 / 0.84 / corner), L 29.3-34.8",
+   "after": "pion g'=1/3: 16.70 / 16.98 (island moved to y*=0.8507) / 17.98 MeV, L 36.5 / 38.6 / 42.7; pion g'=0: 9.13 / 9.57 / 9.94 MeV; full RHF (g'=1/3): 13.26 / 12.59 / 13.32 MeV",
+   "direction": "right for g'=1/3 (+3.3 MeV of +18), wrong for g'=0 (-4.3), null at full RHF level",
+   "pass": false
+  },
+  {
+   "residual": "R2 spin-orbit (16O 1p in [4.9, 7.4] MeV)",
+   "before": "1.450 / 1.040 / 1.482 MeV (island / 0.87 / corner)",
+   "after": "pion g'=1/3, jets re-solved: 1.205 (island at y*=0.8507; 1.298 without pion at the same y*) / 0.949 / 1.378 MeV; g'=0: 1.020 / 0.648 / 1.056 MeV; pion self-energies Sigma_0 - Sigma_S = -0.15 MeV (needs about +400 to +480 MeV)",
+   "direction": "wrong: -0.09 to -0.10 MeV at equal y* for g'=1/3, -0.24 MeV for the island member including its forced move to y*=0.8507",
+   "pass": false
+  },
+  {
+   "residual": "R3 surface (gradient scale)",
+   "before": "a_s 73-93 MeV, t 8.5-11.6 fm",
+   "after": "not computed: the pion has no mean field and the Fock term was evaluated in homogeneous matter only",
+   "direction": "none at this level",
+   "pass": false
+  },
+  {
+   "residual": "R4 crust moment of inertia",
+   "before": "0.34 percent",
+   "after": "not computed (same reason)",
+   "direction": "none at this level",
+   "pass": false
+  },
+  {
+   "residual": "R5 stars (R(1.44) down 0.3 km at M_max about 2.0, or M_max up 0.1 at fixed radius)",
+   "before": {
+    "island y*=0.84": {
+     "M_max": 2.0386,
+     "R_14_km": 12.672,
+     "R_144_km_static": 12.679,
+     "Lambda_14": 542.7,
+     "chi2_8": 13.88,
+     "p_nu8": 0.0849,
+     "p_replicated": 0.091915,
+     "z": {
+      "Mmax": -0.59,
+      "R207": -0.87,
+      "R134": 0.02,
+      "R1418": 1.44,
+      "R144": 2.54,
+      "Lt": 1.34,
+      "S2": -0.2,
+      "EPNM": 0.44
+     },
+     "max_abs_z_PIT": 2.51,
+     "box2": false,
+     "fails2": [
+      "R144"
+     ],
+     "S2_0p10": 25.302,
+     "EPNM_0p10": 11.839,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": null
+    },
+    "no-pion a5_min member at y*=0.8507 (like-for-like)": {
+     "M_max": 1.9578,
+     "R_144_km_static": 12.437,
+     "chi2_8": 16.03
+    },
+    "y*=0.87": {
+     "M_max": 1.7882,
+     "R_14_km": 11.923,
+     "R_144_km_static": 11.88,
+     "Lambda_14": 331.3,
+     "chi2_8": 30.82,
+     "p_nu8": 0.000151,
+     "p_replicated": 0.000265,
+     "z": {
+      "Mmax": -4.17,
+      "R207": -2.14,
+      "R134": -0.56,
+      "R1418": 0.62,
+      "R144": 1.72,
+      "Lt": 0.41,
+      "S2": -0.34,
+      "EPNM": 0.36
+     },
+     "max_abs_z_PIT": 4.17,
+     "box2": false,
+     "fails2": [
+      "R207",
+      "Mmax"
+     ],
+     "S2_0p10": 25.156,
+     "EPNM_0p10": 11.761,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": null
+    },
+    "corner": {
+     "M_max": 2.0132,
+     "R_14_km": 12.285,
+     "R_144_km_static": 12.3,
+     "Lambda_14": 478.6,
+     "chi2_8": 52.64,
+     "p_nu8": 1.26e-08,
+     "p_replicated": 0.0,
+     "z": {
+      "Mmax": -0.95,
+      "R207": -1.13,
+      "R134": -0.32,
+      "R1418": 1.03,
+      "R144": 2.14,
+      "Lt": 1.04,
+      "S2": 3.61,
+      "EPNM": 5.29
+     },
+     "max_abs_z_PIT": 5.29,
+     "box2": false,
+     "fails2": [
+      "R144",
+      "S2",
+      "EPNM"
+     ],
+     "S2_0p10": 29.107,
+     "EPNM_0p10": 16.689,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": null
+    }
+   },
+   "after": {
+    "island at y*=0.8507, g'=1/3, J and L kept (R)": {
+     "M_max": 1.9934,
+     "R_14_km": 12.564,
+     "R_144_km_static": 12.566,
+     "Lambda_14": 509.5,
+     "chi2_8": 14.73,
+     "p_nu8": 0.0645,
+     "p_replicated": 0.0748,
+     "z": {
+      "Mmax": -1.24,
+      "R207": -1.05,
+      "R134": -0.06,
+      "R1418": 1.32,
+      "R144": 2.42,
+      "Lt": 1.19,
+      "S2": -0.18,
+      "EPNM": 0.31
+     },
+     "max_abs_z_PIT": 2.4,
+     "box2": false,
+     "fails2": [
+      "R144"
+     ],
+     "S2_0p10": 25.321,
+     "EPNM_0p10": 11.707,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    },
+    "same, chain contact kept (K)": {
+     "M_max": 1.9972,
+     "R_14_km": 12.655,
+     "R_144_km_static": 12.654,
+     "Lambda_14": 521.0,
+     "chi2_8": 25.9,
+     "p_nu8": 0.00109,
+     "p_replicated": 0.00147,
+     "z": {
+      "Mmax": -1.18,
+      "R207": -0.99,
+      "R134": 0.02,
+      "R1418": 1.42,
+      "R144": 2.52,
+      "Lt": 1.25,
+      "S2": 2.06,
+      "EPNM": 2.55
+     },
+     "max_abs_z_PIT": 2.55,
+     "box2": false,
+     "fails2": [
+      "R144",
+      "S2",
+      "EPNM"
+     ],
+     "S2_0p10": 27.562,
+     "EPNM_0p10": 13.947,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    },
+    "same, no contact (Z)": {
+     "M_max": 2.0116,
+     "R_14_km": 12.561,
+     "R_144_km_static": 12.567,
+     "Lambda_14": 524.4,
+     "chi2_8": 366.08,
+     "p_nu8": 3.34e-74,
+     "p_replicated": 0.0,
+     "z": {
+      "Mmax": -0.98,
+      "R207": -0.99,
+      "R134": -0.07,
+      "R1418": 1.32,
+      "R144": 2.42,
+      "Lt": 1.26,
+      "S2": -13.51,
+      "EPNM": -13.03
+     },
+     "max_abs_z_PIT": 8.21,
+     "box2": false,
+     "fails2": [
+      "R144",
+      "S2",
+      "EPNM"
+     ],
+     "S2_0p10": 11.988,
+     "EPNM_0p10": -1.627,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    },
+    "y*=0.87 a5_min, g'=1/3 (R)": {
+     "M_max": 1.8341,
+     "R_14_km": 12.094,
+     "R_144_km_static": 12.065,
+     "Lambda_14": 373.9,
+     "chi2_8": 25.24,
+     "p_nu8": 0.00142,
+     "p_replicated": 0.002305,
+     "z": {
+      "Mmax": -3.51,
+      "R207": -1.85,
+      "R134": -0.43,
+      "R1418": 0.81,
+      "R144": 1.91,
+      "Lt": 0.6,
+      "S2": -0.28,
+      "EPNM": 0.24
+     },
+     "max_abs_z_PIT": 3.51,
+     "box2": false,
+     "fails2": [
+      "Mmax"
+     ],
+     "S2_0p10": 25.216,
+     "EPNM_0p10": 11.639,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    },
+    "corner a5_min, g'=1/3 (R)": {
+     "M_max": 2.0425,
+     "R_14_km": 12.414,
+     "R_144_km_static": 12.434,
+     "Lambda_14": 521.0,
+     "chi2_8": 56.83,
+     "p_nu8": 1.94e-09,
+     "p_replicated": 0.0,
+     "z": {
+      "Mmax": -0.54,
+      "R207": -0.91,
+      "R134": -0.22,
+      "R1418": 1.17,
+      "R144": 2.28,
+      "Lt": 1.22,
+      "S2": 3.96,
+      "EPNM": 5.46
+     },
+     "max_abs_z_PIT": 5.46,
+     "box2": false,
+     "fails2": [
+      "R144",
+      "S2",
+      "EPNM"
+     ],
+     "S2_0p10": 29.458,
+     "EPNM_0p10": 16.857,
+     "ground_state_beta_ok": false,
+     "stable_U": true,
+     "gs_SNM_scan_ok": false
+    },
+    "island y*=0.84, g'=0 (R)": {
+     "M_max": 1.9708,
+     "R_14_km": 12.26,
+     "R_144_km_static": 12.247,
+     "Lambda_14": 418.3,
+     "chi2_8": 14.66,
+     "p_nu8": 0.0662,
+     "p_replicated": 0.07874,
+     "z": {
+      "Mmax": -1.56,
+      "R207": -1.65,
+      "R134": -0.31,
+      "R1418": 0.99,
+      "R144": 2.09,
+      "Lt": 0.79,
+      "S2": -0.43,
+      "EPNM": 0.07
+     },
+     "max_abs_z_PIT": 2.06,
+     "box2": false,
+     "fails2": [
+      "R144"
+     ],
+     "S2_0p10": 25.073,
+     "EPNM_0p10": 11.471,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    },
+    "island y*=0.84, full RHF g'=0 (R)": {
+     "M_max": 1.9898,
+     "R_14_km": 12.328,
+     "R_144_km_static": 12.319,
+     "Lambda_14": 438.2,
+     "chi2_8": 13.86,
+     "p_nu8": 0.0856,
+     "p_replicated": 0.09946,
+     "z": {
+      "Mmax": -1.29,
+      "R207": -1.54,
+      "R134": -0.25,
+      "R1418": 1.07,
+      "R144": 2.17,
+      "Lt": 0.88,
+      "S2": -0.34,
+      "EPNM": 0.26
+     },
+     "max_abs_z_PIT": 2.14,
+     "box2": false,
+     "fails2": [
+      "R144"
+     ],
+     "S2_0p10": 25.161,
+     "EPNM_0p10": 11.663,
+     "ground_state_beta_ok": true,
+     "stable_U": true,
+     "gs_SNM_scan_ok": true
+    }
+   },
+   "direction": "at the same y* (0.8507) the pion moves M_max by +0.036 Msun and R(1.44) by +0.13 km, along the family's own mass-radius line; nothing moves across it",
+   "pass": false
+  },
+  {
+   "residual": "R6 stability bound (root of R2): lowest y* of the stable island, centre windows",
+   "before": "0.8358 (forbidden band 0.7585-0.8358)",
+   "after": {
+    "g'=1/3": [
+     [
+      0.7568,
+      "stable below"
+     ],
+     [
+      0.84652,
+      "stable above"
+     ],
+     [
+      0.94429,
+      "stable below"
+     ]
+    ],
+    "g'=0": [
+     [
+      0.90455,
+      "stable below"
+     ]
+    ],
+    "g'=0.6 (sensitivity)": [
+     [
+      0.72367,
+      "stable below"
+     ],
+     [
+      0.88137,
+      "stable above"
+     ],
+     [
+      0.9451,
+      "stable below"
+     ]
+    ],
+    "no pion (reproduces session)": [
+     [
+      0.7585,
+      "stable below"
+     ],
+     [
+      0.83579,
+      "stable above"
+     ],
+     [
+      0.94038,
+      "stable below"
+     ]
+    ],
+    "corner windows g'=1/3": [
+     [
+      0.76658,
+      "stable below"
+     ],
+     [
+      0.82768,
+      "stable above"
+     ],
+     [
+      0.94194,
+      "stable below"
+     ]
+    ],
+    "corner windows no pion": [
+     [
+      0.77151,
+      "stable below"
+     ],
+     [
+      0.81391,
+      "stable above"
+     ],
+     [
+      0.93791,
+      "stable below"
+     ]
+    ]
+   },
+   "direction": "wrong for g'=1/3 (bound rises to 0.8465; the declared island member at 0.84 and the quartic at 0.87 lose global stability); for g'=0 the forbidden band closes, see alternative_gp0_low_effective_mass",
+   "pass": false
+  },
+  {
+   "anchor": "A1 sub-saturation matter (S_2(0.10) = 25.5 +- 1.0, E_PNM(0.10) = 11.4 +- 1.0)",
+   "before": "25.30 / 11.84 (island), 25.16 / 11.76 (0.87)",
+   "after": {
+    "K (chain contact kept, pion added)": "27.48-27.62 / 13.90-14.01 MeV for the island and y*=0.87 members: outside (z +2.0 to +2.1 and +2.5 to +2.6); corner 31.4 / 18.8 (its baseline 29.1 / 16.7 was already outside)",
+    "R (contact re-derived to keep the declared J, L)": "25.22-25.40 / 11.63-11.79 MeV for the island and y*=0.87 members: inside; corner 29.5 / 16.9",
+    "Z (no contact)": "11.89-12.04 / -0.58 to -1.69 MeV: far outside"
+   },
+   "intact": "only if the empirical isovector contact is re-fitted around the pion (R); not intact under K or Z"
+  },
+  {
+   "anchor": "A2 joint likelihood (8 terms, SLy crust, rotation)",
+   "before": "island chi2 13.88 (p 0.085), y*=0.87 30.82, corner 52.64",
+   "after": "island-type member with pion g'=1/3 (R): chi2 14.73 (p 0.065; 16.03 without pion at the same y*); K: 25.90; Z: 366; y*=0.87 (R): 25.24; corner (R): 56.83 with an abnormal ground state at x = 0.1",
+   "intact": "not improved for the best member (13.88 -> 14.73); the J0614 radius z stays +2.4, the J0740 mass z goes from -0.6 to -1.2"
+  }
+ ],
+ "known_particle_match": {
+  "statement": "no parameter was fitted, so there is nothing to match. The reverse inference is a mismatch: closing R1 with this exchange alone would need f^2/4pi = 0.41 (measured 0.075) or a contact strength g' = 0.97 (empirical 0.6-0.7); closing R2 would need Sigma_0 - Sigma_S of +400 to +480 MeV where the pion gives -0.15 MeV.",
+  "needed_vs_measured": {
+   "f2_over_4pi_needed_at_gp1/3": 0.409,
+   "measured": 0.075,
+   "contact_g_prime_needed_at_f2_0.075": 0.97,
+   "empirical_Landau_Migdal_g_prime": "0.6-0.7",
+   "note": "dS_pi is linear in f^2 and in g' (island member, fixed y): dS = -4.30 + 22.72 g' MeV"
+  }
+ },
+ "anchors_intact": {
+  "A1": "intact only under bookkeeping R (rho contact re-derived to keep J = 32, L = 50): S_2(0.10) = 25.2-25.4, E_PNM(0.10) = 11.6-11.8 MeV. Not intact if the pion is simply added (27.5-27.6 / 13.9-14.0 MeV) or if it replaces the contact (11.9-12.0 / -1.6 MeV).",
+  "A2": "not improved: best pion-inclusive member chi2 14.73 (p 0.065) vs 13.88 (p 0.085) for the island member; the J0740-mass / J0614-radius tension is unchanged (z -1.2 / +2.4)",
+  "saturation": "kept by re-solving the jet; without re-solving, saturation moves to n = 0.184 fm^-3, E/A = -22.5 MeV (g' = 1/3)",
+  "stability_rule": "broken for the declared members with g' = 1/3: no stable quintic at y* = 0.84, quartic at 0.87 unbounded, corner with its Q0 unstable; restored only by moving to a5_min at y* >= 0.8465"
+ },
+ "joint_verdict": {
+  "member": "island member moved to the new stability edge (y* = 0.8507, a5_min), pion g' = 1/3, declared J = 32, L = 50 kept by re-deriving the rho contact",
+  "S_stars": {
+   "chi2_8": 14.73,
+   "p_nu8": 0.0645,
+   "p_replicated": 0.0748,
+   "max_abs_z_PIT": 2.4,
+   "z": {
+    "Mmax": -1.24,
+    "R207": -1.05,
+    "R134": -0.06,
+    "R1418": 1.32,
+    "R144": 2.42,
+    "Lt": 1.19,
+    "S2": -0.18,
+    "EPNM": 0.31
+   },
+   "box_2sigma": false,
+   "fails_2sigma": [
+    "R144"
+   ],
+   "pass": false
+  },
+  "N_nuclear": {
+   "S2_0p10": 25.321,
+   "EPNM_0p10": 11.707,
+   "pass": true,
+   "note": "by construction of the re-derived contact; fails with the chain contact kept or with no contact"
+  },
+  "O_spin_orbit": {
+   "16O_1p_MeV": 1.205,
+   "pass": false
+  },
+  "G_ground_state": {
+   "SNM_scan_ok": true,
+   "beta_branch_ok": true,
+   "pass": true
+  },
+  "V_vacuum": {
+   "q_min_over_a2": -9.404444831914283e-14,
+   "pass": true,
+   "note": "a5_min boundary member (q_min = 0 to rounding), as the original island member"
+  },
+  "zero_parameter_version_no_contact": {
+   "M_max": 2.0116,
+   "R_14_km": 12.561,
+   "R_144_km_static": 12.567,
+   "Lambda_14": 524.4,
+   "chi2_8": 366.08,
+   "p_nu8": 3.34e-74,
+   "p_replicated": 0.0,
+   "z": {
+    "Mmax": -0.98,
+    "R207": -0.99,
+    "R134": -0.07,
+    "R1418": 1.32,
+    "R144": 2.42,
+    "Lt": 1.26,
+    "S2": -13.51,
+    "EPNM": -13.03
+   },
+   "max_abs_z_PIT": 8.21,
+   "box2": false,
+   "fails2": [
+    "R144",
+    "S2",
+    "EPNM"
+   ],
+   "S2_0p10": 11.988,
+   "EPNM_0p10": -1.627,
+   "ground_state_beta_ok": true,
+   "stable_U": true,
+   "gs_SNM_scan_ok": true
+  },
+  "converges": false,
+  "verdict_on_convergence": "does_not_converge"
+ },
+ "predictions": [
+  "Landau effective mass at saturation falls from 0.885 M to 0.794 M when the pion Fock term (g' = 1/3) is added (0.812 M for g' = 0); the Dirac mass does not fall.",
+  "With the pion as the only isovector potential source: S(n0) = 16.7-18.0 MeV, L = 36.5-42.7 MeV, K_sym = -26 to +1 MeV, S_2(0.10) = 12.0 MeV, E_PNM/N(0.10) = -1.6 MeV (neutron matter bound). Ab-initio neutron matter (11.4 +- 1.0 MeV at 0.10 fm^-3) already excludes this.",
+  "Spin-orbit splittings of the pion-inclusive island member (y* = 0.8507): 16O 1p 1.21, 40Ca 1d 1.30, 208Pb 1i 1.62, 208Pb 3p 0.17 MeV (data about 6.2, 6.3, 5.8, 0.9 MeV).",
+  "Stars of that member with the declared J, L: M_max = 1.993 Msun, R_1.4 = 12.56 km, Lambda_1.4 = 510.",
+  "Lowest effective mass of a globally stable NVG potential with the pion included: m*/M = 0.8465 (g' = 1/3), 0.8814 (g' = 0.6).",
+  "If the zero-range term were physical (g' = 0), stable ground-state members would exist down to m*/M = 0.65 with 16O 1p up to 4.4 MeV, S(n0) = 9-13 MeV and E_pi/A = +16 MeV at saturation; Gamow-Teller systematics (g' about 0.6, from memory) disfavour that choice."
+ ],
+ "caveats": [
+  "First order in the exchange with Hartree spinors and a re-stationarised scalar field; the momentum dependence of full RHF enters only through first-order self-energies in the spin-orbit test.",
+  "Only the Fock term was computed. Second-order pion exchange (iterated one-pion exchange, tensor correlations, two-pion exchange with Delta) is the main pion contribution to binding and to the symmetry energy in ab-initio and chiral calculations; it needs at least one regulator and is outside a zero-parameter mean-field-plus-Fock test. The verdict covers the Fock level only.",
+  "Static propagator and vertex, point vertices (no form factor), free pion mass at all densities.",
+  "The zero-range treatment is a discrete choice with opposite signs of the result: -6.2 MeV per nucleon and +3.3 MeV in S for g' = 1/3, +15.9 MeV and -4.3 MeV for g' = 0. The primary choice was declared before computing.",
+  "Bookkeeping R keeps the empirical J and L by re-deriving the rho contact; it is not a zero-parameter isovector sector. The zero-parameter version (Z) fails both anchors.",
+  "The a5_min members sit on the stability edge (q_min = 0 to rounding), like the original island member. The shifted island member (y* = 0.8507) is a new member, compared with a no-pion control at the same y*.",
+  "Literature magnitudes (Bouyssy et al. 1987 kernels, PKO1 coupling and quenching, Nijmegen f^2, the closed form of the one-pion-exchange Fock energy) are quoted from memory; no internet. The numerical checks do not depend on them.",
+  "Full-RHF 'medium'-mass variant: the forward check fails for the quintic members (K 262.8 instead of 260 for the corner, Q0 mismatch), so it is reported in pion_jet.json but not used.",
+  "Spin-orbit numbers come from the validated LDA procedure (first-order splitting with Woods-Saxon-fitted wave functions); the pion tensor term was not computed for 208Pb.",
+  "R3 (surface) and R4 (crust) were not computed with the pion."
+ ],
+ "verdict": "not_this_field",
+ "verdict_text": "With its measured coupling and zero unknown parameters, the pion Fock term is not the missing element for R1 or for R2. R1: with the zero-range term removed it adds +3.3 MeV to S(n0) (13.4-14.6 -> 16.7-18.0 MeV; L = 36.5-42.7 MeV), 18 percent of the +18 MeV needed; with the zero-range term kept it subtracts 4.3 MeV. At the full RHF level of the action (its own scalar and vector Fock terms plus the pion) S(n0) = 12.6-13.3 MeV, below the Hartree value. Without the empirical contact neutron matter is bound at 0.10 fm^-3. R2: the pion self-energies give Sigma_0 - Sigma_S = -0.15 MeV where +400 to +480 MeV is needed; the 16O 1p splitting goes from 1.04-1.48 to 0.95-1.38 MeV. The stability bound moves the wrong way (m*/M >= 0.8358 becomes >= 0.8465), and the declared island member at y* = 0.84 and the quartic at 0.87 lose global stability. R5 and the joint likelihood do not improve (chi2 13.88 -> 14.73 for the island-type member; J0614 radius z +2.4, J0740 mass z -1.2). The sub-saturation anchors survive only if the empirical isovector contact is re-fitted around the pion. The declared alternative (zero-range term kept) closes the forbidden effective-mass band and reaches 16O 1p = 4.4 MeV at m*/M = 0.65, still below the window, while making R1 worse; that choice is disfavoured by Gamow-Teller systematics (g' about 0.6).",
+ "files": {
+  "dir": "SCR/round4/pion",
+  "physics": "SCR/round4/pion/pion_fock.py",
+  "validation": [
+   "SCR/round4/pion/validate_pion.py",
+   "SCR/round4/pion/validation.json"
+  ],
+  "task1": [
+   "SCR/round4/pion/pion_n0.py",
+   "SCR/round4/pion/pion_n0.json"
+  ],
+  "jets": [
+   "SCR/round4/pion/pion_jet.py",
+   "SCR/round4/pion/pion_jet.json",
+   "SCR/round4/pion/pion_jet2.py",
+   "SCR/round4/pion/pion_jet2.json"
+  ],
+  "stars": [
+   "SCR/round4/pion/pion_stars.py",
+   "SCR/round4/pion/pion_stars.json",
+   "SCR/round4/pion/pion_like.py",
+   "SCR/round4/pion/pion_like.json"
+  ],
+  "spin_orbit": [
+   "SCR/round4/pion/pion_solib.py",
+   "SCR/round4/pion/pion_so.py",
+   "SCR/round4/pion/pion_so.json"
+  ],
+  "low_effective_mass": [
+   "SCR/round4/pion/pion_lowy.py",
+   "SCR/round4/pion/pion_lowy.json",
+   "SCR/round4/pion/pion_diag.py",
+   "SCR/round4/pion/pion_diag.json"
+  ],
+  "assembly": "SCR/round4/pion/make_result.py",
+  "reused_unchanged": [
+   "missing/fock/fock_exchange.py",
+   "missing/fock/fock_propagate.py",
+   "closure/nvg_forward_band.py",
+   "closure/sly_crust.py",
+   "creative/likelihood/lk_core.py",
+   "creative/likelihood/analyze.py",
+   "creative/spin_orbit/so_core.py",
+   "rmf/ddme2/ddme2_protocol.py",
+   "rmf/nl3/nl3_heldout.py"
+  ]
+ },
+ "wall_times_s": {
+  "validation": 0.5902788639068604,
+  "pion_n0": 3.435595989227295,
+  "pion_jet": 610.776912689209,
+  "pion_jet_first_aborted_run": 100,
+  "pion_jet2": 244.43099093437195,
+  "pion_stars": 457,
+  "pion_so": 197.3258204460144,
+  "pion_lowy": 207.79919981956482,
+  "pion_diag": 114.09268712997437,
+  "pion_like": 8,
+  "total_compute_min_approx": 33,
+  "processes": "one at a time"
+ },
+ "repository": {
+  "path": "/home/user/vmf",
+  "git_status_short": "",
+  "tracked_files_modified": false
+ },
+ "written_utc": "2026-11-13T13:09:07Z"
+}
