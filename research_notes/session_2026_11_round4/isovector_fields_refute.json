@@ -1,0 +1,288 @@
+{
+ "target": "SCR/round4/isovector_fields/",
+ "checks": [
+  {
+   "check": "1. KSRF rho: J, L, S_2(0.10), E_PNM(0.10) recomputed with independent code (own Fermi integrals checked against quadrature to 4e-16, own minimisation in y, S_2 from a numerical second derivative in delta); tau vs tau/2 convention",
+   "result": "holds",
+   "evidence": {
+    "own_code_[y084,y087]": {
+     "J_M0": [
+      22.927,
+      22.495
+     ],
+     "J_M1": [
+      26.707,
+      25.404
+     ],
+     "L_M0": [
+      59.66,
+      56.45
+     ],
+     "L_M1": [
+      83.62,
+      72.37
+     ],
+     "S2_0p10_M0": [
+      15.38,
+      15.23
+     ],
+     "S2_0p10_M1": [
+      16.83,
+      16.46
+     ],
+     "EPNM_0p10_M0": [
+      1.92,
+      1.84
+     ],
+     "EPNM_0p10_M1": [
+      3.33,
+      3.04
+     ]
+    },
+    "target_values": "J 22.927/22.495 (M0), 26.707/25.404 (M1); L 59.66/56.45, 83.62/72.37; S2(0.10) 15.38/15.23, 16.83/16.46; E_PNM 1.92/1.84, 3.33/3.04 - all reproduced to 0.01 MeV",
+    "member_saturation_own_code": {
+     "y084": {
+      "EA": -16.00000000000091,
+      "y": 0.839999974768043,
+      "n_dEA_dn(=P/n)": 2.368475785867001e-10,
+      "K": 239.99998856538696
+     },
+     "y087": {
+      "EA": -16.000000000001137,
+      "y": 0.8699999997611934,
+      "n_dEA_dn(=P/n)": 1.6105635343895605e-10,
+      "K": 240.00000323098902
+     }
+    },
+    "convention": {
+     "KSRF": "g = m_rho/(sqrt2 f_pi) = 5.952 is g_rho-pi-pi, the coupling to the isospin current; for the nucleon that is (g/2) tau, so S_rho = g^2 n/(8 m_rho^2) = 9.06 MeV at 0.16 fm^-3. Correct.",
+     "width_check": "Gamma(rho->pi pi) = g^2 p^3/(6 pi m^2) = 147.9 MeV with g = 5.952 vs 149.1 measured",
+     "NL3_anchor": "NL3's g_rho = 4.474 gives J = 37.36 only as a full-tau coupling (8.948 in tau/2) and 22.70 if misread as tau/2; published 37.4. The formula C n/8 with a tau/2 coupling is therefore validated.",
+     "if_factor_2_were_wrong": "J = 50.1 / 49.7 (S_rho = 36.2 MeV); not the case"
+    },
+    "J_window_28.5_34.9": {
+     "best_declared": "26.71 (y084, m_rho = qW), z = -1.56",
+     "with_KSRF_bracket_g_6.0": [
+      26.91,
+      25.6
+     ],
+     "note": "'No declared option reaches the J window' holds for the 1-sigma window; the best option is only 1.5 sigma low in J, so J alone does not exclude it at 2 sigma. It is excluded by L = 83.6 (> 65) and by A1 (S2(0.10) z = -8.7)."
+    }
+   }
+  },
+  {
+   "check": "2. delta meson: sign and size against Liu-Greco-Baran-Colonna-Di Toro 2002 / Kubis-Kutschera 1997",
+   "result": "holds",
+   "evidence": {
+    "formula": "E_sym = kF^2/(6 EF*) + f_rho n/2 - (f_delta/2) (M*/EF*)^2 n / (1 + f_delta A(kF, M*)), A = 3 (n_s/M* - n/EF*) (checked by quadrature)",
+    "per_unit_g2_4pi_MeV_[y084,y087]": {
+     "leading": [
+      -7.194,
+      -7.243
+     ],
+     "full_formula_alpha_1": [
+      -7.185,
+      -7.235
+     ],
+     "own_numerical_second_derivative_alpha_1": [
+      -7.185,
+      -7.235
+     ]
+    },
+    "Liu2002_parameter_sets_through_same_formula": {
+     "NLrho (f_rho 0.95, no delta)": 30.34,
+     "NLrho-delta (f_rho 3.15, f_delta 2.5 fm^2, M* = 0.75 M)": 30.71,
+     "published_a4": 30.5,
+     "delta_term_in_NLrho-delta_MeV": -34.35
+    },
+    "note": "sign negative for any real coupling; -7.2 MeV per unit g_delta^2/4pi (7.19-7.24). In the textbook use the rho coupling is refitted upward to compensate; here the rho is fixed (KSRF), so the delta only lowers J."
+   }
+  },
+  {
+   "check": "3. density exponent of the missing isovector potential energy; robustness; comparison with standard models",
+   "result": "refuted",
+   "evidence": {
+    "central_values_reproduced": {
+     "S_pot_n0_[y084,y087]": [
+      17.83,
+      18.26
+     ],
+     "S_pot_0p10_from_S2": [
+      15.78,
+      15.93
+     ],
+     "S_pot_0p10_from_EPNM": [
+      15.15,
+      15.22
+     ],
+     "exponent_from_S2": [
+      0.26,
+      0.291
+     ],
+     "exponent_from_EPNM": [
+      0.347,
+      0.387
+     ]
+    },
+    "exponent_with_uncertainty": {
+     "y084": "0.26 +- 0.40 (J: +-0.38, S2(0.10): +-0.13); MC 68% [-0.18, 0.64], 95% [-0.72, 0.98]",
+     "y087": "0.29 +- 0.40; MC 68% [-0.14, 0.66], 95% [-0.66, 1.00]",
+     "with_both_A1_terms": "0.30 +- 0.39 / 0.34 +- 0.39",
+     "P(exponent >= 1)": [
+      0.01902,
+      0.0220975
+     ],
+     "P(exponent <= 0)": [
+      0.2712875,
+      0.2427475
+     ]
+    },
+    "what_is_wrong": "the quoted range 0.26-0.29 is the spread between the two members only. The data uncertainty (dominated by J = 31.7 +- 3.2) is +-0.40, fourteen times larger. The implied coupling law is g^2 ~ n^(-0.72 +- 0.40), not 'n^-0.7'.",
+    "linear_contact_test": {
+     "J+S2(0.10)": {
+      "y084": {
+       "J_fit": 37.64,
+       "S2_0p10_fit": 24.57,
+       "L_fit": 103.8,
+       "delta_chi2": 4.3,
+       "sigma": 2.07
+      },
+      "y087": {
+       "J_fit": 37.48,
+       "S2_0p10_fit": 24.6,
+       "L_fit": 101.4,
+       "delta_chi2": 4.07,
+       "sigma": 2.02
+      }
+     },
+     "J+S2+EPNM": {
+      "y084": {
+       "delta_chi2": 4.15,
+       "sigma": 2.04,
+       "g_rho_tau_half": 9.68
+      },
+      "y087": {
+       "delta_chi2": 3.85,
+       "sigma": 1.96,
+       "g_rho_tau_half": 9.73
+      }
+     },
+     "reading": "a constant-coupling contact with a free strength (g_rho(tau/2) = 9.6-9.7, i.e. NL3-like: J = 37.5-37.8, L = 101-104) is disfavoured at 2.0-2.1 sigma by J and A1. It is excluded outright only by the session's L window 35-65 (local slope at n0 allowed 0.05-0.61 / 0.10-0.65); against L = 58.7 +- 28.1 the L of a linear contact at J = 31.7 (84-86) is +0.9..+1.0 sigma."
+    },
+    "standard_models_same_definition (S_pot = S_2 - kF^2/(6 EF*), secant exponent)": {
+     "DD-ME2": {
+      "J": 32.3,
+      "S2_0p10": 25.65,
+      "S_pot_n0": 13.61,
+      "S_pot_0p10": 13.18,
+      "ratio_0p10_over_n0": 0.968,
+      "exponent_0p10_to_n0": 0.077,
+      "exponent_0p10_to_0p16": 0.051,
+      "local_slope_at_n0": -0.129
+     },
+     "TW99": {
+      "J": 32.77,
+      "S2_0p10": 25.38,
+      "S_pot_n0": 13.53,
+      "S_pot_0p10": 12.64,
+      "ratio_0p10_over_n0": 0.934,
+      "exponent_0p10_to_n0": 0.161,
+      "exponent_0p10_to_0p16": 0.141,
+      "local_slope_at_n0": -0.03
+     },
+     "DD2": {
+      "J": 31.67,
+      "S2_0p10": 24.9,
+      "S_pot_n0": 12.94,
+      "S_pot_0p10": 12.22,
+      "ratio_0p10_over_n0": 0.944,
+      "exponent_0p10_to_n0": 0.144,
+      "exponent_0p10_to_0p16": 0.111,
+      "local_slope_at_n0": -0.038
+     },
+     "FSUGold": {
+      "J": 32.59,
+      "S2_0p10": 25.57,
+      "S_pot_n0": 15.12,
+      "S_pot_0p10": 13.47,
+      "ratio_0p10_over_n0": 0.891,
+      "exponent_0p10_to_n0": 0.291,
+      "exponent_0p10_to_0p16": 0.281,
+      "local_slope_at_n0": 0.236
+     },
+     "NL3": {
+      "J": 37.4,
+      "S2_0p10": 25.09,
+      "S_pot_n0": 19.58,
+      "S_pot_0p10": 13.21,
+      "ratio_0p10_over_n0": 0.675,
+      "exponent_0p10_to_n0": 1.0,
+      "exponent_0p10_to_0p16": 1.0,
+      "local_slope_at_n0": 1.0
+     }
+    },
+    "NVG_required": {
+     "ratio_Spot_0p10_over_0p16": [
+      0.885,
+      0.872
+     ],
+     "exponent": "0.26 +- 0.40 / 0.29 +- 0.40"
+    },
+    "ordinary_or_unusual": "ordinary. DD-ME2 0.05-0.08, DD2 0.11-0.14, TW99 0.14-0.16, FSUGold 0.28-0.29, NL3 (constant coupling) 1.00. NVG's requirement coincides with FSUGold and is within 0.5 sigma of the DD models. What is specific to NVG is the size: S_pot(n0) = 17.8-18.3 MeV against 12.9-15.1 in the standard sets, because m*/M = 0.84-0.87 leaves a small kinetic part (13.4-13.9 vs 17.5-19.2 MeV).",
+    "not_new_information": "the earlier fitted contact (J = 32, L = 50) already had exponent 0.32-0.37; A1's S_2(0.10) = 25.3 was produced by that input. The inferred exponent restates the fitted contact."
+   }
+  },
+  {
+   "check": "4. E_PNM/N(0.10) = -3.75 MeV with no isovector term",
+   "result": "holds",
+   "evidence": {
+    "own_code_[y084,y087]": [
+     -3.745,
+     -3.823
+    ],
+    "E_SNM_0p10": [
+     -14.041,
+     -13.966
+    ],
+    "decomposition_y084_MeV": {
+     "free_gas_E_N (M* = M)": 25.24830777546879,
+     "kinetic_with_Mstar": 28.149111783610238,
+     "mass_shift (y-1) M": -100.02055276596528,
+     "U/n": 42.84300368789601,
+     "vector Cv n/(2 y^2)": 25.282939094851336,
+     "sum": -3.7454981996076953
+    },
+    "decomposition_y087_MeV": {
+     "free_gas_E_N (M* = M)": 25.24830777546879,
+     "kinetic_with_Mstar": 27.72539555884191,
+     "mass_shift (y-1) M": -86.69387685028714,
+     "U/n": 36.55119362964433,
+     "vector Cv n/(2 y^2)": 18.594184381170976,
+     "sum": -3.8231032806299226
+    },
+    "reading": "the kinetic energy is positive (+25.2 MeV free gas, +28.1 with M* = 0.893 M). The negative total comes from the isoscalar scalar-vector attraction (-31.9 MeV at 0.10 fm^-3, the same that gives E_SNM = -14.0), which acts on neutrons as on symmetric matter when no isovector repulsion exists. E_PNM - E_SNM = 10.3 MeV = S_2,kin (9.7) + quartic kinetic terms. The solution is the global minimum in y. Unphysical (bound neutron matter) but correct for the action alone."
+   }
+  },
+  {
+   "check": "5. does the verdict follow (not_this_field; rho tensor claim; 'must weaken strongly with density')",
+   "result": "holds",
+   "evidence": {
+    "not_this_field": "follows: no zero-parameter option closes R1 (J <= 26.7, 26.9 with g = 6.0; where J is closest L = 83.6 > 65) and A1 is lost in all of them (S2(0.10) 9.6-16.8, E_PNM -3.8..+3.3; z -8.7..-16). The delta has the wrong sign for any real coupling.",
+    "information_only": "with a Bonn-strength rho (g(tau/2) = 7.05) and m_rho = qW, J = 31.9 / 30.2 reaches the window, but L = 95-104 and S2(0.10) = 19.6-20.1 still fail; the verdict does not depend on KSRF vs Bonn.",
+    "rho_tensor": "not recomputed; consistent with symmetry (rho_0 ~ n_p - n_n = 0 in 16O) and with step4.log: 16O 1p 1.4497 -> 1.4497; 208Pb n1i/p1h ratio 1.27 -> 1.68 (y084, constant mass) against 1.05 measured. Sign as expected (neutron splitting up, proton down).",
+    "must_weaken_with_density": "qualitatively supported (2.0-2.1 sigma from J and A1; firm with the declared L window), but 'strongly, as n^(0.26-0.29)' overstates the precision, and the requirement is a standard property of modern functionals, not a discriminating prediction.",
+    "A1_wording": "'A1 is lost' and 'R1 is open' are the same statement: A1's S_2(0.10) and E_PNM came from the fitted contact, not from the action."
+   }
+  }
+ ],
+ "overall": "PLAUSIBLE",
+ "overall_note": "All numbers and the verdict not_this_field are confirmed by independent code. The key inference is refuted in its stated precision and novelty: the exponent is 0.26 +- 0.40 / 0.29 +- 0.40, and a sub-linear S_pot is ordinary.",
+ "corrected_statement": "Числа подтверждены независимым кодом: ро-мезон KSRF (g_rho = 5.952 в конвенции tau/2, конвенция верна) даёт J = 22.93 / 22.49 МэВ при постоянной массе и 26.71 / 25.40 МэВ при m_rho = qW; окно J = 28.5-34.9 не достигается (лучший вариант ниже на 1.56 сигма, а его L = 83.6 МэВ выше окна 35-65). Дельта-мезон понижает J на 7.2 МэВ на единицу g_delta^2/4pi, знак и величина совпадают с формулой Лю и др. (2002). Без подогнанного контакта S_2(0.10) = 9.6-16.8 МэВ и E_PNM/N(0.10) = от -3.8 до +3.3 МэВ; значение -3.75 МэВ без изовекторного члена верно: это изоскалярное притяжение (-31.9 МэВ), а не ошибка в кинетической энергии. Вывод 'не это поле' следует. Исправление: недостающая изовекторная потенциальная энергия равна 17.8-18.3 МэВ при n0 и 15.8-15.9 МэВ при 0.10 фм^-3, но показатель степени равен 0.26 +- 0.40 (y*=0.84) и 0.29 +- 0.40 (y*=0.87), а не 0.26-0.29: указанный интервал есть разброс между двумя членами, а погрешность данных (в основном J = 31.7 +- 3.2) в 14 раз больше. Интервал 95%: от -0.7 до +1.0. Контакт с постоянной связью (n^1.0) отвергается на уровне 2.0-2.1 сигма по J и A1 и окончательно только объявленным окном L = 35-65 (такой контакт даёт J = 37.5-37.8, L = 101-104, как NL3). Требование ослабления с плотностью обычное, а не особенное: тот же показатель у DD-ME2 равен 0.05-0.08, у DD2 0.11-0.14, у TW99 0.14-0.16, у FSUGold 0.28-0.29 (у NL3 1.00). Особенность NVG в величине: 17.8-18.3 МэВ при n0 против 12.9-15.1 МэВ в стандартных наборах, потому что при m*/M = 0.84-0.87 кинетическая часть мала (13.4-13.9 МэВ). Этот показатель повторяет ранее подогнанный контакт (J = 32, L = 50, показатель 0.32-0.37) и новой информации не несёт.",
+ "files": {
+  "script": "refute_iso.py",
+  "extra": "refute_extra.py",
+  "numbers": "refute_work.json, refute_extra.json",
+  "log": "refute_iso.log"
+ },
+ "wall_s": 0.5802879333496094
+}
