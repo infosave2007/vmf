@@ -1,0 +1,2352 @@
+{
+ "candidate": "second, light isoscalar scalar chi (condensate chi0 = f_pi) next to the NVG modulus W; forward chain generalised to two scalar fields",
+ "quantum_numbers": {
+  "J^P": "0+",
+  "isospin": 0,
+  "C": "+",
+  "field": "real scalar chi with vacuum condensate chi0; x = chi/chi0"
+ },
+ "declared_before_compute": {
+  "file": "SCR/round4/light_scalar/declared.json",
+  "sha256": "dd235148d2c7bb57f8616c7e9e9d5f3d68e81088d75bc09d693cfc93148777e8",
+  "sha256_recomputed": "dd235148d2c7bb57f8616c7e9e9d5f3d68e81088d75bc09d693cfc93148777e8",
+  "written_utc": "2026-11-13T12:20:41Z",
+  "refinements_declared_before_their_runs": "SCR/round4/light_scalar/refinement_note.json"
+ },
+ "fixed_couplings_and_sources": {
+  "chi0": "f_pi = 92.1 MeV (pion decay constant; prompt-fixed)",
+  "W0": "859 MeV (action)",
+  "M_N": "939 MeV",
+  "m_omega": "782.6 MeV",
+  "vector_sector": "unchanged: m_A = q_phi W, energy C_v n^2/(2 y^2), y = W/W0; C_v from saturation as in the chain",
+  "gradient_terms": "(W0^2/2)(grad y)^2 + (chi0^2/2)(grad x)^2 [Z = 1 for chi] - (1/2)(grad A)^2, vector mass m_omega y",
+  "isovector": "unchanged chain element: contact C(n) = C0 (n/n0)^gamma, C0 = 8 (J - T)/n0, gamma from L (power law, scenario A), thermodynamically consistent pressure"
+ },
+ "discrete_structures": {
+  "mass_a_linear": "M*(y,x) = g_W W + g_chi chi = M_N [(1-s) y + s x]; the vacuum split M_N = g_W W0 + g_chi chi0 defines s = g_chi chi0 / M_N (Yukawa couplings of both condensates)",
+  "mass_b_multiplicative": "M*(y,x) = M_N y^(1-s) x^s (a = 1-s in the prompt's notation; scale-covariant product, same first-order shares as (a))",
+  "pot_c1_log": "V = (m_chi^2 chi0^2/4)(x^2 - 1 - ln x^2): unique form A x^2 + B ln x + const with V(1) = V'(1) = 0, V''(1) = m_chi^2 chi0^2 (logarithmic chiral potential; V -> +inf at chi -> 0, so the chirally restored point is unreachable)",
+  "pot_c2_sigma_model": "V = (m_chi^2 chi0^2/8)(x^2 - 1)^2: radial (Mexican-hat) potential of the sigma model in the chiral limit, chi = chiral radius; V(0) = m_chi^2 chi0^2/8 finite (the form that collapsed in the session; control)",
+  "pot_c3_dilaton": "V = (m_chi^2 chi0^2/16)(x^4 (4 ln x - 1) + 1): trace-anomaly (dilaton) form chi^4 ln chi of anchor A3; V(0) = m_chi^2 chi0^2/16 finite",
+  "normalisation_common": "all three: V(1) = 0, V'(1) = 0, d2V/dchi2(vacuum) = m_chi^2; no further coefficient",
+  "enumeration_rule": "all 2 x 3 = 6 combinations are computed and reported; none is selected by its result"
+ },
+ "unknown_parameters": {
+  "count": 2,
+  "list": [
+   "m_chi",
+   "s = g_chi chi0 / M_N"
+  ],
+  "prior_windows": {
+   "m_chi_MeV": [
+    200.0,
+    1400.0
+   ],
+   "s": [
+    0.02,
+    0.98
+   ]
+  },
+  "structure_fixes_one": "validity (ground state) confines the low-m* members to a band s = 0.456 + 0.00104 m_chi (rms 0.008, structure a), so effectively one parameter remains"
+ },
+ "training_residual": {
+  "residual": "R2: 16O 1p spin-orbit splitting = 6.18 MeV, pass window [4.9, 7.4] MeV",
+  "procedure": "validated LDA procedure of creative/spin_orbit (so_core.lda_profiles, level_lda, first_order_split; scale 1.0), S(n) = M*(n) - M_N, V(n) = C_v n / y(n)^2 on the two-field design branch",
+  "declared_prior_LHS_N6000": {
+   "a_log": {
+    "N_stable": 2154,
+    "N_stable_mu_le_0.72": 1201,
+    "N_valid_mu_le_0.72": 3,
+    "N_trained": 0,
+    "max_split_valid_MeV": 4.86,
+    "validity_outcomes": {
+     "not_global_min": 863,
+     "not_global_min_at_n0": 328,
+     "EA_below_saturation_on_branch": 6,
+     "valid": 3,
+     "branch_not_connected_to_vacuum": 1
+    }
+   },
+   "b_log": {
+    "N_stable": 2536,
+    "N_stable_mu_le_0.72": 1366,
+    "N_valid_mu_le_0.72": 0,
+    "N_trained": 0,
+    "max_split_valid_MeV": null,
+    "validity_outcomes": {
+     "not_global_min": 1043,
+     "not_global_min_at_n0": 323
+    }
+   },
+   "a_dil": {
+    "N_stable": 1252,
+    "N_stable_mu_le_0.72": 663,
+    "N_valid_mu_le_0.72": 0,
+    "N_trained": 0,
+    "max_split_valid_MeV": null,
+    "validity_outcomes": {
+     "not_global_min": 499,
+     "not_global_min_at_n0": 164
+    }
+   },
+   "b_dil": {
+    "N_stable": 1653,
+    "N_stable_mu_le_0.72": 886,
+    "N_valid_mu_le_0.72": 0,
+    "N_trained": 0,
+    "max_split_valid_MeV": null,
+    "validity_outcomes": {
+     "not_global_min_at_n0": 641,
+     "not_global_min": 245
+    }
+   },
+   "a_lsm": {
+    "N_stable": 1463,
+    "N_stable_mu_le_0.72": 775,
+    "N_valid_mu_le_0.72": 0,
+    "N_trained": 0,
+    "max_split_valid_MeV": null,
+    "validity_outcomes": {
+     "not_global_min": 705,
+     "not_global_min_at_n0": 70
+    }
+   },
+   "b_lsm": {
+    "N_stable": 1887,
+    "N_stable_mu_le_0.72": 1008,
+    "N_valid_mu_le_0.72": 0,
+    "N_trained": 0,
+    "max_split_valid_MeV": null,
+    "validity_outcomes": {
+     "not_global_min_at_n0": 341,
+     "not_global_min": 666,
+     "EA_below_saturation_on_branch": 1
+    }
+   }
+  },
+  "refinement_subbox": {
+   "a_log": {
+    "N": 6000,
+    "volume_fraction_of_declared_prior": 0.03409090909090909,
+    "N_stable_W_potential": 4063,
+    "N_stable_mu_le_0.72": 4063,
+    "validity_outcomes_mu_le_0.72": {
+     "not_global_min_at_n0": 3648,
+     "EA_below_saturation_on_branch": 98,
+     "not_global_min": 300,
+     "valid": 13,
+     "branch_not_connected_to_vacuum": 3,
+     "branch_fold_or_jump": 1
+    },
+    "N_valid_mu_le_0.72": 13,
+    "N_trained": 6,
+    "prior_mass_valid_mu_le_0.72": 7.386363636363635e-05,
+    "prior_mass_trained": 3.409090909090909e-05,
+    "max_split_valid_MeV": 5.752388613964812,
+    "valid_q16_q50_q84_min_max": {
+     "m_chi": [
+      389.549,
+      420.811,
+      460.592,
+      367.24,
+      469.247
+     ],
+     "s": [
+      0.814,
+      0.866,
+      0.934,
+      0.805,
+      0.979
+     ],
+     "mu_star": [
+      0.615,
+      0.631,
+      0.645,
+      0.605,
+      0.654
+     ],
+     "W_ystar": [
+      1.114,
+      1.132,
+      1.169,
+      1.09,
+      1.222
+     ],
+     "split": [
+      4.305,
+      4.694,
+      5.278,
+      3.897,
+      5.752
+     ]
+    },
+    "trained_q16_q50_q84_min_max": {
+     "m_chi": [
+      396.952,
+      451.537,
+      467.227,
+      390.166,
+      469.247
+     ],
+     "s": [
+      0.871,
+      0.93,
+      0.944,
+      0.853,
+      0.979
+     ],
+     "mu_star": [
+      0.612,
+      0.618,
+      0.622,
+      0.605,
+      0.633
+     ],
+     "W_ystar": [
+      1.11,
+      1.121,
+      1.171,
+      1.09,
+      1.182
+     ],
+     "chi_xstar": [
+      0.533,
+      0.581,
+      0.595,
+      0.523,
+      0.601
+     ],
+     "m_W_vacuum": [
+      31.261,
+      52.654,
+      63.277,
+      27.851,
+      76.935
+     ],
+     "split_16O_1p": [
+      4.982,
+      5.207,
+      5.433,
+      4.918,
+      5.752
+     ],
+     "g_chi": [
+      8.884,
+      9.481,
+      9.626,
+      8.699,
+      9.981
+     ]
+    },
+    "trained_fraction_m_chi_in_400_550": 0.6666666666666666,
+    "trained_band_s_vs_m_chi": {
+     "s = a + b m_chi": [
+      0.3799517894286657,
+      0.001226733904943794
+     ],
+     "rms": 0.013243250721056261,
+     "m_chi_at_s_1": 505.44637926164063
+    },
+    "trained_all_quartic": true
+   },
+   "b_log": {
+    "N": 6000,
+    "volume_fraction_of_declared_prior": 0.03409090909090909,
+    "N_stable_W_potential": 3073,
+    "N_stable_mu_le_0.72": 3073,
+    "validity_outcomes_mu_le_0.72": {
+     "not_global_min_at_n0": 2824,
+     "not_global_min": 247,
+     "branch_fold_or_jump": 1,
+     "valid": 1
+    },
+    "N_valid_mu_le_0.72": 1,
+    "N_trained": 0,
+    "prior_mass_valid_mu_le_0.72": 5.6818181818181815e-06,
+    "prior_mass_trained": 0.0,
+    "max_split_valid_MeV": 4.65145413758438,
+    "valid_q16_q50_q84_min_max": {
+     "m_chi": [
+      430.949,
+      430.949,
+      430.949,
+      430.949,
+      430.949
+     ],
+     "s": [
+      0.748,
+      0.748,
+      0.748,
+      0.748,
+      0.748
+     ],
+     "mu_star": [
+      0.654,
+      0.654,
+      0.654,
+      0.654,
+      0.654
+     ],
+     "W_ystar": [
+      1.012,
+      1.012,
+      1.012,
+      1.012,
+      1.012
+     ],
+     "split": [
+      4.651,
+      4.651,
+      4.651,
+      4.651,
+      4.651
+     ]
+    }
+   }
+  },
+  "refinement_box2": {
+   "a_log": {
+    "N": 6000,
+    "volume_fraction_of_declared_prior": 0.004261363636363636,
+    "N_stable_W_potential": 3264,
+    "N_stable_mu_le_0.72": 3264,
+    "validity_outcomes_mu_le_0.72": {
+     "not_global_min_at_n0": 2989,
+     "EA_below_saturation_on_branch": 192,
+     "valid": 66,
+     "branch_not_connected_to_vacuum": 17
+    },
+    "N_valid_mu_le_0.72": 66,
+    "N_trained": 29,
+    "prior_mass_valid_mu_le_0.72": 4.6874999999999994e-05,
+    "prior_mass_trained": 2.059659090909091e-05,
+    "max_split_valid_MeV": 5.484885892144639,
+    "valid_q16_q50_q84_min_max": {
+     "m_chi": [
+      385.609,
+      414.015,
+      449.334,
+      345.773,
+      508.874
+     ],
+     "s": [
+      0.834,
+      0.864,
+      0.915,
+      0.801,
+      0.967
+     ],
+     "mu_star": [
+      0.61,
+      0.621,
+      0.638,
+      0.601,
+      0.644
+     ],
+     "W_ystar": [
+      1.113,
+      1.152,
+      1.185,
+      1.08,
+      1.251
+     ],
+     "split": [
+      4.485,
+      4.797,
+      5.154,
+      4.17,
+      5.485
+     ]
+    },
+    "trained_q16_q50_q84_min_max": {
+     "m_chi": [
+      389.15,
+      421.207,
+      454.51,
+      358.974,
+      469.017
+     ],
+     "s": [
+      0.858,
+      0.895,
+      0.929,
+      0.83,
+      0.941
+     ],
+     "mu_star": [
+      0.605,
+      0.613,
+      0.62,
+      0.601,
+      0.636
+     ],
+     "W_ystar": [
+      1.119,
+      1.151,
+      1.173,
+      1.083,
+      1.208
+     ],
+     "chi_xstar": [
+      0.52,
+      0.546,
+      0.579,
+      0.487,
+      0.601
+     ],
+     "m_W_vacuum": [
+      37.095,
+      45.089,
+      62.796,
+      30.372,
+      88.864
+     ],
+     "split_16O_1p": [
+      4.962,
+      5.137,
+      5.286,
+      4.936,
+      5.485
+     ],
+     "g_chi": [
+      8.747,
+      9.126,
+      9.467,
+      8.465,
+      9.597
+     ]
+    },
+    "trained_fraction_m_chi_in_400_550": 0.7241379310344828,
+    "trained_band_s_vs_m_chi": {
+     "s = a + b m_chi": [
+      0.45614368064004135,
+      0.001037651157120567
+     ],
+     "rms": 0.007686964748324716,
+     "m_chi_at_s_1": 524.1225007343837
+    },
+    "trained_all_quartic": true
+   },
+   "b_log": {
+    "N": 6000,
+    "volume_fraction_of_declared_prior": 0.004261363636363636,
+    "N_stable_W_potential": 1976,
+    "N_stable_mu_le_0.72": 1976,
+    "validity_outcomes_mu_le_0.72": {
+     "not_global_min_at_n0": 1957,
+     "valid": 11,
+     "EA_below_saturation_on_branch": 5,
+     "branch_fold_or_jump": 3
+    },
+    "N_valid_mu_le_0.72": 11,
+    "N_trained": 10,
+    "prior_mass_valid_mu_le_0.72": 7.812499999999998e-06,
+    "prior_mass_trained": 7.102272727272727e-06,
+    "max_split_valid_MeV": 5.640265890304146,
+    "valid_q16_q50_q84_min_max": {
+     "m_chi": [
+      430.165,
+      448.226,
+      475.082,
+      411.974,
+      487.4
+     ],
+     "s": [
+      0.817,
+      0.848,
+      0.893,
+      0.789,
+      0.909
+     ],
+     "mu_star": [
+      0.61,
+      0.619,
+      0.634,
+      0.607,
+      0.643
+     ],
+     "W_ystar": [
+      1.047,
+      1.053,
+      1.063,
+      1.032,
+      1.07
+     ],
+     "split": [
+      4.924,
+      5.201,
+      5.578,
+      4.813,
+      5.64
+     ]
+    },
+    "trained_q16_q50_q84_min_max": {
+     "m_chi": [
+      428.924,
+      443.651,
+      465.275,
+      411.974,
+      483.166
+     ],
+     "s": [
+      0.812,
+      0.842,
+      0.882,
+      0.789,
+      0.909
+     ],
+     "mu_star": [
+      0.61,
+      0.618,
+      0.632,
+      0.607,
+      0.635
+     ],
+     "W_ystar": [
+      1.045,
+      1.054,
+      1.064,
+      1.032,
+      1.07
+     ],
+     "chi_xstar": [
+      0.548,
+      0.564,
+      0.586,
+      0.527,
+      0.593
+     ],
+     "m_W_vacuum": [
+      83.295,
+      99.409,
+      116.106,
+      80.213,
+      143.035
+     ],
+     "split_16O_1p": [
+      4.939,
+      5.26,
+      5.583,
+      4.92,
+      5.64
+     ],
+     "g_chi": [
+      8.277,
+      8.58,
+      8.989,
+      8.039,
+      9.267
+     ]
+    },
+    "trained_fraction_m_chi_in_400_550": 1.0,
+    "trained_band_s_vs_m_chi": {
+     "s = a + b m_chi": [
+      0.1272553520433488,
+      0.0016155503218227734
+     ],
+     "rms": 0.017850759377989092,
+     "m_chi_at_s_1": 540.2150809960295
+    },
+    "trained_all_quartic": true
+   }
+  }
+ },
+ "fitted_values": {
+  "a_log": {
+   "trained_class_box2": {
+    "m_chi": [
+     389.15,
+     421.207,
+     454.51,
+     358.974,
+     469.017
+    ],
+    "s": [
+     0.858,
+     0.895,
+     0.929,
+     0.83,
+     0.941
+    ],
+    "mu_star": [
+     0.605,
+     0.613,
+     0.62,
+     0.601,
+     0.636
+    ],
+    "W_ystar": [
+     1.119,
+     1.151,
+     1.173,
+     1.083,
+     1.208
+    ],
+    "chi_xstar": [
+     0.52,
+     0.546,
+     0.579,
+     0.487,
+     0.601
+    ],
+    "m_W_vacuum": [
+     37.095,
+     45.089,
+     62.796,
+     30.372,
+     88.864
+    ],
+    "split_16O_1p": [
+     4.962,
+     5.137,
+     5.286,
+     4.936,
+     5.485
+    ],
+    "g_chi": [
+     8.747,
+     9.126,
+     9.467,
+     8.465,
+     9.597
+    ]
+   },
+   "N_trained": 29,
+   "prior_mass_trained": 2.059659090909091e-05,
+   "band": {
+    "s = a + b m_chi": [
+     0.45614368064004135,
+     0.001037651157120567
+    ],
+    "rms": 0.007686964748324716,
+    "m_chi_at_s_1": 524.1225007343837
+   },
+   "posterior_after_stars_m_chi_s": {
+    "m_chi": [
+     412.0932722180108,
+     447.99390292905184,
+     465.4946680748774,
+     358.9740762419443,
+     469.0171745137683
+    ],
+    "s": [
+     0.8836523242216691,
+     0.912190037609668,
+     0.9356040630144057,
+     0.830279913496416,
+     0.9412718409402295
+    ],
+    "posterior_weight_m_chi_in_400_550": 0.93835008080714
+   }
+  },
+  "b_log": {
+   "trained_class_box2": {
+    "m_chi": [
+     428.924,
+     443.651,
+     465.275,
+     411.974,
+     483.166
+    ],
+    "s": [
+     0.812,
+     0.842,
+     0.882,
+     0.789,
+     0.909
+    ],
+    "mu_star": [
+     0.61,
+     0.618,
+     0.632,
+     0.607,
+     0.635
+    ],
+    "W_ystar": [
+     1.045,
+     1.054,
+     1.064,
+     1.032,
+     1.07
+    ],
+    "chi_xstar": [
+     0.548,
+     0.564,
+     0.586,
+     0.527,
+     0.593
+    ],
+    "m_W_vacuum": [
+     83.295,
+     99.409,
+     116.106,
+     80.213,
+     143.035
+    ],
+    "split_16O_1p": [
+     4.939,
+     5.26,
+     5.583,
+     4.92,
+     5.64
+    ],
+    "g_chi": [
+     8.277,
+     8.58,
+     8.989,
+     8.039,
+     9.267
+    ]
+   },
+   "N_trained": 10,
+   "prior_mass_trained": 7.102272727272727e-06,
+   "band": {
+    "s = a + b m_chi": [
+     0.1272553520433488,
+     0.0016155503218227734
+    ],
+    "rms": 0.017850759377989092,
+    "m_chi_at_s_1": 540.2150809960295
+   },
+   "posterior_after_stars_m_chi_s": {
+    "m_chi": [
+     469.9788706715346,
+     475.3165094622361,
+     480.6541482529377,
+     411.9744155138734,
+     483.16597827209137
+    ],
+    "s": [
+     0.883390924573334,
+     0.893743439397373,
+     0.904095954221412,
+     0.7885014612839923,
+     0.9089677259033127
+    ],
+    "posterior_weight_m_chi_in_400_550": 0.9999999999999999
+   }
+  },
+  "dilaton_and_sigma_model_potentials": "no valid member with m*/M <= 0.72 (0 of 663 / 886 / 775 / 1008 stable members in the declared LHS); central map: lowest valid m*/M 0.88 (a,dil), 0.88 (b,dil), 0.84 (a,lsm), 0.86 (b,lsm); every stable low-m* design is not the ground state (Lee-Wick-type lower state)",
+  "best_fit_locus_6.18_MeV": {
+   "inside_declared_mu_window": "not reached: maximum splitting of valid members 5.75 MeV (a,log; sub-box), 5.64 MeV (b,log); central point at m*/M = 0.60: 4.92-5.48 (a), 5.67-5.70 (b)",
+   "outside_declared_window_central_scan": {
+    "a_log": {
+     "0.5": {
+      "m_chi": [
+       250.0,
+       380.0
+      ],
+      "s": [
+       0.8350000000000002,
+       0.9600000000000002
+      ],
+      "ystar": [
+       1.2431178995322287,
+       1.6316768351586728
+      ],
+      "split": [
+       6.234101682678923,
+       7.960640930260576
+      ],
+      "near_6.18_m_chi": [
+       250.0,
+       250.0
+      ],
+      "near_6.18_s": [
+       0.8350000000000002,
+       0.8350000000000002
+      ]
+     },
+     "0.52": {
+      "m_chi": [
+       260.0,
+       380.0
+      ],
+      "s": [
+       0.8250000000000002,
+       0.9400000000000002
+      ],
+      "ystar": [
+       1.2466538899689024,
+       1.5714632484130646
+      ],
+      "split": [
+       5.858805777757656,
+       7.355736826142608
+      ],
+      "near_6.18_m_chi": [
+       270.0,
+       290.0
+      ],
+      "near_6.18_s": [
+       0.8300000000000002,
+       0.8450000000000002
+      ]
+     },
+     "0.54": {
+      "m_chi": [
+       280.0,
+       400.0
+      ],
+      "s": [
+       0.8200000000000002,
+       0.9450000000000002
+      ],
+      "ystar": [
+       1.2057446443684499,
+       1.4716584741373158
+      ],
+      "split": [
+       5.6453521647987595,
+       6.86962431921623
+      ],
+      "near_6.18_m_chi": [
+       300.0,
+       340.0
+      ],
+      "near_6.18_s": [
+       0.8350000000000002,
+       0.8700000000000002
+      ]
+     },
+     "0.56": {
+      "m_chi": [
+       310.0,
+       420.0
+      ],
+      "s": [
+       0.8250000000000002,
+       0.9500000000000002
+      ],
+      "ystar": [
+       1.166876400203267,
+       1.3660087679842647
+      ],
+      "split": [
+       5.5094844077292935,
+       6.4172732162899395
+      ],
+      "near_6.18_m_chi": [
+       350.0,
+       420.0
+      ],
+      "near_6.18_s": [
+       0.8650000000000002,
+       0.9500000000000002
+      ]
+     },
+     "0.58": {
+      "m_chi": [
+       320.0,
+       430.0
+      ],
+      "s": [
+       0.8150000000000002,
+       0.9400000000000002
+      ],
+      "ystar": [
+       1.1461538322644325,
+       1.33027360524829
+      ],
+      "split": [
+       5.091658274843391,
+       5.9209388279795805
+      ],
+      "near_6.18_m_chi": null,
+      "near_6.18_s": null
+     },
+     "0.6": {
+      "m_chi": [
+       350.0,
+       440.0
+      ],
+      "s": [
+       0.8200000000000002,
+       0.9300000000000002
+      ],
+      "ystar": [
+       1.137434669557885,
+       1.2386463781585852
+      ],
+      "split": [
+       4.9159433300288935,
+       5.478134557607316
+      ],
+      "near_6.18_m_chi": null,
+      "near_6.18_s": null
+     },
+     "0.62": {
+      "m_chi": [
+       350.0,
+       470.0
+      ],
+      "s": [
+       0.8000000000000002,
+       0.9450000000000002
+      ],
+      "ystar": [
+       1.1041905886867607,
+       1.2354630291057125
+      ],
+      "split": [
+       4.4037710788246365,
+       5.099551753297566
+      ],
+      "near_6.18_m_chi": null,
+      "near_6.18_s": null
+     },
+     "0.64": {
+      "m_chi": [
+       400.0,
+       490.0
+      ],
+      "s": [
+       0.8300000000000001,
+       0.9450000000000001
+      ],
+      "ystar": [
+       1.0813743548096746,
+       1.1570320495905302
+      ],
+      "split": [
+       4.319207122175931,
+       4.701303208021352
+      ],
+      "near_6.18_m_chi": null,
+      "near_6.18_s": null
+     }
+    },
+    "b_log": {
+     "0.58": {
+      "m_chi": [
+       430.0,
+       430.0
+      ],
+      "s": [
+       0.8900000000000002,
+       0.8900000000000002
+      ],
+      "ystar": [
+       1.0945446476528287,
+       1.0945446476528287
+      ],
+      "split": [
+       6.126373567354166,
+       6.126373567354166
+      ]
+     },
+     "0.6": {
+      "m_chi": [
+       430.0,
+       440.0
+      ],
+      "s": [
+       0.8500000000000002,
+       0.8750000000000001
+      ],
+      "ystar": [
+       1.0691021885820933,
+       1.0719984966516551
+      ],
+      "split": [
+       5.671788494717647,
+       5.698534891171439
+      ]
+     },
+     "0.62": {
+      "m_chi": [
+       380.0,
+       450.0
+      ],
+      "s": [
+       0.685,
+       0.8600000000000001
+      ],
+      "ystar": [
+       1.0173497770642332,
+       1.05838709335256
+      ],
+      "split": [
+       5.252742773726223,
+       5.444223512759263
+      ]
+     }
+    },
+    "members_on_locus": [
+     {
+      "id": "locus_a_log_mu0.54",
+      "params": {
+       "n0": 0.16,
+       "EA": -16.0,
+       "K": 240.0,
+       "mu": 0.54,
+       "Q0": null,
+       "J": 32.0,
+       "L": 50.0,
+       "m_chi": 320.0,
+       "s": 0.8500000000000002
+      },
+      "W_ystar": 1.3328235091521685,
+      "chi_xstar": 0.40008996897314697,
+      "m_W_vac": 32.38558118751701,
+      "V_minus_S_n0": 783.7128846509714,
+      "spin_orbit": {
+       "16O_1p": 6.190481438409972,
+       "40Ca_1d": 6.532087088982895,
+       "208Pb_1i": 8.306961555339942,
+       "208Pb_3p": 1.0437745860784506
+      },
+      "status": "ok",
+      "ground_state_valid": true,
+      "Q0_forward": 4797.754387485691,
+      "m_omega_medium": 1043.067678262487,
+      "m_chi_medium_bare": 609.1437418170697,
+      "M_max": 2.2295737090231995,
+      "R144_static": 13.467359372294945,
+      "R14_static": 13.458517383688708,
+      "Lambda_14": 752.5914076895035,
+      "S2_0p10": 25.283989277743785,
+      "EPNM_0p10": 10.620734017847326,
+      "chi2": 23.450637888268478,
+      "p_chi2_nu8": 0.0028313872311077634,
+      "z_PIT": {
+       "Mmax": 0.0,
+       "R207": -0.49122942138790504,
+       "R134": -0.7477603750485508,
+       "R1418": -2.2148599550313346,
+       "R144": -3.3490947359307954,
+       "Lt": -2.190365176397025,
+       "S2": 0.2160107222562146,
+       "EPNM": 0.7792659821526747
+      },
+      "predictions": {
+       "Mmax": 2.2295737090231995,
+       "R207": 13.301915563315248,
+       "R134": 13.543722737755976,
+       "R1418": 13.531588901958383,
+       "R144": 13.694117253957366,
+       "Lt": 884.5985100259445,
+       "S2": 25.283989277743785,
+       "EPNM": 10.620734017847326
+      }
+     },
+     {
+      "id": "locus_a_log_mu0.52",
+      "params": {
+       "n0": 0.16,
+       "EA": -16.0,
+       "K": 240.0,
+       "mu": 0.52,
+       "Q0": null,
+       "J": 32.0,
+       "L": 50.0,
+       "m_chi": 280.0,
+       "s": 0.8400000000000002
+      },
+      "W_ystar": 1.5150885152091635,
+      "chi_xstar": 0.3304593304363501,
+      "m_W_vac": 21.13371249568599,
+      "V_minus_S_n0": 819.095864111584,
+      "spin_orbit": {
+       "16O_1p": 6.198189387142272,
+       "40Ca_1d": 6.406918243378784,
+       "208Pb_1i": 8.134567840848277,
+       "208Pb_3p": 1.1628032412599634
+      },
+      "status": "ok",
+      "ground_state_valid": true,
+      "Q0_forward": 1076.4892001623953,
+      "m_omega_medium": 1185.7082720026915,
+      "m_chi_medium_bare": 631.0018099238843,
+      "M_max": 2.1096815591810967,
+      "R144_static": 13.005455218036097,
+      "R14_static": 13.002094964597289,
+      "Lambda_14": 614.9233697994665,
+      "S2_0p10": 24.914103028253813,
+      "EPNM_0p10": 11.430185688359302,
+      "chi2": 15.637527172620604,
+      "p_chi2_nu8": 0.04787199670411687,
+      "z_PIT": {
+       "Mmax": 0.0,
+       "R207": 0.38264727752856387,
+       "R134": -0.3474374650645968,
+       "R1418": -1.7082591994149328,
+       "R144": -2.860640507450465,
+       "Lt": -1.5462285151716455,
+       "S2": 0.5858969717461875,
+       "EPNM": -0.030185688359301525
+      },
+      "predictions": {
+       "Mmax": 2.1096815591810967,
+       "R207": 12.336495977118027,
+       "R134": 13.081927788075387,
+       "R1418": 13.064160845347242,
+       "R144": 13.203868289613533,
+       "Lt": 727.0369720115251,
+       "S2": 24.914103028253813,
+       "EPNM": 11.430185688359302
+      }
+     },
+     {
+      "id": "locus_b_log_mu0.58",
+      "params": {
+       "n0": 0.16,
+       "EA": -16.0,
+       "K": 240.0,
+       "mu": 0.58,
+       "Q0": null,
+       "J": 32.0,
+       "L": 50.0,
+       "m_chi": 430.0,
+       "s": 0.8900000000000002
+      },
+      "W_ystar": 1.0945446476528287,
+      "chi_xstar": 0.5362158841668647,
+      "m_W_vac": 78.65767646553559,
+      "V_minus_S_n0": 712.564723977666,
+      "spin_orbit": {
+       "16O_1p": 6.126373567354166,
+       "40Ca_1d": 6.571492481443945,
+       "208Pb_1i": 8.20594242336498,
+       "208Pb_3p": 0.858004719200608
+      },
+      "status": "ok",
+      "ground_state_valid": true,
+      "Q0_forward": 3512.683021685997,
+      "m_omega_medium": 856.5906412531037,
+      "m_chi_medium_bare": 643.4162653462428,
+      "M_max": 2.3616205312161798,
+      "R144_static": 13.300034559462924,
+      "R14_static": 13.278174496482412,
+      "Lambda_14": 762.7300186220345,
+      "S2_0p10": 26.06568089216399,
+      "EPNM_0p10": 12.101047488881932,
+      "chi2": 21.652889497761997,
+      "p_chi2_nu8": 0.005601144130101064,
+      "z_PIT": {
+       "Mmax": 0.0,
+       "R207": -0.6175280565296392,
+       "R134": -0.5677125276543135,
+       "R1418": -2.021319709422843,
+       "R144": -3.1675753251001635,
+       "Lt": -2.226272787893698,
+       "S2": -0.5656808921639892,
+       "EPNM": -0.7010474888819315
+      },
+      "predictions": {
+       "Mmax": 2.3616205312161798,
+       "R207": 13.450545722282525,
+       "R134": 13.336308926199866,
+       "R1418": 13.352477935456024,
+       "R144": 13.5118414453107,
+       "Lt": 893.460285480813,
+       "S2": 26.06568089216399,
+       "EPNM": 12.101047488881932
+      }
+     }
+    ]
+   }
+  }
+ },
+ "known_particle_match": {
+  "rule": {
+   "sigma_f0_500": [
+    400.0,
+    550.0
+   ],
+   "match": "the 16-84 percent interval of m_chi over the trained class lies inside [400, 550] MeV",
+   "compatible_not_determined": "the interval overlaps [400, 550] but is not contained",
+   "mismatch": "no overlap",
+   "also_reported": "fraction of the trained class inside [400, 550]; the prior fraction is 150/1200 = 0.125 (a match needs a clear excess over this)"
+  },
+  "a_log": {
+   "m_chi_16_84": [
+    389.15,
+    454.51
+   ],
+   "median": 421.207,
+   "range": [
+    358.974,
+    469.017
+   ],
+   "result": "compatible_not_determined",
+   "fraction_in_400_550": 0.7241379310344828
+  },
+  "b_log": {
+   "m_chi_16_84": [
+    428.924,
+    465.275
+   ],
+   "median": 443.651,
+   "range": [
+    411.974,
+    483.166
+   ],
+   "result": "match",
+   "fraction_in_400_550": 1.0,
+   "N": 10
+  },
+  "prior_fraction_in_400_550": 0.125,
+  "comparison": {
+   "sigma_f0_500": "400-550 MeV: overlaps (trained 359-483 MeV)",
+   "f0_980_a0_980": "excluded (no valid member above 510 MeV at low m*)",
+   "g_chi": "8.5-9.6 = (0.83-0.94) M_N/f_pi, the Goldberger-Treiman-size scalar coupling of RMF (g_sigma about 10)",
+   "upper_bound": "s <= 1 on the band gives m_chi <= about 520 MeV",
+   "caveat_shift_at_6.18": "on the exact 6.18 MeV locus (m*/M 0.52-0.58, outside the declared window) the band sits at m_chi 250-420 MeV (a) and 430 MeV (b)"
+  },
+  "forced_or_not": "not put in: prior 200-1400 MeV; it follows from chi0 = f_pi, saturation and the ground-state condition (the Walecka coincidence g_sigma = M_N/f_pi with m_sigma about 500 MeV), not from the R2 fit itself"
+ },
+ "test_table": {
+  "R6_stability": {
+   "before": "m*/M >= 0.836 (one-field potential)",
+   "after": "valid members down to m*/M = 0.50 (a,log; scan floor) and 0.58 (b,log) at the central point, 0.601 inside the declared window; log potential only",
+   "direction": "lifted, but only on a thin band of prior mass 7.4e-05 (a) / 5.7e-06 (b) (valid, m*/M <= 0.66); in the sub-box 4050 of 4063 (a) and 3072 of 3073 (b) globally stable low-m* designs are not the ground state",
+   "pass": "conditional"
+  },
+  "R2_spin_orbit_TRAINING": {
+   "before": "0.23-1.48 MeV",
+   "after": "4.94-5.49 MeV (a, box2), 4.92-5.64 MeV (b), max 5.75 MeV; 6.18 only at m*/M 0.52-0.58 (outside the declared window)",
+   "window": [
+    4.9,
+    7.4
+   ],
+   "pass": true,
+   "V_minus_S_n0_MeV": "613-677 (a), needed about 650-730"
+  },
+  "R1_isovector": {
+   "before": "S_kin(n0) = 13.4 MeV, needs +18",
+   "after": "S_kin(n0) = [17.552324171758137, 18.00227526122789, 18.63980686791727] MeV (class 16-50-84), L_kin = [47.11729759374854, 48.940953486099005, 51.16794739041232] MeV; still needs about +13 MeV of isovector potential energy",
+   "direction": "improved by 4.6 MeV (lower m*), not closed (chi is isoscalar)",
+   "pass": false
+  },
+  "R3_surface": {
+   "before": "a_s 73-93 MeV, t 8.5-11.6 fm at W0 = 859",
+   "after": {
+    "chi_only_limit_W_gradient_60_MeV": {
+     "a_s_MeV": 23.793039928169527,
+     "t90_10_fm": 3.25123154701334,
+     "newton_residual": 1.4218839525460381e-11,
+     "first_integral_rel_mismatch": 1.2594822100095668e-05
+    },
+    "continuation_in_W_gradient_scale_A_central": [
+     [
+      120.0,
+      25.91,
+      3.73
+     ],
+     [
+      195.0,
+      29.4,
+      4.48
+     ],
+     [
+      235.0,
+      31.47,
+      4.92
+     ],
+     [
+      250.0,
+      32.27,
+      5.09
+     ],
+     [
+      261.25,
+      32.88,
+      5.22
+     ]
+    ],
+    "A_central_status": "stalled_above_W0grad_261.2",
+    "B_median": [
+     [
+      120.0,
+      23.91,
+      3.17
+     ],
+     [
+      250.0,
+      25.41,
+      3.59
+     ],
+     [
+      290.0,
+      25.96,
+      3.74
+     ],
+     [
+      310.0,
+      26.24,
+      3.82
+     ],
+     [
+      320.0,
+      26.38,
+      3.85
+     ]
+    ],
+    "B_median_status": "stalled_above_W0grad_320.0",
+    "at_action_W0_859": "no planar Thomas-Fermi solution obtained: the continuation ends at W gradient scale 261 MeV (a) / 320 MeV (b) (Newton stalls for any smaller increment); a_s and t rise monotonically below that"
+   },
+   "windows": {
+    "a_s_MeV": [
+     16,
+     20
+    ],
+    "t_fm": [
+     1.8,
+     2.8
+    ]
+   },
+   "direction": "a_s >= 23.8 MeV and t >= 3.25 fm already with the W gradient switched off; both windows missed in every converged case",
+   "pass": false
+  },
+  "R4_crust": {
+   "before": "dI/I(1.4) = 0.34 percent",
+   "after": {
+    "A_central_mu0.60": {
+     "n_t_dyn_fm3": 0.0469,
+     "P_t_MeVfm3": -0.1014,
+     "degenerate_inner_crust": true,
+     "dI_over_I_1.4": 0.00081,
+     "pass_0.016": false
+    },
+    "A_median": {
+     "n_t_dyn_fm3": 0.0431,
+     "P_t_MeVfm3": -0.0299,
+     "degenerate_inner_crust": true,
+     "dI_over_I_1.4": 0.00128,
+     "pass_0.016": false
+    },
+    "A_q16": {
+     "n_t_dyn_fm3": 0.0439,
+     "P_t_MeVfm3": -0.1542,
+     "degenerate_inner_crust": true,
+     "dI_over_I_1.4": 0.00038,
+     "pass_0.016": false
+    },
+    "A_q84": {
+     "n_t_dyn_fm3": 0.0555,
+     "P_t_MeVfm3": -0.4077,
+     "degenerate_inner_crust": true,
+     "dI_over_I_1.4": 0.0022,
+     "pass_0.016": false
+    },
+    "B_median": {
+     "n_t_dyn_fm3": 0.0602,
+     "P_t_MeVfm3": -0.0913,
+     "degenerate_inner_crust": true,
+     "dI_over_I_1.4": 0.00118,
+     "pass_0.016": false
+    }
+   },
+   "direction": "worse: 0.04-0.22 percent; beta-equilibrium pressure is negative at the dynamical transition (degenerate inner crust)",
+   "pass": false
+  },
+  "R5_stars": {
+   "before": {
+    "M_max_posterior": [
+     1.93,
+     1.956,
+     1.969
+    ],
+    "R_eq_J0614": [
+     12.596,
+     12.613,
+     12.904
+    ],
+    "loo_z_J0740_mass": 2.85,
+    "loo_z_J0614_radius": -2.39,
+    "R144_static_at_Mmax_1.95_2.05": [
+     12.483,
+     12.672,
+     12.752
+    ]
+   },
+   "after_a_log": {
+    "M_max_posterior": [
+     2.099,
+     2.142,
+     2.195
+    ],
+    "R144_static_posterior": [
+     12.616,
+     12.82,
+     12.872
+    ],
+    "R_eq_J0614": [
+     12.797,
+     12.955,
+     13.063
+    ],
+    "loo_z_J0740_mass": 0.36,
+    "loo_z_J0614_radius": -2.69,
+    "R144_static_at_Mmax_1.95_2.05": [
+     12.484,
+     12.535,
+     12.571
+    ],
+    "n": 4,
+    "linear_fit_R144_at_Mmax_2.0": 12.65,
+    "Lambda_14_posterior": [
+     535.0,
+     602.0,
+     607.0
+    ]
+   },
+   "after_b_log": {
+    "M_max_class": [
+     2.256,
+     2.355,
+     2.439
+    ],
+    "R144_static_class": [
+     12.928,
+     13.234,
+     13.483
+    ],
+    "loo_z_J0740_mass": 0.0,
+    "loo_z_J0614_radius": -2.52
+   },
+   "direction": "M_max rises by 0.15-0.25 Msun (J0740 tension removed) but the J0614 equatorial radius rises by 0.2-0.35 km with it; at M_max about 2.0 the radius is 12.47-12.57 km against 12.48-12.75 km before (0.14 km gain in the median, 0.3 km needed)",
+   "pass": false
+  },
+  "A1_nuclear_terms": {
+   "before": "S_2(0.10) 25.2-25.3, E_PNM/N(0.10) 11.76-11.84 MeV",
+   "after_posterior_a_log": {
+    "S2_0p10": [
+     24.75,
+     25.88,
+     26.18
+    ],
+    "EPNM_0p10": [
+     11.59,
+     11.9,
+     11.91
+    ],
+    "K_sym": [
+     -38.0,
+     8.0,
+     46.0
+    ]
+   },
+   "after_central_member": {
+    "Mmax": 1.9978456922932744,
+    "R207": 11.123820379685025,
+    "R134": 12.61484247032004,
+    "R1418": 12.573191176911065,
+    "R144": 12.68809262786531,
+    "Lt": 584.3747966455664,
+    "S2": 25.746916815580477,
+    "EPNM": 12.265186993484917
+   },
+   "loo_z": {
+    "S2": -0.32,
+    "EPNM": -0.55
+   },
+   "pass": true,
+   "note": "the isovector contact (J, L windows) is the unchanged chain element; the trained class spans S_2 21.3-29.0 and E_PNM 6.6-15.0 over those windows"
+  },
+  "G_ground_state": {
+   "result": "holds for all 29 + 10 evaluated trained members (beta table from crust match to the M_max centre; SNM at 8 densities; SNM and PNM at 0.10 fm^-3)",
+   "pass": true
+  },
+  "V_vacuum": {
+   "result": "U_W >= 0 for all y >= 0 and V_log >= 0 for all x > 0 by construction of the trained class",
+   "pass": true
+  },
+  "Q0_skewness_adverse": {
+   "chain_window": [
+    -600,
+    200
+   ],
+   "trained_class_a_log_q16_q50_q84_min_max": [
+    602.0,
+    1657.0,
+    4060.0,
+    -98.0,
+    7064.0
+   ],
+   "fraction_inside_window": 0.06896551724137931,
+   "central_member": 326.0,
+   "cause": "K = 240 MeV is reached only through the soft W mode (K with W frozen = 1.0-1.1 GeV)",
+   "pass": false
+  },
+  "held_out_spin_orbit": {
+   "trained_members_MeV": {
+    "A_central_mu0.60": {
+     "16O_1p": 5.478,
+     "40Ca_1d": 5.832,
+     "208Pb_1i": 7.27,
+     "208Pb_3p": 0.803
+    },
+    "A_median": {
+     "16O_1p": 5.153,
+     "40Ca_1d": 5.529,
+     "208Pb_1i": 7.005,
+     "208Pb_3p": 0.761
+    },
+    "A_q16": {
+     "16O_1p": 5.137,
+     "40Ca_1d": 5.467,
+     "208Pb_1i": 6.849,
+     "208Pb_3p": 0.775
+    },
+    "A_q84": {
+     "16O_1p": 4.956,
+     "40Ca_1d": 5.267,
+     "208Pb_1i": 6.545,
+     "208Pb_3p": 0.744
+    },
+    "B_median": {
+     "16O_1p": 5.319,
+     "40Ca_1d": 5.684,
+     "208Pb_1i": 7.045,
+     "208Pb_3p": 0.748
+    }
+   },
+   "same_procedure_NL3": {
+    "16O_1p": 6.841,
+    "40Ca_1d": 7.534,
+    "208Pb_1i": 9.471,
+    "208Pb_3p": 0.85
+   },
+   "same_procedure_DD-ME2": {
+    "16O_1p": 6.513,
+    "40Ca_1d": 7.04,
+    "208Pb_1i": 8.859,
+    "208Pb_3p": 0.913
+   },
+   "experiment_MeV_from_memory": {
+    "40Ca_1d": "6.0-7.2",
+    "208Pb_1i_neutron": 5.84,
+    "208Pb_3p_neutron": 0.9
+   }
+  }
+ },
+ "joint_verdict": {
+  "S_stars_a_log": {
+   "N_members": 29,
+   "lnZ_box2": -14.03,
+   "lnZ_relative_to_declared_prior": -19.49,
+   "ESS": 3.9,
+   "ppc_p": 0.079925,
+   "loo_z": {
+    "Mmax": 0.36,
+    "R207": 0.45,
+    "R134": -0.17,
+    "R1418": -1.51,
+    "R144": -2.69,
+    "Lt": -1.46,
+    "S2": -0.32,
+    "EPNM": -0.55
+   },
+   "loo_all_lt_2": false,
+   "best_member": {
+    "id": "x0246",
+    "chi": {
+     "m_chi": 448.8807504056089,
+     "s": 0.912337098587091
+    },
+    "chi2": 12.50042507203842,
+    "p_chi2_nu8": 0.13023366086539556,
+    "p_replicated_MC": 0.10291,
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": 0.13001419468817063,
+     "R134": -0.10499895530253116,
+     "R1418": -1.4322760687474627,
+     "R144": -2.603551031317943,
+     "Lt": -1.475934489229017,
+     "S2": -0.5416326997947395,
+     "EPNM": -0.5139953948675837
+    },
+    "max_abs_z_PIT": 2.603551031317943,
+    "predictions": {
+     "Mmax": 2.1965163160707766,
+     "R207": 12.60078022838182,
+     "R134": 12.800862648084449,
+     "R1418": 12.811824364708318,
+     "R144": 12.946189789454284,
+     "Lt": 710.0446282912196,
+     "S2": 26.04163269979474,
+     "EPNM": 11.913995394867584
+    },
+    "box": {
+     "box2": false,
+     "box1": false,
+     "box2_Mmax_ge_2.01": false,
+     "fails2": [
+      "R144"
+     ],
+     "fails1": [
+      "R1418",
+      "R144",
+      "Lt"
+     ]
+    }
+   },
+   "n_box2": 0,
+   "n_members_p_nu8_gt_0.05": 3,
+   "converges_S": false,
+   "static_8": {
+    "ppc_p": 0.111625,
+    "loo_max_abs_z": 2.51
+   },
+   "rotation_7_noJ0614": {
+    "ppc_p": 0.422925,
+    "loo_max_abs_z": 1.61
+   }
+  },
+  "S_stars_b_log": {
+   "N_members": 10,
+   "lnZ_relative_to_declared_prior": -19.46,
+   "ESS": 1.3,
+   "ppc_p": 0.15535,
+   "loo_z": {
+    "Mmax": 0.0,
+    "R207": 0.28,
+    "R134": -0.01,
+    "R1418": -1.32,
+    "R144": -2.52,
+    "Lt": -1.3,
+    "S2": 0.03,
+    "EPNM": -0.82
+   },
+   "best_member": {
+    "id": "x5991",
+    "chi": {
+     "m_chi": 483.16597827209137,
+     "s": 0.9089677259033127
+    },
+    "chi2": 10.913178312009732,
+    "p_chi2_nu8": 0.2066673359810854,
+    "p_replicated_MC": 0.169405,
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": 0.34424946272494145,
+     "R134": 0.03626360513055941,
+     "R1418": -1.2446427482736202,
+     "R144": -2.4250513098777393,
+     "Lt": -1.208439659281718,
+     "S2": -0.25307624801357426,
+     "EPNM": -1.0196477583020622
+    },
+    "max_abs_z_PIT": 2.4250513098777393,
+    "predictions": {
+     "Mmax": 2.190642830607405,
+     "R207": 12.375768010255467,
+     "R134": 12.636382374219629,
+     "R1418": 12.64152593208777,
+     "R144": 12.767463619008023,
+     "Lt": 645.8737029986355,
+     "S2": 25.753076248013574,
+     "EPNM": 12.419647758302062
+    },
+    "box": {
+     "box2": false,
+     "box1": false,
+     "box2_Mmax_ge_2.01": false,
+     "fails2": [
+      "R144"
+     ],
+     "fails1": [
+      "R1418",
+      "R144",
+      "Lt",
+      "EPNM"
+     ]
+    }
+   },
+   "n_box2": 0,
+   "converges_S": false
+  },
+  "reference_single_field_class": {
+   "lnZ": -14.69,
+   "ppc_p": 0.026,
+   "loo_z": {
+    "Mmax": 2.85,
+    "R207": 1.39,
+    "R134": 0.05,
+    "R1418": -1.2,
+    "R144": -2.39,
+    "Lt": -0.93,
+    "S2": 0.52,
+    "EPNM": -0.66
+   },
+   "fixed_models_chi2": {
+    "NL3": 69.43,
+    "FSUGold": 41.7,
+    "DD-ME2": 19.95
+   }
+  },
+  "N_nuclear": "terms 7-8 inside the 8 terms; LOO z S2 -0.32, EPNM -0.55",
+  "O_16O_1p": "training datum: 4.9-5.75 MeV, inside the window, below 6.18",
+  "G": true,
+  "V": true,
+  "converges": false,
+  "why": "posterior predictive p passes (0.080 / 0.155) but the leave-one-out z of the J0614 radius is -2.69 (a) / -2.52 (b); the J0740 mass z drops from +2.85 to +0.36 / 0.0"
+ },
+ "anchors_intact": {
+  "A1": "yes under the posterior (S_2(0.10) [24.7, 25.9, 26.2], E_PNM [11.6, 11.9, 11.9] MeV); K_sym moves from -41/-61 to [-38.0, 8.0, 46.0] MeV; Q0 leaves the window (see test_table)",
+  "A2": "same single failure pattern as before reduced to J0614 only; evidence relative to the declared prior ln Z = -19.5 against -14.7 for the one-field class (Occam cost of the fine-tuned band)",
+  "A4": "the surface scale anchor is not met: the chi gradient with Z = 1 alone already overshoots a_s",
+  "s_to_0_limit": "the one-field class is the s -> 0 corner of the same model (validated to 1e-15), so its anchors remain available there, without R2"
+ },
+ "representative_members": {
+  "A_central_mu0.60": {
+   "params": {
+    "n0": 0.16,
+    "EA": -16.0,
+    "K": 240.0,
+    "mu": 0.6,
+    "Q0": null,
+    "J": 32.0,
+    "L": 50.0,
+    "m_chi": 440.0,
+    "s": 0.93
+   },
+   "struct": "a",
+   "rule": "central point, mu* = 0.60 (lower edge of the declared window; 6.18 MeV is not reachable inside the window), valid cell of the central fine scan with the largest 16O 1p splitting",
+   "W_ystar": 1.1473,
+   "chi_xstar": 0.5588,
+   "V_minus_S_n0_MeV": 676.8,
+   "g_v": 14.055,
+   "g_chi": 9.482,
+   "g_W": 0.077,
+   "m_W_vacuum_MeV": 46.9,
+   "m_omega_medium_MeV": 897.9,
+   "m_chi_medium_bare_MeV": 637.8,
+   "medium_scalar_eigenmasses_static_MeV": [
+    60.6,
+    653.8
+   ],
+   "S_kin_n0_MeV": 18.55,
+   "L_kin_MeV": 51.7,
+   "Q0_MeV": 326.0,
+   "K_if_W_frozen_MeV": 1134.0,
+   "U_W_sat_per_nucleon_MeV": 14.5,
+   "V_chi_sat_per_nucleon_MeV": 159.0,
+   "spin_orbit_MeV": {
+    "16O_1p": 5.478,
+    "40Ca_1d": 5.832,
+    "208Pb_1i": 7.27,
+    "208Pb_3p": 0.803
+   },
+   "surface": {
+    "status": "stalled_above_W0grad_193.1",
+    "ladder_W0grad_a_s_t": [
+     [
+      120.0,
+      25.91,
+      3.73
+     ],
+     [
+      185.0,
+      28.91,
+      4.38
+     ],
+     [
+      193.125,
+      29.31,
+      4.46
+     ]
+    ],
+    "chi_only_limit_W0grad_60": {
+     "a_s_MeV": 23.793039928169527,
+     "t90_10_fm": 3.25123154701334,
+     "newton_residual": 1.4218839525460381e-11,
+     "first_integral_rel_mismatch": 1.2594822100095668e-05
+    },
+    "grid_check_W0grad_120_h0.02": {
+     "a_s_MeV": 25.91011884400766,
+     "t90_10_fm": 3.7292789213573805,
+     "newton_residual": 4.730596213064799e-12,
+     "first_integral_rel_mismatch": 1.2032920198523971e-05
+    }
+   },
+   "crust": {
+    "n_t_dyn_fm3": 0.0469,
+    "P_t_MeVfm3": -0.1014,
+    "degenerate_inner_crust": true,
+    "dI_over_I_1.4": 0.00081,
+    "pass_0.016": false
+   },
+   "stars_fixed_member": {
+    "chi2": 15.97,
+    "p_chi2_nu8": 0.0428,
+    "p_replicated_MC": 0.0496,
+    "max_abs_z_PIT": 2.35,
+    "predictions": {
+     "Mmax": 2.0,
+     "R207": 11.12,
+     "R134": 12.61,
+     "R1418": 12.57,
+     "R144": 12.69,
+     "Lt": 584.37,
+     "S2": 25.75,
+     "EPNM": 12.27
+    },
+    "box2": false
+   }
+  },
+  "A_median": {
+   "params": {
+    "n0": 0.1568,
+    "EA": -15.5053,
+    "K": 248.539,
+    "mu": 0.6127,
+    "Q0": -219.8602,
+    "J": 31.477,
+    "L": 60.0085,
+    "m_chi": 416.7512,
+    "s": 0.8866
+   },
+   "struct": "a",
+   "rule": "nearest valid trained-class member (fallback of the declared rule: the quantile target is off the thin valid band)",
+   "W_ystar": 1.1344,
+   "chi_xstar": 0.5459,
+   "V_minus_S_n0_MeV": 655.4,
+   "g_v": 13.811,
+   "g_chi": 9.039,
+   "g_W": 0.124,
+   "m_W_vacuum_MeV": 62.4,
+   "m_omega_medium_MeV": 887.7,
+   "m_chi_medium_bare_MeV": 615.0,
+   "medium_scalar_eigenmasses_static_MeV": [
+    55.7,
+    628.9
+   ],
+   "S_kin_n0_MeV": 18.01,
+   "L_kin_MeV": 48.8,
+   "Q0_MeV": 6872.0,
+   "K_if_W_frozen_MeV": 1092.0,
+   "U_W_sat_per_nucleon_MeV": 12.5,
+   "V_chi_sat_per_nucleon_MeV": 155.4,
+   "spin_orbit_MeV": {
+    "16O_1p": 5.153,
+    "40Ca_1d": 5.529,
+    "208Pb_1i": 7.005,
+    "208Pb_3p": 0.761
+   },
+   "surface": {
+    "status": "first_solve_failed",
+    "ladder_W0grad_a_s_t": [],
+    "chi_only_limit_W0grad_60": null,
+    "grid_check_W0grad_120_h0.02": null
+   },
+   "crust": {
+    "n_t_dyn_fm3": 0.0431,
+    "P_t_MeVfm3": -0.0299,
+    "degenerate_inner_crust": true,
+    "dI_over_I_1.4": 0.00128,
+    "pass_0.016": false
+   },
+   "stars_fixed_member": {
+    "chi2": 37.39,
+    "p_chi2_nu8": 0.0,
+    "p_replicated_MC": 0.0,
+    "max_abs_z_PIT": 3.69,
+    "predictions": {
+     "Mmax": 2.31,
+     "R207": 13.71,
+     "R134": 13.88,
+     "R1418": 13.86,
+     "R144": 14.04,
+     "Lt": 1009.2,
+     "S2": 23.92,
+     "EPNM": 9.27
+    },
+    "box2": false
+   }
+  },
+  "A_q16": {
+   "params": {
+    "n0": 0.1597,
+    "EA": -16.337,
+    "K": 240.3491,
+    "mu": 0.6096,
+    "Q0": -22.5781,
+    "J": 31.755,
+    "L": 44.7844,
+    "m_chi": 414.9386,
+    "s": 0.885
+   },
+   "struct": "a",
+   "rule": "nearest valid trained-class member (fallback of the declared rule: the quantile target is off the thin valid band)",
+   "W_ystar": 1.1544,
+   "chi_xstar": 0.5388,
+   "V_minus_S_n0_MeV": 659.3,
+   "g_v": 13.952,
+   "g_chi": 9.022,
+   "g_W": 0.126,
+   "m_W_vacuum_MeV": 45.4,
+   "m_omega_medium_MeV": 903.4,
+   "m_chi_medium_bare_MeV": 618.5,
+   "medium_scalar_eigenmasses_static_MeV": [
+    54.2,
+    632.9
+   ],
+   "S_kin_n0_MeV": 18.29,
+   "L_kin_MeV": 49.4,
+   "Q0_MeV": 2090.0,
+   "K_if_W_frozen_MeV": 1110.0,
+   "U_W_sat_per_nucleon_MeV": 12.1,
+   "V_chi_sat_per_nucleon_MeV": 156.8,
+   "spin_orbit_MeV": {
+    "16O_1p": 5.137,
+    "40Ca_1d": 5.467,
+    "208Pb_1i": 6.849,
+    "208Pb_3p": 0.775
+   },
+   "surface": "not run (compute)",
+   "crust": {
+    "n_t_dyn_fm3": 0.0439,
+    "P_t_MeVfm3": -0.1542,
+    "degenerate_inner_crust": true,
+    "dI_over_I_1.4": 0.00038,
+    "pass_0.016": false
+   },
+   "stars_fixed_member": {
+    "chi2": 14.27,
+    "p_chi2_nu8": 0.075,
+    "p_replicated_MC": 0.0669,
+    "max_abs_z_PIT": 2.72,
+    "predictions": {
+     "Mmax": 2.14,
+     "R207": 12.44,
+     "R134": 12.94,
+     "R1418": 12.93,
+     "R144": 13.07,
+     "Lt": 719.92,
+     "S2": 26.22,
+     "EPNM": 11.9
+    },
+    "box2": false
+   }
+  },
+  "A_q84": {
+   "params": {
+    "n0": 0.1667,
+    "EA": -16.0763,
+    "K": 253.0575,
+    "mu": 0.6131,
+    "Q0": -568.2249,
+    "J": 30.2418,
+    "L": 36.897,
+    "m_chi": 448.8808,
+    "s": 0.9123
+   },
+   "struct": "a",
+   "rule": "nearest valid trained-class member (fallback of the declared rule: the quantile target is off the thin valid band)",
+   "W_ystar": 1.1269,
+   "chi_xstar": 0.5638,
+   "V_minus_S_n0_MeV": 651.7,
+   "g_v": 13.232,
+   "g_chi": 9.302,
+   "g_W": 0.096,
+   "m_W_vacuum_MeV": 62.2,
+   "m_omega_medium_MeV": 881.9,
+   "m_chi_medium_bare_MeV": 646.3,
+   "medium_scalar_eigenmasses_static_MeV": [
+    61.5,
+    661.7
+   ],
+   "S_kin_n0_MeV": 18.68,
+   "L_kin_MeV": 51.2,
+   "Q0_MeV": 3655.0,
+   "K_if_W_frozen_MeV": 1056.0,
+   "U_W_sat_per_nucleon_MeV": 12.5,
+   "V_chi_sat_per_nucleon_MeV": 154.8,
+   "spin_orbit_MeV": {
+    "16O_1p": 4.956,
+    "40Ca_1d": 5.267,
+    "208Pb_1i": 6.545,
+    "208Pb_3p": 0.744
+   },
+   "surface": "not run (compute)",
+   "crust": {
+    "n_t_dyn_fm3": 0.0555,
+    "P_t_MeVfm3": -0.4077,
+    "degenerate_inner_crust": true,
+    "dI_over_I_1.4": 0.0022,
+    "pass_0.016": false
+   },
+   "stars_fixed_member": {
+    "chi2": 12.5,
+    "p_chi2_nu8": 0.1302,
+    "p_replicated_MC": 0.1033,
+    "max_abs_z_PIT": 2.6,
+    "predictions": {
+     "Mmax": 2.2,
+     "R207": 12.6,
+     "R134": 12.8,
+     "R1418": 12.81,
+     "R144": 12.95,
+     "Lt": 710.04,
+     "S2": 26.04,
+     "EPNM": 11.91
+    },
+    "box2": false
+   }
+  },
+  "B_median": {
+   "params": {
+    "n0": 0.1641,
+    "EA": -16.139,
+    "K": 226.666,
+    "mu": 0.6109,
+    "Q0": 34.6476,
+    "J": 31.4987,
+    "L": 55.6903,
+    "m_chi": 438.0702,
+    "s": 0.8356
+   },
+   "struct": "b",
+   "rule": "nearest valid trained-class member to the class medians",
+   "W_ystar": 1.06,
+   "chi_xstar": 0.5481,
+   "V_minus_S_n0_MeV": 656.2,
+   "g_v": 12.601,
+   "g_chi": 8.519,
+   "g_W": null,
+   "m_W_vacuum_MeV": 80.2,
+   "m_omega_medium_MeV": 829.6,
+   "m_chi_medium_bare_MeV": 644.5,
+   "medium_scalar_eigenmasses_static_MeV": [
+    80.7,
+    631.8
+   ],
+   "S_kin_n0_MeV": 18.56,
+   "L_kin_MeV": 54.0,
+   "Q0_MeV": 695.0,
+   "K_if_W_frozen_MeV": 841.0,
+   "U_W_sat_per_nucleon_MeV": 5.9,
+   "V_chi_sat_per_nucleon_MeV": 162.4,
+   "spin_orbit_MeV": {
+    "16O_1p": 5.319,
+    "40Ca_1d": 5.684,
+    "208Pb_1i": 7.045,
+    "208Pb_3p": 0.748
+   },
+   "surface": {
+    "status": "stalled_above_W0grad_320.0",
+    "ladder_W0grad_a_s_t": [
+     [
+      120.0,
+      23.91,
+      3.17
+     ],
+     [
+      250.0,
+      25.41,
+      3.59
+     ],
+     [
+      290.0,
+      25.96,
+      3.74
+     ],
+     [
+      310.0,
+      26.24,
+      3.82
+     ],
+     [
+      320.0,
+      26.38,
+      3.85
+     ]
+    ],
+    "chi_only_limit_W0grad_60": null,
+    "grid_check_W0grad_120_h0.02": null
+   },
+   "crust": {
+    "n_t_dyn_fm3": 0.0602,
+    "P_t_MeVfm3": -0.0913,
+    "degenerate_inner_crust": true,
+    "dI_over_I_1.4": 0.00118,
+    "pass_0.016": false
+   },
+   "stars_fixed_member": {
+    "chi2": 14.86,
+    "p_chi2_nu8": 0.0619,
+    "p_replicated_MC": 0.0438,
+    "max_abs_z_PIT": 2.74,
+    "predictions": {
+     "Mmax": 2.22,
+     "R207": 12.69,
+     "R134": 12.95,
+     "R1418": 12.94,
+     "R144": 13.08,
+     "Lt": 714.93,
+     "S2": 24.31,
+     "EPNM": 10.86
+    },
+    "box2": false
+   }
+  }
+ },
+ "predictions": {
+  "omega_mass_in_medium_n0": "m_omega* = m_omega W/W0 rises: [876.0, 901.0, 918.0] MeV (a), [818.0, 825.0, 833.0] MeV (b) against 782.6 in vacuum (+12 to +17 percent / +4.5 to +6.5 percent); an upward shift is the opposite of the one-field NVG (-13 to -16 percent)",
+  "chi": "vacuum mass [389.15, 421.207, 454.51] MeV (a) / [428.924, 443.651, 465.275] MeV (b), coupling g_chi = [8.747, 9.126, 9.467]; in-medium mass at n0: bare curvature [598.0, 619.0, 640.0] MeV, static [611.0, 633.0, 654.0] MeV (rises by about 45 percent)",
+  "W_mode": "vacuum mass of the W fluctuation [37.095, 45.089, 62.796] MeV (a) / [83.295, 99.409, 116.106] MeV (b), lighter than the pion, nucleon coupling g_W = (1-s) M_N/W0 = 0.06-0.19; in-medium light eigenmass about 56 MeV",
+  "effective_mass_and_fields": "m*/M(n0) = [0.6054022110597513, 0.6126669027175985, 0.6200776216143622]; S = [-371.0, -364.0, -357.0] MeV, V = [285.0, 292.0, 296.0] MeV; W/W0(n0) = [1.1194936809604283, 1.1514606222508945, 1.1732599675337316], chi/chi0(n0) = [0.5198644412696865, 0.5459465291891588, 0.5785390837371741]",
+  "spin_orbit_held_out": "40Ca 1d 5.3-5.8 MeV, 208Pb 1i 6.5-7.3 MeV, 208Pb 3p 0.74-0.80 MeV (same LDA procedure; NL3 gives 7.53 / 9.47 / 0.85)",
+  "incompressibility_scale_dependence": "K = 240 MeV holds only for wavelengths above the W range (about 3.5 fm in medium); with W frozen K = 1.0-1.1 GeV; skewness Q0 = [602.0, 1657.0, 4060.0] MeV (16-50-84)",
+  "stars": "M_max [2.1, 2.14, 2.19] Msun, R_1.4 [12.62, 12.76, 12.87] km, Lambda_1.4 [535.0, 602.0, 607.0], R_eq(J0614) [12.8, 12.96, 13.06] km (posterior, structure a); c_s^2 <= 0.65; m*/M at the M_max centre 0.28-0.40",
+  "surface_and_crust": "a_s >= 24 MeV, t(90-10) >= 3.3 fm; crust-core transition at 0.043-0.060 fm^-3 with negative beta-equilibrium pressure; dI/I(1.4) <= 0.22 percent",
+  "Pb208_neutron_skin": "0.101 + 0.00147 L fm (Roca-Maza et al. 2011 correlation, from memory): 0.163 fm at the posterior median L = 41.9 MeV, 0.153-0.196 fm over the chain's L window 35-65; it inherits the chain's isovector input, chi itself does not constrain L (L_kin = 47-51 MeV)"
+ },
+ "validation": {
+  "s_to_0_limit": {
+   "coef_rel_err": [
+    1.3322676295501878e-15,
+    -3.552713678800501e-15,
+    9.103828801926284e-15
+   ],
+   "Cv_rel_err": 0.0,
+   "L_kin": [
+    29.272657498377843,
+    29.272657498377843
+   ],
+   "Q0_numeric_vs_forward": [
+    -417.49196747892756,
+    -417.49244821738944
+   ],
+   "K_numeric": 239.9997677017609,
+   "q_min": [
+    27487288.308101535,
+    27487288.30809033
+   ]
+  },
+  "s0_quintic_y0.84": {
+   "status": "quintic_stable",
+   "ref_stable": false,
+   "coef_rel_err": [
+    9.848790532007712e-07,
+    -4.463587746972308e-06,
+    -6.100290473753933e-05,
+    1.510893292411275e-05
+   ],
+   "q_min": [
+    16907.938102588058,
+    -0.0004436224699020386
+   ]
+  },
+  "s0_beta_table": {
+   "max_rel_eps": 2.886579864025407e-15,
+   "max_abs_P": 1.4210854715202004e-13,
+   "max_abs_y": 2.220446049250313e-16,
+   "max_abs_delta": 3.3306690738754696e-16,
+   "gamma": [
+    -0.6278094438675462,
+    -0.6278094438675462
+   ]
+  },
+  "s0_16O_1p": {
+   "value": 1.039599226962163,
+   "stored": 1.039599226957856
+  },
+  "generic_code_saturation_and_K": {
+   "a|log|m500.0|s0.5|mu0.75": {
+    "EA": -15.999999999999204,
+    "K_generic": -218.44276750862744,
+    "K_numeric": -11985.64124074943,
+    "consistent_pressure_max_rel_dev_x_gt_1.5": 3.058247688425553e-08
+   },
+   "b|log|m600.0|s0.6|mu0.7": {
+    "EA": -16.00000000000057,
+    "K_generic": 239.99798091876534,
+    "K_numeric": 239.99593405488895,
+    "consistent_pressure_max_rel_dev_x_gt_1.5": null
+   },
+   "a|dil|m700.0|s0.3|mu0.8": {
+    "EA": -16.00000000000034,
+    "K_generic": 240.00184113871904,
+    "K_numeric": 240.00568707913314,
+    "consistent_pressure_max_rel_dev_x_gt_1.5": null
+   },
+   "a|lsm|m700.0|s0.3|mu0.8": {
+    "EA": -16.000000000000796,
+    "K_generic": 240.00088979388957,
+    "K_numeric": 240.00219452466354,
+    "consistent_pressure_max_rel_dev_x_gt_1.5": null
+   }
+  },
+  "note_on_first_point": "a|log|m500|s0.5|mu0.75 is an UNSTABLE design within 0.14 percent in density of a branch fold; its finite-difference K is meaningless and it is not a member",
+  "star_pipeline_s0_vs_lk_core_nvg_point": {
+   "M_max": [
+    1.7882031967664482,
+    1.7882031607201452
+   ],
+   "R144": [
+    11.87988307269904,
+    11.879866007700688
+   ],
+   "S2": [
+    25.15612241621407,
+    25.15612241621407
+   ],
+   "EPNM": [
+    11.761131773528518,
+    11.761131773528518
+   ],
+   "K_sym": [
+    -61.43468265382608,
+    -61.43517452329661
+   ]
+  },
+  "surface_grid_check": {
+   "a_s_MeV": 25.91011884400766,
+   "t90_10_fm": 3.7292789213573805,
+   "newton_residual": 4.730596213064799e-12,
+   "first_integral_rel_mismatch": 1.2032920198523971e-05
+  }
+ },
+ "central_maps": {
+  "design_level_stability_only": {
+   "a|log": {
+    "n_stable": 21521,
+    "mu_min_stable": 0.5
+   },
+   "b|log": {
+    "n_stable": 16854,
+    "mu_min_stable": 0.5
+   },
+   "a|dil": {
+    "n_stable": 9599,
+    "mu_min_stable": 0.5
+   },
+   "b|dil": {
+    "n_stable": 8902,
+    "mu_min_stable": 0.5
+   },
+   "a|lsm": {
+    "n_stable": 11738,
+    "mu_min_stable": 0.5
+   },
+   "b|lsm": {
+    "n_stable": 10594,
+    "mu_min_stable": 0.5
+   }
+  },
+  "with_ground_state_scan_thinned_grid_looser_check": {
+   "a|log": {
+    "mu_min_valid": 0.5,
+    "outcomes": {
+     "branch_ends": 46,
+     "valid": 739,
+     "not_global_min": 723,
+     "branch_jump": 36,
+     "not_pd": 6
+    }
+   },
+   "b|log": {
+    "mu_min_valid": 0.56,
+    "outcomes": {
+     "branch_ends": 20,
+     "valid": 669,
+     "not_global_min": 375,
+     "branch_jump": 27
+    }
+   },
+   "a|dil": {
+    "mu_min_valid": 0.88,
+    "outcomes": {
+     "not_global_min": 307,
+     "branch_ends": 4,
+     "valid": 439,
+     "branch_jump": 21
+    }
+   },
+   "b|dil": {
+    "mu_min_valid": 0.88,
+    "outcomes": {
+     "not_global_min": 173,
+     "branch_ends": 4,
+     "valid": 220,
+     "branch_jump": 11
+    }
+   },
+   "a|lsm": {
+    "mu_min_valid": 0.84,
+    "outcomes": {
+     "not_global_min": 690,
+     "branch_ends": 15,
+     "branch_jump": 26,
+     "valid": 543
+    }
+   },
+   "b|lsm": {
+    "mu_min_valid": 0.86,
+    "outcomes": {
+     "not_global_min": 279,
+     "branch_ends": 12,
+     "branch_jump": 25,
+     "valid": 442
+    }
+   }
+  },
+  "note": "the thinned-grid map used the first (looser) ground-state checker; the strict checker can only remove members, so 'no valid member below 0.84-0.88' for the dilaton and sigma-model potentials stands; log structures: central_fine.json (strict)"
+ },
+ "caveats": [
+  "The trained class is empty in the declared N = 6000 prior sample (expected 0.1-0.2 members); it was mapped with two refinements of the same uniform density (sub-box, box2), declared before their runs in refinement_note.json. Class statistics rest on 29 (a) and 10 (b) members, effective sample size 3.9 and 1.3.",
+  "The declared m*/M window ends at 0.60; the trained class sits against that edge and reaches 4.9-5.75 MeV. The measured 6.18 MeV needs m*/M 0.52-0.58, where the valid band has m_chi 250-420 MeV (a) and 430 MeV (b); those members are reported separately and are not part of the trained class.",
+  "box2 covers m_chi 340-520 MeV; valid members reach both edges (346-509). The wider sub-box (200-650) found none outside 367-469, and the central scan finds valid members below 340 MeV only for m*/M < 0.58.",
+  "Surface: no converged planar solution at the action's W gradient scale 859 MeV; the first single-solve attempt (residual 0.4-3.7) was discarded (surface_first_attempt_discarded.json). The R3 verdict rests on the converged range 60-320 MeV, where both windows are already missed.",
+  "The ground-state checker was made stricter than the one-field checker before any training number (Newton polishing of the grid minimum, adaptive branch scan, E/A(n) >= E/A(n0), true-vacuum end point); with the looser checker a few false-vacuum members would have passed.",
+  "Spin-orbit splittings are first-order LDA values with a fixed Fermi density; held-out experimental levels are quoted from memory as in creative/spin_orbit.",
+  "Q0 on the quartic branch is a finite-difference third derivative (step-stable to 0.002 percent at the central member).",
+  "Only the log potential, the chiral-limit sigma-model potential and the dilaton form were enumerated; an explicit symmetry-breaking term or a polynomial chi potential would add parameters and was not tried."
+ ],
+ "verdict": "partial",
+ "verdict_text": "A light scalar with condensate f_pi lifts the m*/M bound and brings the 16O 1p splitting into the window, but only with the logarithmic potential and only on a thin, fine-tuned band where chi carries 83-94 percent of the nucleon mass (g_chi = 8.5-9.6, m_chi = 390-455 MeV for structure a, 430-465 MeV for b) and W swells in the medium. That mass overlaps the sigma/f0(500) window without being put in; by the declared rule it is a match for structure b (10 members) and 'compatible, not determined' for structure a (29 members), and it moves to 250-420 MeV (a) on the exact 6.18 MeV locus, which lies outside the declared m*/M window. The held-out tests do not close: the J0614 radius still fails leave-one-out (z = -2.7), the surface and the crust fail, the isovector residual shrinks by a quarter only, the skewness Q0 leaves its window, and the omega mass is predicted to rise by 12-17 percent in matter. The dilaton and sigma-model potentials cannot reach R2 at all.",
+ "practical_value": "A two-field forward chain (ls_core.py) validated against the one-field chain; the map of where a low effective mass is a true ground state; the result that R2 can be bought only together with a 30-90 MeV W mode and an upward omega mass shift.",
+ "files": {
+  "dir": "SCR/round4/light_scalar",
+  "declared": "declared.json",
+  "refinements": "refinement_note.json",
+  "core": "ls_core.py",
+  "validation": [
+   "validation.json",
+   "stars_validation.json"
+  ],
+  "maps": [
+   "map_central.json",
+   "map_gs.json",
+   "map_valid.json",
+   "central_fine.json"
+  ],
+  "training": [
+   "train_prior_*.jsonl",
+   "train_subbox_*.jsonl",
+   "train_box2_*.jsonl"
+  ],
+  "stars": [
+   "stars_box2_a_log.jsonl",
+   "stars_box2_b_log.jsonl",
+   "analysis.json"
+  ],
+  "members": [
+   "members.json",
+   "member_*.json",
+   "surface_retry_A_central_mu0.60.json",
+   "locus_members.json"
+  ]
+ },
+ "wall_times_s": {
+  "design_map": 15.95883822441101,
+  "ground_state_at_n0_map": 50.2997145652771,
+  "ground_state_scan_map": 256.62141609191895,
+  "prior_LHS_6_structures": 183.0,
+  "subbox_LHS": 61.3,
+  "box2_LHS": 40.8,
+  "central_fine_scan": 119.50142884254456,
+  "stars_a_log_29": 117.7,
+  "stars_b_log_10": 38.8,
+  "members_incl_discarded_surface_attempt": 560.0,
+  "surface_retry": 75.12963080406189,
+  "total_compute_min_approx": 27,
+  "processes": "one at a time"
+ },
+ "assembled_utc": "2026-11-13T13:06:22Z"
+}
