@@ -1,0 +1,406 @@
+{
+ "target": "SCR/round4/pion/result.json (round 4, candidate: pion; verdict not_this_field)",
+ "refuter_code": {
+  "dir": "SCR/round4/pion/refute/",
+  "scripts": [
+   "chk1_fock.py",
+   "chk1b.py",
+   "chk3_second_order.py",
+   "chk3b.py",
+   "chk3b_fock1.py",
+   "chk3c_assemble.py"
+  ],
+  "outputs": [
+   "chk1_fock.json",
+   "chk1b.json",
+   "chk3_second_order.json",
+   "chk3b.json",
+   "chk3c_assemble.json"
+  ],
+  "compute_wall_s": {
+   "chk1_fock": 300,
+   "chk1b": 111,
+   "chk3_second_order": 88,
+   "chk3b": 121
+  },
+  "processes": 1
+ },
+ "checks": [
+  {
+   "check": "1a. Pion Fock energy per nucleon and symmetry-energy contribution at n0, island member (y* = 0.84, n0 = 0.16 fm^-3), recomputed with explicit 4x4 Dirac matrices and a direct 3D Gauss-Legendre integral over (k, k', cos theta); no kernels of the target",
+   "result": "holds",
+   "evidence": {
+    "zero_range_removed": {
+     "E_per_A_MeV": [
+      -6.236573825493127,
+      "target -6.237"
+     ],
+     "S_MeV": [
+      3.2719624757287726,
+      "target +3.272"
+     ],
+     "L_fixed_Mstar_MeV": [
+      6.900027470002612,
+      "target +6.979 (1.1 percent apart; the '+7.0' holds)"
+     ],
+     "E_PNM_minus_E_SNM": [
+      2.9354328791423896,
+      "target 2.935"
+     ]
+    },
+    "zero_range_kept": {
+     "E_per_A_MeV": [
+      15.87103371023492,
+      "target +15.871"
+     ],
+     "S_MeV": [
+      -4.302168432128897,
+      "target -4.302"
+     ],
+     "L_fixed_Mstar_MeV": [
+      -15.710211138958584,
+      "target -15.576"
+     ]
+    },
+    "like_unlike_split_MeV": [
+     -2.0788579418310418,
+     -4.1577158836620836
+    ],
+    "file": "SCR/round4/pion/refute/chk1_fock.json, chk1b.json"
+   }
+  },
+  {
+   "check": "1b. Isospin factor, sign, zero-range subtraction",
+   "result": "holds",
+   "evidence": {
+    "isospin": "explicit <ab|tau1.tau2|ba>: like pairs (nn, pp) 1, unlike pairs (np, pn) 2; sum over the four pair types in symmetric matter 6 = 3 x the weight 2 of an isoscalar exchange (which has like pairs only). The pion Fock term therefore weights unlike pairs twice as much as like pairs.",
+    "sign": "E_x = -(1/2) sum <ij|V|ji> with V = -(f/m)^2 tau.tau (s1.q)(s2.q)/(q^2+m^2): spin trace 2 q^2, total +6 (f/m)^2 int int q^2/(q^2+m^2) > 0 with the zero-range term, = contact +(3/8)(f/m)^2 n minus a Yukawa attraction. gamma0 gamma5 gamma^i reduces to -sigma^i on upper components (checked).",
+    "zero_range": "q^2/(q^2+m^2) - 1 = -m^2/(q^2+m^2): the g' = 1/3 subtraction removes exactly the constant. Contact part at n0: +22.11 MeV per nucleon (relativistic, = 15.87 + 6.24; nonrelativistic 22.82) and -7.57 MeV in S. Sign of both headline numbers is fixed by this discrete, declared choice.",
+    "self_energies_at_kF_MeV": {
+     "Sigma0": -4.702557583951868,
+     "SigmaS": -4.556864507718763,
+     "SigmaV": -4.013493976878542,
+     "Sigma0_minus_SigmaS": -0.1456930762331048,
+     "SigmaV_over_kF": -0.015258054075292984
+    },
+    "target_self_energies": "[-4.557, -4.703, -0.01526 k_F], Sigma_0 - Sigma_S = -0.146"
+   }
+  },
+  {
+   "check": "2a. Textbook number: nonrelativistic one-pion-exchange Fock energy in symmetric matter at k_F = 1.36 fm^-1",
+   "result": "holds",
+   "evidence": {
+    "closed_form": "E/A = (3 f^2 m_pi/4 pi^2)[u^3/3 + 1/(8u) - 3u/4 + arctan 2u - (3/(8u) + 1/(32u^3)) ln(1+4u^2)], u = k_F/m_pi",
+    "kF_1.36": {
+     "kF": 1.36,
+     "n_fm3": 0.16991265288014698,
+     "kept": 18.070417453506842,
+     "contact": 24.228657650166223,
+     "removed": -6.158240196659382
+    },
+    "own_3D_integral_heavy_mass_limit": {
+     "kept": 18.070396369564087,
+     "removed": -6.158246438015839
+    },
+    "n0_0.16": {
+     "kF": 1.3330210137859975,
+     "n_fm3": 0.16000000000000003,
+     "kept": 16.867747556725142,
+     "contact": 22.815165076382304,
+     "removed": -5.94741751965716
+    },
+    "note": "relativistic values at M*/M = 0.84 (+15.87 / -6.24) differ from the nonrelativistic ones (+16.87 / -5.95) by the expected (k_F/M*)^2 corrections"
+   }
+  },
+  {
+   "check": "2b. Relativistic Hartree-Fock literature on the pion contribution to the symmetry energy; DD-ME2 control",
+   "result": "holds",
+   "evidence": {
+    "DDME2_point_own_integral": {
+     "E_per_A": -6.290939211356891,
+     "S": 3.2385695008597586,
+     "note": "M_N = 939 used; target quotes -6.291 / +3.239"
+    },
+    "literature_from_memory_no_internet": "density-dependent RHF sets (PKO1/2/3, PKA1; Long et al. 2006-2008, Sun et al. 2008, Zhao et al. 2015) report a pion Fock contribution to S(n0) of order 1 MeV or less because of the fitted in-medium quenching of f_pi, with the sizeable Fock contribution coming from sigma and omega exchange. A first-order contribution of +3.3 MeV for the unquenched coupling with the zero-range part removed is consistent with that."
+   }
+  },
+  {
+   "check": "2c. Other claims: 3.3 of 18 MeV; 16O 1p 1.45 -> 1.21 MeV; stability edge 0.8358 -> 0.8465; stars; full Hartree-Fock S = 12.6-13.3 MeV",
+   "result": "undecidable",
+   "evidence": {
+    "confirmed_parts": {
+     "fraction": "3.27/18.3 = 18 percent follows from check 1a",
+     "spin_orbit_source": "Sigma_0 - Sigma_S = -0.146 MeV reproduced independently, so a first-order pion term cannot supply the 400-480 MeV needed",
+     "stability_edge": [
+      "reproduced with the target's jet functions (not independent): stable quintic exists at y* = 0.8378 without pion and not at 0.8338; with the pion not at 0.8445, yes at 0.8485",
+      {
+       "0.8338": {
+        "stable_quintic_exists_no_pion": false,
+        "stable_quintic_exists_pion_gp1/3": false
+       },
+       "0.8378": {
+        "stable_quintic_exists_no_pion": true,
+        "stable_quintic_exists_pion_gp1/3": false
+       },
+       "0.8445": {
+        "stable_quintic_exists_no_pion": true,
+        "stable_quintic_exists_pion_gp1/3": false
+       },
+       "0.8485": {
+        "stable_quintic_exists_no_pion": true,
+        "stable_quintic_exists_pion_gp1/3": true
+       }
+      }
+     ]
+    },
+    "not_recomputed": "the 16O splitting, the stellar likelihood and the re-solved full Hartree-Fock jets were not recomputed in the 30-minute budget. Notes: (i) 1.21 MeV belongs to the member shifted to y* = 0.8507; at unchanged y* = 0.84 the target's own number is 1.36 MeV, so two thirds of the drop is the forced shift of m*/M, not the pion self-energy. (ii) Full Hartree-Fock: 13.87 - 3.95 (sigma + omega Fock, verified in an earlier round as -2.5 to -5.2 MeV) + 3.27 = 13.19 against the reported 12.59 after re-solving; the cancellation is by the sum of the action's scalar and vector exchange, the target did not separate them. No contradiction found."
+   }
+  },
+  {
+   "check": "3a. Caveat 'second-order pion exchange needs at least one regulator and is outside a zero-parameter test'",
+   "result": "holds",
+   "evidence": {
+    "method": "second-order energy of a nonrelativistic Fermi gas with one-pion exchange, direct plus exchange terms, all isospin channels, 6-dimensional scrambled-Sobol integration (4 x 2^20 points)",
+    "validation": {
+     "spin_isospin_traces_vs_16x16_matrices": "5 channel traces agree to 1e-15",
+     "dilute_gas_second_order_(2/35pi^2)(11-2ln2)": {
+      "numeric_E2fin_per_N_in_units_kF2_over_M": 0.055654839203616906,
+      "exact_(2/(35pi^2))(11-2ln2)": 0.055661259115448565,
+      "rel": -0.00011533896167059687,
+      "err_rel": 9.589056616788848e-05
+     },
+     "chiral_limit_finite_part_vs_Kaiser_Fritsch_Weise_beta": {
+      "numeric": {
+       "m_pi=20.0": {
+        "E2_fin_per_A": 79.47466609781937,
+        "err": 0.005515344734600312
+       },
+       "m_pi=5.0": {
+        "E2_fin_per_A": 78.70978404115297,
+        "err": 0.005542723469152824
+       }
+      },
+      "KFW_beta_formula_from_memory": 78.66833093404777,
+      "note": "KFW 2002: beta = (3/70)(g_piN/4pi)^4 (4pi^2+237-24 ln2) - 3/56 (the -3/56 is the relativistic kinetic correction); quoted from memory"
+     },
+     "linear_divergence_slope_SNM": {
+      "numeric_MeV_per_MeV": -0.26843934592653707,
+      "analytic": -0.26856067856826005,
+      "rel": -0.0004517885580638259,
+      "formula": "E2/A -> -(15/8) [f^4 M/(2 pi^2 m^4)] n Lambda (SNM) = -10 g_A^4 M Lambda kF^3/(4 pi f_pi)^4 (Kaiser-Fritsch-Weise); -(1/4)[...] n Lambda (PNM); asymmetry term +(13/8)[...] n Lambda"
+     },
+     "linear_divergence_slope_PNM": {
+      "numeric_MeV_per_MeV": -0.03589850423448978,
+      "analytic": -0.035808090475768,
+      "rel": 0.0025249533700479887,
+      "formula": "E2/A -> -(15/8) [f^4 M/(2 pi^2 m^4)] n Lambda (SNM) = -10 g_A^4 M Lambda kF^3/(4 pi f_pi)^4 (Kaiser-Fritsch-Weise); -(1/4)[...] n Lambda (PNM); asymmetry term +(13/8)[...] n Lambda"
+     }
+    },
+    "no_regulator_free_value": "the unregulated second-order term diverges linearly: E2/A = -(15/8) c n Lambda in symmetric matter, -(1/4) c n Lambda in neutron matter, c = f^4 M/(2 pi^2 m_pi^4); symmetry-energy part +(13/8) c n Lambda = +0.233 MeV per MeV of cutoff at n0 (tensor operator alone +0.215). With the divergence dropped the finite remainder is S2_fin = -113.4 MeV (full) / -108.4 MeV (tensor only) at n0. The sign of the net term is set by a short-distance constant; no declared regulator-free bound exists.",
+    "finite_parts_n0": {
+     "full": {
+      "SNM_fin": 111.41952000692581,
+      "SNM_err": 0.004225354772204938,
+      "SNM_slope_per_MeV": -0.2685606785682601,
+      "PNM_fin": -1.9647461995436193,
+      "PNM_err": 0.0026571410409040506,
+      "PNM_slope_per_MeV": -0.035808090475767995,
+      "S2_fin": -113.38426620646942,
+      "S2_slope_per_MeV": 0.2327525880924921,
+      "S2_at_sharp_Lambda_646_KFW_style": 36.97390570128047
+     },
+     "tensor": {
+      "SNM_fin": 92.7479731691219,
+      "SNM_err": 0.0028635679402251456,
+      "SNM_slope_per_MeV": -0.2148485428546081,
+      "PNM_fin": -15.702007195735124,
+      "PNM_err": 0.0016934010932345318,
+      "PNM_slope_per_MeV": -0.0,
+      "S2_fin": -108.44998036485703,
+      "S2_slope_per_MeV": 0.2148485428546081,
+      "S2_at_sharp_Lambda_646_KFW_style": 30.342178319219812
+     }
+    }
+   }
+  },
+  {
+   "check": "3b. Size of the second-order (tensor) pion contribution to S(n0) with a monopole form factor at the standard cutoff 1.0-1.3 GeV (labelled one-parameter sensitivity)",
+   "result": "refuted",
+   "evidence": {
+    "statement_tested": "the pion is not the missing isovector element (needs about +18 MeV at n0)",
+    "S2_tensor_only_MeV_free_mass": {
+     "800": 18.983170514442854,
+     "1000": 32.91022898306251,
+     "1150": 44.67663809463256,
+     "1300": 57.23479518101757
+    },
+    "S2_full_one_pion_exchange_MeV_free_mass": {
+     "800": 22.031555792616892,
+     "1000": 37.62735053782771,
+     "1150": 50.67574038442702,
+     "1300": 64.52423773724917
+    },
+    "with_Mstar_0.84_in_denominators": "multiply by 0.84: tensor only 27.6 (1.0 GeV) to 48.1 (1.3 GeV) MeV",
+    "parabolicity": {
+     "full|monopole|1000": {
+      "E2(delta=0.5)_per_A": -36.6699172069434,
+      "E2(0)_per_A": -46.23865508185098,
+      "S2_from_delta0.5": 38.27495149963031
+     },
+     "full|monopole|1300": {
+      "E2(delta=0.5)_per_A": -62.77158238710968,
+      "E2(0)_per_A": -79.06202572982399,
+      "S2_from_delta0.5": 65.1617733708572
+     },
+     "tensor|monopole|1000": {
+      "E2(delta=0.5)_per_A": -27.64905609596495,
+      "E2(0)_per_A": -35.98270241127149,
+      "S2_from_delta0.5": 33.33458526122615
+     },
+     "tensor|monopole|1300": {
+      "E2(delta=0.5)_per_A": -47.450148535920164,
+      "E2(0)_per_A": -61.86138949168439,
+      "S2_from_delta0.5": 57.64496382305691
+     },
+     "removed|monopole|1000": {
+      "E2(delta=0.5)_per_A": -27.82694856933644,
+      "E2(0)_per_A": -36.24760004001953,
+      "S2_from_delta0.5": 33.68260588273234
+     },
+     "removed|monopole|1300": {
+      "E2(delta=0.5)_per_A": -47.66053759636509,
+      "E2(0)_per_A": -62.16740265830244,
+      "S2_from_delta0.5": 58.02746024774942
+     }
+    },
+    "isoscalar_by_product_E2_SNM_per_A_MeV": {
+     "800": -20.946840778880997,
+     "1000": -35.98270241127149,
+     "1300": -61.86138949168439
+    },
+    "reading": "right sign, and 1.5 to 3.6 times the 18 MeV gap at the standard cutoffs: total S(n0) = T + first order + second order = 41-50 MeV at 1.0 GeV and 63-74 MeV at 1.3 GeV. The second-order term is not small compared with the first-order +3.3 MeV; it is ten to twenty times larger. A first-order result cannot decide the field.",
+    "literature_from_memory": "Kaiser, Fritsch, Weise (2002): one-pion Fock plus iterated one-pion exchange with one cutoff fixed on the binding energy gives an asymmetry energy of 33.8 MeV; Brueckner and Green-function calculations with Argonne v18 (Vidana, Polls, Providencia 2011; Carbone, Polls, Rios 2012) attribute most of S(n0) to the tensor component."
+   }
+  },
+  {
+   "check": "3c. Density dependence: with the cutoff trained on S(n0) = 31.7 MeV, are L in [35, 65] MeV and S(0.10 fm^-3) = 25.5 +- 1.0 MeV met?",
+   "result": "undecidable",
+   "evidence": {
+    "monopole_form_factor": {
+     "full_free_mass": {
+      "Lambda_MeV": 801.57,
+      "S_n0": 31.7,
+      "L": 63.76,
+      "S_0.10": 23.03,
+      "S_0.13": 27.58,
+      "S_0.19": 35.55,
+      "L_in_window": true,
+      "S_0.10_in_window": false
+     },
+     "full_Mstar": {
+      "Lambda_MeV": 858.93,
+      "S_n0": 31.7,
+      "L": 52.53,
+      "S_0.10": 24.01,
+      "S_0.13": 28.18,
+      "S_0.19": 34.74,
+      "L_in_window": true,
+      "S_0.10_in_window": false
+     },
+     "zero_range_removed_free_mass": {
+      "Lambda_MeV": 735.48,
+      "S_n0": 31.7,
+      "L": 66.32,
+      "S_0.10": 22.81,
+      "S_0.13": 27.44,
+      "S_0.19": 35.73,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     },
+     "zero_range_removed_Mstar": {
+      "Lambda_MeV": 783.49,
+      "S_n0": 31.7,
+      "L": 58.75,
+      "S_0.10": 23.49,
+      "S_0.13": 27.85,
+      "S_0.19": 35.19,
+      "L_in_window": true,
+      "S_0.10_in_window": false
+     },
+     "tensor_only_free_mass": {
+      "Lambda_MeV": 729.4,
+      "S_n0": 31.7,
+      "L": 66.83,
+      "S_0.10": 22.76,
+      "S_0.13": 27.41,
+      "S_0.19": 35.76,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     },
+     "tensor_only_Mstar": {
+      "Lambda_MeV": 777.08,
+      "S_n0": 31.7,
+      "L": 59.47,
+      "S_0.10": 23.41,
+      "S_0.13": 27.8,
+      "S_0.19": 35.24,
+      "L_in_window": true,
+      "S_0.10_in_window": false
+     }
+    },
+    "divergence_absorbed_in_a_contact_(Kaiser-Fritsch-Weise_type)": {
+     "full_free_mass": {
+      "Lambda_MeV": 583.44,
+      "S_n0": 31.7,
+      "L": 18.59,
+      "S_0.10": 26.85,
+      "S_0.13": 29.95,
+      "S_0.19": 32.28,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     },
+     "full_Mstar": {
+      "Lambda_MeV": 601.78,
+      "S_n0": 31.7,
+      "L": 16.46,
+      "S_0.10": 27.28,
+      "S_0.13": 30.15,
+      "S_0.19": 32.21,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     },
+     "tensor_only_free_mass": {
+      "Lambda_MeV": 573.69,
+      "S_n0": 31.7,
+      "L": 18.43,
+      "S_0.10": 26.88,
+      "S_0.13": 29.96,
+      "S_0.19": 32.27,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     },
+     "tensor_only_Mstar": {
+      "Lambda_MeV": 586.82,
+      "S_n0": 31.7,
+      "L": 20.67,
+      "S_0.10": 26.96,
+      "S_0.13": 29.94,
+      "S_0.19": 32.52,
+      "L_in_window": false,
+      "S_0.10_in_window": false
+     }
+    },
+    "reading": "trained cutoff: monopole 730-860 MeV (softer than the standard 1.0-1.3 GeV) gives L = 53-67 MeV (inside or at the upper edge of the window) and S(0.10) = 22.8-24.0 MeV (1.5 to 2.7 MeV below the centre, outside the +-1.0 window); the contact-type scheme (sharp 574-602 MeV) gives L = 16-21 MeV (below the window) and S(0.10) = 26.8-27.3 MeV (0.3-0.8 MeV above the window). The second-order term alone scales as n^0.73 with a form factor (L2 = 2.2 S2) and is almost flat around n0 in the contact-type scheme. The data lie between the two regularisations. The required weak density dependence is therefore reachable but not predicted; it is decided by short-distance physics, i.e. by the parameter that the zero-parameter protocol forbids.",
+    "limits_of_this_estimate": "nonrelativistic second order on a free Fermi gas; irreducible two-pion exchange, Delta excitation and rho-tensor cancellation omitted; the tensor force is not perturbative in the 3S1-3D1 channel; the isoscalar by-product (-21 to -62 MeV per nucleon at n0) would have to be absorbed by re-solving the scalar potential, and its effect on stability, spin-orbit and stars was not computed; S taken as E_PNM - E_SNM (checked against delta = 0.5: 1 to 2 percent)."
+   }
+  },
+  {
+   "check": "4. Does the verdict 'not_this_field' follow?",
+   "result": "refuted",
+   "evidence": "It follows for the first-order (Fock) term only, which is what verdict_text and caveat 2 say. The label 'not_this_field' is a statement about the pion and is not supported: the same field at second order gives an isovector term of the right sign and of 1.5-3.6 times the needed size at standard cutoffs, with one short-distance parameter. Under the protocol vocabulary the supported label is 'undecidable' at zero parameters (Fock level: fails R1, R2, R5, R6; second order: not testable without a counted parameter). The reverse inference in known_particle_match ('closing R1 with this exchange would need f^2/4pi = 0.41') holds only at first order: the second-order term scales as f^4 and closes the gap at the measured coupling. The R2, R5 and R6 conclusions are unaffected by this check (no evidence that second-order pion exchange helps spin-orbit, the stars or the stability edge was produced)."
+  }
+ ],
+ "overall": "REFUTED",
+ "overall_scope": "All first-order numbers are CONFIRMED by an independent computation (E/A, S, L, self-energies, DD-ME2 control, nonrelativistic limit). What is refuted is the verdict label 'not_this_field' and the inference that the pion cannot supply the missing isovector strength: that holds at first order only.",
+ "corrected_statement": "Числа первого порядка подтверждены независимым расчётом: обменный (фоковский) член пиона с псевдовекторной связью (f^2/4pi = 0,075, m_pi = 138 МэВ) при насыщении даёт E/A = -6,24 МэВ, S(n0) = +3,27 МэВ, L = +6,9 МэВ, если убрать контактную часть, и E/A = +15,87 МэВ, S = -4,30 МэВ, если её оставить; изоспиновые веса: одноимённые пары 1, разноимённые 2, в сумме 6, то есть втрое больше изоскалярного обмена. Контроль DD-ME2 (-6,29 и +3,24 МэВ) и нерелятивистский предел (+18,07 МэВ с контактом и -6,16 МэВ без него при k_F = 1,36 фм^-1) воспроизведены. Вывод «пион не является недостающим элементом» верен только для первого порядка. Во втором порядке (итерированный однопионный обмен, тензорные корреляции) тот же пион с измеренной константой даёт вклад в энергию симметрии правильного знака и величиной +33…+65 МэВ (с эффективной массой +28…+54 МэВ) при монопольном формфакторе 1,0–1,3 ГэВ, то есть в 1,5–3,6 раза больше недостающих 18 МэВ; нужные 18–22 МэВ получаются при более мягком обрезании 0,73–0,86 ГэВ. Значения без регулятора не существует: член расходится линейно (+0,233 МэВ на 1 МэВ обрезания), а конечный остаток равен -113 МэВ, поэтому знак и величина задаются одной короткодействующей константой. Зависимость от плотности тоже определяется способом регуляризации: с формфактором L = 53–67 МэВ и S(0,10 фм^-3) = 22,8–24,0 МэВ (ниже окна 25,5 ± 1,0), при поглощении расходимости в контактный член L = 16–21 МэВ (ниже окна 35–65) и S(0,10) = 26,8–27,3 МэВ; данные лежат между двумя схемами. Правильный вердикт: на уровне Фока пион не закрывает ни R1, ни R2, ни R5, ни R6; как поле пион не исключён — вопрос неразрешим без хотя бы одного учтённого параметра (метка undecidable вместо not_this_field), и проверка с одним параметром (обучение на S(n0), тест на L, S(0,10), E_PNM(0,10), с пересчётом скалярного потенциала из-за изоскалярного побочного вклада -21…-62 МэВ на нуклон) остаётся невыполненной. Оценка второго порядка здесь нерелятивистская, на свободном ферми-газе, без двухпионного обмена с Delta и без rho-тензора; это оценка масштаба, а не предсказание."
+}
