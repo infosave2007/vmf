@@ -1,0 +1,153 @@
+{
+ "target": "SCR/round3/metastable_vacuum/ (result.json, validation.json, structure_map.jsonl, analysis.json, scripts)",
+ "checks": [
+  {
+   "check": "1. Independent recomputation of B (own shooting solver DOP853 + own Coleman-Glaser-Martin variational minimiser, coefficients regenerated with scalar_jet)",
+   "result": "holds",
+   "evidence": {
+    "validation_of_own_solver": "cubic O(4): CGM 205.17 (not fully converged, 30000 iterations) vs 204.8-205; cubic O(3): 43.660 vs target 43.660; Adams delta=1.0: fit 16.744, shoot 16.756, CGM 16.757; delta=1.8: fit 803.63, shoot 803.27, CGM 803.20",
+    "centre y*=0.63 quintic Q0=0": {
+     "target": 225.2525,
+     "own_shoot": 225.2525,
+     "own_CGM": 225.285
+    },
+    "centre y*=0.80 quintic Q0=-200": {
+     "target": 825.4588,
+     "own_shoot": 825.4588,
+     "own_CGM": 825.441
+    },
+    "centre y*=0.80 quintic Q0=0": {
+     "target": 193.6104,
+     "own_shoot": 193.6104,
+     "own_CGM": 193.646
+    },
+    "centre y*=0.869 quartic": {
+     "target": 1947.4252,
+     "own_shoot": 1947.4252,
+     "own_CGM": 1947.381
+    },
+    "centre y*=0.868 quartic": {
+     "target": 499.6075,
+     "own_shoot": 499.6075,
+     "own_CGM": 499.61
+    },
+    "corner maxima of the closed band": "y*=0.63 (n0 0.15, E/A -15.5, K 220, Q0 +200): map 287.937, own 287.937; y*=0.75 (n0 0.17, E/A -15.5, K 260, Q0 -600): map 235.661, own 235.661",
+    "note": "CGM values are variational upper bounds stopped at the iteration limit; they agree with shooting to 2e-4 relative. Kinetic normalisation (dW)^2/2 agrees with creative/surface_crust/sc_core.py (W0^2 (grad y)^2/2).",
+    "files": [
+     "SCR/round3/metastable_vacuum/refute_work/rb_bounce.py",
+     "SCR/round3/metastable_vacuum/refute_work/rb_bounce.json",
+     "SCR/round3/metastable_vacuum/refute_work/misc_checks.json"
+    ]
+   }
+  },
+  {
+   "check": "2a. Zero-T thresholds and whether the prefactor choice could open y* 0.63-0.75",
+   "result": "holds",
+   "evidence": {
+    "B_thr": {
+     "A=W0^4": 384.574,
+     "A=(70 MeV)^4": 374.545,
+     "A=(110 MeV)^4": 376.353,
+     "A=W0^4 with Callan-Coleman (B/2pi)^2 at B=288": 392.22
+    },
+    "max_B_in_band": "287.9 at 0.63, 158.3 at 0.64, 41.8 at 0.69, 235.7 at 0.75 (9 corners x 5 Q0, structure_map.jsonl)",
+    "prefactor_needed": "to pass B = 288 the prefactor would have to be A^(1/4) < 2.8e-8 MeV; no physical prefactor does that. Replacing t_U^4 by a Hubble 4-volume shifts B_thr by under 2.",
+    "caveat": "the map samples y* in steps of 0.01 and only corners/centre of (n0, E/A, K); the closing edge lies between 0.62 (5 of 45 corner points already fail) and 0.63, the reopening edge between 0.75 and 0.76."
+   }
+  },
+  {
+   "check": "2b. O(3) thermal treatment: could it open the band; quoted thermal threshold B3/T > 215-222",
+   "result": "refuted",
+   "evidence": {
+    "direction": "the criterion takes the minimum over channels, so the thermal channel can only close members, never open them (holds).",
+    "threshold_number": "the quoted 215.1-221.5 omits the factor (B3/2piT)^(3/2) of the target's own declared rate formula. With the declared formula P = T^4 (B3/2piT)^1.5 exp(-B3/T) V_core dt = 1 the thresholds are 220.4 (10 MeV), 223.2, 224.9, 226.0, 226.9 (50 MeV). The pass/fail code (nvg_vac.thermal_check) uses the full formula, so flags are unaffected; only the quoted number is off by about 5.3.",
+    "y*=0.62 removal": "own tree-level O(3) shooting, centre Q0=0: B3 = 9306 MeV, B3/T = 186.1 at 50 MeV (target 186) < 226.9: fails; y*=0.61: B3/T = 698 at 50 MeV: passes. Confirmed.",
+    "file": "SCR/round3/metastable_vacuum/refute_work/misc_checks.json"
+   }
+  },
+  {
+   "check": "Quartic structure: a4 < 0 below y* = 0.8657, B = 0, metastable quartic band only y* 0.868-0.8699",
+   "result": "refuted",
+   "evidence": {
+    "centre": "0.868 -> 499.6 and 0.869 -> 1947.4 reproduced; B = 0 for U ~ -y^8 follows from the CGM scaling argument (infimum not attained, controlled by W >> W0).",
+    "why_refuted": "the band 0.868-0.8699 is valid only at the window centre (n0 0.16, E/A -16, K 240). Across the declared window quartic-metastable members occur at y* = 0.8639-0.8748 in the target's own LHS (6 members, e.g. mv0009 at y* = 0.875, B = 2540) and at 0.8621-0.8766 in my sample (30 members). As a statement about the class the band is about 0.862-0.877.",
+    "file": "SCR/round3/metastable_vacuum/refute_work/post_extra.json"
+   }
+  },
+  {
+   "check": "Newly opened y*: 0.61-0.62 low end, 0.76-0.87 high end; 0.63-0.75 closed (max B 288 at 0.63)",
+   "result": "holds",
+   "evidence": "Closed band confirmed (check 1, 2a). Wording caveat: y* 0.83-0.87 is already in the target's own old_stable_ystar_union, so the y* values that are genuinely new are 0.61, 0.62 and 0.76-0.82; with the thermal check 0.61 and the members with B >= about 5200."
+  },
+  {
+   "check": "3. Ground state (G): 0 of 108 metastable members pass; deeper state reached below central density or grid artefact",
+   "result": "refuted",
+   "evidence": {
+    "recount": "0 of 108 in samples_reopened.jsonl confirmed; 87 with a bad beta-table node confirmed.",
+    "independent_fine_grid (dy = 1e-4, y up to 2.6, continuous refinement) for mv0002, mv0006, mv0099, mv0051, mv0189, mv0159": "all six failures are real: the abnormal state (y ~ 0.06-0.37 or y ~ 1.31-1.58) lies below the normal branch by 2e6-8e8 MeV^4 at the flagged nodes, far below x_c(M_max) = 2.3-6.1; no grid-edge minima. mv0051 fails only at x = 0.05; mv0189 only at x = 0.05 and x = 1.0.",
+    "why_refuted": "the statement does not generalise and is partly an artefact of the declared node grid in the opposite direction. In my stratified sample 9 of 342 metastable members with a valid star PASS the declared (G) (ids is0069, is0191, is0229, is0262, is0332, js0098, js0180, js0228, ks0241; y* = 0.832-0.860, B = 1.3e5-2.7e6, shallow deeper state at y_t = 1.28-1.32 with U_t = -4.0e6 to -1.4e7 MeV^4). For them the abnormal state is the ground state only for n <= 0.01-0.02 n0, below the lowest declared node (0.05 n0) and below the SLy match. They carry posterior weight 0.082 +- 0.040 in the reopened class, so 'posterior weight metastable 0', 'the G-valid reopened class is the stable class' and the practical-value line 'a metastable vacuum always propagates into the matter ground state (G)' are false as general statements. Read literally ((G): no abnormal state below the central density) every metastable vacuum fails (G) trivially at n -> 0, which makes '0 of 108' a tautology rather than an independent finding; read operationally (declared nodes) it is a sample accident (1 of the 108 failed only at the x = 0.05 node).",
+    "files": [
+     "SCR/round3/metastable_vacuum/refute_work/g_check.json",
+     "SCR/round3/metastable_vacuum/refute_work/metastable_G_true.json",
+     "SCR/round3/metastable_vacuum/refute_work/misc_checks.json"
+    ]
+   }
+  },
+  {
+   "check": "4. Reopened-class statistics at ESS 2.3: lnZ -13.49, PPC 0.069, LOO J0740 +2.54, J0614 -2.18",
+   "result": "refuted",
+   "evidence": {
+    "method": "three-stage adaptive importance sampling, y* stratified (7, 9, 11 strata), other six parameters conditional Gaussian with 15-25 percent defensive prior component, deterministic-mixture weights pi/q_mix; members evaluated with the target's own mv_core.declared_rule and mv_core._body (unchanged), same chi2, PPC replication and LOO PIT formulas as creative/likelihood/analyze.class_stats.",
+    "N": "1059 evaluated (485 + 290 + 284), 411 valid with (G), 379 with finite likelihood; mean importance weight 1.10 (should be 1; +-0.1)",
+    "ESS": "103 (posterior); LOO posteriors 58 (Mmax), 62 (R144), 82-122 (others). The requested 150 was NOT reached within the compute limit.",
+    "lnZ": "-14.18 +- 0.09 (target -13.49 with 67 percent MC error; earlier N = 2000 run -14.69)",
+    "ppc_p": "0.0567 +- 0.0033 (bootstrap); 97 percent of bootstrap replicas above 0.05 (target 0.069)",
+    "LOO_z": {
+     "Mmax_J0740": "+2.65 +- 0.06 (target +2.54)",
+     "R144_J0614": "-2.44 +- 0.02 (target -2.18)",
+     "R207": 1.26,
+     "R134": 0.06,
+     "R1418": -1.23,
+     "Lt": -1.05,
+     "S2": 0.38,
+     "EPNM": -0.62
+    },
+    "stage_stability": "stage 1 alone (ESS 18.5): ppc 0.060, z +2.58 / -2.38; stages 1+2 (ESS 92): 0.056, +2.66 / -2.41; all (ESS 103): 0.057, +2.65 / -2.44",
+    "best_point": "chi2 13.23 at y* = 0.8313 (quintic_stable, ks0004); target best 14.11",
+    "conclusion": "the quoted numbers are not reproduced at their stated precision (PPC lower, both LOO |z| larger, lnZ lower by 0.7), but the qualitative outcome is the same and firmer: PPC marginally above 0.05, LOO fails on two data.",
+    "files": [
+     "SCR/round3/metastable_vacuum/refute_work/is_q.py",
+     "SCR/round3/metastable_vacuum/refute_work/is_gen.py",
+     "SCR/round3/metastable_vacuum/refute_work/is_gen2.py",
+     "SCR/round3/metastable_vacuum/refute_work/is_gen3.py",
+     "SCR/round3/metastable_vacuum/refute_work/is_run2.py",
+     "SCR/round3/metastable_vacuum/refute_work/is_combined3.jsonl",
+     "SCR/round3/metastable_vacuum/refute_work/is_analysis_combined3.json",
+     "SCR/round3/metastable_vacuum/refute_work/post_extra.json"
+    ]
+   }
+  },
+  {
+   "check": "Spin-orbit: 0 of 239 pass, max 2.74 MeV",
+   "result": "undecidable",
+   "evidence": "not recomputed (compute limit). Consistent with the earlier validated relation between m*/M and the splitting; the 9 metastable (G)-valid members found here lie at y* = 0.83-0.86, where the target's own table gives 1.0-2.0 MeV, far below 4.9 MeV."
+  },
+  {
+   "check": "5. NL3 sigma potential: bounce with B = 0.877 towards M* about 31 M",
+   "result": "holds",
+   "evidence": {
+    "own_shooting": "B = 0.876680 (virial and direct agree to 1e-13), sigma(0) = 2734.1 MeV, M*(0)/M = 30.75; Fubini 8 pi^2/(3|g3|) = 0.9112; U < U_vac outside -1.061 < M*/M < 2.027. No finite bounce on the sigma < 0 side (no overshoot up to phi0 = 1e5 m_s), as expected for a pure Fubini-type runaway.",
+    "physical_meaning": "the number is correct but it is not a physical decay rate: B < 1 means the semiclassical formula Gamma = A exp(-B) has no validity, and the bounce sits at sigma = 2.7 GeV, M* = 31 M, far outside any domain where NL3 is defined. The quoted 5e24 fm^-3 s^-1 should not be read as a rate. The usable statement is the domain one (U above the vacuum for -1.06 < M*/M < 2.03).",
+    "file": "SCR/round3/metastable_vacuum/refute_work/nl3_check.json"
+   }
+  },
+  {
+   "check": "6. Does the verdict does_not_converge follow from the numbers, in both directions",
+   "result": "holds",
+   "evidence": "Negative direction: (S) fails by leave-one-out with both the target's and the re-estimated numbers (|z| = 2.65 and 2.44 > 2), (O) fails for every member, and the spin-orbit band 0.63-0.75 stays closed by a margin of 97 in B. Including the 9 metastable (G)-valid members does not change this (stable-only PPC 0.056, same LOO). Positive direction: no number in the target supports convergence or conditional convergence; the no-(G)-cut class (the bound for G_meta) also fails LOO and (O). The verdict is therefore sound, but three supporting sentences of verdict_text are wrong or overstated: 'every metastable member fails (G) ... so the G-valid reopened class is the stable class', the statistics quoted at ESS 2.3, and the thermal threshold 215-222."
+  }
+ ],
+ "overall": "PLAUSIBLE",
+ "overall_note": "The verdict and the vacuum map are confirmed; four supporting statements are refuted or need correction (thermal threshold value, quartic band stated without 'centre', universality of the (G) failure and zero metastable posterior weight, class statistics at ESS 2.3). Compute used: about 53 CPU-minutes including one killed run (limit about 50); ESS 103 instead of the requested 150.",
+ "corrected_statement": "Вердикт «не сходится» подтверждён, но часть опорных утверждений нужно исправить. (1) Значения B воспроизведены независимым решателем с точностью до 1e-8 (стрельба) и 2e-4 (вариационный метод): 225.25 (y*=0.63), 825.46 и 193.61 (y*=0.80), 499.61 и 1947.43 (квартика 0.868 и 0.869). Пороги B > 384.6 (W0^4) и 374.5-376.4 (m_sigma^4) верны; полоса y* = 0.63-0.75 закрыта при любом разумном предэкспоненте (максимум B = 287.9 при 0.63, 235.7 при 0.75), тепловой O(3)-канал может только закрывать. (2) Тепловой порог по объявленной формуле с множителем (B3/2piT)^(3/2) равен B3/T > 220.4-226.9, а не 215-222; вывод об y* = 0.62 (B3/T = 186 при 50 МэВ) сохраняется. (3) Полоса метастабильной квартики 0.868-0.8699 относится только к центру окна; по всему окну (n0, E/A, K) она занимает примерно y* = 0.862-0.877. (4) Утверждение «ни один метастабильный член не проходит (G)» верно для выборки из 108 членов, но не является общим: в стратифицированной выборке 9 из 342 метастабильных членов (y* = 0.832-0.860, B = 1.3e5-2.7e6, мелкое более глубокое состояние при y = 1.28-1.32) проходят объявленное условие (G), потому что аномальное состояние является основным только при n <= 0.02 n0, ниже самой низкой объявленной точки 0.05 n0; их апостериорный вес 0.08 +- 0.04. В буквальном прочтении (G) любой метастабильный вакуум нарушает его при n -> 0 тривиально. (5) Статистика класса при ESS 103 (вместо 2.3; цель 150 не достигнута): lnZ = -14.18 +- 0.09, PPC = 0.057 +- 0.003, LOO J0740 z = +2.65 +- 0.06, J0614 z = -2.44 +- 0.02; класс по-прежнему не проходит (S) по leave-one-out. (6) Для NL3 B = 0.877 при sigma(0) = 2.73 ГэВ (M* = 30.7 M) численно верно, но при B < 1 квазиклассическая формула неприменима, и это число нельзя читать как скорость распада; содержательно лишь утверждение об области -1.06 < M*/M < 2.03. Спин-орбитальный результат (0 из 239, максимум 2.74 МэВ) не пересчитывался."
+}
