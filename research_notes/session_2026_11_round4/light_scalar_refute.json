@@ -1,0 +1,594 @@
+{
+ "target": "SCR/round4/light_scalar",
+ "refuter_files": {
+  "dir": "SCR/round4/light_scalar/refute",
+  "scripts": [
+   "pool.py",
+   "stars_is.py",
+   "stars_is2.py",
+   "analyze_is.py",
+   "check1_own.py",
+   "check2_chi0.py",
+   "check3_wmode.py",
+   "check5_surface.py"
+  ],
+  "outputs": [
+   "check1_own.json",
+   "check2_chi0.json",
+   "check3_wmode.json",
+   "check5_surface.json",
+   "pool_a.jsonl",
+   "pool_b.jsonl",
+   "stars_is_a.jsonl",
+   "stars_is_a2.jsonl",
+   "stars_is_b.jsonl",
+   "analysis_is.json",
+   "dense_pool_summary.json",
+   "nn_posterior_weight.json"
+  ],
+  "compute_total_min_approx": 29,
+  "processes": "one at a time"
+ },
+ "checks": [
+  {
+   "check": "1. Independent two-field functional (structure a, log potential): own Gauss-Legendre kinetic integrals + Nelder-Mead over (y, x); 16O 1p via the session's so_core procedure fed with my S(n), V(n)",
+   "result": "holds",
+   "evidence": {
+    "x0246_best_member": {
+     "declared": {
+      "n0": 0.16674246042119564,
+      "EA": -16.076265311946997,
+      "K": 253.0574515186988,
+      "mu": 0.6131308857115765,
+      "m_chi": 448.8807504056089,
+      "s": 0.912337098587091
+     },
+     "own_n0_fm3": 0.1667424736936766,
+     "own_EA_MeV": -16.076265311947395,
+     "own_K_MeV": 253.02557437044013,
+     "own_mstar_over_M": 0.6131308665278336,
+     "own_split_16O_1p_MeV": 4.9560068460168445,
+     "target_split_MeV": 4.956007072335424,
+     "own_y_x_at_n0": [
+      1.1268644767845348,
+      0.5637682143917142
+     ],
+     "target_y_x": [
+      1.1268644614058256,
+      0.5637682368964279
+     ],
+     "m_W_vac_MeV": 62.19303813316197,
+     "g_W": 0.09582708315101461,
+     "g_chi": 9.301677910676206,
+     "ground_state_wide_grid_SNM_PNM_0.25_to_8_n0": true,
+     "a_s_chi_gradient_only_zero_range_vector_MeV": 24.103528855599375
+    },
+    "x0621_lowest_m_chi": {
+     "declared": {
+      "n0": 0.1510121451931449,
+      "EA": -15.838613091438384,
+      "K": 220.88146843333686,
+      "mu": 0.6097182321912,
+      "m_chi": 358.9740762419443,
+      "s": 0.830279913496416
+     },
+     "own_n0_fm3": 0.151012137995702,
+     "own_EA_MeV": -15.838613091438788,
+     "own_K_MeV": 220.85293074155746,
+     "own_mstar_over_M": 0.6097182339790909,
+     "own_split_16O_1p_MeV": 5.015730957326414,
+     "target_split_MeV": 5.0157308204416164,
+     "own_y_x_at_n0": [
+      1.2078600155236288,
+      0.48745022140288996
+     ],
+     "target_y_x": [
+      1.2078600323591204,
+      0.48745021580813586
+     ],
+     "m_W_vac_MeV": 31.835015344437235,
+     "g_W": 0.18552638093930773,
+     "g_chi": 8.465068824898314,
+     "ground_state_wide_grid_SNM_PNM_0.25_to_8_n0": true,
+     "a_s_chi_gradient_only_zero_range_vector_MeV": 23.30492731382143
+    },
+    "A_central_mu0.60": {
+     "declared": {
+      "n0": 0.16,
+      "EA": -16.0,
+      "K": 240.0,
+      "mu": 0.6,
+      "m_chi": 440.0,
+      "s": 0.93
+     },
+     "own_n0_fm3": 0.15999997101128888,
+     "own_EA_MeV": -16.0,
+     "own_K_MeV": 240.00038904205212,
+     "own_mstar_over_M": 0.6000000426672286,
+     "own_split_16O_1p_MeV": 5.478134630242726,
+     "target_split_MeV": 5.478,
+     "own_y_x_at_n0": [
+      1.1473334137218545,
+      0.5588029072115042
+     ],
+     "target_y_x": [
+      1.1473334485451872,
+      0.5588028587116526
+     ],
+     "m_W_vac_MeV": 46.86369458701683,
+     "g_W": 0.07651920838183929,
+     "g_chi": 9.481758957654725,
+     "ground_state_wide_grid_SNM_PNM_0.25_to_8_n0": true,
+     "a_s_chi_gradient_only_zero_range_vector_MeV": 27.577848942640355
+    },
+    "summary": "saturation density, E/A, K, m*/M and the field values agree with the declared/stored values to 1e-4..1e-8; 16O 1p 4.95601 / 5.01573 / 5.47813 MeV against stored 4.95601 / 5.01573 / 5.478. V''(chi0) = m_chi^2 is an identity of the log form. Ground state re-checked on a wider grid (y up to 4.0; the target's grid stops at y = 1.5 although y reaches 1.45-1.71 at 8 n0): the tracked branch is the global minimum for SNM and PNM at 0.25-8 n0 in all three members.",
+    "file": "SCR/round4/light_scalar/refute/check1_own.json"
+   }
+  },
+  {
+   "check": "2. Headline: is m_chi = 390-465 MeV selected by chi0 = f_pi + saturation + ground state, and not by the R2 fit / prior box / potential form / tightened check?",
+   "result": "refuted",
+   "evidence": {
+    "exact_scaling": "the homogeneous functional contains chi0 and m_chi only through (m_chi chi0)^2 (and s); changing ls_core.CHI0 with m_chi -> m_chi*92.1/chi0 gives the identical model (coefficient deviation 0.0, same validity, split 4.956007 = reference). So m_chi is exactly proportional to 1/chi0; the construction fixes sqrt(m_chi chi0) = 188-207 MeV, i.e. the Walecka scalar strength (g_chi M_N/m_chi)^2 ~ 420 (QHD-I 357, NL3 356).",
+    "m_chi_16_50_84_vs_chi0_MeV": {
+     "60.0": [
+      591.9970039992924,
+      646.1148479187173,
+      713.2342124401341
+     ],
+     "73.68": [
+      482.08225081375593,
+      526.1521562856003,
+      580.8096192509234
+     ],
+     "92.1": [
+      385.66580065100476,
+      420.9217250284803,
+      464.6476954007388
+     ],
+     "110.52": [
+      321.38816720917066,
+      350.76810419040027,
+      387.206412833949
+     ],
+     "130.0": [
+      273.22938646121185,
+      298.2068528855618,
+      329.1850211262157
+     ]
+    },
+    "fraction_of_trained_class_in_400_550_vs_chi0": {
+     "60.0": 0.02422145328719723,
+     "73.68": 0.6591695501730104,
+     "92.1": 0.7041522491349481,
+     "110.52": 0.06055363321799308,
+     "130.0": 0.0
+    },
+    "same_m_chi_at_other_chi0": "member x0246 with m_chi unchanged: chi0 -20%: W potential not globally stable; +20%: not the ground state at n0; 60 and 130 MeV: no design (y out of range)",
+    "dependence_on_the_R2_training_variable": "dense valid set (1446 members): m_chi = -131.7 + 880.7 m*/M (residual sd 35 MeV), i.e. +8.8 MeV per +0.01 in m*/M; target's own central_fine.json: valid m_chi 250-380 at m*/M 0.50, 350-440 at 0.60, 400-490 at 0.64; at m*/M = 0.90 every m_chi 200-1400 MeV is valid (93 of 120 stable grid points, strict checker). The interval is therefore set by the low-m* requirement (R2 window >= 4.9 MeV together with the declared window edge m*/M >= 0.60) AND validity AND chi0 = f_pi; the clause 'rather than from the spin-orbit fit' is not correct.",
+    "prior_box": {
+     "a": "not a box artefact: dense slab sample (m_chi 330-530, 578 trained) gives 16/50/84 = 386/421/465 MeV (target 389/421/455); 3.6 percent of the trained class sits at s >= 0.97, i.e. it touches the declared prior edge s = 0.98",
+     "b": "box artefact present: the target's box2 (s >= 0.78) cuts the class; 29 percent of my 100 trained (b) members have s < 0.78 (down to 0.67). Dense 16/50/84 = 401/442/476 MeV (target 429/444/465); fraction in [400, 550] = 0.86 (target 1.0); the declared 'match' rule needs q16 >= 400: q16 = 401 (bootstrap 396-403), P(q16 >= 400) = 0.71, so 'match' for (b) is a coin flip, not established"
+    },
+    "potential_form": "only the log potential has valid low-m* members (target's maps; not recomputed), so the number is specific to V ~ x^2 - 1 - ln x^2",
+    "tightened_ground_state_check": "the lower edge depends on it: target's looser-checker map gives valid m_chi 250-450 MeV at m*/M 0.60, the strict checker 350-440. The strict checker is the right one (my wide-grid check confirms its valid members), so this is not an artefact, but the lower edge is a checker result",
+    "files": [
+     "SCR/round4/light_scalar/refute/check2_chi0.json",
+     "SCR/round4/light_scalar/refute/dense_pool_summary.json",
+     "SCR/round4/light_scalar/central_fine.json",
+     "SCR/round4/light_scalar/map_valid.json"
+    ]
+   }
+  },
+  {
+   "check": "3. Light W mode (vacuum mass, coupling g_W = (1-s) M_N/W0): excluded by NN scattering?",
+   "result": "refuted",
+   "evidence": {
+    "numbers_of_the_claim": "reproduced: m_W = sqrt(8 a2)/W0; dense trained class (a) 16/50/84 = 36/50/71 MeV (range 23-118), (b) 78/100/129 MeV (range 65-198)",
+    "what_is_refuted": "the W mode is reported as a prediction; it is in fact an exclusion of most of the class. A scalar-isoscalar Yukawa -(g_W^2/4pi) exp(-m_W r)/r with range 2-6 fm adds to peripheral NN partial waves that are fixed by one-pion exchange at the 1-2 percent level (f^2/4pi = 0.075 known to about 1 percent)",
+    "target_29_members_a": {
+     "g_W": [
+      0.06419760344251976,
+      0.11464026022246589,
+      0.18552638093930773
+     ],
+     "alpha_W": [
+      0.00032796520286085756,
+      0.0010458381076917567,
+      0.0027390595965000823
+     ],
+     "alpha_W_over_OPE_central": [
+      0.004372869371478101,
+      0.013944508102556756,
+      0.0365207946200011
+     ],
+     "V_W_over_V_OPE_at_3fm": [
+      0.013608417831230728,
+      0.057597150695854804,
+      0.17521518293217933
+     ],
+     "V_W_over_V_OPE_at_5fm": [
+      0.0221880881455203,
+      0.13460776797793414,
+      0.4984168871113504
+     ],
+     "Born_1D2_over_PWA93_at_10MeV": [
+      0.03513709688908987,
+      0.3661136216190932,
+      2.1585247999987165
+     ],
+     "Born_1G4_over_PWA93_at_50MeV": [
+      0.03277734766897003,
+      0.280334737933159,
+      1.4477667730040753
+     ],
+     "a_np_1S0_shift_fm": [
+      -11.696701730803316,
+      -2.661844402493035,
+      -0.5474809660815758
+     ],
+     "alpha_over_nPb_bound": [
+      0.243960706343012,
+      7.406346564846954,
+      78.4336291786541
+     ],
+     "n_with_1D2_shift_at_10MeV_gt_5pct": 28
+    },
+    "target_10_members_b": {
+     "g_W": [
+      0.09951025072967337,
+      0.17318420539469218,
+      0.23119572509235295
+     ],
+     "alpha_W": [
+      0.0007879992007371996,
+      0.002390172946562057,
+      0.004253532299922909
+     ],
+     "alpha_W_over_OPE_central": [
+      0.010506656009829328,
+      0.03186897262082743,
+      0.05671376399897213
+     ],
+     "V_W_over_V_OPE_at_3fm": [
+      0.02304123250723594,
+      0.04234500025018063,
+      0.12286905798757655
+     ],
+     "V_W_over_V_OPE_at_5fm": [
+      0.03531349476664117,
+      0.05521938701260602,
+      0.2057209715265875
+     ],
+     "Born_1D2_over_PWA93_at_10MeV": [
+      0.04252074768278133,
+      0.08019695642214862,
+      0.34606047021011005
+     ],
+     "Born_1G4_over_PWA93_at_50MeV": [
+      0.04370658226540911,
+      0.07787330160006335,
+      0.31678940458901544
+     ],
+     "a_np_1S0_shift_fm": [
+      -5.980770476845787,
+      -1.8840699474622244,
+      -0.9305355727935662
+     ],
+     "alpha_over_nPb_bound": [
+      0.2769131194444197,
+      0.5414982229173223,
+      2.4974360675784886
+     ],
+     "n_with_1D2_shift_at_10MeV_gt_5pct": 7
+    },
+    "central_member": {
+     "g_W": 0.07651920838183929,
+     "alpha_W": 0.0004659411560480967,
+     "range_fm": 4.207398302771855,
+     "V_W_over_V_OPE_central_at_r_fm": {
+      "2.0": 0.015169740411771633,
+      "3.0": 0.02370458295038297,
+      "5.0": 0.057881617441221236,
+      "8.0": 0.220852931340347
+     },
+     "Born_1D2_over_PWA93": {
+      "5": 0.4186321948346841,
+      "10": 0.17906877202321514,
+      "25": 0.06147475129988722,
+      "50": 0.028205788934542127
+     },
+     "Born_1G4_over_PWA93": {
+      "25": 0.35057819099689047,
+      "50": 0.13362371926717692,
+      "100": 0.06023545042583946
+     },
+     "alpha_over_nPb_bound": 2.832440430875749
+    },
+    "dense_class": {
+     "a": {
+      "extra_pp_1D2_phase_at_10MeV_relative_to_PWA93_q16_50_84": [
+       0.04449542336781396,
+       0.35961558865537013,
+       1.2202367604691955
+      ],
+      "fraction_of_trained_class_with_shift_below_2pct": 0.08996539792387544,
+      "below_5pct": 0.17301038062283736,
+      "posterior_weight_below_2pct": 0.06930675059619619,
+      "posterior_weight_below_5pct": 0.1741267459161695,
+      "s_of_surviving_members": [
+       0.9509084202315202,
+       0.9784139207575228
+      ]
+     },
+     "b": {
+      "extra_pp_1D2_phase_at_10MeV_relative_to_PWA93_q16_50_84": [
+       0.02149040624523126,
+       0.09360721725376618,
+       0.2086746986291309
+      ],
+      "fraction_of_trained_class_with_shift_below_2pct": 0.14,
+      "below_5pct": 0.33,
+      "posterior_weight_below_2pct": 0.007501107293951252,
+      "posterior_weight_below_5pct": 0.17154938787128945
+     }
+    },
+    "validation": {
+     "OPE_Born_vs_PWA93_pp_deg": {
+      "1D2": {
+       "5": {
+        "OPE_Born": 0.04953645703865627,
+        "PWA93": 0.043
+       },
+       "10": {
+        "OPE_Born": 0.17138743530147219,
+        "PWA93": 0.165
+       },
+       "25": {
+        "OPE_Born": 0.6071773326064789,
+        "PWA93": 0.696
+       },
+       "50": {
+        "OPE_Born": 1.17688474388122,
+        "PWA93": 1.711
+       }
+      },
+      "1G4": {
+       "25": {
+        "OPE_Born": 0.044075977904452966,
+        "PWA93": 0.04
+       },
+       "50": {
+        "OPE_Born": 0.16313928362090124,
+        "PWA93": 0.153
+       },
+       "100": {
+        "OPE_Born": 0.41194115232452916,
+        "PWA93": 0.418
+       }
+      }
+     },
+     "note": "my Born formula with f^2/4pi = 0.075 reproduces the PWA93 pp 1D2 at 5-10 MeV and 1G4 at 25-100 MeV to 2-15 percent, i.e. these phases are one-pion exchange"
+    },
+    "conclusion": "structure (a): the median member adds +36 percent to the pp 1D2 phase at 10 MeV and +27 percent to 1G4 at 50 MeV, and exceeds the neutron-208Pb bound g^2/4pi < 3.4e-11 (m/MeV)^4 by a factor 7; 83-91 percent of the class (83-93 percent of the posterior weight) is excluded; only the corner s >= 0.95 (g_W <= 0.05) survives. Structure (b): median +9 percent in 1D2, 67-86 percent of the class excluded. The 1S0 scattering length alone (shift -0.5 to -12 fm) would be absorbable by short-range terms; the peripheral waves are not.",
+    "caveats": "Born approximation without Coulomb distortion; PWA93 phases quoted from memory (cross-checked against my OPE Born values); the 1-2 percent sensitivity is the published precision of f^2 from NN partial-wave analyses, no refit of the NN data base was done; the n-Pb bound was derived for m below about 40 MeV",
+    "files": [
+     "SCR/round4/light_scalar/refute/check3_wmode.json",
+     "SCR/round4/light_scalar/refute/dense_pool_summary.json",
+     "SCR/round4/light_scalar/refute/nn_posterior_weight.json"
+    ]
+   }
+  },
+  {
+   "check": "4. Effective sample sizes 3.9 / 1.3: re-estimate posterior predictive p and leave-one-out z with a dense stratified sample",
+   "result": "holds",
+   "evidence": {
+    "method": "same uniform prior density restricted to a sheared slab around the valid band (20000 points (a): 1446 valid, 578 trained; 14000 points (b): 121 valid, 100 trained; containment checked: slab residuals of valid members within -0.005..+0.012 of +-0.015 (a), +-0.012 of +-0.025 (b)). (J, L) do not enter training, so the two nuclear terms were integrated over the (J, L) prior per member (400 draws) and one (J, L) drawn from the nuclear posterior; stars by the target's prereg pipeline (step4_stars.evaluate); (a): 40 members with inclusion probability 1 + 163 selected with known probability from a surrogate fitted only on other members (Horvitz-Thompson weights); (b): all 100 members. Statistics = the formulas of creative/likelihood/analyze.class_stats with base weights.",
+    "validation_of_my_statistics_on_the_target_members": {
+     "a": {
+      "ppc_p": 0.07924561149583914,
+      "target": 0.079925,
+      "loo": {
+       "Mmax": 0.36,
+       "R207": 0.45,
+       "R134": -0.17,
+       "R1418": -1.51,
+       "R144": -2.69,
+       "Lt": -1.46,
+       "S2": -0.32,
+       "EPNM": -0.55
+      },
+      "ESS": 3.931055775442554
+     },
+     "b": {
+      "ppc_p": 0.15374530360175379,
+      "target": 0.15535,
+      "loo": {
+       "Mmax": 0.0,
+       "R207": 0.28,
+       "R134": -0.01,
+       "R1418": -1.32,
+       "R144": -2.52,
+       "Lt": -1.3,
+       "S2": 0.03,
+       "EPNM": -0.82
+      },
+      "ESS": 1.3317745538680248
+     }
+    },
+    "dense_a": {
+     "N_star_evaluations": 203,
+     "all_ground_state_valid": true,
+     "ESS": 99.6475891094829,
+     "ppc_p": 0.07496403413763716,
+     "ppc_p_bootstrap_16_50_84": [
+      0.06879764955193722,
+      0.07468162877258702,
+      0.08178254024111195
+     ],
+     "loo_z": {
+      "Mmax": 0.7,
+      "R207": 0.64,
+      "R134": -0.19,
+      "R1418": -1.55,
+      "R144": -2.74,
+      "Lt": -1.5,
+      "S2": -0.09,
+      "EPNM": -0.25
+     },
+     "loo_z_Mmax_bootstrap": [
+      0.5629401988704738,
+      0.6940004504122893,
+      0.8104124859918581
+     ],
+     "loo_z_R144_bootstrap": [
+      -2.7629097873493156,
+      -2.74306729935926,
+      -2.72441258105906
+     ],
+     "loo_ESS_Mmax": 39.78402410829129,
+     "loo_ESS_R144": 126.49904341885633,
+     "posterior_M_max_16_50_84": [
+      2.065779044489885,
+      2.129516521946425,
+      2.1914930044983856
+     ],
+     "posterior_Q0_16_50_84": [
+      813.6690227461959,
+      2130.980203281749,
+      3676.931917533617
+     ],
+     "posterior_m_chi": [
+      394.85603657501025,
+      430.50675366231036,
+      472.7332125131677
+     ],
+     "best_member_chi2": 10.88403251625653,
+     "phase_A_only_plain_sample": {
+      "N_members": 40,
+      "ESS": 8.318403369844917,
+      "ppc_p": 0.07475308694186092,
+      "z_Mmax": 1.0253322632200264,
+      "z_R1418": -1.524704294711033,
+      "z_R144": -2.712626521167915,
+      "z_Lt": -1.4356025002806125
+     }
+    },
+    "dense_b": {
+     "N_star_evaluations": 100,
+     "ESS": 12.112222267714424,
+     "ppc_p": 0.10470509985840774,
+     "ppc_p_bootstrap_16_50_84": [
+      0.0665092376174931,
+      0.1035955085624944,
+      0.13048146469088687
+     ],
+     "loo_z": {
+      "Mmax": 0.0,
+      "R207": 0.67,
+      "R134": -0.08,
+      "R1418": -1.42,
+      "R144": -2.62,
+      "Lt": -1.35,
+      "S2": 0.34,
+      "EPNM": -0.73
+     },
+     "loo_z_R144_bootstrap": [
+      -2.682462641744468,
+      -2.6232606640871565,
+      -2.5706250799531887
+     ],
+     "posterior_M_max_16_50_84": [
+      2.078101500446976,
+      2.1677788905050623,
+      2.232664169504176
+     ],
+     "note": "ESS 12 only (target 1.3); includes the s < 0.78 part of the class that the target's box cut"
+    },
+    "claimed": {
+     "a": {
+      "ppc_p": 0.08,
+      "z_J0740_mass": 0.36,
+      "z_J0614_radius": -2.69,
+      "ESS": 3.9
+     },
+     "b": {
+      "ppc_p": 0.155,
+      "z_J0740_mass": 0.0,
+      "z_J0614_radius": -2.52,
+      "ESS": 1.3
+     }
+    },
+    "conclusion": "(a): p = 0.075 (0.069-0.082), J0740 mass z = +0.70 (0.56-0.81; the claimed +0.36 was noise of ESS 3.9), J0614 radius z = -2.74 (-2.76..-2.72), all other |z| < 1.6. (b): p = 0.105 (0.067-0.13) instead of 0.155, J0614 z = -2.62, mass z = 0.0. The qualitative statement (p > 0.05, single leave-one-out failure J0614) survives the dense sample for both structures. M_max 2.07-2.19 (a) and Q0 810-3680 MeV agree with the claimed 2.10-2.20 and 600-4060.",
+    "files": [
+     "SCR/round4/light_scalar/refute/analysis_is.json",
+     "SCR/round4/light_scalar/refute/stars_is_a.jsonl",
+     "SCR/round4/light_scalar/refute/stars_is_a2.jsonl",
+     "SCR/round4/light_scalar/refute/stars_is_b.jsonl"
+    ]
+   }
+  },
+  {
+   "check": "5. Surface: a_s >= 23.8 MeV even with the W gradient off (one member)",
+   "result": "refuted",
+   "evidence": {
+    "method": "own planar Thomas-Fermi boundary-value problem (scipy.solve_bvp) with the W gradient exactly zero (y algebraic), chi gradient chi0^2, vector gradient with mass m_omega y; sigma from the first integral and from the direct integral agree to 1e-10",
+    "validation": "vector range -> 0 (m_omega and g_v scaled by 8 at fixed C_v): a_s = 27.51 MeV, against 27.58 MeV from an independent single-field quadrature (check1_own.py)",
+    "A_central_mu0.60": {
+     "a_s_MeV": 22.92359847867849,
+     "a_s_direct_MeV": 22.92359847779383,
+     "t90_10_fm": 3.0389999999999997,
+     "chi_part_MeV": 33.08178558344281,
+     "vector_part_MeV": -10.158187104764323,
+     "max_rms_residual": 9.333468318079515e-06
+    },
+    "x0246_best_fit_member": {
+     "a_s_MeV": 19.711086513977538,
+     "a_s_direct_MeV": 19.71108650780825,
+     "t90_10_fm": 3.395999999999999,
+     "chi_part_MeV": 29.368265635521567,
+     "vector_part_MeV": -9.65717912154403,
+     "max_rms_residual": 9.511926485296122e-06
+    },
+    "conclusion": "the target's 23.79 MeV is the value at a W gradient scale of 60 MeV, not at zero; at exactly zero the same member gives 22.9 MeV (t = 3.04 fm). It is not a class bound: the best-fit trained member x0246 gives a_s = 19.7 MeV, inside the window 16-20 MeV. What survives: the thickness t(90-10) = 3.0-3.4 fm is outside 1.8-2.8 fm even with the W gradient off, and with the action's own W gradient (859 MeV) the surface is far worse (target: 25.9-29.3 MeV already at 120-193 MeV; not recomputed). R3 fails, but through the thickness and the action's W gradient, not through 'a_s >= 23.8'.",
+    "file": "SCR/round4/light_scalar/refute/check5_surface.json"
+   }
+  },
+  {
+   "check": "6. Does the verdict 'partial' follow, in both directions?",
+   "result": "holds",
+   "evidence": {
+    "upward": "missing_element_found needs R3, the joint likelihood and the anchors: the J0614 leave-one-out failure is confirmed with ESS 100 (z = -2.74), the surface thickness and the crust fail, S_kin(n0) = 17.5-18.7 MeV leaves about 13 MeV of symmetry energy missing, and the known-particle match is 'compatible, not determined' for (a) and marginal for (b)",
+    "downward": "not_this_field needs 'no valid stable model reaches the R2 window': valid ground-state members with 4.90-5.72 MeV exist (reproduced with own code), so by the letter of the declared rule 'partial' stands. Three qualifications: (i) the declared training sample (N = 6000 prior points) returned an empty trained class for all six structures; the class exists only in a prior mass of 2.1e-5 (a) / 8.5e-6 (b) found by two later refinements; (ii) no member inside the declared m*/M window reaches the measured 6.18 MeV (dense maximum 5.72 (a), 6.01 (b)); (iii) the NN test of check 3, not in the declared protocol, excludes 83-91 percent (a) and 67-86 percent (b) of the class, leaving the s >= 0.95 corner. Restricted to that corner (1D2 shift < 5 percent) the joint likelihood is unchanged: (a) p = 0.097, J0614 z = -2.72; (b) p = 0.054, z = -2.70",
+    "fine_tuning_numbers": {
+     "prior_mass_valid_mstar_le_0.645": {
+      "a": 5.134943181818182e-05,
+      "b": 1.023065476190476e-05
+     },
+     "prior_mass_trained": {
+      "a": 2.0525568181818178e-05,
+      "b": 8.455086580086578e-06
+     },
+     "claimed_valid_mstar_le_0.66": {
+      "a": 7e-05,
+      "b": 6e-06
+     }
+    },
+    "chi_share_of_nucleon_mass_s_16_84": {
+     "a": [
+      0.853434206999461,
+      0.9406631062960293
+     ],
+     "b": [
+      0.7436799653554456,
+      0.928533524127478
+     ],
+     "note": "the claimed 83-94 percent holds for (a) (85-94); for (b) the class reaches down to 67 percent"
+    }
+   }
+  }
+ ],
+ "overall": "REFUTED",
+ "overall_scope": "The numerical core is reproduced (two-field functional, saturation, 16O 1p 4.9-5.7 MeV, m_chi 386-465 MeV for (a), joint likelihood p and leave-one-out, M_max, Q0, fine-tuning, W-mode masses) and the label 'partial' follows from the declared rule. Refuted as stated: (1) the attribution of m_chi to 'chi0 = f_pi, saturation and the ground state rather than the spin-orbit fit'; (2) the (b) interval 429-465 MeV and its 'match'; (3) 'a_s >= 23.8 MeV even with the W gradient off'; (4) the light W mode presented as a prediction, while NN scattering excludes most of the class.",
+ "corrected_statement": "Второй лёгкий скаляр chi с конденсатом chi0 = f_pi = 92.1 МэВ и логарифмическим потенциалом действительно даёт основное состояние с m*/M = 0.60-0.64 и расщепление 1p в 16O 4.9-5.7 МэВ (структура a; до 6.0 МэВ в b), но не достигает измеренных 6.18 МэВ внутри объявленного окна m*/M и существует только на тонкой полосе априорной массы 2e-5 (a) и 8e-6 (b); в объявленной выборке из 6000 точек обученный класс пуст. Однородный функционал содержит chi0 и m_chi только в произведении: фиксируется sqrt(m_chi*chi0) = 188-207 МэВ, то есть стандартная сила скалярной связи Валечки (g_chi M_N/m_chi)^2 около 420; масса m_chi = 386-465 МэВ (a) и 401-476 МэВ (b) получается после подстановки chi0 = f_pi и точно пропорциональна 1/chi0 (при chi0 = 60 МэВ 590-710 МэВ, при 130 МэВ 270-330 МэВ, при +-20% 320-390 и 480-580 МэВ). Интервал зависит и от обучающей величины: полоса сдвигается на +8.8 МэВ на каждые +0.01 в m*/M (250-380 МэВ при m*/M = 0.50), а при m*/M = 0.90 допустима любая масса 200-1400 МэВ, поэтому масса выбрана требованием малой m* (остаток R2) вместе с условием основного состояния и входом f_pi, а не независимо от спин-орбитальной подгонки. Для структуры b ящик уточнения обрезал класс (29% членов имеют s < 0.78); совпадение с окном сигмы 400-550 МэВ для b на границе правила (16%-квантиль 401 МэВ, вероятность выполнения 0.7), для a оно 'совместимо, не определено' (70% класса в окне). Доля массы нуклона от chi: 85-94% (a), 74-93% (b). Совместное правдоподобие на плотной выборке: для a эффективный объём 100, p = 0.075 (0.069-0.082), z для массы J0740 +0.70, для радиуса J0614 -2.74; для b эффективный объём 12, p = 0.105 (0.067-0.13), z для J0614 -2.62; единственный провал исключения по одному, J0614, подтверждён; M_max 2.07-2.19 (a), Q0 = 810-3680 МэВ, энергии симметрии не хватает около 13 МэВ. Поверхность: при точно выключенном градиенте W центральный член даёт a_s = 22.9 МэВ и толщину 3.0 фм, а лучший член x0246 даёт a_s = 19.7 МэВ (внутри окна 16-20) и толщину 3.4 фм; провал R3 идёт через толщину (окно 1.8-2.8 фм) и через градиент W самого действия, а не через 'a_s >= 23.8 МэВ'. Мода W с вакуумной массой 36-71 МэВ (a, полный разброс 23-118) или 78-129 МэВ (b, 65-198) и связью g_W = (1-s) M_N/W0 = 0.02-0.23 является не предсказанием, а исключением: в борновском приближении она добавляет к фазе pp 1D2 при 10 МэВ +36% (медиана a; 16-84%: 4-122%) и +9% (медиана b) при точности однопионного обмена 1-2%; 83-91% класса a и 67-86% класса b исключены NN-рассеянием, остаётся только угол s >= 0.95 (g_W <= 0.05), где совместное правдоподобие не меняется (p = 0.097, z для J0614 -2.72). Вердикт 'partial' по объявленному правилу сохраняется, но с оговоркой: кандидат в найденном виде не является недостающим элементом и в большей части класса запрещён данными NN-рассеяния."
+}
