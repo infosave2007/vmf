@@ -1,0 +1,60 @@
+{
+ "target": "SCR/round3/derived_potentials/ (result.json, dpot.py, chain.py, analysis.py)",
+ "checks": [
+  {
+   "check": "(1) Independent recomputation at centre (n0 0.16, E/A -16): B1, B2 d=4, B4b. Own quadrature Fermi integrals, direct 3-equation solve, K and Q0 from finite differences of E/A(n) on the self-consistent y(n) branch",
+   "result": "holds",
+   "evidence": "Own solver (refute_work/own_solver.py, .json): B1 y* 0.707753, K 1587.34, Q0 6959 (h 0.001; Richardson to 6954), m_s 90.62 MeV; d=4 y* 0.842622, K 361.03, Q0 -91.48, m_s 88.43; B4b y* 0.831911, K 403.14, Q0 169.66, m_s 88.50. Reported values: 0.707753/1587.34/6953.8/90.62; 0.842622/361.03/-91.49/88.43; 0.831911/403.14/169.66/88.50. y* matches to 1e-7, K to 0.01 MeV, Q0 to 0.1 %. Also d=2 (0.81801, 463.9), d=3 (0.83555, 388.0) and B4a (0.78108, 692.07) agree. The only other sign changes in y are poles with theta < 0 (not admissible), so 'one admissible root' holds. m_s = sqrt(theta)/W0 is correct for the canonical field W (Phi = W e^{i theta}/sqrt2)."
+  },
+  {
+   "check": "(2) Derivations and parameter counts; is 'no free scale' for d=3 with the SVZ condensate honest, how fragile",
+   "result": "refuted",
+   "evidence": "The numbers reproduce (refute_work/gc_frag.py, .json): with theta = a^2 (b/32) <aG^2>, b = 9, <aG^2> = 0.012 GeV^4, E/A(n0) = -12.59 / -14.50 / -16.49 MeV at n0 0.15 / 0.16 / 0.17, so a member exists only for n0 >= about 0.165. But the hit needs <aG^2> inside [0.0108, 0.0123] GeV^4 (union over the n0 window; at n0 0.16 only [0.01141, 0.01169]), i.e. +-7 % (at fixed n0 +-1.2 %) of an input whose literature uncertainty is a factor of about 2. With N_f = 2 (b = 29/3) E/A = -10.3 / -11.9 / -13.7: no member. With b = 11 (pure glue) -6.7 ... -9.3: no member. So 'no free scale' is formally true but in practice a fine tuning inside the prior of the input, picked from 4 d-values x 3 N_f choices. The derivation of the d family is also not self-consistent: if W scales like chi^d with d != 1, the Yukawa M* = g_s W and the vector mass q_phi W have scale dimension d + 3 and break scale invariance explicitly, which contradicts the premise that the trace anomaly is the only breaking. Only d = 1 (B1) follows from the stated Ward identity with the action's couplings; d = 2, 3, 4 and B4b are hypotheses. The parameter counts (theta, C_v fixed by P = 0 and E/A; 2 per member) are correct."
+  },
+  {
+   "check": "(3) Analytic reason for the high K: B = dmu/dy = 0 at y* 0.634 and required U_yy/U_y",
+   "result": "holds",
+   "evidence": "Independent algebra (refute_work/kalg.py, .json): B = M^2 y/E_F* - 2 V/y = 0 at y* = 0.63391 (check M^2 y^2 = 2 V E_F* = 354316 MeV^2); there K = 9 n0 D = 2769 MeV for every U (3045 at y* 0.60, 2228 at y* 0.70). U_yy/U_y needed for K = 240 is 6.81 / 3.95 / 1.91 / -0.03 / -2.44 / -6.67 at y* 0.60 / 0.65 / 0.70 / 0.75 / 0.80 / 0.85; f''/f' of log4 is 1.74 / 1.04 / 0.28, all other bases are <= -0.21. This matches the reported table exactly. Caveat: B = 0 forces K only near y* about 0.634. Below and above that point K = 240 can be reached in principle; the operative obstruction is the U_yy/U_y mismatch, and B -> 0 only explains why the required concavity diverges near 0.634."
+  },
+  {
+   "check": "(4) Any other admissible derived form (two-term combinations) with K in [220, 260] at m*/M <= 0.70",
+   "result": "holds",
+   "evidence": "refute_work/scan_pairs.py, .json. (a) All 66 pairs of 12 bases (the 6 declared shapes plus the non-declared f_{p,q} with (p,q) = (1,3), (1,4), (2,3), (3,4), (4,6), (4,8)), with two free coefficients fixed by P = 0, E/A and K in {220, 240, 260} at n0 0.16, E/A -16: 321 solutions, 120 with y* <= 0.70 (40 pairs). None satisfies (V): every one has U < 0 somewhere or a minimum away from W0 (one coefficient is negative). The only fully admissible K-window solutions are log2+pow13 and pow14+pow23 at y* 0.884-0.896, with cancelling coefficients of about 1e12 MeV^4. (b) One free coefficient plus an anomaly term fixed by the condensate (4 d values x {0.5, 1, 2} x 11 partners, 105 solutions): no admissible solution has K < 371 MeV, and the 4 admissible solutions with y* <= 0.70 have K 832-2035 MeV. Nothing to propagate to the joint verdict."
+  },
+  {
+   "check": "(5) Evidence and PPC of the best class (d=3) with more samples",
+   "result": "holds",
+   "evidence": "160 new LHS members (seed 777, refute_work/more_B2_anomaly_d3_N160_s777.jsonl, 546 s) through the same chain: lnZ -10.256 (MC rel. error of Z 0.11), ESS 52.4, PPC 0.0193, LOO max |z| 2.73 (J0614 R1.44, z -2.73; others: R1418 -1.54, Lt -1.58, EPNM -1.49), best chi2 16.53; without J0614 PPC 0.136, max |z| 1.79. Combined 200: lnZ -10.226, ESS 61.5, PPC 0.0225, LOO J0614 -2.72. Bootstrap over the 200 (200 resamples): PPC 0.0215 +- 0.0021 (5-95 %: 0.018-0.025), 0 of 200 resamples > 0.05; lnZ -10.22 +- 0.11. The small-ESS concern does not change anything: (S) fails robustly (refute_work/stats_more.json)."
+  },
+  {
+   "check": "(6) B1 16O 1p spin-orbit with the exact Dirac route (no WS fit) over the window",
+   "result": "refuted",
+   "evidence": "refute_work/so_b1.py, .json (h 0.01 and 0.005, converged to 1e-4 MeV). Exact Dirac in the same LDA potentials: 4.536 MeV at the centre, 4.795 at (0.15, -16.0), 4.727 at (0.15, -15.5), 4.263 at (0.17, -16.5), and 4.863 at the window corner (0.15, -16.5). First order without the WS fit gives 4.857 there, so the gap comes from the WS fit (rms 5.35 MeV), not from first order vs Dirac. For the standard models the exact Dirac route equals the validated procedure (NL3 6.838 vs 6.84, DD-ME2 6.534 vs 6.51, FSUGold 5.80 vs 5.76; creative/spin_orbit/result.json variants), so it is the faithful number for B1. The claimed 'best bounded form 4.05-4.45 MeV' (and exact Dirac at most 4.79) understates it: the range is 4.26-4.86 MeV, and the fail margin is 0.04 MeV below 4.9, which is not robust. B1 still fails (S) badly (PPC 0, best chi2 71.7, LOO EPNM -5.2), so the joint verdict for B1 does not change."
+  }
+ ],
+ "overall": "PLAUSIBLE",
+ "corrected_statement": "Независимый пересчёт подтверждает основные числа: B1 (W^4 ln W) y* 0,7078, K 1587 МэВ, Q0 около 6954 МэВ, m_s 90,6 МэВ; d=4 y* 0,8426, K 361, Q0 -91,5, m_s 88,4; гармоническая форма y* 0,8319, K 403, Q0 170, m_s 88,5 (n0 0,16, E/A -16). Структурная причина верна: B = dmu/dy = 0 при y* = 0,634, и там K = 9 n0 D около 2,8 ГэВ при любом U. Однако действующее препятствие при y* 0,60-0,70 — несоответствие требуемой вогнутости U_yy/U_y (6,8-1,9) и того, что дают базисы (не более 1,74). Ни одна двухчленная комбинация (66 пар из 12 базисов, включая не заявленные f_{p,q}) не даёт K в [220, 260] при m*/M <= 0,70 с ограниченным снизу вакуумом с единственным минимумом. Комбинации «аномалия с конденсатной нормировкой плюс один свободный член» тоже не дают такого K. Класс d=3 при 200 членах: ln Z -10,23, PPC 0,022 +- 0,002, LOO z(J0614) -2,72, так что (S) не проходит устойчиво. Две поправки. (1) Spin-orbit B1 в точном дираковском расчёте без подгонки Вудса-Саксона равен 4,26-4,86 МэВ по окну, а не 4,05-4,45. Провал (O) составляет лишь 0,04 МэВ ниже 4,9 в углу окна (n0 0,15, E/A -16,5), то есть не робастен; итоговый вердикт для B1 не меняется, потому что B1 катастрофически проваливает звёзды. (2) Утверждение «d=3 с полным конденсатом SVZ насыщает без свободного масштаба» формально верно, но хрупко: нужно <aG^2> в [0,0108, 0,0123] ГэВ^4 (+-7 % от величины с неопределённостью около 2 раз) и N_f = 3; при N_f = 2 или в чистой глюодинамике членов нет. Кроме того, семейство d != 1 не выводится из тождества Уорда при линейных по W массах нуклона и вектора: они явно нарушают масштабную инвариантность. Последовательно выведена только форма d = 1 (B1), а d = 2, 3, 4 и гармоническая форма — гипотезы. Итоговый вердикт does_not_converge сохраняется.",
+ "files": {
+  "own_solver.py": "SCR/round3/derived_potentials/refute_work/own_solver.py",
+  "own_solver.json": "SCR/round3/derived_potentials/refute_work/own_solver.json",
+  "gc_frag.py": "SCR/round3/derived_potentials/refute_work/gc_frag.py",
+  "gc_frag.json": "SCR/round3/derived_potentials/refute_work/gc_frag.json",
+  "kalg.py": "SCR/round3/derived_potentials/refute_work/kalg.py",
+  "kalg.json": "SCR/round3/derived_potentials/refute_work/kalg.json",
+  "scan_pairs.py": "SCR/round3/derived_potentials/refute_work/scan_pairs.py",
+  "scan_pairs.json": "SCR/round3/derived_potentials/refute_work/scan_pairs.json",
+  "class_more.py": "SCR/round3/derived_potentials/refute_work/class_more.py",
+  "more_B2_anomaly_d3_N160_s777.jsonl": "SCR/round3/derived_potentials/refute_work/more_B2_anomaly_d3_N160_s777.jsonl",
+  "stats_more.py": "SCR/round3/derived_potentials/refute_work/stats_more.py",
+  "stats_more.json": "SCR/round3/derived_potentials/refute_work/stats_more.json",
+  "so_b1.py": "SCR/round3/derived_potentials/refute_work/so_b1.py",
+  "so_b1.json": "SCR/round3/derived_potentials/refute_work/so_b1.json"
+ },
+ "wall_s_approx": {
+  "class_160": 546,
+  "scan_pairs": 60,
+  "stats_bootstrap": 40,
+  "so_b1": 20,
+  "other": 20
+ }
+}

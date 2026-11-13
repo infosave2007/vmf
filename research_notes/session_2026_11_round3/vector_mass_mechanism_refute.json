@@ -1,0 +1,43 @@
+{
+ "target": "round3/vector_mass_mechanism (result.json, vmm_core.py, run_vmm.py, runs.jsonl): NVG field W gives the omega its mass m_omega*y; W0 = 859 MeV, lambda = 1.05; 18 published RMF hosts",
+ "checks": [
+  {
+   "check": "1. y equation and size, TW99 at n0, 2n0, 4n0",
+   "result": "holds",
+   "evidence": "eps(y) = C n^2/(2 y^2) + Lambda4 (y^2-1)^2/4 -> Lambda4 y^4 (y^2-1) = C n^2; with X = C n^2/Lambda4: y-1 = X/2 - 9X^2/8 + ..., so y-1 ~ C n^2/(2 lambda W0^4) is right to leading order (overestimates by 0.16 % at n0, 0.5 % at 2n0, 1.5 % at 4n0). Lambda4 = 5.7169e11 MeV^4 = 7.44e4 MeV/fm^3. TW99 (host n0 = 0.15301): eps_V = 25.9 / 79.4 / 249.8 MeV/fm^3 at 1/2/4 n0; y-1 exact = 3.477e-4 / 1.0616e-3 / 3.308e-3; softening 1 - y0^2/y^2 = 0.1426 % (2n0), 0.338 % (3n0), 0.589 % (4n0) = claimed 0.14 / 0.34 / 0.59 %. Over the 18 hosts from runs.jsonl: 0.090-0.182 % at 2n0, 0.320-0.893 % at 4n0; omega mass shift at 2n0 +0.575..+0.955 MeV (TW99 +0.83). File refute_analytic.json."
+  },
+  {
+   "check": "2a. local U(1) FORCES omega^4 -> y^4, omega^2 rho^2 -> y^2",
+   "result": "refuted",
+   "evidence": "Not forced. In the broken phase B_mu = A_mu - d_mu theta/q_phi = j_mu/(q_phi |Phi|^2) is itself gauge invariant (Stueckelberg), so f(W) (B.B)^2 is invariant for any f; even within polynomial operators |Phi|^{2k} (|D Phi|^2)^2 -> y^{4+2k} B^4 and (j.b)^2 -> y^4 omega^2 rho^2 are allowed. y^4 / y^2 is the LOWEST-DIMENSION (minimal) choice, not a consequence of gauge invariance. Numerical consequence nil for the DD hosts (no zeta, Lambda_v) and bounded for NL hosts by the author's own y^0 alternative (alt_mass_only), since the published zeta fixes only the y = 1 value and different exponents differ by O(p (y-1)) ~ 1e-3 of that term."
+  },
+  {
+   "check": "2b. no rearrangement term from y",
+   "result": "holds",
+   "evidence": "y is a stationary field: d eps/d n_i = partial eps/partial n_i at fixed y (Hellmann-Feynman). Own patch built with mu from fixed-y derivatives only: Gibbs residual 1.4-2.5e-12, |d eps/dn / mu_n - 1| 3.5e-6 (TW99) / 5e-6 (DD2), identical to the host floor -> no missing y'(n) term."
+  },
+  {
+   "check": "3. TW99 (and DD2) stars recomputed with an independent patch (refute_patch.py: host DD state at y = 1, exact 1/y^2 rescaling of the W-massive vector pieces, y from the closed-form cubic), same survey pipeline",
+   "result": "holds",
+   "evidence": "Lambda4 = 1e30 reproduces the host (TW99 M_max 2.0759, R_eq(1.44) 12.4803, chi2 11.150). Author's point: TW99 n0 0.15380, E/A -16.3064, M_max 2.0625 (dM -0.0134), R_eq(1.44) 12.4453 (dR -0.0350 km), chi2_8 11.150 -> 12.348, z_R144 -2.138 -> -2.103, z_R207 1.868 -> 2.150, chi2_7 6.45 -> 7.79 -- identical to runs.jsonl to all printed digits. DD2: dM -0.0122, dR_eq(1.44) -0.0252, chi2 19.273 -> 18.846. P_beta at the same absolute density: TW99 -0.83/-0.93/-0.98/-1.15/-1.41 % at 1/1.5/2/3/4 n0 (claimed -0.8..-1.1 % at 1-3 n0, -1.4 % at 4 n0). Note: at the same x of the model's OWN n0 the sign flips (+0.55 % at 2n0) because n0 rises by 0.5 %; the author's same-density comparison is the right one. Ratio to the refuter's dip (-9.7..-31 % at 1.5-2 n0): 10.4-31.6x; opposite sign at 4 n0 (+2.5..+7.3 % vs -1.4 %). TW99's chi2 rise is dominated by the R(2.07) term (3.15 -> 4.27) because M_max falls below 2.07 (flag R_at_Mmax_used_for_J0740)."
+  },
+  {
+   "check": "4. only lambda W0^4 matters",
+   "result": "holds",
+   "evidence": "In homogeneous matter U = Lambda4 (y^2-1)^2/4 and m_A = q_phi W = m_omega y with q_phi = m_omega/W0, so lambda and W0 enter only via Lambda4 (m_W = sqrt(2 lambda) W0 enters only gradients, absent in uniform matter and in the LDA). runs.jsonl: collapse_check (lambda 1.3957, W0 800) is bit-identical to the author's point; dM_max scales as 1/Lambda4 (1e14 vs 1e15: ratio 10.0); leading order y^2-1 = C n^2/Lambda4."
+  },
+  {
+   "check": "5. other zero-parameter couplings of W (rho mass, sigma mass, sigma-W mixing, non-minimal omega mass)",
+   "result": "holds",
+   "evidence": "General result: any assignment m_i -> m_i y^p gives eps(y) = sum_i (+-) a_i y^{-2p} + U, Delta eps ~ -p^2 (sum +-a_i)^2/Lambda4 -- second order in field energies over Lambda4. Computed (TW99 / DD2, full pipeline): (i) omega+rho masses from W: dR_eq(1.44) -0.0355 / -0.0260 km, dM_max -0.0134 / -0.0122, chi2 12.343 / 18.843 (rho adds < 0.001 km: DD g_rho falls exponentially). (ii) sigma+omega+rho masses from W: scalar and vector energies cancel, y(n0) - 1 = -5.3e-5, dR_eq(1.44) -0.0044 / -0.0018 km, dM_max -0.0086 / -0.0079, chi2 12.344 / 19.233 -- smaller. (iii) sigma-W mixing (sigma |Phi|^2 or a nucleon Yukawa to W) has no coefficient fixed by the action in this reading: it is a new continuous parameter (the Yukawa with g_s = M_N/W0 is the original NVG, not this mechanism). (iv) largest discrete option: omega mass from the dimension-6 operator |Phi|^4 B^2/W0^2 (m_A = m_omega y^2, non-minimal): ~4x effect, TW99 dR_eq(1.44) -0.140 km, dM_max -0.052, chi2 13.10, z_R144 -1.997 but z_R207 +2.197 (fails); DD2 dR -0.101, chi2 17.61, z_R144 -3.03 (fails). No zero-parameter variant passes S for TW99 or DD2."
+  }
+ ],
+ "overall": "CONFIRMED",
+ "corrected_statement": "Подтверждено численно и аналитически (независимый патч, тот же конвейер): при W0 = 859 МэВ, lambda = 1.05 масса омеги m_omega*y(n), y из Lambda4 y^4 (y^2-1) = C n^2 (y-1 = C n^2/(2 lambda W0^4) - 9/8 (C n^2/Lambda4)^2), смягчает эффективную векторную связь (нормировка на n0) на 0.09-0.18 % при 2 n0 и 0.32-0.89 % при 4 n0 (TW99: 0.14 и 0.59 %); dR_eq(1.44) = -0.016..-0.036 км, dM_max = -0.010..-0.013 Msun; ни один из 18 хостов не проходит S (ни один не проходил и без механизма); в однородной материи важно только lambda*W0^4; давление в бета-равновесии при той же плотности ниже на 0.8-1.4 % при 1-4 n0, т.е. в 10-31 раз слабее провала опровергателя при 1.5-2 n0 и противоположного знака при 4 n0; TW99 ухудшается (chi2 11.15 -> 12.35, в основном через R(2.07), так как M_max падает ниже 2.07); масса омеги растёт на +0.6..+1.0 МэВ при 2 n0. Поправка: локальная U(1) НЕ вынуждает масштабирование omega^4 ~ y^4 и omega^2 rho^2 ~ y^2 — это выбор операторов наименьшей размерности (B_mu калибровочно инвариантен, допустимы |Phi|^{2k}(|D Phi|^2)^2); для DD-хостов это несущественно. Отсутствие члена перестройки от y верно (теорема Гельмана-Фейнмана). Другие связи W без новых параметров эффект не усиливают: масса rho от W добавляет < 0.001 км, масса sigma от W уменьшает эффект (dR -0.004/-0.002 км для TW99/DD2), смешивание sigma-W требует нового параметра; лишь неминимальный оператор размерности 6 (m_A = m_omega y^2) даёт примерно в 4 раза больше (TW99 dR -0.14 км, chi2 13.10), но и он не проходит S.",
+ "files": {
+  "patch": "SCR/round3/vector_mass_mechanism/refute_patch.py",
+  "runs": "SCR/round3/vector_mass_mechanism/refute_patch.jsonl",
+  "analytic": "SCR/round3/vector_mass_mechanism/refute_analytic.json"
+ },
+ "wall_time_s": "about 45 s total compute"
+}

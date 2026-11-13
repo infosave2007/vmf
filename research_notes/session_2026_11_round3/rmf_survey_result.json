@@ -1,0 +1,2710 @@
+{
+ "direction": "C (round 3, rmf_survey): is the J0614-3329 radius (10.29 +1.01/-0.86 km at 1.44 Msun) versus nuclear-shell-structure tension generic for published relativistic mean-field models?",
+ "declared_before_compute": {
+  "file": "SCR/round3/rmf_survey/declared.json",
+  "sha256": "9b012a4a01a90af51f3b59fd7ae460dc87d298ea7db603eba8436d64b00829e1",
+  "written_utc": "2026-11-13T08:24:57Z",
+  "source": "SCR/round3/rmf_survey/declared.py",
+  "order_of_files_utc": {
+   "declared.json": "08:24:57",
+   "validation.json": "08:27:22",
+   "models.jsonl": "08:29:56",
+   "map.jsonl": "08:35:36",
+   "nvg_profile.json": "08:35:45",
+   "analysis.json": "08:35:45",
+   "extra.json": "08:36:56"
+  },
+  "content": "18 parameter sets (3 session models re-run as regression + 11 requested + 4 extra published sets), 1 percent validation rule, the joint verdict copied from COMMON.md, ground-state check definition, derived quantities (m*/M, K, J, L, s_V, DD flag), the correlation plan and the optional diagnostic map grid; hash re-verified by every run script"
+ },
+ "derivation": {
+  "eos": "rmf_generic.py: NL class (sigma^3, sigma^4, omega^4 zeta, omega^2 rho^2 Lambda_v; FSU convention, exact conversion of Ring- and Glendenning-convention sets) and DD class (Typel-Wolter couplings on the vector density, rearrangement Sigma_R in mu_i and in P); npe-mu beta equilibrium 0.1-12 n0, 250 points/decade; consistent pressure P = sum n_i mu_i - eps holds to <= 3.3e-11 relative at every node of every table",
+  "pipeline": "SLy crust (eps-continuity), lk_core.star_block (TOV, tides, n_pc 40, P_surf 1e-9, Hartle-Thorne at 205.5/173.7/317.6/346.5 Hz), analyze.py predictions/chi2_terms/fixed_model_stats/box unchanged; 16O/40Ca/208Pb LDA via so_core + run_spin_orbit.splittings (AST-extracted, verbatim); ground state: global minimum over 0 <= M* <= M at fixed densities on 120 SNM + 60 beta-equilibrium densities from 0.02 n0 to n_c(M_max)",
+  "joint_verdict_fixed_model": "S: p = chi2.sf(chi2, 8) > 0.05 and all 8 |z_PIT| < 2; O: 16O 1p in [4.9, 7.4] MeV; G as above; V not applicable; converge = S and O and G",
+  "J0614_threshold": "|z_PIT(J0614)| < 2  <=>  R_eq(1.44) < 12.343 km",
+  "diagnostic_map": "FSU-type family at (n0, E/A, K) = (0.152 fm^-3, -16.2, 240 MeV), S_2(0.10) = 25.5 MeV, grid m*/M 0.56-0.80 (7) x zeta 0-0.06 (5) x L 40, 70; closed-form calibration (map_survey.calibrate) linear in (A_S, kappa, lambda), Lambda_v by root find on L, A_R from S_2(0.10); 65 of 70 points calibrated (5 at m*/M = 0.56, L = 40 infeasible: L >= 41.8-48.2 with A_R > 0). A map of RMF space, not a model under test.",
+  "files": {
+   "declared.py": "SCR/round3/rmf_survey/declared.py",
+   "rmf_generic.py": "SCR/round3/rmf_survey/rmf_generic.py",
+   "validate.py": "SCR/round3/rmf_survey/validate.py",
+   "run_survey.py": "SCR/round3/rmf_survey/run_survey.py",
+   "map_survey.py": "SCR/round3/rmf_survey/map_survey.py",
+   "nvg_profile.py": "SCR/round3/rmf_survey/nvg_profile.py",
+   "extra.py": "SCR/round3/rmf_survey/extra.py",
+   "analysis.py": "SCR/round3/rmf_survey/analysis.py",
+   "make_result.py": "SCR/round3/rmf_survey/make_result.py",
+   "validation.json": "SCR/round3/rmf_survey/validation.json",
+   "models.jsonl": "SCR/round3/rmf_survey/models.jsonl",
+   "map.jsonl": "SCR/round3/rmf_survey/map.jsonl",
+   "map_validation.json": "SCR/round3/rmf_survey/map_validation.json",
+   "analysis.json": "SCR/round3/rmf_survey/analysis.json",
+   "extra.json": "SCR/round3/rmf_survey/extra.json",
+   "nvg_profile.json": "SCR/round3/rmf_survey/nvg_profile.json",
+   "map.log": "SCR/round3/rmf_survey/map.log"
+  }
+ },
+ "validation": {
+  "saturation_rule": "every listed published property within 1 percent",
+  "validated": [
+   "NL3",
+   "FSUGold",
+   "DD-ME2",
+   "DD2",
+   "TW99",
+   "DD-ME1",
+   "TM1",
+   "NL-rho",
+   "IUFSU",
+   "FSU2",
+   "FSU2R",
+   "BigApple",
+   "NL3wrho",
+   "GM1",
+   "NL-SH",
+   "FSUGarnet",
+   "FSU2H"
+  ],
+  "dropped": {
+   "DD-MEX": {
+    "failed": "L",
+    "this_work": 49.63,
+    "published_recalled": 46.627,
+    "rel_dev_percent": 6.45,
+    "other_properties_within": {
+     "n0": -0.09,
+     "EA": 0.26,
+     "K": 0.07,
+     "mstar": -0.1,
+     "J": 0.3
+    },
+    "note": "dropped per rule (a coupling or the published L is mis-recalled); not used anywhere"
+   }
+  },
+  "worst_deviation_per_model_percent": {
+   "NL3": 0.82,
+   "FSUGold": 0.28,
+   "DD-ME2": 0.11,
+   "DD2": 0.02,
+   "TW99": 0.02,
+   "DD-ME1": 0.34,
+   "DD-MEX": 6.45,
+   "TM1": 0.23,
+   "NL-rho": 0.47,
+   "IUFSU": 0.25,
+   "FSU2": 0.13,
+   "FSU2R": 0.13,
+   "BigApple": 0.24,
+   "NL3wrho": 0.19,
+   "GM1": 0.02,
+   "NL-SH": 0.05,
+   "FSUGarnet": 0.16,
+   "FSU2H": 0.14
+  },
+  "not_validated_properties": {
+   "IUFSU": "m*/M (published value not recalled reliably; this work 0.6092)",
+   "NL3wrho": "isoscalar sector = NL3 (validated there); validated on J = 31.74 (31.7) and L = 55.10 (55.2); g_rho from S_2(k_F = 1.15 fm^-1) = NL3 value"
+  },
+  "code_regression_vs_session": {
+   "saturation": "generic code vs nl3_heldout / fsugold_protocol / ddme2_protocol: n0, E/A, m*/M to <= 5e-14, K, J, L, S_2(0.10), E_PNM(0.10) to <= 1.5e-5 relative",
+   "stars_and_likelihood": {
+    "NL3": {
+     "chi2_8": [
+      69.43,
+      69.46
+     ],
+     "R144_static": [
+      14.889,
+      14.889
+     ]
+    },
+    "FSUGold": {
+     "chi2_8": [
+      41.7,
+      41.64
+     ],
+     "M_max": [
+      1.7219,
+      1.722
+     ],
+     "note": "session table ended at 8 n0 (M_max on the table end); here 12 n0, M_max reached"
+    },
+    "DD-ME2": {
+     "chi2_8": [
+      19.95,
+      19.95
+     ],
+     "R144_static": [
+      13.298,
+      13.298
+     ]
+    }
+   },
+   "spin_orbit_16O_1p_MeV": {
+    "NL3": [
+     6.841,
+     6.841
+    ],
+    "FSUGold": [
+     5.758,
+     5.758
+    ],
+    "DD-ME2": [
+     6.513,
+     6.513
+    ]
+   }
+  },
+  "map_calibration": {
+   "check": "calibrate() from each model's own (n0, E/A, K, m*/M, zeta, J, L) returns the published couplings",
+   "max_rel_dev": {
+    "FSUGold": 2.2e-08,
+    "FSU2R": 5.6e-07,
+    "IUFSU": 2.3e-06
+   }
+  },
+  "ground_state_scan": "no model has any second minimum of eps(M*) on 0 <= M* <= M at any checked density (all 17 published, all 65 map points)"
+ },
+ "free_parameters_added": {
+  "published_models": 0,
+  "diagnostic_map": "the map grid varies (m*/M, zeta, L) at fixed (n0, E/A, K, S_2(0.10)); these are coordinates of RMF space, not parameters of a model under test; no verdict is drawn from map points except the location of the allowed region",
+  "discrete_choices": {
+   "NL3wrho Lambda_v": "0.03 (recalled published value; validated by J, L)",
+   "table": "0.1-12 n0 (12 sufficed for all models: M_max reached)",
+   "z statistic": "z_PIT (as analyze.py's fixed-model analogue of LOO)"
+  }
+ },
+ "key_results": [
+  "(1) No published RMF model passes the joint verdict: 0 of 17 validated sets converge (DD-MEX dropped at validation). Every one fails J0614: |z_PIT| = 2.14 (TW99) to 5.03 (NL-SH); R_eq(1.44) = 12.48-15.39 km against the |z| < 2 bound 12.34 km. 15/17 pass 16O (only NL-rho 2.74 and GM1 3.88 MeV fail), 17/17 pass the ground-state check, 0/17 pass the 2-sigma box.",
+  "Best published model TW99 (DD, m*/M 0.555, L 55.3): chi2 = 11.15, p(nu=8) = 0.193, z J0614 = -2.14 is its only |z| >= 2; 16O 6.99 MeV; it is squeezed between J0614 (R_eq(1.44) = 12.48 km) and the J0740 radius (R(2.07) = 10.93 km, z = +1.87, M_max = 2.076 just above 2.07). Box: fails only R144.",
+  "Sensitivity without J0614 (7 terms, nu = 7): 5 published models converge (S7 and O and G): TW99 (p 0.489, max|z| 1.87), FSUGarnet (0.277, 1.63), DD-ME1 (0.243, 1.98), DD2 (0.230, 1.99), FSU2R (0.205, 1.65); DD-ME2 just misses (max|z| 2.02, R1418). With static radii (declared secondary configuration) TW99 passes S (chi2 10.60, p 0.225, max|z| 1.97): its verdict is decided by the 0.165 km Hartle-Thorne correction.",
+  "(2) The 16O splitting is a function of m*/M alone: split = 19.83 - 22.62 m*/M MeV across the 17 models (r = -0.96, R^2 = 0.93; equivalently V-S at n0, r = 0.96); independent of L (r = -0.19). In the map split = 18.58 - 22.17 m*/M + 1.09 s_V (R^2 = 0.991); the 4.9 MeV edge sits at m*/M = 0.645-0.657 for every zeta and L.",
+  "R_eq(1.44) across the published models is controlled by L (r = 0.83) and the high-density vector softening s_V = V(3n0)/(3V(n0)) (r = 0.61); P_beta(2n0) r = 0.82; raw m*/M r = 0.12 (published m*/M are clustered at 0.555-0.634 by shell structure), DD flag r = -0.30. OLS R_eq = 13.50 - 7.22 m*/M + 0.0244 L + 3.43 s_V (R^2 = 0.92, rms 0.24 km); partial correlations m*/M -0.77, L +0.93, s_V +0.84. In the map (fixed saturation): R_eq = 15.82 - 10.53 m*/M + 0.0138 L + 3.79 s_V (R^2 = 0.96, rms 0.14 km). M_max correlates with P_beta(3n0) (r = 0.97) and s_V (0.78).",
+  "The trade-off: at fixed m*/M (fixed by 16O) R(1.44) is lowered only by lower L and by vector softening, and softening costs M_max. Exchange rate dR_eq(1.44)/dM_max: 1.34-1.46 km per Msun for omega^4 (zeta 0 -> 0.06 in the map), 2.5-2.9 km per Msun for density-dependent couplings (DD-ME2/DD2/DD-ME1 -> TW99). DD couplings soften at 2-3 n0 and then saturate (f_omega(inf) = 0.70 for TW99; s_V(7n0) = 0.54, against 0.40 for FSUGold at the same s_V(2n0) = 0.77 and 0.48 for IUFSU/FSU2R/FSUGarnet with s_V(2n0) = 0.84), so they keep more M_max per km of radius.",
+  "Allowed region (J0614 |z| < 2 AND 16O in window AND M_max >= 1.94): EMPTY among the 17 published models and among the 65 map points. Any two of the three can be met: J0614 + 16O only with zeta >= 0.045, L = 40, m*/M 0.60-0.64 (M_max 1.69-1.78); J0614 + M_max only at m*/M >= 0.75, L = 40, zeta = 0 (16O 2.72 MeV, M_max 2.06); 16O + M_max only with R_eq(1.44) >= 12.87 km (map) / 12.48 km (TW99, published). The (m*/M, L, M_max) window both J0614 and shell structure allow is m*/M <= 0.65, L ~ 40, M_max <= 1.79 Msun, excluded by J0740 (mass z >= 4.2).",
+  "(3) NVG: stable members have m*/M >= 0.83 (posterior 0.853), V-S(n0) = 77-259 MeV vs 406-759 MeV for the RMF sets; their 16O splittings 0.23-1.48 MeV lie on the continuation of the RMF split(m*/M) curve (map: 2.71 MeV at 0.76, 2.05 at 0.80; NVG 1.45-1.48 at 0.83-0.84, 1.04 at 0.87, 0.67 at 0.90). The density shape of V-S is RMF-like ((V-S)(n0/2)/(V-S)(n0) = 0.50-0.62 vs 0.52-0.62), so the shell-structure failure of NVG is the same m*/M physics as in RMF.",
+  "NVG sits on the J0614 side of the divide (high m*/M) but does not collect the RMF radius advantage there: R_eq(1.44) posterior median 12.61 km (M_max 1.956, L 56.4) vs 11.87-12.28 km at M_max 1.88-1.90 for an RMF with m*/M = 0.80, zeta = 0, L = 40-70. Reason: its vector self-energy V = C_v n / y^2 STIFFENS with density (s_V(3n0) = 1.12-1.34 for the named members; every RMF set has s_V <= 1), because the vector mass q W tracks the falling scalar. NVG therefore misses both: shell structure by ~0.19 in m*/M, J0614 at |z_LOO| = 2.39."
+ ],
+ "joint_verdict_table": [
+  {
+   "model": "TW99",
+   "class": "DD",
+   "ref": "Typel, Wolter, Nucl. Phys. A 656, 331 (1999)",
+   "saturation": {
+    "n0": 0.153,
+    "E_A": -16.25,
+    "K": 240.3,
+    "mstar_over_M": 0.5549,
+    "J": 32.77,
+    "L": 55.3,
+    "Ksym": -124.7,
+    "sV3_vector_softening": 0.658,
+    "V_minus_S_n0_MeV": 758.7
+   },
+   "stars": {
+    "M_max": 2.076,
+    "R144_static_km": 12.316,
+    "R144_eq_rotation_km": 12.48,
+    "dR_rot_J0614_km": 0.165,
+    "Lambda_tilde_1.36": 488.0,
+    "P_beta_2n0_MeVfm3": 18.81,
+    "x_c_Mmax": 7.2,
+    "max_cs2": 0.702
+   },
+   "S_8terms": {
+    "chi2": 11.15,
+    "p_nu8": 0.1933,
+    "p_replicated_MC": 0.1962,
+    "chi2_terms": {
+     "Mmax": 1.48,
+     "R207": 3.15,
+     "R134": 0.05,
+     "R1418": 1.15,
+     "R144": 4.7,
+     "Lt": 0.54,
+     "S2": 0.01,
+     "EPNM": 0.06
+    },
+    "z_PIT": {
+     "Mmax": 0.06,
+     "R207": 1.87,
+     "R134": 0.2,
+     "R1418": -0.95,
+     "R144": -2.14,
+     "Lt": -0.53,
+     "S2": 0.12,
+     "EPNM": -0.24
+    },
+    "max_abs_z": 2.14,
+    "terms_abs_z_ge_2": [
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.38,
+    "EPNM_0p10": 11.64,
+    "z_S2": 0.12,
+    "z_EPNM": -0.24
+   },
+   "O_16O_1p_MeV": 6.992,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.46,
+    "208Pb_1i": 9.332,
+    "208Pb_3p": 0.984
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 6.45,
+    "p_nu7": 0.4886,
+    "max_abs_z": 1.87,
+    "terms_abs_z_ge_2": [],
+    "S_pass": true,
+    "converges_with_O_and_G": true
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 10.6,
+    "p_nu8": 0.2252,
+    "max_abs_z": 1.97,
+    "S_pass": true,
+    "z_J0614": -1.97
+   }
+  },
+  {
+   "model": "FSUGarnet",
+   "class": "NL",
+   "ref": "Chen, Piekarewicz, PLB 748, 284 (2015)",
+   "saturation": {
+    "n0": 0.1532,
+    "E_A": -16.23,
+    "K": 229.6,
+    "mstar_over_M": 0.5783,
+    "J": 30.92,
+    "L": 51.0,
+    "Ksym": 59.3,
+    "sV3_vector_softening": 0.716,
+    "V_minus_S_n0_MeV": 717.0
+   },
+   "stars": {
+    "M_max": 2.066,
+    "R144_static_km": 12.934,
+    "R144_eq_rotation_km": 13.131,
+    "dR_rot_J0614_km": 0.197,
+    "Lambda_tilde_1.36": 740.0,
+    "P_beta_2n0_MeVfm3": 25.78,
+    "x_c_Mmax": 6.09,
+    "max_cs2": 0.401
+   },
+   "S_8terms": {
+    "chi2": 16.58,
+    "p_nu8": 0.03474,
+    "p_replicated_MC": 0.03635,
+    "chi2_terms": {
+     "Mmax": 1.73,
+     "R207": 0.68,
+     "R134": 0.07,
+     "R1418": 2.96,
+     "R144": 7.91,
+     "Lt": 2.96,
+     "S2": 0.06,
+     "EPNM": 0.22
+    },
+    "z_PIT": {
+     "Mmax": 0.2,
+     "R207": 0.97,
+     "R134": -0.29,
+     "R1418": -1.63,
+     "R144": -2.79,
+     "Lt": -1.6,
+     "S2": 0.24,
+     "EPNM": -0.46
+    },
+    "max_abs_z": 2.79,
+    "terms_abs_z_ge_2": [
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.26,
+    "EPNM_0p10": 11.86,
+    "z_S2": 0.24,
+    "z_EPNM": -0.46
+   },
+   "O_16O_1p_MeV": 6.718,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.301,
+    "208Pb_1i": 9.138,
+    "208Pb_3p": 0.886
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 8.67,
+    "p_nu7": 0.277,
+    "max_abs_z": 1.63,
+    "terms_abs_z_ge_2": [],
+    "S_pass": true,
+    "converges_with_O_and_G": true
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 15.43,
+    "p_nu8": 0.05134,
+    "max_abs_z": 2.59,
+    "S_pass": false,
+    "z_J0614": -2.59
+   }
+  },
+  {
+   "model": "FSU2R",
+   "class": "NL",
+   "ref": "Tolos, Centelles, Ramos, ApJ 834, 3 (2017); PASA 34, e065 (2017)",
+   "saturation": {
+    "n0": 0.1504,
+    "E_A": -16.27,
+    "K": 237.7,
+    "mstar_over_M": 0.5931,
+    "J": 30.68,
+    "L": 46.9,
+    "Ksym": 55.6,
+    "sV3_vector_softening": 0.724,
+    "V_minus_S_n0_MeV": 691.1
+   },
+   "stars": {
+    "M_max": 2.049,
+    "R144_static_km": 12.945,
+    "R144_eq_rotation_km": 13.144,
+    "dR_rot_J0614_km": 0.199,
+    "Lambda_tilde_1.36": 733.0,
+    "P_beta_2n0_MeVfm3": 24.2,
+    "x_c_Mmax": 6.27,
+    "max_cs2": 0.399
+   },
+   "S_8terms": {
+    "chi2": 17.7,
+    "p_nu8": 0.02362,
+    "p_replicated_MC": 0.02585,
+    "chi2_terms": {
+     "Mmax": 2.22,
+     "R207": 0.75,
+     "R134": 0.08,
+     "R1418": 3.01,
+     "R144": 7.98,
+     "Lt": 2.88,
+     "S2": 0.02,
+     "EPNM": 0.75
+    },
+    "z_PIT": {
+     "Mmax": 0.44,
+     "R207": 1.0,
+     "R134": -0.31,
+     "R1418": -1.65,
+     "R144": -2.8,
+     "Lt": -1.57,
+     "S2": -0.15,
+     "EPNM": -0.87
+    },
+    "max_abs_z": 2.8,
+    "terms_abs_z_ge_2": [
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.65,
+    "EPNM_0p10": 12.27,
+    "z_S2": -0.15,
+    "z_EPNM": -0.87
+   },
+   "O_16O_1p_MeV": 6.458,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.017,
+    "208Pb_1i": 8.806,
+    "208Pb_3p": 0.846
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 9.71,
+    "p_nu7": 0.2055,
+    "max_abs_z": 1.65,
+    "terms_abs_z_ge_2": [],
+    "S_pass": true,
+    "converges_with_O_and_G": true
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 16.53,
+    "p_nu8": 0.03543,
+    "max_abs_z": 2.6,
+    "S_pass": false,
+    "z_J0614": -2.6
+   }
+  },
+  {
+   "model": "DD-ME1",
+   "class": "DD",
+   "ref": "Niksic, Vretenar, Finelli, Ring, PRC 66, 024306 (2002)",
+   "saturation": {
+    "n0": 0.1522,
+    "E_A": -16.23,
+    "K": 245.3,
+    "mstar_over_M": 0.5777,
+    "J": 33.08,
+    "L": 55.5,
+    "Ksym": -101.0,
+    "sV3_vector_softening": 0.813,
+    "V_minus_S_n0_MeV": 718.3
+   },
+   "stars": {
+    "M_max": 2.443,
+    "R144_static_km": 13.257,
+    "R144_eq_rotation_km": 13.468,
+    "dR_rot_J0614_km": 0.211,
+    "Lambda_tilde_1.36": 797.0,
+    "P_beta_2n0_MeVfm3": 27.46,
+    "x_c_Mmax": 5.53,
+    "max_cs2": 0.757
+   },
+   "S_8terms": {
+    "chi2": 19.04,
+    "p_nu8": 0.01463,
+    "p_replicated_MC": 0.008205,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.41,
+     "R134": 0.29,
+     "R1418": 4.24,
+     "R144": 9.9,
+     "Lt": 3.79,
+     "S2": 0.13,
+     "EPNM": 0.28
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.49,
+     "R134": -0.56,
+     "R1418": -1.98,
+     "R144": -3.12,
+     "Lt": -1.83,
+     "S2": -0.36,
+     "EPNM": -0.53
+    },
+    "max_abs_z": 3.12,
+    "terms_abs_z_ge_2": [
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.86,
+    "EPNM_0p10": 11.93,
+    "z_S2": -0.36,
+    "z_EPNM": -0.53
+   },
+   "O_16O_1p_MeV": 6.343,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.843,
+    "208Pb_1i": 8.606,
+    "208Pb_3p": 0.894
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 9.14,
+    "p_nu7": 0.2426,
+    "max_abs_z": 1.98,
+    "terms_abs_z_ge_2": [],
+    "S_pass": true,
+    "converges_with_O_and_G": true
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 17.27,
+    "p_nu8": 0.02743,
+    "max_abs_z": 2.91,
+    "S_pass": false,
+    "z_J0614": -2.91
+   }
+  },
+  {
+   "model": "IUFSU",
+   "class": "NL",
+   "ref": "Fattoyev, Horowitz, Piekarewicz, Shen, PRC 82, 055803 (2010)",
+   "saturation": {
+    "n0": 0.1546,
+    "E_A": -16.4,
+    "K": 231.3,
+    "mstar_over_M": 0.6092,
+    "J": 31.3,
+    "L": 47.2,
+    "Ksym": 28.4,
+    "sV3_vector_softening": 0.719,
+    "V_minus_S_n0_MeV": 661.1
+   },
+   "stars": {
+    "M_max": 1.939,
+    "R144_static_km": 12.538,
+    "R144_eq_rotation_km": 12.716,
+    "dR_rot_J0614_km": 0.178,
+    "Lambda_tilde_1.36": 599.0,
+    "P_beta_2n0_MeVfm3": 22.87,
+    "x_c_Mmax": 6.65,
+    "max_cs2": 0.389
+   },
+   "S_8terms": {
+    "chi2": 19.16,
+    "p_nu8": 0.014,
+    "p_replicated_MC": 0.01794,
+    "chi2_terms": {
+     "Mmax": 7.61,
+     "R207": 1.88,
+     "R134": 0.0,
+     "R1418": 1.7,
+     "R144": 5.77,
+     "Lt": 1.37,
+     "S2": 0.04,
+     "EPNM": 0.79
+    },
+    "z_PIT": {
+     "Mmax": 2.01,
+     "R207": 1.48,
+     "R134": 0.03,
+     "R1418": -1.2,
+     "R144": -2.37,
+     "Lt": -1.01,
+     "S2": -0.2,
+     "EPNM": -0.89
+    },
+    "max_abs_z": 2.37,
+    "terms_abs_z_ge_2": [
+     "Mmax",
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144",
+     "Mmax"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.7,
+    "EPNM_0p10": 12.29,
+    "z_S2": -0.2,
+    "z_EPNM": -0.89
+   },
+   "O_16O_1p_MeV": 5.781,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.248,
+    "208Pb_1i": 7.814,
+    "208Pb_3p": 0.78
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 13.4,
+    "p_nu7": 0.06302,
+    "max_abs_z": 2.01,
+    "terms_abs_z_ge_2": [
+     "Mmax"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 18.44,
+    "p_nu8": 0.01816,
+    "max_abs_z": 2.2,
+    "S_pass": false,
+    "z_J0614": -2.2
+   }
+  },
+  {
+   "model": "DD2",
+   "class": "DD",
+   "ref": "Typel, Roepke, Klaehn, Blaschke, Wolter, PRC 81, 015803 (2010)",
+   "saturation": {
+    "n0": 0.1491,
+    "E_A": -16.02,
+    "K": 242.7,
+    "mstar_over_M": 0.5625,
+    "J": 31.67,
+    "L": 55.0,
+    "Ksym": -93.3,
+    "sV3_vector_softening": 0.769,
+    "V_minus_S_n0_MeV": 746.3
+   },
+   "stars": {
+    "M_max": 2.417,
+    "R144_static_km": 13.263,
+    "R144_eq_rotation_km": 13.475,
+    "dR_rot_J0614_km": 0.213,
+    "Lambda_tilde_1.36": 805.0,
+    "P_beta_2n0_MeVfm3": 25.49,
+    "x_c_Mmax": 5.71,
+    "max_cs2": 0.748
+   },
+   "S_8terms": {
+    "chi2": 19.27,
+    "p_nu8": 0.01347,
+    "p_replicated_MC": 0.007515,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.36,
+     "R134": 0.3,
+     "R1418": 4.27,
+     "R144": 9.95,
+     "Lt": 3.91,
+     "S2": 0.35,
+     "EPNM": 0.12
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.46,
+     "R134": -0.57,
+     "R1418": -1.99,
+     "R144": -3.13,
+     "Lt": -1.87,
+     "S2": 0.6,
+     "EPNM": 0.35
+    },
+    "max_abs_z": 3.13,
+    "terms_abs_z_ge_2": [
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 24.9,
+    "EPNM_0p10": 11.05,
+    "z_S2": 0.6,
+    "z_EPNM": 0.35
+   },
+   "O_16O_1p_MeV": 6.963,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.513,
+    "208Pb_1i": 9.463,
+    "208Pb_3p": 0.962
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 9.33,
+    "p_nu7": 0.23,
+    "max_abs_z": 1.99,
+    "terms_abs_z_ge_2": [],
+    "S_pass": true,
+    "converges_with_O_and_G": true
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 17.49,
+    "p_nu8": 0.02539,
+    "max_abs_z": 2.92,
+    "S_pass": false,
+    "z_J0614": -2.92
+   }
+  },
+  {
+   "model": "DD-ME2",
+   "class": "DD",
+   "ref": "Lalazissis, Niksic, Vretenar, Ring, PRC 71, 024312 (2005)",
+   "saturation": {
+    "n0": 0.1519,
+    "E_A": -16.14,
+    "K": 250.9,
+    "mstar_over_M": 0.5719,
+    "J": 32.3,
+    "L": 51.3,
+    "Ksym": -87.3,
+    "sV3_vector_softening": 0.82,
+    "V_minus_S_n0_MeV": 728.8
+   },
+   "stars": {
+    "M_max": 2.483,
+    "R144_static_km": 13.298,
+    "R144_eq_rotation_km": 13.51,
+    "dR_rot_J0614_km": 0.212,
+    "Lambda_tilde_1.36": 831.0,
+    "P_beta_2n0_MeVfm3": 28.87,
+    "x_c_Mmax": 5.38,
+    "max_cs2": 0.761
+   },
+   "S_8terms": {
+    "chi2": 19.95,
+    "p_nu8": 0.01052,
+    "p_replicated_MC": 0.005805,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.55,
+     "R134": 0.32,
+     "R1418": 4.41,
+     "R144": 10.17,
+     "Lt": 4.33,
+     "S2": 0.02,
+     "EPNM": 0.15
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.61,
+     "R134": -0.59,
+     "R1418": -2.02,
+     "R144": -3.17,
+     "Lt": -1.97,
+     "S2": -0.15,
+     "EPNM": -0.39
+    },
+    "max_abs_z": 3.17,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.65,
+    "EPNM_0p10": 11.79,
+    "z_S2": -0.15,
+    "z_EPNM": -0.39
+   },
+   "O_16O_1p_MeV": 6.513,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.04,
+    "208Pb_1i": 8.859,
+    "208Pb_3p": 0.913
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 9.79,
+    "p_nu7": 0.201,
+    "max_abs_z": 2.02,
+    "terms_abs_z_ge_2": [
+     "R1418"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 18.11,
+    "p_nu8": 0.02039,
+    "max_abs_z": 2.95,
+    "S_pass": false,
+    "z_J0614": -2.95
+   }
+  },
+  {
+   "model": "FSU2H",
+   "class": "NL",
+   "ref": "Tolos, Centelles, Ramos, ApJ 834, 3 (2017)",
+   "saturation": {
+    "n0": 0.1504,
+    "E_A": -16.26,
+    "K": 237.7,
+    "mstar_over_M": 0.5931,
+    "J": 30.54,
+    "L": 44.5,
+    "Ksym": 86.5,
+    "sV3_vector_softening": 0.844,
+    "V_minus_S_n0_MeV": 691.1
+   },
+   "stars": {
+    "M_max": 2.377,
+    "R144_static_km": 13.247,
+    "R144_eq_rotation_km": 13.455,
+    "dR_rot_J0614_km": 0.208,
+    "Lambda_tilde_1.36": 894.0,
+    "P_beta_2n0_MeVfm3": 30.05,
+    "x_c_Mmax": 5.33,
+    "max_cs2": 0.503
+   },
+   "S_8terms": {
+    "chi2": 21.45,
+    "p_nu8": 0.006052,
+    "p_replicated_MC": 0.00318,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.59,
+     "R134": 0.25,
+     "R1418": 4.16,
+     "R144": 9.82,
+     "Lt": 5.4,
+     "S2": 0.11,
+     "EPNM": 1.12
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.64,
+     "R134": -0.52,
+     "R1418": -1.96,
+     "R144": -3.11,
+     "Lt": -2.23,
+     "S2": -0.33,
+     "EPNM": -1.06
+    },
+    "max_abs_z": 3.11,
+    "terms_abs_z_ge_2": [
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.83,
+    "EPNM_0p10": 12.46,
+    "z_S2": -0.33,
+    "z_EPNM": -1.06
+   },
+   "O_16O_1p_MeV": 6.639,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.276,
+    "208Pb_1i": 9.128,
+    "208Pb_3p": 0.848
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 11.63,
+    "p_nu7": 0.1135,
+    "max_abs_z": 2.23,
+    "terms_abs_z_ge_2": [
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 19.67,
+    "p_nu8": 0.01168,
+    "max_abs_z": 2.9,
+    "S_pass": false,
+    "z_J0614": -2.9
+   }
+  },
+  {
+   "model": "BigApple",
+   "class": "NL",
+   "ref": "Fattoyev, Horowitz, Piekarewicz, Reed, PRC 102, 065805 (2020)",
+   "saturation": {
+    "n0": 0.1546,
+    "E_A": -16.34,
+    "K": 227.0,
+    "mstar_over_M": 0.61,
+    "J": 31.32,
+    "L": 39.8,
+    "Ksym": 87.3,
+    "sV3_vector_softening": 0.981,
+    "V_minus_S_n0_MeV": 659.8
+   },
+   "stars": {
+    "M_max": 2.6,
+    "R144_static_km": 13.084,
+    "R144_eq_rotation_km": 13.277,
+    "dR_rot_J0614_km": 0.193,
+    "Lambda_tilde_1.36": 837.0,
+    "P_beta_2n0_MeVfm3": 33.1,
+    "x_c_Mmax": 4.92,
+    "max_cs2": 0.726
+   },
+   "S_8terms": {
+    "chi2": 23.62,
+    "p_nu8": 0.002648,
+    "p_replicated_MC": 0.00134,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.64,
+     "R134": 0.11,
+     "R1418": 3.45,
+     "R144": 8.75,
+     "Lt": 4.43,
+     "S2": 1.55,
+     "EPNM": 4.69
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.67,
+     "R134": -0.35,
+     "R1418": -1.77,
+     "R144": -2.93,
+     "Lt": -2.0,
+     "S2": -1.24,
+     "EPNM": -2.17
+    },
+    "max_abs_z": 2.93,
+    "terms_abs_z_ge_2": [
+     "R144",
+     "EPNM"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144",
+     "Lt",
+     "EPNM"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 26.74,
+    "EPNM_0p10": 13.57,
+    "z_S2": -1.24,
+    "z_EPNM": -2.17
+   },
+   "O_16O_1p_MeV": 5.958,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.526,
+    "208Pb_1i": 8.167,
+    "208Pb_3p": 0.776
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 14.88,
+    "p_nu7": 0.03758,
+    "max_abs_z": 2.17,
+    "terms_abs_z_ge_2": [
+     "EPNM"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 22.07,
+    "p_nu8": 0.004783,
+    "max_abs_z": 2.74,
+    "S_pass": false,
+    "z_J0614": -2.74
+   }
+  },
+  {
+   "model": "NL3wrho",
+   "class": "NL",
+   "ref": "Horowitz, Piekarewicz, PRL 86, 5647 (2001); Carriere, Horowitz, Piekarewicz, ApJ 593, 463 (2003)",
+   "saturation": {
+    "n0": 0.1482,
+    "E_A": -16.24,
+    "K": 271.5,
+    "mstar_over_M": 0.5951,
+    "J": 31.74,
+    "L": 55.1,
+    "Ksym": -7.2,
+    "sV3_vector_softening": 1.0,
+    "V_minus_S_n0_MeV": 688.1
+   },
+   "stars": {
+    "M_max": 2.754,
+    "R144_static_km": 13.848,
+    "R144_eq_rotation_km": 14.095,
+    "dR_rot_J0614_km": 0.247,
+    "Lambda_tilde_1.36": 1090.0,
+    "P_beta_2n0_MeVfm3": 36.92,
+    "x_c_Mmax": 4.65,
+    "max_cs2": 0.799
+   },
+   "S_8terms": {
+    "chi2": 34.14,
+    "p_nu8": 3.826e-05,
+    "p_replicated_MC": 5e-06,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 2.03,
+     "R134": 1.07,
+     "R1418": 7.2,
+     "R144": 14.19,
+     "Lt": 9.57,
+     "S2": 0.02,
+     "EPNM": 0.06
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -1.33,
+     "R134": -1.05,
+     "R1418": -2.62,
+     "R144": -3.75,
+     "Lt": -3.02,
+     "S2": 0.15,
+     "EPNM": -0.25
+    },
+    "max_abs_z": 3.75,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.35,
+    "EPNM_0p10": 11.65,
+    "z_S2": 0.15,
+    "z_EPNM": -0.25
+   },
+   "O_16O_1p_MeV": 6.841,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.534,
+    "208Pb_1i": 9.471,
+    "208Pb_3p": 0.85
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 19.95,
+    "p_nu7": 0.005677,
+    "max_abs_z": 3.02,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 31.33,
+    "p_nu8": 0.000123,
+    "max_abs_z": 3.5,
+    "S_pass": false,
+    "z_J0614": -3.5
+   }
+  },
+  {
+   "model": "FSU2",
+   "class": "NL",
+   "ref": "Chen, Piekarewicz, PRC 90, 044305 (2014)",
+   "saturation": {
+    "n0": 0.1504,
+    "E_A": -16.26,
+    "K": 237.7,
+    "mstar_over_M": 0.5931,
+    "J": 37.57,
+    "L": 112.7,
+    "Ksym": 25.4,
+    "sV3_vector_softening": 0.717,
+    "V_minus_S_n0_MeV": 691.1
+   },
+   "stars": {
+    "M_max": 2.073,
+    "R144_static_km": 14.142,
+    "R144_eq_rotation_km": 14.448,
+    "dR_rot_J0614_km": 0.306,
+    "Lambda_tilde_1.36": 1056.0,
+    "P_beta_2n0_MeVfm3": 27.11,
+    "x_c_Mmax": 6.01,
+    "max_cs2": 0.4
+   },
+   "S_8terms": {
+    "chi2": 38.91,
+    "p_nu8": 5.097e-06,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 1.56,
+     "R207": 0.0,
+     "R134": 2.17,
+     "R1418": 9.31,
+     "R144": 16.95,
+     "Lt": 8.76,
+     "S2": 0.11,
+     "EPNM": 0.05
+    },
+    "z_PIT": {
+     "Mmax": 0.11,
+     "R207": 0.29,
+     "R134": -1.48,
+     "R1418": -3.0,
+     "R144": -4.1,
+     "Lt": -2.88,
+     "S2": 0.33,
+     "EPNM": 0.23
+    },
+    "max_abs_z": 4.1,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.17,
+    "EPNM_0p10": 11.17,
+    "z_S2": 0.33,
+    "z_EPNM": 0.23
+   },
+   "O_16O_1p_MeV": 6.44,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.993,
+    "208Pb_1i": 8.775,
+    "208Pb_3p": 0.846
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 21.97,
+    "p_nu7": 0.002571,
+    "max_abs_z": 3.0,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 35.59,
+    "p_nu8": 2.083e-05,
+    "max_abs_z": 3.79,
+    "S_pass": false,
+    "z_J0614": -3.79
+   }
+  },
+  {
+   "model": "FSUGold",
+   "class": "NL",
+   "ref": "Todd-Rutel, Piekarewicz, PRL 95, 122501 (2005)",
+   "saturation": {
+    "n0": 0.1484,
+    "E_A": -16.3,
+    "K": 230.0,
+    "mstar_over_M": 0.61,
+    "J": 32.59,
+    "L": 60.5,
+    "Ksym": -51.4,
+    "sV3_vector_softening": 0.632,
+    "V_minus_S_n0_MeV": 661.3
+   },
+   "stars": {
+    "M_max": 1.722,
+    "R144_static_km": 12.385,
+    "R144_eq_rotation_km": 12.574,
+    "dR_rot_J0614_km": 0.189,
+    "Lambda_tilde_1.36": 500.0,
+    "P_beta_2n0_MeVfm3": 18.72,
+    "x_c_Mmax": 7.79,
+    "max_cs2": 0.342
+   },
+   "S_8terms": {
+    "chi2": 41.64,
+    "p_nu8": 1.582e-06,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 31.33,
+     "R207": 3.08,
+     "R134": 0.0,
+     "R1418": 1.4,
+     "R144": 5.11,
+     "Lt": 0.61,
+     "S2": 0.0,
+     "EPNM": 0.09
+    },
+    "z_PIT": {
+     "Mmax": 5.11,
+     "R207": 1.85,
+     "R134": 0.03,
+     "R1418": -1.07,
+     "R144": -2.23,
+     "Lt": -0.58,
+     "S2": -0.07,
+     "EPNM": -0.3
+    },
+    "max_abs_z": 5.11,
+    "terms_abs_z_ge_2": [
+     "Mmax",
+     "R144"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144",
+     "Mmax"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.57,
+    "EPNM_0p10": 11.7,
+    "z_S2": -0.07,
+    "z_EPNM": -0.3
+   },
+   "O_16O_1p_MeV": 5.758,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.177,
+    "208Pb_1i": 7.775,
+    "208Pb_3p": 0.803
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 36.53,
+    "p_nu7": 5.76e-06,
+    "max_abs_z": 5.11,
+    "terms_abs_z_ge_2": [
+     "Mmax"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 41.0,
+    "p_nu8": 2.081e-06,
+    "max_abs_z": 5.11,
+    "S_pass": false,
+    "z_J0614": -2.04
+   }
+  },
+  {
+   "model": "TM1",
+   "class": "NL",
+   "ref": "Sugahara, Toki, Nucl. Phys. A 579, 557 (1994)",
+   "saturation": {
+    "n0": 0.1452,
+    "E_A": -16.26,
+    "K": 281.2,
+    "mstar_over_M": 0.6344,
+    "J": 36.89,
+    "L": 110.8,
+    "Ksym": 33.6,
+    "sV3_vector_softening": 0.801,
+    "V_minus_S_n0_MeV": 617.4
+   },
+   "stars": {
+    "M_max": 2.18,
+    "R144_static_km": 14.478,
+    "R144_eq_rotation_km": 14.811,
+    "dR_rot_J0614_km": 0.333,
+    "Lambda_tilde_1.36": 1256.0,
+    "P_beta_2n0_MeVfm3": 27.5,
+    "x_c_Mmax": 5.88,
+    "max_cs2": 0.435
+   },
+   "S_8terms": {
+    "chi2": 49.79,
+    "p_nu8": 4.491e-08,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 0.16,
+     "R207": 0.86,
+     "R134": 3.07,
+     "R1418": 11.61,
+     "R144": 20.04,
+     "Lt": 14.01,
+     "S2": 0.01,
+     "EPNM": 0.03
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.81,
+     "R134": -1.76,
+     "R1418": -3.36,
+     "R144": -4.46,
+     "Lt": -3.68,
+     "S2": -0.08,
+     "EPNM": -0.18
+    },
+    "max_abs_z": 4.46,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.58,
+    "EPNM_0p10": 11.58,
+    "z_S2": -0.08,
+    "z_EPNM": -0.18
+   },
+   "O_16O_1p_MeV": 5.677,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 6.181,
+    "208Pb_1i": 7.809,
+    "208Pb_3p": 0.723
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 29.75,
+    "p_nu7": 0.0001055,
+    "max_abs_z": 3.68,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 45.46,
+    "p_nu8": 3.009e-07,
+    "max_abs_z": 4.13,
+    "S_pass": false,
+    "z_J0614": -4.13
+   }
+  },
+  {
+   "model": "GM1",
+   "class": "NL",
+   "ref": "Glendenning, Moszkowski, PRL 67, 2414 (1991)",
+   "saturation": {
+    "n0": 0.153,
+    "E_A": -16.3,
+    "K": 300.0,
+    "mstar_over_M": 0.7,
+    "J": 32.5,
+    "L": 93.9,
+    "Ksym": 17.9,
+    "sV3_vector_softening": 1.0,
+    "V_minus_S_n0_MeV": 497.3
+   },
+   "stars": {
+    "M_max": 2.364,
+    "R144_static_km": 14.01,
+    "R144_eq_rotation_km": 14.291,
+    "dR_rot_J0614_km": 0.282,
+    "Lambda_tilde_1.36": 1084.0,
+    "P_beta_2n0_MeVfm3": 30.69,
+    "x_c_Mmax": 5.64,
+    "max_cs2": 0.723
+   },
+   "S_8terms": {
+    "chi2": 60.39,
+    "p_nu8": 3.911e-10,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 0.81,
+     "R134": 1.64,
+     "R1418": 8.34,
+     "R144": 15.7,
+     "Lt": 9.43,
+     "S2": 14.01,
+     "EPNM": 10.46
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -0.78,
+     "R134": -1.29,
+     "R1418": -2.83,
+     "R144": -3.94,
+     "Lt": -2.99,
+     "S2": 3.74,
+     "EPNM": 3.23
+    },
+    "max_abs_z": 3.94,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "R144",
+     "Lt",
+     "S2",
+     "EPNM"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R1418",
+     "R144",
+     "Lt",
+     "S2",
+     "EPNM"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 21.76,
+    "EPNM_0p10": 8.17,
+    "z_S2": 3.74,
+    "z_EPNM": 3.23
+   },
+   "O_16O_1p_MeV": 3.878,
+   "O_pass": false,
+   "other_splittings_MeV": {
+    "40Ca_1d": 4.188,
+    "208Pb_1i": 5.263,
+    "208Pb_3p": 0.519
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 44.69,
+    "p_nu7": 1.57e-07,
+    "max_abs_z": 3.74,
+    "terms_abs_z_ge_2": [
+     "R1418",
+     "Lt",
+     "S2",
+     "EPNM"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 57.21,
+    "p_nu8": 1.64e-09,
+    "max_abs_z": 3.74,
+    "S_pass": false,
+    "z_J0614": -3.66
+   }
+  },
+  {
+   "model": "NL3",
+   "class": "NL",
+   "ref": "Lalazissis, Koenig, Ring, PRC 55, 540 (1997)",
+   "saturation": {
+    "n0": 0.1482,
+    "E_A": -16.24,
+    "K": 271.5,
+    "mstar_over_M": 0.5951,
+    "J": 37.4,
+    "L": 118.5,
+    "Ksym": 100.8,
+    "sV3_vector_softening": 1.0,
+    "V_minus_S_n0_MeV": 688.1
+   },
+   "stars": {
+    "M_max": 2.774,
+    "R144_static_km": 14.889,
+    "R144_eq_rotation_km": 15.242,
+    "dR_rot_J0614_km": 0.353,
+    "Lambda_tilde_1.36": 1504.0,
+    "P_beta_2n0_MeVfm3": 40.69,
+    "x_c_Mmax": 4.51,
+    "max_cs2": 0.792
+   },
+   "S_8terms": {
+    "chi2": 69.46,
+    "p_nu8": 6.296e-12,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 4.06,
+     "R134": 4.23,
+     "R1418": 14.66,
+     "R144": 24.04,
+     "Lt": 22.23,
+     "S2": 0.17,
+     "EPNM": 0.06
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -1.94,
+     "R134": -2.07,
+     "R1418": -3.78,
+     "R144": -4.89,
+     "Lt": -4.66,
+     "S2": 0.41,
+     "EPNM": 0.25
+    },
+    "max_abs_z": 4.89,
+    "terms_abs_z_ge_2": [
+     "R134",
+     "R1418",
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R207",
+     "R134",
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 25.09,
+    "EPNM_0p10": 11.15,
+    "z_S2": 0.41,
+    "z_EPNM": 0.25
+   },
+   "O_16O_1p_MeV": 6.841,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.534,
+    "208Pb_1i": 9.471,
+    "208Pb_3p": 0.85
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 45.42,
+    "p_nu7": 1.134e-07,
+    "max_abs_z": 4.66,
+    "terms_abs_z_ge_2": [
+     "R134",
+     "R1418",
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 63.93,
+    "p_nu8": 7.847e-11,
+    "max_abs_z": 4.66,
+    "S_pass": false,
+    "z_J0614": -4.54
+   }
+  },
+  {
+   "model": "NL-rho",
+   "class": "NL",
+   "ref": "Liu, Greco, Baran, Colonna, Di Toro, PRC 65, 045201 (2002); Baran et al., Phys. Rep. 410, 335 (2005)",
+   "saturation": {
+    "n0": 0.1602,
+    "E_A": -16.05,
+    "K": 240.8,
+    "mstar_over_M": 0.7498,
+    "J": 30.37,
+    "L": 84.6,
+    "Ksym": 3.4,
+    "sV3_vector_softening": 1.0,
+    "V_minus_S_n0_MeV": 406.2
+   },
+   "stars": {
+    "M_max": 2.088,
+    "R144_static_km": 13.074,
+    "R144_eq_rotation_km": 13.295,
+    "dR_rot_J0614_km": 0.222,
+    "Lambda_tilde_1.36": 692.0,
+    "P_beta_2n0_MeVfm3": 25.75,
+    "x_c_Mmax": 6.69,
+    "max_cs2": 0.697
+   },
+   "S_8terms": {
+    "chi2": 75.49,
+    "p_nu8": 3.933e-13,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 1.21,
+     "R207": 1.41,
+     "R134": 0.25,
+     "R1418": 3.61,
+     "R144": 8.85,
+     "Lt": 2.35,
+     "S2": 32.84,
+     "EPNM": 24.97
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": 1.31,
+     "R134": -0.52,
+     "R1418": -1.82,
+     "R144": -2.95,
+     "Lt": -1.4,
+     "S2": 5.73,
+     "EPNM": 5.0
+    },
+    "max_abs_z": 5.73,
+    "terms_abs_z_ge_2": [
+     "R144",
+     "S2",
+     "EPNM"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R144",
+     "S2",
+     "EPNM"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 19.77,
+    "EPNM_0p10": 6.4,
+    "z_S2": 5.73,
+    "z_EPNM": 5.0
+   },
+   "O_16O_1p_MeV": 2.736,
+   "O_pass": false,
+   "other_splittings_MeV": {
+    "40Ca_1d": 2.936,
+    "208Pb_1i": 3.66,
+    "208Pb_3p": 0.39
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 66.64,
+    "p_nu7": 7.042e-12,
+    "max_abs_z": 5.73,
+    "terms_abs_z_ge_2": [
+     "S2",
+     "EPNM"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 74.06,
+    "p_nu8": 7.591e-13,
+    "max_abs_z": 5.73,
+    "S_pass": false,
+    "z_J0614": -2.73
+   }
+  },
+  {
+   "model": "NL-SH",
+   "class": "NL",
+   "ref": "Sharma, Nagarajan, Ring, PLB 312, 377 (1993)",
+   "saturation": {
+    "n0": 0.146,
+    "E_A": -16.35,
+    "K": 355.3,
+    "mstar_over_M": 0.5972,
+    "J": 36.12,
+    "L": 113.6,
+    "Ksym": 79.7,
+    "sV3_vector_softening": 1.0,
+    "V_minus_S_n0_MeV": 684.8
+   },
+   "stars": {
+    "M_max": 2.799,
+    "R144_static_km": 15.027,
+    "R144_eq_rotation_km": 15.388,
+    "dR_rot_J0614_km": 0.361,
+    "Lambda_tilde_1.36": 1658.0,
+    "P_beta_2n0_MeVfm3": 42.81,
+    "x_c_Mmax": 4.46,
+    "max_cs2": 0.78
+   },
+   "S_8terms": {
+    "chi2": 80.18,
+    "p_nu8": 4.507e-14,
+    "p_replicated_MC": 0.0,
+    "chi2_terms": {
+     "Mmax": 0.0,
+     "R207": 4.88,
+     "R134": 4.65,
+     "R1418": 15.77,
+     "R144": 25.48,
+     "Lt": 28.27,
+     "S2": 0.79,
+     "EPNM": 0.32
+    },
+    "z_PIT": {
+     "Mmax": 0.0,
+     "R207": -2.14,
+     "R134": -2.17,
+     "R1418": -3.93,
+     "R144": -5.03,
+     "Lt": -5.27,
+     "S2": 0.89,
+     "EPNM": 0.57
+    },
+    "max_abs_z": 5.27,
+    "terms_abs_z_ge_2": [
+     "R207",
+     "R134",
+     "R1418",
+     "R144",
+     "Lt"
+    ],
+    "pass": false
+   },
+   "box_2sigma": {
+    "pass": false,
+    "fails": [
+     "R207",
+     "R134",
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "N_terms": {
+    "S2_0p10": 24.61,
+    "EPNM_0p10": 10.83,
+    "z_S2": 0.89,
+    "z_EPNM": 0.57
+   },
+   "O_16O_1p_MeV": 6.953,
+   "O_pass": true,
+   "other_splittings_MeV": {
+    "40Ca_1d": 7.636,
+    "208Pb_1i": 9.625,
+    "208Pb_3p": 0.836
+   },
+   "G_pass": true,
+   "G_points_checked": 180,
+   "G_points_with_any_other_minimum": 0,
+   "V": "not applicable (fixed model)",
+   "CONVERGES": false,
+   "sensitivity_without_J0614": {
+    "chi2_7": 54.7,
+    "p_nu7": 1.71e-09,
+    "max_abs_z": 5.27,
+    "terms_abs_z_ge_2": [
+     "R207",
+     "R134",
+     "R1418",
+     "Lt"
+    ],
+    "S_pass": false,
+    "converges_with_O_and_G": false
+   },
+   "sensitivity_static_radii": {
+    "chi2_8": 74.27,
+    "p_nu8": 6.912e-13,
+    "max_abs_z": 5.27,
+    "S_pass": false,
+    "z_J0614": -4.67
+   }
+  }
+ ],
+ "dropped_model_rows": {
+  "DD-MEX": "dropped at validation (L 49.63 vs 46.627 MeV, +6.45 %); no stars or likelihood computed"
+ },
+ "nvg_reference_rows": {
+  "source": [
+   "creative/likelihood/analysis.json nvg.rotation_8 (declared N=2000 sample)",
+   "creative/spin_orbit/result.json",
+   "SCR/round3/rmf_survey/nvg_profile.json"
+  ],
+  "class_posterior": {
+   "ystar": {
+    "mean": 0.8528,
+    "q16": 0.8467,
+    "q50": 0.8527,
+    "q84": 0.8566,
+    "posterior_weight_defined": 1.0
+   },
+   "L": {
+    "mean": 54.1966,
+    "q16": 47.3727,
+    "q50": 56.3924,
+    "q84": 56.8122,
+    "posterior_weight_defined": 1.0
+   },
+   "K": {
+    "mean": 244.3952,
+    "q16": 236.2196,
+    "q50": 242.0025,
+    "q84": 257.1941,
+    "posterior_weight_defined": 1.0
+   },
+   "J": {
+    "mean": 32.2789,
+    "q16": 31.421,
+    "q50": 32.284,
+    "q84": 32.9821,
+    "posterior_weight_defined": 1.0
+   },
+   "M_max": {
+    "mean": 1.9584,
+    "q16": 1.9304,
+    "q50": 1.9556,
+    "q84": 1.9687,
+    "posterior_weight_defined": 1.0
+   },
+   "R_eq_J0614_rot": {
+    "mean": 12.6984,
+    "q16": 12.5959,
+    "q50": 12.6134,
+    "q84": 12.904,
+    "posterior_weight_defined": 1.0
+   },
+   "R_1.4_static": {
+    "mean": 12.5348,
+    "q16": 12.4295,
+    "q50": 12.4546,
+    "q84": 12.7307,
+    "posterior_weight_defined": 1.0
+   },
+   "P_beta_2n0_cons_MeVfm3": {
+    "mean": 23.8058,
+    "q16": 21.82,
+    "q50": 23.75,
+    "q84": 24.8572,
+    "posterior_weight_defined": 1.0
+   }
+  },
+  "class_loo_z": {
+   "Mmax": 2.85,
+   "R207": 1.39,
+   "R134": 0.05,
+   "R1418": -1.2,
+   "R144": -2.39,
+   "Lt": -0.93,
+   "S2": 0.52,
+   "EPNM": -0.66
+  },
+  "class_ppc_p": 0.026,
+  "named_members_16O_1p_MeV": {
+   "island_y0.84_a5min": 1.45,
+   "quartic_y0.87": 1.04,
+   "quartic_y0.90": 0.675,
+   "corner_y0.83_Q0+55": 1.482,
+   "extra_quartic_y0.88": 0.914,
+   "extra_quartic_y0.93": 0.226
+  },
+  "named_members_profiles": {
+   "island_y0.84_a5min": {
+    "mstar": 0.84,
+    "VmS_n0": 241.776,
+    "VmS_half_over_n0": 0.509,
+    "sV2": 1.356,
+    "sV3": 1.34
+   },
+   "quartic_y0.87": {
+    "mstar": 0.87,
+    "VmS_n0": 186.836,
+    "VmS_half_over_n0": 0.55,
+    "sV2": 1.168,
+    "sV3": 1.257
+   },
+   "quartic_y0.90": {
+    "mstar": 0.9,
+    "VmS_n0": 131.81,
+    "VmS_half_over_n0": 0.623,
+    "sV2": 1.076,
+    "sV3": 1.125
+   },
+   "corner_y0.83_Q0+55": {
+    "mstar": 0.83,
+    "VmS_n0": 258.835,
+    "VmS_half_over_n0": 0.498,
+    "sV2": 1.373,
+    "sV3": 1.301
+   }
+  }
+ },
+ "map_summary": {
+  "n_points": 70,
+  "n_ok": 65,
+  "converging_points": [],
+  "converging_points_without_J0614": [
+   "map_m0.64_z0.000_L40",
+   "map_m0.60_z0.015_L40",
+   "map_m0.64_z0.015_L40",
+   "map_m0.60_z0.030_L40",
+   "map_m0.64_z0.015_L70",
+   "map_m0.60_z0.030_L70"
+  ],
+  "allowed_J0614_O_Mmax": [],
+  "min_R144_eq_with_O_and_Mmax_ge_1.94": [
+   12.87424952892381,
+   "map_m0.60_z0.030_L40",
+   1.963972437934469,
+   6.139678238176426
+  ],
+  "max_16O_with_J0614_and_Mmax_ge_1.94": [
+   2.719987485377617,
+   "map_m0.76_z0.000_L40",
+   12.279616397938055,
+   2.064485973844851
+  ],
+  "crossings_mstar": {
+   "zeta0.0_L40": {
+    "mstar_at_16O_4.9": 0.657,
+    "mstar_at_J0614_bound": 0.753
+   },
+   "zeta0.0_L70": {
+    "mstar_at_16O_4.9": 0.657,
+    "mstar_at_J0614_bound": 0.794
+   },
+   "zeta0.015_L40": {
+    "mstar_at_16O_4.9": 0.654,
+    "mstar_at_J0614_bound": 0.722
+   },
+   "zeta0.015_L70": {
+    "mstar_at_16O_4.9": 0.654,
+    "mstar_at_J0614_bound": 0.773
+   },
+   "zeta0.03_L40": {
+    "mstar_at_16O_4.9": 0.651,
+    "mstar_at_J0614_bound": 0.68
+   },
+   "zeta0.03_L70": {
+    "mstar_at_16O_4.9": 0.651,
+    "mstar_at_J0614_bound": 0.742
+   },
+   "zeta0.045_L40": {
+    "mstar_at_16O_4.9": 0.648,
+    "mstar_at_J0614_bound": 0.637
+   },
+   "zeta0.045_L70": {
+    "mstar_at_16O_4.9": 0.648,
+    "mstar_at_J0614_bound": 0.705
+   },
+   "zeta0.06_L40": {
+    "mstar_at_16O_4.9": 0.645,
+    "mstar_at_J0614_bound": null
+   },
+   "zeta0.06_L70": {
+    "mstar_at_16O_4.9": 0.645,
+    "mstar_at_J0614_bound": 0.665
+   }
+  },
+  "rows_mstar_R144eq_Mmax_16O": {
+   "zeta0.0_L40": [
+    [
+     0.5999999999999844,
+     13.594,
+     2.707,
+     6.42
+    ],
+    [
+     0.6399999999999969,
+     13.299,
+     2.557,
+     5.31
+    ],
+    [
+     0.6799999999999831,
+     12.98,
+     2.399,
+     4.33
+    ],
+    [
+     0.71999999999999,
+     12.636,
+     2.233,
+     3.48
+    ],
+    [
+     0.7600000000000026,
+     12.28,
+     2.064,
+     2.72
+    ],
+    [
+     0.7999999999999952,
+     11.874,
+     1.898,
+     2.05
+    ]
+   ],
+   "zeta0.0_L70": [
+    [
+     0.5599999999999873,
+     14.353,
+     2.831,
+     7.69
+    ],
+    [
+     0.5999999999999844,
+     14.063,
+     2.691,
+     6.42
+    ],
+    [
+     0.6399999999999969,
+     13.735,
+     2.542,
+     5.31
+    ],
+    [
+     0.6799999999999831,
+     13.386,
+     2.384,
+     4.33
+    ],
+    [
+     0.71999999999999,
+     13.033,
+     2.217,
+     3.48
+    ],
+    [
+     0.7600000000000026,
+     12.681,
+     2.047,
+     2.72
+    ],
+    [
+     0.7999999999999952,
+     12.283,
+     1.879,
+     2.05
+    ]
+   ],
+   "zeta0.015_L40": [
+    [
+     0.5999999999999855,
+     13.212,
+     2.187,
+     6.28
+    ],
+    [
+     0.6399999999999988,
+     12.895,
+     2.111,
+     5.23
+    ],
+    [
+     0.6799999999999934,
+     12.656,
+     2.029,
+     4.29
+    ],
+    [
+     0.7199999999999854,
+     12.356,
+     1.941,
+     3.46
+    ],
+    [
+     0.7599999999999962,
+     12.05,
+     1.851,
+     2.71
+    ],
+    [
+     0.7999999999999993,
+     11.709,
+     1.763,
+     2.05
+    ]
+   ],
+   "zeta0.015_L70": [
+    [
+     0.5599999999999894,
+     13.921,
+     2.243,
+     7.45
+    ],
+    [
+     0.5999999999999855,
+     13.67,
+     2.175,
+     6.28
+    ],
+    [
+     0.6399999999999988,
+     13.386,
+     2.101,
+     5.23
+    ],
+    [
+     0.6799999999999934,
+     13.078,
+     2.018,
+     4.29
+    ],
+    [
+     0.7199999999999854,
+     12.76,
+     1.928,
+     3.46
+    ],
+    [
+     0.7599999999999962,
+     12.451,
+     1.836,
+     2.71
+    ],
+    [
+     0.7999999999999993,
+     12.113,
+     1.747,
+     2.05
+    ]
+   ],
+   "zeta0.03_L40": [
+    [
+     0.5999999999999904,
+     12.874,
+     1.964,
+     6.14
+    ],
+    [
+     0.6400000000000016,
+     12.611,
+     1.911,
+     5.15
+    ],
+    [
+     0.679999999999996,
+     12.34,
+     1.853,
+     4.25
+    ],
+    [
+     0.7199999999999893,
+     12.087,
+     1.79,
+     3.44
+    ],
+    [
+     0.7599999999999906,
+     11.818,
+     1.729,
+     2.7
+    ],
+    [
+     0.7999999999999936,
+     11.533,
+     1.675,
+     2.05
+    ]
+   ],
+   "zeta0.03_L70": [
+    [
+     0.5599999999999975,
+     13.548,
+     2.004,
+     7.21
+    ],
+    [
+     0.5999999999999904,
+     13.322,
+     1.956,
+     6.14
+    ],
+    [
+     0.6400000000000016,
+     13.07,
+     1.904,
+     5.15
+    ],
+    [
+     0.679999999999996,
+     12.79,
+     1.845,
+     4.25
+    ],
+    [
+     0.7199999999999893,
+     12.497,
+     1.781,
+     3.44
+    ],
+    [
+     0.7599999999999906,
+     12.218,
+     1.718,
+     2.7
+    ],
+    [
+     0.7999999999999936,
+     11.932,
+     1.661,
+     2.05
+    ]
+   ],
+   "zeta0.045_L40": [
+    [
+     0.5999999999999952,
+     12.565,
+     1.826,
+     6.0
+    ],
+    [
+     0.6399999999999945,
+     12.323,
+     1.784,
+     5.08
+    ],
+    [
+     0.6799999999999896,
+     12.053,
+     1.739,
+     4.21
+    ],
+    [
+     0.7199999999999902,
+     11.822,
+     1.691,
+     3.42
+    ],
+    [
+     0.7599999999999922,
+     11.58,
+     1.644,
+     2.7
+    ],
+    [
+     0.7999999999999985,
+     11.346,
+     1.608,
+     2.04
+    ]
+   ],
+   "zeta0.045_L70": [
+    [
+     0.5599999999999994,
+     13.21,
+     1.859,
+     6.99
+    ],
+    [
+     0.5999999999999952,
+     13.004,
+     1.821,
+     6.0
+    ],
+    [
+     0.6399999999999945,
+     12.774,
+     1.78,
+     5.08
+    ],
+    [
+     0.6799999999999896,
+     12.516,
+     1.734,
+     4.21
+    ],
+    [
+     0.7199999999999902,
+     12.239,
+     1.685,
+     3.42
+    ],
+    [
+     0.7599999999999922,
+     11.978,
+     1.636,
+     2.7
+    ],
+    [
+     0.7999999999999985,
+     11.737,
+     1.597,
+     2.04
+    ]
+   ],
+   "zeta0.06_L40": [
+    [
+     0.5999999999999964,
+     12.266,
+     1.719,
+     5.87
+    ],
+    [
+     0.6399999999999969,
+     12.048,
+     1.694,
+     5.0
+    ],
+    [
+     0.6799999999999908,
+     11.772,
+     1.657,
+     4.17
+    ],
+    [
+     0.7199999999999904,
+     11.559,
+     1.617,
+     3.4
+    ],
+    [
+     0.7599999999999946,
+     11.331,
+     1.58,
+     2.69
+    ],
+    [
+     0.7999999999999997,
+     11.141,
+     1.555,
+     2.04
+    ]
+   ],
+   "zeta0.06_L70": [
+    [
+     0.559999999999992,
+     12.894,
+     1.757,
+     6.76
+    ],
+    [
+     0.5999999999999964,
+     12.703,
+     1.727,
+     5.87
+    ],
+    [
+     0.6399999999999969,
+     12.491,
+     1.693,
+     5.0
+    ],
+    [
+     0.6799999999999908,
+     12.249,
+     1.655,
+     4.17
+    ],
+    [
+     0.7199999999999904,
+     11.981,
+     1.614,
+     3.4
+    ],
+    [
+     0.7599999999999946,
+     11.728,
+     1.574,
+     2.69
+    ],
+    [
+     0.7999999999999997,
+     11.524,
+     1.546,
+     2.04
+    ]
+   ]
+  }
+ },
+ "mechanism_diagnostics": {
+  "exchange_rates_km_per_Msun": {
+   "DD-ME2->TW99": 2.53,
+   "DD2->TW99": 2.92,
+   "DD-ME1->TW99": 2.69,
+   "FSU2H->FSU2R": 0.95,
+   "BigApple->IUFSU": 0.85,
+   "map_m0.60_z0.000_L40->map_m0.60_z0.060_L40": 1.34,
+   "map_m0.60_z0.000_L70->map_m0.60_z0.060_L70": 1.41,
+   "map_m0.64_z0.000_L40->map_m0.64_z0.060_L40": 1.45,
+   "map_m0.64_z0.000_L70->map_m0.64_z0.060_L70": 1.46
+  },
+  "vector_ratio_sV_published": {
+   "NL3": {
+    "sV2": 1.0,
+    "mstar2": 0.294,
+    "sV3": 1.0,
+    "mstar3": 0.181,
+    "sV5": 1.0,
+    "mstar5": 0.113,
+    "sV7": 1.0,
+    "mstar7": 0.086
+   },
+   "FSUGold": {
+    "sV2": 0.767,
+    "mstar2": 0.432,
+    "sV3": 0.632,
+    "mstar3": 0.336,
+    "sV5": 0.481,
+    "mstar5": 0.243,
+    "sV7": 0.397,
+    "mstar7": 0.197
+   },
+   "DD-ME2": {
+    "sV2": 0.864,
+    "mstar2": 0.356,
+    "sV3": 0.82,
+    "mstar3": 0.252,
+    "sV5": 0.791,
+    "mstar5": 0.168,
+    "sV7": 0.782,
+    "mstar7": 0.132,
+    "f_omega_inf": 0.878,
+    "f_sigma_inf": 0.891
+   },
+   "DD2": {
+    "sV2": 0.832,
+    "mstar2": 0.358,
+    "sV3": 0.769,
+    "mstar3": 0.258,
+    "sV5": 0.725,
+    "mstar5": 0.175,
+    "sV7": 0.71,
+    "mstar7": 0.138,
+    "f_omega_inf": 0.832,
+    "f_sigma_inf": 0.857
+   },
+   "TW99": {
+    "sV2": 0.766,
+    "mstar2": 0.378,
+    "sV3": 0.658,
+    "mstar3": 0.293,
+    "sV5": 0.571,
+    "mstar5": 0.21,
+    "sV7": 0.538,
+    "mstar7": 0.169,
+    "f_omega_inf": 0.703,
+    "f_sigma_inf": 0.753
+   },
+   "DD-ME1": {
+    "sV2": 0.859,
+    "mstar2": 0.365,
+    "sV3": 0.813,
+    "mstar3": 0.26,
+    "sV5": 0.783,
+    "mstar5": 0.174,
+    "sV7": 0.773,
+    "mstar7": 0.136,
+    "f_omega_inf": 0.872,
+    "f_sigma_inf": 0.883
+   },
+   "TM1": {
+    "sV2": 0.896,
+    "mstar2": 0.409,
+    "sV3": 0.801,
+    "mstar3": 0.291,
+    "sV5": 0.66,
+    "mstar5": 0.193,
+    "sV7": 0.566,
+    "mstar7": 0.152
+   },
+   "NL-rho": {
+    "sV2": 1.0,
+    "mstar2": 0.576,
+    "sV3": 1.0,
+    "mstar3": 0.446,
+    "sV5": 1.0,
+    "mstar5": 0.295,
+    "sV7": 1.0,
+    "mstar7": 0.225
+   },
+   "IUFSU": {
+    "sV2": 0.838,
+    "mstar2": 0.388,
+    "sV3": 0.719,
+    "mstar3": 0.278,
+    "sV5": 0.569,
+    "mstar5": 0.186,
+    "sV7": 0.478,
+    "mstar7": 0.147
+   },
+   "FSU2": {
+    "sV2": 0.836,
+    "mstar2": 0.365,
+    "sV3": 0.717,
+    "mstar3": 0.257,
+    "sV5": 0.566,
+    "mstar5": 0.172,
+    "sV7": 0.476,
+    "mstar7": 0.135
+   },
+   "FSU2R": {
+    "sV2": 0.842,
+    "mstar2": 0.361,
+    "sV3": 0.724,
+    "mstar3": 0.253,
+    "sV5": 0.574,
+    "mstar5": 0.168,
+    "sV7": 0.483,
+    "mstar7": 0.132
+   },
+   "BigApple": {
+    "sV2": 0.993,
+    "mstar2": 0.302,
+    "sV3": 0.981,
+    "mstar3": 0.18,
+    "sV5": 0.949,
+    "mstar5": 0.109,
+    "sV7": 0.91,
+    "mstar7": 0.083
+   },
+   "NL3wrho": {
+    "sV2": 1.0,
+    "mstar2": 0.294,
+    "sV3": 1.0,
+    "mstar3": 0.181,
+    "sV5": 1.0,
+    "mstar5": 0.113,
+    "sV7": 1.0,
+    "mstar7": 0.086
+   },
+   "GM1": {
+    "sV2": 1.0,
+    "mstar2": 0.495,
+    "sV3": 1.0,
+    "mstar3": 0.364,
+    "sV5": 1.0,
+    "mstar5": 0.24,
+    "sV7": 1.0,
+    "mstar7": 0.186
+   },
+   "NL-SH": {
+    "sV2": 1.0,
+    "mstar2": 0.323,
+    "sV3": 1.0,
+    "mstar3": 0.21,
+    "sV5": 1.0,
+    "mstar5": 0.135,
+    "sV7": 1.0,
+    "mstar7": 0.104
+   },
+   "FSUGarnet": {
+    "sV2": 0.835,
+    "mstar2": 0.341,
+    "sV3": 0.716,
+    "mstar3": 0.236,
+    "sV5": 0.565,
+    "mstar5": 0.157,
+    "sV7": 0.475,
+    "mstar7": 0.123
+   },
+   "FSU2H": {
+    "sV2": 0.924,
+    "mstar2": 0.315,
+    "sV3": 0.844,
+    "mstar3": 0.202,
+    "sV5": 0.714,
+    "mstar5": 0.128,
+    "sV7": 0.621,
+    "mstar7": 0.099
+   }
+  }
+ },
+ "verdict_on_convergence": "does_not_converge",
+ "verdict_text": "The tension is generic for relativistic mean-field models. Of 17 validated published parametrizations (NL3, NL-SH, NL3wrho, TM1, GM1, NL-rho, FSUGold, FSU2, FSU2R, FSU2H, FSUGarnet, IUFSU, BigApple, DD-ME1, DD-ME2, DD2, TW99; DD-MEX dropped at validation) none converges under the declared joint verdict: all 17 fail the J0614 radius (|z| 2.14-5.03), while 15 pass the 16O splitting and all pass the ground-state check. The splitting fixes m*/M <= 0.65; at that Dirac mass R(1.44) can be pulled below 12.34 km only by vector softening, which drops M_max below the J0740 mass (map: M_max <= 1.79 where J0614 and 16O both pass). Any two of {J0614, 16O, M_max >= 1.94} are compatible, all three are not, in the published set and in the 65-point FSU-type map. Density-dependent couplings get closest (TW99: one term at z = -2.14, p = 0.19; passes with static radii; five models converge when J0614 is left out). NVG sits on the other side of the same divide: m*/M >= 0.83 kills the splitting for the same Dirac reason, and its density-stiffening vector keeps R(1.44) at 12.6 km.",
+ "practical_value": [
+  "A ready per-model table (joint_verdict_table) of 17 validated published RMF sets through one pipeline (SLy crust, consistent pressure, Hartle-Thorne equatorial radii at the NICER spins): chi2 and each term's z for the 8-datum likelihood, 2-sigma box, the 16O/40Ca/208Pb LDA splittings, M_max, R_eq(1.44), Lambda_tilde, P_beta(2n0).",
+  "Rule of thumb for RMF builders: 16O 1p splitting (LDA) ~ 19.8 - 22.6 m*/M MeV, so shell structure needs m*/M <= 0.65; then R_eq(1.44) ~ 13.5 - 7.2 m*/M + 0.024 L + 3.4 s_V km (published sets, rms 0.24 km). J0614 at 2 sigma needs R_eq(1.44) < 12.34 km (static ~12.15 km after the ~0.17-0.21 km rotation correction).",
+  "Vector softening by density-dependent couplings buys about twice as much radius reduction per unit M_max as an omega^4 term (2.5-2.9 vs 1.3-1.5 km per Msun); a model that softens at 2-3 n0 and stiffens back at 5-7 n0 is the only RMF direction toward J0614 + J0740 + 16O. TW99 is the published set closest to all data.",
+  "If J0614 is set aside, TW99, FSUGarnet, FSU2R, DD-ME1 and DD2 pass the same declared joint test (p 0.20-0.49); J0614 alone separates 'all fail' from 'five pass'.",
+  "The rotation correction matters: for TW99 the 0.165 km Hartle-Thorne shift of R(1.44) flips the J0614 verdict (z -1.97 static vs -2.14 rotating)."
+ ],
+ "caveats": [
+  "Parameters are recalled from the papers; the 1 percent saturation check validates 17 sets (worst deviations 0.0-0.82 percent) and rejected DD-MEX (L off by 6.5 percent). A compensating error that leaves all six saturation properties within 1 percent cannot be excluded.",
+  "IUFSU's m*/M and NL3wrho's isoscalar properties were not validated separately (see validation.not_validated_properties); NL3wrho uses the recalled Lambda_v = 0.03 with g_rho from the Horowitz-Piekarewicz prescription.",
+  "The 16O splitting is the session's LDA procedure (fixed Fermi profile, U_SEP, Woods-Saxon fit, first-order l.s), validated on NL3/DD-ME2/FSUGold against 6.18 MeV; it is not a self-consistent finite-nucleus RMF calculation. The m*/M <= 0.65 bound is the procedure's, though the standard self-consistent lore gives the same range.",
+  "The fixed-model criterion uses z_PIT; TW99 fails by 0.14 in z (0.14 km). The all-|z|<2 rule rejects a correct model about 30 percent of the time (creative/likelihood/refute.json), so TW99's failure is weak evidence on its own; the generic statement rests on all 17 failing J0614 and on the empty three-way region of the map.",
+  "The map is one FSU-type family at one saturation point (n0 0.152, E/A -16.2, K 240, S_2(0.10) 25.5) on a 7 x 5 x 2 grid; a DD-type map was not built, so the statement 'all three cannot be met' is shown for NL-type models and for the published DD sets, not for every DD functional. Extrapolating the DD exchange rate from TW99 would need M_max ~2.02 for R_eq = 12.34 km, but the J0740 radius term (z +1.87 already) would then fail; this is an extrapolation, not computed.",
+  "All models are purely nucleonic (no hyperons, quarks); SLy crust for all (FSU2R matches at 0.71 n0); M_max is static (rotation adds ~0.01 Msun).",
+  "NVG numbers are taken from earlier session results (creative/likelihood, creative/spin_orbit); only the V(n), S(n) profiles of four named members were computed here."
+ ],
+ "wall_times_s": {
+  "validate.py": 6.1,
+  "run_survey.py (3 + 13 + 1 models)": 71.39999999999999,
+  "map_survey.py (70 grid points)": 230.1,
+  "nvg_profile.py": 0.7,
+  "extra.py": 3.7,
+  "analysis.py + make_result.py": 3.0,
+  "total_compute_s": 315.0
+ }
+}

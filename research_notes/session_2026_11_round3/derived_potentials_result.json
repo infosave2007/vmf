@@ -1,0 +1,2516 @@
+{
+ "direction": "B: derived non-polynomial scalar potentials U(y), y = W/W0, with fewer parameters than the saturation conditions, so that m*/M and K (and Q0, the vacuum scalar mass) are predictions",
+ "declared_before_compute": {
+  "direction": "B: derived non-polynomial scalar potentials U(y), y = W/W0, with fewer parameters than the saturation conditions, so that m*/M and K (and Q0, the vacuum scalar mass) are predictions",
+  "functional": "eps(n, y) = F_F(n, M_N y) + U(y) + C_v n^2/(2 y^2) (symmetric matter, g = 4); beta matter, isovector C(n) = C0 (n/n0)^gamma with C0 = 8 (J - T)/n0, gamma from L, exactly as closure/nvg_forward_band.py (power form, consistent pressure)",
+  "normalisation": "every 1-parameter form is written U = theta f(y) with f(1) = f'(1) = 0, f''(1) = 1, so theta = U_yy(1) [MeV^4] and the vacuum scalar mass is m_s = sqrt(theta)/W0 (m_s^2 = d^2U/dW^2 at W0)",
+  "forms": {
+   "B1_anomaly_d1": {
+    "U": "B0 W0^4 [y^4 (ln y - 1/4) + 1/4] = theta f_4(y),  f_a(y) = y^a ln y / a - (y^a - 1)/a^2,  theta = 4 B0 W0^4",
+    "derivation": "Scale (dilatation) Ward identity: if the ONLY breaking of scale invariance is the trace anomaly carried by a dimension-4 operator built from W (theta^mu_mu = 4U - W U_W = const - kappa W^4), the general solution is U = A W^4 ln W + C W^4 + D.  Vacuum at W0 (U_W(W0) = 0) and zero vacuum energy (U(W0) = 0) fix C and D, leaving U = A [W^4 (ln(W/W0) - 1/4) + W0^4/4], A = B0 (Schechter 1980 PRD 21 3393; Heide-Rudaz-Ellis 1994 NPA 571 713 for the nuclear-matter use).  U(1) invariant (function of |Phi| only).  Bounded below on W >= 0, single minimum at W0, U(0) = B0 W0^4/4 = |eps_vac|.  Inflection at y = exp(-1/3) = 0.7165 (U_yy < 0 below).",
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0 (equivalently mu(n0) = M_N + E/A)",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y* = m*/M",
+     "K",
+     "Q0",
+     "m_s (vacuum scalar mass)",
+     "everything downstream"
+    ],
+    "zero_parameter_normalisations": {
+     "GC": "full trace anomaly carried by W: eps_vac = <theta^mu_mu>/4 = -(b/32) <(alpha_s/pi) G^2>, b = 11 - 2 N_f/3 = 9 (N_f = 3); U(0) = (9/32) <(alpha_s/pi) G^2>, central <(alpha_s/pi) G^2> = 0.012 GeV^4 (SVZ 1979); sensitivity x0.5 and x2 (0.006, 0.024 GeV^4)",
+     "m_sigma_action": "m_s = sqrt(2 lambda) W0 with the action's lambda = 1.05: m_s = 1244.8 MeV",
+     "f0_500": "m_s = 450 MeV (f0(500) pole region, PDG 400-550 MeV, from memory; the synthesis's discrete hypothesis)",
+     "glueball_0pp": "m_s = 1700 MeV (lightest 0++ glueball, quenched lattice about 1.65-1.75 GeV, from memory)",
+     "rule": "theta fixed => only C_v free => impose P(n0) = 0 at n0 in {0.15, 0.16, 0.17}; E/A, y*, K predicted; a member exists only if the predicted E/A lies in [-16.5, -15.5] MeV (otherwise: 'does not saturate in the window', adverse)"
+    }
+   },
+   "B2_anomaly_d": {
+    "U": "B0 W0^4 [y^(4/d) ((1/d) ln y - 1/4) + 1/4] = theta f_a(y), a = 4/d, theta = 4 B0 W0^4 / d^2",
+    "derivation": "Same Ward identity when W is not itself the dilaton chi but scales like chi^d (W/W0 = (chi/chi0)^d): substituting into the d = 1 solution gives the Furnstahl-Serot-Tang 1995 type logarithmic potential (S/S0)^(4/d) [(1/(2d)) ln(S^2/S0^2) - 1/4] (form recalled from memory, rederived here).  theta^mu_mu = 4U - d W U_W = (d^2/4) theta (1 - y^a): the anomaly is proportional to y^a = (chi/chi0)^4, so the gluon-condensate normalisation is U(0) = theta/a^2 = |eps_vac| for every d.",
+    "discrete_choices": {
+     "d2": "a = 2: W^2 carries scale dimension 2 relative to chi (the FST-type choice d about 2; attribution from memory, unverified)",
+     "d3": "a = 4/3: W proportional to the quark condensate q-bar q (dimension 3), the order parameter of the linear sigma model",
+     "d4": "a = 1: W proportional to the gluon operator G^2 (dimension 4): Schechter's H ln(H/Lambda^4) with H = W"
+    },
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y*",
+     "K",
+     "Q0",
+     "m_s"
+    ],
+    "zero_parameter_normalisations": {
+     "GC": "U(0) = (9/32) <(alpha_s/pi) G^2> = 0.012 GeV^4 x 9/32, i.e. theta = a^2 (9/32) <(alpha_s/pi) G^2>"
+    }
+   },
+   "B3_coleman_weinberg": {
+    "U": "lambda W0^4 (y^2-1)^2/4 + eps_VF(y) [Chin 1977 nucleon sea, gamma = 4] + V_vec(y) [3 (q_phi W)^4 ...] + lambda^2 [V_sigma(y) + V_G(y)] renormalised in scheme T4 (Taylor through 4th order at W0 subtracted from every loop) or S3 (U(1)-symmetric counterterms 1, W^2, W^4 for the bosons), Goldstone 'drop' or 'ms'; reused from missing/vacuum/vacuum_oneloop.py (sea_y, BosonLoops)",
+    "derivation": "the action's own one-loop effective potential (Landau gauge, MS-bar) with the tree quartic lambda the only parameter.  With mu^2 = 2 lambda W0^2 the sigma and Goldstone loops are exactly lambda^2 times lambda-independent functions and the nucleon and vector loops are lambda independent; schemes remove all mu dependence (checked in vacuum_oneloop.self_test)",
+    "variants": [
+     "T4_drop",
+     "T4_ms",
+     "S3_drop",
+     "S3_ms"
+    ],
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y*",
+     "K",
+     "Q0",
+     "m_s"
+    ],
+    "zero_parameter": "the action's lambda = 1.05 (only C_v free): P(n0) = 0 at n0 in {0.15, 0.16, 0.17}, E/A predicted"
+   },
+   "B4_symmetry_forms": {
+    "B4a_U1_quartic": {
+     "U": "lambda W0^4 (y^2-1)^2/4 = theta f_{2,4}(y), theta = 2 lambda W0^4",
+     "derivation": "most general renormalisable U(1)-invariant potential (|Phi|^2, |Phi|^4) with vacuum at W0: the action's own tree form with lambda freed (B3 without loops)",
+     "n_params_potential": 1
+    },
+    "B4b_harmonic_W": {
+     "U": "(1/2) m_s^2 W0^2 (1 - y)^2 = theta f_{1,2}(y)",
+     "derivation": "U(1)-invariant (function of |Phi| only) but non-analytic in |Phi|^2: explicit scale breaking by a dimension-1 and a dimension-2 operator, i.e. the linear-sigma (Walecka) form with sigma = W0 - W",
+     "n_params_potential": 1
+    },
+    "two_power_family_note": "B4a, B4b, B1 and B2 are all members of f_{p,q}(y) = [p y^q - q y^p + (q - p)]/(p q (q - p)) (scale breaking by operators of dimensions p and q; the log forms are the p = q limits); no other (p, q) has a derivation from the listed symmetries and none is added",
+    "B4c_anomaly_plus_U1_quartic": {
+     "U": "theta1 f_4(y) + theta2 f_{2,4}(y)",
+     "derivation": "most general potential with a W^4 ln W anomaly plus the renormalisable U(1) operators (W^4, W^2, 1), vacuum at W0 with zero energy: A W^4 ln(W/W0) + c4 W^4 + c2 W^2 + c0 with two constraints = 2 free parameters",
+     "n_params_potential": 2,
+     "n_params_total_with_Cv": 3,
+     "conditions_imposed": [
+      "P(n0) = 0",
+      "E/A(n0)",
+      "K"
+     ],
+     "predicted": [
+      "y*",
+      "Q0",
+      "m_s"
+     ],
+     "constraint": "theta1 >= 0 (otherwise unbounded below at large y); the (V) check decides the rest"
+    }
+   }
+  },
+  "solver": {
+   "one_parameter_linear": "U_t(y) = P_F + n0 V/2, U'_t(y) = (n0 V - M y n_s)/y, V = M + E/A - E_F*(y) (same algebra as scalar_jet); root of U_t f' - U'_t f = 0 in y in [0.30, 0.995] (all sign changes on a 1400-point grid, brentq); theta = U'_t/f'",
+   "CW": "at each y solve lambda from stationarity (quadratic in lambda), root of the energy residual in y",
+   "two_parameter": "theta from (U, U') linear solve, root of U'' - U''_t(K) in y",
+   "zero_parameter": "theta fixed; root in y of P_F - U + (M n_s + U') y/2 = 0 at n0 (P = 0 with stationarity); C_v = (M n_s + U') y^3/n0^2",
+   "admissibility_of_a_root": "C_v > 0, theta > 0, d2eps/dy2 > 0 at (n0, y*), K > 0, and y* the global minimum of eps(n0, y) over y in [0.02, 1.5]",
+   "all_roots_reported": true
+  },
+  "windows": {
+   "n0_fm3": [
+    0.15,
+    0.17
+   ],
+   "EA_MeV": [
+    -16.5,
+    -15.5
+   ],
+   "K_MeV_input_only_B4c": [
+    220,
+    260
+   ],
+   "J_MeV": [
+    30,
+    34
+   ],
+   "L_MeV": [
+    35,
+    65
+   ],
+   "source": "creative/likelihood prior windows (prereg class)"
+  },
+  "survey_grid": {
+   "n0": [
+    0.15,
+    0.155,
+    0.16,
+    0.165,
+    0.17
+   ],
+   "EA": [
+    -16.5,
+    -16.25,
+    -16.0,
+    -15.75,
+    -15.5
+   ],
+   "K_B4c": [
+    220,
+    240,
+    260
+   ]
+  },
+  "central_member": {
+   "n0": 0.16,
+   "EA": -16.0,
+   "K_B4c": 240.0,
+   "J": 32.0,
+   "L": 50.0
+  },
+  "class_sample": "per admissible form: LHS of N = 40 points over (n0, E/A, J, L) [+ K for B4c] uniform on the windows, seed 20261113; if total compute would exceed the budget, N is reduced to 24 for every form alike (decided before seeing any stellar number)",
+  "key_question_flags": {
+   "mstar_over_M_window": [
+    0.55,
+    0.7
+   ],
+   "K_window": [
+    220,
+    260
+   ]
+  },
+  "joint_verdict": {
+   "S": "pre-registered 8-term likelihood (creative/likelihood/prereg.json) with SLy crust (eps-continuity), consistent pressure, Hartle-Thorne rotation-corrected NICER radii (lk_core.star_block, analyze.predictions/chi2_terms); class: posterior predictive p and leave-one-out z (analyze.class_stats); fixed member: p with nu = 8 and PIT z (analyze.fixed_model_stats); 2-sigma box reported",
+   "N": "S_2(0.10) = 25.5 +- 1.0, E_PNM/N(0.10) = 11.4 +- 1.0 MeV (inside the 8 terms)",
+   "O": "16O 1p LDA splitting (creative/spin_orbit primary procedure, raw, scale s = 1 as validated), window [4.9, 7.4] MeV, on the design branch; the design branch must coincide with the ground-state branch on 0 <= n <= 0.20 fm^-3 and reach y -> 1 as n -> 0 (otherwise reported on the ground-state branch as a diagnostic and the member fails G)",
+   "G": "lk_core ground_state_valid (beta table global minimum between crust match and the M_max centre; SNM at 0.05-1.3 n0; SNM and PNM at 0.10 fm^-3) AND a Lee-Wick SNM scan: min over n in [0.02 n0, n_c(M_max)] and y in [0.02, 1.5] of E/A >= E/A(n0) - 0.05 MeV",
+   "V": "U(y) >= U(1) = 0 for all y >= 0 (checked on [0, 50] with 50001 points plus the sign of the leading large-y term), the only stationary minimum on [0, 3] is y = 1",
+   "converges": "(S) p > 0.05 and all |z| < 2 (class: PPC p and LOO; fixed member: p(nu = 8) and PIT z), and (O), (G), (V) hold",
+   "look_elsewhere": "the number of forms tried is reported; a pass by one of many forms is labelled as such"
+  },
+  "validation": {
+   "inverse_jet_quartic_y0.87": "scalar_jet(0.87, 0.16, -16, 240) coefficients wrapped as a fixed potential: the P = 0 solver at n0 = 0.16 must return y* = 0.87, E/A = -16, K = 240, Q0 = Q0_forward; as theta f with theta free (E/A imposed) theta = 1; the full chain through the potential wrapper must reproduce the native-coefficient chain (beta table, SLy stars, rotation, 8-term chi2, S_2, E_PNM, 16O 1p = 1.0396 MeV of creative/spin_orbit/result.json)"
+  },
+  "labels": {
+   "fitted": "theta and C_v (by P = 0 and E/A), K for B4c",
+   "derived": "the forms and their normalisations",
+   "predicted": "y*, K, Q0, m_s, stars, splittings",
+   "held_out": "the 8 data, 16O 1p",
+   "adverse": "any failure"
+  }
+ },
+ "declared_sha256": "4b52a6d8db3c983104fde625ee531aaa3bcb1507e739ccc51ba66f0b2ed760b4",
+ "declared_written_utc": "2026-11-13T08:25:27Z",
+ "status": "complete",
+ "derivation": {
+  "functional": "eps(n, y) = F_F(n, M_N y) + U(y) + C_v n^2/(2 y^2) (symmetric matter, g = 4); beta matter, isovector C(n) = C0 (n/n0)^gamma with C0 = 8 (J - T)/n0, gamma from L, exactly as closure/nvg_forward_band.py (power form, consistent pressure)",
+  "common_algebra": "P(n0) = 0 and E/A(n0) fix U(y*) = P_F + n0 V/2 and U_y(y*) = (n0 V - M y* n_s)/y*, V = M + E/A - E_F*(y*) = C_v n0/y*^2. A one-parameter form theta f(y) therefore fixes y* by U f'/U_y = f/f' (root in y), theta = U_y/f', and then K = 9 n0 (D - B^2/C), C = theta f'' + M^2 dn_s/dm + 3 C_v n0^2/y*^4, B = M^2 y*/E_F* - 2 C_v n0/y*^3, Q0 from the third-derivative chain (same formulas as scalar_jet).",
+  "forms": {
+   "B1_anomaly_d1": {
+    "U": "B0 W0^4 [y^4 (ln y - 1/4) + 1/4] = theta f_4(y),  f_a(y) = y^a ln y / a - (y^a - 1)/a^2,  theta = 4 B0 W0^4",
+    "derivation": "Scale (dilatation) Ward identity: if the ONLY breaking of scale invariance is the trace anomaly carried by a dimension-4 operator built from W (theta^mu_mu = 4U - W U_W = const - kappa W^4), the general solution is U = A W^4 ln W + C W^4 + D.  Vacuum at W0 (U_W(W0) = 0) and zero vacuum energy (U(W0) = 0) fix C and D, leaving U = A [W^4 (ln(W/W0) - 1/4) + W0^4/4], A = B0 (Schechter 1980 PRD 21 3393; Heide-Rudaz-Ellis 1994 NPA 571 713 for the nuclear-matter use).  U(1) invariant (function of |Phi| only).  Bounded below on W >= 0, single minimum at W0, U(0) = B0 W0^4/4 = |eps_vac|.  Inflection at y = exp(-1/3) = 0.7165 (U_yy < 0 below).",
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0 (equivalently mu(n0) = M_N + E/A)",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y* = m*/M",
+     "K",
+     "Q0",
+     "m_s (vacuum scalar mass)",
+     "everything downstream"
+    ]
+   },
+   "B2_anomaly_d": {
+    "U": "B0 W0^4 [y^(4/d) ((1/d) ln y - 1/4) + 1/4] = theta f_a(y), a = 4/d, theta = 4 B0 W0^4 / d^2",
+    "derivation": "Same Ward identity when W is not itself the dilaton chi but scales like chi^d (W/W0 = (chi/chi0)^d): substituting into the d = 1 solution gives the Furnstahl-Serot-Tang 1995 type logarithmic potential (S/S0)^(4/d) [(1/(2d)) ln(S^2/S0^2) - 1/4] (form recalled from memory, rederived here).  theta^mu_mu = 4U - d W U_W = (d^2/4) theta (1 - y^a): the anomaly is proportional to y^a = (chi/chi0)^4, so the gluon-condensate normalisation is U(0) = theta/a^2 = |eps_vac| for every d.",
+    "discrete_choices": {
+     "d2": "a = 2: W^2 carries scale dimension 2 relative to chi (the FST-type choice d about 2; attribution from memory, unverified)",
+     "d3": "a = 4/3: W proportional to the quark condensate q-bar q (dimension 3), the order parameter of the linear sigma model",
+     "d4": "a = 1: W proportional to the gluon operator G^2 (dimension 4): Schechter's H ln(H/Lambda^4) with H = W"
+    },
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y*",
+     "K",
+     "Q0",
+     "m_s"
+    ]
+   },
+   "B3_coleman_weinberg": {
+    "U": "lambda W0^4 (y^2-1)^2/4 + eps_VF(y) [Chin 1977 nucleon sea, gamma = 4] + V_vec(y) [3 (q_phi W)^4 ...] + lambda^2 [V_sigma(y) + V_G(y)] renormalised in scheme T4 (Taylor through 4th order at W0 subtracted from every loop) or S3 (U(1)-symmetric counterterms 1, W^2, W^4 for the bosons), Goldstone 'drop' or 'ms'; reused from missing/vacuum/vacuum_oneloop.py (sea_y, BosonLoops)",
+    "derivation": "the action's own one-loop effective potential (Landau gauge, MS-bar) with the tree quartic lambda the only parameter.  With mu^2 = 2 lambda W0^2 the sigma and Goldstone loops are exactly lambda^2 times lambda-independent functions and the nucleon and vector loops are lambda independent; schemes remove all mu dependence (checked in vacuum_oneloop.self_test)",
+    "variants": [
+     "T4_drop",
+     "T4_ms",
+     "S3_drop",
+     "S3_ms"
+    ],
+    "n_params_potential": 1,
+    "n_params_total_with_Cv": 2,
+    "conditions_imposed": [
+     "P(n0) = 0",
+     "E/A(n0)"
+    ],
+    "predicted": [
+     "y*",
+     "K",
+     "Q0",
+     "m_s"
+    ]
+   },
+   "B4_symmetry_forms": {}
+  },
+  "solved_parameters_over_window_grid": {
+   "B1_anomaly_d1": {
+    "ystar": [
+     0.7033830678067172,
+     0.7122589644934498
+    ],
+    "K": [
+     1524.652724828601,
+     1647.9839508748644
+    ],
+    "Q0": [
+     6097.237321354787,
+     7724.706210070206
+    ],
+    "m_s_vac_MeV": [
+     87.75715929361156,
+     93.3920446643816
+    ],
+    "theta_MeV4_or_lambda": [
+     5682656970.413958,
+     6435852690.059475
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B2_anomaly_d2": {
+    "ystar": [
+     0.8145928439468594,
+     0.8215172814824411
+    ],
+    "K": [
+     447.46266389363376,
+     480.24365525246833
+    ],
+    "Q0": [
+     616.1078256634728,
+     638.772920745605
+    ],
+    "m_s_vac_MeV": [
+     85.61461182048352,
+     91.26775238612943
+    ],
+    "theta_MeV4_or_lambda": [
+     5408565723.243888,
+     6146403091.192038
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B2_anomaly_d3": {
+    "ystar": [
+     0.8324207903473212,
+     0.8387479001225416
+    ],
+    "K": [
+     375.456153673552,
+     400.40173056621023
+    ],
+    "Q0": [
+     62.28346316032639,
+     85.0987655272711
+    ],
+    "m_s_vac_MeV": [
+     85.57388161545995,
+     91.27643915210393
+    ],
+    "theta_MeV4_or_lambda": [
+     5403420816.659172,
+     6147573162.871375
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B2_anomaly_d4": {
+    "ystar": [
+     0.8396178555239168,
+     0.8456951750254214
+    ],
+    "K": [
+     349.82117630546145,
+     372.0901104454061
+    ],
+    "Q0": [
+     -106.82532236991165,
+     -77.0199803751093
+    ],
+    "m_s_vac_MeV": [
+     85.53379662012054,
+     91.25729896645662
+    ],
+    "theta_MeV4_or_lambda": [
+     5398359801.204738,
+     6144995206.154951
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B4a_U1_quartic": {
+    "ystar": [
+     0.7771805285981946,
+     0.78507383152344
+    ],
+    "K": [
+     663.8711402425648,
+     720.1338603689118
+    ],
+    "Q0": [
+     2618.0951284926896,
+     2727.480951154581
+    ],
+    "m_s_vac_MeV": [
+     85.97696343970567,
+     91.56983284131778
+    ],
+    "theta_MeV4_or_lambda": [
+     5454444570.275779,
+     6187157484.421014
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B4b_harmonic_W": {
+    "ystar": [
+     0.828726700469195,
+     0.8351690637535049
+    ],
+    "K": [
+     389.8640303277948,
+     416.2872018976296
+    ],
+    "Q0": [
+     158.20900476020188,
+     180.90744751892953
+    ],
+    "m_s_vac_MeV": [
+     85.6164571014825,
+     91.31016165501983
+    ],
+    "theta_MeV4_or_lambda": [
+     5408798871.088708,
+     6152116500.712846
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 25,
+    "n_grid": 25
+   },
+   "B3_CW_T4_drop": {
+    "ystar": [
+     0.7892849789690805,
+     0.7969617105713189
+    ],
+    "K": [
+     626.8333416525812,
+     676.1249012190116
+    ],
+    "Q0": [
+     1604.0304687776152,
+     1742.4776878670218
+    ],
+    "m_s_vac_MeV": [
+     87.02558885263146,
+     92.59631899092794
+    ],
+    "theta_MeV4_or_lambda": [
+     0.005131893296579831,
+     0.005809932963899107
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 9,
+    "n_grid": 9
+   },
+   "B3_CW_T4_ms": {
+    "ystar": [
+     0.7892925152700929,
+     0.7969687128913672
+    ],
+    "K": [
+     626.7620262751564,
+     676.0441768612164
+    ],
+    "Q0": [
+     1603.9459640100886,
+     1742.348490841464
+    ],
+    "m_s_vac_MeV": [
+     87.03106452256333,
+     92.60293313122749
+    ],
+    "theta_MeV4_or_lambda": [
+     0.005132539116694002,
+     0.005810762998712923
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 9,
+    "n_grid": 9
+   },
+   "B3_CW_S3_drop": {
+    "ystar": [
+     0.6719330390033714,
+     0.6808016783041256
+    ],
+    "K": [
+     2219.434956270114,
+     2365.2032925395597
+    ],
+    "Q0": [
+     -15703.3799905823,
+     -11887.975516576375
+    ],
+    "m_s_vac_MeV": [
+     97.08557677819427,
+     101.21610285465334
+    ],
+    "theta_MeV4_or_lambda": [
+     0.0063869439776567255,
+     0.006941972673834773
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 9,
+    "n_grid": 9
+   },
+   "B3_CW_S3_ms": {
+    "ystar": [
+     0.6719441840422528,
+     0.680814768168121
+    ],
+    "K": [
+     2219.232398551718,
+     2365.0504394775257
+    ],
+    "Q0": [
+     -15699.592181606062,
+     -11882.984165429882
+    ],
+    "m_s_vac_MeV": [
+     97.09124555972612,
+     101.22267233953171
+    ],
+    "theta_MeV4_or_lambda": [
+     0.006387689860789902,
+     0.006942873847921405
+    ],
+    "n_roots_per_grid_point": [
+     1
+    ],
+    "n_admissible": 9,
+    "n_grid": 9
+   }
+  },
+  "zero_parameter_normalisations": {
+   "B1_anomaly_d1|GC_x0.5": {
+    "m_s_vac_MeV": 191.28843684697304,
+    "U0_MeVfm3": 219.6263131126941,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9568900601367465,
+      "EA_pred": 7.4780012948559715,
+      "K_pred": -52.09495545361281,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.953782752024473,
+      "EA_pred": 7.826120847449374,
+      "K_pred": -54.94106534697855,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9506428230893369,
+      "EA_pred": 8.167929052648333,
+      "K_pred": -57.764978616875354,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B1_anomaly_d1|GC_x1.0": {
+    "m_s_vac_MeV": 270.5227017141386,
+    "U0_MeVfm3": 439.2526262253882,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9791587446020235,
+      "EA_pred": 7.383202354419268,
+      "K_pred": -48.93767884455114,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9777127874394383,
+      "EA_pred": 7.7274056949268015,
+      "K_pred": -51.53907865450367,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9762594693807949,
+      "EA_pred": 8.066385365309543,
+      "K_pred": -54.1354579630915,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B1_anomaly_d1|GC_x2.0": {
+    "m_s_vac_MeV": 382.5768736939461,
+    "U0_MeVfm3": 878.5052524507764,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9897450853252705,
+      "EA_pred": 7.278576818563124,
+      "K_pred": -46.325189056669274,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9890460760374432,
+      "EA_pred": 7.611550689428782,
+      "K_pred": -48.619880426467496,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9883451612094553,
+      "EA_pred": 7.938902885734024,
+      "K_pred": -50.89414479663932,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d2|GC_x0.5": {
+    "m_s_vac_MeV": 95.64421842348652,
+    "U0_MeVfm3": 219.6263131126941,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.851019714318535,
+      "EA_pred": -8.183047095003417,
+      "K_pred": 282.2224962234777,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.8419005125053628,
+      "EA_pred": -9.847204817597685,
+      "K_pred": 324.91212141621406,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.8328804240111628,
+      "EA_pred": -11.61637866955482,
+      "K_pred": 369.97905630700035,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d2|GC_x1.0": {
+    "m_s_vac_MeV": 135.2613508570693,
+    "U0_MeVfm3": 439.2526262253882,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9223827585638342,
+      "EA_pred": 3.5830813524206633,
+      "K_pred": 24.784420040143466,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.917400399456397,
+      "EA_pred": 3.4064521213227863,
+      "K_pred": 32.91126919168345,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9124421984719913,
+      "EA_pred": 3.1933536840795114,
+      "K_pred": 41.791426555294734,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d2|GC_x2.0": {
+    "m_s_vac_MeV": 191.28843684697304,
+    "U0_MeVfm3": 878.5052524507764,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9604030198984322,
+      "EA_pred": 6.5067950771201595,
+      "K_pred": -33.03895706547006,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9578042382975399,
+      "EA_pred": 6.726084568312672,
+      "K_pred": -33.27113470830341,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9552108023738444,
+      "EA_pred": 6.93191777962943,
+      "K_pred": -33.324214133709624,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d3|GC_x0.5": {
+    "m_s_vac_MeV": 63.76281228232435,
+    "U0_MeVfm3": 219.6263131126941,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.7403754224549217,
+      "EA_pred": -53.182186958749185,
+      "K_pred": 990.4487819546591,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.7279449259373796,
+      "EA_pred": -58.63000833078172,
+      "K_pred": 1068.2420918501005,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.7159225652472008,
+      "EA_pred": -64.12374786457349,
+      "K_pred": 1142.7238433553323,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d3|GC_x1.0": {
+    "m_s_vac_MeV": 90.17423390471285,
+    "U0_MeVfm3": 439.2526262253882,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.8490315401667673,
+      "EA_pred": -12.588070775748292,
+      "K_pred": 322.2213677798696,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.84066067837463,
+      "EA_pred": -14.5022195960496,
+      "K_pred": 360.79026457616305,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.8324584023746229,
+      "EA_pred": -16.488620717541266,
+      "K_pred": 400.1964678977405,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": true
+   },
+   "B2_anomaly_d3|GC_x2.0": {
+    "m_s_vac_MeV": 127.5256245646487,
+    "U0_MeVfm3": 878.5052524507764,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9176250881771851,
+      "EA_pred": 1.7642251746383408,
+      "K_pred": 53.983332526179694,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9126384469590072,
+      "EA_pred": 1.4004195417137453,
+      "K_pred": 64.59466704173607,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9077078706358668,
+      "EA_pred": 0.9987100142772078,
+      "K_pred": 75.83956440861638,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d4|GC_x0.5": {
+    "m_s_vac_MeV": 47.82210921174326,
+    "U0_MeVfm3": 219.6263131126941,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.6478296868274495,
+      "EA_pred": -111.8004642052797,
+      "K_pred": 1492.6470278700876,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.6343183761082736,
+      "EA_pred": -120.21501798461622,
+      "K_pred": 1551.6661198854092,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.6214265309603104,
+      "EA_pred": -128.4677991921053,
+      "K_pred": 1603.9107061831364,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d4|GC_x1.0": {
+    "m_s_vac_MeV": 67.63067542853464,
+    "U0_MeVfm3": 439.2526262253882,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.7754951686261842,
+      "EA_pred": -41.45407883606242,
+      "K_pred": 748.6903342111423,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.7648967693868544,
+      "EA_pred": -45.66205126288162,
+      "K_pred": 808.632442183913,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.75464701221887,
+      "EA_pred": -49.89883998530968,
+      "K_pred": 866.7526745756799,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B2_anomaly_d4|GC_x2.0": {
+    "m_s_vac_MeV": 95.64421842348652,
+    "U0_MeVfm3": 878.5052524507764,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.8684204797727798,
+      "EA_pred": -9.133052911626237,
+      "K_pred": 242.0732339409526,
+      "admissible": true
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.8612358380821188,
+      "EA_pred": -10.614366845284849,
+      "K_pred": 270.5451008435953,
+      "admissible": true
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.8542032753462991,
+      "EA_pred": -12.149850457625917,
+      "K_pred": 299.5576805813588,
+      "admissible": true
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B1_anomaly_d1|m_sigma_action_1244.8": {
+    "m_s_vac_MeV": 1244.8092624976728,
+    "U0_MeVfm3": 9300.634057939626,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9990449084458826,
+      "EA_pred": 7.158835406857747,
+      "K_pred": -43.640576423078485,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.998980793794074,
+      "EA_pred": 7.478180830198767,
+      "K_pred": -45.6199679958393,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9989166308620996,
+      "EA_pred": 7.791308300649803,
+      "K_pred": -47.56352321845134,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B1_anomaly_d1|f0_500_450": {
+    "m_s_vac_MeV": 450.0,
+    "U0_MeVfm3": 1215.4356265943088,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9926200555379304,
+      "EA_pred": 7.24422255519994,
+      "K_pred": -45.52874763242988,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9921193979574491,
+      "EA_pred": 7.5733245211112035,
+      "K_pred": -47.729215109045754,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9916176860498924,
+      "EA_pred": 7.896639018600695,
+      "K_pred": -49.90447222364808,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B1_anomaly_d1|glueball_1700": {
+    "m_s_vac_MeV": 1700.0,
+    "U0_MeVfm3": 17346.21709065458,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9994882462420459,
+      "EA_pred": 7.152517982809741,
+      "K_pred": -43.5053545003836,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.999453917379847,
+      "EA_pred": 7.47113780167183,
+      "K_pred": -45.46909082328825,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9994195658145943,
+      "EA_pred": 7.783507542461734,
+      "K_pred": -47.39627913617603,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B4a_U1_quartic|lambda_action_1.05": {
+    "m_s_vac_MeV": 1244.8092624976728,
+    "U0_MeVfm3": 18601.26811587925,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.999045820948331,
+      "EA_pred": 7.158535312876893,
+      "K_pred": -43.63487955044247,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.998981832943683,
+      "EA_pred": 7.477838368239986,
+      "K_pred": -45.613451644139076,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9989178049938777,
+      "EA_pred": 7.790920559054143,
+      "K_pred": -47.55612846556261,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B3_CW_T4_drop|lambda_action_1.05": {
+    "m_s_vac_MeV": 1244.8092624976728,
+    "U0_MeVfm3": 19341.80463489601,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9990458209483242,
+      "EA_pred": 7.1585353128781435,
+      "K_pred": -43.634879550308845,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.998981832943674,
+      "EA_pred": 7.477838368238395,
+      "K_pred": -45.61345164423265,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9989178049938663,
+      "EA_pred": 7.790920559041524,
+      "K_pred": -47.55612846598354,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   },
+   "B3_CW_S3_drop|lambda_action_1.05": {
+    "m_s_vac_MeV": 1244.8092624976728,
+    "U0_MeVfm3": 18228.652219209667,
+    "V_holds": true,
+    "P0_roots": [
+     {
+      "n0": 0.15,
+      "ystar": 0.9990457277976755,
+      "EA_pred": 7.158565926213555,
+      "K_pred": -43.635460116016084,
+      "admissible": false
+     },
+     {
+      "n0": 0.16,
+      "ystar": 0.9989817268747956,
+      "EA_pred": 7.477873298774284,
+      "K_pred": -45.61411558415528,
+      "admissible": false
+     },
+     {
+      "n0": 0.17,
+      "ystar": 0.9989176851585692,
+      "EA_pred": 7.7909601024061885,
+      "K_pred": -47.5568817497332,
+      "admissible": false
+     }
+    ],
+    "member_in_EA_window": false
+   }
+  },
+  "B4c_theta1_sign_vs_K_central": [
+   {
+    "K_in": 220,
+    "ystar": 0.8748381436822027,
+    "theta1_anomaly": -40221879582.14506,
+    "theta2_quartic": 45173769717.722084,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 240,
+    "ystar": 0.8688170529270636,
+    "theta1_anomaly": -33803815931.156597,
+    "theta2_quartic": 38917124776.208755,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 260,
+    "ystar": 0.8630226206723554,
+    "theta1_anomaly": -28635916346.501106,
+    "theta2_quartic": 33875002924.238472,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 300,
+    "ystar": 0.8521178717492168,
+    "theta1_anomaly": -20948482712.435608,
+    "theta2_quartic": 26365292634.88384,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 400,
+    "ystar": 0.8285753046740627,
+    "theta1_anomaly": -10221161114.719316,
+    "theta2_quartic": 15858954782.21227,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 500,
+    "ystar": 0.8094230180712211,
+    "theta1_anomaly": -4921592440.204236,
+    "theta2_quartic": 10654156281.425167,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 600,
+    "ystar": 0.7935425888472467,
+    "theta1_anomaly": -1853230352.8026826,
+    "theta2_quartic": 7638821711.851426,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 650,
+    "ystar": 0.7865525416363717,
+    "theta1_anomaly": -764612449.7298435,
+    "theta2_quartic": 6570022421.997233,
+    "V_holds": false,
+    "admissible": false
+   },
+   {
+    "K_in": 680,
+    "ystar": 0.7826124959966738,
+    "theta1_anomaly": -207271246.9845219,
+    "theta2_quartic": 6023360055.660303,
+    "V_holds": true,
+    "admissible": false
+   },
+   {
+    "K_in": 690,
+    "ystar": 0.7813379635119349,
+    "theta1_anomaly": -34849309.91138172,
+    "theta2_quartic": 5854342556.732664,
+    "V_holds": true,
+    "admissible": false
+   },
+   {
+    "K_in": 700,
+    "ystar": 0.7800819460434096,
+    "theta1_anomaly": 131493810.82091136,
+    "theta2_quartic": 5691336509.079948,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 720,
+    "ystar": 0.7776234403906203,
+    "theta1_anomaly": 447214914.9704856,
+    "theta2_quartic": 5382108343.598727,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 800,
+    "ystar": 0.7684363679039532,
+    "theta1_anomaly": 1522165344.106848,
+    "theta2_quartic": 4331307987.241611,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1000,
+    "ystar": 0.34951549874263216,
+    "theta1_anomaly": 28579463007.78479,
+    "theta2_quartic": -13450168017.303885,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1000,
+    "ystar": 0.7489997317139391,
+    "theta1_anomaly": 3362230662.18421,
+    "theta2_quartic": 2545261554.7072124,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1300,
+    "ystar": 0.43152689189932447,
+    "theta1_anomaly": 19352784376.09924,
+    "theta2_quartic": -8689586912.115849,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1300,
+    "ystar": 0.7259396217361577,
+    "theta1_anomaly": 5016681311.042873,
+    "theta2_quartic": 967561021.4917945,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1600,
+    "ystar": 0.47837735477605636,
+    "theta1_anomaly": 16054520394.493462,
+    "theta2_quartic": -6921399403.427469,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 1600,
+    "ystar": 0.7070076830408364,
+    "theta1_anomaly": 6098236421.281534,
+    "theta2_quartic": -35721357.70878342,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 2000,
+    "ystar": 0.5212387941957826,
+    "theta1_anomaly": 13737532809.763432,
+    "theta2_quartic": -5618960126.262215,
+    "V_holds": true,
+    "admissible": true
+   },
+   {
+    "K_in": 2000,
+    "ystar": 0.6847337582488972,
+    "theta1_anomaly": 7168660143.730016,
+    "theta2_quartic": -992180793.3813428,
+    "V_holds": true,
+    "admissible": true
+   }
+  ],
+  "structural_K_algebra": {
+   "ystar_where_B_vanishes": 0.6339489448415867,
+   "U_yy_over_U_y_needed_for_K240": {
+    "0.60": 6.809104402401604,
+    "0.65": 3.9518794185392374,
+    "0.70": 1.9081702527417104,
+    "0.75": -0.02516383279671521,
+    "0.80": -2.4425561075729783,
+    "0.85": -6.673202096467097
+   },
+   "f_pp_over_f_p_of_each_basis": {
+    "log4": {
+     "0.60": 1.7373080183813048,
+     "0.65": 1.0440695028527265,
+     "0.70": 0.28046678277553044,
+     "0.75": -0.6347459957096099,
+     "0.80": -1.8517751471556885,
+     "0.85": -3.7095639772023934
+    },
+    "log2": {
+     "0.60": -1.5960253149520292,
+     "0.65": -2.03285357407035,
+     "0.70": -2.5766760743673265,
+     "0.75": -3.3014126623762765,
+     "0.80": -4.3517751471556885,
+     "0.85": -6.062505153672982
+    },
+    "log4/3": {
+     "0.60": -2.7071364260631405,
+     "0.65": -3.058494599711376,
+     "0.70": -3.5290570267482795,
+     "0.75": -4.190301551265165,
+     "0.80": -5.185108480489021,
+     "0.85": -6.8468188791631786
+    },
+    "log1": {
+     "0.60": -3.262691981618696,
+     "0.65": -3.5713151125318885,
+     "0.70": -4.005247502938755,
+     "0.75": -4.6347459957096095,
+     "0.80": -5.6017751471556885,
+     "0.85": -7.238975741908276
+    },
+    "pow24": {
+     "0.60": -0.2083333333333335,
+     "0.65": -0.7126207126207128,
+     "0.70": -1.3165266106442568,
+     "0.75": -2.0952380952380953,
+     "0.80": -3.1944444444444464,
+     "0.85": -4.949655537890829
+    },
+    "pow12": {
+     "0.60": -2.5,
+     "0.65": -2.857142857142857,
+     "0.70": -3.333333333333333,
+     "0.75": -4.0,
+     "0.80": -5.000000000000001,
+     "0.85": -6.666666666666666
+    }
+   },
+   "statement": "K = 240 MeV at y* = 0.60 / 0.65 / 0.70 requires U_yy/U_y = 6.8 / 4.0 / 1.9 at y* (U_y < 0, i.e. a strongly concave potential); the derived bases give f''/f' = 1.74 / 1.04 / 0.28 (log4, the largest) and <= -0.2 for all others at the same y*."
+  }
+ },
+ "validation": {
+  "inverse_jet_quartic_y0.87_zero_param_solver": {
+   "dy": 0.0,
+   "dCv_rel": -3.3306690738754696e-16,
+   "dEA": -9.094947017729282e-13,
+   "dK": -1.4210854715202004e-13,
+   "dQ0": 6.821210263296962e-13
+  },
+  "inverse_jet_quartic_y0.87_one_param_solver": [
+   {
+    "ystar": 0.8700000000000008,
+    "theta": 1.0000000000000095,
+    "K": 239.99999999999514,
+    "Q0": -417.4924482173724
+   }
+  ],
+  "chain_native_vs_generalised_max_rel_diff": 0.0,
+  "chain_compare": {
+   "M_max": [
+    1.7882031967664482,
+    1.7882031967664482
+   ],
+   "R_at_Mmax": [
+    10.549748947560518,
+    10.549748947560518
+   ],
+   "R_1.34": [
+    11.97717907582087,
+    11.97717907582087
+   ],
+   "R_1.4": [
+    11.922835300739964,
+    11.922835300739964
+   ],
+   "R_1.418": [
+    11.904254827626733,
+    11.904254827626733
+   ],
+   "R_1.44": [
+    11.87988307269904,
+    11.87988307269904
+   ],
+   "R_2.07": [
+    null,
+    null
+   ],
+   "Lambda_1.36": [
+    405.394490770818,
+    405.394490770818
+   ],
+   "dR_rot_J0030": [
+    0.06861148306984642,
+    0.06861148306984642
+   ],
+   "dR_rot_J0437": [
+    0.045567138290837805,
+    0.045567138290837805
+   ],
+   "dR_rot_J0614": [
+    0.14940730709111008,
+    0.14940730709111008
+   ],
+   "dR_rot_J0740": [
+    0.05986670325073662,
+    0.05986670325073662
+   ],
+   "S2_0p10": [
+    25.15612241621407,
+    25.15612241621407
+   ],
+   "EPNM_0p10": [
+    11.761131773528518,
+    11.761131773528518
+   ],
+   "K_sym": [
+    -61.43468265382608,
+    -61.43468265382608
+   ],
+   "P_beta_2n0_cons": [
+    20.08209044817348,
+    20.08209044817348
+   ],
+   "chi2_rotation_8": [
+    30.81904618926562,
+    30.81904618926562
+   ],
+   "ground_state_valid": [
+    true,
+    true
+   ]
+  },
+  "spin_orbit_16O_1p": {
+   "generalised": 1.039599226957856,
+   "stored": 1.039599226957856,
+   "diff": 0.0,
+   "design_is_gs": true
+  },
+  "exact_dirac_check": "quartic y* = 0.87: exact Dirac 1.054367 MeV reproduces creative/spin_orbit variants exact_dirac (1.054367)",
+  "note": "the quartic at y* = 0.87 has a second local minimum at y = 1.377 (U > 0): globally stable (old rule q >= 0) but it fails this direction's stricter single-minimum (V); its 8-term chi2 at J = 32, L = 50 is 30.82",
+  "file": "SCR/round3/derived_potentials/validation.json"
+ },
+ "free_parameters_added": {
+  "count": 0,
+  "statement": "No parameter is added to the action.  The polynomial scalar sector of the forward chain (a2, a3, a4 [, a5] plus a chosen y*) is replaced by derived one-parameter forms: per member 2 continuous scalar-sector parameters (theta or lambda, C_v), both fixed by P(n0) = 0 and E/A, i.e. 2 fewer than the quartic chain; the zero-parameter normalisations leave only C_v; B4c has 3 (theta1, theta2, C_v) fixed by P = 0, E/A, K.  Discrete choices: 6 one-parameter shapes + 4 CW renormalisation variants + 1 two-parameter form + 13 zero-parameter normalisations, all enumerated before computing, none chosen by data.  Isovector (J, L) as in the chain."
+ },
+ "key_results": [
+  "VALIDATION: the solvers return the inverse-jet quartic exactly (y* 0.87, E/A -16, K 240, Q0 -417.49 to 1e-12; theta = 1 to 1e-14), and the generalised chain reproduces the native chain bit for bit (max relative difference 0.0 over M_max, radii, Lambda, rotation shifts, S_2, E_PNM, K_sym, chi2 30.82) and 16O 1p = 1.0396 MeV.",
+  "PREDICTIONS (n0, E/A over the full windows): B1 W^4 ln W: m*/M 0.703-0.712, K 1525-1648 MeV; B2 d=2: 0.815-0.822, K 447-480; d=3: 0.832-0.839, K 375-400; d=4 (Schechter H ln H): 0.840-0.846, K 350-372; B4a U(1) quartic: 0.777-0.785, K 664-720; B4b harmonic: 0.829-0.835, K 390-416; B3 Coleman-Weinberg T4: 0.789-0.797, K 627-676 (lambda = 0.0055); S3: 0.672-0.681, K 2219-2365.  Exactly one root per grid point for every form.",
+  "KEY QUESTION: no derived form gives m*/M in [0.55, 0.70] with K in [220, 260].  The two forms that reach m*/M <= 0.712 (B1, CW-S3) predict K = 1525-2365 MeV; the lowest predicted K is 350 MeV (d = 4) at m*/M = 0.846.  B4c (the only form with K as input) needs a negative anomaly coefficient for K in [220, 260] and is unbounded below there; a bounded B4c needs K >= 692 MeV.",
+  "WHY: B = d mu/dy = M^2 y/E_F* - 2 C_v n0/y^3 vanishes at y* = 0.634 because the vector mass scales with W; near and below that point K -> 9 n0 D = 2600-3000 MeV unless the scalar curvature cancels.  K = 240 at y* = 0.60-0.65 needs U_yy/U_y = 6.8-4.0 (strongly concave at saturation); derived shapes give at most 1.7-1.0 (log4).",
+  "VACUUM SCALAR MASS: every saturating admissible form predicts m_s = sqrt(U_yy(1))/W0 = 86-101 MeV (79-87 for the inadmissible B4c) (the same light scalar as the polynomial chain, 79-84 MeV).  Hence every zero-parameter normalisation with a heavy scalar fails to bind: action lambda = 1.05 (m_s 1245), f0(500) 450, glueball 1700, full gluon condensate with d = 1 (270 MeV): P(n0) = 0 at y* 0.95-0.9995 with E/A = +7.2 ... +8.2 MeV (no saturation, K < 0).",
+  "ZERO-PARAMETER HIT: the trace-anomaly form with d = 3 (W ~ q-bar q) and the full SVZ condensate (0.012 GeV^4) is the only normalisation with a member in the E/A window (n0 in [0.165, 0.170], E/A predicted -15.5 ... -16.49 MeV; m_s 90.2 MeV): m*/M 0.833-0.836, K 381-400 MeV (adverse vs [220, 260]), 16O 1p 1.50 MeV, class PPC 0.028, LOO z J0614 -2.49.  It is 1 of 4 d-values at the declared central condensate (x0.5 and x2 shift E/A by tens of MeV).",
+  "STARS (S): best classes are d = 3, d = 4, harmonic, d=3-GC: PPC 0.023-0.028 (< 0.05), LOO max |z| 2.49-2.74, all from the J0614 radius (R(1.44) static 12.3-13.6 km); without J0614 (sensitivity only) PPC 0.12-0.15, max |z| 1.47-1.80.  ln Z = -10.1 ... -10.25 for d = 3, d = 4, harmonic (d=3-GC: -9.75 over its member n0 range, -11.15 over the full n0 window), vs -14.24 for the declared polynomial class and lnL(DD-ME2) = -9.98.  Lower-m* forms are far worse: B1 PPC 0 (best chi2 71.7, R(1.44) 13.9-14.8 km, Lambda_1.4 ~1240), CW-S3 PPC 0 (best chi2 146, E_PNM(0.10) = 22 MeV).  2-sigma box: 0 of 358 propagated members (2 CW-S3 members have no eps-continuous SLy match and get L = 0).",
+  "SPIN-ORBIT (O): 16O 1p = 1.36-1.95 MeV for every form with m*/M >= 0.815; 2.2-2.7 MeV for B4a and CW-T4; 4.05-4.45 MeV (exact Dirac 4.16-4.79) for B1 at m*/M 0.71 (fails, just below 4.9); 5.53-5.88 MeV (exact Dirac 5.80-6.60) for CW-S3 at m*/M 0.68 (passes, but WS-fit rms 6.6 MeV and (V) fails).",
+  "GROUND STATE (G): holds for every propagated member (358 of 358 with a computed nuclear block and crust match); no Lee-Wick state below E/A(n0) - 0.05 MeV up to the M_max centre; the design branch reaches y -> 1 at n -> 0 and is the ground state on 0-0.20 fm^-3 for every form.",
+  "VACUUM (V): holds for all six one-parameter derived shapes (single minimum at W0, U >= 0); fails for every Coleman-Weinberg member (the nucleon loop wins at large W: U(10 W0) = -5e13 ... -9e13 MeV^4 because the fitted lambda = 0.0055-0.0067, 160-190 times below the action's 1.05, is far below the boson-loop stabilisation threshold) and for B4c with K in the window.",
+  "JOINT: no form converges.  The (O)-(S) anticorrelation of the polynomial class persists with derived potentials: the only forms with 16O 1p near or inside the window (m*/M 0.68-0.71) predict K = 1.5-2.4 GeV and stars with R(1.44) >= 13.9 km (PPC 0); forms whose stars are marginal (m*/M 0.83-0.85) give 16O 1p = 1.4-1.7 MeV."
+ ],
+ "joint_verdict_table": [
+  {
+   "form": "B1_anomaly_d1",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.7044562294723266,
+     0.7122470817761405
+    ],
+    "K_MeV": [
+     1524.8418513126328,
+     1632.1727307640228
+    ],
+    "Q0_MeV": [
+     6342.30765700433,
+     7722.267552595626
+    ],
+    "m_s_vac_MeV": [
+     88.1367804436928,
+     93.22933230941305
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 89.27084023242026,
+    "p_nu8": 6.538415827472585e-16,
+    "max_abs_z_PIT": 5.580185790537234,
+    "M_max": 2.5280896867204796,
+    "R_1.44_static_km": 14.291294205042377,
+    "Lambda_1.4": 1350.2088231191105,
+    "box2": false,
+    "box2_fails": [
+     "R207",
+     "R1418",
+     "R144",
+     "Lt",
+     "EPNM"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.0,
+    "ESS": 3.5273507535758997,
+    "lnZ": -38.787674733714546,
+    "loo_max_abs_z": 5.220345823556931,
+    "loo_z": {
+     "Mmax": 0.0,
+     "R207": -1.81934621169115,
+     "R134": -1.2199458869247746,
+     "R1418": -2.8977171931859598,
+     "R144": -4.033222307094259,
+     "Lt": -4.557288142178882,
+     "S2": 2.6670693910431176,
+     "EPNM": -5.220345823556931
+    },
+    "best_chi2": 71.68514441563272,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.0,
+     "loo_max_abs_z": 5.091985264527968
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.0,
+     "loo_max_abs_z": 5.188163236262624
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.11579477068812,
+    "EPNM_0p10": 16.980185790537234,
+    "loo_z_S2": 2.6670693910431176,
+    "loo_z_EPNM": -5.220345823556931
+   },
+   "O": {
+    "central_16O_1p_MeV": 4.3204997661987425,
+    "central_exact_dirac_diag_MeV": 4.53555620509314,
+    "central_WS_rms_MeV": 3.3820165824843564,
+    "class_range_MeV": [
+     4.045894368183796,
+     4.444889355427313
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 482.6768184946947,
+    "M_eff_n0_MeV": 697.6615907526526,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.995600689908656,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 31092574963601.84,
+      "100.0": 6.597134839539286e+17,
+      "1000.0": 1.008505004470307e+22,
+      "10000.0": 1.3572965253653054e+26
+     },
+     "U0_MeVfm3": 49.28682340700256
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B2_anomaly_d2",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.8154932266837002,
+     0.8215066900806114
+    ],
+    "K_MeV": [
+     447.52682159341913,
+     476.00159409971104
+    ],
+    "Q0_MeV": [
+     618.009733522938,
+     638.101815692341
+    ],
+    "m_s_vac_MeV": [
+     86.22768978715821,
+     91.07263717184144
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 23.875586105549136,
+    "p_nu8": 0.002404475171078071,
+    "max_abs_z_PIT": 3.1423748286065796,
+    "M_max": 2.1608874144852797,
+    "R_1.44_static_km": 13.273665880177248,
+    "Lambda_1.4": 767.1037440953679,
+    "box2": false,
+    "box2_fails": [
+     "R1418",
+     "R144",
+     "Lt"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.0084,
+    "ESS": 9.411000533175903,
+    "lnZ": -11.568260578599403,
+    "loo_max_abs_z": 2.925396813300102,
+    "loo_z": {
+     "Mmax": 0.0,
+     "R207": -0.016207416694942897,
+     "R134": -0.3525159321504165,
+     "R1418": -1.7596378652508204,
+     "R144": -2.925396813300102,
+     "Lt": -1.9688591138863984,
+     "S2": 1.3727541707589181,
+     "EPNM": -1.728470324981588
+    },
+    "best_chi2": 19.331021939356717,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.093325,
+     "loo_max_abs_z": 2.0806494119804833
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.012825,
+     "loo_max_abs_z": 2.735057309977367
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.250589591925,
+    "EPNM_0p10": 13.174159502241537,
+    "loo_z_S2": 1.3727541707589181,
+    "loo_z_EPNM": -1.728470324981588
+   },
+   "O": {
+    "central_16O_1p_MeV": 1.8512762907600395,
+    "central_exact_dirac_diag_MeV": 1.8861554382771537,
+    "central_WS_rms_MeV": 1.096014032513208,
+    "class_range_MeV": [
+     1.7315092015124798,
+     1.9522282033748155
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 281.9773022738585,
+    "M_eff_n0_MeV": 798.0113488630707,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.997473051108614,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 522068116872.5362,
+      "100.0": 118567285166971.97,
+      "1000.0": 1.8506929526461496e+16,
+      "10000.0": 2.515727207284372e+18
+     },
+     "U0_MeVfm3": 187.94856497775572
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B2_anomaly_d3",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.8332516633418262,
+     0.8387380429885141
+    ],
+    "K_MeV": [
+     375.50776272252403,
+     397.58567863458825
+    ],
+    "Q0_MeV": [
+     63.06981346410021,
+     84.19045370246522
+    ],
+    "m_s_vac_MeV": [
+     86.23747407127864,
+     91.07335397321692
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 18.634652945576676,
+    "p_nu8": 0.01694048077347445,
+    "max_abs_z_PIT": 2.7981128336923744,
+    "M_max": 2.053943775575134,
+    "R_1.44_static_km": 12.944613448164468,
+    "Lambda_1.4": 633.6188130874735,
+    "box2": false,
+    "box2_fails": [
+     "R144"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.0263,
+    "ESS": 10.5369008390976,
+    "lnZ": -10.114733051117433,
+    "loo_max_abs_z": 2.688888879277891,
+    "loo_z": {
+     "Mmax": 0.7737221909231844,
+     "R207": 0.987048361384194,
+     "R134": -0.15420311164550685,
+     "R1418": -1.5002583320349492,
+     "R144": -2.688888879277891,
+     "Lt": -1.5143707183816149,
+     "S2": 1.1277579179931734,
+     "EPNM": -1.284346943908787
+    },
+    "best_chi2": 16.239027289174608,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.15315,
+     "loo_max_abs_z": 1.7173585604929873
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.03475,
+     "loo_max_abs_z": 2.5189851226614395
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.20565852558684,
+    "EPNM_0p10": 12.7454987783251,
+    "loo_z_S2": 1.1277579179931734,
+    "loo_z_EPNM": -1.284346943908787
+   },
+   "O": {
+    "central_16O_1p_MeV": 1.5612511279554573,
+    "central_exact_dirac_diag_MeV": 1.5880200874323478,
+    "central_WS_rms_MeV": 0.9041943966840299,
+    "class_range_MeV": [
+     1.4648144729814156,
+     1.6437426605906467
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 249.91998211443266,
+    "M_eff_n0_MeV": 814.0400089427836,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.999608725507983,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 148104638232.37274,
+      "100.0": 7752503636152.744,
+      "1000.0": 266672040092855.4,
+      "10000.0": 7893527317970420.0
+     },
+     "U0_MeVfm3": 422.71885693056504
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B2_anomaly_d4",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.8404190167022457,
+     0.8456856384422943
+    ],
+    "K_MeV": [
+     349.86838631491537,
+     369.7437124537143
+    ],
+    "Q0_MeV": [
+     -105.23346455037336,
+     -77.09180990748473
+    ],
+    "m_s_vac_MeV": [
+     86.21937534035999,
+     91.05075431500951
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 18.171354857622365,
+    "p_nu8": 0.019977869956975678,
+    "max_abs_z_PIT": 2.6329055575499964,
+    "M_max": 2.0054356668534297,
+    "R_1.44_static_km": 12.786517979130844,
+    "Lambda_1.4": 577.2760286542962,
+    "box2": false,
+    "box2_fails": [
+     "R144"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.023975,
+    "ESS": 11.142768754813037,
+    "lnZ": -10.25448408335916,
+    "loo_max_abs_z": 2.6205256408952486,
+    "loo_z": {
+     "Mmax": 1.3842568325072155,
+     "R207": 1.201843758955723,
+     "R134": -0.0913874047377897,
+     "R1418": -1.420032487299455,
+     "R144": -2.6205256408952486,
+     "Lt": -1.3499862150917263,
+     "S2": 0.9797753581271615,
+     "EPNM": -1.137218964025867
+    },
+    "best_chi2": 16.42559447099408,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.128075,
+     "loo_max_abs_z": 1.6171894685250443
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.0303,
+     "loo_max_abs_z": 2.4556082591190336
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.189444211588476,
+    "EPNM_0p10": 12.58297750370275,
+    "loo_z_S2": 0.9797753581271615,
+    "loo_z_EPNM": -1.137218964025867
+   },
+   "O": {
+    "central_16O_1p_MeV": 1.4500637963147878,
+    "central_exact_dirac_diag_MeV": 1.4740805841878917,
+    "central_WS_rms_MeV": 0.8325501988127437,
+    "class_range_MeV": [
+     1.3622340502080748,
+     1.5254928905464045
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 236.9771020506946,
+    "M_eff_n0_MeV": 820.5114489746527,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.99971900372202,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 80932173690.28673,
+      "100.0": 2086030878795.1484,
+      "1000.0": 34094787611863.707,
+      "10000.0": 473760051762748.7
+     },
+     "U0_MeVfm3": 750.9872706219263
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B4a_U1_quartic",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.7781838655487432,
+     0.7850622377653621
+    ],
+    "K_MeV": [
+     663.9708063955305,
+     712.0605184647802
+    ],
+    "Q0_MeV": [
+     2618.2205591204893,
+     2720.4349805493093
+    ],
+    "m_s_vac_MeV": [
+     86.49593301253775,
+     91.38890088129317
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 43.02266484525174,
+    "p_nu8": 8.698382370992187e-07,
+    "max_abs_z_PIT": 3.662448123902158,
+    "M_max": 2.334149245932863,
+    "R_1.44_static_km": 13.768685670131827,
+    "Lambda_1.4": 1015.1829621259207,
+    "box2": false,
+    "box2_fails": [
+     "R1418",
+     "R144",
+     "Lt",
+     "EPNM"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.0,
+    "ESS": 7.096158846604753,
+    "lnZ": -19.4005477802601,
+    "loo_max_abs_z": 3.443922640621674,
+    "loo_z": {
+     "Mmax": 0.0,
+     "R207": -1.0010154919638976,
+     "R134": -0.758006804925682,
+     "R1418": -2.2962984791153738,
+     "R144": -3.443922640621674,
+     "Lt": -2.988086551192924,
+     "S2": 1.7420641292025114,
+     "EPNM": -2.7692770730139693
+    },
+    "best_chi2": 34.03391263141739,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.00075,
+     "loo_max_abs_z": 3.090162962630495
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 7.5e-05,
+     "loo_max_abs_z": 3.2243904975555324
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.347721339472713,
+    "EPNM_0p10": 14.269963756161701,
+    "loo_z_S2": 1.7420641292025114,
+    "loo_z_EPNM": -2.7692770730139693
+   },
+   "O": {
+    "central_16O_1p_MeV": 2.540764432861654,
+    "central_exact_dirac_diag_MeV": 2.6025341529934494,
+    "central_WS_rms_MeV": 1.6231346252830494,
+    "class_range_MeV": [
+     2.364008938657448,
+     2.679113621283842
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 349.3947382626137,
+    "M_eff_n0_MeV": 764.3026308686931,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.997391347072266,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 7130457745604.085,
+      "100.0": 7.273779946290726e+16,
+      "1000.0": 7.275220370059917e+20,
+      "10000.0": 7.275234775017784e+24
+     },
+     "U0_MeVfm3": 94.68640134062679
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B4b_harmonic_W",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.8295709598909625,
+     0.83515906406873
+    ],
+    "K_MeV": [
+     389.9180413541236,
+     413.20735154869425
+    ],
+    "Q0_MeV": [
+     159.86441952476525,
+     179.8535105930123
+    ],
+    "m_s_vac_MeV": [
+     86.26882242789524,
+     91.10880561341277
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 19.04616998734673,
+    "p_nu8": 0.014614670739196572,
+    "max_abs_z_PIT": 2.8770143634743093,
+    "M_max": 2.0775959224453704,
+    "R_1.44_static_km": 13.020150071805734,
+    "Lambda_1.4": 662.407842866271,
+    "box2": false,
+    "box2_fails": [
+     "R144"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.022675,
+    "ESS": 10.63291454099614,
+    "lnZ": -10.23401781429649,
+    "loo_max_abs_z": 2.7358126204802327,
+    "loo_z": {
+     "Mmax": 0.46476394769693896,
+     "R207": 0.868796196474577,
+     "R134": -0.19707014185202665,
+     "R1418": -1.554535147897147,
+     "R144": -2.7358126204802327,
+     "Lt": -1.6212426748062534,
+     "S2": 1.18335949626259,
+     "EPNM": -1.3722160193907011
+    },
+    "best_chi2": 16.594114273482198,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.152925,
+     "loo_max_abs_z": 1.7986253079613441
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.033625,
+     "loo_max_abs_z": 2.561073720077956
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.21398504667507,
+    "EPNM_0p10": 12.834592924979574,
+    "loo_z_S2": 1.18335949626259,
+    "loo_z_EPNM": -1.3722160193907011
+   },
+   "O": {
+    "central_16O_1p_MeV": 1.6198586888933315,
+    "central_exact_dirac_diag_MeV": 1.6481710340756237,
+    "central_WS_rms_MeV": 0.9440460427358369,
+    "class_range_MeV": [
+     1.5188688706354558,
+     1.7060416209181657
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 256.57313347119793,
+    "M_eff_n0_MeV": 810.713433264401,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.997498357836662,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 234056665875.7636,
+      "100.0": 28320856570967.395,
+      "1000.0": 2883812180255283.5,
+      "10000.0": 2.889010578804384e+17
+     },
+     "U0_MeVfm3": 376.07683647549106
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B3_CW_T4_drop",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.7901979555997941,
+     0.7969519813438659
+    ],
+    "K_MeV": [
+     626.9164596136078,
+     669.2707426029787
+    ],
+    "Q0_MeV": [
+     1622.4145870884176,
+     1736.1877002169922
+    ],
+    "m_s_vac_MeV": [
+     87.546289674571,
+     92.41561547977618
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 38.13391099055413,
+    "p_nu8": 7.111313950153929e-06,
+    "max_abs_z_PIT": 3.536768856615502,
+    "M_max": 2.284087484062145,
+    "R_1.44_static_km": 13.648641843558504,
+    "Lambda_1.4": 949.1527969515031,
+    "box2": false,
+    "box2_fails": [
+     "R1418",
+     "R144",
+     "Lt",
+     "EPNM"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 2.5e-05,
+    "ESS": 7.648084631302372,
+    "lnZ": -17.476834724538904,
+    "loo_max_abs_z": 3.325790870817099,
+    "loo_z": {
+     "Mmax": 0.0,
+     "R207": -0.7901301218072784,
+     "R134": -0.6673931584655898,
+     "R1418": -2.174886238991451,
+     "R144": -3.325790870817099,
+     "Lt": -2.7282959337387367,
+     "S2": 1.7513247042558875,
+     "EPNM": -2.672228323689195
+    },
+    "best_chi2": 30.271228377696325,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.0021,
+     "loo_max_abs_z": 2.8360560897993112
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.0001,
+     "loo_max_abs_z": 3.1123617387778624
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 25.26102756569776,
+    "EPNM_0p10": 14.120088344158034,
+    "loo_z_S2": 1.7513247042558875,
+    "loo_z_EPNM": -2.672228323689195
+   },
+   "O": {
+    "central_16O_1p_MeV": 2.319185296994376,
+    "central_exact_dirac_diag_MeV": 2.3735692029585707,
+    "central_WS_rms_MeV": 1.5832925136842093,
+    "class_range_MeV": [
+     2.1768547219222025,
+     2.4301442851641153
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 327.52424015879524,
+    "M_eff_n0_MeV": 775.2378799206024,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -15.999459175934362,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 0,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": false,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": -87953301021693.45,
+      "100.0": -4.0570548604286966e+18,
+      "1000.0": -7.713290409636025e+22,
+      "10000.0": -1.1421326401378624e+27
+     },
+     "U0_MeVfm3": 737.6554813881472
+    },
+    "V_pass": false
+   },
+   "converges": false
+  },
+  {
+   "form": "B3_CW_S3_drop",
+   "params_fitted": "theta (or lambda) and C_v, by P(n0) = 0 and E/A",
+   "predicted": {
+    "mstar_over_M": [
+     0.6730974242097721,
+     0.680466440558252
+    ],
+    "K_MeV": [
+     2224.3925516221,
+     2353.495491897406
+    ],
+    "Q0_MeV": [
+     -15357.716332042863,
+     -12022.481573617826
+    ],
+    "m_s_vac_MeV": [
+     97.22580095899606,
+     101.10063540099246
+    ]
+   },
+   "key_question_mstar_0.55_0.70": true,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 182.15783320025503,
+    "p_nu8": 3.625878175537994e-35,
+    "max_abs_z_PIT": 10.592294349545659,
+    "M_max": 2.586142352874789,
+    "R_1.44_static_km": 14.429459891241377,
+    "Lambda_1.4": 1453.7729571025275,
+    "box2": false,
+    "box2_fails": [
+     "R207",
+     "R1418",
+     "R144",
+     "Lt",
+     "S2",
+     "EPNM"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.0,
+    "ESS": 1.7924622720017758,
+    "lnZ": -76.35684406952356,
+    "loo_max_abs_z": 9.824397495436253,
+    "loo_z": {
+     "Mmax": 0.0,
+     "R207": -2.0201272711518055,
+     "R134": -1.3449240633197805,
+     "R1418": -3.0608198850203334,
+     "R144": -4.195811294915507,
+     "Lt": -5.0386867630259085,
+     "S2": 4.549213856623395,
+     "EPNM": -9.824397495436253
+    },
+    "best_chi2": 145.9608882371152,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.0,
+     "loo_max_abs_z": 9.733814858420548
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.0,
+     "loo_max_abs_z": 9.801288954520759
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 23.487857322745118,
+    "EPNM_0p10": 21.99229434954566,
+    "loo_z_S2": 4.549213856623395,
+    "loo_z_EPNM": -9.824397495436253
+   },
+   "O": {
+    "central_16O_1p_MeV": 5.791031789906234,
+    "central_exact_dirac_diag_MeV": 6.253119522107376,
+    "central_WS_rms_MeV": 6.584425791892252,
+    "class_range_MeV": [
+     5.526745822699123,
+     5.874970969291064
+    ],
+    "posterior_weight_in_window": 0.9999999999999998,
+    "V_minus_S_n0_MeV": 539.2752358477406,
+    "M_eff_n0_MeV": 669.3623820761297,
+    "design_branch_is_ground_state": true,
+    "O_pass": true
+   },
+   "G": {
+    "N_holds": 38,
+    "N_ok": 38,
+    "central_lee_wick_min_EA": -15.99338988807392,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 0,
+    "N_ok": 38,
+    "central_detail": {
+     "V_global_U_ge_0": false,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": -51720196619015.664,
+      "100.0": -3.579699902421256e+18,
+      "1000.0": -7.223192283285839e+22,
+      "10000.0": -1.0929895089102558e+27
+     },
+     "U0_MeVfm3": 758.7307457656946
+    },
+    "V_pass": false
+   },
+   "converges": false
+  },
+  {
+   "form": "B2_anomaly_d3|GC_x1.0",
+   "params_fitted": "C_v only (theta from the gluon condensate)",
+   "predicted": {
+    "mstar_over_M": [
+     0.832505418205376,
+     0.8364839960645958
+    ],
+    "K_MeV": [
+     380.66352553274476,
+     399.9662447219722
+    ],
+    "Q0_MeV": [
+     63.892965431061384,
+     84.6549664778463
+    ],
+    "m_s_vac_MeV": [
+     90.17423390471285,
+     90.17423390471285
+    ]
+   },
+   "key_question_mstar_0.55_0.70": false,
+   "key_question_K_220_260": false,
+   "S_central_member": {
+    "chi2_rot8": 16.79417060626513,
+    "p_nu8": 0.03232517150516779,
+    "max_abs_z_PIT": 2.457293882865529,
+    "M_max": 2.0028544298724267,
+    "R_1.44_static_km": 12.622059911586767,
+    "Lambda_1.4": 543.5375120942409,
+    "box2": false,
+    "box2_fails": [
+     "R144"
+    ]
+   },
+   "S_class": {
+    "N": 40,
+    "ppc_p": 0.02815,
+    "ESS": 14.772797254163677,
+    "lnZ": -9.752723796465402,
+    "loo_max_abs_z": 2.4912048569181717,
+    "loo_z": {
+     "Mmax": 1.0755353325208103,
+     "R207": 1.1753132172767389,
+     "R134": -0.016167756259088863,
+     "R1418": -1.306505443701942,
+     "R144": -2.4912048569181717,
+     "Lt": -1.2563465504305045,
+     "S2": 1.3202467528675075,
+     "EPNM": -1.495203059058002
+    },
+    "best_chi2": 16.426726919610296,
+    "n_box2": 0,
+    "sensitivity_noJ0614": {
+     "ppc_p": 0.12095,
+     "loo_max_abs_z": 1.4691522199770535
+    },
+    "sensitivity_static_8": {
+     "ppc_p": 0.035675,
+     "loo_max_abs_z": 2.31831530230679
+    },
+    "S_pass": false
+   },
+   "N_central": {
+    "S2_0p10": 24.47563841280983,
+    "EPNM_0p10": 12.233188818487065,
+    "loo_z_S2": 1.3202467528675075,
+    "loo_z_EPNM": -1.495203059058002
+   },
+   "O": {
+    "central_16O_1p_MeV": 1.4990585314139473,
+    "central_exact_dirac_diag_MeV": 1.5221640138439163,
+    "central_WS_rms_MeV": 0.7009459959681148,
+    "class_range_MeV": [
+     1.4969476255120786,
+     1.4990407145626925
+    ],
+    "posterior_weight_in_window": 0.0,
+    "V_minus_S_n0_MeV": 253.35518903904108,
+    "M_eff_n0_MeV": 812.3224054804795,
+    "design_branch_is_ground_state": true,
+    "O_pass": false
+   },
+   "G": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_lee_wick_min_EA": -16.488338093597235,
+    "G_pass": true
+   },
+   "V": {
+    "N_holds": 40,
+    "N_ok": 40,
+    "central_detail": {
+     "V_global_U_ge_0": true,
+     "V_single_minimum_0_3": true,
+     "U_at_large_y_MeV4": {
+      "10.0": 153897443260.7737,
+      "100.0": 8055726699131.647,
+      "1000.0": 277102362554196.03,
+      "10000.0": 8202266229088227.0
+     },
+     "U0_MeVfm3": 439.2526262253882
+    },
+    "V_pass": true
+   },
+   "converges": false
+  },
+  {
+   "form": "B4c_anomaly_plus_U1_quartic",
+   "params_fitted": "theta1, theta2, C_v by P = 0, E/A, K",
+   "predicted": {
+    "mstar_over_M": [
+     0.8619118691145066,
+     0.8759326328446737
+    ],
+    "m_s_vac_MeV": [
+     78.81599233718732,
+     87.22657220133938
+    ],
+    "Q0_MeV": [
+     -446.33451355312127,
+     -301.42178097906026
+    ]
+   },
+   "admissible_members_with_K_in_220_260": 0,
+   "of": 75,
+   "why_inadmissible": "anomaly coefficient theta1 < 0 at every grid point (theta1 = -4.0e10 ... -2.9e10 MeV^4 at the central n0, E/A for K = 220 ... 260): U -> -infinity at large y (U(10) = -1.5e14 MeV^4 at K = 220) and the global minimum of eps(n0, y) runs to the y boundary; theta1 >= 0 needs K >= 692 MeV (central n0, E/A), i.e. the B4a value",
+   "S": "not propagated (no admissible member)",
+   "O": "not propagated",
+   "G": "fails at n0 (global minimum at y -> boundary)",
+   "V": "fails",
+   "converges": false
+  },
+  {
+   "form": "B3_CW_T4_ms",
+   "note": "central member only; identical to the 'drop' Goldstone variant within 0.1 MeV in K and 0.03 in chi2 (lambda = 0.0055 / 0.0067 makes the Goldstone loop ~lambda^2 negligible); class not re-run",
+   "central": {
+    "ystar": 0.7930770674426547,
+    "K": 651.5068383389998,
+    "chi2_rot8": 38.12811576456554,
+    "SO": 2.319027549610716,
+    "V_holds": false
+   },
+   "converges": false
+  },
+  {
+   "form": "B3_CW_S3_ms",
+   "note": "central member only; identical to the 'drop' Goldstone variant within 0.1 MeV in K and 0.03 in chi2 (lambda = 0.0055 / 0.0067 makes the Goldstone loop ~lambda^2 negligible); class not re-run",
+   "central": {
+    "ystar": 0.6764847617376102,
+    "K": 2292.719893032061,
+    "chi2_rot8": 182.1251937347569,
+    "SO": 5.790453230859907,
+    "V_holds": false
+   },
+   "converges": false
+  }
+ ],
+ "verdict_on_convergence": "does_not_converge",
+ "verdict_text": "Derived non-polynomial potentials make m*/M and K genuine predictions, and the predictions are adverse.  Over the full (n0, E/A) windows the six one-parameter shapes derived from the scale Ward identity (W^4 ln W, its d = 2, 3, 4 variants, the U(1) quartic, the harmonic form) and the action's own Coleman-Weinberg potential predict m*/M = 0.67-0.85 with K = 350-2365 MeV; none reaches m*/M 0.55-0.70 with K in [220, 260], and the two-parameter anomaly + U(1) form reaches K in the window only with a negative anomaly coefficient (unbounded below).  The structural reason is the W-dependent vector mass: B = d mu/dy vanishes at y* = 0.634, so low m* forces K -> 2.6-3.0 GeV unless the potential is tuned to be strongly concave at saturation, which no derived shape is.  Every saturating form needs a light vacuum scalar (86-101 MeV), so normalisations by the action's lambda, f0(500), the glueball or the d = 1 gluon condensate do not bind.  Through the joint test: (S) fails for every class (best PPC 0.028 with LOO z(J0614) = -2.49 for the zero-parameter d = 3 condensate form; 0.023-0.026 for d = 3, d = 4, harmonic), (O) fails for every form with a bounded potential (1.4-4.4 MeV), (O) passes only for the Coleman-Weinberg S3 member (5.5-5.9 MeV) whose potential is unbounded below (V fails), whose K is 2.3 GeV and whose stars give chi2 >= 146; (G) holds everywhere.  Verdict: does_not_converge.",
+ "practical_value": [
+  "A zero-free-scalar-coefficient NVG EOS family: the trace-anomaly potentials theta f_a(y) with theta fixed by E/A give the equation of state, M_max, radii and Lambda from (n0, E/A, J, L) alone (e.g. d = 4 central member: m*/M 0.843, K 361, M_max 2.005, R(1.44) 12.79 km, Lambda_1.4 577, chi2 18.2); usable as a falsifiable baseline that is better in evidence (ln Z -10.1 ... -10.3) than the polynomial class (-14.2).",
+  "A diagnostic rule for any model with a W-scaled vector mass: K = 9 n0 (D - B^2/C) with B -> 0 at m*/M = 0.634, so asking for m*/M ~ 0.6 and K ~ 240 is a fine-tuning demand on U_yy (table in derivation.structural_K_algebra); an RMF-like spin-orbit cannot come from the scalar potential alone in this action.",
+  "The predicted vacuum scalar mass 86-101 MeV is shape independent: any proposal that identifies the NVG scalar with f0(500), the glueball or the action's 1245 MeV sigma is excluded by saturation, not only by surfaces.",
+  "dpot.py: drop-in generalisation of the validated chain to any callable U(y) (bit-identical on the polynomial case), with saturation solvers for 0, 1 and 2 parameter forms, a vacuum check, a Lee-Wick scan and the 16O 1p LDA."
+ ],
+ "caveats": [
+  "Class samples are N = 40 LHS points per form (4-dimensional prior; the d=3-GC class samples only its member range n0 in [0.165, 0.170], 24.7 % of the n0 window); ESS 1.8-14.8; 2 of 40 CW-S3 points fail the eps-continuous SLy match (L = 0).  PPC values of 0.02-0.03 are below 0.05 by less than the sampling error of the polynomial-class study (bootstrap spread there 0.037-0.057); the LOO J0614 failure (|z| 2.5-2.7) and the (O) failure are not near threshold.",
+  "Spin-orbit is the LDA first-order procedure validated on NL3 / DD-ME2 / FSUGold (6.84 / 6.51 / 5.76 MeV); for m*/M <= 0.71 the Woods-Saxon fit rms is 3.4-6.6 MeV (0.4 for NL3), so the B1 (4.05-4.45) and CW-S3 (5.5-5.9) numbers carry a protocol uncertainty of order 0.3-0.8 MeV (exact Dirac in the same potentials: 4.16-4.79 and 5.80-6.60).  This does not rescue B1 robustly (exact Dirac 4.79 at most) and does not affect the CW-S3 verdict (V and S fail).",
+  "The FST / HRE attributions of the d-family and the d about 2 value are from memory; the forms themselves are derived here from the scale Ward identity.  The gluon condensate (0.012 GeV^4), f0(500) (450 MeV) and glueball (1.7 GeV) values are from memory; the condensate x0.5 / x2 sensitivities move E/A by 10-40 MeV, so the d = 3 zero-parameter hit is normalisation-fragile.",
+  "Coleman-Weinberg: one loop, Landau gauge; away from stationary points the potential is gauge dependent; the Goldstone 'ms' variant has a log-divergent U_yy at W0; its fitted lambda is 0.0055-0.0067 (200 times below the action's 1.05), so the boson loops are negligible and the nucleon sea + vector loop dominate.",
+  "(V) as declared here (single minimum) is stricter than the old q >= 0 rule; the old-rule quartic at y* = 0.87 fails it (second minimum at y = 1.377).  No derived one-parameter shape is affected (each has a single minimum).",
+  "K and m*/M windows are the key-question flags, not part of the declared convergence criterion; the convergence verdict follows COMMON (S, O, G, V) exactly."
+ ],
+ "files": {
+  "dp_declared.py": "SCR/round3/derived_potentials/dp_declared.py",
+  "write_declared.py": "SCR/round3/derived_potentials/write_declared.py",
+  "dpot.py": "SCR/round3/derived_potentials/dpot.py",
+  "validate.py": "SCR/round3/derived_potentials/validate.py",
+  "validation.json": "SCR/round3/derived_potentials/validation.json",
+  "survey.py": "SCR/round3/derived_potentials/survey.py",
+  "survey.json": "SCR/round3/derived_potentials/survey.json",
+  "chain.py": "SCR/round3/derived_potentials/chain.py",
+  "central.jsonl": "SCR/round3/derived_potentials/central.jsonl",
+  "analysis.py": "SCR/round3/derived_potentials/analysis.py",
+  "analysis.json": "SCR/round3/derived_potentials/analysis.json",
+  "extras.py": "SCR/round3/derived_potentials/extras.py",
+  "extras.json": "SCR/round3/derived_potentials/extras.json",
+  "make_result.py": "SCR/round3/derived_potentials/make_result.py",
+  "class_B1_anomaly_d1": "SCR/round3/derived_potentials/class_B1_anomaly_d1.jsonl",
+  "class_B2_anomaly_d2": "SCR/round3/derived_potentials/class_B2_anomaly_d2.jsonl",
+  "class_B2_anomaly_d3": "SCR/round3/derived_potentials/class_B2_anomaly_d3.jsonl",
+  "class_B2_anomaly_d4": "SCR/round3/derived_potentials/class_B2_anomaly_d4.jsonl",
+  "class_B4a_U1_quartic": "SCR/round3/derived_potentials/class_B4a_U1_quartic.jsonl",
+  "class_B4b_harmonic_W": "SCR/round3/derived_potentials/class_B4b_harmonic_W.jsonl",
+  "class_B3_CW_T4_drop": "SCR/round3/derived_potentials/class_B3_CW_T4_drop.jsonl",
+  "class_B3_CW_S3_drop": "SCR/round3/derived_potentials/class_B3_CW_S3_drop.jsonl",
+  "class_B2_anomaly_d3_GC": "SCR/round3/derived_potentials/class_B2_anomaly_d3_GC.jsonl"
+ },
+ "reused_modules": [
+  "closure/nvg_forward_band.py",
+  "closure/sly_crust.py",
+  "creative/likelihood/lk_core.py",
+  "creative/likelihood/analyze.py",
+  "creative/likelihood/prereg.json",
+  "creative/spin_orbit/so_core.py",
+  "missing/vacuum/vacuum_oneloop.py",
+  "missing/fock/fock_exchange.py",
+  "verification/nvg_hartle_second_order_quadrupole_probe.py (via lk_core)"
+ ],
+ "wall_times_s": {
+  "validation": 7.8,
+  "survey": 31.8,
+  "central_members": 56.9,
+  "class_runA_d2_d3_d4_harmonic": 516.2,
+  "class_B1_B4a": 274.5,
+  "class_d3_GC": 134.2,
+  "class_CW_T4_S3": 981.5,
+  "analysis": 23.4,
+  "extras": 4.4,
+  "tests": 10.0,
+  "total_compute_s_approx": 2041,
+  "processes": "one at a time"
+ },
+ "assembled_utc": "2026-11-13T09:07:53Z",
+ "declared_sha256_verified_after_compute": true
+}

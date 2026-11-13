@@ -1,0 +1,1106 @@
+{
+ "direction": "A: vacuum metastability (zero new continuous parameters)",
+ "declared_before_compute": {
+  "direction": "A: vacuum metastability (zero new continuous parameters)",
+  "V_zero_T": {
+   "field": "radial field W >= 0 of Phi = W e^{i theta}/sqrt2, kinetic term (dW)^2/2 as in the action, potential U(W) = z^2 q(z), z = (W/W0)^2 - 1, q from the forward chain (closure/nvg_forward_band.scalar_jet), false vacuum W0 = 859 MeV (U = 0)",
+   "bounce": "Euclidean O(4) bounce W'' + (3/r) W' = dU/dW, W'(0) = 0, W(inf) = W0; overshoot/undershoot shooting on ln(W(0) - W_t) with the linearised start W - W_t ~ 2 I1(m_t r)/(m_t r) near the true-vacuum side (thin-wall safe); B = 2 pi^2 int r^3 [W'^2/2 + U - U(W0)] dr, cross-checked by the virial form B = (pi^2/2) int r^3 W'^2 dr (Derrick, d = 4) and by the Coleman-Glaser-Martin upper bound B <= T^2/(-4 V) for trial profiles (T = 2 pi^2 int r^3 W'^2/2, V = 2 pi^2 int r^3 (U - U(W0)))",
+   "gauge_field": "S_E = int [F^2/4 + (dW)^2/2 + W^2 (d theta - q_phi A)^2/2 + U(W)] + baryon terms; for n = 0 the extra terms are >= 0 and vanish for theta = const, A = 0, which solves the Maxwell/Proca and theta equations because the current W^2 (d theta - q_phi A) then vanishes. Hence the radial bounce with A = 0 is a solution of the full tree-level system and no gauge or Goldstone configuration lowers its action: B_gauged = B_radial at tree level (the vector mass q_phi W only changes the one-loop prefactor).",
+   "cases": {
+    "a_bounded_with_deeper_state": "U bounded below on W >= 0 and U < U(W0) somewhere: bounce computed in each direction (W < W0 and W > W0) that has U < U(W0); B = the smaller action",
+    "b_unbounded_below": "leading coefficient of q < 0, U ~ a_d (W/W0)^(2d) -> -inf: the tunnelling exponent is the mountain-pass value; for growth faster than W^4 (NVG: d >= 4, U ~ y^8 or y^10) the CGM ratio T^2/(-4V) of profiles W0 (1 + A g(r/R)) falls as A^(4-2d) -> 0 for A -> inf, so B = 0 (no exponential protection; decay controlled by field values far outside the model). For exactly quartic growth (NL3, g3 < 0) B_inf = 8 pi^2 / (3 |g3|) (Fubini) or lower if a finite bounce exists; computed numerically.",
+    "c_absolutely_stable": "U >= U(W0) for all W >= 0: B = +inf (passes)"
+   },
+   "rate": "Gamma = A exp(-B) per volume, A bracketed by m_sigma,vac^4 (m_sigma,vac = sqrt(U_yy(1))/W0) and W0^4; requirement Gamma t_U^4 < 1, t_U = 13.8 Gyr (1 Gyr = 3.15576e16 s, hbar = 6.582119569e-22 MeV s) -> B > B_thr(A) = ln(A t_U^4). PASS iff B > B_thr(W0^4) (the upper end of the bracket, conservative); 'bracket-dependent' reported if B_thr(m^4) < B <= B_thr(W0^4). Sensitivity (not criterion): Callan-Coleman translational factor (B/2pi)^2 in A."
+  },
+  "V_thermal": {
+   "bounce": "O(3) bounce W'' + (2/r) W' = dU_T/dW, B3 = 4 pi int r^2 [W'^2/2 + U_T - U_T(false)] dr (virial cross-check B3 = (4 pi/3) int r^2 W'^2 dr)",
+   "potential": "primary U_T(W) = U(W) + f_N(T, M_N W/W0) - f_N(T, M_N): one-loop thermal free energy of the nucleon doublet at zero chemical potential (g = 8: p, n, spin, particle + antiparticle), f_N = -(g T/(2 pi^2)) int k^2 ln(1 + exp(-E/T)) dk; variant: tree-level U only",
+   "temperatures_MeV": [
+    10,
+    20,
+    30,
+    40,
+    50
+   ],
+   "rate_and_requirement": "Gamma_T = T^4 (B3/(2 pi T))^(3/2) exp(-B3/T); nucleation probability P = Gamma_T V_core dt < 1 with V_core = (4 pi/3) (10 km)^3 and dt = 1e10 yr (one stellar core held at T for 1e10 yr: conservative). Also reported: the rate with prefactor W0^4 and the total over 1e20 hot cores x 10 s; the zero-T O(4) channel at the same T (Gamma_4 V_core dt) is reported alongside.",
+   "pass": "P < 1 at every declared T (with the T^4 prefactor), using min over the O(3) thermal and O(4) channels"
+  },
+  "G_dense_matter": {
+   "primary": "the existing ground-state condition of prereg.json nvg_class.ground_state_valid ((a) beta table x_match <= x <= x_c(M_max), (b) SNM at x = 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0, 1.3, (c) SNM and PNM at 0.10 fm^-3: tracked state is the global minimum over y), with the y grid extended from [0.02, 1.4] to [0.02, max(1.4, 1.25 y_t)] whenever the vacuum's deeper state y_t lies beyond 1.4 (the declared definition is 'global minimum over y'; the old grid end was chosen for U >= 0 models)",
+   "variant_G_meta_declared_not_primary": "nodes where the tracked state is not the global minimum are accepted if the in-medium O(4) bounce of the grand potential Omega(y; mu) = U(y) + min_n [eps_N(n, y) - mu n] (fixed baryon chemical potential mu of the node, fixed composition delta of the node, vector field in local density approximation, nucleon gradient terms neglected) has B_med > ln(A V_core t) with A = W0^4, V_core = (4 pi/3) (10 km)^3, t = 13.8 Gyr. Reported separately; a verdict that needs it is 'converges_conditionally'."
+  },
+  "rule_reopened_class": "quartic (a5 = 0) if its vacuum passes V_zero_T, else quintic with a5 from Q0 (declared Q0 window) if that vacuum passes V_zero_T, else no model.  Stable members (case c) pass automatically, so the stable-only class is the subset with B = inf.",
+  "windows": {
+   "n0": [
+    0.15,
+    0.17
+   ],
+   "EA": [
+    -16.5,
+    -15.5
+   ],
+   "K": [
+    220.0,
+    260.0
+   ],
+   "ystar": [
+    0.6,
+    0.93
+   ],
+   "Q0": [
+    -600.0,
+    200.0
+   ],
+   "J": [
+    30.0,
+    34.0
+   ],
+   "L": [
+    35.0,
+    65.0
+   ],
+   "source": "closure/run_band.py WINDOWS (unchanged)"
+  },
+  "structure_map": "y* grid 0.60, 0.61, ..., 0.93 at the window centre (0.16, -16, 240) and at the 8 corners of (n0, E/A, K); quintic at Q0 = -600, -400, -200, 0, 200; per point: case, location of the deeper state, B, B_thr, pass; the opened y* set, especially m*/M = 0.55-0.70",
+  "validation_before_use": {
+   "thin_wall": "V = (lambda/8)(phi^2 - a^2)^2 + (eps/(2a))(phi - a), lambda = a = 1, eps = 0.005-0.1: B / [27 pi^2 S1^4/(2 eps^3)] -> 1 as eps -> 0 (Coleman 1977, S1 = 2 sqrt(lambda) a^3/3); accept if the ratio extrapolated linearly to eps = 0 is within 1e-2 of 1",
+   "thick_wall": "V = phi^2/2 - phi^3/3 (m = eta = 1): B = 205 (Linde 1983 'S_4 ~ 205 m^2/delta^2'; Adams 1993 fit alpha_1 delta/8 limit 13.832 pi^2/3 x 4.5 = 204.8); accept within 1 percent; plus Adams 1993 PRD 48 2800 fit B = pi^2/(3c) (2-delta)^-3 (13.832 delta - 10.819 delta^2 + 2.0765 delta^3) for V = a phi^2 - b phi^3 + c phi^4, delta = 8ca/b^2, at delta = 0.5, 1.0, 1.5, 1.8 (fit accuracy ~ 1 percent); O(3) check: S3 for phi^2/2 - phi^3/3 reported (no gate); exact Fubini B = 8 pi^2/(3 lambda) for V = -lambda phi^4/4 via the CGM ratio"
+  },
+  "joint_verdict": {
+   "S": "pre-registered 8-term likelihood (creative/likelihood/prereg.json, lk_core.nvg_point machinery, SLy crust, consistent pressure, Hartle-Thorne rotation), applied unchanged; L = 0 for: no model under the reopened rule, (G) invalid, no branch/crust failure",
+   "fresh_LHS": "N = 2000, seed 20261113, run_band.lhs_params over WINDOWS, ids mv0000..mv1999 (if time forces, the first N_eval in LHS order, reported)",
+   "classes_compared": [
+    "reopened class (rule above)",
+    "stable-only subset of the same LHS (B = inf)",
+    "DD-ME2 (fixed, rmf_runs.json)"
+   ],
+   "O": "16O 1p splitting with the validated LDA (creative/spin_orbit so_core, raw, no calibration since NL3/DD-ME2 validated raw), window [4.9, 7.4] MeV; computed for every member with finite S-likelihood (random subsample of 300, seed 7, if more); class (O) reported as posterior weight of passing members and as the jointly admissible class",
+   "jointly_admissible_class": "L = 0 unless (V), (G) and (O) all hold; its posterior predictive p > 0.05 and all LOO |z| < 2 = CONVERGES",
+   "verdict_labels": "converges (jointly admissible class passes S with primary G) / converges_conditionally (passes only with G_meta) / partial / does_not_converge / undecidable"
+  },
+  "NL3_consistency_check": "the same V_zero_T applied to NL3's U(sigma) = m_s^2 sigma^2/2 + g2 sigma^3/3 + g3 sigma^4/4 (g2 = -10.431 fm^-1, g3 = -28.885, m_s = 508.194 MeV), whole real sigma line, both directions; also FSUGold and DD-ME2 sigma potentials; plus the field values where U first drops below U(vac) in each model (domain diagnostic, not a criterion)",
+  "zero_new_parameters": "no continuous parameter is added; discrete choices: A bracket end (upper, declared), T grid, V_core, dt, extended y grid, G primary vs G_meta",
+  "caveats_declared": [
+   "tree level: the nucleon Dirac-sea (Coleman-Weinberg) term is not in the action (no-sea, as in RMF) and could change the large-W shape",
+   "B = 0 for unbounded-below members means the decay is controlled by field values outside any trusted domain"
+  ]
+ },
+ "declared_sha256": "2437ae1577fa299b0405f96c613bafec8355d08acaf2dfb2cbc803de8bb46f99",
+ "declared_written_utc": "2026-11-13T08:25:57Z",
+ "status": "complete",
+ "derivation": {
+  "bounce": "Euclidean O(4) bounce of the radial field W (kinetic (dW)^2/2): W'' + 3W'/r = dU/dW, W'(0) = 0, W(inf) = W0. With y = W/W0, rho = r sqrt(Lambda)/W0, u = U/Lambda (Lambda = a2): B = (W0^4/Lambda) 2 pi^2 int rho^3 [y'^2/2 + u] d rho = (W0^4/Lambda) pi^2 int rho^3 y'^2 d rho (Derrick virial, d = 4).",
+  "gauge_field": "S_E = int [F^2/4 + (dW)^2/2 + W^2 (d theta - q_phi A)^2/2 + U(W)]; for n = 0 the extra terms are non-negative and vanish at theta = const, A = 0, which solves the Proca and theta equations because the current W^2 (d theta - q_phi A) then vanishes. The radial bounce is therefore a solution of the full tree-level system and no gauge/Goldstone configuration lowers its action: B_gauged = B_radial (the vector mass q_phi W enters only the one-loop prefactor). The baryon term C_v n^2/(2 y^2) vanishes at n = 0.",
+  "unbounded_case": "If the leading coefficient of q is negative, U ~ a_d y^(2d) -> -inf with 2d = 8 (quartic) or 10 (quintic). For profiles y = 1 + A g(r/R) the Coleman-Glaser-Martin ratio T^2/(-4V) is r-scale invariant and falls as A^(4-2d) -> 0, so the mountain-pass exponent is B = 0 (no protection). For exactly quartic growth (NL3) the limit is the Fubini value 8 pi^2/(3|g3|).",
+  "thresholds": {
+   "t_U_MeV^-1": 6.616331949529798e+38,
+   "ln_tU4": 357.55109865594574,
+   "B_thr_A_W0^4": 384.57417434388276,
+   "B_thr_A_(70MeV)^4": 374.54507962414317,
+   "B_thr_A_(80MeV)^4": 375.07920519464125,
+   "note": "m_sigma,vac = sqrt(U_yy(1))/W0 = 70-110 MeV for the NVG jets, so the A bracket moves B_thr by <= 10",
+   "thermal_B3_over_T_needed_one_core_1e10yr": {
+    "10.0": 215.10120734041905,
+    "20.0": 217.87379606265884,
+    "30.0": 219.4956564950915,
+    "40.0": 220.64638478489863,
+    "50.0": 221.53895899015546
+   },
+   "in_medium_threshold_G_meta": 233.236026155549
+  },
+  "thermal": "O(3) bounce in U_T = U + f_N(T, M y) - f_N(T, M) (nucleon doublet, g = 8, mu = 0); Gamma_T = T^4 (B3/(2 pi T))^(3/2) exp(-B3/T); P = Gamma_T V_core dt, V_core = (4 pi/3)(10 km)^3, dt = 1e10 yr. For the NVG deeper states at y > 1 the nucleon thermal term is negligible (heavier nucleons inside the bubble): B3 with and without it agree within 6.4 percent for all 33 tested members and T <= 50 MeV.",
+  "G_extension": "global-minimum y grid extended to [0.02, max(1.4, 1.25 y_t)] (declared); unchanged for stable members"
+ },
+ "validation": {
+  "coleman_thin_wall": {
+   "rows": [
+    {
+     "eps": 0.1,
+     "B_num": 24725.19195108943,
+     "B_thin": 26318.945069571608,
+     "ratio": 0.9394446428506444,
+     "R_wall_num": 19.966992014926994,
+     "R_thin": 20.0
+    },
+    {
+     "eps": 0.05,
+     "B_num": 207362.4139571571,
+     "B_thin": 210551.56055657286,
+     "ratio": 0.984853369925231,
+     "R_wall_num": 39.98408799782367,
+     "R_thin": 40.0
+    },
+    {
+     "eps": 0.02,
+     "B_num": 3281894.0023427145,
+     "B_thin": 3289868.1336964513,
+     "ratio": 0.9975761547181597,
+     "R_wall_num": 99.99007449701274,
+     "R_thin": 100.0
+    },
+    {
+     "eps": 0.01,
+     "B_num": 26302996.483133152,
+     "B_thin": 26318945.06957161,
+     "ratio": 0.9993940263792375,
+     "R_wall_num": 199.99072663554986,
+     "R_thin": 200.0
+    },
+    {
+     "eps": 0.005,
+     "B_num": 210519663.62342173,
+     "B_thin": 210551560.55657288,
+     "ratio": 0.9998485077333702,
+     "R_wall_num": 399.9959503844815,
+     "R_thin": 400.0
+    }
+   ],
+   "ratio_extrapolated_eps0": 1.0007574435639088,
+   "pass": true
+  },
+  "cubic_thick_wall_O4": {
+   "B_num": 204.42844334167464,
+   "published": "205 (Linde 1983); 204.8 (Adams 1993 fit, delta -> 0)",
+   "pass": true
+  },
+  "adams_1993_fit": {
+   "rows": [
+    {
+     "delta": 0.5,
+     "B_num": 4.356855206885044,
+     "B_Adams_fit": 4.3580395779205245,
+     "ratio": 0.9997282330703279
+    },
+    {
+     "delta": 1.0,
+     "B_num": 16.756302706094843,
+     "B_Adams_fit": 16.743783866448094,
+     "ratio": 1.0007476708817196
+    },
+    {
+     "delta": 1.5,
+     "B_num": 89.9000097449959,
+     "B_Adams_fit": 89.83807406091583,
+     "ratio": 1.0006894146466014
+    },
+    {
+     "delta": 1.8,
+     "B_num": 803.2711429896194,
+     "B_Adams_fit": 803.6276035564997,
+     "ratio": 0.9995564356359802
+    },
+    {
+     "delta": 1.95,
+     "B_num": 32351.93541483683,
+     "B_Adams_fit": 32375.99860242106,
+     "ratio": 0.9992567584438173
+    }
+   ],
+   "max_abs_dev": 0.0007476708817195643,
+   "pass_1pc": true
+  },
+  "fubini_CGM": {
+   "lambda": 2.0,
+   "cgm_ratio_exact_profile": 13.158979066901177,
+   "exact_8pi2_over_3lambda": 13.159472534785811,
+   "ratio": 0.9999625009373795
+  },
+  "cubic_O3_S3_reported": 43.660236716374996,
+  "direct_vs_virial_rel": "<= 2e-5 in every validation case; <= 1.7e-5 in the 997 NVG map bounces",
+  "spin_orbit_reuse": {
+   "NL3": 6.84137454743705,
+   "DD-ME2": 6.513341086688987,
+   "quartic_y0.87": 1.039599226957856,
+   "stored_values_reproduced_exactly": true
+  },
+  "likelihood_machinery": "creative/likelihood/analyze.py class_stats / fixed_model_stats and lk_core.nvg_point body reused unchanged; DD-ME2 chi2 19.954 reproduced",
+  "wall_s": 4.860310077667236
+ },
+ "free_parameters_added": {
+  "continuous": 0,
+  "discrete_declared": [
+   "A bracket end used for pass (upper, W0^4)",
+   "T grid 10-50 MeV",
+   "V_core (10 km)",
+   "dt 1e10 yr",
+   "extended y grid for G",
+   "G primary (existing) vs G_meta (variant)"
+  ]
+ },
+ "key_results": {
+  "1_structure": {
+   "quartic": "a4 < 0 for y* < 0.8657 (centre): U -> -inf as y^8, B = 0 (CGM bound 143 -> 1.3 for A = 0.5 -> 8, falling as A^-4); U < U(W0) already at y = 1.13-1.17. Quartic metastable only for y* in [0.868, 0.8699] (B = 500-11379, deeper state y_t = 1.49-1.91, U_t down to -4.3e9 MeV^4); 0.866-0.867 fail (B = 119, 243).",
+   "centre_quartic_fine": [
+    {
+     "ystar": 0.865,
+     "case": "b_unbounded_below",
+     "B": 0.0,
+     "passes": false,
+     "y_high_min": null,
+     "U_high_min": null
+    },
+    {
+     "ystar": 0.866,
+     "case": "a_bounded_deeper_state",
+     "B": 119.1233604949892,
+     "passes": false,
+     "y_high_min": 4.988520453466486,
+     "U_high_min": -4823470082892.76
+    },
+    {
+     "ystar": 0.867,
+     "case": "a_bounded_deeper_state",
+     "B": 243.25976604945984,
+     "passes": false,
+     "y_high_min": 2.5053858469927315,
+     "U_high_min": -44003677366.61194
+    },
+    {
+     "ystar": 0.868,
+     "case": "a_bounded_deeper_state",
+     "B": 499.6074646040135,
+     "passes": true,
+     "y_high_min": 1.911731026523339,
+     "U_high_min": -4315330371.671414
+    },
+    {
+     "ystar": 0.869,
+     "case": "a_bounded_deeper_state",
+     "B": 1947.42521017713,
+     "passes": true,
+     "y_high_min": 1.603942337964801,
+     "U_high_min": -531251706.1410792
+    },
+    {
+     "ystar": 0.8695,
+     "case": "a_bounded_deeper_state",
+     "B": 11378.930123587425,
+     "passes": true,
+     "y_high_min": 1.4889410599935673,
+     "U_high_min": -126777381.40354952
+    },
+    {
+     "ystar": 0.87,
+     "case": "c_absolutely_stable",
+     "B": null,
+     "passes": true,
+     "y_high_min": 1.376709361257748,
+     "U_high_min": 23228709.46220394
+    }
+   ],
+   "quintic_centre_B_by_ystar": {
+    "0.55": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.56": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.57": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.58": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.59": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.6": {
+     "-600.0": null,
+     "-400.0": null,
+     "-200.0": null,
+     "0.0": null,
+     "200.0": null
+    },
+    "0.61": {
+     "-600.0": 5202.521132025559,
+     "-400.0": 5241.01642399883,
+     "-200.0": 5279.955542477475,
+     "0.0": 5319.345344137868,
+     "200.0": 5359.192819238192
+    },
+    "0.62": {
+     "-600.0": 526.5197780749836,
+     "-400.0": 526.7178529621838,
+     "-200.0": 526.9160476357156,
+     "0.0": 527.1143622007656,
+     "200.0": 527.3127967375966
+    },
+    "0.63": {
+     "-600.0": 225.24888796980903,
+     "-400.0": 225.25009893582853,
+     "-200.0": 225.25130990987154,
+     "0.0": 225.25252089180435,
+     "200.0": 225.2537318818495
+    },
+    "0.64": {
+     "-600.0": 130.20486396744857,
+     "-400.0": 130.20256129470286,
+     "-200.0": 130.20025866823565,
+     "0.0": 130.1979560880765,
+     "200.0": 130.19565355420698
+    },
+    "0.65": {
+     "-600.0": 82.9699711296902,
+     "-400.0": 82.94053759704344,
+     "-200.0": 82.91111107168943,
+     "0.0": 82.88169154530273,
+     "200.0": 82.85227901324298
+    },
+    "0.66": {
+     "-600.0": 53.24753492488072,
+     "-400.0": 53.14152661589771,
+     "-200.0": 53.03558487902701,
+     "0.0": 52.92970954908665,
+     "200.0": 52.82390045865654
+    },
+    "0.67": {
+     "-600.0": 32.323731191365795,
+     "-400.0": 32.061701869746365,
+     "-200.0": 31.800058341323826,
+     "0.0": 31.538801827344816,
+     "200.0": 31.27793362785025
+    },
+    "0.68": {
+     "-600.0": 17.752616679813777,
+     "-400.0": 17.239101108779742,
+     "-200.0": 16.728650456899295,
+     "0.0": 16.2213646677912,
+     "200.0": 15.717348786121653
+    },
+    "0.69": {
+     "-600.0": 8.942670221661228,
+     "-400.0": 8.115197960923515,
+     "-200.0": 7.309918882279229,
+     "0.0": 6.528704981369321,
+     "200.0": 5.773629714928553
+    },
+    "0.7": {
+     "-600.0": 5.130079197248346,
+     "-400.0": 3.935640163824631,
+     "-200.0": 2.848955148831251,
+     "0.0": 1.88982736399872,
+     "200.0": 1.083617966346876
+    },
+    "0.71": {
+     "-600.0": 5.331000150156319,
+     "-400.0": 3.416562233118799,
+     "-200.0": 1.8089283891700962,
+     "0.0": 0.6152877426199116,
+     "200.0": 0.0175448699659662
+    },
+    "0.72": {
+     "-600.0": 10.059425045203335,
+     "-400.0": 6.513718283681119,
+     "-200.0": 3.4463266645115946,
+     "0.0": 1.1124004979333058,
+     "200.0": 0.004592199684463082
+    },
+    "0.73": {
+     "-600.0": 21.2500806736212,
+     "-400.0": 15.101995889503781,
+     "-200.0": 9.367608537640107,
+     "0.0": 4.383929417549743,
+     "200.0": 0.8244444532845704
+    },
+    "0.74": {
+     "-600.0": 39.82396047769559,
+     "-400.0": 30.491629127961275,
+     "-200.0": 21.373050304663064,
+     "0.0": 12.682391483419403,
+     "200.0": 5.055230240337035
+    },
+    "0.75": {
+     "-600.0": 66.12609610070423,
+     "-400.0": 52.400374912764285,
+     "-200.0": 39.31036591574748,
+     "0.0": 26.512571839075544,
+     "200.0": 14.14094447544654
+    },
+    "0.76": {
+     "-600.0": 106.02835640352707,
+     "-400.0": 82.31271159459232,
+     "-200.0": 62.49959805583844,
+     "0.0": 44.58148426077754,
+     "200.0": 27.237087646825575
+    },
+    "0.77": {
+     "-600.0": 189.24324845382958,
+     "-400.0": 131.22987750704303,
+     "-200.0": 93.74092418621156,
+     "0.0": 66.04542921571654,
+     "200.0": 42.35469361195676
+    },
+    "0.78": {
+     "-600.0": 528.0698072031256,
+     "-400.0": 248.54862724777163,
+     "-200.0": 145.7492087412636,
+     "0.0": 92.81296034053963,
+     "200.0": 57.821205739070344
+    },
+    "0.79": {
+     "-600.0": 428734.11367161217,
+     "-400.0": 898.7731755757808,
+     "-200.0": 267.7522057900197,
+     "0.0": 131.024828650351,
+     "200.0": 72.48420531704751
+    },
+    "0.8": {
+     "-600.0": 1095531.8721030222,
+     "-400.0": 3701396.9337872597,
+     "-200.0": 825.4587707836598,
+     "0.0": 193.61041741992278,
+     "200.0": 84.12075018686207
+    },
+    "0.81": {
+     "-600.0": 246004.6974968765,
+     "-400.0": 668462.8480406461,
+     "-200.0": 525656.771896817,
+     "0.0": 302.85245816818764,
+     "200.0": 86.88214034672822
+    },
+    "0.82": {
+     "-600.0": 79940.17582671311,
+     "-400.0": 209121.96750479506,
+     "-200.0": 1167470.9140861619,
+     "0.0": 447.96856876654516,
+     "200.0": 71.45085706244302
+    },
+    "0.83": {
+     "-600.0": 32800.85439976328,
+     "-400.0": 92794.13167864013,
+     "-200.0": 761338.0206950348,
+     "0.0": 398.6588910477647,
+     "200.0": 24.339278087795552
+    },
+    "0.84": {
+     "-600.0": 16402.948652891184,
+     "-400.0": 59555.2023406794,
+     "-200.0": 2626426.8431985956,
+     "0.0": 139.11641308936652,
+     "200.0": 0.0
+    },
+    "0.85": {
+     "-600.0": 10492.78691242163,
+     "-400.0": 82369.67112619338,
+     "-200.0": null,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.86": {
+     "-600.0": 11435.767371633432,
+     "-400.0": null,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.87": {
+     "-600.0": 1977549.7417458892,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.88": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.89": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.9": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.91": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.92": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    },
+    "0.93": {
+     "-600.0": 0.0,
+     "-400.0": 0.0,
+     "-200.0": 0.0,
+     "0.0": 0.0,
+     "200.0": 0.0
+    }
+   }
+  },
+  "2_reopened_ystar_map": {
+   "old_stable_ystar_union": [
+    0.55,
+    0.56,
+    0.57,
+    0.58,
+    0.59,
+    0.6,
+    0.83,
+    0.84,
+    0.85,
+    0.86,
+    0.87,
+    0.88,
+    0.89,
+    0.9,
+    0.91,
+    0.92,
+    0.93
+   ],
+   "newly_opened_ystar_union_zeroT": [
+    0.61,
+    0.62,
+    0.76,
+    0.77,
+    0.78,
+    0.79,
+    0.8,
+    0.81,
+    0.82,
+    0.83,
+    0.84,
+    0.85,
+    0.86,
+    0.87
+   ],
+   "newly_opened_in_0.55_0.70": [
+    0.61,
+    0.62
+   ],
+   "y0.61": "opens at all 9 corners x 5 Q0 (45/45), B = 1511-962382",
+   "y0.62": "opens at 40/45 (B = 365-867, the 5 failures are at n0 = 0.17, E/A = -16.5, K = 260)",
+   "closed_0.63_0.75_max_B_over_corners_and_Q0": {
+    "0.63": 287.9,
+    "0.64": 158.3,
+    "0.65": 104.8,
+    "0.66": 74.6,
+    "0.68": 46.4,
+    "0.70": 43.0,
+    "0.72": 65.1,
+    "0.75": 235.7
+   },
+   "B_thr": 384.57417434388276,
+   "statement": "m*/M = 0.55-0.60 was already open as absolutely stable quintic at the centre (y* = 0.60 at every corner) under the OLD rule; metastability adds only y* = 0.61-0.62 at the low side and 0.76-0.87 at the high side. The spin-orbit band m*/M = 0.63-0.75 stays closed (B <= 288 against 384.6).",
+   "thermal_centre_newly_opened": {
+    "n_tested": 33,
+    "n_pass": 23,
+    "failures": [
+     [
+      0.62,
+      "-600.0",
+      527
+     ],
+     [
+      0.62,
+      "-400.0",
+      527
+     ],
+     [
+      0.62,
+      "-200.0",
+      527
+     ],
+     [
+      0.62,
+      "0.0",
+      527
+     ],
+     [
+      0.62,
+      "200.0",
+      527
+     ],
+     [
+      0.78,
+      "-600.0",
+      528
+     ],
+     [
+      0.79,
+      "-400.0",
+      899
+     ],
+     [
+      0.8,
+      "-200.0",
+      825
+     ],
+     [
+      0.82,
+      "0.0",
+      448
+     ],
+     [
+      0.83,
+      "0.0",
+      399
+     ]
+    ],
+    "rule": "every member with B4 >= 5203 passes; every member with B4 <= 899 fails at T = 40-50 MeV (e.g. y* = 0.62: B3/T = 186 at 50 MeV, log10 P = +17.6). With the thermal part the low-side opening shrinks to y* ~ 0.61."
+   },
+   "deeper_states": "low-side metastable members (0.61-0.62): deeper state at M*/M = 1.49-1.85 (U_t = -3.0e7 to -5.7e9 MeV^4). In the LHS, 57 of 108 metastable members have U(0) < 0 (deeper state at the chirally symmetric point y = 0) and 74 have a deeper state at y_t = 1.22-1.83; the best-fitting ones (y* 0.82-0.85) tunnel towards y = 0 with B = 5e4-2e7"
+  },
+  "3_fresh_LHS": {
+   "sample": "N_eval = 1000 (first 1000 of the declared N = 2000, seed 20261113, ids mv0000-mv0999; time-limited, declared fallback)",
+   "counts": {
+    "no_model": 601,
+    "quartic_stable_ok": 189,
+    "quintic_stable_ok": 31,
+    "quartic_metastable_ok": 6,
+    "quintic_metastable_ok": 102,
+    "quintic_metastable_crust_match_failed": 71
+   },
+   "ground_state_G": {
+    "n_valid_with_model": 328,
+    "n_G_ok": 189,
+    "by_case": {
+     "a_bounded_deeper_state": {
+      "n": 108,
+      "G_ok": 0,
+      "table_bad": 87,
+      "snm_bad": 108,
+      "snm10_bad": 103,
+      "pnm10_bad": 87
+     },
+     "c_absolutely_stable": {
+      "n": 220,
+      "G_ok": 189,
+      "table_bad": 0,
+      "snm_bad": 31,
+      "snm10_bad": 22,
+      "pnm10_bad": 0
+     }
+    }
+   },
+   "G_statement": "0 of 108 metastable members satisfy (G): in all 108 the symmetric matter below 1.3 n0 is not the ground state, in 87 the beta-equilibrium stellar matter itself (x >= x_match) is not; the abnormal state is the deeper vacuum (y ~ 0.06-0.14, i.e. the y = 0 vacuum held off zero by the vector term, or y ~ 1.3-1.8) dressed by matter.",
+   "spin_orbit_O": {
+    "n": 239,
+    "max_split": 2.7389729013418833,
+    "n_pass_O": 0,
+    "max_split_metastable": 2.7389729013418833,
+    "max_split_G_ok": 1.4010739810984885,
+    "by_ystar_bin": {
+     "0.60-0.63": {
+      "n": 57,
+      "min": 1.2860251673201908,
+      "max": 1.457829913156101
+     },
+     "0.75-0.78": {
+      "n": 2,
+      "min": 2.301070403811216,
+      "max": 2.7389729013418833
+     },
+     "0.78-0.81": {
+      "n": 19,
+      "min": 1.7640632742500457,
+      "max": 2.699418644279942
+     },
+     "0.81-0.84": {
+      "n": 25,
+      "min": 1.3956459854150642,
+      "max": 1.9860689044665958
+     },
+     "0.84-0.87": {
+      "n": 38,
+      "min": 1.013456485321263,
+      "max": 1.4968206741932346
+     },
+     "0.87-0.90": {
+      "n": 92,
+      "min": 0.6564037312917881,
+      "max": 1.0701029103629447
+     },
+     "0.90-0.93": {
+      "n": 6,
+      "min": 0.6457003494129476,
+      "max": 0.703590466942225
+     }
+    }
+   },
+   "classes": {
+    "reopened": {
+     "N_valid": 189,
+     "N_finite_L": 109,
+     "lnZ": -13.48892085056782,
+     "Z_rel_MC_error": 0.6652711540730747,
+     "ESS": 2.2566072871267018,
+     "ppc_p": 0.069075,
+     "loo_max_abs_z": 2.536870519800622,
+     "loo_z": {
+      "Mmax": 2.536870519800622,
+      "R207": 1.4203562429957268,
+      "R134": 0.26516550935054267,
+      "R1418": -0.9568446141980324,
+      "R144": -2.1839655364639854,
+      "Lt": -0.7922741761712574,
+      "S2": 0.2532628573708728,
+      "EPNM": -0.9421839462421808
+     },
+     "posterior_weight_metastable": 0.0,
+     "posterior_weight_G_invalid": 0.0,
+     "posterior_mean_split_16O": 1.3612687130590062,
+     "S_passes": false,
+     "best_point_id": "mv0116",
+     "best_point_ystar": 0.8379432223623836,
+     "best_point_chi2": 14.107660844101211,
+     "best_point_status": "quintic_stable"
+    },
+    "stable_only": {
+     "N_valid": 190,
+     "N_finite_L": 110,
+     "lnZ": -13.488902293264367,
+     "Z_rel_MC_error": 0.6652587808857522,
+     "ESS": 2.256691040019616,
+     "ppc_p": 0.069775,
+     "loo_max_abs_z": 2.5368960664548568,
+     "loo_z": {
+      "Mmax": 2.5368960664548568,
+      "R207": 1.4203652288280424,
+      "R134": 0.26516366433463734,
+      "R1418": -0.9568450794931198,
+      "R144": -2.1839651657797488,
+      "Lt": -0.7922712395498915,
+      "S2": 0.2540383623050266,
+      "EPNM": -0.9419110203754518
+     },
+     "posterior_weight_metastable": 0.0,
+     "posterior_weight_G_invalid": 0.0,
+     "posterior_mean_split_16O": 1.3612642993317023,
+     "S_passes": false,
+     "best_point_id": "mv0116",
+     "best_point_ystar": 0.8379432223623836,
+     "best_point_chi2": 14.107660844101211,
+     "best_point_status": "quintic_stable"
+    },
+    "metastable_only": {
+     "status": "empty posterior (no member with non-zero likelihood)",
+     "N_valid": 0
+    },
+    "jointly_admissible_VGO": {
+     "status": "empty posterior (no member with non-zero likelihood)",
+     "N_valid": 0
+    },
+    "no_G_cut_diagnostic_upper_bound_for_G_meta": {
+     "N_valid": 328,
+     "N_finite_L": 239,
+     "lnZ": -11.521867058065432,
+     "Z_rel_MC_error": 0.2558796959635965,
+     "ESS": 15.05821255286326,
+     "ppc_p": 0.066725,
+     "loo_max_abs_z": 2.51916943066053,
+     "loo_z": {
+      "Mmax": 1.9261601052223898,
+      "R207": 0.8378417205149111,
+      "R134": 0.040405455353460955,
+      "R1418": -1.298542341308753,
+      "R144": -2.51916943066053,
+      "Lt": -1.2655060664871414,
+      "S2": 0.08241013323193415,
+      "EPNM": -1.0393014663974072
+     },
+     "posterior_weight_metastable": 0.8591380558701018,
+     "posterior_weight_G_invalid": 0.8601316691023152,
+     "posterior_mean_split_16O": 1.510392816833743,
+     "S_passes": false,
+     "best_point_id": "mv0324",
+     "best_point_ystar": 0.8262088347539502,
+     "best_point_chi2": 13.594279136646229,
+     "best_point_status": "quintic_metastable"
+    },
+    "VO_no_G_cut": {
+     "status": "empty posterior (no member with non-zero likelihood)",
+     "N_valid": 0
+    }
+   },
+   "earlier_stable_class_seed20261106_N2000": {
+    "lnZ": -14.686,
+    "ppc_p": 0.026,
+    "loo_max_abs_z": 2.853,
+    "source": "creative/likelihood/analysis.json"
+   },
+   "fixed_models": {
+    "NL3": {
+     "chi2": 69.42749632148356,
+     "p_chi2_nu": 6.38859103360101e-12,
+     "p_replicated_MC": 0.0,
+     "max_abs_z_PIT": 4.887924627472804,
+     "z_PIT": {
+      "Mmax": 0.0,
+      "R207": -1.9350964051844546,
+      "R134": -2.066594235718657,
+      "R1418": -3.7834428147774997,
+      "R144": -4.887924627472804,
+      "Lt": -4.661798765814817,
+      "S2": 0.4148308530163014,
+      "EPNM": 0.2545870383035212
+     },
+     "passes_S": false,
+     "lnB_reopened_over_model": 21.224827310173957
+    },
+    "FSUGold": {
+     "chi2": 41.69675365428385,
+     "p_chi2_nu": 1.5437425834008566e-06,
+     "p_replicated_MC": 0.0,
+     "max_abs_z_PIT": 5.115094514414029,
+     "z_PIT": {
+      "Mmax": 5.115094514414029,
+      "R207": 1.8636937035251528,
+      "R134": 0.03327545577535442,
+      "R1418": -1.0695658899326004,
+      "R144": -2.2309846697726354,
+      "Lt": -0.5832395838041048,
+      "S2": -0.06933679943297472,
+      "EPNM": -0.3003392971689661
+     },
+     "passes_S": false,
+     "lnB_reopened_over_model": 7.359455976574106
+    },
+    "DD-ME2": {
+     "chi2": 19.954298516989816,
+     "p_chi2_nu": 0.010510344139795366,
+     "p_replicated_MC": 0.00579,
+     "max_abs_z_PIT": 3.1660468604238137,
+     "z_PIT": {
+      "Mmax": 0.0,
+      "R207": -0.610639810680076,
+      "R134": -0.5852510748322403,
+      "R1418": -2.024076797016255,
+      "R144": -3.1660468604238137,
+      "Lt": -1.9729981719355285,
+      "S2": -0.1509326954083399,
+      "EPNM": -0.39209747294612474
+     },
+     "passes_S": false,
+     "lnB_reopened_over_model": -3.511771592072913
+    }
+   },
+   "low_ystar_members": "57 members with y* < 0.65 (all at 0.600-0.621): R_1.4 = 15.65-16.69 km, M_max = 2.91-3.16, chi2 >= 293, (G) fails, O = 1.29-1.46 MeV (V - S = 640-678 MeV at n0 as in RMF, but the design branch y(n) is discontinuous below n0, flag branch_continuous = false)"
+  },
+  "4_NL3_consistency": {
+   "B_O4": 0.8766796416197232,
+   "bounce": {
+    "B": 0.8766796416197232,
+    "sigma0_MeV": 2734.1459173484254,
+    "Mstar0_over_M": 30.749487579924246,
+    "R_wall_fm": 0.21701241156581913,
+    "rel_direct_vs_virial": -3.695155251297265e-12
+   },
+   "CGM_bounds": {
+    "Mstar_gt_M (sigma > 0)": 0.8774472039542276,
+    "Mstar_lt_M (sigma < 0)": 0.8906744492380554
+   },
+   "Fubini": 0.9111630628205512,
+   "B_thr_A_msigma4": 382.47455171370945,
+   "Gamma_fm^-3_s^-1": 5.488527246404966e+24,
+   "passes_V": false,
+   "domain": {
+    "U_below_vacuum_for_Mstar_over_M": [
+     -1.0609989643357416,
+     2.027198836855427
+    ],
+    "barrier_Mstar_over_M": [
+     -0.4871384679122435,
+     1.711788372302007
+    ],
+    "barrier_U^(1/4)_MeV": [
+     201.36243996240904,
+     122.9189675001338
+    ],
+    "U_at_Mstar_0_MeV4": 1108134521.0980282
+   },
+   "FSUGold": {
+    "U": "U(Phi) = (m_s^2/g_s^2) Phi^2/2 + kappa Phi^3/6 + lambda Phi^4/24, Phi = g_s sigma (Todd-Rutel & Piekarewicz 2005)",
+    "lambda_positive": true,
+    "discriminant_of_U/Phi^2": -4.2073789666666555,
+    "case": "c_absolutely_stable",
+    "B": null,
+    "passes_V": true
+   },
+   "DD-ME2": {
+    "U": "m_sigma^2 sigma^2 / 2 (no self-interaction; density-dependent couplings)",
+    "case": "c_absolutely_stable",
+    "B": null,
+    "passes_V": true
+   },
+   "statement": "NL3 fails the same criterion by a factor ~440 in B: an actual O(4) bounce exists towards M* > M (sigma(0) = 2.73 GeV, M*(0) = 30.7 M, wall 0.22 fm), B = 0.877 (CGM bound 0.877, Fubini 0.911) vs B_thr = 382.5; its literal vacuum decays at ~5e24 fm^-3 s^-1. NL3 is usable only because its U is above the vacuum on -1.06 < M*/M < 2.03, a domain that contains all of its matter states. FSUGold (lambda > 0) and DD-ME2 (pure mass term) are absolutely stable."
+  },
+  "paths": {
+   "structure_map.jsonl": "SCR/round3/metastable_vacuum/structure_map.jsonl",
+   "structure_summary.json": "SCR/round3/metastable_vacuum/structure_summary.json",
+   "rmf_vacuum.json": "SCR/round3/metastable_vacuum/rmf_vacuum.json",
+   "samples_reopened.jsonl": "SCR/round3/metastable_vacuum/samples_reopened.jsonl",
+   "so_members.json": "SCR/round3/metastable_vacuum/so_members.json",
+   "analysis.json": "SCR/round3/metastable_vacuum/analysis.json",
+   "validation.json": "SCR/round3/metastable_vacuum/validation.json"
+  }
+ },
+ "joint_verdict_table": [
+  {
+   "model": "NVG reopened class (zero-T V rule), fresh LHS 1000",
+   "V": "holds on the posterior support (posterior weight on metastable members 0)",
+   "G": "189/328 valid members; 0/108 metastable",
+   "O": "0/239 pass; max 2.74 MeV (metastable), 1.40 MeV (G-valid); posterior mean 1.36 MeV",
+   "S": "lnZ -13.49, ESS 2.3, ppc p 0.069, LOO max |z| 2.54 (J0740 mass +2.54, J0614 radius -2.18)",
+   "converges": false
+  },
+  {
+   "model": "NVG stable-only subset (same LHS)",
+   "V": "B = inf",
+   "G": "189/220 + 1 old-rule quintic",
+   "O": "fails (<= 1.40 MeV)",
+   "S": "lnZ -13.49, ppc p 0.070, LOO max |z| 2.54",
+   "converges": false
+  },
+  {
+   "model": "NVG metastable-only subset",
+   "V": "B = 431-2.4e7 (zero-T pass)",
+   "G": "0/108",
+   "O": "0 pass (1.29-2.74 MeV)",
+   "S": "empty posterior",
+   "converges": false
+  },
+  {
+   "model": "NVG jointly admissible (V, G, O)",
+   "V": "-",
+   "G": "-",
+   "O": "-",
+   "S": "empty (no member passes O)",
+   "converges": false
+  },
+  {
+   "model": "NVG without G cut (upper bound for G_meta)",
+   "V": "zero-T pass",
+   "G": "ignored",
+   "O": "0 pass",
+   "S": "lnZ -11.52, ESS 15.1, ppc p 0.067, LOO max |z| 2.52 (J0614 radius); 86 percent posterior weight metastable",
+   "converges": false
+  },
+  {
+   "model": "DD-ME2",
+   "V": "absolutely stable",
+   "G": "not evaluated here",
+   "O": "6.51 MeV pass",
+   "S": "chi2 19.95, p_rep 0.0058, max |z_PIT| 3.17; lnB(reopened/DD-ME2) = -3.51",
+   "converges": false
+  },
+  {
+   "model": "NL3",
+   "V": "FAILS: B = 0.877 vs 382.5",
+   "G": "not evaluated here",
+   "O": "6.84 MeV pass",
+   "S": "chi2 69.4, p_rep 0",
+   "converges": false
+  },
+  {
+   "model": "FSUGold",
+   "V": "absolutely stable",
+   "G": "not evaluated here",
+   "O": "5.76 MeV pass",
+   "S": "chi2 41.7, p_rep 0",
+   "converges": false
+  }
+ ],
+ "verdict_on_convergence": "does_not_converge",
+ "verdict_text": "Replacing absolute stability by metastability (Gamma t_U^4 < 1, B > 384.6) adds zero parameters but opens almost nothing useful. The quartic below y* = 0.8657 is unbounded below as y^8 (B = 0), so the rule falls back to the quintic. Under the new rule the opened m*/M are 0.61-0.62 at the low end and 0.76-0.87 at the high end. The thermal check removes 0.62 and every member with B <= 900. The spin-orbit band m*/M = 0.63-0.75 stays closed: the largest B there is 288 at 0.63, falling to 43 at 0.70. m*/M = 0.55-0.60 was already open as an absolutely stable quintic, and those members fail everywhere else (R_1.4 = 15.7-16.7 km, chi2 >= 293, O = 1.3-1.5 MeV because y(n) is discontinuous below n0). Every metastable member (108/108) fails the existing ground-state condition (G): its deeper vacuum (y = 0 or y = 1.2-1.85) is also, dressed by matter, the ground state of nuclear matter, in 87 cases inside the stellar core. So the G-valid reopened class is the stable class: lnZ = -13.49, ppc p = 0.069, LOO J0740 mass z = +2.54, J0614 radius z = -2.18. It fails by leave-one-out, as before. No member of any subset passes the 16O spin-orbit window (max 2.74 MeV). Dropping (G) entirely, which bounds what the declared G_meta variant could achieve, raises lnZ to -11.52 but still fails (LOO J0614 z = -2.52, O 0 passes), so the conditional verdict is also negative. Consistency check: NL3's own sigma potential fails the same criterion far worse (an actual bounce with B = 0.877 towards M* ~ 31 M). NL3 is usable only because its U stays above the vacuum on -1.06 < M*/M < 2.03, a domain that contains all of its matter. The NVG metastable members are not rescued by that domain logic, because their deeper states lie inside the range their own matter explores (G fails).",
+ "practical_value": [
+  "Validated O(4)/O(3) bounce solver for one real field with thin-wall-safe linearised start (bounce.py): Coleman thin wall within 0.08 percent after extrapolation to eps -> 0, cubic 204.4 vs 204.8-205, Adams 1993 fit within 0.075 percent, Fubini exact within 4e-5",
+  "Thresholds: B > 384.6 (A = W0^4) or 375 (A = (70-80 MeV)^4) for Gamma t_U^4 < 1; B3/T > 215-222 for one 10-km core at 10-50 MeV for 1e10 yr; in-medium B > 233",
+  "NVG vacuum map B(y*, Q0, n0, E/A, K) (structure_map.jsonl): quartic unbounded for y* < 0.8657; quintic metastable windows; the closed band 0.63-0.75",
+  "NL3 literal vacuum decays (B = 0.88): RMF sigma potentials with g3 < 0 should be quoted with their field domain (U > U_vac for -1.06 < M*/M < 2.03), not as metastable vacua",
+  "A metastable vacuum in an NVG jet always propagates into the matter ground state (G): metastability does not separate the vacuum question from the Lee-Wick question in this action"
+ ],
+ "caveats": [
+  "tree level: the nucleon Dirac-sea (Coleman-Weinberg) term is absent (no-sea), as in RMF; it would add -y^4 ln y pieces at large W",
+  "B = 0 for unbounded members is a statement about field values W >> W0, outside any trusted domain",
+  "fresh LHS N_eval = 1000 of the declared 2000 (time); reopened/stable posterior ESS = 2.3, evidence MC error 67 percent; no-G-cut ESS 15",
+  "the structure map used bisection tolerance 1e-11 for 152 rows and 1e-8 for the remaining 159 rows (numerical only: under/overshoot action difference <= 1.1e-10 resp. <= 5.3e-8 relative; direct vs virial action <= 1.7e-5 in all 997 NVG bounces)",
+  "V_thermal was computed for the 33 newly opened centre members only; the class rule uses zero-T V (as declared); posterior-relevant metastable members have B >= 5e4",
+  "G_meta (in-medium bounce) was not computed: the no-G-cut class, which bounds it, already fails S (LOO) and O",
+  "75 metastable LHS members fail the declared eps-continuous SLy match (L = 0 by prereg.json)",
+  "O for y* < 0.63 uses a discontinuous design branch (validated procedure unchanged, flagged)",
+  "earlier stable-class run (seed 20261106, N = 2000): lnZ -14.69, ppc 0.026, LOO 2.85; this LHS gives ppc 0.069; both fail by LOO",
+  "first validation attempt hung (solver tolerance bug on the action quadrature, fixed before any NVG number); ~6 CPU-min lost"
+ ],
+ "wall_times_s": {
+  "validation": 4.860310077667236,
+  "structure_map": "about 560 (first run, killed after 152 rows) + 235 (resume)",
+  "summary_and_thermal": 240.08862709999084,
+  "rmf_vacuum": 2.835799217224121,
+  "lhs_0_400": 416,
+  "lhs_400_1000": 627,
+  "analysis_and_spin_orbit": 80.07000160217285
+ },
+ "declared_sha256_verified_after_compute": true,
+ "assembled_utc": "2026-11-13T09:14:57Z",
+ "files": {
+  "analysis.json": "SCR/round3/metastable_vacuum/analysis.json",
+  "analyze.log": "SCR/round3/metastable_vacuum/analyze.log",
+  "assemble.py": "SCR/round3/metastable_vacuum/assemble.py",
+  "bounce.py": "SCR/round3/metastable_vacuum/bounce.py",
+  "declared.py": "SCR/round3/metastable_vacuum/declared.py",
+  "extra_text.json": "SCR/round3/metastable_vacuum/extra_text.json",
+  "lhs_0_400.log": "SCR/round3/metastable_vacuum/lhs_0_400.log",
+  "lhs_400_1000.log": "SCR/round3/metastable_vacuum/lhs_400_1000.log",
+  "make_text.py": "SCR/round3/metastable_vacuum/make_text.py",
+  "map.log": "SCR/round3/metastable_vacuum/map.log",
+  "map2.log": "SCR/round3/metastable_vacuum/map2.log",
+  "mv_core.py": "SCR/round3/metastable_vacuum/mv_core.py",
+  "nvg_vac.py": "SCR/round3/metastable_vacuum/nvg_vac.py",
+  "result.json": "SCR/round3/metastable_vacuum/result.json",
+  "rmf_vac.log": "SCR/round3/metastable_vacuum/rmf_vac.log",
+  "rmf_vacuum.json": "SCR/round3/metastable_vacuum/rmf_vacuum.json",
+  "samples_reopened.jsonl": "SCR/round3/metastable_vacuum/samples_reopened.jsonl",
+  "so_members.json": "SCR/round3/metastable_vacuum/so_members.json",
+  "step1_declare.py": "SCR/round3/metastable_vacuum/step1_declare.py",
+  "step2_validate.py": "SCR/round3/metastable_vacuum/step2_validate.py",
+  "step3_map.py": "SCR/round3/metastable_vacuum/step3_map.py",
+  "step3b_summary.py": "SCR/round3/metastable_vacuum/step3b_summary.py",
+  "step4_rmf_vac.py": "SCR/round3/metastable_vacuum/step4_rmf_vac.py",
+  "step5_lhs.py": "SCR/round3/metastable_vacuum/step5_lhs.py",
+  "step6_analyze.py": "SCR/round3/metastable_vacuum/step6_analyze.py",
+  "structure_map.json": "SCR/round3/metastable_vacuum/structure_map.json",
+  "structure_map.jsonl": "SCR/round3/metastable_vacuum/structure_map.jsonl",
+  "structure_summary.json": "SCR/round3/metastable_vacuum/structure_summary.json",
+  "summary.log": "SCR/round3/metastable_vacuum/summary.log",
+  "validate.log": "SCR/round3/metastable_vacuum/validate.log",
+  "validation.json": "SCR/round3/metastable_vacuum/validation.json"
+ }
+}

@@ -1,0 +1,662 @@
+{
+ "target": "RMF survey (round3/rmf_survey/result.json): 17 validated published RMF sets fail the joint verdict through J0614; 16O ~ m*/M; R(1.44) regression; empty three-way region {J0614, 16O, M_max >= 1.94}; 'the tension is generic for RMF'",
+ "checks": [
+  {
+   "check": "(1) Parameter sets and conventions: independent re-derivation of saturation (new code refute_rmf.py: eps at fixed densities, mu and P by numerical differentiation so rearrangement is never hand-coded, n0 from min E/A) for TW99, DD2, FSUGarnet, FSU2R, BigApple (+DD-MEX); couplings re-typed from memory and compared to declared.py",
+   "result": "holds",
+   "evidence": {
+    "dev_percent_vs_published": {
+     "TW99": {
+      "n0": 0.008,
+      "EA": -0.001,
+      "K": 0.002,
+      "mstar": -0.016,
+      "J": -0.001,
+      "L": 0.0
+     },
+     "DD2": {
+      "n0": 0.008,
+      "EA": -0.016,
+      "K": 0.01,
+      "mstar": 0.004,
+      "J": 0.0,
+      "L": -0.012
+     },
+     "DD-MEX": {
+      "n0": -0.086,
+      "EA": 0.264,
+      "K": 0.066,
+      "mstar": -0.098,
+      "J": 0.296,
+      "L": -0.115
+     },
+     "FSUGarnet": {
+      "n0": 0.121,
+      "EA": -0.011,
+      "K": 0.07,
+      "mstar": 0.046,
+      "J": -0.103,
+      "L": -0.145
+     },
+     "FSU2R": {
+      "n0": -0.065,
+      "EA": 0.092,
+      "K": -0.13,
+      "mstar": 0.023,
+      "J": -0.05,
+      "L": -0.101
+     },
+     "BigApple": {
+      "n0": -0.237,
+      "EA": -0.027,
+      "K": -0.0,
+      "mstar": -0.001,
+      "J": 0.049,
+      "L": 0.0
+     }
+    },
+    "TW_constraints_f1_and_3cd2": {
+     "TW99": {
+      "s": [
+       1.0000014172626597,
+       0.9999993530884878
+      ],
+      "w": [
+       1.0000004842230763,
+       0.9999998193513401
+      ]
+     },
+     "DD2": {
+      "s": [
+       1.0000004477834392,
+       1.0000009180271514
+      ],
+      "w": [
+       0.9999997392601913,
+       0.9999997796413949
+      ]
+     },
+     "DD-MEX": {
+      "s": [
+       0.9999937267028242,
+       1.0001615393280001
+      ],
+      "w": [
+       0.9999931657871813,
+       1.0000788124800002
+      ]
+     }
+    },
+    "conventions": "TW99 Gamma_rho = 7.32196 (tau/2 convention) -> 3.66098 full-tau reproduces J = 32.767 (0.00 %); FSU-type sets with (g_rho/2) tau, kappa/3!, lambda/4!, zeta/4! in the explicit energy form (A_V W^2/2 + zeta W^4/8 + A_R B^2/2 + 3 Lambda_v W^2 B^2) all within 0.25 %; DD rearrangement enters automatically through d eps/d n_i and agrees with the survey's analytic Sigma_R (crosscheck)",
+    "recalled_couplings": "all declared couplings of the six sets coincide with my independent recollection",
+    "file": "SCR/round3/rmf_survey/refute_work/sat_check.json"
+   }
+  },
+  {
+   "check": "(2) TW99 and DD2 stars with the session pipeline (sly_crust eps-match, lk_core.star_block with Hartle-Thorne, analyze.predictions/fixed_model_stats) fed by tables from the independent code",
+   "result": "holds",
+   "evidence": {
+    "this_work": {
+     "TW99": {
+      "M_max": 2.076,
+      "R144_static": 12.316,
+      "R144_eq": 12.48,
+      "R207_J0740": 10.927,
+      "chi2_8": 11.15,
+      "p": 0.1933,
+      "z_J0614": -2.14,
+      "z_R207": 1.87,
+      "16O": 6.992
+     },
+     "DD2": {
+      "M_max": 2.417,
+      "R144_static": 13.263,
+      "R144_eq": 13.475,
+      "R207_J0740": 13.263,
+      "chi2_8": 19.27,
+      "p": 0.0135,
+      "z_J0614": -3.13,
+      "z_R207": -0.46,
+      "16O": 6.963
+     }
+    },
+    "survey_values": {
+     "TW99": "M_max 2.076, R144_eq 12.480, R(2.07) 10.927, chi2 11.15, p 0.193, z -2.14, 16O 6.99",
+     "DD2": "M_max 2.417, R144_eq 13.475, chi2 19.27, 16O 6.96"
+    },
+    "agreement": "to all printed digits",
+    "file": "SCR/round3/rmf_survey/refute_work/pub_stars.json"
+   }
+  },
+  {
+   "check": "(3) Robustness of the empty region {J0614 |z|<2, 16O in [4.9,7.4], M_max >= 1.94}: DD family at FIXED saturation, g_omega(x) = g_omega^base(x) h(x), h = 1 + a u^3 exp(-u/b) + c u^3/(1+u^3), u = max(x-1,0) (h(1)=1, h'(1)=h''(1)=0: n0, E/A, K, m*/M, J, L, all sub-saturation fields and the 16O splitting unchanged); 17 TW99-based + 4 DD2-based points",
+   "result": "refuted",
+   "evidence": {
+    "n_points_computed": 19,
+    "n_failed_crust_match": 2,
+    "n_in_allowed_region": 8,
+    "n_passing_S_and_O": 5,
+    "rows": [
+     {
+      "point": "TW99_a-0.03_b0.33_c+0.00",
+      "M_max": 2.078,
+      "R144_eq_km": 12.461,
+      "R207_used_km": 10.967,
+      "chi2_8": 10.82,
+      "p_nu8": 0.212,
+      "max_abs_zPIT": 2.12,
+      "z_J0614": -2.12,
+      "z_R207": 1.83,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.657,
+      "max_cs2": 0.7,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.06_b0.33_c+0.00",
+      "M_max": 2.08,
+      "R144_eq_km": 12.441,
+      "R207_used_km": 11.004,
+      "chi2_8": 10.51,
+      "p_nu8": 0.231,
+      "max_abs_zPIT": 2.1,
+      "z_J0614": -2.1,
+      "z_R207": 1.78,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.657,
+      "max_cs2": 0.7,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.10_b0.33_c+0.00",
+      "M_max": 2.082,
+      "R144_eq_km": 12.414,
+      "R207_used_km": 11.05,
+      "chi2_8": 10.11,
+      "p_nu8": 0.257,
+      "max_abs_zPIT": 2.07,
+      "z_J0614": -2.07,
+      "z_R207": 1.73,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.656,
+      "max_cs2": 0.7,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.15_b0.33_c+0.00",
+      "M_max": 2.085,
+      "R144_eq_km": 12.38,
+      "R207_used_km": 11.103,
+      "chi2_8": 9.65,
+      "p_nu8": 0.29,
+      "max_abs_zPIT": 2.04,
+      "z_J0614": -2.04,
+      "z_R207": 1.68,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.654,
+      "max_cs2": 0.69,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.01_b0.60_c+0.00",
+      "M_max": 2.082,
+      "R144_eq_km": 12.381,
+      "R207_used_km": 11.014,
+      "chi2_8": 9.97,
+      "p_nu8": 0.267,
+      "max_abs_zPIT": 2.04,
+      "z_J0614": -2.04,
+      "z_R207": 1.77,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.654,
+      "max_cs2": 0.7,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.02_b0.60_c+0.00",
+      "M_max": 2.087,
+      "R144_eq_km": 12.286,
+      "R207_used_km": 11.075,
+      "chi2_8": 9.01,
+      "p_nu8": 0.341,
+      "max_abs_zPIT": 1.94,
+      "z_J0614": -1.94,
+      "z_R207": 1.71,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.651,
+      "max_cs2": 0.69,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": true
+     },
+     {
+      "point": "TW99_a-0.04_b0.60_c+0.00",
+      "M_max": 2.099,
+      "R144_eq_km": 12.106,
+      "R207_used_km": 11.161,
+      "chi2_8": 7.53,
+      "p_nu8": 0.481,
+      "max_abs_zPIT": 1.76,
+      "z_J0614": -1.76,
+      "z_R207": 1.61,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.643,
+      "max_cs2": 0.68,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": true
+     },
+     {
+      "point": "TW99_a-0.06_b0.33_c+0.05",
+      "M_max": 2.179,
+      "R144_eq_km": 13.795,
+      "R207_used_km": 12.885,
+      "chi2_8": 25.63,
+      "p_nu8": 0.001,
+      "max_abs_zPIT": 3.45,
+      "z_J0614": -3.45,
+      "z_R207": -0.13,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.716,
+      "max_cs2": 0.68,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.10_b0.33_c+0.05",
+      "M_max": 2.182,
+      "R144_eq_km": 13.725,
+      "R207_used_km": 12.902,
+      "chi2_8": 24.19,
+      "p_nu8": 0.002,
+      "max_abs_zPIT": 3.38,
+      "z_J0614": -3.38,
+      "z_R207": -0.14,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.715,
+      "max_cs2": 0.67,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.15_b0.33_c+0.10",
+      "M_max": 2.334,
+      "R144_eq_km": 14.216,
+      "R207_used_km": 14.572,
+      "chi2_8": 39.24,
+      "p_nu8": 0.0,
+      "max_abs_zPIT": 3.87,
+      "z_J0614": -3.87,
+      "z_R207": -1.54,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.776,
+      "max_cs2": 0.6,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.20_b0.33_c+0.10",
+      "M_max": 2.339,
+      "R144_eq_km": 14.158,
+      "R207_used_km": 14.515,
+      "chi2_8": 37.41,
+      "p_nu8": 0.0,
+      "max_abs_zPIT": 3.81,
+      "z_J0614": -3.81,
+      "z_R207": -1.5,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.775,
+      "max_cs2": 0.6,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.10_b0.33_c-0.03",
+      "M_max": 2.037,
+      "R144_eq_km": 11.588,
+      "R207_used_km": 10.278,
+      "chi2_8": 11.68,
+      "p_nu8": 0.166,
+      "max_abs_zPIT": 2.59,
+      "z_J0614": -1.24,
+      "z_R207": 2.59,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.621,
+      "max_cs2": 0.7,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "DD2_a-0.30_b0.33_c+0.00",
+      "M_max": 2.446,
+      "R144_eq_km": 13.028,
+      "R207_used_km": 13.177,
+      "chi2_8": 13.03,
+      "p_nu8": 0.111,
+      "max_abs_zPIT": 2.68,
+      "z_J0614": -2.68,
+      "z_R207": -0.38,
+      "16O_1p_MeV": 6.966,
+      "sV3": 0.761,
+      "max_cs2": 0.74,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "DD2_a-0.50_b0.33_c+0.00",
+      "status": "failed ValueError('no eps-continuous SLy/core match on the monotone tail (g at ends: -24.31, -171.2)')"
+     },
+     {
+      "point": "DD2_a-0.50_b0.33_c+0.10",
+      "M_max": 2.765,
+      "R144_eq_km": 14.103,
+      "R207_used_km": 14.706,
+      "chi2_8": 36.88,
+      "p_nu8": 0.0,
+      "max_abs_zPIT": 3.76,
+      "z_J0614": -3.76,
+      "z_R207": -1.65,
+      "16O_1p_MeV": 6.966,
+      "sV3": 0.897,
+      "max_cs2": 0.64,
+      "allowed_J0614_16O_Mmax": false,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "DD2_a-0.80_b0.33_c+0.10",
+      "status": "failed ValueError('no eps-continuous SLy/core match on the monotone tail (g at ends: -67.84, -195.4)')"
+     },
+     {
+      "point": "TW99_a-0.03_b0.60_c+0.00",
+      "M_max": 2.093,
+      "R144_eq_km": 12.194,
+      "R207_used_km": 11.123,
+      "chi2_8": 8.21,
+      "p_nu8": 0.413,
+      "max_abs_zPIT": 1.85,
+      "z_J0614": -1.85,
+      "z_R207": 1.65,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.647,
+      "max_cs2": 0.69,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": true
+     },
+     {
+      "point": "TW99_a-0.06_b0.60_c+0.00",
+      "M_max": 2.112,
+      "R144_eq_km": 11.938,
+      "R207_used_km": 11.283,
+      "chi2_8": 6.25,
+      "p_nu8": 0.619,
+      "max_abs_zPIT": 1.59,
+      "z_J0614": -1.59,
+      "z_R207": 1.48,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.636,
+      "max_cs2": 0.68,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": true
+     },
+     {
+      "point": "TW99_a-0.02_b1.00_c+0.00",
+      "M_max": 2.092,
+      "R144_eq_km": 11.688,
+      "R207_used_km": 10.655,
+      "chi2_8": 8.3,
+      "p_nu8": 0.404,
+      "max_abs_zPIT": 2.17,
+      "z_J0614": -1.34,
+      "z_R207": 2.17,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.63,
+      "max_cs2": 0.71,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.04_b1.00_c+0.00",
+      "M_max": 2.12,
+      "R144_eq_km": 10.964,
+      "R207_used_km": 10.499,
+      "chi2_8": 9.46,
+      "p_nu8": 0.305,
+      "max_abs_zPIT": 2.34,
+      "z_J0614": -0.61,
+      "z_R207": 2.34,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.602,
+      "max_cs2": 0.78,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": false
+     },
+     {
+      "point": "TW99_a-0.08_b0.60_c+0.02",
+      "M_max": 2.156,
+      "R144_eq_km": 12.304,
+      "R207_used_km": 11.721,
+      "chi2_8": 6.4,
+      "p_nu8": 0.603,
+      "max_abs_zPIT": 1.96,
+      "z_J0614": -1.96,
+      "z_R207": 1.01,
+      "16O_1p_MeV": 6.992,
+      "sV3": 0.651,
+      "max_cs2": 0.66,
+      "allowed_J0614_16O_Mmax": true,
+      "S_and_O_pass": true
+     }
+    ],
+    "best_cross_checked": {
+     "TW99_a-0.02_b0.60_c+0.00": {
+      "M_max": 2.0873,
+      "R144_eq": 12.286,
+      "R207": 11.0753,
+      "chi2": 9.0127,
+      "p": 0.3412,
+      "z_PIT": {
+       "Mmax": 0.0,
+       "R207": 1.7064170317555363,
+       "R134": 0.37114575120415566,
+       "R1418": -0.7400781428861838,
+       "R144": -1.9432458849908447,
+       "Lt": -0.31935444138013874,
+       "S2": 0.12003148363862705,
+       "EPNM": -0.24051864308464657
+      },
+      "maxz": 1.9432,
+      "max_gibbs_rel": 0.0,
+      "max_cs2_branch": 0.6945,
+      "n_c_over_n0": 7.1435,
+      "G_valid": true,
+      "G_points": 180,
+      "G_other_minima": 0,
+      "split16O": 6.9919,
+      "S_pass": true,
+      "converges_S_O_G": true
+     },
+     "TW99_a-0.04_b0.60_c+0.00": {
+      "M_max": 2.0993,
+      "R144_eq": 12.1059,
+      "R207": 11.1607,
+      "chi2": 7.5276,
+      "p": 0.4809,
+      "z_PIT": {
+       "Mmax": 0.0,
+       "R207": 1.6133518659762602,
+       "R134": 0.5346637203010749,
+       "R1418": -0.5384594851879145,
+       "R144": -1.7625015923471654,
+       "Lt": -0.14810355775363943,
+       "S2": 0.12003148363862705,
+       "EPNM": -0.24051864308464657
+      },
+      "maxz": 1.7625,
+      "max_gibbs_rel": 0.0,
+      "max_cs2_branch": 0.6866,
+      "n_c_over_n0": 7.0871,
+      "G_valid": true,
+      "G_points": 180,
+      "G_other_minima": 0,
+      "split16O": 6.992,
+      "S_pass": true,
+      "converges_S_O_G": true
+     }
+    },
+    "cross_check": "TW99_a-0.02_b0.60 and TW99_a-0.04_b0.60 recomputed with the survey's own rmf_generic.DDModel (analytic rearrangement, 250 pts/decade) + its ground_state routine: identical M_max, R144_eq, chi2 to 4 digits; G valid on 180 points, no other minima; 16O 6.99 MeV",
+    "reading": "A 1-2 % dip of g_omega at 2-4 n0 (a = -0.02..-0.06, b = 0.6) whose recovery stiffens through the rearrangement term lowers R_eq(1.44) to 11.94-12.29 km while RAISING M_max to 2.09-2.11; J0740 radius z stays +1.48..+1.71. These DD functionals, with TW99's nuclear-matter point and 16O 6.99 MeV, pass the FULL declared joint verdict (S: chi2 6.25-9.01, p 0.34-0.62, max|z_PIT| 1.59-1.94; O; G). Larger b (1.0) overshoots: J0614 passes but R207 z > 2; a high-density c > 0 stiffening moves back to R_eq > 13.7 km.",
+    "files": [
+     "SCR/round3/rmf_survey/refute_work/ddfam.json",
+     "SCR/round3/rmf_survey/refute_work/ddfam_extra.json",
+     "SCR/round3/rmf_survey/refute_work/crosscheck.json",
+     "SCR/round3/rmf_survey/refute_work/run_ddfam.py",
+     "SCR/round3/rmf_survey/refute_work/crosscheck.py"
+    ]
+   }
+  },
+  {
+   "check": "(4a) Splitting-vs-m* fit over the 17 published models",
+   "result": "holds",
+   "evidence": {
+    "refit": {
+     "coef": [
+      19.828502298986276,
+      -22.62279335136943
+     ],
+     "r": -0.9628492557905969,
+     "R2": 0.9270786893765064,
+     "rms": 0.3014370949430588,
+     "mstar_at_4.9": 0.6598876658210117
+    },
+    "r_with_L": -0.19024136816838044,
+    "note": "reproduced exactly (19.83 - 22.62 m*/M, r -0.963); the published-set fit puts the 4.9 MeV edge at m*/M = 0.660 (map 0.645-0.657), so 'm*/M <= 0.65' is approximate (<= 0.65-0.66). The DD family confirms independence from the high-density vector: 16O = 6.992 MeV for R_eq(1.44) from 10.96 to 14.22 km"
+   }
+  },
+  {
+   "check": "(4b) OLS R_eq(1.44) = 13.50 - 7.22 m*/M + 0.0244 L + 3.43 s_V and its reading 'R(1.44) driven by L and vector softening'",
+   "result": "refuted",
+   "evidence": {
+    "refit": {
+     "coef": [
+      13.499479091096173,
+      -7.220499115100904,
+      0.0243797261784513,
+      3.431351935539691
+     ],
+     "R2": 0.9197216526027345,
+     "rms": 0.2422497236474071
+    },
+    "loo_coef_range": {
+     "min": [
+      11.87763937649689,
+      -8.079819383813938,
+      0.022273955658143052,
+      3.065021123638967
+     ],
+     "max": [
+      14.180368041200467,
+      -4.321500869104857,
+      0.026095468636857078,
+      3.7271263677630113
+     ]
+    },
+    "bootstrap_16_84": [
+     [
+      11.770179783831544,
+      -8.663021781485554,
+      0.021521135043736428,
+      2.8713206590367
+     ],
+     [
+      14.383359093900076,
+      -4.256251749279242,
+      0.026761344329649786,
+      4.0661473226418545
+     ]
+    ],
+    "TW99_residual_km": -0.619,
+    "residual_note": "coefficients reproduce, but the fit misses the model closest to the data (TW99) by -0.62 km = 2.6 rms; the m*/M coefficient ranges -4.3..-8.7 under bootstrap",
+    "out_of_sample": "applied to the DD family (same m*/M and L as TW99) it predicts 12.9-13.9 km where the pipeline gives 10.96-14.22 km (errors up to 1.9 km); s_V(3n0) changes by < 0.02 while R_eq changes by 0.5 km: the controlling quantity is the shape of g_omega(n) and its rearrangement term between n0 and 3n0, not s_V(3n0)",
+    "verdict": "descriptive fit of the published sample, not a predictive mechanism or rule of thumb"
+   }
+  },
+  {
+   "check": "(5) Dropped DD-MEX: recompute and check the L mismatch",
+   "result": "refuted",
+   "evidence": {
+    "this_code": {
+     "n0": 0.1519,
+     "EA": -16.0975,
+     "K": 267.2352,
+     "mstar": 0.5555,
+     "J": 32.3645,
+     "L": 49.6349,
+     "S2_0p10": 25.979,
+     "EPNM_0p10": 12.1732
+    },
+    "published_L_sources": {
+     "arXiv:2206.02202 (thesis table)": 49.692,
+     "CompOSE eos/281": 49.7,
+     "arXiv:2409.07038": 46.7
+    },
+    "dev_vs_49.692_percent": -0.115,
+    "reading": "the 46.627 in declared.py is a mis-recall; against the tabulated L = 49.69-49.7 MeV DD-MEX (couplings satisfy f(1)=1 and 3cd^2=1 to 1e-4) validates at <= 0.3 % on every property and should not have been dropped",
+    "DD-MEX_stars": {
+     "M_max": 2.556,
+     "R144_static": 13.474,
+     "R144_eq": 13.696,
+     "R207_J0740": 13.74,
+     "chi2_8": 24.6,
+     "p": 0.0018,
+     "z_J0614": -3.35,
+     "z_R207": -0.86,
+     "16O": 6.977
+    },
+    "impact": "DD-MEX also fails J0614 (z -3.35; chi2 24.6, p 0.002) and the joint verdict; published-set result becomes 0 of 18, |z| range unchanged (2.14-5.03)"
+   }
+  },
+  {
+   "check": "Published-set headline: validated sets, none converges, all fail J0614 with |z| 2.14-5.03, TW99 closest; allowed region empty in the published set",
+   "result": "holds",
+   "evidence": {
+    "J0614_z_range": [
+     -5.032643293118508,
+     -2.137872792241603
+    ],
+    "argmin": "TW99",
+    "allowed_published": [],
+    "with_DD-MEX": "still empty"
+   }
+  },
+  {
+   "check": "NVG continues the same splitting-vs-m* curve",
+   "result": "undecidable",
+   "evidence": "NVG members (m*/M 0.83-0.93, 16O 0.23-1.48 MeV) lie 0.4-1.4 MeV (2-5 fit rms) ABOVE the linear extrapolation 19.83 - 22.62 m*/M (negative beyond m*/M 0.877): a monotonic continuation qualitatively, not the same line quantitatively; s_V 1.12-1.34 of the named members matches nvg_profile.json"
+  }
+ ],
+ "overall": "REFUTED",
+ "overall_reason": "Published-set numbers reproduce exactly with independent code, but the generic conclusion fails: a density-dependent RMF family at TW99's exact saturation point and sub-saturation physics (16O 6.99 MeV) has members passing J0614 with M_max 2.09-2.11 and the FULL declared joint verdict (chi2 6.3-9.0, p 0.34-0.62, all |z| < 2, G holds), cross-checked with the survey's own DD code. DD-MEX was dropped on a mis-recalled L. The R(1.44) regression is not predictive.",
+ "corrected_statement": "Все 18 валидированных опубликованных RMF-параметризаций (17 из обзора плюс ошибочно исключённая DD-MEX, у которой L = 49.6 МэВ совпадает с опубликованным 49.7) не проходят совместный вердикт из-за радиуса J0614 (|z| 2.14-5.03; ближе всех TW99: chi2 11.15, p 0.19), а расщепление 1p в 16O в LDA определяется почти только m*/M (19.8 - 22.6 m*/M МэВ); однако напряжение не является общим свойством RMF: DD-функционалы с точкой насыщения и досатурационной физикой TW99 и изменением g_omega(n) лишь на 1-2 % при 2-4 n0 дают R_eq(1.44) = 11.9-12.3 км при M_max = 2.09-2.11 Msun и 16O = 6.99 МэВ и проходят весь заявленный вердикт (chi2 6.3-9.0, p 0.34-0.62, все |z| < 2, основное состояние в норме), так что пустота области {J0614, 16O, M_max >= 1.94} — свойство опубликованного набора и FSU-карты, а не RMF.",
+ "files": {
+  "independent_code": "SCR/round3/rmf_survey/refute_rmf.py",
+  "work_dir": "SCR/round3/rmf_survey/refute_work",
+  "scripts": [
+   "SCR/round3/rmf_survey/refute_work/sat_check.py",
+   "SCR/round3/rmf_survey/refute_work/runner.py",
+   "SCR/round3/rmf_survey/refute_work/run_pub.py",
+   "SCR/round3/rmf_survey/refute_work/run_ddfam.py",
+   "SCR/round3/rmf_survey/refute_work/crosscheck.py",
+   "SCR/round3/rmf_survey/refute_work/regress.py",
+   "SCR/round3/rmf_survey/refute_work/make_refute.py"
+  ]
+ },
+ "wall_time_s": "about 150 s total compute",
+ "sources_web": [
+  "https://arxiv.org/pdf/2206.02202",
+  "https://compose.obspm.fr/eos/281",
+  "https://arxiv.org/pdf/2409.07038"
+ ]
+}
