@@ -10701,6 +10701,65 @@
       ],
       "deprecation": "Descriptive zero-weight output; no held-out pass is evidence for the EOS and the corner block is star-selected.",
       "quarantine": null
+    },
+    "verification/nvg_heldout_joint_likelihood_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Joint held-out likelihood producer: evaluate_table(n_fm3, eps, P, ...) puts any beta-equilibrium core EOS through the SLy crust of the forward-band producer, TOV+Hinderer, the Hartle-Thorne equatorial-radius correction at the four NICER spins and the pre-registered 8-term likelihood (chi2, per-term simple and PIT z, p with nu = 8 and replicated-data MC p, 2-sigma/1-sigma box, no-J0614 and static sensitivities), plus the 16O 1p spin-orbit LDA splitting (and exact-Dirac variant) from supplied S(n), V(n); built-in end-to-end set NL3, FSUGold, DD-ME2, TW99 (generic RMF EOS, ground-state scan) and the NVG y*=0.84 island member at a5_min and y*=0.87 quartic (forward chain, vacuum and ground-state checks); --table FILE for a user table.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_heldout_joint_likelihood_audit.py"
+      ],
+      "inputs": [
+        "verification/nvg_forward_band_propagation_audit.py",
+        "verification/nvg_hartle_second_order_quadrupole_probe.py",
+        "declared:pre-registered 8-term joint likelihood (data, term rules, statistics) embedded verbatim with its SHA-256",
+        "declared:16O 1p spin-orbit LDA protocol and window [4.9, 7.4] MeV, joint held-out verdict S/O/G/V",
+        "declared:published RMF parameter sets NL3, FSUGold, DD-ME2, TW99 and NVG member parameters embedded as constants with sources"
+      ],
+      "outputs": [
+        "verification/nvg_heldout_joint_likelihood_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_heldout_joint_likelihood_audit.py"
+      ],
+      "deprecation": "Zero-weight held-out comparison of fixed published or declared models; nothing is fitted to the data and pass/fail flags are descriptive.",
+      "quarantine": null
+    },
+    "verification/test_nvg_heldout_joint_likelihood_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "DD-ME2 chi2 19.95 and J0614 z_PIT -3.17, TW99 chi2 11.15 (static radii pass S), NL3 16O 1p 6.84 MeV (LDA and exact Dirac), DD-ME2 J0614 Hartle-Thorne correction +0.212 km (sign and size), user-table path with flagged 6-term statistic, held-out data isolated from EOS construction (static names and poisoned-data dynamic check), prereg SHA-256, strict-JSON/validate_result checks.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_heldout_joint_likelihood_audit.py",
+        "verification/nvg_heldout_joint_likelihood_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Regression controls for a zero-weight held-out likelihood comparison.",
+      "quarantine": null
+    },
+    "verification/nvg_heldout_joint_likelihood_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Joint held-out likelihood results: declared prereg/protocols/model parameters, model_table (chi2, p, J0614 z, box, 16O, S/O/G/V verdict) and full per-model records for NL3, FSUGold, DD-ME2, TW99 and two NVG members, Hartle-Thorne Maclaurin validation, spin-orbit validation rule, regression against the session runs; strict JSON, zero evidence weight.",
+      "producer": "verification/nvg_heldout_joint_likelihood_audit.py",
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_heldout_joint_likelihood_audit.py"
+      ],
+      "deprecation": "Descriptive zero-weight output; no model converges under the declared joint verdict and no pass is evidence.",
+      "quarantine": null
     }
   },
   "front_door": {

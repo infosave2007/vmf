@@ -873,6 +873,14 @@
       "producer": "verification/nvg_forward_band_propagation_audit.py",
       "sha256": "95f901c2f284c2c092e669fa135c59faa33b781676a71080af961f51e1f57f85",
       "status": "forward_band_propagation_zero_evidence"
+    },
+    "verification/nvg_heldout_joint_likelihood_results.json": {
+      "canonical_path": "verification/nvg_heldout_joint_likelihood_results.json",
+      "command": ".venv-research/bin/python -B verification/nvg_heldout_joint_likelihood_audit.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_heldout_joint_likelihood_audit.py",
+      "sha256": "2895efb28471104dbfb5f34f70196c202710e572b5ddd9c14fdb298848d8776b",
+      "status": "heldout_joint_likelihood_zero_evidence"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",
