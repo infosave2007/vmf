@@ -454,7 +454,7 @@
       "command": "python verification/nvg_hartle_second_order_quadrupole_probe.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
-      "sha256": "6d272c169dcdf7e964f21d4e0ba1e5fc472cf1fef62f233f5928558eacd5ed3b",
+      "sha256": "5a07ba0f532991d5733415442abb9333dd14b0eadd8bacd9d510b42d4f3753dd",
       "status": "derived_conditional_second_order"
     },
     "verification/nvg_hartle_slow_rotation_p2s5_results.json": {
@@ -564,7 +564,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "e46f7b40831562006aa28418e76c7396ae29338d1d3f3b83272e31dfa165b166",
+      "sha256": "b87b29c9a02fdda068c756ac053ae2a0e93dc6ab1a4feb4b86fd01f675f8842d",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
