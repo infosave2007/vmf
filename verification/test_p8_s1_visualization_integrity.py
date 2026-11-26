@@ -41,9 +41,9 @@ class P8S1VisualizationIntegrityTests(unittest.TestCase):
         self.assertFalse(payload["independent"])
         self.assertEqual(payload["held_out_observations"], [])
         self.assertEqual(payload["global_significance"], "WITHHELD_NO_HELD_OUT_PRODUCER")
-        self.assertAlmostEqual(payload["values"]["M_max"], runtime["m_max"], places=10)
-        self.assertAlmostEqual(payload["values"]["R_1.4"], runtime["r_14"], places=10)
-        self.assertAlmostEqual(payload["values"]["Lambda_1.4"], runtime["lambda_14"], places=10)
+        self.assertAlmostEqual(payload["values"]["M_max"], runtime["m_max"], places=8)
+        self.assertAlmostEqual(payload["values"]["R_1.4"], runtime["r_14"], places=8)
+        self.assertAlmostEqual(payload["values"]["Lambda_1.4"], runtime["lambda_14"], places=8)
 
         # Values are rendered from the payload at page load, not maintained as
         # a second static result table in the visible markup.

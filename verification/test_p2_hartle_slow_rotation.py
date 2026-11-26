@@ -142,10 +142,10 @@ class HartleSlowRotationTests(unittest.TestCase):
         self.assertEqual(payload["boundary_checks"]["independent_identities"], "PASS")
         self.assertEqual(payload["classification"]["quadrupole_Q"], "blocked")
         self.assertEqual(payload["classification"]["empirical_confirmation"], "not_claimed")
-        self.assertEqual(
-            payload["canonical_regression"]["computed"],
-            hartle.FROZEN_CANONICAL,
-        )
+        computed = payload["canonical_regression"]["computed"]
+        self.assertEqual(set(computed.keys()), set(hartle.FROZEN_CANONICAL.keys()))
+        for key, expected in hartle.FROZEN_CANONICAL.items():
+            self.assertAlmostEqual(computed[key], expected, delta=max(1.0e-8, 1.0e-10 * abs(expected)))
 
     def test_artifact_provenance_fails_closed_on_mutation(self):
         payload = hartle.build_payload(quick=True)

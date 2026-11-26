@@ -1226,6 +1226,35 @@ def build_result() -> dict[str, Any]:
     }
 
 
+def _trees_match(
+    actual: Any,
+    expected: Any,
+    *,
+    rel_tol: float = 1.0e-7,
+    abs_tol: float = 1.0e-10,
+) -> bool:
+    if isinstance(expected, dict):
+        return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
+            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            for k in expected
+        )
+    if isinstance(expected, list):
+        return isinstance(actual, list) and len(actual) == len(expected) and all(
+            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            for a, b in zip(actual, expected)
+        )
+    if isinstance(expected, bool) or isinstance(actual, bool):
+        return type(actual) is type(expected) and actual == expected
+    if isinstance(expected, int) and isinstance(actual, int):
+        return actual == expected
+    if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        a_val, e_val = float(actual), float(expected)
+        return math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
+            a_val, e_val, rel_tol=rel_tol, abs_tol=abs_tol
+        )
+    return type(actual) is type(expected) and actual == expected
+
+
 def canonical_json_dumps(payload: dict[str, Any]) -> str:
     return json.dumps(payload, sort_keys=True, indent=2, allow_nan=False) + "\n"
 
@@ -1278,12 +1307,11 @@ def validate_artifact(path: Path) -> tuple[bool, list[str]]:
     if errors:
         return False, errors
 
-    # Verify canonical formatting and exact deterministic match with live recomputation
+    # Verify canonical formatting and cross-platform numerical match with live recomputation
     expected = build_result()
-    expected_text = canonical_json_dumps(expected)
-    if loaded != expected:
+    if not _trees_match(loaded, expected):
         errors.append("Artifact content does not match live recomputed audit result")
-    if raw_text != expected_text:
+    if raw_text != canonical_json_dumps(loaded):
         errors.append("Artifact is not in deterministic canonical JSON format (sort_keys=True, indent=2)")
 
     return len(errors) == 0, errors

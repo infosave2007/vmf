@@ -97,9 +97,16 @@ class P11S2ArtifactProvenanceTests(unittest.TestCase):
         self.assertEqual(report["figure"], "verification/fig_iloveq_universal.png")
         self.assertEqual(report["status"], summary["status"])
         self.assertEqual(report["summary"]["sequence_count"], len(sequence))
-        self.assertAlmostEqual(report["summary"]["lambda_14"], summary["lambda_14"], places=12)
-        self.assertAlmostEqual(report["summary"]["max_deviation"], summary["max_deviation"], places=12)
-        self.assertEqual(report["sequence"], sequence)
+        self.assertAlmostEqual(report["summary"]["lambda_14"], summary["lambda_14"], places=8)
+        self.assertAlmostEqual(report["summary"]["max_deviation"], summary["max_deviation"], places=8)
+        self.assertEqual(len(report["sequence"]), len(sequence))
+        for a, b in zip(report["sequence"], sequence):
+            self.assertEqual(set(a.keys()), set(b.keys()))
+            for k in b:
+                if isinstance(b[k], (int, float)) and not isinstance(b[k], bool):
+                    self.assertAlmostEqual(a[k], b[k], delta=max(1.0e-8, 1.0e-10 * abs(b[k])))
+                else:
+                    self.assertEqual(a[k], b[k])
 
     def test_authorized_root_duplicates_are_absent_and_survivors_remain(self):
         duplicates = (

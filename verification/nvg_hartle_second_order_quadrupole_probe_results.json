@@ -419,7 +419,7 @@
   "payload_integrity": {
     "algorithm": "sha256",
     "covered": "complete_payload_except_payload_integrity",
-    "sha256": "107f1cfb0da5a437ad7724a1bffe086390bb8e4ce6c9ab967c80c6350df059f1"
+    "sha256": "e70720bbab7dcb803d44e858b1a7c0f25c93eb58aa1af0b498952e22aed7840c"
   },
   "public_status": "DERIVED_CONDITIONAL_SECOND_ORDER",
   "schema_version": "nvg_hartle_second_order_quadrupole_probe/2.0",
@@ -504,20 +504,20 @@
       "producer_source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
       "source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
       "test_path": "verification/test_p2_hartle_slow_rotation.py",
-      "test_sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132",
-      "test_source_sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132"
+      "test_sha256": "e3298a58a5ec0adad3ec147cffd28f11ee2de2f8b05acb5c18246b5d80b811bf",
+      "test_source_sha256": "e3298a58a5ec0adad3ec147cffd28f11ee2de2f8b05acb5c18246b5d80b811bf"
     },
     "frozen_forecast_dependencies": {
       "hartle_producer": "verification/nvg_hartle_slow_rotation.py",
       "hartle_result_artifact": "verification/nvg_hartle_slow_rotation_p2s5_results.json",
-      "hartle_result_sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c",
+      "hartle_result_sha256": "e92ab0fdd29e366f2252dd3213a3d6e7e326112523a64399f0459e7343e72d7a",
       "hartle_source_sha256": "e3d69fc8bb5909b96a8063e7905d695b121bdd1b2b17340694deba7cf8c6d746",
       "j0737a_input": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
       "j0737a_input_sha256": "c2e33860dcabac799743b1a9593c33c926423fe7e1d5c1cedaff9577e49530ff",
       "phase1_ns_result_artifact": "verification/nvg_ns_predictive_audit_p1s7_results.json",
       "phase1_ns_result_sha256": "27b4ee5994d61f901b4a9f39f7b4b14c074fbce0744b52e37e96a423e9dab6b0",
       "producer": "verification/nvg_ns_frozen_forecasts.py",
-      "source_sha256": "5ebdd13c82d56b83c72397afe45b765689f379e75808157ec045f03e9514a215",
+      "source_sha256": "6471808d004900a3804b1a49729dd9e80ffbe56c0f134b30e32d86af879959a0",
       "test_path": "verification/test_p3_ns_frozen_forecasts.py",
       "test_sha256": "8f0c0317923395bed49012118a7d408ef22279badae89ff46536b3b7c6938a71",
       "tidal_producer": "verification/nvg_tidal_deformability.py",
@@ -525,7 +525,7 @@
     },
     "frozen_target": {
       "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
-      "source_sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c",
+      "source_sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4",
       "values": {
         "I_A_g_cm2": 1.4856539538408488e+45,
         "Ibar_A": 14.303017715186515,
@@ -536,7 +536,7 @@
       }
     },
     "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
-    "producer_sha256": "82f4d6d8d1db6ab217c30beb4beb7cc9f45fe7979c1f9785f2891e0049e1e541",
+    "producer_sha256": "dc22606b677994d94f26cbdba0b159fa33bd3e3466ea265bf40ad7205dfbd681",
     "test_sha256": "847925a9250c94a5c8f59499547122e97556936ca4eb568bc282b6fa8af0c014"
   }
 }

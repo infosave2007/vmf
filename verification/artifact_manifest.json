@@ -454,7 +454,7 @@
       "command": "python verification/nvg_hartle_second_order_quadrupole_probe.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_hartle_second_order_quadrupole_probe.py",
-      "sha256": "37d26e37ad58e43ec9b0cd5c7ed6de4157ac068b62febeb660dc7b37784ebc60",
+      "sha256": "4b6c3fc8bb08083235a7081c3c599ea43838caa6d787187b658fdac1718ee2f0",
       "status": "derived_conditional_second_order"
     },
     "verification/nvg_hartle_slow_rotation_p2s5_results.json": {
@@ -462,7 +462,7 @@
       "command": "python verification/nvg_hartle_slow_rotation.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_hartle_slow_rotation.py",
-      "sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c",
+      "sha256": "e92ab0fdd29e366f2252dd3213a3d6e7e326112523a64399f0459e7343e72d7a",
       "status": "derived_conditional_final"
     },
     "verification/nvg_magnetar_mass_correlation_output.txt": {
@@ -485,7 +485,7 @@
       "command": "python verification/nvg_ns_frozen_forecasts.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_ns_frozen_forecasts.py",
-      "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c",
+      "sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4",
       "status": "forward_only_conditional_forecast"
     },
     "verification/nvg_ns_predictive_audit_p1s5_results.json": {
@@ -564,7 +564,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "123eacb5ec62051dc3542713b8e70e275e4180e22da4ce6902509dde781a0305",
+      "sha256": "3abf5f6c6d815f03083eca5cbccaebd15e1369c9b2fc92097c3206f682b90183",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
@@ -847,7 +847,7 @@
       "command": "arch -arm64 .venv-research/bin/python -B verification/nvg_forward_tov_heldout_audit.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_forward_tov_heldout_audit.py",
-      "sha256": "a6ae97023025452c71523af8af4832817c6d8acc33eab8db550c1da97564f72b",
+      "sha256": "545d856c160794ea7a9784d55c81abfd6ba9dc7fc6fd516f46fa6b300300709a",
       "status": "heldout_tov_tidal_zero_evidence"
     },
     "verification/nvg_mmax_stiffening_results.json": {
@@ -895,7 +895,7 @@
       "command": "python3 -B verification/nvg_unified_gravity_bridge_audit.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_unified_gravity_bridge_audit.py",
-      "sha256": "167dc1e878b737d4d91c557142cbda14421b9232950f1f47549ea52011c1cf86",
+      "sha256": "9dbaa175caa80a0eff00ee6661cb662f049abb73d269045ca145792e85886613",
       "status": "unified_bridge_zero_evidence"
     },
     "verification/nvg_unified_thermal_response_results.json": {

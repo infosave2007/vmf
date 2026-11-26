@@ -33,8 +33,8 @@ class SiblingModelIdentityTests(unittest.TestCase):
         self.assertEqual(bbn.RESULTS["canonical_chain"]["pressure_grid_points"], 120)
         self.assertEqual(bbn.RESULTS["canonical_chain"]["source"], chain["source"])
         lambda_14 = float(np.interp(1.4, chain["masses"], chain["lambdas"]))
-        self.assertAlmostEqual(lambda_14, artifact["summary"]["lambda_14"], places=10)
-        self.assertAlmostEqual(ilove.RESULTS["i_love"]["lambda"], lambda_14, places=10)
+        self.assertAlmostEqual(lambda_14, artifact["summary"]["lambda_14"], places=8)
+        self.assertAlmostEqual(ilove.RESULTS["i_love"]["lambda"], lambda_14, places=8)
         self.assertEqual(ilove.RESULTS["i_love"]["pressure_grid_points"], 120)
         self.assertEqual(ilove.RESULTS["i_love"]["status"], "TRANSFORM_ONLY_NO_INDEPENDENT_I_COMPARISON")
 

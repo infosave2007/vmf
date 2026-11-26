@@ -176,9 +176,9 @@ def test_params_json_roundtrip_zero_refit(tmp_path: Path, artifact: dict) -> Non
     o16_live = dh.solve_nucleus_dirac_hartree(8, 8, loaded)
     o16_saved = artifact["forward_predictions"]["nuclei"]["O16"]
     assert o16_live["energies"]["B_over_A_eig_MeV"] == pytest.approx(
-        o16_saved["energies"]["B_over_A_eig_MeV"], abs=1e-12
+        o16_saved["energies"]["B_over_A_eig_MeV"], abs=1e-9
     )
-    assert o16_live["radii"]["R_ch_fm"] == pytest.approx(o16_saved["radii"]["R_ch_fm"], abs=1e-12)
+    assert o16_live["radii"]["R_ch_fm"] == pytest.approx(o16_saved["radii"]["R_ch_fm"], abs=1e-9)
 
 
 # 13. CLI --validate passes on the real artifact

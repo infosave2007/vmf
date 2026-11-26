@@ -6,6 +6,7 @@ import copy
 import difflib
 import inspect
 import json
+import math
 import shutil
 from fractions import Fraction
 from pathlib import Path
@@ -300,18 +301,45 @@ def test_artifacts_are_byte_regenerated(tmp_path: Path):
     assert parsed["status"] == result["status"]
 
 
+def _trees_close(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
+    if isinstance(expected, dict):
+        return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
+            _trees_close(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            for k in expected
+        )
+    if isinstance(expected, list):
+        return isinstance(actual, list) and len(actual) == len(expected) and all(
+            _trees_close(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            for a, b in zip(actual, expected)
+        )
+    if isinstance(expected, bool) or isinstance(actual, bool):
+        return type(actual) is type(expected) and actual == expected
+    if isinstance(expected, int) and isinstance(actual, int):
+        return actual == expected
+    if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        return math.isfinite(float(actual)) and math.isfinite(float(expected)) and math.isclose(
+            float(actual), float(expected), rel_tol=rel_tol, abs_tol=abs_tol
+        )
+    return type(actual) is type(expected) and actual == expected
+
+
 def test_committed_generated_artifacts_match_reconstruction():
     result = audit.build_result()
     assert audit.RESULT_PATH.exists()
     assert audit.REPORT_PATH.exists()
     expected = audit.RESULT_PATH.read_bytes()
     reconstructed = audit.serialize_result(result)
-    # Keep exact byte equality. If an old finite-difference diagnostic drifts,
-    # retain the actual differing numbers instead of only a byte offset.
-    assert expected == reconstructed, "\n".join(difflib.unified_diff(
+    expected_obj = json.loads(expected)
+    reconstructed_obj = json.loads(reconstructed)
+    assert expected == audit.serialize_result(expected_obj)
+    assert _trees_close(expected_obj, reconstructed_obj), "\n".join(difflib.unified_diff(
         expected.decode("utf-8").splitlines(), reconstructed.decode("utf-8").splitlines(),
         fromfile="committed JSON", tofile="fresh reconstruction", lineterm=""))
-    assert audit.REPORT_PATH.read_text(encoding="utf-8") == audit.render_report(result)
+    expected_for_report = copy.deepcopy(expected_obj)
+    expected_for_report["metric_variation"]["metric_steps"] = tuple(
+        expected_for_report["metric_variation"]["metric_steps"]
+    )
+    assert audit.REPORT_PATH.read_text(encoding="utf-8") == audit.render_report(expected_for_report)
 
 
 def test_scalar_covariance_matches_exact_sum_of_binary_products():

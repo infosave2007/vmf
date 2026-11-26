@@ -36,7 +36,7 @@
       "evidence_weight": 0.0,
       "gap_crossed": false,
       "id": "ns_hartle_j0737a",
-      "payload_sha256": "6339d335ada77335441ff00a0e1982dfedba82867c9d0bc04cff44ba54003080",
+      "payload_sha256": "44901c92d0877f11384b2468c36b8675d8be6d4d2a6bb348b98e03753a525be4",
       "raw_bands": {
         "I_A_g_cm2": [
           1.4844304942443514e+45,
@@ -55,7 +55,7 @@
       "source": {
         "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
         "role": "P3-S5 final forecast artifact",
-        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+        "sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4"
       },
       "source_artifact_status": "derived_conditional_branch_scoped",
       "status": "derived_conditional",
@@ -95,7 +95,7 @@
         "source": {
           "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
           "role": "P3-S5 final forecast artifact",
-          "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+          "sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4"
         },
         "status": "blocked"
       },
@@ -105,12 +105,12 @@
         6.508178279388648,
         6.508268803152033
       ],
-      "payload_sha256": "107f1cfb0da5a437ad7724a1bffe086390bb8e4ce6c9ab967c80c6350df059f1",
+      "payload_sha256": "e70720bbab7dcb803d44e858b1a7c0f25c93eb58aa1af0b498952e22aed7840c",
       "scope": "second-order Hartle; frozen zero-jump EOS, branch 1, finite-pressure surface; not EOS-wide or empirical evidence",
       "source": {
         "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
         "role": "validated second-order quadrupole; conditional frozen EOS",
-        "sha256": "37d26e37ad58e43ec9b0cd5c7ed6de4157ac068b62febeb660dc7b37784ebc60"
+        "sha256": "4b6c3fc8bb08083235a7081c3c599ea43838caa6d787187b658fdac1718ee2f0"
       },
       "status": "derived_conditional_second_order",
       "values": {
@@ -125,7 +125,7 @@
       "source": {
         "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
         "role": "P3-S5 final forecast artifact",
-        "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+        "sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4"
       },
       "status": "blocked"
     },
@@ -565,7 +565,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "0874c7f6af8439051674fe258b236bf7d1b60b1f8fb427b72c399a0d14678aac",
+    "payload_sha256": "fc77dc6bd545646f403599b1f1bd611a34a9d51225ebcbcfee60605196abac12",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -632,12 +632,12 @@
     "forecast_producer": {
       "path": "verification/nvg_ns_frozen_forecasts.py",
       "role": "P3-S5 forecast producer",
-      "sha256": "5ebdd13c82d56b83c72397afe45b765689f379e75808157ec045f03e9514a215"
+      "sha256": "6471808d004900a3804b1a49729dd9e80ffbe56c0f134b30e32d86af879959a0"
     },
     "forecast_result": {
       "path": "verification/nvg_ns_frozen_forecasts_p3s1_results.json",
       "role": "P3-S5 final forecast artifact",
-      "sha256": "2c7abc805335c1ff1800bf21a2746f9e155fd9b3689e8ead90fa3f27a823943c"
+      "sha256": "d056fe3991062fd5eebfd17d971103a1d20520013540fb05dfad8f43892c81c4"
     },
     "forecast_test": {
       "path": "verification/test_p3_ns_frozen_forecasts.py",
@@ -657,12 +657,12 @@
     "hartle_result": {
       "path": "verification/nvg_hartle_slow_rotation_p2s5_results.json",
       "role": "P2-S5 final Hartle artifact",
-      "sha256": "eb4cbd52ecb71835e2248cfb778f77b287a8a547211ca5690e2f0a85bd168f0c"
+      "sha256": "e92ab0fdd29e366f2252dd3213a3d6e7e326112523a64399f0459e7343e72d7a"
     },
     "hartle_test": {
       "path": "verification/test_p2_hartle_slow_rotation.py",
       "role": "P2 Hartle focused test",
-      "sha256": "6146fa94493689dd13ba212f196f6d3a13c9c7b4e6886c3e6290aa6042ab8132"
+      "sha256": "e3298a58a5ec0adad3ec147cffd28f11ee2de2f8b05acb5c18246b5d80b811bf"
     },
     "j0737_input": {
       "path": "verification/data/nvg_hartle_p2s1_j0737a_mass.json",
@@ -702,12 +702,12 @@
     "quadrupole_producer": {
       "path": "verification/nvg_hartle_second_order_quadrupole_probe.py",
       "role": "independent second-order Hartle producer",
-      "sha256": "82f4d6d8d1db6ab217c30beb4beb7cc9f45fe7979c1f9785f2891e0049e1e541"
+      "sha256": "dc22606b677994d94f26cbdba0b159fa33bd3e3466ea265bf40ad7205dfbd681"
     },
     "quadrupole_result": {
       "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
       "role": "validated second-order quadrupole; conditional frozen EOS",
-      "sha256": "37d26e37ad58e43ec9b0cd5c7ed6de4157ac068b62febeb660dc7b37784ebc60"
+      "sha256": "4b6c3fc8bb08083235a7081c3c599ea43838caa6d787187b658fdac1718ee2f0"
     },
     "quadrupole_test": {
       "path": "verification/test_hartle_second_order_quadrupole.py",

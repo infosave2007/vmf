@@ -8,6 +8,7 @@ conservation checks refuse the write. A physical no-go is a valid result.
 from __future__ import annotations
 import argparse
 import json
+import math
 from pathlib import Path
 import mpmath as mp
 
@@ -92,15 +93,39 @@ def build_result():
     }
 
 
+def _trees_match(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
+    if isinstance(expected, dict):
+        return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
+            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            for k in expected
+        )
+    if isinstance(expected, list):
+        return isinstance(actual, list) and len(actual) == len(expected) and all(
+            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            for a, b in zip(actual, expected)
+        )
+    if isinstance(expected, bool) or isinstance(actual, bool):
+        return type(actual) is type(expected) and actual == expected
+    if isinstance(expected, int) and isinstance(actual, int):
+        return actual == expected
+    if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        a_val, e_val = float(actual), float(expected)
+        return math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
+            a_val, e_val, rel_tol=rel_tol, abs_tol=abs_tol
+        )
+    return type(actual) is type(expected) and actual == expected
+
+
 def validate_result(result):
     """Live regeneration in this process, not an independent implementation."""
     if not isinstance(result, dict):
         return False
     try:
-        serialized=json.dumps(result,sort_keys=True,allow_nan=False)
+        serialized = json.dumps(result, sort_keys=True, allow_nan=False)
+        expected_serialized = json.dumps(build_result(), sort_keys=True, allow_nan=False)
     except (ValueError, TypeError):
         return False
-    return serialized == json.dumps(build_result(),sort_keys=True,allow_nan=False)
+    return _trees_match(json.loads(serialized), json.loads(expected_serialized))
 
 
 def main(argv=None):

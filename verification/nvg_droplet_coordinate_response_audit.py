@@ -1163,11 +1163,14 @@ def _schur_diagnostic(
         direct = float(full @ hessian @ full)
         reconstructed = float(shifted @ S @ shifted + cv @ Hred @ cv)
         errors.append(abs(direct - reconstructed) / max(1.0, abs(direct), abs(reconstructed)))
-    full_values = np.linalg.eigvalsh(hessian)
-    reduced_values = np.linalg.eigvalsh(Hred)
-    density_inertia = _inertia(s_values)
-    reduced_inertia = _inertia(reduced_values)
-    full_inertia = _inertia(full_values)
+    def _equilibrated_eigvalsh(mat: np.ndarray) -> np.ndarray:
+        diag = np.abs(np.diag(mat))
+        scale = np.where(diag > 0.0, 1.0 / np.sqrt(diag), 1.0)
+        return np.linalg.eigvalsh(_sym((mat * scale[:, None]) * scale[None, :]))
+
+    density_inertia = _inertia(_equilibrated_eigvalsh(S))
+    reduced_inertia = _inertia(_equilibrated_eigvalsh(Hred))
+    full_inertia = _inertia(_equilibrated_eigvalsh(hessian))
     expected_inertia = {
         key: density_inertia[key] + reduced_inertia[key]
         for key in ("positive", "negative", "zero")

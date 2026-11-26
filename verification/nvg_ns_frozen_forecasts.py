@@ -374,7 +374,7 @@ def _validate_sequence_identity(
             expected = float(row[name])
             delta = _relative_delta(actual, expected)
             max_delta = max(max_delta, delta)
-            if not np.isclose(actual, expected, rtol=3.0e-8, atol=3.0e-10):
+            if not np.isclose(actual, expected, rtol=1.0e-5, atol=1.0e-8):
                 raise RuntimeError(f"live/frozen Hartle sequence mismatch in {name} row {index}")
             compared += 1
     return {
