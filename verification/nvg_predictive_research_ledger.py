@@ -145,6 +145,61 @@ def _assert_close(actual: Any, expected: float, name: str, *, rel: float = 1.0e-
         raise AssertionError(f"{name} is not numeric") from exc
 
 
+def _assert_live_tree_equal(
+    actual: Any,
+    expected: Any,
+    label: str,
+    *,
+    path: str = "payload",
+    rel_tol: float = 1.0e-11,
+    abs_tol: float = 1.0e-12,
+) -> None:
+    """Fail closed on structural/type/non-float drift while allowing cross-platform libm float noise."""
+    actual = _jsonable(actual)
+    expected = _jsonable(expected)
+    if isinstance(expected, dict):
+        if not isinstance(actual, dict) or set(actual.keys()) != set(expected.keys()):
+            raise AssertionError(f"{label} ({path}: mapping keys differ)")
+        for key in sorted(expected.keys()):
+            _assert_live_tree_equal(
+                actual[key],
+                expected[key],
+                label,
+                path=f"{path}.{key}",
+                rel_tol=rel_tol,
+                abs_tol=abs_tol,
+            )
+        return
+    if isinstance(expected, list):
+        if not isinstance(actual, list) or len(actual) != len(expected):
+            raise AssertionError(f"{label} ({path}: sequence length differs)")
+        for idx, (a_item, e_item) in enumerate(zip(actual, expected)):
+            _assert_live_tree_equal(
+                a_item,
+                e_item,
+                label,
+                path=f"{path}[{idx}]",
+                rel_tol=rel_tol,
+                abs_tol=abs_tol,
+            )
+        return
+    if isinstance(expected, bool) or isinstance(actual, bool):
+        if type(actual) is not type(expected) or actual != expected:
+            raise AssertionError(f"{label} ({path}: {actual!r} != {expected!r})")
+        return
+    if isinstance(expected, int) and isinstance(actual, int):
+        if actual != expected:
+            raise AssertionError(f"{label} ({path}: {actual!r} != {expected!r})")
+        return
+    if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        a_val, e_val = float(actual), float(expected)
+        if not (math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(a_val, e_val, rel_tol=rel_tol, abs_tol=abs_tol)):
+            raise AssertionError(f"{label} ({path}: {actual!r} != {expected!r})")
+        return
+    if type(actual) is not type(expected) or actual != expected:
+        raise AssertionError(f"{label} ({path}: {actual!r} != {expected!r})")
+
+
 def _assert_p1_ns_core(payload: Mapping[str, Any]) -> None:
     """Assert the P3-S8-authorized Phase-1 central values and counts."""
 
@@ -213,8 +268,12 @@ def _assert_s8_artifact(payload: Mapping[str, Any]) -> None:
     # result to a fresh live construction so maps, counts, and formulas cannot
     # be replaced by a stale/static table.
     live = _jsonable(s8.build_result())
-    if _canonical_json(payload) != _canonical_json(live):
-        raise AssertionError("S8 artifact does not equal live recomputation")
+    _assert_live_tree_equal(
+        payload,
+        live,
+        "S8 artifact does not equal live recomputation",
+        path="s8",
+    )
     boundary = payload.get("boundary_conclusion", {})
     if boundary.get("scoped_no_go") is not True or boundary.get("expanded_omega_m_overlay_overlap_count") != 20:
         raise AssertionError("S8 overlap semantics changed")
@@ -276,8 +335,12 @@ def _assert_authorized_inputs() -> dict[str, dict[str, Any]]:
     # compares the complete JSON payload (not just the extrema consumed below)
     # while leaving the producer's canonical output path untouched.
     live_pbh_artifact = pbh_audit.run_audit()
-    if _canonical_json(pbh_artifact) != _canonical_json(live_pbh_artifact):
-        raise AssertionError("tracked P1 PBH artifact does not equal live regeneration")
+    _assert_live_tree_equal(
+        pbh_artifact,
+        live_pbh_artifact,
+        "tracked P1 PBH artifact does not equal live regeneration",
+        path="pbh",
+    )
     scan_contract = pbh_artifact.get("scan_contract", {})
     if scan_contract.get("external_exclusions_used") is not False:
         raise AssertionError("PBH source artifact external-exclusion control drift")
