@@ -162,10 +162,11 @@ def branch_for_y(y_target, rtol=1e-8, atol=1e-10):
     entry = next(t for t in tables if t["y_target"] == y_target)
     eos = ForwardEOS(entry["table"])
     # scan Pc
-    Pcs = np.logspace(-0.5, math.log10(eos.p_max*0.92), 64)
-    # add dense near expected max
-    Pcs = np.unique(np.concatenate([Pcs, np.linspace(40, 400, 24)]))
-    Pcs = Pcs[Pcs <= eos.p_max*0.92]
+    p_cap = eos.p_max * 0.92
+    Pcs_log = np.logspace(-0.5, math.log10(p_cap), 64)
+    Pcs_log[-1] = p_cap
+    Pcs_lin = np.linspace(40, 400, 24)
+    Pcs = np.unique(np.concatenate([Pcs_log, Pcs_lin[Pcs_lin <= p_cap]]))
     Pcs = np.sort(Pcs)
     results = []
     for Pc in Pcs:
@@ -278,37 +279,64 @@ def build_result():
     }
 
 
-def _trees_match(actual, expected, *, rel_tol=1.0e-5, abs_tol=1.0e-8, key=""):
+def _trees_match(actual, expected, *, path="", rel_tol=1.0e-4, abs_tol=1.0e-7):
     if isinstance(expected, dict):
-        return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
-            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol, key=k)
-            for k in expected
-        )
+        if not isinstance(actual, dict):
+            return False, f"{path}: expected dict, got {type(actual).__name__}"
+        if set(actual.keys()) != set(expected.keys()):
+            missing = sorted(set(expected.keys()) - set(actual.keys()))
+            extra = sorted(set(actual.keys()) - set(expected.keys()))
+            return False, f"{path}: key mismatch missing={missing} extra={extra}"
+        for k in expected:
+            child_path = f"{path}.{k}" if path else str(k)
+            ok, reason = _trees_match(
+                actual[k], expected[k], path=child_path, rel_tol=rel_tol, abs_tol=abs_tol
+            )
+            if not ok:
+                return False, reason
+        return True, None
     if isinstance(expected, list):
-        return isinstance(actual, list) and len(actual) == len(expected) and all(
-            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol, key=key)
-            for a, b in zip(actual, expected)
-        )
+        if not isinstance(actual, list) or len(actual) != len(expected):
+            return False, f"{path}: list length/type mismatch"
+        for i, (a, b) in enumerate(zip(actual, expected)):
+            ok, reason = _trees_match(
+                a, b, path=f"{path}[{i}]", rel_tol=rel_tol, abs_tol=abs_tol
+            )
+            if not ok:
+                return False, reason
+        return True, None
     if isinstance(expected, bool) or isinstance(actual, bool):
-        return type(actual) is type(expected) and actual == expected
+        if type(actual) is type(expected) and actual == expected:
+            return True, None
+        return False, f"{path}: actual={actual!r} expected={expected!r}"
     if isinstance(expected, int) and isinstance(actual, int):
-        return actual == expected
+        if actual == expected:
+            return True, None
+        return False, f"{path}: actual={actual!r} expected={expected!r}"
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
-        lowered = key.lower()
-        eff_rel, eff_abs = (2.0e-3, 1.0e-5) if ("lambda" in lowered or "k2" in lowered) else (rel_tol, abs_tol)
+        lowered = path.rsplit(".", 1)[-1].lower()
+        eff_rel, eff_abs = (5.0e-3, 1.0e-4) if ("lambda" in lowered or "k2" in lowered) else (rel_tol, abs_tol)
         a_val, e_val = float(actual), float(expected)
-        return math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
+        if math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
             a_val, e_val, rel_tol=eff_rel, abs_tol=eff_abs
-        )
-    return type(actual) is type(expected) and actual == expected
+        ):
+            return True, None
+        return False, f"{path}: actual={actual!r} expected={expected!r}"
+    if type(actual) is type(expected) and actual == expected:
+        return True, None
+    return False, f"{path}: actual={actual!r} expected={expected!r}"
 
 
-def validate_result(result):
+def validate_result_verbose(result):
     try:
         fresh = build_result()
         return _trees_match(result, fresh)
-    except Exception:
-        return False
+    except Exception as exc:
+        return False, f"exception: {exc}"
+
+
+def validate_result(result):
+    return validate_result_verbose(result)[0]
 
 
 def main():

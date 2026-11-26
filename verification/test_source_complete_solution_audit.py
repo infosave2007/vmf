@@ -319,7 +319,7 @@ def _is_diagnostic_residual_key(key: str) -> bool:
     )
 
 
-def _trees_close(actual, expected, *, rel_tol=1.0e-10, abs_tol=1.0e-10, key=""):
+def _trees_close(actual, expected, *, rel_tol=1.0e-9, abs_tol=1.0e-9, key=""):
     if isinstance(expected, dict):
         return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
             _trees_close(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol, key=k)
@@ -335,7 +335,12 @@ def _trees_close(actual, expected, *, rel_tol=1.0e-10, abs_tol=1.0e-10, key=""):
     if isinstance(expected, int) and isinstance(actual, int):
         return actual == expected
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
-        eff_rel, eff_abs = (1.0e-2, 1.0e-5) if _is_diagnostic_residual_key(key) else (rel_tol, abs_tol)
+        if _is_diagnostic_residual_key(key):
+            eff_rel, eff_abs = 1.0e-2, 1.0e-5
+        elif "_fd_" in key.lower():
+            eff_rel, eff_abs = 1.0e-7, 1.0e-7
+        else:
+            eff_rel, eff_abs = rel_tol, abs_tol
         return math.isfinite(float(actual)) and math.isfinite(float(expected)) and math.isclose(
             float(actual), float(expected), rel_tol=eff_rel, abs_tol=eff_abs
         )

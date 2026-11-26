@@ -847,7 +847,7 @@
       "command": "arch -arm64 .venv-research/bin/python -B verification/nvg_forward_tov_heldout_audit.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_forward_tov_heldout_audit.py",
-      "sha256": "8abe2939f0234b2abce33a7002132f3be1fe33050cb76d8ec8c1c25d6af36b72",
+      "sha256": "39ca59c3b592f475bb056306d9e43e9a7dc71c3bb9e173e408c750a06747dc5b",
       "status": "heldout_tov_tidal_zero_evidence"
     },
     "verification/nvg_mmax_stiffening_results.json": {
