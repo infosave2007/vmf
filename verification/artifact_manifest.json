@@ -959,7 +959,7 @@
       "command": "python3 -B verification/nvg_unified_ns_microphysics_bridge.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_unified_ns_microphysics_bridge.py",
-      "sha256": "171b9bd958f56deed7821b1a291058219fba4db4268085aac6dfd46715f4b482",
+      "sha256": "4714f249387c8a29c7aca49e5142490a12f1becd6be14710c8095c408dc6b311",
       "status": "unified_bridge_zero_evidence"
     },
     "verification/nvg_unified_nuclear_benchmarks_results.json": {
@@ -967,7 +967,7 @@
       "command": "python3 -B verification/nvg_unified_nuclear_benchmarks_bridge.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_unified_nuclear_benchmarks_bridge.py",
-      "sha256": "049d9c68825146ca6162949a4a28777aca1f39f39f60b7931fa1bbd06422aa97",
+      "sha256": "ff18c3e117bcf6c40d13f52ffb0c9fcc9338be959dd6f31057fd915cd2d58c7c",
       "status": "unified_bridge_zero_evidence"
     }
   },

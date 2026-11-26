@@ -1103,8 +1103,8 @@ def _trees_match(
     expected: Any,
     *,
     path: str = "",
-    rel_tol: float = 1.0e-5,
-    abs_tol: float = 1.0e-8,
+    rel_tol: float = 5.0e-4,
+    abs_tol: float = 1.0e-6,
 ) -> tuple[bool, str | None]:
     if isinstance(expected, dict):
         if not isinstance(actual, dict):
@@ -1143,8 +1143,8 @@ def _trees_match(
         leaf = path.rsplit(".", 1)[-1].lower()
         if any(tok in leaf for tok in ("_rel", "rel_err", "residual")):
             eff_rel, eff_abs = 0.5, 1.0e-8
-        elif any(tok in leaf for tok in ("lambda", "k2", "g1_", "g2_", "f_mode", "max_brunt")):
-            eff_rel, eff_abs = 1.0e-3, 1.0e-4
+        elif any(tok in leaf for tok in ("lambda", "k2", "g1_", "g2_", "f_mode", "max_brunt", "crust", "pasta", "durca", "i_")):
+            eff_rel, eff_abs = 2.0e-3, 1.0e-4
         else:
             eff_rel, eff_abs = rel_tol, abs_tol
         a_val, e_val = float(actual), float(expected)

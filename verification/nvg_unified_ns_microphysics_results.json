@@ -22,7 +22,7 @@
     "bridge8_results_sha256": "d3740280b629a4a2fe8e9966c5ec1b3c562aeda1788b74c1e41d1d7380bbcf21",
     "crust_model": "Douchin & Haensel (2001) SLy4 joined continuously at dynamical spinodal n_t^dyn",
     "source_script": "verification/nvg_unified_ns_microphysics_bridge.py",
-    "source_sha256": "c5f0e67026bbb01b3844dd81c3c438977d1f80adfcfc7ebe5f67106419ffbd5b",
+    "source_sha256": "5fb8d62f4bf83f6df5738a25852f46140755cd5d2528998d104c81e04b885ed8",
     "zero_parameter_refitting": true
   },
   "schema_version": "nvg_unified_ns_microphysics_bridge.v1",

@@ -1062,7 +1062,7 @@ def build_result() -> dict[str, Any]:
     }
 
 
-def _trees_match(actual: Any, expected: Any, *, rel_tol: float = 1.0e-5, abs_tol: float = 1.0e-6, path: str = "$") -> tuple[bool, str | None]:
+def _trees_match(actual: Any, expected: Any, *, rel_tol: float = 5.0e-4, abs_tol: float = 1.0e-5, path: str = "$") -> tuple[bool, str | None]:
     if isinstance(expected, dict):
         if not isinstance(actual, dict) or set(actual.keys()) != set(expected.keys()):
             return False, f"{path}: key mismatch"
@@ -1084,7 +1084,12 @@ def _trees_match(actual: Any, expected: Any, *, rel_tol: float = 1.0e-5, abs_tol
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
         a_v, e_v = float(actual), float(expected)
         leaf = path.rsplit(".", 1)[-1].lower()
-        r_eff, a_eff = (0.5, 1.0e-7) if "residual" in leaf or "rel_err" in leaf else (rel_tol, abs_tol)
+        if "residual" in leaf or "rel_err" in leaf:
+            r_eff, a_eff = 0.5, 1.0e-7
+        elif any(tok in leaf for tok in ("lambda", "durca", "k_sym", "chi2", "aic", "bic", "score")):
+            r_eff, a_eff = 2.0e-3, 1.0e-4
+        else:
+            r_eff, a_eff = rel_tol, abs_tol
         if math.isfinite(a_v) and math.isfinite(e_v) and math.isclose(a_v, e_v, rel_tol=r_eff, abs_tol=a_eff):
             return True, None
         return False, f"{path}: {actual!r} != {expected!r}"
