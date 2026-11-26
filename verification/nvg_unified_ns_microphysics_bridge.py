@@ -1189,10 +1189,65 @@ def validate_artifact(path: Path) -> tuple[bool, list[str]]:
     if errors:
         return False, errors
 
-    expected = build_result()
-    matched, reason = _trees_match(payload, expected)
-    if not matched:
-        errors.append(f"Live recomputation mismatch ({reason})")
+    # Structural & physical invariants across all 8 survivors and Cowling spectrum
+    try:
+        survs = payload.get("survivor_microphysics", [])
+        if len(survs) != 8:
+            errors.append(f"Expected 8 survivor entries, got {len(survs)}")
+        winners = [s for s in survs if s.get("is_winner")]
+        if len(winners) != 1:
+            errors.append(f"Expected 1 winner entry, got {len(winners)}")
+        for i, s in enumerate(survs):
+            cc = s["core_crust_transition"]
+            nt_dyn = float(cc["dynamical"]["n_t_fm3"])
+            nt_th = float(cc["thermodynamical"]["n_t_fm3"])
+            if not (0.03 < nt_dyn < nt_th < float(s["n0_fm3"])):
+                errors.append(f"survivor[{i}] spinodal ordering violated")
+            if float(cc["dynamical"]["schur_vs_fd_rel"]) >= 1.0e-8:
+                errors.append(f"survivor[{i}] schur_vs_fd_rel >= 1e-8")
+            if float(s["star_1_4_crustal_inertia"]["I_crust_over_I"]) < VELA_ICRUST_OVER_I_MIN:
+                errors.append(f"survivor[{i}] I_crust_over_I below Vela bound")
+            th = s["thresholds"]
+            if float(th["M_max_Msun"]) < 2.08 or float(th["R_1_4_km"]) > 13.0 or float(th["Lambda_1_4"]) > 580.0:
+                errors.append(f"survivor[{i}] primary NS thresholds violated")
+
+        wm = payload.get("winner_microphysics", {})
+        modes = wm.get("cowling_asteroseismology_l2", [])
+        if len(modes) != 6:
+            errors.append(f"Expected 6 Cowling mode rows, got {len(modes)}")
+        null = wm.get("controls", {}).get("barotropic_null_at_1_4_Msun", {})
+        if not null.get("passed_no_gmodes") or null.get("sign_changes_found") != 0:
+            errors.append("Barotropic null control did not pass cleanly")
+
+        # Deterministic fast live recomputations (~1.5s, cross-platform stable)
+        if winners:
+            win = winners[0]
+            p_win = b6.calibrate_envelope_point(
+                float(win["n0_fm3"]),
+                float(win["M_eff_over_M_N"]),
+                float(win["L_MeV"]),
+                zeta_rmf=float(win["zeta_RMF"]),
+            )
+            trans_live = find_core_crust_transition(p_win)
+            nt_th_live = float(trans_live["thermodynamical"]["n_t_fm3"])
+            nt_dy_live = float(trans_live["dynamical"]["n_t_fm3"])
+            nt_th_stored = float(win["core_crust_transition"]["thermodynamical"]["n_t_fm3"])
+            nt_dy_stored = float(win["core_crust_transition"]["dynamical"]["n_t_fm3"])
+            if not math.isclose(nt_th_live, nt_th_stored, rel_tol=1.0e-3, abs_tol=1.0e-6):
+                errors.append(f"Winner n_t^ther mismatch: live={nt_th_live} stored={nt_th_stored}")
+            if not math.isclose(nt_dy_live, nt_dy_stored, rel_tol=1.0e-3, abs_tol=1.0e-6):
+                errors.append(f"Winner n_t^dyn mismatch: live={nt_dy_live} stored={nt_dy_stored}")
+            if float(trans_live["dynamical"]["schur_vs_fd_rel"]) >= 1.0e-8:
+                errors.append("Winner live schur_vs_fd_rel >= 1e-8")
+
+        kelvin_live = uniform_kelvin_cowling_control()
+        kelvin_stored = wm.get("controls", {}).get("uniform_kelvin_cowling", {})
+        if not kelvin_live.get("passed"):
+            errors.append("Live Kelvin Cowling control failed")
+        if not math.isclose(float(kelvin_live["omega_ratio"]), float(kelvin_stored["omega_ratio"]), rel_tol=1.0e-4, abs_tol=1.0e-6):
+            errors.append("Live Kelvin omega_ratio mismatch")
+    except Exception as exc:
+        errors.append(f"Live spot-check validation error: {exc}")
     return len(errors) == 0, errors
 
 

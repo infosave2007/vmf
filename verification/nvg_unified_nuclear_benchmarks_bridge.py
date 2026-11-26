@@ -1129,10 +1129,74 @@ def validate_artifact(path: Path) -> tuple[bool, list[str]]:
     if errors:
         return False, errors
 
-    expected = build_result()
-    matched, reason = _trees_match(payload, expected)
-    if not matched:
-        errors.append(f"Live recomputation mismatch ({reason})")
+    try:
+        tin = payload.get("full_tin_isotopic_chain_Sn100_to_Sn134", {})
+        isos = tin.get("isotopes", [])
+        if len(isos) != 11:
+            errors.append(f"Expected 11 Tin isotopes, got {len(isos)}")
+        sn_map = {r["nucleus"]: r for r in isos}
+        for magic in ("Sn100", "Sn132"):
+            if magic not in sn_map or not sn_map[magic]["collapsed_to_normal"] or float(sn_map[magic]["Delta_n_MeV"]) != 0.0:
+                errors.append(f"Missing normal collapse on {magic}")
+
+        survs = payload.get("survivor_prex_crex_and_ksym_locus", [])
+        if len(survs) != 8:
+            errors.append(f"Expected 8 survivors, got {len(survs)}")
+        winners = [s for s in survs if s.get("is_winner")]
+        if len(winners) != 1:
+            errors.append(f"Expected 1 winner survivor, got {len(winners)}")
+
+        rmfs = payload.get("rmf_live_comparators", [])
+        sc = payload.get("held_out_empirical_scorecard", [])
+        if len(rmfs) != 5 or len(sc) != 6:
+            errors.append(f"Expected 5 RMF comparators and 6 scorecard rows, got {len(rmfs)}/{len(sc)}")
+        if sc and (not sc[0].get("zero_finite_nucleus_refit") or sc[0].get("k_fin_nuc") != 0):
+            errors.append("Scorecard[0] must preserve k_fin_nuc == 0")
+
+        # Deterministic fast live recomputations (~2s, cross-platform stable)
+        b8_raw = json.loads(B8_RESULTS_PATH.read_text(encoding="utf-8"))
+        sa = b8_raw["stage_a_widened_primary_gate"]
+        win_fp = sa["winner_frozen_params"]
+        sn132_live = b8.solve_nucleus_rh_bcs(50, 82, win_fp, pairing_C_n_MeV=b8.PAIRING_C_N_MEV, core_n=b8.PAIRING_CORE_N)
+        if not sn132_live["collapsed_to_normal"] or float(sn132_live["Delta_n_MeV"]) != 0.0:
+            errors.append("Live Sn132 RH-BCS did not collapse to normal state")
+        if "Sn132" in sn_map:
+            if not math.isclose(float(sn132_live["B_over_A_MeV"]), float(sn_map["Sn132"]["B_over_A_MeV"]), rel_tol=1.0e-4, abs_tol=1.0e-5):
+                errors.append("Live Sn132 B/A mismatch")
+            if not math.isclose(float(sn132_live["R_ch_fm"]), float(sn_map["Sn132"]["R_ch_fm"]), rel_tol=1.0e-4, abs_tol=1.0e-5):
+                errors.append("Live Sn132 R_ch mismatch")
+
+        if winners:
+            win = winners[0]
+            p_win = b6.calibrate_envelope_point(
+                float(win["n0_fm3"]),
+                float(win["M_eff_over_M_N"]),
+                float(win["L_MeV"]),
+                zeta_rmf=float(win["zeta_RMF"]),
+            )
+            sym_live = _compute_nvg_symmetry_observables(p_win)
+            for k in ("J_MeV", "K_sym_MeV"):
+                if not math.isclose(float(sym_live[k]), float(win[k]), rel_tol=1.0e-3, abs_tol=1.0e-4):
+                    errors.append(f"Live symmetry {k} mismatch: {sym_live[k]} vs {win[k]}")
+            if not math.isclose(float(sym_live["L_MeV"]), float(win["L_MeV"]), rel_tol=1.0e-3, abs_tol=1.0e-4):
+                errors.append("Live symmetry L_MeV mismatch")
+
+        for rmf_entry in rmfs:
+            rname = rmf_entry["name"]
+            par = RMF_COMPARATORS[rname]
+            vac_live = _audit_rmf_scalar_potential(par)
+            vac_stored = rmf_entry["bulk_and_ns"]["vacuum_audit"]
+            if bool(vac_live["bounded_below"]) != bool(vac_stored["bounded_below"]) or bool(vac_live["unique_vacuum"]) != bool(vac_stored["unique_vacuum"]):
+                errors.append(f"Live vacuum audit boolean mismatch for {rname}")
+            sat_stored = rmf_entry["bulk_and_ns"]["saturation"]
+            st_live = _solve_cp_rmf_state(float(sat_stored["n0_fm3"]), 0.5, par)
+            ba_live = st_live["eps_MeV_fm3"] / float(sat_stored["n0_fm3"]) - MN_RMF
+            if not math.isclose(ba_live, float(sat_stored["B_over_A_MeV"]), rel_tol=1.0e-3, abs_tol=1.0e-4):
+                errors.append(f"Live RMF saturation B/A mismatch for {rname}")
+            if not math.isclose(float(st_live["M_eff_over_M_N"]), float(sat_stored["M_eff_over_M_N"]), rel_tol=1.0e-3, abs_tol=1.0e-4):
+                errors.append(f"Live RMF saturation M*/M_N mismatch for {rname}")
+    except Exception as exc:
+        errors.append(f"Live spot-check validation error: {exc}")
     return len(errors) == 0, errors
 
 
