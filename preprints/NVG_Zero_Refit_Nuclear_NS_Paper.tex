@@ -174,6 +174,17 @@ Three physical and statistical limitations are documented alongside these result
 
 Despite keeping $k_{\rm fin,nuc} = 0$ strictly zero-refit, the frozen sextic-stabilized two-condensate chiral--gluon Lagrangian bridges symmetric matter saturation, finite nuclei across $^{100\text{--}134}\mathrm{Sn}$ and $^{16}\mathrm{O}\text{--}^{208}\mathrm{Pb}$, finite-$T$ RPA Ward identities, dynamical core--crust spinodals, $I_{\rm crust}/I$ glitch bounds, Direct Urca thresholds, Hartle $I$-Love-$Q$, and non-barotropic $g_1/g_2$ asteroseismology within a single globally stable framework.
 
+\section*{Code and Data Availability}
+
+All simulation scripts, spectral solvers, regression tests, machine-verified JSON artifacts, and figure generators are openly released under the MIT license at \url{https://github.com/infosave2007/vmf}. Beyond reproducing the present results, the even-element spectral Chebyshev Dirac--Hartree--BCS nuclear solver (\texttt{nvg\_unified\_dirac\_hartree\_probe.py}, \texttt{nvg\_unified\_primary\_gate\_pairing\_bridge.py}), the $4\times 4$ Schur-complement finite-$T$ Ward and dynamical spinodal evaluators (\texttt{nvg\_unified\_thermal\_response\_bridge.py}, \texttt{nvg\_unified\_ns\_microphysics\_bridge.py}), and the TOV/Hartle/Cowling modules can be directly reused as an open, apples-to-apples benchmark suite for testing independent covariant relativistic mean-field functionals on new experimental data. Every table and figure in this manuscript is regenerated via:
+\begin{verbatim}
+python3 -B verification/nvg_unified_ns_microphysics_bridge.py --write
+python3 -B verification/nvg_unified_nuclear_benchmarks_bridge.py --write
+python3 -B verification/nvg_unified_paper_figures.py
+python3 -B -m pytest -q verification
+\end{verbatim}
+All checks are continuously verified on GitHub Actions (\texttt{1495 passed, 41 skipped}, zero empirical likelihood weight) with provenance hashes tracked in \texttt{verification/artifact\_manifest.json} and \texttt{verification/registry.json}.
+
 \begin{thebibliography}{99}
 \bibitem{Serot1986} B.~D.~Serot and J.~D.~Walecka, Adv.\ Nucl.\ Phys.\ \textbf{16}, 1 (1986).
 \bibitem{Boguta1977} J.~Boguta and A.~R.~Bodmer, Nucl.\ Phys.\ A \textbf{292}, 413 (1977).
@@ -191,7 +202,7 @@ Despite keeping $k_{\rm fin,nuc} = 0$ strictly zero-refit, the frozen sextic-sta
 \bibitem{Adhikari2022} D.~Adhikari \textit{et al.} (CREX Collaboration), Phys.\ Rev.\ Lett.\ \textbf{129}, 042501 (2022).
 \bibitem{Link1999} B.~Link, R.~I.~Epstein, and J.~M.~Lattimer, Phys.\ Rev.\ Lett.\ \textbf{83}, 3362 (1999).
 \bibitem{Yagi2017} K.~Yagi and N.~Yunes, Phys.\ Rep.\ \textbf{681}, 1 (2017).
-\bibitem{Kallosh} Verification Bridges 1--8: \texttt{nvg\_quartic\_vector\_melting\_audit.py}, \texttt{nvg\_two\_condensate\_unified\_audit.py}, \texttt{nvg\_unified\_gravity\_bridge\_audit.py}, \texttt{nvg\_unified\_thermal\_response\_bridge.py}, \texttt{nvg\_unified\_calibration\_envelope\_probe.py}, \texttt{nvg\_unified\_astrophysics\_stability\_bridge.py}, \texttt{nvg\_unified\_primary\_gate\_pairing\_bridge.py}.
+\bibitem{Kallosh} Verification Bridges 1--8: \texttt{nvg\_quartic\_vector\_melting\_audit.py}, \texttt{nvg\_two\_condensate\_unified\_audit.py}, \texttt{nvg\_unified\_dirac\_hartree\_probe.py}, \texttt{nvg\_unified\_gravity\_bridge\_audit.py}, \texttt{nvg\_unified\_thermal\_response\_bridge.py}, \texttt{nvg\_unified\_calibration\_envelope\_probe.py}, \texttt{nvg\_unified\_astrophysics\_stability\_bridge.py}, \texttt{nvg\_unified\_primary\_gate\_pairing\_bridge.py}.
 \bibitem{Bridge4} Verification Bridges 9A--9B: \texttt{nvg\_unified\_ns\_microphysics\_bridge.py}, \texttt{nvg\_unified\_nuclear\_benchmarks\_bridge.py}, and \texttt{nvg\_unified\_paper\_figures.py}.
 \end{thebibliography}
 
