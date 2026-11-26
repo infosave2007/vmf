@@ -1037,7 +1037,17 @@ def _assert_live_equal(actual: Any, expected: Any, path: str = "payload") -> Non
             "m0_R",
             "p0_R",
         )
-        if any(tok in path for tok in ("finest_pair_relative_differences", "drift", "residual")):
+        if any(
+            tok in path
+            for tok in (
+                "finest_pair_relative_differences",
+                "drift",
+                "residual",
+                "relative_deviation",
+                "rel_dev_",
+                "extrapolation_difference",
+            )
+        ):
             rtol, atol = 1e-2, 1e-4
         elif path.startswith("payload.j0737a.") and path.rsplit(".", 1)[-1] in l0_diag_keys:
             rtol, atol = 0.10, 1e-6

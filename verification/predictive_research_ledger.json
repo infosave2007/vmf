@@ -105,12 +105,12 @@
         6.508178279388648,
         6.508268803152033
       ],
-      "payload_sha256": "07003d7238f02e8ca7cfa20f930b114aa5dd1ee06b1c334f3db297952df0827a",
+      "payload_sha256": "107f1cfb0da5a437ad7724a1bffe086390bb8e4ce6c9ab967c80c6350df059f1",
       "scope": "second-order Hartle; frozen zero-jump EOS, branch 1, finite-pressure surface; not EOS-wide or empirical evidence",
       "source": {
         "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
         "role": "validated second-order quadrupole; conditional frozen EOS",
-        "sha256": "5a07ba0f532991d5733415442abb9333dd14b0eadd8bacd9d510b42d4f3753dd"
+        "sha256": "37d26e37ad58e43ec9b0cd5c7ed6de4157ac068b62febeb660dc7b37784ebc60"
       },
       "status": "derived_conditional_second_order",
       "values": {
@@ -565,7 +565,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "bb70e061485a023a47b5c7d198bb0c6bc3579988b6902509a77dbbd0d7292092",
+    "payload_sha256": "76d03dd273941009cf10889d506ffb49084f9f806d1700086fd1af37d0d296dc",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -702,12 +702,12 @@
     "quadrupole_producer": {
       "path": "verification/nvg_hartle_second_order_quadrupole_probe.py",
       "role": "independent second-order Hartle producer",
-      "sha256": "a3cdaa367d12f21d2eccef76a32aa99efa9b5a09213f259c6861a10538bbd323"
+      "sha256": "82f4d6d8d1db6ab217c30beb4beb7cc9f45fe7979c1f9785f2891e0049e1e541"
     },
     "quadrupole_result": {
       "path": "verification/nvg_hartle_second_order_quadrupole_probe_results.json",
       "role": "validated second-order quadrupole; conditional frozen EOS",
-      "sha256": "5a07ba0f532991d5733415442abb9333dd14b0eadd8bacd9d510b42d4f3753dd"
+      "sha256": "37d26e37ad58e43ec9b0cd5c7ed6de4157ac068b62febeb660dc7b37784ebc60"
     },
     "quadrupole_test": {
       "path": "verification/test_hartle_second_order_quadrupole.py",
