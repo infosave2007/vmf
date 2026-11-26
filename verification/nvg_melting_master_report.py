@@ -200,7 +200,8 @@ def main():
     n_ok = sum(1 for *_, ok, _ in results if ok)
     A(f"\n_{n_ok}/{len(results)} scripts executed cleanly in this run._\n")
 
-    out_path = os.path.join(ROOT, "NVG_MELTING_REPORT.md")
+    out_path = os.path.join(ROOT, "docs", "reports", "NVG_MELTING_REPORT.md")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w") as f:
         f.write("\n".join(lines))
     print("\n" + "="*74)

@@ -35,13 +35,12 @@ article/*
 !.docs/NVG_ELECTROMAGNETIC_EXTENSIONS_EN.md
 !.docs/SOURCE_COMPLETE_RESPONSE_AUDIT.md
 .code/
-generator_project/*
-!generator_project/calc_theta_haloscope_design.py
-!generator_project/calc_theta_haloscope_v2.py
+generator_project/
 vacuum_neural_networks/
 
 # Internal Lunacy run control/evidence; never part of the public project interface.
 Lunacy/
+docs/internal/
 
 # Generated verification reports
 verification/NVG_OBSERVATIONAL_VERIFICATION_RU.md

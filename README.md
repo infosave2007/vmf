@@ -18,7 +18,7 @@ surfaces. The separate [`run_all_checks.py`](verification/run_all_checks.py)
 command is a process-only smoke harness and is not scientific evidence.
 Input provenance and generated-artifact ownership are recorded in the
 [`provenance.json`](verification/data/provenance.json) and
-[`artifact_manifest.json`](verification/artifact_manifest.json) manifests. Current runtime provenance and the distinction from historical publications are described in [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md).
+[`artifact_manifest.json`](verification/artifact_manifest.json) manifests. Current runtime provenance and the distinction from historical publications are described in [PUBLICATION_STATUS.md](docs/reports/PUBLICATION_STATUS.md).
 
 ### Latest accepted finite-temperature bridges
 
@@ -34,9 +34,9 @@ The fixed `j=11.13601607117819 MeV` contact is a conditional known input only:
 these are local mathematical bridges, not a new force, an all-frequency
 positive spectral-measure proof, or experimental confirmation.
 
-Reports: [thermal master response](NVG_THERMAL_MASTER_RESPONSE_RU.md),
-[thermal composition Hessian](NVG_THERMAL_COMPOSITION_HESSIAN_RU.md), and the
-[accepted closure note](NVG_CLOSURE_ADHD_2026_09_20_RU.md).
+Reports: [thermal master response](docs/reports/NVG_THERMAL_MASTER_RESPONSE_RU.md),
+[thermal composition Hessian](docs/reports/NVG_THERMAL_COMPOSITION_HESSIAN_RU.md), and the
+[accepted closure note](docs/reports/NVG_CLOSURE_ADHD_2026_09_20_RU.md).
 
 Focused reproduction (write JSON outside the checkout):
 
@@ -49,6 +49,16 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification .venv-research/bin/python3.12 
   verification.test_thermal_master_response \
   verification.test_thermal_composition_hessian -v
 ```
+
+
+### Unified 8-Bridge Covariant System (Cycles 1–3)
+
+An auditable, cross-sector computational closure (**8 bridges**, **`130+` tests passing**, **`evidence_weight = 0.0`**, zero parameter refitting between sectors) connects dense nuclear matter, finite nuclei, thermal Ward response, rotating neutron stars, and nonsingular cosmology:
+- **Matter & Saturation Primary-Gate Closure:** quartic vector melting (Law 1) + globally bounded two-condensate EOS (Law 2) + widened $\zeta_{\text{RMF}} \in \{0.0165, 0.0175, 0.0185\}$ saturation scan yields **8 primary-gate survivors** (winner `zeta_RMF=0.0165, n0=0.160, M*/M_N=0.62, L=60 MeV`: $M_{\max} = 2.093\,M_\odot$, $R_{1.4} = 12.95\text{ km}$, $\Lambda_{1.4} = 575.3$).
+- **Zero-Refit Nuclei & Tin RH-BCS:** spherical spectral Dirac–Hartree across `O16..Pb208` (`RMS B/A = 0.236 MeV`, `RMS R_ch = 1.44%`) plus self-consistent neutron pairing ($C_n = 21.0\text{ MeV}$, natural $\Delta_n = 0$ collapse on doubly-magic `Sn132`, pairing gaps `0.63–0.96 MeV` on `Sn116/120/124`).
+- **Thermal Response, Independent Hartle `I-Love-Q` & Bounce:** 5×5 Schur-Hessian & Ward identities (`4.4e-15` vs `ph-only` control `1.44`), independent 1st+2nd-order Hartle ODE (`PSR J0737-3039A` $\bar{I}=14.69$, $\bar{Q}=6.74$, Yagi–Yunes agreement `0.07%–0.21%`), and synchronized 6-variable cuscuton bounce.
+
+Cycle Reports: [Cycle 1 (Bridges 1–4)](docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md), [Cycle 2 (Bridges 5–7)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md), and [Cycle 3 (Bridge 8 & Registry Closure)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md). Historical and standalone audit notes live cleanly in [`docs/reports/`](docs/reports/).
 
 Use Python 3.12 and a fresh environment; CI uses the same requirements and
 [resolved constraints](constraints-python312.txt). From the repository root:
@@ -68,7 +78,7 @@ absolute path to both the environment's Python and `run_verification.py`.
 PyCBC is included because the semantic suite imports the echo-search modules.
 Optional live GW fetching additionally requires `gwosc` and external data access.
 
-The [source-complete model document](SOURCE_COMPLETE_MODEL_RU.md) (Russian)
+The [source-complete model document](docs/reports/SOURCE_COMPLETE_MODEL_RU.md) (Russian)
 states the action, parameter provenance, EOS and independently calculated
 consequences of the effective one-component model. Its fixed parameters do
 not reproduce symmetric nuclear-matter saturation: at the reference density,
@@ -90,8 +100,8 @@ Separately, its leading tree/static exchange between two same-sign `N`
 currents is repulsive at every \(r>0\).  The latter is **not** a deuteron or
 full NN prediction: \(g_\omega^2/(16\pi^2)=0.649\), so loops, QCD channels
 and the missing quantum sectors are not controlled.  See the
-[finite-droplet audit](NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md) and
-[static two-baryon audit](NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md).
+[finite-droplet audit](docs/reports/NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md) and
+[static two-baryon audit](docs/reports/NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md).
 Combining those two restricted calculations yields a useful no-fit scale map,
 not a repaired theory: in a *formal* deformation that changes only
 \(\lambda\), the Q4 certificate ceases to be strict below
@@ -99,7 +109,7 @@ not a repaired theory: in a *formal* deformation that changes only
 attractive at \(Q=0\) only below \(\lambda_{q0}=0.00484225\).  The live
 value is \(1.05\); this is a substantial change of the scalar action, and
 the resulting interval neither selects a parameter nor proves binding.  The
-[cross-scale gate](NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md) records
+[cross-scale gate](docs/reports/NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md) records
 the exact assumptions, range-sign consequence, and limits.
 Solving that same **formal**, spinless tree/static S-wave Hamiltonian is a
 stronger follow-up: its first zero-energy threshold is only
@@ -107,14 +117,14 @@ stronger follow-up: its first zero-energy threshold is only
 live value.  This shows that a negative long-range tail or a negative
 \(Q=0\) sign is not by itself a binding criterion; it is still not a real
 NN/deuteron calculation.  See the [formal S-wave threshold
-audit](NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md).
+audit](docs/reports/NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md).
 
 A separate source-free vacuum check finds the listed minimal-sector tree-level
 two-body cuts \(\sigma\to N\bar N\), \(A\to N\bar N\), and \(\sigma\to AA\)
 kinematically closed at the live masses.  This is only the absence of those
 intrinsic vacuum widths in the displayed action fragment; it is not a lifetime,
 Q, dark-matter, device, or all-orders stability prediction.  See the [minimal
-vacuum-closure audit](NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md).
+vacuum-closure audit](docs/reports/NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md).
 
 The source-free local Abelian-Higgs subsector also has
 \(\beta=m_\sigma^2/m_A^2=2.53003\ldots>1\), hence a type-II, non-BPS
@@ -122,7 +132,7 @@ parameter ratio.  This is a conditional mathematical direction only: without
 an explicit compact-U(1), charge-lattice, and global-boundary completion it
 does not establish a physically protected vortex or string.  The branch and
 its BVP are recorded in the [conditional vortex-sector
-audit](NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md).
+audit](docs/reports/NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md).
 
 For the generator branch, see the [practical energy audit producer](verification/nvg_generator_practical_audit.py),
 [semantic tests](verification/test_generator_practical_audit.py),
@@ -150,7 +160,7 @@ retained.
 
 ## Density-tail universality and calibration limits
 
-The latest [calculation and derivation (Russian)](NVG_DENSITY_UNIVERSALITY_RU.md)
+The latest [calculation and derivation (Russian)](docs/reports/NVG_DENSITY_UNIVERSALITY_RU.md)
 move beyond finite droplets to the homogeneous cold-matter model. For a
 regular positive power-law potential `U ~ a W^p`, constant positive couplings
 and the stated minimum/regularity assumptions,
@@ -174,7 +184,7 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest verifica
 
 The program computes its output afresh and rejects corrupted numerical
 evidence. See the [frozen contract](verification/contracts/density_universality.md)
-for assumptions and the [research directions](NVG_BEYOND_DROPLETS_ADHD_RU.md)
+for assumptions and the [research directions](docs/reports/NVG_BEYOND_DROPLETS_ADHD_RU.md)
 for the full idea selection. The shared `BulkModel`/`inverse_potential_jet`
 API is included as a dependency; the separate upstream audit CLI is outside
 this focused workflow.
@@ -184,13 +194,13 @@ this focused workflow.
 The static W8.93 branch (no rho, s* = 0.2268, Ca40 anchor) was extended
 through a pre-registered chain of finite-nucleus probes: isovector contact
 with form factor, the held-out Ca48 test, and the four-nucleus
-[discriminating set](NVG_SN132_DISCRIMINATING_SET_RU.md)
+[discriminating set](docs/reports/NVG_SN132_DISCRIMINATING_SET_RU.md)
 {Zr90, Pb208, Ca48, Sn132}. Verdict: **UNIVERSAL_CONSTANT_SUPPORTED** — a
 single bulk isovector constant j = 11.14 MeV (J_design = 23.78 MeV) collapses
 the binding-energy residual 202.7 -> -3.4 MeV (~60x) with anchor drift
 -0.04%; the four tangents span 10.44-12.38 MeV (mean 11.136 MeV).
 
-The follow-up [identification audit](NVG_J_IDENTIFICATION_RU.md) shows what
+The follow-up [identification audit](docs/reports/NVG_J_IDENTIFICATION_RU.md) shows what
 this constant is: the **interaction part of the classical nuclear symmetry
 energy** — the 1935 Bethe-Weizsacker asymmetry term, equal in the
 zero-range limit to the rho-meson channel of QHD:
@@ -208,7 +218,7 @@ pre-registration, at 1-3% accuracy. Radii/skins remain outside the static
 branch (shell physics); adopting the isovector term as a theory element is a
 pending author decision; all these audits carry evidence_weight = 0.
 
-The closing [transferability probe](NVG_ISOVECTOR_TRANSFERABILITY_RU.md)
+The closing [transferability probe](docs/reports/NVG_ISOVECTOR_TRANSFERABILITY_RU.md)
 tests the constant from both sides. Part A: a secant re-anchoring of s\* on
 Ca40 under the rho contact gives ds/s = -0.041% (s\*_rho = 0.2267063) —
 verdict **REANCHORED_UNIVERSAL_J_SURVIVES**, the residual collapse
@@ -225,7 +235,7 @@ transferable drop-in constant — the NS family would require re-selection,
 not a single substitution.
 
 That re-selection is now done: the pre-registered [soft-isospin re-selection
-scan](NVG_SOFT_ISOSPIN_RESELECTION_RU.md) (3150-point grid over the isoscalar
+scan](docs/reports/NVG_SOFT_ISOSPIN_RESELECTION_RU.md) (3150-point grid over the isoscalar
 family shape and transition parameters at C_rho = 2j/n0) answers in two
 stages. Stage 1 (transition parameters alone at the baseline isoscalar
 shape): 0 of 42 survivors — drop-in re-selection cannot absorb the shift.
@@ -240,7 +250,7 @@ keeping the identified j — one constant, both sectors, within the family
 (conditional, in-sample, evidence_weight = 0).
 
 The first genuinely external test — the [PREX-II/CREX consistency
-probe](NVG_PREX_CREX_CONSISTENCY_RU.md) — then compares the point neutron
+probe](docs/reports/NVG_PREX_CREX_CONSISTENCY_RU.md) — then compares the point neutron
 skins of Pb208/Ca48 on both branches against the published two-sigma bands
 (pre-registered; neither j nor s* was ever tuned to a skin). Verdict:
 **SKINS_EXCLUDED_BOTH_BRANCHES** (Pb208: -5.1 sigma no_rho / -4.4 sigma
@@ -270,13 +280,13 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=verification python -B -m unittest \
 
 Contracts: [nuclear isospin jet](verification/contracts/nuclear_isospin_jet.md),
 [nuclear closure](verification/contracts/nuclear_closure.md). Reports:
-[isovector form-factor probe](NVG_ISOVECTOR_FORMFACTOR_PROBE_RU.md),
-[Ca48 held-out probe](NVG_CA48_QUANTUM_SURFACE_PROBE_RU.md),
-[discriminating set](NVG_SN132_DISCRIMINATING_SET_RU.md),
-[j identification](NVG_J_IDENTIFICATION_RU.md),
-[isovector transferability](NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
-[soft-isospin re-selection](NVG_SOFT_ISOSPIN_RESELECTION_RU.md),
-[PREX/CREX consistency](NVG_PREX_CREX_CONSISTENCY_RU.md). The full scientific
+[isovector form-factor probe](docs/reports/NVG_ISOVECTOR_FORMFACTOR_PROBE_RU.md),
+[Ca48 held-out probe](docs/reports/NVG_CA48_QUANTUM_SURFACE_PROBE_RU.md),
+[discriminating set](docs/reports/NVG_SN132_DISCRIMINATING_SET_RU.md),
+[j identification](docs/reports/NVG_J_IDENTIFICATION_RU.md),
+[isovector transferability](docs/reports/NVG_ISOVECTOR_TRANSFERABILITY_RU.md),
+[soft-isospin re-selection](docs/reports/NVG_SOFT_ISOSPIN_RESELECTION_RU.md),
+[PREX/CREX consistency](docs/reports/NVG_PREX_CREX_CONSISTENCY_RU.md). The full scientific
 front door (registry validation with 512 entries, predictive ledger, canonical
 suite, 1120 semantic tests) is green at this state.
 
@@ -325,7 +335,7 @@ The historical cosmology assigns $\rho_c=M_{\Omega,0}^4/(\hbar c)^3\approx7.09\t
 
 $$H^2 = \frac{8\pi G}{3}\rho\left(1 - \frac{\rho}{\rho_c}\right),\qquad k=0$$
 
-Here rho is mass-equivalent energy density, with no separately added Lambda. This conditional flat case now has an exact solution and independent integration through the bounce. Its pressure is constrained by conservation: epsilon_eff=F(epsilon) requires P_eff=(epsilon+P)Fprime-F. The modification is still not derived from the NVG action. [Equations, checks and limitations (Russian)](BLACK_HOLES_AND_CYCLES_RU.md).
+Here rho is mass-equivalent energy density, with no separately added Lambda. This conditional flat case now has an exact solution and independent integration through the bounce. Its pressure is constrained by conservation: epsilon_eff=F(epsilon) requires P_eff=(epsilon+P)Fprime-F. The modification is still not derived from the NVG action. [Equations, checks and limitations (Russian)](docs/reports/BLACK_HOLES_AND_CYCLES_RU.md).
 
 Conditional scales computed from this ansatz and its declared inputs:
 
@@ -392,7 +402,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 11 | Historical-template instantaneous mass-shift hierarchy at $2n_0$: $\rho, \omega$ ($-20\%$), $K^*$ ($-7.8\%$), $\phi$ ($-2.9\%$), $J/\psi$ ($-0.4\%$) — light non-Goldstone mesons shift most (observable spectral shifts are smaller, per row 7) | HADES, CBM (FAIR), NICA, LHC in-medium invariant-mass spectra ([fair_hades_link.py](verification/nvg_fair_hades_link.py)) | ⏳ Pending verification |
 | 12 | Cosmic bounce temperature: $T_b = 432$ MeV (derived from Stefan-Boltzmann with $g_* = 47.5$) | Conditional thermodynamic scale for the assigned density and $g_*=47.5$; comparing it with $T_c\approx155$–$175$ MeV supplies no observation of a bounce | ⚙️ Conditional scale |
 | 13 | Effective vacuum dielectric constant: $\varepsilon_{\rm eff} \approx 0.135\,\varepsilon_0$ in NS cores (from $e^{-2\alpha_v f_{\rm melt}}$ with phenomenological melting parameters $\kappa$) | Amplifies magnetar seed fields by $1/\sqrt{\varepsilon_{\rm eff}} \approx 2.7\times$ | ⚙️ Scale estimate |
-| 14 | Legacy relic calibration inversion | A legacy, undocumented `Omega_DM=0.268` and `H0=72.8` are supplied to infer $\lambda_v$ and $m_W$; the result does not predict dark-matter abundance and corresponds to $\omega=0.14204$, 18.36% above the Planck comparison reference ([nvg_relic_dark_matter.py](verification/nvg_relic_dark_matter.py), [budget audit](NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Calibration only; no abundance prediction |
+| 14 | Legacy relic calibration inversion | A legacy, undocumented `Omega_DM=0.268` and `H0=72.8` are supplied to infer $\lambda_v$ and $m_W$; the result does not predict dark-matter abundance and corresponds to $\omega=0.14204$, 18.36% above the Planck comparison reference ([nvg_relic_dark_matter.py](verification/nvg_relic_dark_matter.py), [budget audit](docs/reports/NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Calibration only; no abundance prediction |
 | 15 | NS core speed of sound: the quark phase follows a CSS ansatz with $c_{s}^2 = 1/3$ (conformal limit) | Compatible with joint NICER+LIGO posterior limits ([speed_of_sound_curve.py](verification/nvg_speed_of_sound_curve.py)) | ⚪ Ansatz parameter |
 | 16 | First cycle duration: $\tau_1 = 5.9\,\mu\text{s}$ | A timescale assigned through $\rho_c\to t_b$ in the historical cosmology; no CCC/LQC boundary problem is solved by this dimensional calculation | ⚙️ Conditional timescale |
 | 17 | Joint NS comparison: conditional/in-sample reduced $\chi_\nu^2 = 0.684$ over 3 runtime rows (calibration target excluded) | Runtime outputs $M_{\max}=2.048$, $R_{1.4}=12.550$, $\Lambda_{1.4}=519.4$ from the canonical chain; transition selected on J0740/GW170817/NICER ([nvg_joint_ns_inference.py](verification/nvg_joint_ns_inference.py)) | ⚙️ Conditional/in-sample |
@@ -413,7 +423,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 32 | $S_8$ structure growth | **Open problem.** The maintained calculation gives $S_8 \approx 0.851$ ($4.4\sigma$ from the weak-lensing input): the input-dependent $w_0/w_a$ growth shift moves away from the lensing value. The retired empirical IDE drag-factor resolution claim is not evidence ([nvg_s8_tension_check.py](verification/nvg_s8_tension_check.py)) | ⚠️ WORSENS (not an independent prediction) |
 | 33 | NANOGrav SGWB | Retired attribution. The maintained PBH abundance cross-check leaves a large amplitude deficit and the bounce calculation radiates in the $\mu$Hz band; NVG supplies no mechanism for the PTA signal ([nvg_nanograv_background.py](verification/nvg_nanograv_background.py)) | ❌ Retired (no mechanism) |
 | 34 | Higgs boson mass shift $\delta m_H \approx 4.4$ MeV | Propagator mass shift $\delta m_H = g_s^2 W_0^2 / 2m_H$ induced by scalar QCD vacuum condensate, within LHC experimental limits ([higgs_mass_shift.py](verification/nvg_higgs_mass_shift.py)) | ⚙️ Assumed-coupling scale; no collider likelihood |
-| 35 | PBH ladder / profile peak | The discrete mass ladder is the declared $0.38\times4^N\,M_\odot$ mapping; the calibrated profile peak ($N=-21$, $\sim 10^{20}$ g) is in the asteroid-mass window. However the current profile is normalized only as a shape: it has no formation solver or absolute $\omega_{\rm PBH}$, and the separate PBH-B seed trace is only a calibration, so a unified dark-matter composition is not closed ([pbh_dark_matter.py](verification/nvg_pbh_dark_matter.py), [budget audit](NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Ladder mapping; abundance unnormalized |
+| 35 | PBH ladder / profile peak | The discrete mass ladder is the declared $0.38\times4^N\,M_\odot$ mapping; the calibrated profile peak ($N=-21$, $\sim 10^{20}$ g) is in the asteroid-mass window. However the current profile is normalized only as a shape: it has no formation solver or absolute $\omega_{\rm PBH}$, and the separate PBH-B seed trace is only a calibration, so a unified dark-matter composition is not closed ([pbh_dark_matter.py](verification/nvg_pbh_dark_matter.py), [budget audit](docs/reports/NVG_DARK_MATTER_BUDGET_AUDIT_RU.md)) | ⚙️ Ladder mapping; abundance unnormalized |
 | 36 | White Dwarf cooling age shift | Predicted effect $\Delta t/t \approx -1.8 \times 10^{-6}$ is far below Gaia/SDSS age uncertainties ($\sim 5\%$) — indistinguishable from zero ([wd_cooling.py](verification/nvg_wd_cooling.py)) | ⚪ Null test (unobservably small) |
 | 37 | Neutron star core g-modes | Runtime WKB forecast over an assumed composition grid gives periods in a 50–150 ms sensitivity band; no detector likelihood or confirmation is available ([nvg_ns_g_modes.py](verification/nvg_ns_g_modes.py)) | 🔭 Forecast (assumed composition) |
 | 38 | SN1987A dark-photon sensitivity scan | The current reference scan includes a 19.8% mass-drop point with $L_A=8.265\times10^{55}$ erg/s, above the stated Raffelt reference. Without a sourced SN1987A likelihood and validated transport model, it establishes no mass-drop bound or limit status ([nvg_dark_photon_observables.py](verification/nvg_dark_photon_observables.py)) | ⚙️ Conditional scan (no evidence) |
@@ -421,7 +431,7 @@ These rows summarize declared runtime calculations, formal identities, condition
 | 40 | Conditional strong-CP potential | The minimum of an added $\chi(1-\cos\theta)$ term is at $\theta=0$ modulo $2\pi$. Identifying this phase with $\bar\theta_{\rm QCD}$ is a separate physical postulate, not a result of the maintained Higgs action. ([strong_cp_solution.py](verification/nvg_strong_cp_solution.py)) | 📐 Conditional potential identity |
 | 41 | Arrow of Time from Topology | Illustration of a selected phase winding $Q=1$ and entropy-growth prescription. Winding sign alone does not derive a statistical H-theorem or its entropy budget. ([arrow_of_time.py](verification/nvg_arrow_of_time.py)) | 📐 Synthetic illustration |
 | 42 | Double-slit interference from vacuum hydrodynamics | $|\psi|^2$ pattern reproduced by Huygens-Fresnel integral over vacuum phase $\theta$ (Madelung representation), $r_{\rm Pearson} = 1.000$ ([double_slit_madelung.py](verification/nvg_double_slit_madelung.py)) | 📐 Reproduces standard QM (Madelung) |
-| 43 | LZ 248-keV nuclear-recoil screen | An exact two-body screen with a derived bound-SHM envelope `v_max<=824.355` km/s excludes an elastic path for the bound action's 0.783-GeV vector and 1.245-GeV scalar modes, as well as the legacy 0.938-GeV χ and 1.229-GeV W proxy; a new elastic candidate must be at least 70.659 GeV. The action does not establish any of these light modes as a cold halo population. This is a necessary condition, not a likelihood or exclusion of all NVG variants ([nvg_lz_248kev_kinematic_audit.py](verification/nvg_lz_248kev_kinematic_audit.py), [Russian audit](NVG_LZ_248KEV_AUDIT_RU.md)) | ⚙️ Kinematic screen; LZ is not explained by the current model |
+| 43 | LZ 248-keV nuclear-recoil screen | An exact two-body screen with a derived bound-SHM envelope `v_max<=824.355` km/s excludes an elastic path for the bound action's 0.783-GeV vector and 1.245-GeV scalar modes, as well as the legacy 0.938-GeV χ and 1.229-GeV W proxy; a new elastic candidate must be at least 70.659 GeV. The action does not establish any of these light modes as a cold halo population. This is a necessary condition, not a likelihood or exclusion of all NVG variants ([nvg_lz_248kev_kinematic_audit.py](verification/nvg_lz_248kev_kinematic_audit.py), [Russian audit](docs/reports/NVG_LZ_248KEV_AUDIT_RU.md)) | ⚙️ Kinematic screen; LZ is not explained by the current model |
 | 44 | Bell-CHSH correlations in the condensate | The correlation form $E = -\cos(a-b)$ is postulated (preprint Limitations: conjectural); by Bell's theorem a local derivation is impossible — a shared phase read out locally is a hidden variable giving $S \le 2$, so any derivation from the action must contain an explicitly nonlocal or contextual element. **Resolved as a dichotomy** ([nvg_bell_from_action.py](verification/nvg_bell_from_action.py)): a classical spacetime $\theta$ of any dynamics gives $S \le 2$ (verified by exhaustion) — excluded by loophole-free experiments; the quantized W-field yields the configuration-space $\theta$ automatically ([nvg_bell_contextual.py](verification/nvg_bell_contextual.py) reproduces $S = 2\sqrt{2}$) but then QM is the input. The quantum block is a consistent hydrodynamic *representation*, not a derivation; its falsifiable content is $S(T > T_c) \to 0$ (row 51) | 📐 Resolved: representation, not derivation |
 | 45 | Heisenberg uncertainty | $\Delta x\,\Delta p\ge\hbar/2$ is the standard Fourier/Cauchy–Schwarz identity for the stated wavefunction and momentum definitions. Demonstrating it does not derive quantum dynamics from the classical action. | 📐 Standard identity; synthetic examples |
 | 46 | Phase-thermalization illustration | The toy estimate $\tau=\hbar/(k_BT)\approx25$ fs at 300 K assumes a reservoir. It does not derive the Born rule from a Boltzmann weight or select a measurement outcome. ([wavefunction_collapse.py](verification/nvg_wavefunction_collapse.py)) | ❓ Measurement mechanism unclosed |
@@ -478,7 +488,7 @@ The highest-risk testable forecasts of the theory. Future measurements can const
 | **Gravitational Echo** | Echo spacing $\Delta t \approx 0.022$ s ($65\,M_\odot$) with decay amplitude $A_n \propto (1 - \mathcal{T})^n$ | Searched O1–O4b open data (coherent time-slide, 89 events): **no evidence**, upper limit set (echoes $\gtrsim 0.3\times$ the GW150914 signal excluded). A naive O4 stack first showed a spurious $2.4\sigma$ excess — resolved as primary-signal (ringdown) leakage via a gap-tooth discriminant. |
 | **NS Gravitational Redshift** | $z_{\rm surf}(1.4 M_\odot) \approx 0.222$ (runtime $R_{1.4}=12.550$ km; conditional chain) | STROBE-X / eXTP (future X-ray observatories) |
 | **Post-merger $f_{\rm peak}$** | $f_{\rm peak} \approx 2420$ Hz from runtime $R_{1.6}\approx12.65$ km | LIGO O5 / Einstein Telescope (future detectors) |
-| **Vacuum melting exponent $\beta$** | $W\sim(1-\rho/\rho_c)^{\beta}$: the $\sqrt{\;}$-law is mean-field $\beta=1/2$, but a QCD-anchored 3-D critical point gives $\beta=0.326$ (Ising) or $0.349$ (XY) — reshaping the bounce term to $(1-\rho/\rho_c)^{2\beta}$ | RHIC **BES-II** net-proton cumulant scaling near $T_c\approx157$ MeV — *existing data*. Derivation & consequences: [`NVG_MELTING_LAW_ANALYSIS.md`](NVG_MELTING_LAW_ANALYSIS.md) |
+| **Vacuum melting exponent $\beta$** | $W\sim(1-\rho/\rho_c)^{\beta}$: the $\sqrt{\;}$-law is mean-field $\beta=1/2$, but a QCD-anchored 3-D critical point gives $\beta=0.326$ (Ising) or $0.349$ (XY) — reshaping the bounce term to $(1-\rho/\rho_c)^{2\beta}$ | RHIC **BES-II** net-proton cumulant scaling near $T_c\approx157$ MeV — *existing data*. Derivation & consequences: [`NVG_MELTING_LAW_ANALYSIS.md`](docs/reports/NVG_MELTING_LAW_ANALYSIS.md) |
 
 ### External Verification Outreach
 
@@ -504,7 +514,7 @@ Maintained runtime entry points expose conditional comparisons, calibrations, fo
 - **CHIME Repeating FRBs:** Retired pending a repeater-linked DM/magnetar-mass catalogue and defensible population likelihood; no synthetic p-value or confirmation is reported (`verification/nvg_chime_frb_check.py`).
 - **LIGO O4 Echo Candidates:** Predicts echo delays in the $0.021 - 0.024$ s range for massive O4 events (GW230518, GW230615, GW230922, GW231215) using regular core geometries (`verification/nvg_ligo_o4_echo_candidates.py`).
 - **Advanced Calculations:** Emits a runtime evidence-status ledger for formal/forward rows and explicitly retired JWST, FRB, PTA, and neutrino claims; a process run is not observational verification (`verification/nvg_advanced_calculations.py`).
-- **Vacuum Melting Law $W(\rho)$ — Identifiability & Critical Exponent:** A focused, reproducible study of what the melting law is actually measured by, using the framework's own forward models ([**NVG_MELTING_LAW_ANALYSIS.md**](NVG_MELTING_LAW_ANALYSIS.md)). The deep-core identifiability study uses an alternate dated calibration and is descriptive only (zero independent evidence weight); it must not be confused with the runtime canonical chain. The cosmological $\sqrt{1-\rho/\rho_c}$ law is inert at NS density, while a QCD-anchored 3-D critical point gives $\beta\approx0.326$ (`verification/nvg_melting_freeform_beta.py`, `verification/nvg_melting_identifiability.py`, `verification/nvg_melting_exponent.py`).
+- **Vacuum Melting Law $W(\rho)$ — Identifiability & Critical Exponent:** A focused, reproducible study of what the melting law is actually measured by, using the framework's own forward models ([**NVG_MELTING_LAW_ANALYSIS.md**](docs/reports/NVG_MELTING_LAW_ANALYSIS.md)). The deep-core identifiability study uses an alternate dated calibration and is descriptive only (zero independent evidence weight); it must not be confused with the runtime canonical chain. The cosmological $\sqrt{1-\rho/\rho_c}$ law is inert at NS density, while a QCD-anchored 3-D critical point gives $\beta\approx0.326$ (`verification/nvg_melting_freeform_beta.py`, `verification/nvg_melting_identifiability.py`, `verification/nvg_melting_exponent.py`).
 
 ---
 
@@ -681,6 +691,9 @@ NVG-Research/
 │   ├── nvg_3d_viz_v2.html                  # Interactive 3D Tolman Cycles Simulator
 │   ├── nvg_ns_merger_3d.html               # Interactive 3D BNS Merger & Mass Melting
 │   └── nvg_3d_viz_v2_ru.html              # Interactive 3D Universe Simulator (RU)
+├── docs/
+│   ├── unified/                            # Cycle 1–3 unified 8-bridge reports
+│   └── reports/                            # Detailed historical & sector audit reports (74 files)
 ├── .docs/
 │   ├── NVG_VERIFICATION_MATRIX_RU.md       # Matrix of falsifiable predictions
 │   ├── NVG_EM_OBSERVABLES.md               # Strict Checklist of EM Observables
@@ -776,7 +789,7 @@ python verification/nvg_ns_g_modes.py                  # WKB g-mode forecast wit
 python verification/nvg_ds_core_oscillations.py        # Computes standing wave oscillations in de Sitter cores
 python verification/nvg_pbh_dark_matter.py             # Computes PBH normalized profile and benchmark comparisons
 python verification/nvg_wd_cooling.py                  # Computes VMF white dwarf cooling rate deviation
-python verification/run_nvg_suite.py               # Canonical runtime ledger (NVG_FINAL_REPORT.md)
+python verification/run_nvg_suite.py               # Canonical runtime ledger (docs/reports/NVG_FINAL_REPORT.md)
 ```
 
 ## Key Testable Predictions (Falsifiability)
@@ -829,7 +842,7 @@ During the post-bounce expansion at $T < T_b$, a toy relic-instanton budget can 
 ## Automatic Verification & Reporting (Runtime Ledger)
 
 The repository includes a unified pipeline for reviewers: `verification/run_nvg_suite.py`. 
-Running this script automatically generates `NVG_FINAL_REPORT.md`, which features:
+Running this script automatically generates `docs/reports/NVG_FINAL_REPORT.md`, which features:
 1. **Canonical runtime ledger:** Executes one TOV + Hinderer chain and records $M_{\max}$, $R_{1.4}$, $\Lambda_{1.4}$, and the conditional reduced $\chi^2$ with provenance.
 2. **Honest boundary:** Off-anchor uncertainty propagation and inverse QCD reconstruction are currently unsupported and are not reported as results.
 3. **Forecast module:** Records future measurements that could test the canonical chain; a process exit code is not a scientific verdict.

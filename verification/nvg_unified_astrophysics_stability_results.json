@@ -1,0 +1,391 @@
+{
+  "bridge_id": "BRIDGE7_HARTLE_ILOVEQ_AND_COUPLED_TWO_CONDENSATE_BOUNCE",
+  "evidence_weight": 0.0,
+  "frozen_parameters": {
+    "Lambda_v": 0.04038194655222623,
+    "M_N_MeV": 939.0,
+    "W0_MeV": 859.0,
+    "b3": 0.002982510886979509,
+    "b4": -0.00255029930232349,
+    "b6_MeV_minus2": 1.9e-09,
+    "b6_dimensionless_b6_MN2": 0.0016752699000000002,
+    "c2_MeV2": 2891.573468218873,
+    "g_W": 1.0931315483119908,
+    "g_omega": 11.577208119480272,
+    "g_rho": 10.12207579778366,
+    "g_s_ch": 9.298285753738492,
+    "hbar_c_MeV_fm": 197.3269804,
+    "lam_W": 1.05,
+    "m_W_MeV": 1244.8092624976728,
+    "m_omega_MeV": 782.6,
+    "m_rho_MeV": 775.3,
+    "m_s_MeV": 500.0,
+    "n0_fm3": 0.16,
+    "q_phi": 0.911059371362049,
+    "zeta_RMF": 0.0175,
+    "zeta_g": 76.05284090140671
+  },
+  "gates": {
+    "hartle_radial_convergence_lt_1e4": true,
+    "hartle_spin_rescaling_invariance_lt_1e8": true,
+    "hartle_surface_matching_lt_1e8": true,
+    "independent_ILoveQ_universality_lt_1_5_percent": true,
+    "kretschmann_curvature_bounded_and_qy_benchmark_positive": true,
+    "maclaurin_newtonian_I_and_Q_lt_1e4": true,
+    "negative_control_bad_qdot_breaks_constraint": true,
+    "two_condensate_bounce_W_zero_crossing_smooth": true,
+    "two_condensate_bounce_baryon_lt_1e12": true,
+    "two_condensate_bounce_constraint_lt_1e11": true
+  },
+  "honest_caveats": [
+    "evidence_weight=0.0: internal mathematical and GR slow-rotation / homogeneous bounce consistency audit.",
+    "PSR J0737-3039A moment of inertia I is a conditional forward prediction of the frozen Law-2 EOS (zero refitting).",
+    "Part B proves homogeneous constraint preservation and fluid causality 0 < c_th^2 < 1 along the synchronized two-condensate bounce, while Quintin-Yoshida coefficients are quoted for the single-scalar benchmark; full inhomogeneous multi-field (W, s, A_mu, metric, Psi) perturbation theory remains open."
+  ],
+  "part_a_hartle_iloveq": {
+    "benchmark_stars": [
+      {
+        "I_1e45_g_cm2": 1.4694457493569277,
+        "I_g_cm2": 1.4694457493569277e+45,
+        "I_geom_km3": 109.12339641499722,
+        "I_over_MR2": 0.345177094254408,
+        "Ibar": 14.146976336468862,
+        "K2_match_rel": 1.760895551439793e-16,
+        "Lambda": 660.0749325030444,
+        "M_Msun": 1.3380999417539174,
+        "Pc_MeV_fm3": 52.13356870108349,
+        "Qbar": 6.4612414403080844,
+        "R_km": 12.64917628600563,
+        "YY_ILove_rel_dev": 0.0007430647464324073,
+        "YY_IQ_rel_dev": 0.001479930812454533,
+        "YY_Ibar_from_Lambda": 14.157496272846963,
+        "YY_Ibar_from_Qbar": 14.126070729137899,
+        "YY_QLove_rel_dev": 0.0004858526222170678,
+        "YY_Qbar_from_Lambda": 6.464382177339958,
+        "compactness": 0.15620292810527084,
+        "first_order_integral_rel": 2.33288430551207e-05,
+        "first_order_match_rel": 0.0,
+        "h2_match_rel": 1.6401219890971732e-16,
+        "k2": 0.09014189078765114,
+        "label": "PSR_J0737_3039A",
+        "target_M_Msun": 1.3381
+      },
+      {
+        "I_1e45_g_cm2": 1.5627521094799868,
+        "I_g_cm2": 1.5627521094799866e+45,
+        "I_geom_km3": 116.05247625901661,
+        "I_over_MR2": 0.35158208471815133,
+        "Ibar": 13.136561238351867,
+        "K2_match_rel": 1.6327535827754076e-16,
+        "Lambda": 500.74543631962604,
+        "M_Msun": 1.4000000189264323,
+        "Pc_MeV_fm3": 58.107607845414066,
+        "Qbar": 5.928745589316187,
+        "R_km": 12.636255090254142,
+        "YY_ILove_rel_dev": 0.0007366298599396917,
+        "YY_IQ_rel_dev": 0.001871284571379916,
+        "YY_Ibar_from_Lambda": 13.146245155079185,
+        "YY_Ibar_from_Qbar": 13.112024908441152,
+        "YY_QLove_rel_dev": 0.00027200558419973033,
+        "YY_Qbar_from_Lambda": 5.930358679993453,
+        "compactness": 0.16359593987154886,
+        "first_order_integral_rel": 2.8103630177787098e-05,
+        "first_order_match_rel": 1.4708812326954573e-16,
+        "h2_match_rel": 1.5169265215790748e-16,
+        "k2": 0.0862930264908214,
+        "label": "canonical_1_4",
+        "target_M_Msun": 1.4
+      },
+      {
+        "I_1e45_g_cm2": 2.1430689583571754,
+        "I_g_cm2": 2.143068958357175e+45,
+        "I_geom_km3": 159.14773552533578,
+        "I_over_MR2": 0.39336532355143833,
+        "Ibar": 8.47606582338388,
+        "K2_match_rel": 0.0,
+        "Lambda": 82.42713845842269,
+        "M_Msun": 1.8000000487232086,
+        "Pc_MeV_fm3": 129.1231038501818,
+        "Qbar": 3.3673019718240687,
+        "R_km": 12.337708495475596,
+        "YY_ILove_rel_dev": 0.0003839886157461353,
+        "YY_IQ_rel_dev": 0.0008516640841223252,
+        "YY_Ibar_from_Lambda": 8.479321786419113,
+        "YY_Ibar_from_Qbar": 8.468853205275243,
+        "YY_QLove_rel_dev": 0.00016362834470793123,
+        "YY_Qbar_from_Lambda": 3.3678530480435396,
+        "compactness": 0.21542736829285358,
+        "first_order_integral_rel": 8.312010229028783e-06,
+        "first_order_match_rel": 1.2173490325459514e-16,
+        "h2_match_rel": 1.7660626896775258e-16,
+        "k2": 0.05664320535868975,
+        "label": "heavy_1_8",
+        "target_M_Msun": 1.8
+      },
+      {
+        "I_1e45_g_cm2": 2.2913234085828984,
+        "I_g_cm2": 2.291323408582898e+45,
+        "I_geom_km3": 170.1573486051987,
+        "I_over_MR2": 0.4193198583803301,
+        "Ibar": 6.606511259897998,
+        "K2_match_rel": 5.04661848486868e-16,
+        "Lambda": 23.90148340911133,
+        "M_Msun": 1.999999924766579,
+        "Pc_MeV_fm3": 267.60672862760816,
+        "Qbar": 2.3300106347327683,
+        "R_km": 11.722121484128765,
+        "YY_ILove_rel_dev": 0.0008943192159873829,
+        "YY_IQ_rel_dev": 0.0030075585829381513,
+        "YY_Ibar_from_Lambda": 6.612424878531141,
+        "YY_Ibar_from_Qbar": 6.626440668404588,
+        "YY_QLove_rel_dev": 0.0005986074026453359,
+        "YY_Qbar_from_Lambda": 2.328616707533715,
+        "compactness": 0.25193390913998226,
+        "first_order_integral_rel": 1.1540099206125426e-05,
+        "first_order_match_rel": 1.7924587660541128e-16,
+        "h2_match_rel": 3.489000631734282e-16,
+        "k2": 0.036044401851695614,
+        "label": "massive_2_0",
+        "target_M_Msun": 2.0
+      }
+    ],
+    "controls": {
+      "j0737_Ibar_radial_conv_rel_err": 1.913828609980549e-09,
+      "j0737_Qbar_radial_conv_rel_err": 1.0363577863570985e-05,
+      "j0737_coarse_Ibar": 14.140562909984236,
+      "j0737_fine_Ibar": 14.14697636354375,
+      "maclaurin_I_abs_err": 1.8282806074632063e-06,
+      "maclaurin_Q_abs_err": 6.417873975705923e-06,
+      "maclaurin_newtonian_I_over_MR2_C0": 0.39999817171939256,
+      "maclaurin_newtonian_Q_over_Om2R5_C0": -0.4999935821260243,
+      "maclaurin_qtilde_abs_err": 3.6920104110937935e-05,
+      "maclaurin_qtilde_ratio_C0": 0.9999630798958891,
+      "spin_rescaling_invariance_rel_err": 4.1280305760187643e-10
+    },
+    "max_surface_matching_rel_res": 5.04661848486868e-16,
+    "max_yagi_yunes_rel_dev": 0.0030075585829381513,
+    "psr_j0737_3039a_forecast": {
+      "I_1e45_g_cm2": 1.4694457493569277,
+      "I_g_cm2": 1.4694457493569277e+45,
+      "I_geom_km3": 109.12339641499722,
+      "I_over_MR2": 0.345177094254408,
+      "Ibar": 14.146976336468862,
+      "K2_match_rel": 1.760895551439793e-16,
+      "Lambda": 660.0749325030444,
+      "M_Msun": 1.3380999417539174,
+      "Pc_MeV_fm3": 52.13356870108349,
+      "Qbar": 6.4612414403080844,
+      "R_km": 12.64917628600563,
+      "YY_ILove_rel_dev": 0.0007430647464324073,
+      "YY_IQ_rel_dev": 0.001479930812454533,
+      "YY_Ibar_from_Lambda": 14.157496272846963,
+      "YY_Ibar_from_Qbar": 14.126070729137899,
+      "YY_QLove_rel_dev": 0.0004858526222170678,
+      "YY_Qbar_from_Lambda": 6.464382177339958,
+      "compactness": 0.15620292810527084,
+      "first_order_integral_rel": 2.33288430551207e-05,
+      "first_order_match_rel": 0.0,
+      "h2_match_rel": 1.6401219890971732e-16,
+      "k2": 0.09014189078765114,
+      "label": "PSR_J0737_3039A",
+      "target_M_Msun": 1.3381
+    }
+  },
+  "part_b_coupled_two_condensate_bounce": {
+    "negative_control_bad_qdot_constraint_err": 0.19984165058158287,
+    "vacuum_bag_kappa1_tracking": {
+      "bounce_state_at_tau_0": {
+        "A0_hat": 0.2515686987529144,
+        "H_tc": -4.664671426901634e-14,
+        "Hdot_tc2": 2.0795584718107945,
+        "n_hat": 0.0904434476335907,
+        "y_W": 1.0096982899182216,
+        "y_s": 0.1091416426441203
+      },
+      "diagnostics": {
+        "H_tc_end": 0.10776045723154613,
+        "H_tc_start": -0.1076845907261014,
+        "bounce_signature_verified": true,
+        "crossed_W_zero_smoothly": false,
+        "fluid_cs2_samples": [
+          {
+            "fluid_cs2_eq": 0.43537104446928315,
+            "n_hat": 0.008127338294929405,
+            "tau": -2.5,
+            "yW_dyn": 0.9992743237413427,
+            "yW_eq": 1.000124867957304,
+            "ys_dyn": 0.09199751172036204,
+            "ys_eq": 0.0904725956295618
+          },
+          {
+            "fluid_cs2_eq": 0.36941574194639804,
+            "n_hat": 0.0904434476335907,
+            "tau": 0.0,
+            "yW_dyn": 1.0096982899182216,
+            "yW_eq": 1.0212947227532643,
+            "ys_dyn": 0.1091416426441203,
+            "ys_eq": 0.11418746208905876
+          },
+          {
+            "fluid_cs2_eq": 0.43535754269299964,
+            "n_hat": 0.008126198235280845,
+            "tau": 2.5,
+            "yW_dyn": 0.9934722704779255,
+            "yW_eq": 1.0001245208840168,
+            "ys_dyn": 0.09059817628573212,
+            "ys_eq": 0.09046966316383073
+          }
+        ],
+        "kretschmann_bounded_le_12": true,
+        "max_K_over_rho_c2_MP4": 5.766084583573395,
+        "max_baryon_conservation_error": 2.220446049250313e-15,
+        "max_constraint_error": 3.319566843629218e-14,
+        "qy_benchmark_Q_min": 1.5250000000000254,
+        "qy_benchmark_cs2_max": 1.5918255264531076,
+        "qy_benchmark_cs2_min": 0.3770491803279243,
+        "yW_max": 1.0366268526606508,
+        "yW_min": 0.9934722704779255,
+        "ys_max": 0.11890382074649108,
+        "ys_min": 0.05568804616671292
+      },
+      "parameters": {
+        "kappa_g": 1.0,
+        "mu_stiff": 5.0,
+        "qdot_rate_scale": 1.0,
+        "rho_c_over_W0_4": 0.2625
+      }
+    },
+    "w0_scale_W_zero_crossing": {
+      "bounce_state_at_tau_0": {
+        "A0_hat": 0.3380662592012255,
+        "H_tc": 1.198307425509526e-11,
+        "Hdot_tc2": 1.4940858451498507,
+        "n_hat": 0.17486536712261258,
+        "y_W": 1.2531695646467167e-10,
+        "y_s": 0.03999999998530646
+      },
+      "diagnostics": {
+        "H_tc_end": 0.11371978948232647,
+        "H_tc_start": -0.10776121180557537,
+        "bounce_signature_verified": true,
+        "crossed_W_zero_smoothly": true,
+        "fluid_cs2_samples": [
+          {
+            "fluid_cs2_eq": 0.44200256200377064,
+            "n_hat": 0.014333395143275267,
+            "tau": -2.5,
+            "yW_dyn": -1.1455636737380592,
+            "yW_eq": 1.0021389526860531,
+            "ys_dyn": -0.1691741537920419,
+            "ys_eq": 0.09966501307108934
+          },
+          {
+            "fluid_cs2_eq": 0.3564237717234478,
+            "n_hat": 0.17486536712261258,
+            "tau": 0.0,
+            "yW_dyn": 1.2531695646467167e-10,
+            "yW_eq": 1.0365827638548881,
+            "ys_dyn": 0.03999999998530646,
+            "ys_eq": 0.11787153968453705
+          },
+          {
+            "fluid_cs2_eq": 0.44227277720371355,
+            "n_hat": 0.014226421127773238,
+            "tau": 2.5,
+            "yW_dyn": 1.1391484700821946,
+            "yW_eq": 1.0021038733309255,
+            "ys_dyn": 0.12951704693704133,
+            "ys_eq": 0.0995704457741475
+          }
+        ],
+        "kretschmann_bounded_le_12": true,
+        "max_K_over_rho_c2_MP4": 2.98528514063287,
+        "max_baryon_conservation_error": 9.547918011776346e-15,
+        "max_constraint_error": 9.519052213136092e-12,
+        "qy_benchmark_Q_min": 1.5249999999953514,
+        "qy_benchmark_cs2_max": 1.5926051542822681,
+        "qy_benchmark_cs2_min": 0.377049180317843,
+        "yW_max": 1.3446192395764978,
+        "yW_min": -1.3596798300951736,
+        "ys_max": 0.18650766840911318,
+        "ys_min": -0.1902461826826281
+      },
+      "parameters": {
+        "kappa_g": 3.8095238095238093,
+        "mu_stiff": 5.0,
+        "qdot_rate_scale": 1.0,
+        "rho_c_over_W0_4": 1.0
+      }
+    },
+    "w0_scale_mu20_tracking": {
+      "bounce_state_at_tau_0": {
+        "A0_hat": 0.3604960198334399,
+        "H_tc": -8.924382500358208e-14,
+        "Hdot_tc2": 2.048839026942085,
+        "n_hat": 0.2395797911866052,
+        "y_W": 1.032416204093042,
+        "y_s": 0.11700821659539277
+      },
+      "diagnostics": {
+        "H_tc_end": 0.09787454004556292,
+        "H_tc_start": -0.09787940606040475,
+        "bounce_signature_verified": true,
+        "crossed_W_zero_smoothly": false,
+        "fluid_cs2_samples": [
+          {
+            "fluid_cs2_eq": 0.4234631802756886,
+            "n_hat": 0.021589422320445646,
+            "tau": -2.5,
+            "yW_dyn": 1.0095765703393467,
+            "yW_eq": 1.004453245109757,
+            "ys_dyn": 0.10583021011684036,
+            "ys_eq": 0.1041389092971785
+          },
+          {
+            "fluid_cs2_eq": 0.35198691430056855,
+            "n_hat": 0.2395797911866052,
+            "tau": 0.0,
+            "yW_dyn": 1.032416204093042,
+            "yW_eq": 1.046544572339673,
+            "ys_dyn": 0.11700821659539277,
+            "ys_eq": 0.11970674201440541
+          },
+          {
+            "fluid_cs2_eq": 0.4234620032200901,
+            "n_hat": 0.021589940539162047,
+            "tau": 2.5,
+            "yW_dyn": 1.0015030777607499,
+            "yW_eq": 1.0044534051177125,
+            "ys_dyn": 0.10364359776107472,
+            "ys_eq": 0.10413913784353655
+          }
+        ],
+        "kretschmann_bounded_le_12": true,
+        "max_K_over_rho_c2_MP4": 5.59698847776132,
+        "max_baryon_conservation_error": 5.10702591327572e-15,
+        "max_constraint_error": 2.105954299835844e-15,
+        "qy_benchmark_Q_min": 1.525,
+        "qy_benchmark_cs2_max": 1.5922672185245976,
+        "qy_benchmark_cs2_min": 0.3770491803278686,
+        "yW_max": 1.0608476318259588,
+        "yW_min": 0.9967704438873152,
+        "ys_max": 0.12259026505478304,
+        "ys_min": 0.08654796894175003
+      },
+      "parameters": {
+        "kappa_g": 3.8095238095238093,
+        "mu_stiff": 20.0,
+        "qdot_rate_scale": 1.0,
+        "rho_c_over_W0_4": 1.0
+      }
+    }
+  },
+  "provenance": {
+    "law2_results_path": "/Users/oleg/Documents/NVG-Research/verification/nvg_two_condensate_unified_results.json",
+    "law2_results_sha256": "f7f7231c2bdef879d39a37ed76db4afab5de8742bfc07663bc4b2e7b437c6831",
+    "source_sha256": "7a2f08c8f823d499fe3fc2dc9262887eb2446ee5debf0d0b3e32e6e12db5a969",
+    "zero_parameter_refit": true
+  },
+  "schema_version": "nvg_unified_astrophysics_stability_bridge.v1",
+  "status": "PASS_HARTLE_ILOVEQ_AND_TWO_CONDENSATE_BOUNCE_ZERO_EVIDENCE"
+}

@@ -1,0 +1,866 @@
+{
+  "bridge_id": "BRIDGE5_UNIFIED_THERMAL_RESPONSE_AND_SCHUR_HESSIAN",
+  "evidence_weight": 0.0,
+  "finite_qz_master_response": {
+    "max_direct_5x5_vs_schur_rel_err": 4.862233844180212e-16,
+    "max_low_q_thermo_recovery_rel_err": 8.334604301516778e-07,
+    "max_ward_rel_err": 1.2217151111128838e-09,
+    "min_ph_only_negative_control_ward_rel_err": 0.7831103534994135,
+    "rows": [
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 0.0,
+            "real": 1.5539634182198119e-12
+          },
+          "sL": {
+            "imag": 0.0,
+            "real": -1.070257532829291e-12
+          },
+          "ss": {
+            "imag": 0.0,
+            "real": 5538.017917582316
+          },
+          "vL": {
+            "imag": 0.0,
+            "real": -1.1040064219539048e-12
+          },
+          "vs": {
+            "imag": 0.0,
+            "real": 6399.495726016786
+          },
+          "vv": {
+            "imag": 0.0,
+            "real": 7298.629072788021
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 0.0,
+          "real": 7081.880659601855
+        },
+        "chi_schur_MeV2": {
+          "imag": 0.0,
+          "real": 7081.880659601853
+        },
+        "direct_vs_schur_rel_err": 2.568511799305187e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 0.0,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 1.553963418219812e-10,
+        "z_MeV": {
+          "imag": 0.0,
+          "real": 0.0
+        },
+        "z_label": "z0"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": -1.7951021076649394e-13,
+            "real": -413.7798518064819
+          },
+          "sL": {
+            "imag": 494.59255051096477,
+            "real": -3.278936666954237e-13
+          },
+          "ss": {
+            "imag": -1.1278425570400878e-12,
+            "real": 472.53574446969793
+          },
+          "vL": {
+            "imag": 591.1140740092623,
+            "real": -2.643870992201285e-13
+          },
+          "vs": {
+            "imag": -1.3008480179124985e-12,
+            "real": 706.5607864442353
+          },
+          "vv": {
+            "imag": -1.439089510606904e-12,
+            "real": 844.4486771560884
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": -1.1965511475676282e-12,
+          "real": 761.0095128806344
+        },
+        "chi_schur_MeV2": {
+          "imag": -1.1965511475676278e-12,
+          "real": 761.0095128806345
+        },
+        "direct_vs_schur_rel_err": 1.4938950932594714e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 1.340904440476021,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 4.04437162135174e-15,
+        "z_MeV": {
+          "imag": 70.0,
+          "real": 0.0
+        },
+        "z_label": "iT"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 345.1337553025032,
+            "real": -619.7844924409401
+          },
+          "sL": {
+            "imag": 665.8849674302672,
+            "real": -643.2439912049293
+          },
+          "ss": {
+            "imag": 1087.771040459347,
+            "real": -680.2054325250576
+          },
+          "vL": {
+            "imag": 827.5928791742253,
+            "real": -757.1098610101607
+          },
+          "vs": {
+            "imag": 1320.4494467478655,
+            "real": -631.9235030922586
+          },
+          "vv": {
+            "imag": 1619.944249266418,
+            "real": -721.8683519281263
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 1424.2518766341973,
+          "real": -660.5950661109392
+        },
+        "chi_schur_MeV2": {
+          "imag": 1424.2518766341973,
+          "real": -660.5950661109396
+        },
+        "direct_vs_schur_rel_err": 2.1723691004279395e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 0.7840625780319654,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 1.9594971965106916e-15,
+        "z_MeV": {
+          "imag": 20.0,
+          "real": 60.0
+        },
+        "z_label": "spacelike"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 0.0,
+            "real": 1.0589819668041377e-12
+          },
+          "sL": {
+            "imag": 0.0,
+            "real": -1.367710717307813e-12
+          },
+          "ss": {
+            "imag": 0.0,
+            "real": 5352.115911172386
+          },
+          "vL": {
+            "imag": 0.0,
+            "real": -1.3829354579397013e-12
+          },
+          "vs": {
+            "imag": 0.0,
+            "real": 6155.127874669547
+          },
+          "vv": {
+            "imag": 0.0,
+            "real": 6996.383526920315
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 0.0,
+          "real": 6519.387353098317
+        },
+        "chi_schur_MeV2": {
+          "imag": 0.0,
+          "real": 6519.387353098319
+        },
+        "direct_vs_schur_rel_err": 2.7901232202154506e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 0.0,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 2.7658709158794026e-10,
+        "z_MeV": {
+          "imag": 0.0,
+          "real": 0.0
+        },
+        "z_label": "z0"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": -3.2136341696853585e-13,
+            "real": -248.69997086859576
+          },
+          "sL": {
+            "imag": 603.669042800994,
+            "real": -9.314576537061684e-13
+          },
+          "ss": {
+            "imag": -7.908615214698096e-13,
+            "real": 1359.4612674874172
+          },
+          "vL": {
+            "imag": 710.5713453388479,
+            "real": -8.490911829765418e-13
+          },
+          "vs": {
+            "imag": -9.826865264465759e-13,
+            "real": 1724.7686937171263
+          },
+          "vv": {
+            "imag": -1.2761282051353498e-12,
+            "real": 2030.2038438252796
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": -9.85428235704341e-13,
+          "real": 1840.2252032069573
+        },
+        "chi_schur_MeV2": {
+          "imag": -9.854282357043413e-13,
+          "real": 1840.2252032069575
+        },
+        "direct_vs_schur_rel_err": 1.2355752711515325e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 1.834523538724524,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 3.950751920218316e-15,
+        "z_MeV": {
+          "imag": 70.0,
+          "real": 0.0
+        },
+        "z_label": "iT"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 347.5897664856872,
+            "real": -609.3934519185995
+          },
+          "sL": {
+            "imag": 665.5014847451938,
+            "real": -630.7513561231417
+          },
+          "ss": {
+            "imag": 1085.1284956799664,
+            "real": -665.6088729230195
+          },
+          "vL": {
+            "imag": 826.081375687831,
+            "real": -740.2952946350568
+          },
+          "vs": {
+            "imag": 1313.6279051793615,
+            "real": -613.3762918121139
+          },
+          "vv": {
+            "imag": 1609.2697108492741,
+            "real": -697.4022541086678
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 1428.4911291633455,
+          "real": -630.4359139434131
+        },
+        "chi_schur_MeV2": {
+          "imag": 1428.4911291633452,
+          "real": -630.4359139434129
+        },
+        "direct_vs_schur_rel_err": 2.0593733671124444e-16,
+        "mu_B_MeV": 775.0,
+        "ph_only_negative_control_ward_rel_err": 0.7831103534994135,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 1.2819753901403841e-15,
+        "z_MeV": {
+          "imag": 40.0,
+          "real": 120.0
+        },
+        "z_label": "spacelike"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 0.0,
+            "real": 7.240219729184288e-12
+          },
+          "sL": {
+            "imag": 0.0,
+            "real": -3.655800514550077e-12
+          },
+          "ss": {
+            "imag": 0.0,
+            "real": 11890.038074906606
+          },
+          "vL": {
+            "imag": 0.0,
+            "real": -4.285344651301011e-12
+          },
+          "vs": {
+            "imag": 0.0,
+            "real": 14959.184820655499
+          },
+          "vv": {
+            "imag": 0.0,
+            "real": 18219.6978328589
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 0.0,
+          "real": 11223.171047540656
+        },
+        "chi_schur_MeV2": {
+          "imag": 0.0,
+          "real": 11223.171047540662
+        },
+        "direct_vs_schur_rel_err": 4.862233844180212e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 0.0,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 7.240219729184288e-10,
+        "z_MeV": {
+          "imag": 0.0,
+          "real": 0.0
+        },
+        "z_label": "z0"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": -1.0231795244119507e-12,
+            "real": -1352.2019278954356
+          },
+          "sL": {
+            "imag": 1508.6637516180795,
+            "real": -1.5340081666476942e-12
+          },
+          "ss": {
+            "imag": -2.33084823497581e-12,
+            "real": 1114.7695526963696
+          },
+          "vL": {
+            "imag": 1931.71703985063,
+            "real": -1.477857453555642e-12
+          },
+          "vs": {
+            "imag": -3.1278396669626866e-12,
+            "real": 2155.23393088297
+          },
+          "vv": {
+            "imag": -4.2379378192081185e-12,
+            "real": 2759.595771215187
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": -2.0229961048041284e-12,
+          "real": 1943.0286198684996
+        },
+        "chi_schur_MeV2": {
+          "imag": -2.0229961048041284e-12,
+          "real": 1943.0286198684998
+        },
+        "direct_vs_schur_rel_err": 1.1702024000995943e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 1.4381427065683128,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 3.8742007432543735e-15,
+        "z_MeV": {
+          "imag": 70.0,
+          "real": 0.0
+        },
+        "z_label": "iT"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 1557.802285556038,
+            "real": -1946.1014539254502
+          },
+          "sL": {
+            "imag": 2491.617684666254,
+            "real": -1740.133771217743
+          },
+          "ss": {
+            "imag": 3574.283255059818,
+            "real": -1791.679065629152
+          },
+          "vL": {
+            "imag": 3309.7541552967846,
+            "real": -2140.2510381101656
+          },
+          "vs": {
+            "imag": 4607.493412608252,
+            "real": -1364.391814493482
+          },
+          "vv": {
+            "imag": 6034.756752000256,
+            "real": -1555.499479516848
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 4433.550157917961,
+          "real": -971.0865542606401
+        },
+        "chi_schur_MeV2": {
+          "imag": 4433.55015791796,
+          "real": -971.0865542606399
+        },
+        "direct_vs_schur_rel_err": 2.0655590228089218e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 0.7833406288474247,
+        "q_MeV": 100.0,
+        "ward_max_rel_err": 2.337946979036383e-15,
+        "z_MeV": {
+          "imag": 20.0,
+          "real": 60.0
+        },
+        "z_label": "spacelike"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 0.0,
+            "real": 5.270201738132739e-12
+          },
+          "sL": {
+            "imag": 0.0,
+            "real": -4.85667894326753e-12
+          },
+          "ss": {
+            "imag": 0.0,
+            "real": 11551.58628471363
+          },
+          "vL": {
+            "imag": 0.0,
+            "real": -6.108575555564419e-12
+          },
+          "vs": {
+            "imag": 0.0,
+            "real": 14376.489434911042
+          },
+          "vv": {
+            "imag": 0.0,
+            "real": 17396.51254823653
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 0.0,
+          "real": 10941.721833515285
+        },
+        "chi_schur_MeV2": {
+          "imag": 0.0,
+          "real": 10941.721833515281
+        },
+        "direct_vs_schur_rel_err": 3.3248686655041083e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 0.0,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 1.2217151111128838e-09,
+        "z_MeV": {
+          "imag": 0.0,
+          "real": 0.0
+        },
+        "z_label": "z0"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": -1.5621633537438493e-12,
+            "real": -746.9434364124705
+          },
+          "sL": {
+            "imag": 1700.0251236405857,
+            "real": -3.9805868944790015e-12
+          },
+          "ss": {
+            "imag": -1.1124358009754207e-12,
+            "real": 3367.187331040231
+          },
+          "vL": {
+            "imag": 2134.1241040356413,
+            "real": -4.529502818879614e-12
+          },
+          "vs": {
+            "imag": -2.6411592302601235e-12,
+            "real": 4857.2146389731
+          },
+          "vv": {
+            "imag": -4.185909325407633e-12,
+            "real": 6097.497440101832
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": -1.1841471299541712e-12,
+          "real": 4231.5728332782
+        },
+        "chi_schur_MeV2": {
+          "imag": -1.1841471299541714e-12,
+          "real": 4231.572833278199
+        },
+        "direct_vs_schur_rel_err": 2.149306505185077e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 1.6473299498318055,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 5.26021810295564e-15,
+        "z_MeV": {
+          "imag": 70.0,
+          "real": 0.0
+        },
+        "z_label": "iT"
+      },
+      {
+        "K_6comp": {
+          "LL": {
+            "imag": 1547.0253850798679,
+            "real": -1889.056457424713
+          },
+          "sL": {
+            "imag": 2464.9150325344494,
+            "real": -1684.7412167483026
+          },
+          "ss": {
+            "imag": 3543.3392835150466,
+            "real": -1736.39207916382
+          },
+          "vL": {
+            "imag": 3265.0663063321604,
+            "real": -2060.07199359714
+          },
+          "vs": {
+            "imag": 4539.743157175822,
+            "real": -1294.6543088552207
+          },
+          "vv": {
+            "imag": 5927.635456296806,
+            "real": -1457.5748372296216
+          }
+        },
+        "T_MeV": 70.0,
+        "chi_direct_MeV2": {
+          "imag": 4404.821967587716,
+          "real": -875.6296358909138
+        },
+        "chi_schur_MeV2": {
+          "imag": 4404.821967587717,
+          "real": -875.6296358909135
+        },
+        "direct_vs_schur_rel_err": 2.1628552466406585e-16,
+        "mu_B_MeV": 875.0,
+        "ph_only_negative_control_ward_rel_err": 0.7847021859061819,
+        "q_MeV": 200.0,
+        "ward_max_rel_err": 1.959298672029128e-15,
+        "z_MeV": {
+          "imag": 40.0,
+          "real": 120.0
+        },
+        "z_label": "spacelike"
+      }
+    ]
+  },
+  "frozen_parameters": {
+    "Lambda_v": 0.04038194655222623,
+    "M_N": 939.0,
+    "W0": 859.0,
+    "b3": 0.002982510886979509,
+    "b4": -0.00255029930232349,
+    "b6": 1.9e-09,
+    "c2": 2891.573468218873,
+    "g_W": 1.0931315483119908,
+    "g_omega": 11.577208119480272,
+    "g_rho": 10.12207579778366,
+    "g_s_ch": 9.298285753738492,
+    "hbar_c": 197.3269804,
+    "lam_W": 1.05,
+    "m_W": 1244.8092624976728,
+    "m_omega": 782.6,
+    "m_rho": 775.3,
+    "m_s": 500.0,
+    "n0_fm3": 0.16,
+    "q_phi": 0.911059371362049,
+    "zeta_g": 76.05284090140671,
+    "zeta_rmf": 0.0175
+  },
+  "gates": {
+    "T70_bulk_r2_below_HADES_threshold_honest": true,
+    "adiabatic_Hsigma_matches_constant_sigma_path_lt_1e7": true,
+    "all_ward_identities_lt_1e8": true,
+    "direct_5x5_matches_schur_lt_1e12": true,
+    "liquid_gas_critical_r2_exceeds_HADES_threshold": true,
+    "low_q_static_recovers_thermo_chiBB_lt_1e4": true,
+    "ph_only_negative_control_violates_ward_gt_1e2": true,
+    "schur_matches_thermodynamic_fd_lt_1e9": true
+  },
+  "hades_fluctuation_diagnostic": {
+    "HADES_necessary_r2_threshold_from_acceptance_bridge": 3.8264,
+    "T70_symmetric_r2_values": [
+      0.945122696705016,
+      0.5194747048965883
+    ],
+    "W8_reference_r2_band": [
+      0.5316,
+      1.1296
+    ],
+    "conclusion": "At T=70 MeV in homogeneous GCE, r2=0.5195-0.9451 stays far below HADES threshold >=3.83 (consistent with W8), whereas near the unified two-condensate liquid-gas critical point T_c~14.94 MeV, equilibrium r2 surges well above 3.83 (showing chiral attraction restores critical fluctuations, while real Au+Au at T~70 MeV still requires clusters/finite-size/non-equilibrium dynamics).",
+    "max_supercritical_r2": 10.071469235656076,
+    "supercritical_liquid_gas_scan": [
+      {
+        "M_eff_over_M_N": 0.8344615140383224,
+        "T_MeV": 15.2,
+        "exceeds_HADES_threshold_3_83": true,
+        "mu_B_at_peak_MeV": 912.0,
+        "n_B_at_peak_fm3": 0.06835180949378035,
+        "peak_r2_T_chiB_over_nB": 10.06969063863527
+      },
+      {
+        "M_eff_over_M_N": 0.9106505129675657,
+        "T_MeV": 15.5,
+        "exceeds_HADES_threshold_3_83": true,
+        "mu_B_at_peak_MeV": 911.0,
+        "n_B_at_peak_fm3": 0.034896402740412065,
+        "peak_r2_T_chiB_over_nB": 10.071469235656076
+      },
+      {
+        "M_eff_over_M_N": 0.9115525496074579,
+        "T_MeV": 16.0,
+        "exceeds_HADES_threshold_3_83": true,
+        "mu_B_at_peak_MeV": 910.0,
+        "n_B_at_peak_fm3": 0.03454746491657325,
+        "peak_r2_T_chiB_over_nB": 7.470174561942362
+      },
+      {
+        "M_eff_over_M_N": 0.8726845175833657,
+        "T_MeV": 17.0,
+        "exceeds_HADES_threshold_3_83": true,
+        "mu_B_at_peak_MeV": 909.0,
+        "n_B_at_peak_fm3": 0.05131108079486985,
+        "peak_r2_T_chiB_over_nB": 7.295776619337533
+      },
+      {
+        "M_eff_over_M_N": 0.8878829355197627,
+        "T_MeV": 20.0,
+        "exceeds_HADES_threshold_3_83": false,
+        "mu_B_at_peak_MeV": 903.0,
+        "n_B_at_peak_fm3": 0.04489819389422191,
+        "peak_r2_T_chiB_over_nB": 3.406853840316453
+      }
+    ]
+  },
+  "honest_caveats": [
+    "evidence_weight=0.0: internal mathematical and mean-field (no-sea Hartree/RPA) consistency audit.",
+    "Complex frequency probes z in {0, iT, (0.6+0.2i)q} do not prove global spectral positivity across all real frequencies.",
+    "HADES proton cumulants K2/K1=1.71-2.18 at T~70 MeV are not explained by homogeneous T=70 MeV GCE alone (r2<1); critical enhancement occurs near T_c~15 MeV, so clusterization (d,t,He4), charge conservation, and transport remain open."
+  ],
+  "isovector_zero_sound_cold": {
+    "C_D_MeV_minus2": 2.2205113483433014e-05,
+    "F_isovector": 0.7866455901271502,
+    "J_MeV": 30.999999999999993,
+    "M_eff_over_M_N": 0.6499999999999989,
+    "R_suppression": 0.5597080951733875,
+    "S_int_MeV": 13.649049049624985,
+    "S_kin_MeV": 17.350950950375008,
+    "W8_reference_u_IV_band": [
+      0.29575,
+      0.30404
+    ],
+    "m_rho_eff_MeV": 1074.021786110907,
+    "n0_fm3": 0.16,
+    "u_IV_over_c": 0.4013642110632686,
+    "v_F_over_c": 0.3957774687846602
+  },
+  "provenance": {
+    "law2_results_path": "/Users/oleg/Documents/NVG-Research/verification/nvg_two_condensate_unified_results.json",
+    "law2_results_sha256": "f7f7231c2bdef879d39a37ed76db4afab5de8742bfc07663bc4b2e7b437c6831",
+    "source_sha256": "e14322e358b735755b664a80959c22435b5e8026604e8ac69cc1506d2fda5beb",
+    "zero_parameter_refit": true
+  },
+  "schema_version": "nvg_unified_thermal_response_bridge.v1",
+  "status": "PASS_UNIFIED_THERMAL_RESPONSE_BRIDGE_ZERO_EVIDENCE",
+  "thermodynamic_and_schur_hessian": {
+    "max_adiabatic_path_rel_err": 1.4295340186194638e-08,
+    "max_eom_rel_err": 2.2879995808405366e-15,
+    "max_schur_vs_fd_rel_err": 5.804626213099589e-12,
+    "max_thermo_id_rel_err": 4.177791790620102e-16,
+    "rows": [
+      {
+        "H_T_MeV_fm3": [
+          [
+            1050.784610886796,
+            0.0
+          ],
+          [
+            0.0,
+            1312.984027313751
+          ]
+        ],
+        "K_T_MeV_fm3": 1050.784610886796,
+        "K_sigma_MeV_fm3": 1822.485761388334,
+        "K_sigma_path_MeV_fm3": 1822.4857874413879,
+        "M_eff_over_M_N": 0.8436932644022045,
+        "P_MeV_fm3": 4.782147417117506,
+        "T_MeV": 70.0,
+        "W_over_W0": 0.9996643958062875,
+        "adiabatic_path_rel_err": 1.4295340186194638e-08,
+        "chi_T_fm3_per_MeV": [
+          [
+            0.0009516698185711562,
+            0.0
+          ],
+          [
+            0.0,
+            0.0007616238881792883
+          ]
+        ],
+        "chi_schur_vs_fd_rel_err": 2.9850225240273523e-12,
+        "cs2_adiabatic": 0.11680804555411277,
+        "cs2_isothermal": 0.0673476299768315,
+        "delta": 0.0,
+        "eom_rel": 1.2633825654588521e-15,
+        "mu_B_MeV": 775.0,
+        "mu_D_MeV": 0.0,
+        "n_B_fm3": 0.07048490903057093,
+        "r2_T_chiBB_over_nB": 0.945122696705016,
+        "sigma_entropy_per_baryon": 4.63905273165915,
+        "thermo_id_rel": 0.0
+      },
+      {
+        "H_T_MeV_fm3": [
+          [
+            1076.0053081511403,
+            -218.59679044861224
+          ],
+          [
+            -218.59679044861224,
+            1331.745560107066
+          ]
+        ],
+        "K_T_MeV_fm3": 1041.836414375978,
+        "K_sigma_MeV_fm3": 1800.9616135836995,
+        "K_sigma_path_MeV_fm3": 1800.9616382799131,
+        "M_eff_over_M_N": 0.84078797040644,
+        "P_MeV_fm3": 4.916799505005081,
+        "T_MeV": 70.0,
+        "W_over_W0": 0.9996586157923703,
+        "adiabatic_path_rel_err": 1.371279287679928e-08,
+        "chi_T_fm3_per_MeV": [
+          [
+            0.0009614236802962042,
+            0.00015781102416977214
+          ],
+          [
+            0.00015781102416977214,
+            0.000776797771563625
+          ]
+        ],
+        "chi_schur_vs_fd_rel_err": 2.9830869986220256e-12,
+        "cs2_adiabatic": 0.11777910560915653,
+        "cs2_isothermal": 0.06813391254468873,
+        "delta": 0.2,
+        "eom_rel": 2.2879995808405366e-15,
+        "mu_B_MeV": 775.0,
+        "mu_D_MeV": 18.77286877100872,
+        "n_B_fm3": 0.07196443037439529,
+        "r2_T_chiBB_over_nB": 0.9351794667255409,
+        "sigma_entropy_per_baryon": 4.595061876450242,
+        "thermo_id_rel": 4.177791790620102e-16
+      },
+      {
+        "H_T_MeV_fm3": [
+          [
+            678.8996452768971,
+            0.0
+          ],
+          [
+            0.0,
+            553.9808600999412
+          ]
+        ],
+        "K_T_MeV_fm3": 678.8996452768971,
+        "K_sigma_MeV_fm3": 1063.1165681774578,
+        "K_sigma_path_MeV_fm3": 1063.11658015228,
+        "M_eff_over_M_N": 0.6233572539798302,
+        "P_MeV_fm3": 17.792491783842557,
+        "T_MeV": 70.0,
+        "W_over_W0": 0.9993524942985205,
+        "adiabatic_path_rel_err": 1.1263884468500911e-08,
+        "chi_T_fm3_per_MeV": [
+          [
+            0.0014729717520947274,
+            0.0
+          ],
+          [
+            0.0,
+            0.0018051165157936947
+          ]
+        ],
+        "chi_schur_vs_fd_rel_err": 2.73485346876145e-12,
+        "cs2_adiabatic": 0.1907305426977422,
+        "cs2_isothermal": 0.12179934134875885,
+        "delta": 0.0,
+        "eom_rel": 2.1099337412301575e-16,
+        "mu_B_MeV": 875.0,
+        "mu_D_MeV": 0.0,
+        "n_B_fm3": 0.1984851652539205,
+        "r2_T_chiBB_over_nB": 0.5194747048965883,
+        "sigma_entropy_per_baryon": 3.3048600722451424,
+        "thermo_id_rel": 1.5376600340376965e-16
+      },
+      {
+        "H_T_MeV_fm3": [
+          [
+            696.8874570510599,
+            -94.91249279185699
+          ],
+          [
+            -94.91249279185699,
+            562.8781942117719
+          ]
+        ],
+        "K_T_MeV_fm3": 681.4375877027879,
+        "K_sigma_MeV_fm3": 1060.3295610621565,
+        "K_sigma_path_MeV_fm3": 1060.3295727479144,
+        "M_eff_over_M_N": 0.6193972341894861,
+        "P_MeV_fm3": 18.239579588189788,
+        "T_MeV": 70.0,
+        "W_over_W0": 0.9993485133697958,
+        "adiabatic_path_rel_err": 1.1020873493781523e-08,
+        "chi_T_fm3_per_MeV": [
+          [
+            0.0014686804252723033,
+            0.00024764881942602643
+          ],
+          [
+            0.00024764881942602643,
+            0.0018183418318806128
+          ]
+        ],
+        "chi_schur_vs_fd_rel_err": 5.804626213099589e-12,
+        "cs2_adiabatic": 0.19255960990331453,
+        "cs2_isothermal": 0.12375148338792054,
+        "delta": 0.2,
+        "eom_rel": 4.683014214219275e-16,
+        "mu_B_MeV": 875.0,
+        "mu_D_MeV": 22.242482865805965,
+        "n_B_fm3": 0.20125461873228348,
+        "r2_T_chiBB_over_nB": 0.5108336415663575,
+        "sigma_entropy_per_baryon": 3.2680019103892937,
+        "thermo_id_rel": 0.0
+      }
+    ]
+  }
+}

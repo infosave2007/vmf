@@ -212,7 +212,8 @@ def main() -> dict[str, Any]:
     results = run_forward_model(M_OMEGA_CENTRAL)
     ledger = generate_evidence_ledger(results)
     report = _format_markdown(results, ledger)
-    out_path = os.path.join(os.path.dirname(__file__), "..", "NVG_FINAL_REPORT.md")
+    out_path = os.path.join(os.path.dirname(__file__), "..", "docs", "reports", "NVG_FINAL_REPORT.md")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as handle:
         handle.write(report)
     print("Runtime evidence ledger generated:", os.path.abspath(out_path))

@@ -4,12 +4,12 @@
     "excluded_roots": [
       "Lunacy/",
       ".code/",
-      "vacuum_neural_networks/"
+      "vacuum_neural_networks/",
+      "generator_project/"
     ],
     "maintained_script_roots": [
       "verification/",
       "scratch/",
-      "generator_project/",
       "biophysics_ciss_ros/",
       "topological_info/",
       "papers/",
@@ -78,7 +78,7 @@
         "verification/test_nvg_density_universality_audit.py"
       ]
     },
-    "NVG_DENSITY_UNIVERSALITY_RU.md": {
+    "docs/reports/NVG_DENSITY_UNIVERSALITY_RU.md": {
       "consumers": [],
       "deprecation": "Public formal density-tail and calibration-null report with zero independent empirical weight; not an EOS, dynamical, gravitational or finite-nucleus result.",
       "description": "Russian public summary of the five-case scaling calculation, full-Fermi p=4 control, local fourth-derivative discriminator, virial analogy and flat-GR boundary.",
@@ -97,13 +97,13 @@
         "verification/test_nvg_density_universality_audit.py"
       ]
     },
-    "NVG_BEYOND_DROPLETS_ADHD_RU.md": {
+    "docs/reports/NVG_BEYOND_DROPLETS_ADHD_RU.md": {
       "consumers": [],
       "deprecation": "Public companion preserving the predeclared 30-idea ADHD selection; ideas and scores are not results or empirical evidence.",
       "description": "Russian companion with all 30 scored divergent ideas, traps, selected R4/R3/M3 focus and one explicit calibration-identifiability provocation.",
       "evidence_weight": 0.0,
       "inputs": [
-        "NVG_DENSITY_UNIVERSALITY_RU.md"
+        "docs/reports/NVG_DENSITY_UNIVERSALITY_RU.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -885,7 +885,7 @@
       "status": "maintained",
       "tests": []
     },
-    "NVG_FINAL_REPORT.md": {
+    "docs/reports/NVG_FINAL_REPORT.md": {
       "consumers": [],
       "deprecation": null,
       "description": "Registry-owned data/artifact manifest entry.",
@@ -899,7 +899,7 @@
       "status": "maintained",
       "tests": []
     },
-    "NVG_MELTING_REPORT.md": {
+    "docs/reports/NVG_MELTING_REPORT.md": {
       "consumers": [],
       "deprecation": null,
       "description": "Registry-owned data/artifact manifest entry.",
@@ -967,34 +967,6 @@
       "quarantine": null,
       "role": "synthetic",
       "status": "synthetic",
-      "tests": []
-    },
-    "generator_project/calc_theta_haloscope_design.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Utility maintained computational surface.",
-      "evidence_weight": 0.0,
-      "inputs": [],
-      "kind": "script",
-      "outputs": [],
-      "producer": null,
-      "quarantine": null,
-      "role": "utility",
-      "status": "utility",
-      "tests": []
-    },
-    "generator_project/calc_theta_haloscope_v2.py": {
-      "consumers": [],
-      "deprecation": null,
-      "description": "Utility maintained computational surface.",
-      "evidence_weight": 0.0,
-      "inputs": [],
-      "kind": "script",
-      "outputs": [],
-      "producer": null,
-      "quarantine": null,
-      "role": "utility",
-      "status": "utility",
       "tests": []
     },
     "papers/bounded_T_nogo/make_exclusion_figure.py": {
@@ -4746,7 +4718,7 @@
       "inputs": [],
       "kind": "script",
       "outputs": [
-        "NVG_MELTING_REPORT.md"
+        "docs/reports/NVG_MELTING_REPORT.md"
       ],
       "producer": null,
       "quarantine": null,
@@ -6192,7 +6164,7 @@
       "inputs": [],
       "kind": "script",
       "outputs": [
-        "NVG_FINAL_REPORT.md"
+        "docs/reports/NVG_FINAL_REPORT.md"
       ],
       "producer": "verification/nvg_joint_ns_inference.py",
       "quarantine": null,
@@ -7628,7 +7600,7 @@
         "verification/test_nvg_isospin_jet_audit.py"
       ]
     },
-    "NVG_NUCLEAR_VALIDATION_RU.md": {
+    "docs/reports/NVG_NUCLEAR_VALIDATION_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional nuclear local-jet report; zero independent-evidence weight.",
       "description": "Russian public report of the live constant-rho local isospin-jet calculation and its physical validation boundary.",
@@ -7705,7 +7677,7 @@
         "verification/test_nvg_nuclear_closure_audit.py"
       ]
     },
-    "NVG_NUCLEAR_CLOSURE_RU.md": {
+    "docs/reports/NVG_NUCLEAR_CLOSURE_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional mathematical report with zero independent empirical weight; not a finite-nucleus, RPA, dynamical, gravitational or universe-closure result.",
       "description": "Russian report of the directed W8 bulk-support and canonical static finite-q calculations, negative control and explicit physical limits.",
@@ -7781,7 +7753,7 @@
         "verification/test_nvg_finite_droplet_audit.py"
       ]
     },
-    "NVG_FINITE_DROPLET_RU.md": {
+    "docs/reports/NVG_FINITE_DROPLET_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional finite-N W8 report with zero independent empirical weight; not a real-nucleus, full-stability, gravitational or universal-theory result.",
       "description": "Russian public report of the live spherical finite-N W8 calculation, branch classifications, Gauss boundary term, virial refinement and physical limits.",
@@ -7857,7 +7829,7 @@
         "verification/test_nvg_droplet_stability_audit.py"
       ]
     },
-    "NVG_DROPLET_STABILITY_RU.md": {
+    "docs/reports/NVG_DROPLET_STABILITY_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional finite-basis static W8 stability report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
       "description": "Russian public summary of constrained ell=0..6 finite-droplet curvatures, raw/internal translation spectra, fixed-N/rank/error/background controls, independent energy checks and numerical limits.",
@@ -7876,13 +7848,13 @@
         "verification/test_nvg_droplet_stability_audit.py"
       ]
     },
-    "NVG_DROPLET_RESEARCH_ADHD_RU.md": {
+    "docs/reports/NVG_DROPLET_RESEARCH_ADHD_RU.md": {
       "consumers": [],
       "deprecation": "Parent-owned ADHD research directions for bounded droplet follow-up; registry presence is not empirical evidence.",
       "description": "Documented divergent idea field, scoring, selected coordinate-recovery and Schur/angular-response directions, and explicitly rejected scope expansions.",
       "evidence_weight": 0.0,
       "inputs": [
-        "NVG_DROPLET_STABILITY_RU.md"
+        "docs/reports/NVG_DROPLET_STABILITY_RU.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -7951,7 +7923,7 @@
         "verification/test_nvg_droplet_coordinate_response_audit.py"
       ]
     },
-    "NVG_DROPLET_COORDINATE_RESPONSE_RU.md": {
+    "docs/reports/NVG_DROPLET_COORDINATE_RESPONSE_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional coordinate-response report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
       "description": "Russian public summary of coordinate-equilibrated finite-basis replay, rank-loss controls, physical-vector and Schur checks, and fixed-profile angular resolvent identities.",
@@ -7959,7 +7931,7 @@
       "inputs": [
         "verification/nvg_droplet_coordinate_response_audit.py",
         "verification/contracts/droplet_coordinate_response.md",
-        "NVG_DROPLET_STABILITY_RU.md"
+        "docs/reports/NVG_DROPLET_STABILITY_RU.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -8029,7 +8001,7 @@
         "verification/test_nvg_droplet_residual_enrichment_audit.py"
       ]
     },
-    "NVG_DROPLET_RESIDUAL_ENRICHMENT_RU.md": {
+    "docs/reports/NVG_DROPLET_RESIDUAL_ENRICHMENT_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional residual-enrichment report with zero independent empirical weight; not a full-stability, frequency, real-nucleus or universal-theory result.",
       "description": "Russian public summary of physical-space whitening, frozen residual-selected enrichments, validation/refinement controls, held-out residual localization and finite-space limits.",
@@ -8107,7 +8079,7 @@
         "verification/test_nvg_foundation_identifiability_audit.py"
       ]
     },
-    "NVG_FOUNDATION_IDENTIFIABILITY_RU.md": {
+    "docs/reports/NVG_FOUNDATION_IDENTIFIABILITY_RU.md": {
       "consumers": [],
       "deprecation": "Public mathematical/model-class result with zero independent empirical weight; not a full-dynamics, finite-nucleus, transport or universal-theory result.",
       "description": "Russian summary of the live original saturation and vector-ceiling controls, quartic K negative control, homogeneous W0 scaling degeneracy and finite-momentum discriminator.",
@@ -8127,14 +8099,14 @@
         "verification/test_nvg_foundation_identifiability_audit.py"
       ]
     },
-    "NVG_FIRST_VALIDATION_PROTOCOL_RU.md": {
+    "docs/reports/NVG_FIRST_VALIDATION_PROTOCOL_RU.md": {
       "consumers": [],
       "deprecation": "Source-based validation design with pending raw inputs and zero independent empirical weight; not an empirical result or statistical pass.",
       "description": "Russian physical-validation protocol separating Q4 control and W8 design hypotheses, source provenance, unused checks, missing covariance/microphysics and finite-q degeneracy breaking.",
       "evidence_weight": 0.0,
       "inputs": [
         "verification/contracts/foundation_identifiability.md",
-        "NVG_FOUNDATION_IDENTIFIABILITY_RU.md"
+        "docs/reports/NVG_FOUNDATION_IDENTIFIABILITY_RU.md"
       ],
       "kind": "artifact",
       "outputs": [],
@@ -8205,7 +8177,7 @@
         "verification/test_nvg_spatial_identifiability_audit.py"
       ]
     },
-    "NVG_SPATIAL_IDENTIFIABILITY_RU.md": {
+    "docs/reports/NVG_SPATIAL_IDENTIFIABILITY_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional static TF model-class result with zero independent empirical weight; not full dynamics, RPA, finite nucleus, or universal theory.",
       "description": "Russian explanation of the live 72-row in-medium Hessian response, W0 gradient-scale discriminator, blind waves, inversion limits, and retained saturation mismatch.",
@@ -8283,7 +8255,7 @@
         "verification/test_nvg_nonlocal_response.py"
       ]
     },
-    "NVG_NONLOCAL_RESPONSE_RU.md": {
+    "docs/reports/NVG_NONLOCAL_RESPONSE_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional finite-q static medium-response result with zero independent empirical weight; not full RPA, dynamics, experiment, or complete EFT.",
       "description": "Russian scientific report of the matched finite-momentum Dirac polarization, quantitative TF shifts, scalar-completeness resolution, scale comparison, and remaining limits.",
@@ -8360,7 +8332,7 @@
         "verification/test_nvg_retarded_response.py"
       ]
     },
-    "NVG_RETARDED_RESPONSE_RU.md": {
+    "docs/reports/NVG_RETARDED_RESPONSE_RU.md": {
       "consumers": [],
       "deprecation": "Public conditional retarded finite-q response with zero independent empirical weight; not full RPA, experiment, finite nucleus, or complete EFT.",
       "description": "Russian scientific report of the same-action retarded Dirac response, particle-hole absorption, Q4 bounded collective poles, W8 finite-interval no-root result, Ward/closure controls and caveats.",
@@ -8977,7 +8949,7 @@
         "verification/test_thermal_composition_hessian.py"
       ]
     },
-    "NVG_DARK_MATTER_BUDGET_AUDIT_RU.md": {
+    "docs/reports/NVG_DARK_MATTER_BUDGET_AUDIT_RU.md": {
       "consumers": [],
       "deprecation": "Public fail-closed dark-matter bookkeeping synthesis; it does not provide a cosmological composition or a new dark-matter model.",
       "description": "Russian explanation of the common physical-density convention, legacy normalization mismatch, PBH missing normalization and conditional cogenesis status.",
@@ -8998,7 +8970,7 @@
         "verification/test_nvg_dm_budget_audit.py"
       ]
     },
-    "NVG_LZ_248KEV_AUDIT_RU.md": {
+    "docs/reports/NVG_LZ_248KEV_AUDIT_RU.md": {
       "consumers": [],
       "deprecation": "Public LZ kinematic synthesis; it does not constitute a dark-matter discovery, detector likelihood, or universal NVG exclusion.",
       "description": "Russian explanation of the source-derived bound-SHM screen, exact light-proxy no-go, formal exothermic transition target and source-complete action boundary.",
@@ -9020,7 +8992,7 @@
         "verification/test_lz_248kev_kinematic_audit.py"
       ]
     },
-    "NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_FORMAL_SWAVE_THRESHOLD_AUDIT_RU.md": {
       "consumers": [],
       "deprecation": "Russian explanation of a formal static reduction, not a physical NN/deuteron result, parameter recommendation, or energy claim.",
       "description": "Russian derivation and numerical-control record for the source-complete formal S-wave threshold audit.",
@@ -9042,7 +9014,7 @@
         "verification/test_nvg_source_complete_formal_swave_threshold_audit.py"
       ]
     },
-    "NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_NN_STATIC_AUDIT_RU.md": {
       "consumers": [],
       "deprecation": "No-fit analytic boundary result, not an NN phenomenology, deuteron, QCD, or all-orders quantum claim.",
       "description": "Russian derivation and limitations for the source-complete leading tree/static same-sign two-baryon exchange sign certificate.",
@@ -9062,7 +9034,7 @@
         "verification/test_nvg_source_complete_nn_static_audit.py"
       ]
     },
-    "NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_Q4_DROPLET_AUDIT_RU.md": {
       "consumers": [],
       "deprecation": "Explanation of a restricted mathematical result; it does not prove the full NVG theory, a physical nuclear result, or an energy mechanism.",
       "description": "Russian derivation and scope statement for the sharp C>=1/4 Q4 finite-droplet no-self-binding certificate.",
@@ -9082,7 +9054,7 @@
         "verification/test_nvg_source_complete_q4_droplet_audit.py"
       ]
     },
-    "NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_SCALAR_CROSS_SCALE_GATE_RU.md": {
       "consumers": [],
       "deprecation": "Russian explanation of a formal no-fit threshold map, not a parameter recommendation, bound-state result, or physical completion.",
       "description": "Russian derivation and scope boundary for the source-complete scalar cross-scale Q4/Yukawa entry-gate audit.",
@@ -9753,7 +9725,7 @@
       "deprecation": "Passing tests establish only deterministic minimal-sector tree-cut bookkeeping, not physical mode stability or an energy claim.",
       "quarantine": null
     },
-    "NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_MINIMAL_VACUUM_CLOSURE_AUDIT_RU.md": {
       "kind": "artifact",
       "role": "validation",
       "status": "maintained",
@@ -9838,7 +9810,7 @@
       "deprecation": "Passing tests validate only a conditional local classical-sector calculation, not a physical vortex or theory confirmation.",
       "quarantine": null
     },
-    "NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md": {
+    "docs/reports/NVG_SOURCE_COMPLETE_CONDITIONAL_VORTEX_SECTOR_AUDIT_RU.md": {
       "kind": "artifact",
       "role": "validation",
       "status": "maintained",
@@ -10250,44 +10222,6 @@
       "deprecation": "Regression controls for calibration-response construction.",
       "quarantine": null
     },
-    "generator_project/calc_nvg_closed_mixing_bridge.py": {
-      "kind": "script",
-      "role": "validation",
-      "status": "maintained",
-      "evidence_weight": 0.0,
-      "description": "Live closed-mixing, caloric and fixed-pressure bridge for the accepted EOS; sealed homogeneous-equilibrium endpoint study.",
-      "producer": null,
-      "consumers": [
-        "generator_project/test_nvg_closed_mixing_bridge.py"
-      ],
-      "inputs": [
-        "verification/nvg_nonlinear_calibration_response.py",
-        "verification/nvg_thermal_observable_bridge.py",
-        "verification/nvg_thermal_composition_hessian.py"
-      ],
-      "outputs": [],
-      "tests": [
-        "generator_project/test_nvg_closed_mixing_bridge.py"
-      ],
-      "deprecation": "Bounded equilibrium endpoint study; no rate, power, device or global phase claim.",
-      "quarantine": null
-    },
-    "generator_project/test_nvg_closed_mixing_bridge.py": {
-      "kind": "test",
-      "role": "validation",
-      "status": "maintained",
-      "evidence_weight": 0.0,
-      "description": "Closed-mixing bridge validation with numeric, mutation and provenance checks.",
-      "producer": null,
-      "consumers": [],
-      "inputs": [
-        "generator_project/calc_nvg_closed_mixing_bridge.py"
-      ],
-      "outputs": [],
-      "tests": [],
-      "deprecation": "Regression controls for a homogeneous endpoint study.",
-      "quarantine": null
-    },
     "verification/nvg_saturation_recalibration.py": {
       "consumers": [],
       "deprecation": "Saturation-price recalibration that explicitly breaks source-complete; research-branch counterfactuals only with zero evidence weight.",
@@ -10640,6 +10574,699 @@
       "outputs": [],
       "tests": [],
       "deprecation": "Forward completion operator scan; zero evidence weight, not a fitted EOS.",
+      "quarantine": null
+    },
+    "verification/nvg_quartic_vector_melting_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 1 (Law 1): quartic vector melting (zeta A0^4) resolving the omega0 branch discontinuity and bounding high-density cs^2.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_quartic_vector_melting_audit.py",
+        "verification/nvg_two_condensate_unified_audit.py"
+      ],
+      "inputs": [],
+      "outputs": [
+        "verification/nvg_quartic_vector_melting_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_quartic_vector_melting_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_quartic_vector_melting_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 1 quartic vector melting continuity, causality and fail-closed validation (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_quartic_vector_melting_audit.py",
+        "verification/nvg_quartic_vector_melting_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_quartic_vector_melting_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 1 quartic vector melting numerical results and gate checks (zero evidence weight).",
+      "producer": "verification/nvg_quartic_vector_melting_audit.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_quartic_vector_melting_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_quartic_vector_melting_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_two_condensate_unified_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 2 (Law 2): unified globally bounded two-condensate matter EOS (sigma sextic stabilization, zeta A0^4, Lambda_v omega^2 rho^2).",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_two_condensate_unified_audit.py",
+        "verification/nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_unified_gravity_bridge_audit.py",
+        "verification/nvg_unified_thermal_response_bridge.py",
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_astrophysics_stability_bridge.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_quartic_vector_melting_audit.py"
+      ],
+      "outputs": [
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_two_condensate_unified_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_two_condensate_unified_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 2 two-condensate saturation, vacuum stability, causality, TOV and Direct Urca gates (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_two_condensate_unified_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 2 frozen two-condensate parameters, global stability and TOV/tidal observables (zero evidence weight).",
+      "producer": "verification/nvg_two_condensate_unified_audit.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_two_condensate_unified_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_dirac_hartree_probe.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 3A (Law 3A): spectral Dirac-Hartree solver for closed-shell spherical nuclei using frozen Law-2 constants (zero refit).",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_dirac_hartree_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_dirac_hartree_probe.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_dirac_hartree_probe.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 3A analytical Dirac benchmarks, exact particle conservation and zero-refit nuclei (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_unified_dirac_hartree_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_dirac_hartree_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 3A closed-shell finite-nucleus Dirac-Hartree results (O16, Ca40, Ca48, Pb208; zero evidence weight).",
+      "producer": "verification/nvg_unified_dirac_hartree_probe.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_dirac_hartree_probe.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_dirac_hartree_probe.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_gravity_bridge_audit.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 3B/4: covariant gravity bridge combining Law-2 TOV, IR brane turnaround and unified cuscuton cosmological bounce.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_gravity_bridge_audit.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_gravity_bridge_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_gravity_bridge_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_gravity_bridge_audit.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 3B/4 gravity bridge, TOV/tidal consistency and regular cuscuton bounce (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_gravity_bridge_audit.py",
+        "verification/nvg_unified_gravity_bridge_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_gravity_bridge_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 3B/4 covariant gravity, IR turnaround and cosmological bounce results (zero evidence weight).",
+      "producer": "verification/nvg_unified_gravity_bridge_audit.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_gravity_bridge_audit.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_gravity_bridge_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_thermal_response_bridge.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 5: finite-temperature two-condensate master response, 5x5 Schur-Hessian reduction, Ward identities, zero sound and supercritical R2.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_thermal_response_bridge.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_thermal_response_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_thermal_response_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_thermal_response_bridge.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 5 Schur-Hessian vs FD, Ward identities, ph-only negative control and HADES R2 diagnostics (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_thermal_response_bridge.py",
+        "verification/nvg_unified_thermal_response_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_thermal_response_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 5 thermal master response, Schur-Hessian and Ward identity audit results (zero evidence weight).",
+      "producer": "verification/nvg_unified_thermal_response_bridge.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_thermal_response_bridge.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_thermal_response_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_calibration_envelope_probe.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 6: pre-registered Stage-A saturation envelope at zeta_RMF=0.020 (Pareto frontier) and blind Stage-B 6-nucleus Dirac-Hartree benchmark.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_calibration_envelope_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_calibration_envelope_probe.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_calibration_envelope_probe.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 6 saturation envelope, honest empty primary gate at zeta=0.020 and 6-nucleus Dirac-Hartree (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_calibration_envelope_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_calibration_envelope_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 6 Stage-A saturation envelope and blind 6-nucleus Dirac-Hartree comparison results (zero evidence weight).",
+      "producer": "verification/nvg_unified_calibration_envelope_probe.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_calibration_envelope_probe.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_calibration_envelope_probe.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_astrophysics_stability_bridge.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 7: independent 1st+2nd-order Hartle slow-rotation I-Love-Q (PSR J0737-3039A + Maclaurin controls) and 6-variable two-condensate bounce.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_astrophysics_stability_bridge.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_astrophysics_stability_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_astrophysics_stability_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_astrophysics_stability_bridge.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 7 independent Hartle I-Love-Q, Maclaurin Newtonian limit and synchronized bounce (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_astrophysics_stability_bridge.py",
+        "verification/nvg_unified_astrophysics_stability_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_astrophysics_stability_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 7 independent Hartle I-Love-Q and two-condensate cuscuton bounce results (zero evidence weight).",
+      "producer": "verification/nvg_unified_astrophysics_stability_bridge.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_astrophysics_stability_bridge.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_astrophysics_stability_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_primary_gate_pairing_bridge.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 8: widened zeta_RMF primary-gate closure, blind 6-nucleus Dirac-Hartree, self-consistent RH-BCS Tin chain and cross-bridge Stage-C verification.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_unified_thermal_response_bridge.py",
+        "verification/nvg_unified_astrophysics_stability_bridge.py",
+        "verification/nvg_two_condensate_unified_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_primary_gate_pairing_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_primary_gate_pairing_bridge.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 8 primary-gate survivors, Sn132 normal collapse, open-shell Sn BCS gaps and Stage-C checks (zero evidence weight).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_primary_gate_pairing_bridge.py",
+        "verification/nvg_unified_primary_gate_pairing_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight unified bridge regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_primary_gate_pairing_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 8 widened primary-gate closure, Sn RH-BCS pairing and cross-bridge verification results (zero evidence weight).",
+      "producer": "verification/nvg_unified_primary_gate_pairing_bridge.py",
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_primary_gate_pairing_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Russian synthesis report for Unified System Cycle 1 (Bridges 1-4).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_quartic_vector_melting_results.json",
+        "verification/nvg_two_condensate_unified_results.json",
+        "verification/nvg_unified_dirac_hartree_results.json",
+        "verification/nvg_unified_gravity_bridge_results.json"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_quartic_vector_melting_audit.py",
+        "verification/test_nvg_two_condensate_unified_audit.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Russian synthesis report for Unified System Cycle 2 (Bridges 5-7).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_thermal_response_results.json",
+        "verification/nvg_unified_calibration_envelope_results.json",
+        "verification/nvg_unified_astrophysics_stability_results.json"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_thermal_response_bridge.py",
+        "verification/test_nvg_unified_calibration_envelope_probe.py",
+        "verification/test_nvg_unified_astrophysics_stability_bridge.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Russian synthesis report for Unified System Cycle 3 (QLOVE_COEFFS fix, Bridge 8 primary-gate closure + RH-BCS + registry closure).",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_primary_gate_pairing_results.json",
+        "verification/fig_iloveq_universal_report.json"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_primary_gate_pairing_bridge.py",
+        "verification/test_p4_s2_s8_iloveq_integrity.py"
+      ],
+      "deprecation": "Unified cross-sector validation bridge with zero independent empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "scratch/hartle_reverse_engineer.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/hartle_yy_verify.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_forward_beta_tov_2026_10_23.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_frontdoor_2026_10_23.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_nuclear.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_prex_crex.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_soft_isospin.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/patch_registry_transferability.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/stellar-acceptance-2026-09-08.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/stellar-build-2026-09-08.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
+      "quarantine": null
+    },
+    "scratch/stellar-smoke-2026-09-08.py": {
+      "kind": "script",
+      "role": "historical",
+      "status": "historical",
+      "evidence_weight": 0.0,
+      "description": "Historical maintained computational surface.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
       "quarantine": null
     }
   },

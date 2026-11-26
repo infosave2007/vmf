@@ -87,7 +87,7 @@ class P10S3PublicArtifactTests(unittest.TestCase):
             self.assertNotRegex(opening, r"(?i)publication status|статус публикации", relative)
 
     def test_publication_status_names_current_and_historical_surfaces(self):
-        text = (ROOT / "PUBLICATION_STATUS.md").read_text(encoding="utf-8")
+        text = (ROOT / "docs" / "reports" / "PUBLICATION_STATUS.md").read_text(encoding="utf-8")
         self.assertIn("historical/publication material", text)
         self.assertIn("not as current computational evidence", text)
         self.assertIn("run_nvg_suite.py", text)

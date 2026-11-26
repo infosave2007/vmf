@@ -122,7 +122,7 @@ class RepositoryOrganizationTests(unittest.TestCase):
             self.assertEqual(entries[f"verification/data/{name}"]["kind"], expected_kind)
 
     def test_documentation_and_ignore_boundary_expose_stable_commands(self):
-        for path in (ROOT / "README.md", ROOT / "README_RU.md", ROOT / "PUBLICATION_STATUS.md"):
+        for path in (ROOT / "README.md", ROOT / "README_RU.md", ROOT / "docs" / "reports" / "PUBLICATION_STATUS.md"):
             text = path.read_text(encoding="utf-8")
             self.assertIn("verification/registry.json", text)
             self.assertIn("verification/run_verification.py", text)

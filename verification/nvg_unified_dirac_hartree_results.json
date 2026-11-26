@@ -1,0 +1,1323 @@
+{
+  "analytical_dirac_benchmarks": {
+    "dirac_coulomb_sommerfeld": {
+      "max_rel_error": 4.41385655037152e-05,
+      "states": {
+        "1s1/2": {
+          "E_exact_MeV": 48.98979485566356,
+          "E_numeric_MeV": 48.98979490249028,
+          "kappa": -1,
+          "rel_error": 9.365344055822789e-10
+        },
+        "2p1/2": {
+          "E_exact_MeV": 49.7468076502562,
+          "E_numeric_MeV": 49.748882199974325,
+          "kappa": 1,
+          "rel_error": 4.149099436247638e-05
+        },
+        "2p3/2": {
+          "E_exact_MeV": 49.749371855331,
+          "E_numeric_MeV": 49.751578783606185,
+          "kappa": -2,
+          "rel_error": 4.41385655037152e-05
+        }
+      }
+    },
+    "free_spherical_box": {
+      "max_abs_error_MeV": 7.389644451905042e-12,
+      "sectors": {
+        "kappa=-1": {
+          "abs_errors_MeV": [
+            2.7284841053187847e-12,
+            7.389644451905042e-12,
+            1.4779288903810084e-12
+          ],
+          "exact_s_wave_MeV": [
+            939.9090429665039,
+            942.6309119697047,
+            947.1499783307202
+          ],
+          "min_positive_MeV": 939.9090429665066,
+          "states_in_mass_gap": 0
+        },
+        "kappa=-2": {
+          "min_positive_MeV": 940.8587338063447,
+          "states_in_mass_gap": 0
+        },
+        "kappa=-3": {
+          "min_positive_MeV": 942.0560125969283,
+          "states_in_mass_gap": 0
+        },
+        "kappa=-6": {
+          "min_positive_MeV": 947.0316436268249,
+          "states_in_mass_gap": 0
+        },
+        "kappa=1": {
+          "min_positive_MeV": 940.8587338063447,
+          "states_in_mass_gap": 0
+        },
+        "kappa=2": {
+          "min_positive_MeV": 942.0560125969283,
+          "states_in_mass_gap": 0
+        },
+        "kappa=5": {
+          "min_positive_MeV": 947.0316436268249,
+          "states_in_mass_gap": 0
+        }
+      }
+    },
+    "pass": true,
+    "spin_symmetric_dirac_ho": {
+      "max_abs_error_MeV": 5.6843418860808015e-12,
+      "sectors": {
+        "kappa=-1": {
+          "exact_first3_MeV": [
+            960.4763652851148,
+            988.7427707980621,
+            1016.6083093466402
+          ],
+          "max_abs_error_MeV": 5.6843418860808015e-12,
+          "numeric_first3_MeV": [
+            960.4763652851179,
+            988.742770798066,
+            1016.6083093466459
+          ]
+        },
+        "kappa=-2": {
+          "exact_first3_MeV": [
+            974.6610372861606,
+            1002.7243184127805,
+            1030.3972570988947
+          ],
+          "max_abs_error_MeV": 4.320099833421409e-12,
+          "numeric_first3_MeV": [
+            974.6610372861633,
+            1002.7243184127819,
+            1030.397257098899
+          ]
+        },
+        "kappa=-3": {
+          "exact_first3_MeV": [
+            988.7427707980621,
+            1016.6083093466402,
+            1044.0935665079248
+          ],
+          "max_abs_error_MeV": 3.865352482534945e-12,
+          "numeric_first3_MeV": [
+            988.7427707980642,
+            1016.6083093466423,
+            1044.0935665079287
+          ]
+        },
+        "kappa=1": {
+          "exact_first3_MeV": [
+            974.6610372861606,
+            1002.7243184127805,
+            1030.3972570988947
+          ],
+          "max_abs_error_MeV": 2.5011104298755527e-12,
+          "numeric_first3_MeV": [
+            974.6610372861596,
+            1002.7243184127801,
+            1030.3972570988972
+          ]
+        },
+        "kappa=2": {
+          "exact_first3_MeV": [
+            988.7427707980621,
+            1016.6083093466402,
+            1044.0935665079248
+          ],
+          "max_abs_error_MeV": 3.865352482534945e-12,
+          "numeric_first3_MeV": [
+            988.7427707980623,
+            1016.6083093466405,
+            1044.0935665079287
+          ]
+        }
+      }
+    },
+    "spurious_states_in_mass_gap": 0
+  },
+  "calibration_targets": {
+    "finite_nuclei_used_in_calibration": false,
+    "mode": "external_frozen_params_zero_refit",
+    "params_source": "verification/nvg_two_condensate_unified_results.json",
+    "snm_targets": null,
+    "snm_verification": {
+      "A0_MeV": 22.318121796568963,
+      "B_over_A_MeV": -16.00000000000091,
+      "J_MeV": 31.0,
+      "K_MeV": 240.00000016656028,
+      "L_MeV": 56.000000170737245,
+      "M_eff_over_MN": 0.6499999999999985,
+      "P_MeV_fm3": -1.303014305985339e-14,
+      "W_over_W0": 0.9993075513390444,
+      "n0_fm3": 0.16,
+      "s_MeV": 35.27529690894772
+    }
+  },
+  "conventions": {
+    "B_over_A_sign": "negative means bound: B/A = (E_tot + E_cm - A * M_N) / A; positive binding_energy_per_A_MeV = -(B/A)",
+    "E_cm_formula": "-(3/4) * 41 * A^(-1/3) MeV",
+    "R_ch_formula": "sqrt(R_p^2 + 0.8414^2) fm (raw point radii R_p, R_n reported separately)",
+    "alpha_em": 0.0072973525692838015,
+    "dirac_kappa_convention": "kappa = -(l+1) for j=l+1/2, kappa = +l for j=l-1/2",
+    "hbarc_MeV_fm": 197.3269804,
+    "proton_charge_radius_fm": 0.8414
+  },
+  "evidence_weight": 0.0,
+  "forward_predictions": {
+    "nuclei": {
+      "Ca40": {
+        "A": 40,
+        "N": 20,
+        "Z": 20,
+        "central_fields": {
+          "M_eff_center_MeV": 532.7237197233574,
+          "M_eff_center_over_MN": 0.5673309049237033,
+          "V_coulomb_center_MeV": 10.920067346411836,
+          "V_omega_center_MeV": 329.15795217391036,
+          "V_rho_neutron_center_MeV": 0.8094614557105206,
+          "W_boundary_MeV": 859.0,
+          "W_center_MeV": 858.2434497582162,
+          "W_center_over_W0": 0.9991192663075859,
+          "rho_B_center_fm3": 0.2199091662485192,
+          "s_center_MeV": 43.60473339684681
+        },
+        "convergence": {
+          "converged": true,
+          "field_residuals": {
+            "A0_rel": 3.8354206723463534e-13,
+            "V_C_rel": 5.9808571332783924e-12,
+            "W_rel": 6.577653670225816e-10,
+            "max_rel": 6.577653670225816e-10,
+            "rho0_rel": 3.2890107129345993e-12,
+            "s_rel": 4.602079974705275e-13
+          },
+          "iterations": 37,
+          "max_orbital_eig_residual": 1.7484288755805295e-14,
+          "max_orbital_norm_error": 1.1102230246251565e-15,
+          "scf_field_update_MeV": 6.73310296406271e-11
+        },
+        "energies": {
+          "B_over_A_direct_MeV": -8.412419019111985,
+          "B_over_A_eig_MeV": -8.412419975006378,
+          "E_cm_MeV": -8.991354545004564,
+          "E_tot_direct_MeV": 37232.494593780524,
+          "E_tot_eig_MeV": 37232.49455554475,
+          "binding_energy_per_A_MeV": 8.412419975006378,
+          "dirac_kin_mass_MeV": 29074.841542182297,
+          "energy_formula_diff_MeV": 3.823577571893111e-05,
+          "energy_formula_diff_per_A_MeV": 9.558943929732777e-07,
+          "single_particle_sum_MeV": 36600.74454899221
+        },
+        "numerical_settings": {
+          "M_field": 84,
+          "R_max_fm": 16.0,
+          "n_basis": 44,
+          "n_quad": 120,
+          "tol": 1e-10
+        },
+        "occupied_shells": {
+          "neutron": [
+            {
+              "E_MeV": 886.3950364801804,
+              "degeneracy": 2,
+              "eig_residual": 9.852400386170089e-15,
+              "eps_MeV": -52.60496351981965,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 901.5367533842573,
+              "degeneracy": 4,
+              "eig_residual": 6.804408577789263e-15,
+              "eps_MeV": -37.46324661574272,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 904.9484130991605,
+              "degeneracy": 2,
+              "eig_residual": 6.1562450071566754e-15,
+              "eps_MeV": -34.05158690083954,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 916.6231730703157,
+              "degeneracy": 6,
+              "eig_residual": 1.0208088615031451e-14,
+              "eps_MeV": -22.376826929684285,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 922.0361262891738,
+              "degeneracy": 4,
+              "eig_residual": 1.0882720334212943e-14,
+              "eps_MeV": -16.963873710826192,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 922.0924882464597,
+              "degeneracy": 2,
+              "eig_residual": 1.7484288755805295e-14,
+              "eps_MeV": -16.907511753540348,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            }
+          ],
+          "proton": [
+            {
+              "E_MeV": 894.986602740717,
+              "degeneracy": 2,
+              "eig_residual": 8.710677941411396e-15,
+              "eps_MeV": -44.01339725928301,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 909.6967442074629,
+              "degeneracy": 4,
+              "eig_residual": 5.755028514487952e-15,
+              "eps_MeV": -29.30325579253713,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 913.123612254366,
+              "degeneracy": 2,
+              "eig_residual": 6.8126943053746244e-15,
+              "eps_MeV": -25.87638774563402,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 924.380489506606,
+              "degeneracy": 6,
+              "eig_residual": 1.1247190763566948e-14,
+              "eps_MeV": -14.619510493394046,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 929.7407548172714,
+              "degeneracy": 4,
+              "eig_residual": 1.2305302213707612e-14,
+              "eps_MeV": -9.259245182728591,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 929.7943765481241,
+              "degeneracy": 2,
+              "eig_residual": 1.4875111659255977e-14,
+              "eps_MeV": -9.205623451875908,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            }
+          ]
+        },
+        "particle_numbers": {
+          "N_integrated": 20.00000005238715,
+          "N_rel_err": 2.619357530875277e-09,
+          "Z_integrated": 20.00000004793118,
+          "Z_rel_err": 2.3965590401076043e-09
+        },
+        "radii": {
+          "Delta_R_np_fm": -0.05281736270517223,
+          "R_ch_fm": 3.3965016601338998,
+          "R_matter_fm": 3.2643317562969822,
+          "R_n_fm": 3.2378162491228504,
+          "R_p_fm": 3.2906336118280226,
+          "proton_charge_radius_input_fm": 0.8414
+        },
+        "spin_orbit_splittings_MeV": {
+          "1d": {
+            "neutron_MeV": 5.412953218858092,
+            "proton_MeV": 5.360265310665454
+          },
+          "1f": {
+            "neutron_MeV": 6.072886524694127,
+            "proton_MeV": 5.601525073239827
+          },
+          "1p": {
+            "neutron_MeV": 3.4116597149031804,
+            "proton_MeV": 3.4268680469031096
+          },
+          "2p": {
+            "neutron_MeV": 1.314439878092685,
+            "proton_MeV": 0.845337878114151
+          }
+        }
+      },
+      "Ca48": {
+        "A": 48,
+        "N": 28,
+        "Z": 20,
+        "central_fields": {
+          "M_eff_center_MeV": 552.8399757883749,
+          "M_eff_center_over_MN": 0.5887539678257454,
+          "V_coulomb_center_MeV": 10.682566906216051,
+          "V_omega_center_MeV": 311.0843111700803,
+          "V_rho_neutron_center_MeV": 1.5579591995916129,
+          "W_boundary_MeV": 859.0,
+          "W_center_MeV": 858.2679158492056,
+          "W_center_over_W0": 0.9991477483692731,
+          "rho_B_center_fm3": 0.20671504849120792,
+          "s_center_MeV": 41.44417262885622
+        },
+        "convergence": {
+          "converged": true,
+          "field_residuals": {
+            "A0_rel": 7.01377517188485e-13,
+            "V_C_rel": 1.1009526056214589e-11,
+            "W_rel": 7.383890605374112e-10,
+            "max_rel": 7.383890605374112e-10,
+            "rho0_rel": 1.113861799924746e-12,
+            "s_rel": 7.159026285687457e-13
+          },
+          "iterations": 38,
+          "max_orbital_eig_residual": 1.587808237714181e-14,
+          "max_orbital_norm_error": 1.3322676295501878e-15,
+          "scf_field_update_MeV": 8.896705594452214e-11
+        },
+        "energies": {
+          "B_over_A_direct_MeV": -8.411753807179139,
+          "B_over_A_eig_MeV": -8.411755578221195,
+          "E_cm_MeV": -8.46118857529248,
+          "E_tot_direct_MeV": 44676.69700583069,
+          "E_tot_eig_MeV": 44676.69692082067,
+          "binding_energy_per_A_MeV": 8.411755578221195,
+          "dirac_kin_mass_MeV": 34568.09551627528,
+          "energy_formula_diff_MeV": 8.501001866534352e-05,
+          "energy_formula_diff_per_A_MeV": 1.771042056120109e-06,
+          "single_particle_sum_MeV": 43870.80214126477
+        },
+        "numerical_settings": {
+          "M_field": 84,
+          "R_max_fm": 16.0,
+          "n_basis": 44,
+          "n_quad": 120,
+          "tol": 1e-10
+        },
+        "occupied_shells": {
+          "neutron": [
+            {
+              "E_MeV": 885.9624340754162,
+              "degeneracy": 2,
+              "eig_residual": 1.1547177019552447e-14,
+              "eps_MeV": -53.03756592458376,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 900.5660268995698,
+              "degeneracy": 4,
+              "eig_residual": 7.771431912557609e-15,
+              "eps_MeV": -38.433973100430194,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 903.0608132688349,
+              "degeneracy": 2,
+              "eig_residual": 8.107616692695332e-15,
+              "eps_MeV": -35.93918673116514,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 915.5168520925436,
+              "degeneracy": 6,
+              "eig_residual": 1.1013273659026733e-14,
+              "eps_MeV": -23.48314790745644,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 920.3039277275675,
+              "degeneracy": 4,
+              "eig_residual": 9.477291021824021e-15,
+              "eps_MeV": -18.696072272432502,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 921.1557329102134,
+              "degeneracy": 2,
+              "eig_residual": 1.587808237714181e-14,
+              "eps_MeV": -17.844267089786626,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 929.9181834110877,
+              "degeneracy": 8,
+              "eig_residual": 1.4947798276242467e-14,
+              "eps_MeV": -9.081816588912261,
+              "kappa": -4,
+              "label": "1f7/2",
+              "n_radial": 0,
+              "occupancy": 8.0
+            }
+          ],
+          "proton": [
+            {
+              "E_MeV": 889.6516575068808,
+              "degeneracy": 2,
+              "eig_residual": 9.305284898432245e-15,
+              "eps_MeV": -49.34834249311916,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 902.629173265781,
+              "degeneracy": 4,
+              "eig_residual": 6.842584310287225e-15,
+              "eps_MeV": -36.37082673421901,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 905.3278443494946,
+              "degeneracy": 2,
+              "eig_residual": 4.62937013287522e-15,
+              "eps_MeV": -33.672155650505374,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 916.636774558714,
+              "degeneracy": 6,
+              "eig_residual": 9.425518880380918e-15,
+              "eps_MeV": -22.363225441285977,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 921.6208314368068,
+              "degeneracy": 4,
+              "eig_residual": 9.229759533716202e-15,
+              "eps_MeV": -17.37916856319316,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 923.8690562639713,
+              "degeneracy": 2,
+              "eig_residual": 1.5727606112836245e-14,
+              "eps_MeV": -15.130943736028712,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            }
+          ]
+        },
+        "particle_numbers": {
+          "N_integrated": 28.00000005808226,
+          "N_rel_err": 2.0743664563838138e-09,
+          "Z_integrated": 20.000000142618884,
+          "Z_rel_err": 7.130944190691935e-09
+        },
+        "radii": {
+          "Delta_R_np_fm": 0.1898818549704342,
+          "R_ch_fm": 3.4232842803360053,
+          "R_matter_fm": 3.4303128301073977,
+          "R_n_fm": 3.508152685387325,
+          "R_p_fm": 3.318270830416891,
+          "proton_charge_radius_input_fm": 0.8414
+        },
+        "spin_orbit_splittings_MeV": {
+          "1d": {
+            "neutron_MeV": 4.787075635023939,
+            "proton_MeV": 4.984056878092815
+          },
+          "1f": {
+            "neutron_MeV": 6.145333742384537,
+            "proton_MeV": 6.457704382190514
+          },
+          "1p": {
+            "neutron_MeV": 2.494786369265057,
+            "proton_MeV": 2.6986710837136343
+          },
+          "2p": {
+            "neutron_MeV": 1.1462003300775905,
+            "proton_MeV": 1.175566409281032
+          }
+        }
+      },
+      "O16": {
+        "A": 16,
+        "N": 8,
+        "Z": 8,
+        "central_fields": {
+          "M_eff_center_MeV": 609.1140131197117,
+          "M_eff_center_over_MN": 0.6486837200422915,
+          "V_coulomb_center_MeV": 5.785263402751558,
+          "V_omega_center_MeV": 259.8822130410938,
+          "V_rho_neutron_center_MeV": 0.34069292453441624,
+          "W_boundary_MeV": 859.0,
+          "W_center_MeV": 858.4676513211491,
+          "W_center_over_W0": 0.9993802692912097,
+          "rho_B_center_fm3": 0.15025277996958633,
+          "s_center_MeV": 35.415566747056936
+        },
+        "convergence": {
+          "converged": true,
+          "field_residuals": {
+            "A0_rel": 1.4073072421323467e-12,
+            "V_C_rel": 7.545697345513353e-12,
+            "W_rel": 3.4411293682902125e-10,
+            "max_rel": 3.4411293682902125e-10,
+            "rho0_rel": 2.5990105080202937e-12,
+            "s_rel": 1.6275049512090363e-12
+          },
+          "iterations": 32,
+          "max_orbital_eig_residual": 7.11947778707655e-15,
+          "max_orbital_norm_error": 1.3322676295501878e-15,
+          "scf_field_update_MeV": 8.033396170503693e-11
+        },
+        "energies": {
+          "B_over_A_direct_MeV": -7.971106405344244,
+          "B_over_A_eig_MeV": -7.971107429712902,
+          "E_cm_MeV": -12.203145587005535,
+          "E_tot_direct_MeV": 14908.665443101498,
+          "E_tot_eig_MeV": 14908.6654267116,
+          "binding_energy_per_A_MeV": 7.971107429712902,
+          "dirac_kin_mass_MeV": 11977.20953358207,
+          "energy_formula_diff_MeV": 1.6389898519264534e-05,
+          "energy_formula_diff_per_A_MeV": 1.0243686574540334e-06,
+          "single_particle_sum_MeV": 14658.151052988298
+        },
+        "numerical_settings": {
+          "M_field": 84,
+          "R_max_fm": 16.0,
+          "n_basis": 44,
+          "n_quad": 120,
+          "tol": 1e-10
+        },
+        "occupied_shells": {
+          "neutron": [
+            {
+              "E_MeV": 898.1248655125619,
+              "degeneracy": 2,
+              "eig_residual": 7.032923371946905e-15,
+              "eps_MeV": -40.87513448743812,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 917.6494439923108,
+              "degeneracy": 4,
+              "eig_residual": 5.111333864496745e-15,
+              "eps_MeV": -21.350556007689192,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 922.8825221504649,
+              "degeneracy": 2,
+              "eig_residual": 5.896327944174012e-15,
+              "eps_MeV": -16.117477849535135,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            }
+          ],
+          "proton": [
+            {
+              "E_MeV": 902.512814400834,
+              "degeneracy": 2,
+              "eig_residual": 7.11947778707655e-15,
+              "eps_MeV": -36.48718559916597,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 921.6935695170405,
+              "degeneracy": 4,
+              "eig_residual": 5.215084132151477e-15,
+              "eps_MeV": -17.306430482959513,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 926.8692974115856,
+              "degeneracy": 2,
+              "eig_residual": 6.312637750202977e-15,
+              "eps_MeV": -12.130702588414351,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            }
+          ]
+        },
+        "particle_numbers": {
+          "N_integrated": 8.00000003145124,
+          "N_rel_err": 3.931404979340414e-09,
+          "Z_integrated": 8.000000028897894,
+          "Z_rel_err": 3.6122367319535442e-09
+        },
+        "radii": {
+          "Delta_R_np_fm": -0.029521862199482385,
+          "R_ch_fm": 2.6767550941759293,
+          "R_matter_fm": 2.526357529801974,
+          "R_n_fm": 2.5115534759589098,
+          "R_p_fm": 2.541075338158392,
+          "proton_charge_radius_input_fm": 0.8414
+        },
+        "spin_orbit_splittings_MeV": {
+          "1p": {
+            "neutron_MeV": 5.233078158154058,
+            "proton_MeV": 5.175727894545162
+          }
+        }
+      },
+      "Pb208": {
+        "A": 208,
+        "N": 126,
+        "Z": 82,
+        "central_fields": {
+          "M_eff_center_MeV": 600.1327440623783,
+          "M_eff_center_over_MN": 0.6391190032613187,
+          "V_coulomb_center_MeV": 26.122159874692294,
+          "V_omega_center_MeV": 267.6095863415075,
+          "V_rho_neutron_center_MeV": 3.0453682073876283,
+          "W_boundary_MeV": 859.0,
+          "W_center_MeV": 858.3881232335767,
+          "W_center_over_W0": 0.9992876871170858,
+          "rho_B_center_fm3": 0.16672281237160502,
+          "s_center_MeV": 36.372123109314906
+        },
+        "convergence": {
+          "converged": true,
+          "field_residuals": {
+            "A0_rel": 1.3280399917051056e-12,
+            "V_C_rel": 3.823788574985928e-11,
+            "W_rel": 3.577444994453692e-11,
+            "max_rel": 3.823788574985928e-11,
+            "rho0_rel": 7.205638561636218e-13,
+            "s_rel": 1.27100222781336e-12
+          },
+          "iterations": 45,
+          "max_orbital_eig_residual": 1.2408434159053558e-14,
+          "max_orbital_norm_error": 8.881784197001252e-16,
+          "scf_field_update_MeV": 8.528644457328483e-11
+        },
+        "energies": {
+          "B_over_A_direct_MeV": -7.636940088131758,
+          "B_over_A_eig_MeV": -7.636942877972615,
+          "E_cm_MeV": -5.189880305314822,
+          "E_tot_direct_MeV": 193728.7063419739,
+          "E_tot_eig_MeV": 193728.70576168702,
+          "binding_energy_per_A_MeV": 7.636942877972615,
+          "dirac_kin_mass_MeV": 146721.1282426019,
+          "energy_formula_diff_MeV": 0.0005802868981845677,
+          "energy_formula_diff_per_A_MeV": 2.7898408569981825e-06,
+          "single_particle_sum_MeV": 190538.2035926269
+        },
+        "numerical_settings": {
+          "M_field": 84,
+          "R_max_fm": 20.0,
+          "n_basis": 44,
+          "n_quad": 120,
+          "tol": 1e-10
+        },
+        "occupied_shells": {
+          "neutron": [
+            {
+              "E_MeV": 879.9429481838761,
+              "degeneracy": 2,
+              "eig_residual": 8.504203190430701e-15,
+              "eps_MeV": -59.05705181612393,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 886.1337922949924,
+              "degeneracy": 4,
+              "eig_residual": 1.0272821507023216e-14,
+              "eps_MeV": -52.86620770500758,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 886.613070169994,
+              "degeneracy": 2,
+              "eig_residual": 6.688549784091435e-15,
+              "eps_MeV": -52.38692983000601,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 893.5397479245567,
+              "degeneracy": 6,
+              "eig_residual": 6.776054811967228e-15,
+              "eps_MeV": -45.46025207544335,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 894.6517491689456,
+              "degeneracy": 4,
+              "eig_residual": 7.259742609993387e-15,
+              "eps_MeV": -44.34825083105443,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 897.5142139781219,
+              "degeneracy": 2,
+              "eig_residual": 9.246299132083824e-15,
+              "eps_MeV": -41.485786021878084,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 901.8563709866339,
+              "degeneracy": 8,
+              "eig_residual": 8.792562515895057e-15,
+              "eps_MeV": -37.14362901336608,
+              "kappa": -4,
+              "label": "1f7/2",
+              "n_radial": 0,
+              "occupancy": 8.0
+            },
+            {
+              "E_MeV": 903.8766155350904,
+              "degeneracy": 6,
+              "eig_residual": 9.860172425803223e-15,
+              "eps_MeV": -35.12338446490958,
+              "kappa": 3,
+              "label": "1f5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 907.7288008172245,
+              "degeneracy": 4,
+              "eig_residual": 1.0100673012518755e-14,
+              "eps_MeV": -31.27119918277549,
+              "kappa": -2,
+              "label": "2p3/2",
+              "n_radial": 1,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 908.5978856628853,
+              "degeneracy": 2,
+              "eig_residual": 7.771970228558172e-15,
+              "eps_MeV": -30.402114337114654,
+              "kappa": 1,
+              "label": "2p1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 910.8023609471193,
+              "degeneracy": 10,
+              "eig_residual": 1.2408434159053558e-14,
+              "eps_MeV": -28.19763905288073,
+              "kappa": -5,
+              "label": "1g9/2",
+              "n_radial": 0,
+              "occupancy": 10.0
+            },
+            {
+              "E_MeV": 913.94033823887,
+              "degeneracy": 8,
+              "eig_residual": 8.972302676814303e-15,
+              "eps_MeV": -25.059661761129973,
+              "kappa": 4,
+              "label": "1g7/2",
+              "n_radial": 0,
+              "occupancy": 8.0
+            },
+            {
+              "E_MeV": 917.8091375041713,
+              "degeneracy": 6,
+              "eig_residual": 7.660012150429633e-15,
+              "eps_MeV": -21.190862495828696,
+              "kappa": -3,
+              "label": "2d5/2",
+              "n_radial": 1,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 919.2244471297454,
+              "degeneracy": 4,
+              "eig_residual": 7.634358695071023e-15,
+              "eps_MeV": -19.775552870254614,
+              "kappa": 2,
+              "label": "2d3/2",
+              "n_radial": 1,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 920.1337402289373,
+              "degeneracy": 12,
+              "eig_residual": 8.749646824798202e-15,
+              "eps_MeV": -18.866259771062687,
+              "kappa": -6,
+              "label": "1h11/2",
+              "n_radial": 0,
+              "occupancy": 12.0
+            },
+            {
+              "E_MeV": 920.1605416228849,
+              "degeneracy": 2,
+              "eig_residual": 9.570717835227829e-15,
+              "eps_MeV": -18.83945837711508,
+              "kappa": -1,
+              "label": "3s1/2",
+              "n_radial": 2,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 924.4715622193598,
+              "degeneracy": 10,
+              "eig_residual": 1.0313754388466824e-14,
+              "eps_MeV": -14.52843778064016,
+              "kappa": 5,
+              "label": "1h9/2",
+              "n_radial": 0,
+              "occupancy": 10.0
+            },
+            {
+              "E_MeV": 927.5361744419561,
+              "degeneracy": 8,
+              "eig_residual": 7.46421842316994e-15,
+              "eps_MeV": -11.463825558043936,
+              "kappa": -4,
+              "label": "2f7/2",
+              "n_radial": 1,
+              "occupancy": 8.0
+            },
+            {
+              "E_MeV": 929.3288217881427,
+              "degeneracy": 6,
+              "eig_residual": 6.9760662993810886e-15,
+              "eps_MeV": -9.671178211857296,
+              "kappa": 3,
+              "label": "2f5/2",
+              "n_radial": 1,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 929.6323404113318,
+              "degeneracy": 14,
+              "eig_residual": 9.022214148079497e-15,
+              "eps_MeV": -9.367659588668175,
+              "kappa": -7,
+              "label": "1i13/2",
+              "n_radial": 0,
+              "occupancy": 14.0
+            },
+            {
+              "E_MeV": 930.247957969149,
+              "degeneracy": 4,
+              "eig_residual": 1.1864469801755073e-14,
+              "eps_MeV": -8.752042030851044,
+              "kappa": -2,
+              "label": "3p3/2",
+              "n_radial": 2,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 930.9172627340458,
+              "degeneracy": 2,
+              "eig_residual": 8.860012679891122e-15,
+              "eps_MeV": -8.082737265954165,
+              "kappa": 1,
+              "label": "3p1/2",
+              "n_radial": 2,
+              "occupancy": 2.0
+            }
+          ],
+          "proton": [
+            {
+              "E_MeV": 893.1641442465034,
+              "degeneracy": 2,
+              "eig_residual": 8.396283545794844e-15,
+              "eps_MeV": -45.83585575349662,
+              "kappa": -1,
+              "label": "1s1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 898.5814028821023,
+              "degeneracy": 4,
+              "eig_residual": 8.799201457263318e-15,
+              "eps_MeV": -40.41859711789766,
+              "kappa": -2,
+              "label": "1p3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 899.1600557801185,
+              "degeneracy": 2,
+              "eig_residual": 5.651240054289113e-15,
+              "eps_MeV": -39.839944219881545,
+              "kappa": 1,
+              "label": "1p1/2",
+              "n_radial": 0,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 905.3477116039567,
+              "degeneracy": 6,
+              "eig_residual": 7.548015573934214e-15,
+              "eps_MeV": -33.65228839604333,
+              "kappa": -3,
+              "label": "1d5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 906.6351351959065,
+              "degeneracy": 4,
+              "eig_residual": 6.493073113560431e-15,
+              "eps_MeV": -32.364864804093486,
+              "kappa": 2,
+              "label": "1d3/2",
+              "n_radial": 0,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 910.1211794189658,
+              "degeneracy": 2,
+              "eig_residual": 8.525044470411173e-15,
+              "eps_MeV": -28.878820581034233,
+              "kappa": -1,
+              "label": "2s1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 913.0852901872804,
+              "degeneracy": 8,
+              "eig_residual": 9.2101913323149e-15,
+              "eps_MeV": -25.914709812719593,
+              "kappa": -4,
+              "label": "1f7/2",
+              "n_radial": 0,
+              "occupancy": 8.0
+            },
+            {
+              "E_MeV": 915.3391426054268,
+              "degeneracy": 6,
+              "eig_residual": 7.902051712109993e-15,
+              "eps_MeV": -23.660857394573213,
+              "kappa": 3,
+              "label": "1f5/2",
+              "n_radial": 0,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 919.6943641791177,
+              "degeneracy": 4,
+              "eig_residual": 1.031756011038966e-14,
+              "eps_MeV": -19.305635820882344,
+              "kappa": -2,
+              "label": "2p3/2",
+              "n_radial": 1,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 920.5784346122473,
+              "degeneracy": 2,
+              "eig_residual": 8.512950893572453e-15,
+              "eps_MeV": -18.421565387752707,
+              "kappa": 1,
+              "label": "2p1/2",
+              "n_radial": 1,
+              "occupancy": 2.0
+            },
+            {
+              "E_MeV": 921.5060580771333,
+              "degeneracy": 10,
+              "eig_residual": 1.1678221948280828e-14,
+              "eps_MeV": -17.493941922866725,
+              "kappa": -5,
+              "label": "1g9/2",
+              "n_radial": 0,
+              "occupancy": 10.0
+            },
+            {
+              "E_MeV": 924.9015851329505,
+              "degeneracy": 8,
+              "eig_residual": 8.445826034768751e-15,
+              "eps_MeV": -14.098414867049541,
+              "kappa": 4,
+              "label": "1g7/2",
+              "n_radial": 0,
+              "occupancy": 8.0
+            },
+            {
+              "E_MeV": 929.2704214718788,
+              "degeneracy": 6,
+              "eig_residual": 8.097698738573284e-15,
+              "eps_MeV": -9.729578528121237,
+              "kappa": -3,
+              "label": "2d5/2",
+              "n_radial": 1,
+              "occupancy": 6.0
+            },
+            {
+              "E_MeV": 930.3836729008044,
+              "degeneracy": 12,
+              "eig_residual": 9.394050892568781e-15,
+              "eps_MeV": -8.616327099195587,
+              "kappa": -6,
+              "label": "1h11/2",
+              "n_radial": 0,
+              "occupancy": 12.0
+            },
+            {
+              "E_MeV": 930.6645439963131,
+              "degeneracy": 4,
+              "eig_residual": 7.314781669948366e-15,
+              "eps_MeV": -8.335456003686886,
+              "kappa": 2,
+              "label": "2d3/2",
+              "n_radial": 1,
+              "occupancy": 4.0
+            },
+            {
+              "E_MeV": 931.9630735105457,
+              "degeneracy": 2,
+              "eig_residual": 9.05249966963484e-15,
+              "eps_MeV": -7.036926489454345,
+              "kappa": -1,
+              "label": "3s1/2",
+              "n_radial": 2,
+              "occupancy": 2.0
+            }
+          ]
+        },
+        "particle_numbers": {
+          "N_integrated": 126.00000050011681,
+          "N_rel_err": 3.9691810473284155e-09,
+          "Z_integrated": 82.00000032837616,
+          "Z_rel_err": 4.0045873175785816e-09
+        },
+        "radii": {
+          "Delta_R_np_fm": 0.19026405400372415,
+          "R_ch_fm": 5.4269366058836495,
+          "R_matter_fm": 5.477359256903466,
+          "R_n_fm": 5.551577975448723,
+          "R_p_fm": 5.3613139214449985,
+          "proton_charge_radius_input_fm": 0.8414
+        },
+        "spin_orbit_splittings_MeV": {
+          "1d": {
+            "neutron_MeV": 1.112001244388921,
+            "proton_MeV": 1.287423591949846
+          },
+          "1f": {
+            "neutron_MeV": 2.0202445484565033,
+            "proton_MeV": 2.25385241814638
+          },
+          "1g": {
+            "neutron_MeV": 3.137977291750758,
+            "proton_MeV": 3.3955270558171833
+          },
+          "1p": {
+            "neutron_MeV": 0.4792778750015714,
+            "proton_MeV": 0.5786528980161165
+          },
+          "2p": {
+            "neutron_MeV": 0.8690848456608364,
+            "proton_MeV": 0.8840704331296365
+          }
+        }
+      }
+    },
+    "role": "zero_refit_forward_predictions_for_doubly_magic_nuclei",
+    "summary": {
+      "Ca48_skin_positive": true,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.026782620202105534,
+      "Delta_R_np_Ca48_fm": 0.1898818549704342,
+      "Delta_R_np_Pb208_fm": 0.19026405400372415,
+      "Pb208_skin_positive": true,
+      "SO_Ca40_1d_neutron_MeV": 5.412953218858092,
+      "SO_Ca48_1f_neutron_MeV": 6.145333742384537,
+      "SO_O16_1p_neutron_MeV": 5.233078158154058,
+      "improves_over_W8_TF_isotopic_shift": true,
+      "max_energy_formula_diff_per_A_MeV": 2.7898408569981825e-06,
+      "max_field_residual_all_nuclei": 7.383890605374112e-10,
+      "max_particle_number_rel_err": 7.130944190691935e-09
+    }
+  },
+  "frozen_params": {
+    "Lambda_v": 0.04038194655222623,
+    "M_N": 939.0,
+    "W0": 859.0,
+    "b3": 0.0029825108869795092,
+    "b4": -0.00255029930232349,
+    "b6_MeV_minus2": 1.9e-09,
+    "b_s": 2251.4188407319552,
+    "c_s": -19.063502996930318,
+    "d_s": 0.0012279224323497105,
+    "g_omega": 11.577208119480272,
+    "g_rho": 10.12207579778366,
+    "g_s": 9.298285753738492,
+    "lam_W": 1.05,
+    "m_W": 1244.8092624976728,
+    "m_omega": 782.6,
+    "m_rho": 775.3,
+    "m_s": 500.0,
+    "q_phi": 0.911059371362049,
+    "zeta": 0.0175
+  },
+  "grid_refinement_check": {
+    "delta_B_over_A_MeV": 4.4693964085240623e-07,
+    "delta_R_ch_fm": 3.3723603021229565e-08,
+    "delta_SO_1f_neutron_MeV": 6.16763774132778e-05,
+    "delta_skin_fm": 1.3522575605939835e-06,
+    "nucleus": "Ca48",
+    "pass": true,
+    "refined_grid": {
+      "M_field": 104,
+      "R_max_fm": 18.0,
+      "n_basis": 54,
+      "n_quad": 150,
+      "tol": 1e-10
+    },
+    "standard_grid": {
+      "M_field": 84,
+      "R_max_fm": 16.0,
+      "n_basis": 44,
+      "n_quad": 120,
+      "tol": 1e-10
+    }
+  },
+  "honest_caveats": [
+    "Zero finite-nucleus fitting was performed: all couplings were loaded verbatim from external frozen Law 2 parameters (verification/nvg_two_condensate_unified_results.json) with bulk SNM verification (n0=0.16 fm^-3, B/A=-16.00 MeV, K=240.0 MeV, J=31.0 MeV, L=56.0 MeV, M*/M_N=0.650).",
+    "Saturating at n0=0.16 fm^-3 with m_s=500 MeV yields slightly compact charge radii (~0.8-2.3% below experiment) and modest underbinding (~0.01-0.25 MeV/A) relative to standard RMF parameterizations fitted to finite nuclei (which prefer n0~0.148 fm^-3).",
+    "Center-of-mass energy uses the standard harmonic-oscillator estimate E_cm = -(3/4)*41*A^(-1/3) MeV rather than full microscopic Peierls-Yoccoz projection; pairing correlations vanish identically for doubly-magic closed shells.",
+    "No-sea Hartree approximation (Dirac sea polarization neglected; Fock exchange terms neglected).",
+    "evidence_weight is 0.0: this module verifies mathematical self-consistency and forward predictions of the Law 2 two-condensate Lagrangian, not empirical proof."
+  ],
+  "reference_comparisons": {
+    "experimental": {
+      "Ca40": {
+        "B_over_A_MeV": -8.5513,
+        "R_ch_fm": 3.4776,
+        "R_ch_sigma_fm": 0.0019,
+        "SO_1d_MeV_approx": 6.0,
+        "source": "AME2020; Angeli & Marinova ADNDT 99 (2013) 69"
+      },
+      "Ca48": {
+        "B_over_A_MeV": -8.6667,
+        "Delta_R_ch_Ca48_minus_Ca40_fm": -0.0005,
+        "Delta_R_np_exp_sigma_fm": 0.026,
+        "Delta_R_np_fm": 0.121,
+        "Delta_R_np_model_sigma_fm": 0.024,
+        "R_ch_fm": 3.4771,
+        "R_ch_sigma_fm": 0.002,
+        "SO_1f_MeV_approx": 8.4,
+        "source": "AME2020; Angeli & Marinova (2013); CREX PRL 129, 042501 (2022)"
+      },
+      "O16": {
+        "B_over_A_MeV": -7.9762,
+        "R_ch_fm": 2.6991,
+        "R_ch_sigma_fm": 0.0052,
+        "SO_1p_MeV_approx": 6.18,
+        "source": "AME2020; Angeli & Marinova ADNDT 99 (2013) 69"
+      },
+      "Pb208": {
+        "B_over_A_MeV": -7.8675,
+        "Delta_R_np_PREX2_fm": 0.283,
+        "Delta_R_np_PREX2_sigma_fm": 0.071,
+        "R_ch_fm": 5.5012,
+        "R_ch_sigma_fm": 0.0013,
+        "source": "AME2020; Angeli & Marinova (2013); PREX-II PRL 126, 172502 (2021)"
+      }
+    },
+    "prior_w8_thomas_fermi_failures": {
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.166,
+      "Delta_R_np_Pb208_fm": -0.026,
+      "note": "Prior single-condensate W8 Thomas-Fermi closure suffered inverted Pb208 skin (-0.026 fm) and 160x inflated Ca48-Ca40 charge-radius shift (+0.166 fm)."
+    },
+    "role": "descriptive_heldout_comparison_only_never_fitted"
+  },
+  "schema_version": "nvg_unified_dirac_hartree_probe.v1",
+  "source_sha256": "5597e92d35acfe9a45bc27dfb355e98ad0f67ba5ba9d226f6d94dafb5080dabe",
+  "status": "COMPUTED_TWO_CONDENSATE_DIRAC_HARTREE_BRIDGE_ZERO_EVIDENCE"
+}

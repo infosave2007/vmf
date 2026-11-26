@@ -1,0 +1,724 @@
+{
+  "bridge_id": "LAW_3B_4_UNIFIED_COVARIANT_GRAVITY_BRIDGE",
+  "calibration_vs_prediction_contract": {
+    "calibration_targets": [
+      "W0 = 859 MeV, lambda_W = 1.05, MN = 939 MeV, momega = 782.6 MeV, gomega = 10.12 (inherited NVG inputs)",
+      "Omega_DE_ref = 0.69 (external cosmological dark-energy fraction benchmark for Law 4)"
+    ],
+    "forward_observational_predictions_claimed": [],
+    "mathematical_identities_and_bridges": [
+      "SymPy proofs: U(1)_B unitary gauge absorption vs global timelike foliation Psi",
+      "SymPy proofs: FLRW cuscuton bounce + BH interior limiting-curvature shear + Hayward anisotropic core",
+      "60/90-dps mpmath scale bridge linking rho_c = kappa_g * U(0) to ell, M_crit, T_max, K_max",
+      "DOP853 integration of smooth (n, W, v, q) bounce with quartic vector zeta > 0",
+      "Law 4 no-cycle theorem for constant Lambda > 0 vs external IR scalar zero-crossing cycle"
+    ]
+  },
+  "declared_inputs": {
+    "G_N_MeV_minus2": "6.70883e-45",
+    "MN_MeV": "939",
+    "M_sun_kg": "1.98847e30",
+    "MeV_fm3_to_g_cm3": "1.782661921627897e12",
+    "MeV_in_J": "1.602176634e-13",
+    "W0_MeV": "859",
+    "c_m_per_s": "299792458",
+    "fermion_degeneracy_d": 4,
+    "gomega": "10.12",
+    "hbarc_MeV_fm": "197.3269804",
+    "k_B_MeV_per_K": "8.617333262e-11",
+    "lambda_W": "1.05",
+    "momega_MeV": "782.6"
+  },
+  "evidence_weight": 0.0,
+  "honest_caveats": [
+    "evidence_weight is 0.0: all checks are mathematical, symbolic, and numerical consistency proofs, not observational likelihood confirmations.",
+    "The foliation field Psi and limiting-curvature scale kappa_g are covariant gravity extensions, not derived from the microscopic NVG fermion-scalar-vector Lagrangian.",
+    "Pure cuscuton alone produces isotropic spatial pressure inside a BH horizon; matching Hayward's P_r = -eps != P_t requires the shear/extrinsic-curvature limiting-curvature extension (which vanishes identically on flat FLRW). An explicit unique vacuum action yielding exact Hayward m(r) remains an inverse-reconstruction bridge.",
+    "Dynamic bounce ODEs use rescaled dimensionless stiffness mu_stiff = W0*t_c in {5, 20} to resolve non-adiabatic W evolution across [-5 t_c, +5 t_c]; physical M_P/W0 ~ 2.835e18 is in the extreme adiabatic-tracking limit.",
+    "Law 4 external IR scalar phi_DE is explicitly segregated and NOT derived from W0 = 859 MeV; canonical thawing phi_DE gives w(z) > -1 (no phantom crossing).",
+    "At the turnaround q = pi/2 (rho_tot = 0), the holonomy/angle variables (a, q) are C^infty smooth, whereas the single-branch cuscuton variable Psi hits its branch edge (V_PsiPsi -> -inf) requiring branch gluing; moreover, conservative Hamiltonian scalar-matter cycles are recurrent orbits rather than dissipative attractors without entropy reset."
+  ],
+  "observed_likelihood": null,
+  "pillar_1_symbolic_symmetry_and_geometry": {
+    "all_passed": true,
+    "controls": {
+      "cuscuton_kinetic_sign": -1,
+      "hayward_anisotropy_scale": 1,
+      "quartic_force_sign": 1
+    },
+    "count_passed": 52,
+    "count_total": 52,
+    "identities": {
+      "bh_interior_chi_equals_extrinsic_trace": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bh_interior_foliation_unit_norm": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bh_interior_shear_ang_ratio": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bh_interior_shear_ratio_2_to_minus1": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bh_interior_shear_traceless": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_friedmann_from_cuscuton": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_hubble_upper_bound_certificate": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_kretschmann_at_stiff_bounce": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_kretschmann_convex_in_u": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_kretschmann_u0_upper_bound": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_kretschmann_u2_upper_bound": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_matter_conservation": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_point_H_zero": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_point_Hdot_positive": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_potential_gradient_eq_3H": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_raychaudhuri_from_cuscuton": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_target_friedmann_law": {
+        "passed": true,
+        "residual": "0"
+      },
+      "bounce_target_raychaudhuri": {
+        "passed": true,
+        "residual": "0"
+      },
+      "cuscuton_energy_equals_potential": {
+        "passed": true,
+        "residual": "0"
+      },
+      "cuscuton_euler_lagrange_nabla_u_eq_Vprime": {
+        "passed": true,
+        "residual": "0"
+      },
+      "cuscuton_kinetic_degeneracy_zero_ghosts": {
+        "passed": true,
+        "residual": "0"
+      },
+      "cuscuton_pressure_from_scale_variation": {
+        "passed": true,
+        "residual": "0"
+      },
+      "dynamic_matter_cuscuton_constraint_propagation": {
+        "passed": true,
+        "residual": "0"
+      },
+      "flrw_shear_identically_zero": {
+        "passed": true,
+        "residual": "0"
+      },
+      "foliation_unit_vector_norm": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_M_crit_exact": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_T_crit_zero": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_T_max_exact": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_anisotropy_exact_formula": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_anisotropy_traceless_matches_shear": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_core_to_bounce_Kmax_ratio": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_covariant_conservation": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_density_einstein_eq": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_kretschmann_core_limit": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_kretschmann_exact": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_kretschmann_global_bound_certificate": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_pg_foliation_chi_exact": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_pg_foliation_core_limit": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_radial_pressure_eq_minus_eps": {
+        "passed": true,
+        "residual": "0"
+      },
+      "hayward_tangential_pressure_einstein_eq": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_const_lambda_asymptotic_H2": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_const_lambda_w_eq_minus1": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_ir_next_bounce_H_zero_at_pi": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_ir_next_bounce_Hdot_positive_at_pi": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_ir_scalar_thawing_eos_identity": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_ir_turnaround_H_zero_at_pi_over_2": {
+        "passed": true,
+        "residual": "0"
+      },
+      "law4_ir_turnaround_Hdot_negative_at_pi_over_2": {
+        "passed": true,
+        "residual": "0"
+      },
+      "quartic_vector_chemical_potential_identity": {
+        "passed": true,
+        "residual": "0"
+      },
+      "quartic_vector_legendre_pressure_identity": {
+        "passed": true,
+        "residual": "0"
+      },
+      "quartic_vector_scalar_force_smooth_at_W0": {
+        "passed": true,
+        "residual": "0"
+      },
+      "u1b_proca_combination_gauge_invariant": {
+        "passed": true,
+        "residual": "0"
+      },
+      "u1b_unitary_gauge_absorption": {
+        "passed": true,
+        "residual": "0"
+      }
+    }
+  },
+  "pillar_2_vacuum_bag_scale_bridge": {
+    "bridge": {
+      "G_Msun_km": "1.47666952633787950311808454340594637931787489",
+      "M_P_MeV": "2435323595526304634820.89331991624725727875142",
+      "M_P_over_W0": "2835068213651111332.736779185001451987518919",
+      "U0_MeV4": "142922947167.2625",
+      "U0_MeV_fm3": "18601.2681158792481756872621745143099114773689",
+      "exact_scaling_ratios_bag_vs_legacy": {
+        "K_max_legacy_over_bag": "14.5124716553287981859410430839002267573696145",
+        "M_crit_bag_over_legacy": "1.95180014589706635870876927248020037918762527",
+        "T_max_bag_over_legacy": "0.512347538297979919161051934026052599536751633",
+        "ell_bag_over_legacy": "1.95180014589706635870876927248020037918762527",
+        "rho_c_legacy_over_bag": "3.80952380952380952380952380952380952380952381"
+      },
+      "regimes": {
+        "bag_kappa_1": {
+          "H_max_MeV": "4.48129652508244693108490228538655820519790878e-17",
+          "K_hayward_core_MeV4": "1.54862388046265059786163951542444046932371133e-63",
+          "K_hayward_core_km_minus4": "1.02140992001783413769361586619452110392431557",
+          "K_hayward_over_K_bounce": "0.222222222222222222222222222222222222222222222",
+          "K_max_bounce_MeV4": "6.96880746208192769037737781940998211195670097e-63",
+          "K_max_bounce_km_minus4": "4.59634464008025361962127139787534496765942007",
+          "M_crit_MeV": "2.16043610260068099102713383637331545019197303e+60",
+          "M_crit_Msun": "1.93682940864906985675669287764553154880662461",
+          "M_crit_km": "2.8600569654670972439366348099491701968244964",
+          "T_max_K": "0.0000000183924003128414477510916184392441314616116095",
+          "T_max_MeV": "1.58493442983867813437716900385910980182446399e-18",
+          "description": "Law-1 melted vacuum bag density rho_c = U(0) = (lambda_W/4)*W0^4",
+          "ell_MeV_minus1": "11157485276893186.5271502370749391121929840742",
+          "ell_km": "2.20167287854679039073651889914186352289836943",
+          "kappa_g": "1.0",
+          "r_crit_km": "3.81340928728946299191551307993222692909932853",
+          "rho_c_MeV4": "142922947167.2625",
+          "rho_c_MeV_fm3": "18601.2681158792481756872621745143099114773689",
+          "rho_c_g_cm3": "33159772364169031.603062632575019821806374598",
+          "t_c_seconds": "0.00000734399021654771045219729610123101736901723333"
+        },
+        "intermediate_kappa_2": {
+          "H_max_MeV": "6.33751032278701916380602182114773948232477688e-17",
+          "K_hayward_core_MeV4": "6.19449552185060239144655806169776187729484531e-63",
+          "K_hayward_core_km_minus4": "4.08563968007133655077446346477808441569726229",
+          "K_hayward_over_K_bounce": "0.222222222222222222222222222222222222222222222",
+          "K_max_bounce_MeV4": "2.78752298483277107615095112776399284478268039e-62",
+          "K_max_bounce_km_minus4": "18.3853785603210144784850855915013798706376803",
+          "M_crit_MeV": "1.52765901846917727053945212169934999868263085e+60",
+          "M_crit_Msun": "1.36954520885728807642559151641440279064434541",
+          "M_crit_km": "2.02236567486160384012728381266549660005280142",
+          "T_max_K": "0.0000000260107819670155316576079420083472552436818876",
+          "T_max_MeV": "2.24143576614992727823718914023897884257783845e-18",
+          "description": "Intermediate reference rho_c = 2*U(0) allowing W=0 crossing",
+          "ell_MeV_minus1": "7889533500280236.06298906666906758120386119807",
+          "ell_km": "1.55681782237494153610881672402139188248972704",
+          "kappa_g": "2.0",
+          "r_crit_km": "2.69648756648213845350304508355399546673706856",
+          "rho_c_MeV4": "285845894334.525",
+          "rho_c_MeV_fm3": "37202.5362317584963513745243490286198229547377",
+          "rho_c_g_cm3": "66319544728338063.2061252651500396436127491959",
+          "t_c_seconds": "0.00000519298528308854766489428070942795993383438297"
+        },
+        "legacy_W0_4": {
+          "H_max_MeV": "8.74659521146393641309628888397566190981427335e-17",
+          "K_hayward_core_MeV4": "2.24743601699795098102369453485633083983486451e-62",
+          "K_hayward_core_km_minus4": "14.8231825127304727465740171057708278120535593",
+          "K_hayward_over_K_bounce": "0.222222222222222222222222222222222222222222222",
+          "K_max_bounce_MeV4": "1.01134620764907794146066254068534887792568903e-61",
+          "K_max_bounce_km_minus4": "66.7043213072871273595830769759687251542410169",
+          "M_crit_MeV": "1.10689411881754087808172113597701516709565136e+60",
+          "M_crit_Msun": "0.992329779624483117717302118366992740807399411",
+          "M_crit_km": "1.46534314564905783630340941250907608056291647",
+          "T_max_K": "0.0000000358982896140011866591452511324176609331552831",
+          "T_max_MeV": "3.0934752513964156670532302907272587603551698e-18",
+          "description": "Legacy rho_c = W0^4 (kappa_g = 4/lambda_W = 80/21)",
+          "ell_MeV_minus1": "5716510115212178.96700945299718434927377871466",
+          "ell_km": "1.12802167946087538086436657819011734433368666",
+          "kappa_g": "3.80952380952380952380952380952380952380952381",
+          "r_crit_km": "1.95379086086541044840454588334543477408388862",
+          "rho_c_MeV4": "544468370161.0",
+          "rho_c_MeV_fm3": "70861.9737747780882883324273314830853770566433",
+          "rho_c_g_cm3": "126322942339691548.96404812409531360688142704",
+          "t_c_seconds": "0.00000376267530873266792076659439574733179022697983"
+        }
+      }
+    },
+    "precision_check": {
+      "control_dps": 90,
+      "passed": true,
+      "primary_dps": 60,
+      "report_digits": 45
+    }
+  },
+  "pillar_3_dynamic_matter_bounce": {
+    "all_passed": true,
+    "bag_scale_kappa_1_note": "At kappa_g = 1 (rho_c = U(0)), positivity of fermion+vector energy enforces U(W) < U(0) so W remains nonzero; for kappa_g > 1 (e.g. legacy 4/lambda_W), U(0) < rho_c and W smoothly crosses W = 0 via zeta > 0 without W^-2 blowup.",
+    "stiffness_scale_caveat": "ODE integrations use dimensionless rescaled stiffness mu_stiff = W0*t_c in {5, 20} so non-adiabatic W dynamics are directly resolved over [-5 t_c, +5 t_c]; physical M_P/W0 ~ 2.835e18 lies in the extreme adiabatic-tracking regime.",
+    "trajectories": {
+      "bag_kappa_1_mu5": {
+        "bounce_state_at_tau_0": {
+          "H_tc": 3.49368103891301e-13,
+          "Hdot_tc2": 0.8751207901095425,
+          "n_hat": 0.0719906705994218,
+          "omega_hat": 0.6562659510859168,
+          "q": 3.49368103891301e-13,
+          "v_hat": 0.14999999999991348,
+          "y_W_over_W0": 0.4999999999998648
+        },
+        "diagnostics": {
+          "H_tc_end": 0.12708887187174842,
+          "H_tc_start": -0.12794257819707733,
+          "baryon_preserved_lt_1e12": true,
+          "bounce_signature_verified": true,
+          "constraint_preserved_lt_1e12": true,
+          "crossed_W_zero_smoothly": false,
+          "max_baryon_conservation_error": 1.7763568394002505e-14,
+          "max_constraint_error": 1.8657297928825756e-13,
+          "max_omega_hat": 0.656347527194759,
+          "q_end": 1.4422976118504185,
+          "q_start": -1.441414710271299,
+          "y_max": 1.236282357814768,
+          "y_min": 0.46811151941509754
+        },
+        "parameters": {
+          "kappa_g": 1.0,
+          "mu_stiff_W0_tc": 5.0,
+          "qdot_rate_scale": 1.0,
+          "rho_c_over_W0_4": 0.2625,
+          "tau_window": [
+            -5.0,
+            5.0
+          ],
+          "zeta": 0.25
+        }
+      },
+      "legacy_melted_crossing_mu20": {
+        "bounce_state_at_tau_0": {
+          "H_tc": 1.6793830865877157e-13,
+          "Hdot_tc2": 1.5062499999998575,
+          "n_hat": 0.33527983838419656,
+          "omega_hat": 1.1027806655930126,
+          "q": 1.6793830865877157e-13,
+          "v_hat": 0.2499999999997715,
+          "y_W_over_W0": -8.932071662165475e-13
+        },
+        "diagnostics": {
+          "H_tc_end": 0.12104471786946865,
+          "H_tc_start": -0.12104471786942879,
+          "baryon_preserved_lt_1e12": true,
+          "bounce_signature_verified": true,
+          "constraint_preserved_lt_1e12": true,
+          "crossed_W_zero_smoothly": true,
+          "max_baryon_conservation_error": 1.2434497875801753e-14,
+          "max_constraint_error": 1.2789769243681803e-13,
+          "max_omega_hat": 1.1027806655930126,
+          "q_end": 1.4485369427208814,
+          "q_start": -1.4485369427209225,
+          "y_max": 1.2405897191581274,
+          "y_min": -1.2405897191581594
+        },
+        "parameters": {
+          "kappa_g": 3.8095238095238093,
+          "mu_stiff_W0_tc": 20.0,
+          "qdot_rate_scale": 1.0,
+          "rho_c_over_W0_4": 1.0,
+          "tau_window": [
+            -5.0,
+            5.0
+          ],
+          "zeta": 0.25
+        }
+      },
+      "legacy_melted_crossing_mu5": {
+        "bounce_state_at_tau_0": {
+          "H_tc": -3.097782447225583e-14,
+          "Hdot_tc2": 1.506249999999538,
+          "n_hat": 0.33527983838419795,
+          "omega_hat": 1.1027806655930141,
+          "q": -3.097782447225583e-14,
+          "v_hat": 0.24999999999933536,
+          "y_W_over_W0": -1.4138690218601369e-13
+        },
+        "diagnostics": {
+          "H_tc_end": 0.11931986258349161,
+          "H_tc_start": -0.11931986258294866,
+          "baryon_preserved_lt_1e12": true,
+          "bounce_signature_verified": true,
+          "constraint_preserved_lt_1e12": true,
+          "crossed_W_zero_smoothly": true,
+          "max_baryon_conservation_error": 9.547918011776346e-15,
+          "max_constraint_error": 2.3436808049837055e-13,
+          "max_omega_hat": 1.1027806655930141,
+          "q_end": 1.4503138945438379,
+          "q_start": -1.450313894544397,
+          "y_max": 1.1969106939811371,
+          "y_min": -1.1969106939812033
+        },
+        "parameters": {
+          "kappa_g": 3.8095238095238093,
+          "mu_stiff_W0_tc": 5.0,
+          "qdot_rate_scale": 1.0,
+          "rho_c_over_W0_4": 1.0,
+          "tau_window": [
+            -5.0,
+            5.0
+          ],
+          "zeta": 0.25
+        }
+      }
+    },
+    "zeta_zero_blowup_control": {
+      "blowup_ratio_zeta0_over_zeta025": 1116408350.3843777,
+      "eV_zeta_025_at_exact_y_0": 0.055260472479605804,
+      "eV_zeta_025_at_y_1e_4": 0.0552604724576065,
+      "eV_zeta_0_at_y_1e_4": 61693252.897857815,
+      "n_hat": 0.1,
+      "y_probe": 0.0001
+    }
+  },
+  "pillar_4_ir_cosmology_theorem": {
+    "all_passed": true,
+    "calibration_vs_prediction_separation": {
+      "external_calibration_reference": "Omega_DE_0 = 0.69 (late-time dark energy fraction benchmark)",
+      "model_derivation_status": "phi_DE and its IR scale V0_hat are an EXPLICIT EXTERNAL IR MODULE, NOT derived from W0 = 859 MeV or lambda_W = 1.05.",
+      "qualitative_observational_link": "Canonical thawing phi_DE with V_DE crossing zero necessarily predicts w(z) > -1 (dw/d ln a > 0, i.e. w_a < 0) before turnaround; it does NOT cross the phantom divide w < -1."
+    },
+    "constant_lambda_no_cycle": {
+      "H_strictly_positive_post_bounce": true,
+      "H_tc_asymptotic_exact": 0.13999999999999999,
+      "H_tc_at_tau_end": 0.14000000000034846,
+      "H_tc_convergence_error": 3.48471251854221e-13,
+      "max_constraint_error": 3.319566843629218e-14,
+      "no_turnaround_verified": true,
+      "omega_L_reference_target": 0.69,
+      "q_asymptotic_over_pi": 0.4548327646991334,
+      "q_end_over_pi": 0.45483276469901796,
+      "rho_L_over_rho_c": 0.02,
+      "tau_at_omega_L_ref": 5.609908772626257,
+      "turnaround_events_count": 0,
+      "w_DE_at_omega_L_ref": -1.0
+    },
+    "derived_from_W0_859_MeV": false,
+    "external_ir_cosine_multicycle": {
+      "constraint_preserved_lt_1e12": true,
+      "events": {
+        "V_DE_zero_crossing": {
+          "H_tc": 0.052765697930259696,
+          "Hdot_tc2": -0.008329269192661526,
+          "V_DE_hat": -3.2162452993532734e-18,
+          "a_over_a_bounce1": 1012.0678018835397,
+          "phi": 3.1415926535897936,
+          "pi_phi": 0.12942982520252466,
+          "q_over_pi": 0.4831728238786462,
+          "rho_m_hat": 9.461574470052927e-10,
+          "tau": 51.22208766362681,
+          "w_DE": 1.0000000000000022
+        },
+        "bounce_2": {
+          "H_tc": -9.44833808676605e-15,
+          "Hdot_tc2": 3.058266390342883,
+          "V_DE_hat": -0.01942213295348567,
+          "a_over_a_bounce1": 556.9295431979425,
+          "phi": 6.7651278104790835,
+          "pi_phi": 2.4731625024757107,
+          "q_over_pi": 0.999999999999997,
+          "rho_m_hat": 5.677948747627833e-09,
+          "tau": 60.62972898753366,
+          "w_DE": 1.0388442661275354
+        },
+        "bounce_3": {
+          "H_tc": 6.432490598706546e-16,
+          "Hdot_tc2": 3.058656453384378,
+          "V_DE_hat": -0.01955215160880798,
+          "a_over_a_bounce1": 1006.7616209245992,
+          "phi": 5.859142929308697,
+          "pi_phi": -2.4733202186302456,
+          "q_over_pi": 2.0000000000000004,
+          "rho_m_hat": 9.61196726465926e-10,
+          "tau": 82.92542770366684,
+          "w_DE": 1.039104303255206
+        },
+        "dw_DE_d_lna_at_ref": 0.006951198946507042,
+        "omega_de_ref_epoch": {
+          "H_tc": 0.16332359723354023,
+          "Hdot_tc2": -0.012177317166261352,
+          "V_DE_hat": 0.0188809850422632,
+          "a_over_a_bounce1": 4.8680121293939305,
+          "phi": 0.6721929663980886,
+          "pi_phi": 0.01616041500489488,
+          "q_over_pi": 0.4470405564696013,
+          "rho_m_hat": 0.00850231678084058,
+          "tau": 5.764545580415534,
+          "w_DE": -0.9953999867223875
+        },
+        "turnaround_1": {
+          "H_tc": 6.123233995736766e-17,
+          "Hdot_tc2": -0.019505263551707556,
+          "V_DE_hat": -0.006501754840748658,
+          "a_over_a_bounce1": 1148.740567896025,
+          "phi": 3.8038016699586743,
+          "pi_phi": 0.1975108228991931,
+          "q_over_pi": 0.5,
+          "rho_m_hat": 6.470328962949959e-10,
+          "tau": 55.431522662335574,
+          "w_DE": -20097250.55688996
+        },
+        "turnaround_2": {
+          "H_tc": 1.8369701987210297e-16,
+          "Hdot_tc2": -0.017094864483280868,
+          "V_DE_hat": -0.005698288214686321,
+          "a_over_a_bounce1": 2092.1849230958614,
+          "phi": 8.846943686942287,
+          "pi_phi": -0.18490464744094412,
+          "q_over_pi": 1.5,
+          "rho_m_hat": 1.0710063176685624e-10,
+          "tau": 77.51883366684099,
+          "w_DE": -106367889.87318692
+        }
+      },
+      "max_constraint_error": 3.7625458304546555e-13,
+      "multicycle_verified": true,
+      "parameters": {
+        "V0_hat": 0.02,
+        "f_phi": 2.0,
+        "omega_de_ref": 0.69,
+        "phi_0": 0.6,
+        "pi_0": 0.02,
+        "slope_hat": 0.006,
+        "tau_end": 115.0
+      },
+      "potential_type": "cosine",
+      "q_end_over_pi": 3.485492178487508
+    },
+    "external_ir_linear_potential_cycle": {
+      "constraint_preserved_lt_1e12": true,
+      "cycle_and_thawing_verified": true,
+      "events": {
+        "V_DE_zero_crossing": {
+          "H_tc": 0.04775403271415172,
+          "Hdot_tc2": -0.00682518856768967,
+          "V_DE_hat": -6.938893903907228e-18,
+          "a_over_a_bounce1": 144.8376558253814,
+          "phi": 2.500000000000001,
+          "pi_phi": 0.1170986631665138,
+          "q_over_pi": 0.48477621448503805,
+          "rho_m_hat": 3.2245077315710786e-07,
+          "tau": 37.81418236166857,
+          "w_DE": 1.000000000000006
+        },
+        "bounce_2": {
+          "H_tc": -9.892427296616113e-15,
+          "Hdot_tc2": 3.0882409308179444,
+          "V_DE_hat": -0.029414652050353218,
+          "a_over_a_bounce1": 78.60955195436895,
+          "phi": 6.176831506294152,
+          "pi_phi": 2.4852516594843967,
+          "q_over_pi": 0.9999999999999969,
+          "rho_m_hat": 2.0168886470259333e-06,
+          "tau": 48.1332938069918,
+          "w_DE": 1.0588294227531043
+        },
+        "bounce_3": {
+          "H_tc": 4.195962738671156e-15,
+          "Hdot_tc2": 3.201073589122296,
+          "V_DE_hat": -0.06702542272071411,
+          "a_over_a_bounce1": 81.86030056079117,
+          "phi": 10.878177840089265,
+          "pi_phi": 2.5302454071029006,
+          "q_over_pi": 2.0000000000000013,
+          "rho_m_hat": 1.7860264226876193e-06,
+          "tau": 52.786359917872254,
+          "w_DE": 1.1340510848602172
+        },
+        "dw_DE_d_lna_at_ref": 0.04026091240182211,
+        "omega_de_ref_epoch": {
+          "H_tc": 0.16311257037013574,
+          "Hdot_tc2": -0.012785862922219192,
+          "V_DE_hat": 0.01860547609300639,
+          "a_over_a_bounce1": 4.870520605884289,
+          "phi": 0.17431548837420108,
+          "pi_phi": 0.040155857719575576,
+          "q_over_pi": 0.44711162139735033,
+          "rho_m_hat": 0.008479724235469154,
+          "tau": 5.7583225356584,
+          "w_DE": -0.971522134608073
+        },
+        "turnaround_1": {
+          "H_tc": -1.6081226496766366e-16,
+          "Hdot_tc2": -0.015953459493497614,
+          "V_DE_hat": -0.005317929751201357,
+          "a_over_a_bounce1": 164.56355896514106,
+          "phi": 3.16474121890017,
+          "pi_phi": 0.17862323327820256,
+          "q_over_pi": 0.5000000000000001,
+          "rho_m_hat": 2.1984007868715718e-07,
+          "tau": 42.50294830058625,
+          "w_DE": -48378.98490814939
+        },
+        "turnaround_2": {
+          "H_tc": 1.8369701987210297e-16,
+          "Hdot_tc2": -0.14565399442921967,
+          "V_DE_hat": -0.048551534866708934,
+          "a_over_a_bounce1": 134.0445712390238,
+          "phi": 8.568941858338617,
+          "pi_phi": 0.5397284210755869,
+          "q_over_pi": 1.5,
+          "rho_m_hat": 4.067805644150353e-07,
+          "tau": 50.55114173697264,
+          "w_DE": -238710.17111600933
+        }
+      },
+      "max_constraint_error": 7.058797990566745e-13,
+      "parameters": {
+        "V0_hat": 0.02,
+        "f_phi": 2.0,
+        "omega_de_ref": 0.69,
+        "phi_0": 0.0,
+        "pi_0": 0.04,
+        "slope_hat": 0.008,
+        "tau_end": 65.0
+      },
+      "potential_type": "linear",
+      "q_end_over_pi": 6.487907311025042
+    },
+    "external_ir_module": true,
+    "negative_control_positive_potential_no_turnaround": {
+      "constraint_preserved_lt_1e12": true,
+      "events": {
+        "V_DE_zero_crossing": null,
+        "bounce_2": null,
+        "bounce_3": null,
+        "dw_DE_d_lna_at_ref": 0.004276947818811709,
+        "omega_de_ref_epoch": {
+          "H_tc": 0.1707930495827894,
+          "Hdot_tc2": -0.013236481659936477,
+          "V_DE_hat": 0.020718634958988007,
+          "a_over_a_bounce1": 4.717774299430005,
+          "phi": 0.48943333185361915,
+          "pi_phi": -0.014059990057537287,
+          "q_over_pi": 0.4445179519602923,
+          "rho_m_hat": 0.009323174602185336,
+          "tau": 5.505559945215043,
+          "w_DE": -0.9968246064530997
+        },
+        "turnaround_1": null,
+        "turnaround_2": null
+      },
+      "max_constraint_error": 6.861178292183467e-14,
+      "no_turnaround_verified": true,
+      "parameters": {
+        "V0_hat": 0.02,
+        "f_phi": 2.0,
+        "omega_de_ref": 0.69,
+        "phi_0": 0.5,
+        "pi_0": 0.04,
+        "slope_hat": 0.006,
+        "tau_end": 60.0
+      },
+      "potential_type": "positive_quadratic",
+      "q_end_over_pi": 0.45482711725063396
+    }
+  },
+  "schema_version": "nvg_unified_gravity_bridge.v2",
+  "source_sha256": "c8349df82381c626153127eac2bbd639b67a3085fba840ba2301ba6bd1e1b09c",
+  "status": "UNIFIED_GRAVITY_BRIDGE_VERIFIED_ZERO_EVIDENCE"
+}

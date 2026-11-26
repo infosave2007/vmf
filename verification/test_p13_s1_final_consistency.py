@@ -96,7 +96,7 @@ class P13S1FinalConsistencyTests(unittest.TestCase):
         self.assertIn("# Provenance:", source)
         self.assertIn("NON_EVIDENCE", source)
         self.assertIn("nvg_gw_spectrum_template.py", source)
-        publication = (ROOT / "PUBLICATION_STATUS.md").read_text(encoding="utf-8")
+        publication = (ROOT / "docs" / "reports" / "PUBLICATION_STATUS.md").read_text(encoding="utf-8")
         self.assertIn("audited deterministic TXT snapshots", publication)
         self.assertIn("data/nvg_gw_template.txt", publication)
         self.assertEqual(

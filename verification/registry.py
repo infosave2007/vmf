@@ -122,7 +122,7 @@ def discover_maintained_scripts(root: Path = ROOT) -> set[str]:
         if "__pycache__" not in path.parts
     }
     for relative in _tracked_executables(root):
-        if relative.startswith(("verification/", ".code/", "Lunacy/", "vacuum_neural_networks/")):
+        if relative.startswith(("verification/", ".code/", "Lunacy/", "vacuum_neural_networks/", "generator_project/")):
             continue
         path = root / relative
         if path.is_file():
