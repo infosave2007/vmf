@@ -373,7 +373,7 @@
       "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
-      "sha256": "f3f6e9b46b3fe4391739af53fabb9d83657db6ce1b1bb4f59d58a6960c86cbed",
+      "sha256": "f741369ae378cb7fa2c9fb3cca9dc11ba8cf669dd872f5845930cb4022e69d23",
       "status": "blocked_physical_dependencies_with_null_control"
     },
     "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
@@ -564,7 +564,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "5a07e86e8c244f38aa87703591a06a13fe62ab390edd6abddd99473286e2ac4b",
+      "sha256": "54db221838428ad01d6751cc92128f773ec39483cc3c8b630e582ab6262553cd",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
@@ -953,6 +953,22 @@
       "producer": null,
       "sha256": "f28501e3d1fedb0fcab7ddd0f3a94c3d03314a9f3dffc468109d3b1bd8360abd",
       "status": "unified_bridge_report_zero_evidence"
+    },
+    "verification/nvg_unified_ns_microphysics_results.json": {
+      "canonical_path": "verification/nvg_unified_ns_microphysics_results.json",
+      "command": "python3 -B verification/nvg_unified_ns_microphysics_bridge.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_unified_ns_microphysics_bridge.py",
+      "sha256": "171b9bd958f56deed7821b1a291058219fba4db4268085aac6dfd46715f4b482",
+      "status": "unified_bridge_zero_evidence"
+    },
+    "verification/nvg_unified_nuclear_benchmarks_results.json": {
+      "canonical_path": "verification/nvg_unified_nuclear_benchmarks_results.json",
+      "command": "python3 -B verification/nvg_unified_nuclear_benchmarks_bridge.py --write",
+      "kind": "generated_artifact",
+      "producer": "verification/nvg_unified_nuclear_benchmarks_bridge.py",
+      "sha256": "049d9c68825146ca6162949a4a28777aca1f39f39f60b7931fa1bbd06422aa97",
+      "status": "unified_bridge_zero_evidence"
     }
   },
   "generated_by": "scientific-integrity-audit/P13-S1 + predictive-research/P4-S1 + generator-practical-audit/P3-S2 + deep-physics-audit/Phase-2-public-integration + theory-reconstruction/Phase-4-source-complete-public-integration",

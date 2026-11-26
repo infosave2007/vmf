@@ -11302,6 +11302,156 @@
       "tests": [],
       "deprecation": "Focused conditional haloscope reproducibility suite (zero evidence weight).",
       "quarantine": null
+    },
+    "verification/nvg_unified_ns_microphysics_bridge.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 9A: npe-mu beta-equilibrium sound speeds, thermodynamical vs finite-k Schur dynamical core-crust spinodal, 1st-order Hartle I_crust/I, DUrca onset, and relativistic Cowling l=2 f/g1/g2 asteroseismology.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_ns_microphysics_bridge.py",
+        "verification/nvg_unified_nuclear_benchmarks_bridge.py",
+        "verification/nvg_unified_paper_figures.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_primary_gate_pairing_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_ns_microphysics_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_ns_microphysics_bridge.py"
+      ],
+      "deprecation": "Cycle-4 cross-sector microphysics bridge with zero empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_ns_microphysics_bridge.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 9A spinodal ordering, Vela crust inertia bound, DUrca onset, Cowling Kelvin/barotropic controls, and zero-evidence contract.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_ns_microphysics_bridge.py",
+        "verification/nvg_unified_ns_microphysics_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight Cycle-4 microphysics regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_ns_microphysics_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 9A cold NS microphysics, core-crust spinodals, DUrca threshold, and Cowling asteroseismology artifact (zero evidence weight).",
+      "producer": "verification/nvg_unified_ns_microphysics_bridge.py",
+      "consumers": [
+        "verification/nvg_unified_nuclear_benchmarks_bridge.py",
+        "verification/nvg_unified_paper_figures.py"
+      ],
+      "inputs": [
+        "verification/nvg_unified_ns_microphysics_bridge.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_ns_microphysics_bridge.py"
+      ],
+      "deprecation": "Cycle-4 cross-sector microphysics bridge artifact (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_nuclear_benchmarks_bridge.py": {
+      "kind": "script",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 9B: full even-even Sn100..Sn134 zero-refit RH-BCS chain, 8-survivor PREX-2/CREX locus, K_sym, spin-orbit splittings, and live head-to-head Chen-Piekarewicz RMF comparator benchmark.",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_unified_nuclear_benchmarks_bridge.py",
+        "verification/nvg_unified_paper_figures.py"
+      ],
+      "inputs": [
+        "verification/nvg_two_condensate_unified_audit.py",
+        "verification/nvg_unified_dirac_hartree_probe.py",
+        "verification/nvg_unified_calibration_envelope_probe.py",
+        "verification/nvg_unified_primary_gate_pairing_bridge.py",
+        "verification/nvg_unified_ns_microphysics_bridge.py",
+        "verification/nvg_unified_primary_gate_pairing_results.json",
+        "verification/nvg_unified_ns_microphysics_results.json"
+      ],
+      "outputs": [
+        "verification/nvg_unified_nuclear_benchmarks_results.json"
+      ],
+      "tests": [
+        "verification/test_nvg_unified_nuclear_benchmarks_bridge.py"
+      ],
+      "deprecation": "Cycle-4 nuclear & RMF comparator bridge with zero empirical evidence weight (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/test_nvg_unified_nuclear_benchmarks_bridge.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Bridge 9B Sn100..Sn134 pairing collapse & S2n/R_ch kinks, PREX-2/CREX survivor locus, live RMF comparators, and global vacuum audit.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_nuclear_benchmarks_bridge.py",
+        "verification/nvg_unified_nuclear_benchmarks_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Zero-weight Cycle-4 nuclear benchmark regression suite.",
+      "quarantine": null
+    },
+    "verification/nvg_unified_nuclear_benchmarks_results.json": {
+      "kind": "artifact",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Bridge 9B full Tin chain, PREX-2/CREX survivor locus, spin-orbit splittings, and live RMF comparator scorecard (zero evidence weight).",
+      "producer": "verification/nvg_unified_nuclear_benchmarks_bridge.py",
+      "consumers": [
+        "verification/nvg_unified_paper_figures.py"
+      ],
+      "inputs": [
+        "verification/nvg_unified_nuclear_benchmarks_bridge.py"
+      ],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_unified_nuclear_benchmarks_bridge.py"
+      ],
+      "deprecation": "Cycle-4 nuclear & RMF comparator bridge artifact (SPEC-v2).",
+      "quarantine": null
+    },
+    "verification/nvg_unified_paper_figures.py": {
+      "kind": "script",
+      "role": "utility",
+      "status": "utility",
+      "evidence_weight": 0.0,
+      "description": "Publication figure generator emitting 5 vector PDF + 300-DPI PNG figures in preprints/figures_unified_paper/ from verified Bridge 1-9B results.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_unified_primary_gate_pairing_results.json",
+        "verification/nvg_unified_ns_microphysics_results.json",
+        "verification/nvg_unified_nuclear_benchmarks_results.json",
+        "verification/nvg_unified_thermal_response_results.json",
+        "verification/nvg_unified_astrophysics_stability_results.json"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": null,
+      "quarantine": null
     }
   },
   "front_door": {

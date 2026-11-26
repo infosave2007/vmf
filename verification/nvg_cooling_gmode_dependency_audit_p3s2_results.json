@@ -2649,44 +2649,23 @@
   "documentation_claim_scan": [
     {
       "evidence_weight": 0.0,
-      "matching_line_count": 4,
+      "matching_line_count": 5,
       "matching_lines": [
         {
-          "line": 58,
+          "line": 40,
+          "text": "| **Bridge 9A** | Core\u2013crust spinodal, DUrca & Cowling $f/g_1/g_2$-modes | All 8 survivors: $n_t^{\\rm dyn} = 0.0785\\text{\u2013}0.0901 < n_t^{\\rm ther}$, $I_{\\rm crust}/I = 3.84\\%\\text{\u2013}5.16\\%$ ($>1.4\\%$ Vela), $M_{\\rm DUrca} = 1.926\\,M_\\odot$,"
+        },
+        {
+          "line": 60,
           "text": "| 12 | White dwarf cooling & LZ 248 keV | WD age shift $\\Delta t/t \\approx -1.8\\times 10^{-6}$; LZ kinematics excludes $0.783 / 1.245$ GeV elastic modes | Gaia/SDSS age error $\\sim 5\\%$; 248 keV requires DM $\\ge 70.66$ GeV | \u26aa / \ud83d\udcd0 Unobserva"
         },
         {
-          "line": 59,
+          "line": 61,
           "text": "| 13 | SN1987A dark-photon scan | Conditional sensitivity scan only; establishes no evidence or Raffelt limit without a transport solver and likelihood | Full proto-NS transport and spectral likelihood absent | \u2699\ufe0f Conditional (no evidence; "
         },
         {
-          "line": 60,
+          "line": 62,
           "text": "| 14 | Physical NS cooling & $g$-modes | Exact barotropic null $N^2 = 0$; physical cooling/hyperon/g-mode claims blocked without $\\Gamma_1(Y_i)$ and matrix elements | Legacy Cas A, hyperon, and static frequency tables withheld | \u274c Blocked ("
-        },
-        {
-          "line": 177,
-          "text": "- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20463836-blue.svg)](https://doi.org/10.5281/zenodo.20463836) *Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in t"
-        }
-      ],
-      "missing_producers": [
-        "none: sourced cooling/g-mode composition and thermal likelihood",
-        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
-      ],
-      "sha256": "fb1381d121e44f10279ccaf3cd127df1d66a1ef080f5ae105b76c780d4915b1a",
-      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
-      "surface": "README.md"
-    },
-    {
-      "evidence_weight": 0.0,
-      "matching_line_count": 3,
-      "matching_lines": [
-        {
-          "line": 59,
-          "text": "| 13 | \u0421\u043a\u0430\u043d \u0442\u0451\u043c\u043d\u043e\u0433\u043e \u0444\u043e\u0442\u043e\u043d\u0430 SN1987A | \u0423\u0441\u043b\u043e\u0432\u043d\u044b\u0439 (conditional) sensitivity-\u0441\u043a\u0430\u043d \u0431\u0435\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e likelihood \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0430 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0435\u0442 \u043f\u0440\u0435\u0434\u0435\u043b \u0420\u0430\u0444\u0444\u0435\u043b\u044c\u0442\u0430 | \u0422\u0435\u0441\u0442 \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043f\u043e\u043b\u043d\u043e\u0446\u0435\u043d\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u0447\u0451\u0442\u0430 \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0430 \u0438 \u0441\u043f\u0435\u043a\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e likelihood SN1987A | \u2699\ufe0f \u0423\u0441"
-        },
-        {
-          "line": 60,
-          "text": "| 14 | \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u0440\u0438\u0432\u044b\u0435 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f (Cas A / \u0433\u0438\u043f\u0435\u0440\u043e\u043d\u044b / $g$-\u043c\u043e\u0434\u044b) | \u0412 \u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0439 \u0431\u0430\u0440\u043e\u0442\u0440\u043e\u043f\u043d\u043e\u0439 EOS \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e $N^2 = 0$; \u0431\u0435\u0437 $\\Gamma_1(Y_i)$ \u0438 \u043c\u0430\u0442\u0440\u0438\u0447\u043d\u044b\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u0444\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0440\u0430\u0441\u0447\u0451\u0442 \u043d\u0435 \u0437\u0430\u043c\u043a\u043d\u0443\u0442 | \u041d\u0430\u0431\u043b\u044e\u0434\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u043f\u043e Cas A, \u0433\u0438\u043f\u0435\u0440\u043e\u043d\u043d\u043e\u0439 "
         },
         {
           "line": 179,
@@ -2697,7 +2676,32 @@
         "none: sourced cooling/g-mode composition and thermal likelihood",
         "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
       ],
-      "sha256": "63bdf0ae86cff7135b6cffcdc420e0da0b9ee2a38b4ca3d0ce4eecfdeb5e8786",
+      "sha256": "eb9c9f597b6d48556ad1dbb49f9b54bb3fff161d1e6d2b3057398966e9ba6412",
+      "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
+      "surface": "README.md"
+    },
+    {
+      "evidence_weight": 0.0,
+      "matching_line_count": 3,
+      "matching_lines": [
+        {
+          "line": 61,
+          "text": "| 13 | \u0421\u043a\u0430\u043d \u0442\u0451\u043c\u043d\u043e\u0433\u043e \u0444\u043e\u0442\u043e\u043d\u0430 SN1987A | \u0423\u0441\u043b\u043e\u0432\u043d\u044b\u0439 (conditional) sensitivity-\u0441\u043a\u0430\u043d \u0431\u0435\u0437 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e likelihood \u0438 \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442\u0430 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0435\u0442 \u043f\u0440\u0435\u0434\u0435\u043b \u0420\u0430\u0444\u0444\u0435\u043b\u044c\u0442\u0430 | \u0422\u0435\u0441\u0442 \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043f\u043e\u043b\u043d\u043e\u0446\u0435\u043d\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u0447\u0451\u0442\u0430 \u043f\u0435\u0440\u0435\u043d\u043e\u0441\u0430 \u0438 \u0441\u043f\u0435\u043a\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e likelihood SN1987A | \u2699\ufe0f \u0423\u0441"
+        },
+        {
+          "line": 62,
+          "text": "| 14 | \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u0440\u0438\u0432\u044b\u0435 \u043e\u0445\u043b\u0430\u0436\u0434\u0435\u043d\u0438\u044f (Cas A / \u0433\u0438\u043f\u0435\u0440\u043e\u043d\u044b / $g$-\u043c\u043e\u0434\u044b) | \u0412 \u0445\u043e\u043b\u043e\u0434\u043d\u043e\u0439 \u0431\u0430\u0440\u043e\u0442\u0440\u043e\u043f\u043d\u043e\u0439 EOS \u0442\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e $N^2 = 0$; \u0431\u0435\u0437 $\\Gamma_1(Y_i)$ \u0438 \u043c\u0430\u0442\u0440\u0438\u0447\u043d\u044b\u0445 \u044d\u043b\u0435\u043c\u0435\u043d\u0442\u043e\u0432 \u0444\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0440\u0430\u0441\u0447\u0451\u0442 \u043d\u0435 \u0437\u0430\u043c\u043a\u043d\u0443\u0442 | \u041d\u0430\u0431\u043b\u044e\u0434\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u043f\u043e Cas A, \u0433\u0438\u043f\u0435\u0440\u043e\u043d\u043d\u043e\u0439 "
+        },
+        {
+          "line": 181,
+          "text": "- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20463836-blue.svg)](https://doi.org/10.5281/zenodo.20463836) *Neutron Star Structure from a Single QCD Parameter: Equation of State, Tidal Deformability, and Cooling Threshold in t"
+        }
+      ],
+      "missing_producers": [
+        "none: sourced cooling/g-mode composition and thermal likelihood",
+        "none: Gamma_1/composition derivatives for any frozen-composition g-mode"
+      ],
+      "sha256": "57ab25c510a5b3275b50428df086f3729b0bd69894c02fd0e4d8e2fb36223c1b",
       "status": "STATIC_TEXT_ZERO_EVIDENCE_REVIEWED",
       "surface": "README_RU.md"
     },
@@ -3216,9 +3220,9 @@
     "excluded_fields": [
       "payload_integrity"
     ],
-    "payload_sha256": "b5d5d98c25094c1cec0fd9e8bf23a62c5830b7df1bf95ad3383eeaac994fae83",
+    "payload_sha256": "e0d57d13251c90b3a5043e52bcd6fe2c7c1f442d527355e30184f825306bb6a3",
     "schema": "P3-S6-complete-payload-v1",
-    "sha256": "b5d5d98c25094c1cec0fd9e8bf23a62c5830b7df1bf95ad3383eeaac994fae83",
+    "sha256": "e0d57d13251c90b3a5043e52bcd6fe2c7c1f442d527355e30184f825306bb6a3",
     "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
   },
   "physical_no_go": {
@@ -3303,8 +3307,8 @@
       "status": "NONE_USED"
     },
     "local_source_sha256": {
-      "README.md": "fb1381d121e44f10279ccaf3cd127df1d66a1ef080f5ae105b76c780d4915b1a",
-      "README_RU.md": "63bdf0ae86cff7135b6cffcdc420e0da0b9ee2a38b4ca3d0ce4eecfdeb5e8786",
+      "README.md": "eb9c9f597b6d48556ad1dbb49f9b54bb3fff161d1e6d2b3057398966e9ba6412",
+      "README_RU.md": "57ab25c510a5b3275b50428df086f3729b0bd69894c02fd0e4d8e2fb36223c1b",
       "article/NVG_SCIENTIFIC_ARTICLE_EN.md": "64bb26d87de8d128d858e27527b7ef3abf40a8f4f3435dc71f6a64e4066d9183",
       "article/NVG_SCIENTIFIC_ARTICLE_RU.md": "b561f96e6a03f6567de24a89725204ac9d94e8b40f43675ae4ae1d7717ec24c5",
       "article/NVG_THETA_HALOSCOPE_PREPRINT.tex": "b93055438c71b4ea2ec5434fdb2124b17086aaf148894b8585746869f02d2895",

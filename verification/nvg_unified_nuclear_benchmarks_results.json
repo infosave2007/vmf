@@ -1,0 +1,1860 @@
+{
+  "bridge_id": "BRIDGE9B_TIN_CHAIN_PREX_CREX_AND_RMF_COMPARATORS",
+  "evidence_weight": 0.0,
+  "full_tin_isotopic_chain_Sn100_to_Sn134": {
+    "isotopes": [
+      {
+        "A": 100,
+        "B_over_A_MeV": -7.927075983238028,
+        "B_over_A_err_MeV": 0.3245500167619717,
+        "Delta_R_np_fm": -0.08459758244871907,
+        "Delta_n_MeV": 0.0,
+        "E_pair_MeV": 0.0,
+        "E_tot_MeV": -792.7075983238028,
+        "N": 50,
+        "R_ch_err_fm": null,
+        "R_ch_fm": 4.401440962377758,
+        "R_ch_rel_err_percent": null,
+        "S2n_step_MeV": null,
+        "Z": 50,
+        "collapsed_to_normal": true,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.251626,
+        "exp_E_tot_MeV": -825.1626,
+        "exp_R_ch_fm": null,
+        "exp_S2n_step_MeV": null,
+        "nucleus": "Sn100"
+      },
+      {
+        "A": 104,
+        "B_over_A_MeV": -8.042179464178703,
+        "B_over_A_err_MeV": 0.341731535821296,
+        "Delta_R_np_fm": -0.03000714931323678,
+        "Delta_n_MeV": 0.8035669016439279,
+        "E_pair_MeV": -3.197850266830128,
+        "E_tot_MeV": -836.3866642745852,
+        "N": 54,
+        "R_ch_err_fm": null,
+        "R_ch_fm": 4.445713154044355,
+        "R_ch_rel_err_percent": null,
+        "S2n_step_MeV": 21.839532975391194,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.383911,
+        "exp_E_tot_MeV": -871.926744,
+        "exp_R_ch_fm": null,
+        "exp_S2n_step_MeV": 23.382071999999994,
+        "nucleus": "Sn104"
+      },
+      {
+        "A": 108,
+        "B_over_A_MeV": -8.140628256696127,
+        "B_over_A_err_MeV": 0.32839874330387353,
+        "Delta_R_np_fm": 0.009156222800979386,
+        "Delta_n_MeV": 0.37081586524194493,
+        "E_pair_MeV": -0.7071655161349659,
+        "E_tot_MeV": -879.1878517231817,
+        "N": 58,
+        "R_ch_err_fm": -0.06970846610568682,
+        "R_ch_fm": 4.490791533894313,
+        "R_ch_rel_err_percent": -1.5285268305161015,
+        "S2n_step_MeV": 21.400593724298233,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.469027,
+        "exp_E_tot_MeV": -914.6549160000001,
+        "exp_R_ch_fm": 4.5605,
+        "exp_S2n_step_MeV": 21.364086000000043,
+        "nucleus": "Sn108"
+      },
+      {
+        "A": 112,
+        "B_over_A_MeV": -8.204057672158601,
+        "B_over_A_err_MeV": 0.3095613278413989,
+        "Delta_R_np_fm": 0.06734011935224604,
+        "Delta_n_MeV": 0.7999255346310253,
+        "E_pair_MeV": -3.4126979250919027,
+        "E_tot_MeV": -918.8544592817634,
+        "N": 62,
+        "R_ch_err_fm": -0.0795353436661701,
+        "R_ch_fm": 4.51486465633383,
+        "R_ch_rel_err_percent": -1.7311366808760686,
+        "S2n_step_MeV": 19.833303779290873,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.513619,
+        "exp_E_tot_MeV": -953.5253280000001,
+        "exp_R_ch_fm": 4.5944,
+        "exp_S2n_step_MeV": 19.435205999999994,
+        "nucleus": "Sn112"
+      },
+      {
+        "A": 116,
+        "B_over_A_MeV": -8.236524147406554,
+        "B_over_A_err_MeV": 0.28659285259344536,
+        "Delta_R_np_fm": 0.11828862625815173,
+        "Delta_n_MeV": 0.7454159217567281,
+        "E_pair_MeV": -3.069276570637056,
+        "E_tot_MeV": -955.4368010991602,
+        "N": 66,
+        "R_ch_err_fm": -0.08225374749718117,
+        "R_ch_fm": 4.542746252502819,
+        "R_ch_rel_err_percent": -1.7784594053444578,
+        "S2n_step_MeV": 18.291170908698405,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.523117,
+        "exp_E_tot_MeV": -988.681572,
+        "exp_R_ch_fm": 4.625,
+        "exp_S2n_step_MeV": 17.57812199999995,
+        "nucleus": "Sn116"
+      },
+      {
+        "A": 120,
+        "B_over_A_MeV": -8.237021979541412,
+        "B_over_A_err_MeV": 0.26746602045858836,
+        "Delta_R_np_fm": 0.1695616149953345,
+        "Delta_n_MeV": 0.6326262094516687,
+        "E_pair_MeV": -2.2869481193439234,
+        "E_tot_MeV": -988.4426375449694,
+        "N": 70,
+        "R_ch_err_fm": -0.08115975714826185,
+        "R_ch_fm": 4.5707402428517385,
+        "R_ch_rel_err_percent": -1.7446582503549484,
+        "S2n_step_MeV": 16.50291822290461,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.504488,
+        "exp_E_tot_MeV": -1020.5385600000001,
+        "exp_R_ch_fm": 4.6519,
+        "exp_S2n_step_MeV": 15.928494000000057,
+        "nucleus": "Sn120"
+      },
+      {
+        "A": 124,
+        "B_over_A_MeV": -8.213014454609478,
+        "B_over_A_err_MeV": 0.2543855453905213,
+        "Delta_R_np_fm": 0.20688119098852464,
+        "Delta_n_MeV": 0.9643798509655166,
+        "E_pair_MeV": -5.49159683912313,
+        "E_tot_MeV": -1018.4137923715753,
+        "N": 74,
+        "R_ch_err_fm": -0.07902695211092947,
+        "R_ch_fm": 4.59447304788907,
+        "R_ch_rel_err_percent": -1.690958641509136,
+        "S2n_step_MeV": 14.985577413302906,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.4674,
+        "exp_E_tot_MeV": -1049.9576,
+        "exp_R_ch_fm": 4.6735,
+        "exp_S2n_step_MeV": 14.70951999999994,
+        "nucleus": "Sn124"
+      },
+      {
+        "A": 128,
+        "B_over_A_MeV": -8.178183416414981,
+        "B_over_A_err_MeV": 0.2387915835850194,
+        "Delta_R_np_fm": 0.2367501186794545,
+        "Delta_n_MeV": 0.8287787479058826,
+        "E_pair_MeV": -4.186661869595078,
+        "E_tot_MeV": -1046.8074773011176,
+        "N": 78,
+        "R_ch_err_fm": -0.07393994311262375,
+        "R_ch_fm": 4.617960056887377,
+        "R_ch_rel_err_percent": -1.575906202447276,
+        "S2n_step_MeV": 14.19684246477118,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.416975,
+        "exp_E_tot_MeV": -1077.3728,
+        "exp_R_ch_fm": 4.6919,
+        "exp_S2n_step_MeV": 13.70760000000007,
+        "nucleus": "Sn128"
+      },
+      {
+        "A": 130,
+        "B_over_A_MeV": -8.1602360860589,
+        "B_over_A_err_MeV": 0.2265809139411008,
+        "Delta_R_np_fm": 0.25017790636978354,
+        "Delta_n_MeV": 0.6669439909871244,
+        "E_pair_MeV": -2.7536122535618266,
+        "E_tot_MeV": -1060.830691187657,
+        "N": 80,
+        "R_ch_err_fm": -0.07217860810653143,
+        "R_ch_fm": 4.629621391893469,
+        "R_ch_rel_err_percent": -1.5351271450621342,
+        "S2n_step_MeV": 14.023213886539452,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.386817,
+        "exp_E_tot_MeV": -1090.28621,
+        "exp_R_ch_fm": 4.7018,
+        "exp_S2n_step_MeV": 12.913409999999885,
+        "nucleus": "Sn130"
+      },
+      {
+        "A": 132,
+        "B_over_A_MeV": -8.140627589186668,
+        "B_over_A_err_MeV": 0.21424541081333182,
+        "Delta_R_np_fm": 0.26132534268146124,
+        "Delta_n_MeV": 0.0,
+        "E_pair_MeV": 0.0,
+        "E_tot_MeV": -1074.5628417726402,
+        "N": 82,
+        "R_ch_err_fm": -0.06824723950581202,
+        "R_ch_fm": 4.641052760494188,
+        "R_ch_rel_err_percent": -1.4492013570129747,
+        "S2n_step_MeV": 13.732150584983174,
+        "Z": 50,
+        "collapsed_to_normal": true,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.354873,
+        "exp_E_tot_MeV": -1102.843236,
+        "exp_R_ch_fm": 4.7093,
+        "exp_S2n_step_MeV": 12.55702599999995,
+        "nucleus": "Sn132"
+      },
+      {
+        "A": 134,
+        "B_over_A_MeV": -8.058126690210544,
+        "B_over_A_err_MeV": 0.21704530978945513,
+        "Delta_R_np_fm": 0.30524216160610695,
+        "Delta_n_MeV": 0.7328829397077559,
+        "E_pair_MeV": -3.427320573531781,
+        "E_tot_MeV": -1079.788976488213,
+        "N": 84,
+        "R_ch_err_fm": -0.07332576693309001,
+        "R_ch_fm": 4.65837423306691,
+        "R_ch_rel_err_percent": -1.5496706666333455,
+        "S2n_step_MeV": 5.226134715572698,
+        "Z": 50,
+        "collapsed_to_normal": false,
+        "converged": true,
+        "exp_B_over_A_MeV": -8.275172,
+        "exp_E_tot_MeV": -1108.873048,
+        "exp_R_ch_fm": 4.7317,
+        "exp_S2n_step_MeV": 6.029811999999993,
+        "nucleus": "Sn134"
+      }
+    ],
+    "pairing_C_n_MeV_inherited": 21.0,
+    "summary": {
+      "R_ch_kink_Sn134_minus_Sn132_fm": 0.017321472572722207,
+      "Sn100_N50_collapsed": true,
+      "Sn132_N82_collapsed": true,
+      "Sn134_post_shell_Delta_n_MeV": 0.7328829397077559,
+      "all_converged": true,
+      "delta_2n_Sn132_shell_gap_MeV": 8.506015869410476,
+      "exp_R_ch_kink_Sn134_minus_Sn132_fm": 0.022400000000000198,
+      "exp_delta_2n_Sn132_shell_gap_MeV": 6.527213999999958,
+      "isotope_count": 11,
+      "max_midshell_Delta_n_MeV": 0.9643798509655166,
+      "rms_B_over_A_err_MeV": 0.2772499267520694,
+      "rms_R_ch_err_fm": 0.07564111603025704,
+      "rms_R_ch_rel_err_percent": 1.6241606150862764
+    },
+    "zero_pairing_refit": true
+  },
+  "gates": {
+    "all_5_live_rmf_comparators_converged_eos_and_nuclei": true,
+    "all_8_survivors_6_nuclei_positive_heavy_skins": true,
+    "full_tin_chain_11_isotopes_converged_zero_refit": true,
+    "nvg_bridge8_globally_bounded_unlike_lambda_lt_0_rmf": true,
+    "tin_N82_S2n_kink_reproduced": true,
+    "tin_double_magic_N50_N82_pairing_collapsed": true
+  },
+  "held_out_empirical_scorecard": [
+    {
+      "CREX_z_score": 1.9592160196423258,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.015195418316487075,
+      "Delta_R_np_Ca48_fm": 0.19032413951396832,
+      "Delta_R_np_Pb208_fm": 0.19643942884047583,
+      "J_MeV": 31.000367367823856,
+      "K_MeV": 240.0,
+      "K_sym_MeV": -42.25386317102676,
+      "L_MeV": 60.0,
+      "Lambda_1_4": 577.6310315093266,
+      "M_DUrca_Msun": 1.9260744429728784,
+      "M_max_Msun": 2.096709387480363,
+      "PREX2_CREX_chi2": 5.324885768985357,
+      "PREX2_z_score": -1.219162974077805,
+      "R_1_4_km": 12.957702415951653,
+      "diagnostic_AIC_k_total": 215.72463275791137,
+      "diagnostic_BIC_k_total": 220.36016509135004,
+      "diagnostic_multi_sector_chi2": 203.72463275791137,
+      "global_vacuum_bounded_and_unique": true,
+      "k_bulk": 6,
+      "k_fin_nuc": 0,
+      "k_total": 6,
+      "model": "NVG-Bridge8 (Zero-Refit Winner)",
+      "n0_fm3": 0.16,
+      "passes_pulsar_2_08_and_gw_580": true,
+      "rms_B_over_A_err_MeV": 0.2360309534809211,
+      "rms_R_ch_err_fm": 0.06046510527628022,
+      "rms_R_ch_rel_err_percent": 1.4412411247215258,
+      "zero_finite_nucleus_refit": true
+    },
+    {
+      "CREX_z_score": 2.9595225279509183,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0018142034764134785,
+      "Delta_R_np_Ca48_fm": 0.22571859691095053,
+      "Delta_R_np_Pb208_fm": 0.27982213292828106,
+      "J_MeV": 37.285071686312676,
+      "K_MeV": 271.6021211485253,
+      "K_sym_MeV": 100.88569458193834,
+      "L_MeV": 118.18892462166005,
+      "Lambda_1_4": 1354.3788315704148,
+      "M_DUrca_Msun": 0.8368957556608393,
+      "M_max_Msun": 2.7749050615174284,
+      "PREX2_CREX_chi2": 8.760776933882543,
+      "PREX2_z_score": -0.04475869115097056,
+      "R_1_4_km": 14.853510662202886,
+      "diagnostic_AIC_k_total": 29.693188529209436,
+      "diagnostic_BIC_k_total": 34.328720862648126,
+      "diagnostic_multi_sector_chi2": 17.693188529209436,
+      "global_vacuum_bounded_and_unique": false,
+      "k_bulk": 2,
+      "k_fin_nuc": 4,
+      "k_total": 6,
+      "model": "NL3",
+      "n0_fm3": 0.14820291550353773,
+      "passes_pulsar_2_08_and_gw_580": false,
+      "rms_B_over_A_err_MeV": 0.03277183340758092,
+      "rms_R_ch_err_fm": 0.02023298747157054,
+      "rms_R_ch_rel_err_percent": 0.6651897582523717,
+      "zero_finite_nucleus_refit": false
+    },
+    {
+      "CREX_z_score": 2.1561568366350663,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.026980730501115158,
+      "Delta_R_np_Ca48_fm": 0.19729261697450484,
+      "Delta_R_np_Pb208_fm": 0.20691744026803072,
+      "J_MeV": 32.593495733692635,
+      "K_MeV": 230.0290708947345,
+      "K_sym_MeV": -51.30925134621816,
+      "L_MeV": 60.51675937563978,
+      "Lambda_1_4": 404.1733412624709,
+      "M_DUrca_Msun": 1.3011912471862657,
+      "M_max_Msun": 1.7222362818128918,
+      "PREX2_CREX_chi2": 5.7973074629399415,
+      "PREX2_z_score": -1.0715853483375952,
+      "R_1_4_km": 12.466124550171374,
+      "diagnostic_AIC_k_total": 113.66837921799484,
+      "diagnostic_BIC_k_total": 119.84908899591309,
+      "diagnostic_multi_sector_chi2": 97.66837921799484,
+      "global_vacuum_bounded_and_unique": true,
+      "k_bulk": 3,
+      "k_fin_nuc": 5,
+      "k_total": 8,
+      "model": "FSUGold",
+      "n0_fm3": 0.14841236727650817,
+      "passes_pulsar_2_08_and_gw_580": false,
+      "rms_B_over_A_err_MeV": 0.038285283527865414,
+      "rms_R_ch_err_fm": 0.021521566758472017,
+      "rms_R_ch_rel_err_percent": 0.5194691908186984,
+      "zero_finite_nucleus_refit": false
+    },
+    {
+      "CREX_z_score": 1.4706661863079111,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0258077965714274,
+      "Delta_R_np_Ca48_fm": 0.17303748175594125,
+      "Delta_R_np_Pb208_fm": 0.16145109061461937,
+      "J_MeV": 31.296877991167094,
+      "K_MeV": 231.36160625121647,
+      "K_sym_MeV": 28.5314502967482,
+      "L_MeV": 47.205410333600156,
+      "Lambda_1_4": 500.7216079425503,
+      "M_DUrca_Msun": 1.772326836847216,
+      "M_max_Msun": 1.9396605047811348,
+      "PREX2_CREX_chi2": 5.093653987466033,
+      "PREX2_z_score": -1.7119564702166283,
+      "R_1_4_km": 12.597232279339936,
+      "diagnostic_AIC_k_total": 70.57173516512262,
+      "diagnostic_BIC_k_total": 76.75244494304086,
+      "diagnostic_multi_sector_chi2": 54.57173516512261,
+      "global_vacuum_bounded_and_unique": false,
+      "k_bulk": 3,
+      "k_fin_nuc": 5,
+      "k_total": 8,
+      "model": "IU-FSU",
+      "n0_fm3": 0.15460986231775115,
+      "passes_pulsar_2_08_and_gw_580": false,
+      "rms_B_over_A_err_MeV": 0.055848917547390915,
+      "rms_R_ch_err_fm": 0.020704526676842572,
+      "rms_R_ch_rel_err_percent": 0.5809097677287225,
+      "zero_finite_nucleus_refit": false
+    },
+    {
+      "CREX_z_score": 3.133788872475489,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0019762621788319557,
+      "Delta_R_np_Ca48_fm": 0.23188476963478122,
+      "Delta_R_np_Pb208_fm": 0.28637221317866945,
+      "J_MeV": 37.57339892814571,
+      "K_MeV": 237.71569752508185,
+      "K_sym_MeV": 25.383203620025103,
+      "L_MeV": 112.68077381388511,
+      "Lambda_1_4": 922.8156584808775,
+      "M_DUrca_Msun": 0.7647453067664225,
+      "M_max_Msun": 2.072824771628734,
+      "PREX2_CREX_chi2": 9.822888563492498,
+      "PREX2_z_score": 0.047495960262950436,
+      "R_1_4_km": 14.14590625957741,
+      "diagnostic_AIC_k_total": 31.1275440528549,
+      "diagnostic_BIC_k_total": 37.30825383077315,
+      "diagnostic_multi_sector_chi2": 15.1275440528549,
+      "global_vacuum_bounded_and_unique": false,
+      "k_bulk": 3,
+      "k_fin_nuc": 5,
+      "k_total": 8,
+      "model": "FSUGold2",
+      "n0_fm3": 0.15040186459363267,
+      "passes_pulsar_2_08_and_gw_580": false,
+      "rms_B_over_A_err_MeV": 0.02579681502117235,
+      "rms_R_ch_err_fm": 0.015147376795538183,
+      "rms_R_ch_rel_err_percent": 0.467181564666055,
+      "zero_finite_nucleus_refit": false
+    },
+    {
+      "CREX_z_score": 1.2865293643118425,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.011482590740539145,
+      "Delta_R_np_Ca48_fm": 0.16652205588674862,
+      "Delta_R_np_Pb208_fm": 0.16118366973346188,
+      "J_MeV": 30.917171727367077,
+      "K_MeV": 229.66041635865096,
+      "K_sym_MeV": 59.44721822544267,
+      "L_MeV": 50.959998436319516,
+      "Lambda_1_4": 624.5060727478422,
+      "M_DUrca_Msun": 1.8664840205287259,
+      "M_max_Msun": 2.0664869711460803,
+      "PREX2_CREX_chi2": 4.598863085856806,
+      "PREX2_z_score": -1.7157229615005367,
+      "R_1_4_km": 13.002336835944003,
+      "diagnostic_AIC_k_total": 32.76615782562173,
+      "diagnostic_BIC_k_total": 38.946867603539985,
+      "diagnostic_multi_sector_chi2": 16.766157825621733,
+      "global_vacuum_bounded_and_unique": false,
+      "k_bulk": 3,
+      "k_fin_nuc": 5,
+      "k_total": 8,
+      "model": "FSUGarnet",
+      "n0_fm3": 0.1531729070824607,
+      "passes_pulsar_2_08_and_gw_580": false,
+      "rms_B_over_A_err_MeV": 0.030444902046849173,
+      "rms_R_ch_err_fm": 0.016585965514033484,
+      "rms_R_ch_rel_err_percent": 0.47767136614645483,
+      "zero_finite_nucleus_refit": false
+    }
+  ],
+  "honest_caveats": [
+    "evidence_weight = 0.0, observed_likelihood = None: all comparisons remain non-likelihood predictive benchmarks.",
+    "NVG-Bridge8 carries k_fin_nuc = 0 (strictly zero finite-nucleus parameters fitted), whereas NL3/FSUGold/IU-FSU/FSUGold2/FSUGarnet include finite-nucleus binding energies and charge radii in calibration.",
+    "Diagnostic chi^2, AIC, and BIC in held_out_empirical_scorecard use fixed reference scales and are comparative summary indices, not observational likelihoods.",
+    "Mid-shell Tin isotopes (Sn104..Sn128) are evaluated in spherical RH-BCS symmetry without quadrupole deformation corrections."
+  ],
+  "observed_likelihood": null,
+  "provenance": {
+    "bridge8_results_sha256": "d3740280b629a4a2fe8e9966c5ec1b3c562aeda1788b74c1e41d1d7380bbcf21",
+    "bridge9a_results_sha256": "171b9bd958f56deed7821b1a291058219fba4db4268085aac6dfd46715f4b482",
+    "source_sha256": "6f27548ad58d68418c7e4ab8574ce5c30241154b300ec618879acee6433105fc",
+    "zero_finite_nucleus_refit_for_nvg": true
+  },
+  "rmf_live_comparators": [
+    {
+      "bulk_and_ns": {
+        "name": "NL3",
+        "neutron_star_sly4_crust": {
+          "Lambda_1_4": 1354.3788315704148,
+          "M_DUrca_Msun": 0.8368957556608393,
+          "M_max_Msun": 2.7749050615174284,
+          "R_1_4_km": 14.853510662202886,
+          "R_at_Mmax_km": 13.344378140804114
+        },
+        "saturation": {
+          "B_over_A_MeV": -16.240174455593205,
+          "J_MeV": 37.285071686312676,
+          "K_MeV": 271.6021211485253,
+          "K_sym_MeV": 100.88569458193834,
+          "L_MeV": 118.18892462166005,
+          "M_eff_over_M_N": 0.5950989428492689,
+          "n0_fm3": 0.14820291550353773
+        },
+        "vacuum_audit": {
+          "bounded_below": false,
+          "min_other_vacuum_U_MeV4": null,
+          "min_other_vacuum_s_MeV": null,
+          "reason": "negative_quartic_coupling (lambda=-0.015905 < 0 => U(s) -> -inf as s -> +inf)",
+          "unique_vacuum": false
+        }
+      },
+      "citation": "Lalazissis et al., Phys. Rev. C 55, 540 (1997)",
+      "name": "NL3",
+      "six_nuclei": {
+        "model": "NL3",
+        "nuclei": [
+          {
+            "A": 16,
+            "B_over_A_MeV": -8.045829021784925,
+            "B_over_A_err_MeV": -0.06962902178492492,
+            "Delta_R_np_fm": -0.027677256579417442,
+            "N": 8,
+            "R_ch_err_fm": 0.04158805773253249,
+            "R_ch_fm": 2.7406880577325325,
+            "R_ch_rel_err_percent": 1.5408120385510908,
+            "Z": 8,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.9762,
+            "exp_R_ch_fm": 2.6991,
+            "max_field_residual_rel": 6.689778567477355e-06,
+            "nucleus": "O16",
+            "particle_rel_err": 3.6384846913151137e-08
+          },
+          {
+            "A": 40,
+            "B_over_A_MeV": -8.54323052105774,
+            "B_over_A_err_MeV": 0.008069478942259067,
+            "Delta_R_np_fm": -0.04857547539565177,
+            "N": 20,
+            "R_ch_err_fm": 0.002616706104356048,
+            "R_ch_fm": 3.480216706104356,
+            "R_ch_rel_err_percent": 0.07524459697366138,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.5513,
+            "exp_R_ch_fm": 3.4776,
+            "max_field_residual_rel": 6.772218286513285e-06,
+            "nucleus": "Ca40",
+            "particle_rel_err": 2.024419014645673e-08
+          },
+          {
+            "A": 48,
+            "B_over_A_MeV": -8.641419716002474,
+            "B_over_A_err_MeV": 0.025280283997526354,
+            "Delta_R_np_fm": 0.22571859691095053,
+            "N": 28,
+            "R_ch_err_fm": 0.004930909580769249,
+            "R_ch_fm": 3.4820309095807693,
+            "R_ch_rel_err_percent": 0.14181097986164473,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.6667,
+            "exp_R_ch_fm": 3.4771,
+            "max_field_residual_rel": 7.504177152755354e-06,
+            "nucleus": "Ca48",
+            "particle_rel_err": 1.0933200884315802e-08
+          },
+          {
+            "A": 90,
+            "B_over_A_MeV": -8.684837027241075,
+            "B_over_A_err_MeV": 0.0251229727589255,
+            "Delta_R_np_fm": 0.1142243327540644,
+            "N": 50,
+            "R_ch_err_fm": 0.00795536164231514,
+            "R_ch_fm": 4.277355361642315,
+            "R_ch_rel_err_percent": 0.1863344180052265,
+            "Z": 40,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.70996,
+            "exp_R_ch_fm": 4.2694,
+            "max_field_residual_rel": 8.607373560063658e-06,
+            "nucleus": "Zr90",
+            "particle_rel_err": 2.6501798231493012e-08
+          },
+          {
+            "A": 132,
+            "B_over_A_MeV": -8.364980594465152,
+            "B_over_A_err_MeV": -0.011370594465152095,
+            "Delta_R_np_fm": 0.34558598297355836,
+            "N": 82,
+            "R_ch_err_fm": 0.009710784332253475,
+            "R_ch_fm": 4.719010784332253,
+            "R_ch_rel_err_percent": 0.20620441110682003,
+            "Z": 50,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.35361,
+            "exp_R_ch_fm": 4.7093,
+            "max_field_residual_rel": 8.950361937589919e-06,
+            "nucleus": "Sn132",
+            "particle_rel_err": 3.662904973111836e-08
+          },
+          {
+            "A": 208,
+            "B_over_A_MeV": -7.878949641326612,
+            "B_over_A_err_MeV": -0.011449641326612081,
+            "Delta_R_np_fm": 0.27982213292828106,
+            "N": 126,
+            "R_ch_err_fm": 0.023193275207397335,
+            "R_ch_fm": 5.524393275207397,
+            "R_ch_rel_err_percent": 0.42160392655052237,
+            "Z": 82,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.8675,
+            "exp_R_ch_fm": 5.5012,
+            "max_field_residual_rel": 8.210000614160296e-06,
+            "nucleus": "Pb208",
+            "particle_rel_err": 4.409846219405587e-08
+          }
+        ],
+        "summary_metrics": {
+          "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0018142034764134785,
+          "Delta_R_np_Ca48_fm": 0.22571859691095053,
+          "Delta_R_np_Pb208_fm": 0.27982213292828106,
+          "max_particle_rel_err": 4.409846219405587e-08,
+          "rms_B_over_A_err_MeV": 0.03277183340758092,
+          "rms_R_ch_err_fm": 0.02023298747157054,
+          "rms_R_ch_rel_err_percent": 0.6651897582523717
+        }
+      }
+    },
+    {
+      "bulk_and_ns": {
+        "name": "FSUGold",
+        "neutron_star_sly4_crust": {
+          "Lambda_1_4": 404.1733412624709,
+          "M_DUrca_Msun": 1.3011912471862657,
+          "M_max_Msun": 1.7222362818128918,
+          "R_1_4_km": 12.466124550171374,
+          "R_at_Mmax_km": 10.877343345400588
+        },
+        "saturation": {
+          "B_over_A_MeV": -16.300583793169267,
+          "J_MeV": 32.593495733692635,
+          "K_MeV": 230.0290708947345,
+          "K_sym_MeV": -51.30925134621816,
+          "L_MeV": 60.51675937563978,
+          "M_eff_over_M_N": 0.6099922464994256,
+          "n0_fm3": 0.14841236727650817
+        },
+        "vacuum_audit": {
+          "bounded_below": true,
+          "min_other_vacuum_U_MeV4": null,
+          "min_other_vacuum_s_MeV": null,
+          "reason": "globally_bounded_and_unique_minimum_at_s=0",
+          "unique_vacuum": true
+        }
+      },
+      "citation": "Todd-Rutel & Piekarewicz, Phys. Rev. Lett. 95, 122501 (2005)",
+      "name": "FSUGold",
+      "six_nuclei": {
+        "model": "FSUGold",
+        "nuclei": [
+          {
+            "A": 16,
+            "B_over_A_MeV": -7.977517480845563,
+            "B_over_A_err_MeV": -0.001317480845562713,
+            "Delta_R_np_fm": -0.028698565465812287,
+            "N": 8,
+            "R_ch_err_fm": -0.0015900104469230847,
+            "R_ch_fm": 2.697509989553077,
+            "R_ch_rel_err_percent": -0.05890891211600477,
+            "Z": 8,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.9762,
+            "exp_R_ch_fm": 2.6991,
+            "max_field_residual_rel": 6.4491288835003e-06,
+            "nucleus": "O16",
+            "particle_rel_err": 3.58358508423251e-08
+          },
+          {
+            "A": 40,
+            "B_over_A_MeV": -8.538863066338672,
+            "B_over_A_err_MeV": 0.012436933661327032,
+            "Delta_R_np_fm": -0.051292664834008406,
+            "N": 20,
+            "R_ch_err_fm": -0.03519474246400067,
+            "R_ch_fm": 3.442405257535999,
+            "R_ch_rel_err_percent": -1.0120411336554138,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.5513,
+            "exp_R_ch_fm": 3.4776,
+            "max_field_residual_rel": 6.893605314020663e-06,
+            "nucleus": "Ca40",
+            "particle_rel_err": 1.2117123304733468e-08
+          },
+          {
+            "A": 48,
+            "B_over_A_MeV": -8.584698760921583,
+            "B_over_A_err_MeV": 0.0820012390784175,
+            "Delta_R_np_fm": 0.19729261697450484,
+            "N": 28,
+            "R_ch_err_fm": -0.007714011962885792,
+            "R_ch_fm": 3.4693859880371143,
+            "R_ch_rel_err_percent": -0.22185188700025285,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.6667,
+            "exp_R_ch_fm": 3.4771,
+            "max_field_residual_rel": 7.2250206948163595e-06,
+            "nucleus": "Ca48",
+            "particle_rel_err": 2.6174489242691834e-08
+          },
+          {
+            "A": 90,
+            "B_over_A_MeV": -8.674878405622279,
+            "B_over_A_err_MeV": 0.03508159437772207,
+            "Delta_R_np_fm": 0.08773473919797592,
+            "N": 50,
+            "R_ch_err_fm": -0.004381719412520191,
+            "R_ch_fm": 4.26501828058748,
+            "R_ch_rel_err_percent": -0.10263080087413198,
+            "Z": 40,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.70996,
+            "exp_R_ch_fm": 4.2694,
+            "max_field_residual_rel": 8.23522984062334e-06,
+            "nucleus": "Zr90",
+            "particle_rel_err": 4.993017572729741e-08
+          },
+          {
+            "A": 132,
+            "B_over_A_MeV": -8.340095221425585,
+            "B_over_A_err_MeV": 0.013514778574414521,
+            "Delta_R_np_fm": 0.2708958295592794,
+            "N": 82,
+            "R_ch_err_fm": 0.02026668180095026,
+            "R_ch_fm": 4.72956668180095,
+            "R_ch_rel_err_percent": 0.43035444335570594,
+            "Z": 50,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.35361,
+            "exp_R_ch_fm": 4.7093,
+            "max_field_residual_rel": 8.50754545581349e-06,
+            "nucleus": "Sn132",
+            "particle_rel_err": 3.043456530349431e-08
+          },
+          {
+            "A": 208,
+            "B_over_A_MeV": -7.8898739540489675,
+            "B_over_A_err_MeV": -0.022373954048967803,
+            "Delta_R_np_fm": 0.20691744026803072,
+            "N": 126,
+            "R_ch_err_fm": 0.032379393868832373,
+            "R_ch_fm": 5.533579393868832,
+            "R_ch_rel_err_percent": 0.5885878329970257,
+            "Z": 82,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.8675,
+            "exp_R_ch_fm": 5.5012,
+            "max_field_residual_rel": 8.7790069117973e-06,
+            "nucleus": "Pb208",
+            "particle_rel_err": 3.944191150378351e-08
+          }
+        ],
+        "summary_metrics": {
+          "Delta_R_ch_Ca48_minus_Ca40_fm": 0.026980730501115158,
+          "Delta_R_np_Ca48_fm": 0.19729261697450484,
+          "Delta_R_np_Pb208_fm": 0.20691744026803072,
+          "max_particle_rel_err": 4.993017572729741e-08,
+          "rms_B_over_A_err_MeV": 0.038285283527865414,
+          "rms_R_ch_err_fm": 0.021521566758472017,
+          "rms_R_ch_rel_err_percent": 0.5194691908186984
+        }
+      }
+    },
+    {
+      "bulk_and_ns": {
+        "name": "IU-FSU",
+        "neutron_star_sly4_crust": {
+          "Lambda_1_4": 500.7216079425503,
+          "M_DUrca_Msun": 1.772326836847216,
+          "M_max_Msun": 1.9396605047811348,
+          "R_1_4_km": 12.597232279339936,
+          "R_at_Mmax_km": 11.23889435716997
+        },
+        "saturation": {
+          "B_over_A_MeV": -16.39747378825848,
+          "J_MeV": 31.296877991167094,
+          "K_MeV": 231.36160625121647,
+          "K_sym_MeV": 28.5314502967482,
+          "L_MeV": 47.205410333600156,
+          "M_eff_over_M_N": 0.6092443183592127,
+          "n0_fm3": 0.15460986231775115
+        },
+        "vacuum_audit": {
+          "bounded_below": true,
+          "min_other_vacuum_U_MeV4": -4301446042809.2305,
+          "min_other_vacuum_s_MeV": -3285.5921067994514,
+          "reason": "second_deeper_false_vacuum_at_s=-3285.59_MeV",
+          "unique_vacuum": false
+        }
+      },
+      "citation": "Fattoyev et al., Phys. Rev. C 82, 055803 (2010)",
+      "name": "IU-FSU",
+      "six_nuclei": {
+        "model": "IU-FSU",
+        "nuclei": [
+          {
+            "A": 16,
+            "B_over_A_MeV": -7.942962954916993,
+            "B_over_A_err_MeV": 0.03323704508300729,
+            "Delta_R_np_fm": -0.029149381245755723,
+            "N": 8,
+            "R_ch_err_fm": 0.013805230498936893,
+            "R_ch_fm": 2.712905230498937,
+            "R_ch_rel_err_percent": 0.511475325068982,
+            "Z": 8,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.9762,
+            "exp_R_ch_fm": 2.6991,
+            "max_field_residual_rel": 5.8342384769279155e-06,
+            "nucleus": "O16",
+            "particle_rel_err": 2.1198225397256465e-08
+          },
+          {
+            "A": 40,
+            "B_over_A_MeV": -8.528611012007058,
+            "B_over_A_err_MeV": 0.02268898799294128,
+            "Delta_R_np_fm": -0.05125537895625509,
+            "N": 20,
+            "R_ch_err_fm": -0.03904812919266609,
+            "R_ch_fm": 3.4385518708073337,
+            "R_ch_rel_err_percent": -1.122847055229644,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.5513,
+            "exp_R_ch_fm": 3.4776,
+            "max_field_residual_rel": 6.626763758021162e-06,
+            "nucleus": "Ca40",
+            "particle_rel_err": 7.886381681032617e-09
+          },
+          {
+            "A": 48,
+            "B_over_A_MeV": -8.54734305074544,
+            "B_over_A_err_MeV": 0.11935694925456097,
+            "Delta_R_np_fm": 0.17303748175594125,
+            "N": 28,
+            "R_ch_err_fm": -0.01274033262123897,
+            "R_ch_fm": 3.464359667378761,
+            "R_ch_rel_err_percent": -0.36640685114719074,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.6667,
+            "exp_R_ch_fm": 3.4771,
+            "max_field_residual_rel": 7.014220845905556e-06,
+            "nucleus": "Ca48",
+            "particle_rel_err": 2.7789749523776662e-08
+          },
+          {
+            "A": 90,
+            "B_over_A_MeV": -8.671148525876763,
+            "B_over_A_err_MeV": 0.03881147412323749,
+            "Delta_R_np_fm": 0.07023058953253525,
+            "N": 50,
+            "R_ch_err_fm": -0.02458908859029485,
+            "R_ch_fm": 4.244810911409705,
+            "R_ch_rel_err_percent": -0.5759378036795533,
+            "Z": 40,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.70996,
+            "exp_R_ch_fm": 4.2694,
+            "max_field_residual_rel": 8.177834740375856e-06,
+            "nucleus": "Zr90",
+            "particle_rel_err": 6.222038422265541e-08
+          },
+          {
+            "A": 132,
+            "B_over_A_MeV": -8.328406082836768,
+            "B_over_A_err_MeV": 0.025203917163231893,
+            "Delta_R_np_fm": 0.22313363836093902,
+            "N": 82,
+            "R_ch_err_fm": -0.007467635276855233,
+            "R_ch_fm": 4.701832364723145,
+            "R_ch_rel_err_percent": -0.15857208665524034,
+            "Z": 50,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.35361,
+            "exp_R_ch_fm": 4.7093,
+            "max_field_residual_rel": 8.915905169016491e-06,
+            "nucleus": "Sn132",
+            "particle_rel_err": 2.3351727229399374e-08
+          },
+          {
+            "A": 208,
+            "B_over_A_MeV": -7.894098287650754,
+            "B_over_A_err_MeV": -0.02659828765075467,
+            "Delta_R_np_fm": 0.16145109061461937,
+            "N": 126,
+            "R_ch_err_fm": -0.005832566953519525,
+            "R_ch_fm": 5.49536743304648,
+            "R_ch_rel_err_percent": -0.10602353947356076,
+            "Z": 82,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.8675,
+            "exp_R_ch_fm": 5.5012,
+            "max_field_residual_rel": 8.65432095319578e-06,
+            "nucleus": "Pb208",
+            "particle_rel_err": 3.715114945218996e-08
+          }
+        ],
+        "summary_metrics": {
+          "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0258077965714274,
+          "Delta_R_np_Ca48_fm": 0.17303748175594125,
+          "Delta_R_np_Pb208_fm": 0.16145109061461937,
+          "max_particle_rel_err": 6.222038422265541e-08,
+          "rms_B_over_A_err_MeV": 0.055848917547390915,
+          "rms_R_ch_err_fm": 0.020704526676842572,
+          "rms_R_ch_rel_err_percent": 0.5809097677287225
+        }
+      }
+    },
+    {
+      "bulk_and_ns": {
+        "name": "FSUGold2",
+        "neutron_star_sly4_crust": {
+          "Lambda_1_4": 922.8156584808775,
+          "M_DUrca_Msun": 0.7647453067664225,
+          "M_max_Msun": 2.072824771628734,
+          "R_1_4_km": 14.14590625957741,
+          "R_at_Mmax_km": 12.15339640378389
+        },
+        "saturation": {
+          "B_over_A_MeV": -16.264882250076425,
+          "J_MeV": 37.57339892814571,
+          "K_MeV": 237.71569752508185,
+          "K_sym_MeV": 25.383203620025103,
+          "L_MeV": 112.68077381388511,
+          "M_eff_over_M_N": 0.5931383191866538,
+          "n0_fm3": 0.15040186459363267
+        },
+        "vacuum_audit": {
+          "bounded_below": false,
+          "min_other_vacuum_U_MeV4": null,
+          "min_other_vacuum_s_MeV": null,
+          "reason": "negative_quartic_coupling (lambda=-0.000533 < 0 => U(s) -> -inf as s -> +inf)",
+          "unique_vacuum": false
+        }
+      },
+      "citation": "Chen & Piekarewicz, Phys. Rev. C 90, 044305 (2014)",
+      "name": "FSUGold2",
+      "six_nuclei": {
+        "model": "FSUGold2",
+        "nuclei": [
+          {
+            "A": 16,
+            "B_over_A_MeV": -7.990998271437093,
+            "B_over_A_err_MeV": -0.014798271437092225,
+            "Delta_R_np_fm": -0.028112576875723327,
+            "N": 8,
+            "R_ch_err_fm": 0.021969427894402926,
+            "R_ch_fm": 2.721069427894403,
+            "R_ch_rel_err_percent": 0.8139538325516997,
+            "Z": 8,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.9762,
+            "exp_R_ch_fm": 2.6991,
+            "max_field_residual_rel": 7.823899412661232e-06,
+            "nucleus": "O16",
+            "particle_rel_err": 1.20630769817609e-08
+          },
+          {
+            "A": 40,
+            "B_over_A_MeV": -8.530266362326255,
+            "B_over_A_err_MeV": 0.02103363767374411,
+            "Delta_R_np_fm": -0.049537064486417925,
+            "N": 20,
+            "R_ch_err_fm": -0.01875744231170806,
+            "R_ch_fm": 3.4588425576882917,
+            "R_ch_rel_err_percent": -0.5393789484618146,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.5513,
+            "exp_R_ch_fm": 3.4776,
+            "max_field_residual_rel": 6.713032967567788e-06,
+            "nucleus": "Ca40",
+            "particle_rel_err": 1.9221998215357417e-09
+          },
+          {
+            "A": 48,
+            "B_over_A_MeV": -8.620414557444747,
+            "B_over_A_err_MeV": 0.04628544255525391,
+            "Delta_R_np_fm": 0.23188476963478122,
+            "N": 28,
+            "R_ch_err_fm": -0.016281180132876383,
+            "R_ch_fm": 3.4608188198671237,
+            "R_ch_rel_err_percent": -0.4682402039882771,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.6667,
+            "exp_R_ch_fm": 3.4771,
+            "max_field_residual_rel": 6.929074614309607e-06,
+            "nucleus": "Ca48",
+            "particle_rel_err": 2.062096289279225e-08
+          },
+          {
+            "A": 90,
+            "B_over_A_MeV": -8.675816741414828,
+            "B_over_A_err_MeV": 0.034143258585173086,
+            "Delta_R_np_fm": 0.11666246633143462,
+            "N": 50,
+            "R_ch_err_fm": -0.013310145256487438,
+            "R_ch_fm": 4.256089854743513,
+            "R_ch_rel_err_percent": -0.3117568102423628,
+            "Z": 40,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.70996,
+            "exp_R_ch_fm": 4.2694,
+            "max_field_residual_rel": 7.789729359075901e-06,
+            "nucleus": "Zr90",
+            "particle_rel_err": 4.803719821921959e-08
+          },
+          {
+            "A": 132,
+            "B_over_A_MeV": -8.351920035420335,
+            "B_over_A_err_MeV": 0.00168996457966486,
+            "Delta_R_np_fm": 0.3535844185082224,
+            "N": 82,
+            "R_ch_err_fm": -0.007424969335763976,
+            "R_ch_fm": 4.701875030664236,
+            "R_ch_rel_err_percent": -0.15766609338466386,
+            "Z": 50,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.35361,
+            "exp_R_ch_fm": 4.7093,
+            "max_field_residual_rel": 8.18714421948907e-06,
+            "nucleus": "Sn132",
+            "particle_rel_err": 1.4757441447716524e-08
+          },
+          {
+            "A": 208,
+            "B_over_A_MeV": -7.872026694210245,
+            "B_over_A_err_MeV": -0.004526694210245097,
+            "Delta_R_np_fm": 0.28637221317866945,
+            "N": 126,
+            "R_ch_err_fm": 0.006692815231771121,
+            "R_ch_fm": 5.507892815231771,
+            "R_ch_rel_err_percent": 0.1216610054491951,
+            "Z": 82,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.8675,
+            "exp_R_ch_fm": 5.5012,
+            "max_field_residual_rel": 9.201998238165814e-06,
+            "nucleus": "Pb208",
+            "particle_rel_err": 2.940481601299547e-08
+          }
+        ],
+        "summary_metrics": {
+          "Delta_R_ch_Ca48_minus_Ca40_fm": 0.0019762621788319557,
+          "Delta_R_np_Ca48_fm": 0.23188476963478122,
+          "Delta_R_np_Pb208_fm": 0.28637221317866945,
+          "max_particle_rel_err": 4.803719821921959e-08,
+          "rms_B_over_A_err_MeV": 0.02579681502117235,
+          "rms_R_ch_err_fm": 0.015147376795538183,
+          "rms_R_ch_rel_err_percent": 0.467181564666055
+        }
+      }
+    },
+    {
+      "bulk_and_ns": {
+        "name": "FSUGarnet",
+        "neutron_star_sly4_crust": {
+          "Lambda_1_4": 624.5060727478422,
+          "M_DUrca_Msun": 1.8664840205287259,
+          "M_max_Msun": 2.0664869711460803,
+          "R_1_4_km": 13.002336835944003,
+          "R_at_Mmax_km": 11.717027451816184
+        },
+        "saturation": {
+          "B_over_A_MeV": -16.230514093110855,
+          "J_MeV": 30.917171727367077,
+          "K_MeV": 229.66041635865096,
+          "K_sym_MeV": 59.44721822544267,
+          "L_MeV": 50.959998436319516,
+          "M_eff_over_M_N": 0.5782964839638701,
+          "n0_fm3": 0.1531729070824607
+        },
+        "vacuum_audit": {
+          "bounded_below": false,
+          "min_other_vacuum_U_MeV4": null,
+          "min_other_vacuum_s_MeV": null,
+          "reason": "negative_quartic_coupling (lambda=-0.003551 < 0 => U(s) -> -inf as s -> +inf)",
+          "unique_vacuum": false
+        }
+      },
+      "citation": "Chen & Piekarewicz, Phys. Lett. B 748, 284 (2015)",
+      "name": "FSUGarnet",
+      "six_nuclei": {
+        "model": "FSUGarnet",
+        "nuclei": [
+          {
+            "A": 16,
+            "B_over_A_MeV": -8.004387710204128,
+            "B_over_A_err_MeV": -0.02818771020412747,
+            "Delta_R_np_fm": -0.02985782211946919,
+            "N": 8,
+            "R_ch_err_fm": 0.01491995248417588,
+            "R_ch_fm": 2.714019952484176,
+            "R_ch_rel_err_percent": 0.5527750911109585,
+            "Z": 8,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.9762,
+            "exp_R_ch_fm": 2.6991,
+            "max_field_residual_rel": 7.809682053829533e-06,
+            "nucleus": "O16",
+            "particle_rel_err": 1.4940817916198057e-08
+          },
+          {
+            "A": 40,
+            "B_over_A_MeV": -8.530687904519619,
+            "B_over_A_err_MeV": 0.020612095480380788,
+            "Delta_R_np_fm": -0.0522629664346308,
+            "N": 20,
+            "R_ch_err_fm": -0.028021729261168193,
+            "R_ch_fm": 3.4495782707388316,
+            "R_ch_rel_err_percent": -0.8057778140432538,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.5513,
+            "exp_R_ch_fm": 3.4776,
+            "max_field_residual_rel": 6.222502084090547e-06,
+            "nucleus": "Ca40",
+            "particle_rel_err": 4.636938655266931e-09
+          },
+          {
+            "A": 48,
+            "B_over_A_MeV": -8.61252558173995,
+            "B_over_A_err_MeV": 0.05417441826005032,
+            "Delta_R_np_fm": 0.16652205588674862,
+            "N": 28,
+            "R_ch_err_fm": -0.016039138520629326,
+            "R_ch_fm": 3.4610608614793708,
+            "R_ch_rel_err_percent": -0.4612791843958852,
+            "Z": 20,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.6667,
+            "exp_R_ch_fm": 3.4771,
+            "max_field_residual_rel": 7.2941879099116654e-06,
+            "nucleus": "Ca48",
+            "particle_rel_err": 4.242396798304071e-08
+          },
+          {
+            "A": 90,
+            "B_over_A_MeV": -8.683061145481123,
+            "B_over_A_err_MeV": 0.026898854518877968,
+            "Delta_R_np_fm": 0.06620553718986777,
+            "N": 50,
+            "R_ch_err_fm": -0.01779840757543738,
+            "R_ch_fm": 4.251601592424563,
+            "R_ch_rel_err_percent": -0.416883111805813,
+            "Z": 40,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.70996,
+            "exp_R_ch_fm": 4.2694,
+            "max_field_residual_rel": 8.375255543370678e-06,
+            "nucleus": "Zr90",
+            "particle_rel_err": 8.557647301898896e-08
+          },
+          {
+            "A": 132,
+            "B_over_A_MeV": -8.361230257904412,
+            "B_over_A_err_MeV": -0.007620257904411787,
+            "Delta_R_np_fm": 0.2229825779709813,
+            "N": 82,
+            "R_ch_err_fm": -0.006383134850102223,
+            "R_ch_fm": 4.702916865149898,
+            "R_ch_rel_err_percent": -0.13554317733213478,
+            "Z": 50,
+            "converged": true,
+            "exp_B_over_A_MeV": -8.35361,
+            "exp_R_ch_fm": 4.7093,
+            "max_field_residual_rel": 8.889915797095144e-06,
+            "nucleus": "Sn132",
+            "particle_rel_err": 5.471818923297178e-08
+          },
+          {
+            "A": 208,
+            "B_over_A_MeV": -7.8925092498575395,
+            "B_over_A_err_MeV": -0.025009249857539828,
+            "Delta_R_np_fm": 0.16118366973346188,
+            "N": 126,
+            "R_ch_err_fm": 0.005287866494160021,
+            "R_ch_fm": 5.50648786649416,
+            "R_ch_rel_err_percent": 0.09612205508180072,
+            "Z": 82,
+            "converged": true,
+            "exp_B_over_A_MeV": -7.8675,
+            "exp_R_ch_fm": 5.5012,
+            "max_field_residual_rel": 7.488660554384501e-06,
+            "nucleus": "Pb208",
+            "particle_rel_err": 4.5339638558477705e-08
+          }
+        ],
+        "summary_metrics": {
+          "Delta_R_ch_Ca48_minus_Ca40_fm": 0.011482590740539145,
+          "Delta_R_np_Ca48_fm": 0.16652205588674862,
+          "Delta_R_np_Pb208_fm": 0.16118366973346188,
+          "max_particle_rel_err": 8.557647301898896e-08,
+          "rms_B_over_A_err_MeV": 0.030444902046849173,
+          "rms_R_ch_err_fm": 0.016585965514033484,
+          "rms_R_ch_rel_err_percent": 0.47767136614645483
+        }
+      }
+    }
+  ],
+  "schema_version": "nvg_unified_nuclear_benchmarks_bridge.v1",
+  "status": "PASS_NUCLEAR_BENCHMARKS_TIN_ISOTOPES_PREX_CREX_AND_RMF_ZERO_EVIDENCE",
+  "survivor_prex_crex_and_ksym_locus": [
+    {
+      "CREX_z_score": 1.5834736479663067,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.01723747485892302,
+      "Delta_R_np_Ca48_fm": 0.17702901721288944,
+      "Delta_R_np_Pb208_fm": 0.17203445224489222,
+      "J_MeV": 31.000439811919023,
+      "K_sym_MeV": 18.743066448223548,
+      "L_MeV": 50.0,
+      "L_fd_check_MeV": 50.00058581572375,
+      "M_eff_over_M_N": 0.61,
+      "PREX2_CREX_chi2": 4.950029696122926,
+      "PREX2_z_score": -1.5628950388043348,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.8011553127914794,
+          "B_over_A_err_MeV": 0.17504468720852095,
+          "Delta_R_np_fm": -0.029932737685627764,
+          "R_ch_fm": 2.6946917135222272,
+          "R_ch_rel_err_percent": -0.16332431098413563,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.293851566832199,
+          "B_over_A_err_MeV": 0.2574484331678004,
+          "Delta_R_np_fm": -0.052925058030245165,
+          "R_ch_fm": 3.4134362389210797,
+          "R_ch_rel_err_percent": -1.8450586921704648,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.328029940745031,
+          "B_over_A_err_MeV": 0.3386700592549694,
+          "Delta_R_np_fm": 0.17702901721288944,
+          "R_ch_fm": 3.4306737137800027,
+          "R_ch_rel_err_percent": -1.3352013522762456,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.38757769413383,
+          "B_over_A_err_MeV": 0.3223823058661708,
+          "Delta_R_np_fm": 0.07239490412818039,
+          "R_ch_fm": 4.204563922064173,
+          "R_ch_rel_err_percent": -1.518622708948031,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.069010636775188,
+          "B_over_A_err_MeV": 0.28459936322481205,
+          "Delta_R_np_fm": 0.2347079259578102,
+          "R_ch_fm": 4.647851509428435,
+          "R_ch_rel_err_percent": -1.3048327898321428,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.58796156355045,
+          "B_over_A_err_MeV": 0.2795384364495499,
+          "Delta_R_np_fm": 0.17203445224489222,
+          "R_ch_fm": 5.434446148712965,
+          "R_ch_rel_err_percent": -1.2134416361345692,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.28127289045588977,
+      "rms_R_ch_rel_err_percent": 1.335098198953375,
+      "zeta_RMF": 0.0165
+    },
+    {
+      "CREX_z_score": 1.6585601760099427,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.020179259241499103,
+      "Delta_R_np_Ca48_fm": 0.17968584978955793,
+      "Delta_R_np_Pb208_fm": 0.17498893077280986,
+      "J_MeV": 31.000435481587374,
+      "K_sym_MeV": 0.2846231836883817,
+      "L_MeV": 50.0,
+      "L_fd_check_MeV": 50.00068969138737,
+      "M_eff_over_M_N": 0.62,
+      "PREX2_CREX_chi2": 5.065122804798018,
+      "PREX2_z_score": -1.521282665171692,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.8459851640827765,
+          "B_over_A_err_MeV": 0.13021483591722394,
+          "Delta_R_np_fm": -0.029770287388476202,
+          "R_ch_fm": 2.6909411597541673,
+          "R_ch_rel_err_percent": -0.3022800283736356,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.325399115292749,
+          "B_over_A_err_MeV": 0.22590088470725078,
+          "Delta_R_np_fm": -0.05280919368158754,
+          "R_ch_fm": 3.4097886065139402,
+          "R_ch_rel_err_percent": -1.9499480528542552,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.346793334638278,
+          "B_over_A_err_MeV": 0.31990666536172263,
+          "Delta_R_np_fm": 0.17968584978955793,
+          "R_ch_fm": 3.4299678657554393,
+          "R_ch_rel_err_percent": -1.3555012580760044,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.4013933254401,
+          "B_over_A_err_MeV": 0.3085666745599003,
+          "Delta_R_np_fm": 0.07431270197616513,
+          "R_ch_fm": 4.203047574246985,
+          "R_ch_rel_err_percent": -1.5541393580600378,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.080276527790843,
+          "B_over_A_err_MeV": 0.27333347220915627,
+          "Delta_R_np_fm": 0.23790132340030112,
+          "R_ch_fm": 4.647818571702322,
+          "R_ch_rel_err_percent": -1.305532208559189,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.597150943126018,
+          "B_over_A_err_MeV": 0.2703490568739815,
+          "Delta_R_np_fm": 0.17498893077280986,
+          "R_ch_fm": 5.433278389028712,
+          "R_ch_rel_err_percent": -1.234668998969096,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.2624692299358935,
+      "rms_R_ch_rel_err_percent": 1.376906273371657,
+      "zeta_RMF": 0.0165
+    },
+    {
+      "CREX_z_score": 1.8582673565115342,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.016861276545681925,
+      "Delta_R_np_Ca48_fm": 0.18675221118321428,
+      "Delta_R_np_Pb208_fm": 0.1890606062792184,
+      "J_MeV": 31.00039254746889,
+      "K_sym_MeV": -28.945674102942576,
+      "L_MeV": 56.0,
+      "L_fd_check_MeV": 56.00094028181957,
+      "M_eff_over_M_N": 0.62,
+      "PREX2_CREX_chi2": 5.203724855050422,
+      "PREX2_z_score": -1.3230900524053746,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.846027706468931,
+          "B_over_A_err_MeV": 0.13017229353106963,
+          "Delta_R_np_fm": -0.030178581165880125,
+          "R_ch_fm": 2.691142266066521,
+          "R_ch_rel_err_percent": -0.2948291628127559,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.325531170995783,
+          "B_over_A_err_MeV": 0.2257688290042168,
+          "Delta_R_np_fm": -0.05364740025335557,
+          "R_ch_fm": 3.410210776345188,
+          "R_ch_rel_err_percent": -1.9378083636649392,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.369208703997629,
+          "B_over_A_err_MeV": 0.2974912960023719,
+          "Delta_R_np_fm": 0.18675221118321428,
+          "R_ch_fm": 3.42707205289087,
+          "R_ch_rel_err_percent": -1.4387836734385056,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.409869351626872,
+          "B_over_A_err_MeV": 0.3000906483731285,
+          "Delta_R_np_fm": 0.0793352217711627,
+          "R_ch_fm": 4.201392460105896,
+          "R_ch_rel_err_percent": -1.5929062606948106,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.118992706085313,
+          "B_over_A_err_MeV": 0.23461729391468644,
+          "Delta_R_np_fm": 0.2532841789452167,
+          "R_ch_fm": 4.643219516563905,
+          "R_ch_rel_err_percent": -1.4031912054040956,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.623447141087896,
+          "B_over_A_err_MeV": 0.24405285891210404,
+          "Delta_R_np_fm": 0.1890606062792184,
+          "R_ch_fm": 5.4297883857293066,
+          "R_ch_rel_err_percent": -1.298109762791633,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.245315759494531,
+      "rms_R_ch_rel_err_percent": 1.4202997816791434,
+      "zeta_RMF": 0.0165
+    },
+    {
+      "CREX_z_score": 1.9592160196423258,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.015195418316487075,
+      "Delta_R_np_Ca48_fm": 0.19032413951396832,
+      "Delta_R_np_Pb208_fm": 0.19643942884047583,
+      "J_MeV": 31.000367367823856,
+      "K_sym_MeV": -42.25386317102676,
+      "L_MeV": 60.0,
+      "L_fd_check_MeV": 60.001028074907474,
+      "M_eff_over_M_N": 0.62,
+      "PREX2_CREX_chi2": 5.324885768985357,
+      "PREX2_z_score": -1.219162974077805,
+      "is_winner": true,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.846050075784547,
+          "B_over_A_err_MeV": 0.1301499242154538,
+          "Delta_R_np_fm": -0.030394455546344457,
+          "R_ch_fm": 2.6912496248651734,
+          "R_ch_rel_err_percent": -0.29085158515159387,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.325598535438075,
+          "B_over_A_err_MeV": 0.22570146456192397,
+          "Delta_R_np_fm": -0.054074765674040126,
+          "R_ch_fm": 3.4104289049825094,
+          "R_ch_rel_err_percent": -1.9315359735878312,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.381597058514066,
+          "B_over_A_err_MeV": 0.28510294148593474,
+          "Delta_R_np_fm": 0.19032413951396832,
+          "R_ch_fm": 3.4256243232989965,
+          "R_ch_rel_err_percent": -1.480419795260522,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.414686994142862,
+          "B_over_A_err_MeV": 0.29527300585713867,
+          "Delta_R_np_fm": 0.08194559646499844,
+          "R_ch_fm": 4.200583713844326,
+          "R_ch_rel_err_percent": -1.6118491159337203,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.140613698381374,
+          "B_over_A_err_MeV": 0.2129963016186256,
+          "Delta_R_np_fm": 0.2613252886417605,
+          "R_ch_fm": 4.64105231248756,
+          "R_ch_rel_err_percent": -1.4492108702448403,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.638270306476373,
+          "B_over_A_err_MeV": 0.2292296935236271,
+          "Delta_R_np_fm": 0.19643942884047583,
+          "R_ch_fm": 5.4282656736649875,
+          "R_ch_rel_err_percent": -1.3257893974953174,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.2360309534809211,
+      "rms_R_ch_rel_err_percent": 1.4412411247215258,
+      "zeta_RMF": 0.0165
+    },
+    {
+      "CREX_z_score": 1.7095021576745966,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.021643634396366185,
+      "Delta_R_np_Ca48_fm": 0.18148836110461097,
+      "Delta_R_np_Pb208_fm": 0.17761908327265008,
+      "J_MeV": 31.000431712868703,
+      "K_sym_MeV": -5.109347837617406,
+      "L_MeV": 50.0,
+      "L_fd_check_MeV": 50.000717409233175,
+      "M_eff_over_M_N": 0.62,
+      "PREX2_CREX_chi2": 5.125360850719702,
+      "PREX2_z_score": -1.4842382637654916,
+      "is_winner": false,
+      "n0_fm3": 0.156,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.852609790293172,
+          "B_over_A_err_MeV": 0.12359020970682799,
+          "Delta_R_np_fm": -0.029641351295950802,
+          "R_ch_fm": 2.706037506824251,
+          "R_ch_rel_err_percent": 0.2570303739858012,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.33958679727748,
+          "B_over_A_err_MeV": 0.21171320272251926,
+          "Delta_R_np_fm": -0.052567975693336155,
+          "R_ch_fm": 3.431385509121218,
+          "R_ch_rel_err_percent": -1.328919107395376,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.364094849021058,
+          "B_over_A_err_MeV": 0.3026051509789429,
+          "Delta_R_np_fm": 0.18148836110461097,
+          "R_ch_fm": 3.4530291435175844,
+          "R_ch_rel_err_percent": -0.6922681683706449,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.425213991666936,
+          "B_over_A_err_MeV": 0.2847460083330642,
+          "Delta_R_np_fm": 0.07584306274578623,
+          "R_ch_fm": 4.232417548621066,
+          "R_ch_rel_err_percent": -0.8662212811855132,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.103460325141702,
+          "B_over_A_err_MeV": 0.25014967485829764,
+          "Delta_R_np_fm": 0.24078729536034338,
+          "R_ch_fm": 4.681890204159433,
+          "R_ch_rel_err_percent": -0.5820354583604197,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.628602225341008,
+          "B_over_A_err_MeV": 0.23889777465899176,
+          "Delta_R_np_fm": 0.17761908327265008,
+          "R_ch_fm": 5.47324991119378,
+          "R_ch_rel_err_percent": -0.5080725806409484,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.2423476130725371,
+      "rms_R_ch_rel_err_percent": 0.7808721784066947,
+      "zeta_RMF": 0.0175
+    },
+    {
+      "CREX_z_score": 1.5799058085578355,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.01758250880895007,
+      "Delta_R_np_Ca48_fm": 0.17690277416748934,
+      "Delta_R_np_Pb208_fm": 0.17165961707840882,
+      "J_MeV": 31.00044006941971,
+      "K_sym_MeV": 18.744003000392695,
+      "L_MeV": 50.0,
+      "L_fd_check_MeV": 50.000582962184126,
+      "M_eff_over_M_N": 0.61,
+      "PREX2_CREX_chi2": 4.955273335770878,
+      "PREX2_z_score": -1.5681744073463544,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.775912529207972,
+          "B_over_A_err_MeV": 0.2002874707920288,
+          "Delta_R_np_fm": -0.029944440300113673,
+          "R_ch_fm": 2.6940345795804435,
+          "R_ch_rel_err_percent": -0.18767072059414616,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.27503452107012,
+          "B_over_A_err_MeV": 0.2762654789298793,
+          "Delta_R_np_fm": -0.052919237105943484,
+          "R_ch_fm": 3.4125757878786622,
+          "R_ch_rel_err_percent": -1.8698013607469974,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.309921671547423,
+          "B_over_A_err_MeV": 0.3567783284525774,
+          "Delta_R_np_fm": 0.17690277416748934,
+          "R_ch_fm": 3.4301582966876123,
+          "R_ch_rel_err_percent": -1.3500245409216813,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.372887491268598,
+          "B_over_A_err_MeV": 0.3370725087314028,
+          "Delta_R_np_fm": 0.07227976998134444,
+          "R_ch_fm": 4.203920782569879,
+          "R_ch_rel_err_percent": -1.533686640514378,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.055206963038389,
+          "B_over_A_err_MeV": 0.2984030369616111,
+          "Delta_R_np_fm": 0.23428974363760524,
+          "R_ch_fm": 4.647546576720171,
+          "R_ch_rel_err_percent": -1.3113079073286575,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.576049138191033,
+          "B_over_A_err_MeV": 0.2914508618089666,
+          "Delta_R_np_fm": 0.17165961707840882,
+          "R_ch_fm": 5.433938332517698,
+          "R_ch_rel_err_percent": -1.2226726438286495,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.29758312981910956,
+      "rms_R_ch_rel_err_percent": 1.3491105231591374,
+      "zeta_RMF": 0.0175
+    },
+    {
+      "CREX_z_score": 1.8108066196845323,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.01371721812175064,
+      "Delta_R_np_Ca48_fm": 0.1850728788848639,
+      "Delta_R_np_Pb208_fm": 0.1876687636110299,
+      "J_MeV": 31.000397129616886,
+      "K_sym_MeV": -13.96758216287708,
+      "L_MeV": 56.0,
+      "L_fd_check_MeV": 56.00086972208373,
+      "M_eff_over_M_N": 0.61,
+      "PREX2_CREX_chi2": 5.081846368991457,
+      "PREX2_z_score": -1.3426934702671842,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.775961320187889,
+          "B_over_A_err_MeV": 0.2002386798121112,
+          "Delta_R_np_fm": -0.030413286476494772,
+          "R_ch_fm": 2.6942647493152787,
+          "R_ch_rel_err_percent": -0.17914307305106697,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.27518774767741,
+          "B_over_A_err_MeV": 0.27611225232258896,
+          "Delta_R_np_fm": -0.05389478881860077,
+          "R_ch_fm": 3.4130650281676824,
+          "R_ch_rel_err_percent": -1.8557330294547212,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.334676929012252,
+          "B_over_A_err_MeV": 0.3320230709877485,
+          "Delta_R_np_fm": 0.1850728788848639,
+          "R_ch_fm": 3.426782246289433,
+          "R_ch_rel_err_percent": -1.447118394943114,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.382128393213982,
+          "B_over_A_err_MeV": 0.3278316067860185,
+          "Delta_R_np_fm": 0.07799205136532184,
+          "R_ch_fm": 4.201978242209171,
+          "R_ch_rel_err_percent": -1.5791857823307422,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.097799702439012,
+          "B_over_A_err_MeV": 0.2558102975609877,
+          "Delta_R_np_fm": 0.2518165661961653,
+          "R_ch_fm": 4.641935478500904,
+          "R_ch_rel_err_percent": -1.430457212305351,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.6048687613490005,
+          "B_over_A_err_MeV": 0.26263123865099924,
+          "Delta_R_np_fm": 0.1876687636110299,
+          "R_ch_fm": 5.429534226510156,
+          "R_ch_rel_err_percent": -1.302729831488476,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.27942216051021784,
+      "rms_R_ch_rel_err_percent": 1.4028025253883778,
+      "zeta_RMF": 0.0175
+    },
+    {
+      "CREX_z_score": 1.4744628877157848,
+      "Delta_R_ch_Ca48_minus_Ca40_fm": 0.01500580366985993,
+      "Delta_R_np_Ca48_fm": 0.17317182276553567,
+      "Delta_R_np_Pb208_fm": 0.16724099065827058,
+      "J_MeV": 31.00044494658505,
+      "K_sym_MeV": 37.74752440222073,
+      "L_MeV": 50.0,
+      "L_fd_check_MeV": 50.000468939970226,
+      "M_eff_over_M_N": 0.6,
+      "PREX2_CREX_chi2": 4.832272952416534,
+      "PREX2_z_score": -1.6304085822778789,
+      "is_winner": false,
+      "n0_fm3": 0.16,
+      "nuclei": [
+        {
+          "B_over_A_MeV": -7.7435178513692335,
+          "B_over_A_err_MeV": 0.23268214863076686,
+          "Delta_R_np_fm": -0.030059002777240273,
+          "R_ch_fm": 2.6954558165149085,
+          "R_ch_rel_err_percent": -0.13501476362830372,
+          "nucleus": "O16"
+        },
+        {
+          "B_over_A_MeV": -8.252576756371491,
+          "B_over_A_err_MeV": 0.29872324362850833,
+          "Delta_R_np_fm": -0.05293411316572749,
+          "R_ch_fm": 3.414525500658532,
+          "R_ch_rel_err_percent": -1.8137364659957322,
+          "nucleus": "Ca40"
+        },
+        {
+          "B_over_A_MeV": -8.299306711095747,
+          "B_over_A_err_MeV": 0.36739328890425327,
+          "Delta_R_np_fm": 0.17317182276553567,
+          "R_ch_fm": 3.429531304328392,
+          "R_ch_rel_err_percent": -1.3680565894454553,
+          "nucleus": "Ca48"
+        },
+        {
+          "B_over_A_MeV": -8.365916378020644,
+          "B_over_A_err_MeV": 0.3440436219793561,
+          "Delta_R_np_fm": 0.06969204085821534,
+          "R_ch_fm": 4.204324193930211,
+          "R_ch_rel_err_percent": -1.5242377399585167,
+          "nucleus": "Zr90"
+        },
+        {
+          "B_over_A_MeV": -8.047678344280113,
+          "B_over_A_err_MeV": 0.30593165571988656,
+          "Delta_R_np_fm": 0.22944730714443917,
+          "R_ch_fm": 4.647143279007759,
+          "R_ch_rel_err_percent": -1.319871764216357,
+          "nucleus": "Sn132"
+        },
+        {
+          "B_over_A_MeV": -7.570134108862756,
+          "B_over_A_err_MeV": 0.2973658911372441,
+          "Delta_R_np_fm": 0.16724099065827058,
+          "R_ch_fm": 5.434791296524722,
+          "R_ch_rel_err_percent": -1.20716759025809,
+          "nucleus": "Pb208"
+        }
+      ],
+      "rms_B_over_A_err_MeV": 0.3105750183974032,
+      "rms_R_ch_rel_err_percent": 1.335543805550408,
+      "zeta_RMF": 0.0185
+    }
+  ],
+  "winner_spin_orbit_splittings_MeV": {
+    "Ca40": {
+      "1d": {
+        "neutron_MeV": 6.136859057421134,
+        "proton_MeV": 6.064261080290635
+      },
+      "1f": {
+        "neutron_MeV": 6.654256216347449,
+        "proton_MeV": 6.064463854417681
+      },
+      "1p": {
+        "neutron_MeV": 3.9759966165347578,
+        "proton_MeV": 3.9879736211423733
+      },
+      "2p": {
+        "neutron_MeV": 1.4837462833240807,
+        "proton_MeV": 0.9806037528269371
+      }
+    },
+    "Ca48": {
+      "1d": {
+        "neutron_MeV": 5.562665570106219,
+        "proton_MeV": 5.7697270194421435
+      },
+      "1f": {
+        "neutron_MeV": 6.94477379491218,
+        "proton_MeV": 7.28509798565301
+      },
+      "1p": {
+        "neutron_MeV": 2.9308123890705247,
+        "proton_MeV": 3.153951132208931
+      },
+      "2p": {
+        "neutron_MeV": 1.258617493276688,
+        "proton_MeV": 1.2856670098690302
+      }
+    },
+    "O16": {
+      "1p": {
+        "neutron_MeV": 5.9163359983804185,
+        "proton_MeV": 5.843433890094275
+      }
+    },
+    "Pb208": {
+      "1d": {
+        "neutron_MeV": 1.2748322429888503,
+        "proton_MeV": 1.4790897917064285
+      },
+      "1f": {
+        "neutron_MeV": 2.3369828121722094,
+        "proton_MeV": 2.6073197457653805
+      },
+      "1g": {
+        "neutron_MeV": 3.6376324401035163,
+        "proton_MeV": 3.9309623481940434
+      },
+      "1p": {
+        "neutron_MeV": 0.5393747990005977,
+        "proton_MeV": 0.655203649388568
+      },
+      "2p": {
+        "neutron_MeV": 0.9925457195827221,
+        "proton_MeV": 1.005019696090585
+      }
+    },
+    "Sn132": {
+      "1d": {
+        "neutron_MeV": 2.0180059902313587,
+        "proton_MeV": 2.254908242253805
+      },
+      "1f": {
+        "neutron_MeV": 3.692062931365399,
+        "proton_MeV": 3.9721892698789816
+      },
+      "1g": {
+        "neutron_MeV": 5.465120483179817,
+        "proton_MeV": 5.723441592616837
+      },
+      "1p": {
+        "neutron_MeV": 0.7773398615709084,
+        "proton_MeV": 0.9217948692744358
+      },
+      "2p": {
+        "neutron_MeV": 1.1785862194192305,
+        "proton_MeV": 1.1651411859083964
+      }
+    },
+    "Zr90": {
+      "1d": {
+        "neutron_MeV": 3.456851420147359,
+        "proton_MeV": 3.701350168951649
+      },
+      "1f": {
+        "neutron_MeV": 5.407292970656272,
+        "proton_MeV": 5.596264596940273
+      },
+      "1g": {
+        "neutron_MeV": 6.801055979641205,
+        "proton_MeV": 6.916159037327816
+      },
+      "1p": {
+        "neutron_MeV": 1.60542862200964,
+        "proton_MeV": 1.816372301310821
+      },
+      "2p": {
+        "neutron_MeV": 1.5127529049132136,
+        "proton_MeV": 1.4459633870192192
+      }
+    }
+  }
+}

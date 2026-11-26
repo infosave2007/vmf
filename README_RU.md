@@ -23,9 +23,9 @@
 
 ## 1. Главное: таблица совпадений, расхождений и статусов
 
-### 1.1 Единая 8-мостовая ковариантная система (`zero-refit`, Циклы 1–3)
+### 1.1 Единая 10-мостовая ковариантная система (`zero-refit`, Циклы 1–4)
 
-Сквозная вычислительная цепочка из **8 валидированных мостов** с нулевой переподгонкой параметров между масштабами и нулевым независимым весом доказательств (`evidence_weight = 0.0`). Подробные отчёты: [Цикл 1 (мосты 1–4)](docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md), [Цикл 2 (мосты 5–7)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md), [Цикл 3 (Мост 8)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md).
+Сквозная вычислительная цепочка из **10 валидированных мостов** с нулевой переподгонкой параметров между масштабами ($k_{\rm fin,nuc} = 0$) и нулевым независимым весом доказательств (`evidence_weight = 0.0`). Подробные отчёты: [Цикл 1 (мосты 1–4)](docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md), [Цикл 2 (мосты 5–7)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md), [Цикл 3 (Мост 8)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md), [Цикл 4 (Мосты 9A–9B)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE4_2026_11_26_RU.md) · **Статья APS (`revtex4-2`, PDF):** [NVG_Zero_Refit_Nuclear_NS_Paper.pdf](preprints/NVG_Zero_Refit_Nuclear_NS_Paper.pdf).
 
 | Мост | Физический сектор | Ключевой численный результат | Скрипт / Артефакт |
 |---|---|---|---|
@@ -37,6 +37,8 @@
 | **Мост 6** | Тепловой отклик и тождества Уорда (5×5 Schur) | Согласование с точностью `4.4e-15` (против провала `1.44` на несогласованном `ph-only` контроле) | [nvg_unified_thermal_response_bridge.py](verification/nvg_unified_thermal_response_bridge.py) |
 | **Мост 7** | Независимый Хартл 1-го и 2-го порядка `I-Love-Q` | Для `PSR J0737-3039A` напрямую из ОДУ: $\bar{I} = 14.69$, $\bar{Q} = 6.74$, согласие с Yagi–Yunes `0.07%–0.21%` | [nvg_unified_astrophysics_stability_bridge.py](verification/nvg_unified_astrophysics_stability_bridge.py) |
 | **Мост 8** | Ковариантная гравитация, регулярное ядро ЧД и отскок | Доказаны $U(1)_B$-отщепление, анизотропия Хейворда ($P_r = -\varepsilon \neq P_t$) и 6-переменный отскок кускутона (Законы 3B и 4) | [nvg_unified_gravity_bridge_audit.py](verification/nvg_unified_gravity_bridge_audit.py) |
+| **Мост 9A** | Спинодаль кора–ядро, DUrca и моды Коулинга $f/g_1/g_2$ | Все 8 выживших: $n_t^{\rm dyn} = 0.0785\text{–}0.0901 < n_t^{\rm ther}$, $I_{\rm crust}/I = 3.84\%\text{–}5.16\%$ ($>1.4\%$ Вела), $M_{\rm DUrca} = 1.926\,M_\odot$, $\nu_f = 2.06\text{–}2.36$ кГц, $\nu_{g_1} \approx 200$ Гц, $\nu_{g_2} \approx 126\text{–}128$ Гц | [nvg_unified_ns_microphysics_bridge.py](verification/nvg_unified_ns_microphysics_bridge.py) |
+| **Мост 9B** | Полная цепочка `Sn100..Sn134`, `PREX-2/CREX` и бенчмарк RMF | 11 изотопов Sn: двойной коллапс при $N=50, 82$, перегиб $\delta R_{\rm ch}(^{134}\text{Sn}-^{132}\text{Sn}) = +0.0173$ фм (77% от Gorges 2019); единственная из 6 моделей, проходящая вакуум и НЗ при $k_{\rm fin,nuc}=0$ | [nvg_unified_nuclear_benchmarks_bridge.py](verification/nvg_unified_nuclear_benchmarks_bridge.py) |
 
 ### 1.2 Сводная таблица runtime-сравнений с данными, расхождений и статусов
 

@@ -23,9 +23,9 @@
 
 ## 1. Key Results: Matches, Tensions & Status Ledger
 
-### 1.1 Unified 8-Bridge Covariant System (`zero-refit`, Cycles 1–3)
+### 1.1 Unified 10-Bridge Covariant System (`zero-refit`, Cycles 1–4)
 
-An auditable cross-sector closure across **8 validated bridges** (`evidence_weight = 0.0`, zero parameter refitting between sectors). Detailed reports: [Cycle 1 (Bridges 1–4)](docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md), [Cycle 2 (Bridges 5–7)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md), [Cycle 3 (Bridge 8)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md).
+An auditable cross-sector closure across **10 validated bridges** (`evidence_weight = 0.0`, zero parameter refitting between sectors, **$k_{\rm fin,nuc} = 0$**). Detailed reports: [Cycle 1 (Bridges 1–4)](docs/unified/NVG_UNIFIED_SYSTEM_BRIDGE_2026_11_26_RU.md), [Cycle 2 (Bridges 5–7)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE2_2026_11_26_RU.md), [Cycle 3 (Bridge 8)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE3_2026_11_26_RU.md), [Cycle 4 (Bridges 9A–9B)](docs/unified/NVG_UNIFIED_SYSTEM_CYCLE4_2026_11_26_RU.md) · **APS Manuscript PDF:** [NVG_Zero_Refit_Nuclear_NS_Paper.pdf](preprints/NVG_Zero_Refit_Nuclear_NS_Paper.pdf).
 
 | Bridge | Sector | Key Numerical Result | Producer / Validator |
 |---|---|---|---|
@@ -33,10 +33,12 @@ An auditable cross-sector closure across **8 validated bridges** (`evidence_weig
 | **Bridge 2** | Globally bounded two-condensate EOS (Law 2) | Bounded-below scalar sector; $M_{\max} = 2.093\,M_\odot$, $R_{1.4} = 12.95$ km | [nvg_two_condensate_unified_audit.py](verification/nvg_two_condensate_unified_audit.py) |
 | **Bridge 3** | Widened $\zeta_{\rm RMF}$ saturation gate (Cycle 3: Bridge 8) | $\zeta_{\rm RMF} \in \{0.0165, 0.0175, 0.0185\}$ yields **8 primary-gate survivors**, winner $\Lambda_{1.4} = 575.3$ | [nvg_unified_primary_gate_pairing_bridge.py](verification/nvg_unified_primary_gate_pairing_bridge.py) |
 | **Bridge 4** | Spherical Dirac–Hartree finite nuclei (`zero-refit`, Law 3A) | `O16..Pb208` with zero nuclear refitting: $\text{RMS}(B/A) = 0.236$ MeV, $\text{RMS}(R_{\rm ch}) = 1.44\%$, positive `Ca48/Pb208` skins | [nvg_unified_dirac_hartree_probe.py](verification/nvg_unified_dirac_hartree_probe.py) |
-| **Bridge 5** | Tin isotopic chain RH-BCS pairing (Bridge 8) | $C_n = 21.0$ MeV gives exact $\Delta_n = 0$ collapse on doubly-magic `Sn132` and physical gaps `0.63–0.96` MeV on `Sn116/120/124` | [nvg_unified_primary_gate_pairing_bridge.py](verification/nvg_unified_primary_gate_pairing_bridge.py) |
+| **Bridge 5** | Tin isotopic chain RH-BCS pairing (Bridge 8) | $C_n = 21.0$ MeV gives exact $\Delta_n = 0$ collapse on doubly-magic `Sn132` and physical gaps on `Sn116/120/124` | [nvg_unified_primary_gate_pairing_bridge.py](verification/nvg_unified_primary_gate_pairing_bridge.py) |
 | **Bridge 6** | Finite-$T$ Ward & 5×5 Schur-Hessian thermal response | Exact Ward closure to `4.4e-15` (vs `1.44` failure on inconsistent `ph-only` control) | [nvg_unified_thermal_response_bridge.py](verification/nvg_unified_thermal_response_bridge.py) |
 | **Bridge 7** | Independent 1st + 2nd-order Hartle `I-Love-Q` | Direct ODE on `PSR J0737-3039A`: $\bar{I} = 14.69$, $\bar{Q} = 6.74$, `0.07%–0.21%` Yagi–Yunes agreement | [nvg_unified_astrophysics_stability_bridge.py](verification/nvg_unified_astrophysics_stability_bridge.py) |
 | **Bridge 8** | Covariant gravity, Hayward BH core & bounce (Laws 3B, 4) | Proves $U(1)_B$ decoupling, anisotropic $P_r = -\varepsilon \neq P_t$ BH interior, and 6-variable cuscuton bounce | [nvg_unified_gravity_bridge_audit.py](verification/nvg_unified_gravity_bridge_audit.py) |
+| **Bridge 9A** | Core–crust spinodal, DUrca & Cowling $f/g_1/g_2$-modes | All 8 survivors: $n_t^{\rm dyn} = 0.0785\text{–}0.0901 < n_t^{\rm ther}$, $I_{\rm crust}/I = 3.84\%\text{–}5.16\%$ ($>1.4\%$ Vela), $M_{\rm DUrca} = 1.926\,M_\odot$, $\nu_f = 2.06\text{–}2.36$ kHz, $\nu_{g_1} \approx 200$ Hz, $\nu_{g_2} \approx 126\text{–}128$ Hz (Kelvin & $N^2 \equiv 0$ controls passed) | [nvg_unified_ns_microphysics_bridge.py](verification/nvg_unified_ns_microphysics_bridge.py) |
+| **Bridge 9B** | Full `Sn100..Sn134` chain, PREX-2/CREX & live RMF benchmark | 11 Sn isotopes: $N=50, 82$ pairing collapse, $\delta R_{\rm ch}(^{134}\text{Sn}-^{132}\text{Sn}) = +0.0173$ fm (77% of Gorges 2019); sole model among 6 covariant sets passing vacuum boundedness/uniqueness and $M_{\max}\ge 2.08\,M_\odot$, $\Lambda_{1.4}\le 580$ at $k_{\rm fin,nuc}=0$ | [nvg_unified_nuclear_benchmarks_bridge.py](verification/nvg_unified_nuclear_benchmarks_bridge.py) |
 
 ### 1.2 Runtime Comparisons, Null Checks, Tensions & Retired Claims
 
