@@ -496,6 +496,68 @@ def _payload_without_integrity(result: Mapping[str, Any]) -> dict[str, Any]:
     return normalized
 
 
+def _assert_regenerated_payload_equal(
+    regenerated: Any,
+    stored: Any,
+    *,
+    path: str = "payload",
+    rel_tol: float = 1.0e-11,
+    abs_tol: float = 1.0e-12,
+) -> None:
+    """Fail closed on structural/type/non-float drift while allowing cross-platform libm float noise."""
+    if isinstance(stored, dict):
+        if not isinstance(regenerated, dict) or set(regenerated.keys()) != set(stored.keys()):
+            raise AssertionError(
+                f"P3-S6 deterministic full-payload regeneration mismatch ({path}: mapping keys differ)"
+            )
+        for key in sorted(stored.keys()):
+            _assert_regenerated_payload_equal(
+                regenerated[key],
+                stored[key],
+                path=f"{path}.{key}",
+                rel_tol=rel_tol,
+                abs_tol=abs_tol,
+            )
+        return
+    if isinstance(stored, list):
+        if not isinstance(regenerated, list) or len(regenerated) != len(stored):
+            raise AssertionError(
+                f"P3-S6 deterministic full-payload regeneration mismatch ({path}: sequence length differs)"
+            )
+        for idx, (r_item, s_item) in enumerate(zip(regenerated, stored)):
+            _assert_regenerated_payload_equal(
+                r_item,
+                s_item,
+                path=f"{path}[{idx}]",
+                rel_tol=rel_tol,
+                abs_tol=abs_tol,
+            )
+        return
+    if isinstance(stored, bool) or isinstance(regenerated, bool):
+        if type(regenerated) is not type(stored) or regenerated != stored:
+            raise AssertionError(
+                f"P3-S6 deterministic full-payload regeneration mismatch ({path}: {regenerated!r} != {stored!r})"
+            )
+        return
+    if isinstance(stored, int) and isinstance(regenerated, int):
+        if regenerated != stored:
+            raise AssertionError(
+                f"P3-S6 deterministic full-payload regeneration mismatch ({path}: {regenerated!r} != {stored!r})"
+            )
+        return
+    if isinstance(stored, (int, float)) and isinstance(regenerated, (int, float)):
+        r_val, s_val = float(regenerated), float(stored)
+        if not (math.isfinite(r_val) and math.isfinite(s_val) and math.isclose(r_val, s_val, rel_tol=rel_tol, abs_tol=abs_tol)):
+            raise AssertionError(
+                f"P3-S6 deterministic full-payload regeneration mismatch ({path}: {regenerated!r} != {stored!r})"
+            )
+        return
+    if type(regenerated) is not type(stored) or regenerated != stored:
+        raise AssertionError(
+            f"P3-S6 deterministic full-payload regeneration mismatch ({path}: {regenerated!r} != {stored!r})"
+        )
+
+
 def canonical_payload_digest(result: Mapping[str, Any]) -> str:
     """Hash every emitted semantic/numeric field in a deterministic encoding.
 
@@ -1112,8 +1174,10 @@ def assert_artifact_provenance(result: Mapping[str, Any]) -> None:
     # A regenerated body catches a forged replacement that also updates the
     # digest.  It compares every normalized field, not only known aliases.
     regenerated = run_audit()
-    if _payload_without_integrity(regenerated) != _payload_without_integrity(result):
-        raise AssertionError("P3-S6 deterministic full-payload regeneration mismatch")
+    _assert_regenerated_payload_equal(
+        _payload_without_integrity(regenerated),
+        _payload_without_integrity(result),
+    )
 
     assert result.get("audit") == "P3-S2"
     assert result.get("status") == "COMPLETE_WITH_PHYSICAL_COOLING_AND_GMODE_BLOCKS"

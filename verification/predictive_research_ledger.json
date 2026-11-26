@@ -153,7 +153,7 @@
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "3241d81611fbd350b039a4ddb05ef9d56f037c834aca802dee66b9219af28d64"
+        "sha256": "3972e01a92dfd1f9a06cab7e3dd7a8d2458cb936ae693855a2da2fa80168ed22"
       },
       "status": "DERIVED_NULL_CONTROL_BAROTROPIC_NEUTRAL_BUOYANCY",
       "values": {
@@ -173,11 +173,11 @@
       "domain": "cooling/g-modes",
       "evidence_weight": 0.0,
       "id": "cooling_and_gmode",
-      "payload_sha256": "39f97ece0bc7f2e04b25c8011f29811e4c7c91144fcc940b63e90d4dd297f13a",
+      "payload_sha256": "d8652fe8c1a9dc32cb60f84dde13578e79ce45dfc02555836d14e3be7df696fa",
       "source": {
         "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
         "role": "P3-S6 final cooling/g-mode artifact",
-        "sha256": "3241d81611fbd350b039a4ddb05ef9d56f037c834aca802dee66b9219af28d64"
+        "sha256": "3972e01a92dfd1f9a06cab7e3dd7a8d2458cb936ae693855a2da2fa80168ed22"
       },
       "status": "blocked"
     },
@@ -565,7 +565,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "a186d60f54c623d6f6023c48617dc0135284f304a6a2e544de7ca1ac5f888948",
+    "payload_sha256": "59a99d8a00004972f86003be317b786109edc101676a6cf4f24020079f330fe4",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -587,12 +587,12 @@
     "cooling_producer": {
       "path": "verification/nvg_cooling_gmode_dependency_audit.py",
       "role": "P3-S6 cooling/g-mode producer",
-      "sha256": "d371f916c8701f7a200b653ea4e3e7fc3e942579f098da8d1060a387fa7cd72a"
+      "sha256": "116f4d3e77303abd4c20e55a2c7bc3a0850454f0c2b0d4bf2d9976cc70cb9416"
     },
     "cooling_result": {
       "path": "verification/nvg_cooling_gmode_dependency_audit_p3s2_results.json",
       "role": "P3-S6 final cooling/g-mode artifact",
-      "sha256": "3241d81611fbd350b039a4ddb05ef9d56f037c834aca802dee66b9219af28d64"
+      "sha256": "3972e01a92dfd1f9a06cab7e3dd7a8d2458cb936ae693855a2da2fa80168ed22"
     },
     "cooling_test": {
       "path": "verification/test_p3_cooling_gmode_dependency_audit.py",
