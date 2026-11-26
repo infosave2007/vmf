@@ -91,7 +91,7 @@ class PredictiveResearchIntegrationTests(unittest.TestCase):
             claims["s8"]["normalization_one_sigma_counts_by_omega"]["0.3"]["omega_m_0.315"]["one_sigma_overlap"],
             45,
         )
-        self.assertEqual(claims["s8"]["payload_sha256"], "419777c3ebff39e38036d20fbef3a5b9dd00e9a064409b9e2d45b85ebdf26267")
+        self.assertEqual(claims["s8"]["payload_sha256"], "75f94672f6a3f92e9bc0327bf27f2fd5e6bf6a2a4d12a6e1be03a925bff5bc5c")
         self.assertEqual(claims["pbh"]["seed_band"]["minimum_required_rate_product"], 299558.79267302185)
         self.assertEqual(claims["pbh"]["expanded_scan"]["first_reachable_rung"], 17)
         self.assertEqual(claims["M_Omega"]["status"], "BLOCKED_NO_PHYSICAL_DEPENDENCY")

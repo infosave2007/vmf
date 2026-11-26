@@ -315,7 +315,7 @@
   },
   "payload_integrity": {
     "algorithm": "sha256-canonical-json-v1",
-    "canonical_sha256": "419777c3ebff39e38036d20fbef3a5b9dd00e9a064409b9e2d45b85ebdf26267",
+    "canonical_sha256": "75f94672f6a3f92e9bc0327bf27f2fd5e6bf6a2a4d12a6e1be03a925bff5bc5c",
     "covered_scope": "all JSON fields except payload_integrity; flattened CSV rows included by csv_rows_sha256",
     "csv_rows_sha256": "c477b56f92017c2f46c3db571040d26bcff63b311f5109d2cfd91cf97d28477e",
     "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
@@ -848,7 +848,7 @@
     },
     "minimal_prospective_requirement": "Supply an independently sourced seed occupation and merger-rate model; demonstrate a rate product in [0,1] for rungs 9--11 and a fraction f_PBH consistent with the DM budget, with no target-tuned abundance.",
     "producer_identity": {
-      "artifact": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "artifact": "verification/P1-S3-pbh-nanograv-audit.json",
       "assertion_status": "PASS",
       "audit_producer": "verification/nvg_pbh_nanograv_audit.py",
       "live_assertion": "benchmark_metadata + canonical_mass + amplitude_strain + final rung rows",
@@ -1042,14 +1042,14 @@
         "sha256": "6b78079d5430d9a1e8a65d8aa69707cb5cfc119a9218d0d222a331bc42f48d16"
       },
       "result": {
-        "path": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+        "path": "verification/P1-S3-pbh-nanograv-audit.json",
         "role": "P1-S3 final structured PBH artifact",
         "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
       },
       "two_population": {
         "path": "verification/nvg_pbh_two_population.py",
         "role": "live PBH two-population constants",
-        "sha256": "50e3700c830cbd32e7f55f6134b8d1dcc03df5ee9dbc6ad615fc3b067fc1beb0"
+        "sha256": "d4bc76441cb30fb36538cd6aac51b56c6b27cbf23dc36959facb53a34ea2b44d"
       }
     },
     "status": "sensitivity",
@@ -1269,7 +1269,7 @@
       "producer": "verification/nvg_echo_hierarchical_upper_limit.py"
     },
     "pbh": {
-      "artifact": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "artifact": "verification/P1-S3-pbh-nanograv-audit.json",
       "assertion_status": "PASS",
       "audit_producer": "verification/nvg_pbh_nanograv_audit.py",
       "live_assertion": "benchmark_metadata + canonical_mass + amplitude_strain + final rung rows",
@@ -2335,10 +2335,10 @@
     "p3_producer": {
       "path": "verification/nvg_prospective_falsification_reach.py",
       "role": "live P3-S7 producer",
-      "sha256": "bac0efb275211e51dd587d6b3a7d7cc9e374eaa1b37b57cc727b0c1b5c2671f1"
+      "sha256": "04c36091773fb9899515046624130e5aab39292791d0861f5d1d9f2a81447d28"
     },
     "pbh_result": {
-      "path": "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json",
+      "path": "verification/P1-S3-pbh-nanograv-audit.json",
       "role": "read-only P1 final artifact",
       "sha256": "810243886f2cbee5de18845ec5c910bd9b3fbe0e632fe8dbe352efab18e616f7"
     },

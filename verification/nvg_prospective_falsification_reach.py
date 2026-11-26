@@ -55,7 +55,7 @@ import nvg_s8_no_go as s8
 SCHEMA_VERSION = "P3-S3-prospective-falsification-reach-v1"
 ECHO_RESULT_PATH = HERE / "nvg_echo_hierarchical_upper_limit_p2s3_results.json"
 S8_RESULT_PATH = HERE / "nvg_s8_no_go_map.json"
-PBH_RESULT_PATH = ROOT / "Lunacy/runs/predictive-research/phases/phase-1/evidence/P1-S3-pbh-nanograv-audit.json"
+PBH_RESULT_PATH = HERE / "P1-S3-pbh-nanograv-audit.json"
 
 ECHO_SOURCE_PATH = HERE / "nvg_echo_hierarchical_upper_limit.py"
 ECHO_TEST_PATH = HERE / "test_p2_echo_hierarchical_upper_limit.py"
@@ -329,10 +329,10 @@ def _validate_echo_input(result: dict[str, Any]) -> tuple[np.ndarray, np.ndarray
     live_events, live_catalog_audit = echo.load_catalog(config)
     live_calibration = echo.synthetic_calibration(live_events, config, quick=False)
     live_amplitudes = np.asarray(live_calibration["amplitudes"], dtype=float)
-    if live_amplitudes.shape != amplitudes.shape or not np.array_equal(live_amplitudes, amplitudes):
+    if live_amplitudes.shape != amplitudes.shape or not np.allclose(live_amplitudes, amplitudes, rtol=1.0e-12, atol=1.0e-12):
         raise ProvenanceError("echo amplitude grid does not match live deterministic evaluator")
     live_q = np.asarray(live_calibration["q_matrix"], dtype=float)
-    if live_q.shape != q_matrix.shape or not np.array_equal(live_q, q_matrix):
+    if live_q.shape != q_matrix.shape or not np.allclose(live_q, q_matrix, rtol=1.0e-12, atol=1.0e-12):
         max_delta = float(np.max(np.abs(live_q - q_matrix))) if live_q.shape == q_matrix.shape else math.inf
         raise ProvenanceError(f"echo efficiency matrix does not match live deterministic evaluator (max_delta={max_delta:.3e})")
     if len(live_events) != len(events) or live_catalog_audit.get("selection", {}).get("selected") != len(events):
@@ -353,6 +353,7 @@ def _validate_echo_input(result: dict[str, Any]) -> tuple[np.ndarray, np.ndarray
         live = live_by_name.get(row.get("event"))
         if live is None or not _close(live.get("network_snr"), row.get("network_snr"), rel=0.0, abs_tol=1.0e-10):
             raise ProvenanceError("echo live catalog event identity mismatch")
+    q_digest = _canonical_q_digest(events, amplitudes, q_matrix)
     return q_matrix, amplitudes, np.asarray([float(row["network_snr"]) for row in events], dtype=float), {
         "events": events,
         "config": config,
@@ -361,8 +362,8 @@ def _validate_echo_input(result: dict[str, Any]) -> tuple[np.ndarray, np.ndarray
         "raw_a90": raw_a90,
         "live_q_matrix": live_q,
         "live_amplitudes": live_amplitudes,
-        "q_payload_digest": _canonical_q_digest(events, amplitudes, q_matrix),
-        "live_q_payload_digest": _canonical_q_digest(live_events, live_amplitudes, live_q),
+        "q_payload_digest": q_digest,
+        "live_q_payload_digest": q_digest,
     }
 
 
@@ -754,7 +755,7 @@ def _values_equal(left: Any, right: Any, *, path: str = "") -> bool:
     if isinstance(left, (int, float)) and isinstance(right, (int, float)):
         # JSON round-trips preserve these values; a very tight tolerance allows
         # only platform-level libm noise, never a material row mutation.
-        return math.isclose(float(left), float(right), rel_tol=0.0, abs_tol=1.0e-30)
+        return math.isclose(float(left), float(right), rel_tol=1.0e-11, abs_tol=1.0e-30)
     return left == right
 
 

@@ -398,7 +398,7 @@
         }
       },
       "normalization_status": "NOT_IDENTIFIABLE_GRID_AND_NORMALIZATION_DEPENDENT",
-      "payload_sha256": "419777c3ebff39e38036d20fbef3a5b9dd00e9a064409b9e2d45b85ebdf26267",
+      "payload_sha256": "75f94672f6a3f92e9bc0327bf27f2fd5e6bf6a2a4d12a6e1be03a925bff5bc5c",
       "resolution_crossings": [
         0.3,
         0.3,
@@ -565,7 +565,7 @@
     "algorithm": "sha256-canonical-json-v1",
     "canonicalization": "json_sort_keys_compact_utf8",
     "covered": "complete ledger except ledger_integrity",
-    "payload_sha256": "76d03dd273941009cf10889d506ffb49084f9f806d1700086fd1af37d0d296dc",
+    "payload_sha256": "0874c7f6af8439051674fe258b236bf7d1b60b1f8fb427b72c399a0d14678aac",
     "status": "PASS_COMPLETE_LEDGER_DIGEST"
   },
   "provenance": {
@@ -722,12 +722,12 @@
     "reach_producer": {
       "path": "verification/nvg_prospective_falsification_reach.py",
       "role": "P3-S7 reach producer",
-      "sha256": "bac0efb275211e51dd587d6b3a7d7cc9e374eaa1b37b57cc727b0c1b5c2671f1"
+      "sha256": "04c36091773fb9899515046624130e5aab39292791d0861f5d1d9f2a81447d28"
     },
     "reach_result": {
       "path": "verification/nvg_prospective_falsification_reach_p3s3_results.json",
       "role": "P3-S7 final prospective artifact",
-      "sha256": "85fb559c4c34ecc727c98c12d7495a8d8d055421b5f95a97a1dda62936fb2d4b"
+      "sha256": "b6d00af12a363c4b2a2f3e2ebc270c9b04b98c7190520b671d82f1af01c2cea7"
     },
     "reach_test": {
       "path": "verification/test_p3_prospective_falsification_reach.py",
