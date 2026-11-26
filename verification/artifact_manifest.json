@@ -373,7 +373,7 @@
       "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
-      "sha256": "b3fb17691ae761b6b16b0a5d0819e585dcedfc7501e2c6bd7d38ac7545b49bfa",
+      "sha256": "a4b186cffa9ca4c563bb629efa4cfecb53b81cf175c0bc3b4e0feddac194013f",
       "status": "blocked_physical_dependencies_with_null_control"
     },
     "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
@@ -564,7 +564,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "3abf5f6c6d815f03083eca5cbccaebd15e1369c9b2fc92097c3206f682b90183",
+      "sha256": "ab289d7bfc1d3d10ddcfa3330ad21ec5f5756f6aba7e8ddc3b5bd37b279411b4",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
