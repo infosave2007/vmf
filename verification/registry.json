@@ -11268,6 +11268,40 @@
       "tests": [],
       "deprecation": "Historical or superseded demonstration; outside the semantic front door.",
       "quarantine": null
+    },
+    "verification/nvg_theta_haloscope_design.py": {
+      "kind": "script",
+      "role": "forecast",
+      "status": "forward_only",
+      "evidence_weight": 0.0,
+      "description": "Zenodo 10.5281/zenodo.21812161 companion design script for conditional 53.2 ueV / 12.86 GHz theta-DM haloscope protocols (ORGAN calibration, fixed dielectric stack, MC sensitivity, multi-channel couplings; zero empirical weight).",
+      "producer": null,
+      "consumers": [
+        "verification/test_nvg_theta_haloscope_design.py"
+      ],
+      "inputs": [],
+      "outputs": [],
+      "tests": [
+        "verification/test_nvg_theta_haloscope_design.py"
+      ],
+      "deprecation": "Conditional phenomenological target (c_nu parameter); zero independent empirical evidence weight.",
+      "quarantine": null
+    },
+    "verification/test_nvg_theta_haloscope_design.py": {
+      "kind": "test",
+      "role": "validation",
+      "status": "maintained",
+      "evidence_weight": 0.0,
+      "description": "Pytest checks for Zenodo 10.5281/zenodo.21812161 haloscope target, c_nu invariance, ORGAN calibration, Monte Carlo window and multi-channel bounds.",
+      "producer": null,
+      "consumers": [],
+      "inputs": [
+        "verification/nvg_theta_haloscope_design.py"
+      ],
+      "outputs": [],
+      "tests": [],
+      "deprecation": "Focused conditional haloscope reproducibility suite (zero evidence weight).",
+      "quarantine": null
     }
   },
   "front_door": {

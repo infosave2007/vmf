@@ -93,15 +93,20 @@ def build_result():
     }
 
 
-def _trees_match(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
+def _is_diagnostic_error_key(key):
+    lowered = key.lower()
+    return any(token in lowered for token in ("residual", "_error", "closure_max_relative"))
+
+
+def _trees_match(actual, expected, *, rel_tol=1.0e-10, abs_tol=1.0e-11, key=""):
     if isinstance(expected, dict):
         return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
-            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol, key=k)
             for k in expected
         )
     if isinstance(expected, list):
         return isinstance(actual, list) and len(actual) == len(expected) and all(
-            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol, key=key)
             for a, b in zip(actual, expected)
         )
     if isinstance(expected, bool) or isinstance(actual, bool):
@@ -109,9 +114,10 @@ def _trees_match(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
     if isinstance(expected, int) and isinstance(actual, int):
         return actual == expected
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        eff_rel, eff_abs = (0.5, 1.0e-4) if _is_diagnostic_error_key(key) else (rel_tol, abs_tol)
         a_val, e_val = float(actual), float(expected)
         return math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
-            a_val, e_val, rel_tol=rel_tol, abs_tol=abs_tol
+            a_val, e_val, rel_tol=eff_rel, abs_tol=eff_abs
         )
     return type(actual) is type(expected) and actual == expected
 

@@ -79,6 +79,7 @@
 | Тензорная мода и двупреломление CMB | $r(\ell < 10) < 0.001$; статическая ветвь $\beta_{\rm biref} = 0$ | LiteBIRD | Детекция $r > 0.001$ или подтверждение $\beta \neq 0$ (фиксирует $\gamma_{\rm topo}\Delta\theta$) | [nvg_litebird_prediction.py](verification/nvg_litebird_prediction.py), [nvg_cmb_birefringence.py](verification/nvg_cmb_birefringence.py) |
 | RHIC Bell Test (смерть запутанности при $T_c$) | $S_{\rm CHSH}(T > T_c = 157\text{ МэВ}) \to 0$ (будущий протокол) | RHIC BES-II / тяжелые ионы | Сохранение квантовой Белл-корреляции $S > 2$ выше деконфайнмента | [nvg_rhic_bell_test.py](verification/nvg_rhic_bell_test.py) |
 | Безгоризонтный приливный нагрев и сверхизлучение | Нулевой фазовый сдвиг поглощения в EMRI (против ~32 циклов Керра); полоса ПЧД $M \sim 10^{-6} M_\odot$ | LISA / наблюдательная астрофизика | Обнаружение стандартного керровского поглощения ~32 циклов или горизонта | [nvg_tidal_heating_null.py](verification/nvg_tidal_heating_null.py), [nvg_theta_superradiance.py](verification/nvg_theta_superradiance.py) |
+| Галоскоп линии $\theta$-ТМ (`c_nu = 1`) | $m_\theta = 53.2$ мкэВ, $f_\theta = 12.86$ ГГц, $g_{\theta\gamma\gamma}^{\rm KSVZ} = 2.08\times 10^{-14}\text{ ГэВ}^{-1}$; $\sim 18$ ч при $\beta^2 = 10^4$ | Окно ORGAN / фиксированный диэл. стек | Нулевой целевой поиск исключает KSVZ-ориентир (с учётом доли $f_{\rm DM} = 0.24$) | [nvg_theta_haloscope_design.py](verification/nvg_theta_haloscope_design.py) |
 
 ---
 
@@ -179,6 +180,7 @@ NVG-Research/
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20473318-blue.svg)](https://doi.org/10.5281/zenodo.20473318) *Dynamics of the QCD Vacuum Condensate Amplitude in Dense Matter and Cosmology* (историческое предложение; в `source_complete` действии векторная энергия расходится как $W^{-2}$, плавление при $2.05\,n_0$ не поддерживается)
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20476890-blue.svg)](https://doi.org/10.5281/zenodo.20476890) *Seven Results of the Vacuum Condensate: From Nuclear Matter to Quantum Mechanics* (иллюстрации Маделунга и Эйнштейна–Картана; сектор кручения в поддерживаемом действии отсутствует)
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20485836-blue.svg)](https://doi.org/10.5281/zenodo.20485836) *Resolution of the Hyperon Puzzle via QCD Vacuum Condensate Melting in the NVG/VMF Framework* (полной $\beta$-равновесной EOS и likelihood в репозитории нет)
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21812161-blue.svg)](https://doi.org/10.5281/zenodo.21812161) *A Point-Like Dark-Matter Target at 12.8 GHz from a QCD-Anchored Vacuum Condensate: Theory and Haloscope Test Protocol* (условный целевой протокол с параметром $c_\nu$; воспроизведён в [nvg_theta_haloscope_design.py](verification/nvg_theta_haloscope_design.py))
 
 </details>
 

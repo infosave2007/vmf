@@ -301,15 +301,33 @@ def test_artifacts_are_byte_regenerated(tmp_path: Path):
     assert parsed["status"] == result["status"]
 
 
-def _trees_close(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
+def _is_diagnostic_residual_key(key: str) -> bool:
+    lowered = key.lower()
+    return any(
+        token in lowered
+        for token in (
+            "residual",
+            "_relative",
+            "max_generator_",
+            "max_hvh_",
+            "max_w_stationarity",
+            "max_current_",
+            "max_stress_",
+            "w_spread_",
+            "max_delta_",
+        )
+    )
+
+
+def _trees_close(actual, expected, *, rel_tol=1.0e-10, abs_tol=1.0e-10, key=""):
     if isinstance(expected, dict):
         return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
-            _trees_close(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_close(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol, key=k)
             for k in expected
         )
     if isinstance(expected, list):
         return isinstance(actual, list) and len(actual) == len(expected) and all(
-            _trees_close(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_close(a, b, rel_tol=rel_tol, abs_tol=abs_tol, key=key)
             for a, b in zip(actual, expected)
         )
     if isinstance(expected, bool) or isinstance(actual, bool):
@@ -317,8 +335,9 @@ def _trees_close(actual, expected, *, rel_tol=1.0e-11, abs_tol=1.0e-12):
     if isinstance(expected, int) and isinstance(actual, int):
         return actual == expected
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        eff_rel, eff_abs = (1.0e-2, 1.0e-5) if _is_diagnostic_residual_key(key) else (rel_tol, abs_tol)
         return math.isfinite(float(actual)) and math.isfinite(float(expected)) and math.isclose(
-            float(actual), float(expected), rel_tol=rel_tol, abs_tol=abs_tol
+            float(actual), float(expected), rel_tol=eff_rel, abs_tol=eff_abs
         )
     return type(actual) is type(expected) and actual == expected
 

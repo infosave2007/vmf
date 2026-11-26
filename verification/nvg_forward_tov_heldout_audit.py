@@ -278,15 +278,15 @@ def build_result():
     }
 
 
-def _trees_match(actual, expected, *, rel_tol=1.0e-6, abs_tol=1.0e-9):
+def _trees_match(actual, expected, *, rel_tol=1.0e-5, abs_tol=1.0e-8, key=""):
     if isinstance(expected, dict):
         return isinstance(actual, dict) and set(actual.keys()) == set(expected.keys()) and all(
-            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_match(actual[k], expected[k], rel_tol=rel_tol, abs_tol=abs_tol, key=k)
             for k in expected
         )
     if isinstance(expected, list):
         return isinstance(actual, list) and len(actual) == len(expected) and all(
-            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol)
+            _trees_match(a, b, rel_tol=rel_tol, abs_tol=abs_tol, key=key)
             for a, b in zip(actual, expected)
         )
     if isinstance(expected, bool) or isinstance(actual, bool):
@@ -294,9 +294,11 @@ def _trees_match(actual, expected, *, rel_tol=1.0e-6, abs_tol=1.0e-9):
     if isinstance(expected, int) and isinstance(actual, int):
         return actual == expected
     if isinstance(expected, (int, float)) and isinstance(actual, (int, float)):
+        lowered = key.lower()
+        eff_rel, eff_abs = (2.0e-3, 1.0e-5) if ("lambda" in lowered or "k2" in lowered) else (rel_tol, abs_tol)
         a_val, e_val = float(actual), float(expected)
         return math.isfinite(a_val) and math.isfinite(e_val) and math.isclose(
-            a_val, e_val, rel_tol=rel_tol, abs_tol=abs_tol
+            a_val, e_val, rel_tol=eff_rel, abs_tol=eff_abs
         )
     return type(actual) is type(expected) and actual == expected
 

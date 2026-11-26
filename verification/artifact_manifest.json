@@ -373,7 +373,7 @@
       "command": "python verification/nvg_cooling_gmode_dependency_audit.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_cooling_gmode_dependency_audit.py",
-      "sha256": "a4b186cffa9ca4c563bb629efa4cfecb53b81cf175c0bc3b4e0feddac194013f",
+      "sha256": "f3f6e9b46b3fe4391739af53fabb9d83657db6ce1b1bb4f59d58a6960c86cbed",
       "status": "blocked_physical_dependencies_with_null_control"
     },
     "verification/nvg_dark_photon_kinetic_mixing_output.txt": {
@@ -564,7 +564,7 @@
       "command": "python verification/nvg_predictive_research_ledger.py",
       "kind": "generated_artifact",
       "producer": "verification/nvg_predictive_research_ledger.py",
-      "sha256": "ab289d7bfc1d3d10ddcfa3330ad21ec5f5756f6aba7e8ddc3b5bd37b279411b4",
+      "sha256": "5a07e86e8c244f38aa87703591a06a13fe62ab390edd6abddd99473286e2ac4b",
       "status": "integrated_machine_ledger"
     },
     "visualization/nvg_3d_viz.html": {
@@ -847,7 +847,7 @@
       "command": "arch -arm64 .venv-research/bin/python -B verification/nvg_forward_tov_heldout_audit.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_forward_tov_heldout_audit.py",
-      "sha256": "545d856c160794ea7a9784d55c81abfd6ba9dc7fc6fd516f46fa6b300300709a",
+      "sha256": "8abe2939f0234b2abce33a7002132f3be1fe33050cb76d8ec8c1c25d6af36b72",
       "status": "heldout_tov_tidal_zero_evidence"
     },
     "verification/nvg_mmax_stiffening_results.json": {
@@ -895,7 +895,7 @@
       "command": "python3 -B verification/nvg_unified_gravity_bridge_audit.py --write",
       "kind": "generated_artifact",
       "producer": "verification/nvg_unified_gravity_bridge_audit.py",
-      "sha256": "9dbaa175caa80a0eff00ee6661cb662f049abb73d269045ca145792e85886613",
+      "sha256": "7f112ce3af1495846a6e2313ccddf078b03cd12f355d16e5a35d0d2d7131366a",
       "status": "unified_bridge_zero_evidence"
     },
     "verification/nvg_unified_thermal_response_results.json": {

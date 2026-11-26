@@ -79,6 +79,7 @@ All items below are **forward forecasts** or **extension-conditional tests** wit
 | Tensor-to-scalar ratio & cosmic birefringence | $r(\ell < 10) < 0.001$; static branch $\beta_{\rm biref} = 0$ | LiteBIRD | Detection of $r > 0.001$ or confirmed $\beta \neq 0$ (pins $\gamma_{\rm topo}\Delta\theta$) | [nvg_litebird_prediction.py](verification/nvg_litebird_prediction.py), [nvg_cmb_birefringence.py](verification/nvg_cmb_birefringence.py) |
 | RHIC Bell test (entanglement death above $T_c$) | $S_{\rm CHSH}(T > T_c = 157\text{ MeV}) \to 0$ (future protocol) | RHIC BES-II / heavy ions | Persistent $S > 2$ above deconfinement | [nvg_rhic_bell_test.py](verification/nvg_rhic_bell_test.py) |
 | Horizonless tidal heating & superradiance | Zero EMRI absorption phase lag (vs ~32 cycles Kerr); Kerr PBH band $M \sim 10^{-6}\,M_\odot$ | LISA / astrophysics | Kerr-like ~32-cycle absorption lag or confirmed horizon in band | [nvg_tidal_heating_null.py](verification/nvg_tidal_heating_null.py), [nvg_theta_superradiance.py](verification/nvg_theta_superradiance.py) |
+| $\theta$-DM haloscope line (`c_nu = 1`) | $m_\theta = 53.2\,\mu\text{eV}$, $f_\theta = 12.86$ GHz, $g_{\theta\gamma\gamma}^{\rm KSVZ} = 2.08\times 10^{-14}\text{ GeV}^{-1}$; $\sim 18$ h @ $\beta^2 = 10^4$ | ORGAN gap / fixed dielectric stack | Null targeted run excluding KSVZ benchmark (rescaled by $f_{\rm DM} = 0.24$) | [nvg_theta_haloscope_design.py](verification/nvg_theta_haloscope_design.py) |
 
 ---
 
@@ -177,6 +178,7 @@ Published titles and links are retained as a historical bibliography (not curren
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20473318-blue.svg)](https://doi.org/10.5281/zenodo.20473318) *Dynamics of the QCD Vacuum Condensate Amplitude in Dense Matter and Cosmology* (historical proposal; vector energy diverges as $W^{-2}$ in the maintained `source_complete` action, so $2.05\,n_0$ density melting/bounce is unsupported)
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20476890-blue.svg)](https://doi.org/10.5281/zenodo.20476890) *Seven Results of the Vacuum Condensate: From Nuclear Matter to Quantum Mechanics* (Madelung & Einstein–Cartan illustrations; no torsion sector exists in the maintained action)
 - [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20485836-blue.svg)](https://doi.org/10.5281/zenodo.20485836) *Resolution of the Hyperon Puzzle via QCD Vacuum Condensate Melting in the NVG/VMF Framework* (no complete beta-equilibrated EOS or likelihood is implemented in the maintained repo)
+- [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21812161-blue.svg)](https://doi.org/10.5281/zenodo.21812161) *A Point-Like Dark-Matter Target at 12.8 GHz from a QCD-Anchored Vacuum Condensate: Theory and Haloscope Test Protocol* (conditional target parameterized by $c_\nu$; reproduced in [nvg_theta_haloscope_design.py](verification/nvg_theta_haloscope_design.py))
 
 </details>
 
