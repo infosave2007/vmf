@@ -3352,9 +3352,9 @@
     "excluded_fields": [
       "payload_integrity"
     ],
-    "payload_sha256": "d8652fe8c1a9dc32cb60f84dde13578e79ce45dfc02555836d14e3be7df696fa",
+    "payload_sha256": "590bece5044264e645723a32536b11fba5cecea14998f8bcd9830f2db741c540",
     "schema": "P3-S6-complete-payload-v1",
-    "sha256": "d8652fe8c1a9dc32cb60f84dde13578e79ce45dfc02555836d14e3be7df696fa",
+    "sha256": "590bece5044264e645723a32536b11fba5cecea14998f8bcd9830f2db741c540",
     "status": "PASS_COMPLETE_PAYLOAD_DIGEST"
   },
   "physical_no_go": {
@@ -3450,7 +3450,7 @@
       "verification/nvg_cas_a_cooling_curve.py": "9b87806a407fb1fcfbc2ea934ac00fe9fe1741f72badc22c6363a577862da8b5",
       "verification/nvg_cmb_smbh_cyclic.py": "26a3faaf004397bba2d722ee707c161f2ea2a1dd2d96109f1187f9d830591412",
       "verification/nvg_cooling_dark_matter.py": "d51885373fe06f67f5823361728c1c1547417dc9619383d0c979b06d782fd399",
-      "verification/nvg_cooling_gmode_dependency_audit.py": "116f4d3e77303abd4c20e55a2c7bc3a0850454f0c2b0d4bf2d9976cc70cb9416",
+      "verification/nvg_cooling_gmode_dependency_audit.py": "bb0914cf0d3747d0b6a56f2b8c258ed12e5780d8e84423f9ff0b82e9e07d4775",
       "verification/nvg_dark_photon_kinetic_mixing.py": "6bf4934fcf66f89aa645653614d241da7d37c83459c531363c8c46cedae0ca94",
       "verification/nvg_dark_photon_kinetic_mixing_output.txt": "83f4050ac6afcd6243bb1bb643d9b77f8a0562c9bc5fd3c679bdc77c0bd0d221",
       "verification/nvg_dark_photon_observables.py": "527d676f5e10e17b018edc576ea5e2c273935eb83020183b9a71645a79a9014f",

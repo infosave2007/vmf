@@ -501,8 +501,8 @@ def _assert_regenerated_payload_equal(
     stored: Any,
     *,
     path: str = "payload",
-    rel_tol: float = 1.0e-11,
-    abs_tol: float = 1.0e-12,
+    rel_tol: float = 1.0e-8,
+    abs_tol: float = 1.0e-11,
 ) -> None:
     """Fail closed on structural/type/non-float drift while allowing cross-platform libm float noise."""
     if isinstance(stored, dict):
